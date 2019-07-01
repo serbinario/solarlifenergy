@@ -37,13 +37,12 @@ $(document).ready(function () {
 
     //Ao submeter tirar as mascaras
     $("#edit_cliente_form").submit(function (event) {
-        $('.cpf').unmask();
-        $('.cnpj').unmask();
+        $('.mascara-cpfcnpj').unmask();
     });
 
     //Ao submeter tirar as mascaras
-    $("#create_cliente_form").submit(function (event) {
-        $('.cpf').unmask();
+    $("#edit_cliente_form").submit(function (event) {
+        $('.mascara-cpfcnpj').unmask();
     });
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NetStart - Provedor de Internet</title>
+    <title>SOLAR LIFE ENERG</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -61,7 +61,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <span class="text-lg text-bold text-primary">NETSTART - SERMK </span>
+                    <span class="text-lg text-bold text-primary">SOLAR LIFE ENERG </span>
                     <br/><br/>
                     <form class="form floating-label" action="{{ route('login') }}" accept-charset="utf-8" method="POST">
                         {{ csrf_field() }}

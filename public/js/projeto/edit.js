@@ -80,5 +80,42 @@ $(document).ready(function () {
 
     }
 
+    $(".add-more").click(function(){
+
+        var html = '<div class="row copy">'
+        html += '<div class="col-sm-6">'
+        html += '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
+        html += '<label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe</label>'
+        html += '<div class="col-md-8">'
+        html += '<input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old(\'contrato_celpe\', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '<div class="col-sm-6">'
+        html += '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
+        html += '<div class="col-md-2">'
+        html += '<div class="">'
+        html += '<label for="">'
+        html += '<button class="btn btn-danger remove btn-sm" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>'
+        html += '</label>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+
+
+        $(".after-add-more").after(html);
+
+    });
+
+
+    $("body").on("click",".remove",function(){
+
+        console.log("wwwww");
+        $(this).parents(".copy").remove();
+
+    });
+
 
 });

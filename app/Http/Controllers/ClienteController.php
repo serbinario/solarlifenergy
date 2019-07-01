@@ -5,21 +5,13 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Serbinario\Entities\Cliente;
-use Serbinario\Entities\Debitos;
-use Serbinario\Entities\FinCarne;
-use Serbinario\Entities\FinContasBancaria;
-use Serbinario\Entities\FinFormasPagamento;
-use Serbinario\Entities\FinLocaisPagamento;
-use Serbinario\Entities\Grupo;
-use Serbinario\Entities\PessoaFisica;
-use Serbinario\Entities\PessoaJuridica;
-use Serbinario\Entities\Router;
-use Serbinario\Entities\Profile;
-use Serbinario\Entities\VencimentoDia;
+use Serbinario\Entities\Projeto;
 use Serbinario\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -43,28 +35,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $mkClientes = Cliente::pluck('nome','id')->all();
-        $finContasBancarias = FinContasBancaria::pluck('nome','id')->all();
-        $finFormasPagamentos = FinFormasPagamento::pluck('nome','id')->all();
-        $finCarnes = FinCarne::pluck('id','id')->all();
-        $finLocaisPagamentos = FinLocaisPagamento::pluck('nome','id')->all();
-        $mkGrupos = Grupo::pluck('nome','id')->all();
+        $clientes = Cliente::paginate(25);
 
-        return view('cliente.index', compact('clientes','mkClientes','finContasBancarias','finFormasPagamentos','finCarnes','finLocaisPagamentos', 'mkGrupos'));
+        return view('cliente.index', compact('clientes'));
     }
-
-
-    /**
-     * Display a listing of the coordenadas.
-     *
-     * @return Illuminate\View\View
-     */
-    public function coordenadas()
-    {
-
-        return view('cliente.get_maps_coordenadas');
-    }
-
 
     /**
      * Display a listing of the fornecedors.
@@ -76,25 +50,42 @@ class ClienteController extends Controller
     {
         $this->token = csrf_token();
         #Criando a consulta
-        $rows = \DB::table('mk_clientes')
-            ->leftJoin('mk_profiles', 'mk_profiles.id', '=', 'mk_clientes.profile_id')
-            ->leftJoin('mk_grupos', 'mk_grupos.id', '=', 'mk_clientes.grupo_id')
-            ->leftJoin('mk_vencimento_dia', 'mk_vencimento_dia.id', '=', 'mk_clientes.vencimento_dia_id')
+        $rows = \DB::table('clientes')
+            ->leftJoin('projetos', 'clientes.id', '=', 'projetos.clientes_id')
+            ->groupBy('clientes.id')
             ->select([
-                'mk_clientes.nome',
-                'mk_clientes.id',
-                'mk_clientes.cpf',
-                'mk_clientes.login',
-                'mk_profiles.nome as profile',
-                'mk_clientes.status_secret',
-                'mk_grupos.nome as grupo'
+                'clientes.id',
+                'clientes.nome',
+                'clientes.nome_empresa',
+                'clientes.cpf_cnpj',
+                'clientes.email',
+                'clientes.celular'
 
             ]);
 
-        #Editando a grid
-        return Datatables::of($rows)
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if(!$user->hasRole('admin')) {
+           $rows->where('projetos.users_id', '=', $user->id);
+        }
 
-            ->filter(function ($query) use ($request) {
+
+        #Editando a grid
+        return Datatables::of($rows)->addColumn('action', function ($row) {
+            return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
+                            <input name="_method" value="DELETE" type="hidden">
+                            <input name="_token" value="'.$this->token .'" type="hidden">
+                            <div class="btn-group btn-group-xs pull-right" role="group">                              
+                                <a href="cliente/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
+                                <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                        </form>
+                        ';
+        })
+            /*->filter(function ($query) use ($request) {
                 # recuperando o valor da requisição
                 $localizar = $request->get('localizar');
                 $status = $request->get('status');
@@ -104,95 +95,18 @@ class ClienteController extends Controller
                 $grupo_id = $request->get('grupo_id');
                 $inativo = $request->get('inativo');
 
+
                 #condição
                 $query->where(function ($where) use ($localizar) {
-                    $where->orWhere('mk_clientes.nome', 'like', "%$localizar%")
-                        ->orWhere('mk_clientes.cpf', 'like', "%$localizar%")
-                        ->orWhere('mk_clientes.login', 'like', "%$localizar%")
-                        ->orWhere('mk_profiles.nome', 'like', "%$localizar%");
+
                 });
 
                 if ($request->has('status')){
                     $query->where('mk_clientes.status_secret', '=', $status);
                 }
+            })*/
 
-                if ($request->has('grupo_id')){
-                    $query->where('mk_clientes.grupo_id', '=', $grupo_id);
-                }
-
-                if ($request->has('inativo')){
-                    $query->where('mk_clientes.is_ativo', '=', '0');
-                }else{
-                    $query->where('mk_clientes.is_ativo', '=', '1');
-                }
-
-                if ($request->has('data_instalacao_ini') && $request->has('data_instalacao_fin')){
-                    $query->whereBetween('mk_clientes.data_instalacao', [$data_instalacao_ini, $data_instalacao_fin]);
-                }
-
-                if ($request->has('vencimento')){
-                    if($vencimento == "NULL"){
-                        $query->whereNull('mk_clientes.vencimento_dia_id');
-
-                    }
-                    if($vencimento == "ALL"){
-                       $query->whereNotNull('mk_clientes.vencimento_dia_id');
-                    }
-                    if($vencimento != "ALL" && $vencimento != "NULL" && $vencimento != "ALL-AT"){
-                        $query->where('mk_vencimento_dia.nome', '=', $vencimento);
-                    }
-                    if($vencimento == "ALL-AT"){
-                        //So retorna os clientes com vencimento + ativos - os isentos de mensalidade
-                        $query->whereNotNull('mk_clientes.vencimento_dia_id');
-                        $query->where('mk_clientes.is_ativo', '=', '1');
-                        $query->where('mk_clientes.inseto_mensalidade', '<>', '1');
-                    }
-
-                }
-            })
-
-            ->addColumn('status', function ($row) {
-
-                if($row->status_secret == 1) {
-                    $html = '<div class="btn-group btn-group-xs pull-right" role="group">
-                                    <a href="" class="btn btn-default-light enableDisableSecret" id="' . $row->id . '" title="Bloquear">
-                                        <span class="glyphicon md-thumb-up" aria-hidden="true"></span>
-                                    </a>
-                                </div>';
-                }else{
-                    $html       = '<div class="btn-group btn-group-xs pull-right" role="group">
-                                    <a href="" class="btn btn-danger enableDisableSecret" id="' . $row->id   . '" title="Desbloquear">
-                                        <span class="glyphicon md-thumb-down" aria-hidden="true"></span>
-                                    </a>
-                                </div>';
-                }
-
-
-
-                return $html;
-            })->escapeColumns([])
-
-            ->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
-                            <input name="_method" value="DELETE" type="hidden">
-                            <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">
-                                <a href="cliente/show/'.$row->id.'" class="btn btn-info" title="Show">
-                                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                                </a>
-                                <a href="cliente/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>
-                                <button type="button" class="btn btn-primary btnModalFinanceiro" id="' . $row->id   . '" data-toggle="modal" title="Financeiro">
-                                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-primary btnModalFinanceiroDebito" id="' . $row->id   . '" data-toggle="modal" title="Lançamento">
-                                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        
-                        </form>';
-            })->make(true);
+            ->make(true);
     }
 
     /**
@@ -202,41 +116,60 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $mkRouters = Router::pluck('nome','id')->all();
-        $mkProfiles = Profile::pluck('descricao','id')->all();
-        $mkGrupos = Grupo::pluck('nome','id')->all();
-        $mkVencimentoDia = VencimentoDia::where('is_ativo', '=' ,'1')->pluck('nome','id')->all();
-        return view('cliente.create', compact('mkRouters','mkProfiles','mkVencimentoDia', 'mkGrupos'));
+
+
+        return view('cliente.create');
     }
 
     /**
      * Store a new cliente in the storage.
      *
      * @param Illuminate\Http\Request $request
-     *RF014-RN001
+     *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-
     public function store(Request $request)
     {
         try {
-
-            //Testa os campos "nome, nie,
             $this->affirm($request);
-
-
             $data = $this->getData($request);
 
-            //Criptografo o cpf com os "." para a autenticaçao do usuario
-            $data['password'] = bcrypt($request->get('cpf'));
+            $cliente = Cliente::create($data);
 
-            Cliente::create($data);
+
+            /*
+             * Apos criar um cliente e criado um projeto para o mesmo
+             */
+            $cliente->id;
+
+            $cur_date = Carbon::now();
+
+            //Retorna o ano so os dois ultimos digitos
+            $ano = $cur_date->format('y');
+
+            //Retorna o ultimo registro
+            $last = \DB::table('projetos')->orderBy('id', 'DESC')->first();
+
+
+            //Corrigir o problema da virada do ano
+            $projeto_codigo = $last->projeto_codigo +1;
+
+            $projeto = array();
+            $projeto['clientes_id'] = $cliente->id;
+            $projeto['projeto_codigo'] = $projeto_codigo;
+            $projeto['users_id'] = \Auth::id();
+
+            //dd($projeto);
+
+            $projeto = Projeto::create($projeto);
 
             return redirect()->route('cliente.cliente.index')
                 ->with('success_message', 'Cliente was successfully added!');
 
-        } catch (Exception $e) {
-            return redirect()->back()->with('error_message', $e->getMessage());
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
 
@@ -249,7 +182,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $cliente = Cliente::with('mkrouter','mkprofile','mkvencimentodium')->findOrFail($id);
+        $cliente = Cliente::findOrFail($id);
 
         return view('cliente.show', compact('cliente'));
     }
@@ -263,13 +196,10 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::with('mkGrupo', 'mkProfile')->findOrFail($id);
-        $mkRouters = Router::pluck('nome','id')->all();
-        $mkProfiles = Profile::pluck('descricao','id')->all();
-        $mkGrupos = Grupo::pluck('nome','id')->all();
-        $mkVencimentoDia = VencimentoDia::where('is_ativo', '=' ,'1')->pluck('nome','id')->all();
+        $cliente = Cliente::findOrFail($id);
 
-        return view('cliente.edit', compact('cliente','mkRouters','mkProfiles','mkVencimentoDia', 'mkGrupos'));
+
+        return view('cliente.edit', compact('cliente'));
     }
 
     /**
@@ -286,28 +216,17 @@ class ClienteController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
-
-
-            $cliente = Cliente::findOrFail($id);
-            //$pessoaFisica = PessoaFisica::find($cliente->clienteable_id);
-
-            if(empty(!$request->get('cpf')))
-            {
-                $data['cpf'] = $request->get('cpf');
-            }else{
-                $data['cpf']  = $request->get('cnpj');
-            }
             //dd($data);
-
-            //Criptografo o cpf com os "." para a autenticaçao do usuario
-            $cliente->password = bcrypt($request->get('cpf'));
+            $cliente = Cliente::findOrFail($id);
             $cliente->update($data);
-           // dd($cliente);
+            //dd($data);
             return redirect()->route('cliente.cliente.index')
                 ->with('success_message', 'Cliente was successfully updated!');
 
-        } catch (Exception $e) {
-            return redirect()->back()->with('error_message', $e->getMessage());
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
 
@@ -335,39 +254,6 @@ class ClienteController extends Controller
     }
 
     /**
-     * Remove the specified cliente from the storage.
-     *
-     * @param  int $id
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
-    public function getCliente($id)
-    {
-        try {
-            $cliente = Cliente::with('mkGrupo', 'mkProfile')->findOrFail($id);
-            //dd($cliente);
-            $cpf = $cliente->cpf;
-            $descricao = $cliente->mkProfile->descricao;
-            $valor = $cliente->mkProfile->valor;
-            $dia = $cliente->mkVencimentoDium->nome;
-            $date = date('m/Y', strtotime('+1 month'));
-            $diaVencimento = $dia . "/" . $date;
-
-
-            $dateCom = date('m/Y');
-            $diaCompetencia = $dia . "/" . $dateCom;
-
-            return \Illuminate\Support\Facades\Response::json(['success' => true,'descricao' => $descricao, 'diaVenci' => $diaVencimento, 'diaCompe' => $diaCompetencia, 'valor' => $valor,
-                'cpf' => $cpf
-            ]);
-        } catch (Exception $exception) {
-
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
-        }
-    }
-
-    /**
      * Validate the given request with the defined rules.
      *
      * @param  Illuminate\Http\Request  $request
@@ -376,48 +262,22 @@ class ClienteController extends Controller
      */
     protected function affirm(Request $request)
     {
-        //dd($request->all());
-
         $rules = [
-            'nome' => 'required|string|min:1|max:255',
-            'login' => 'required|string|min:0|max:50',
-            'senha' => 'required|string|min:0|max:50',
-            'email' => 'nullable|string|min:0|max:50',
-            'tipo' => 'nullable',
-            'phone01', 'nullable|string|min:0|max:20',
-            'phone02', 'nullable|string|min:0|max:20',
-            'data_nascimento' => 'required|string|min:0',
-            'cep' => 'required|string|min:0|max:10',
-            'logradouro' => 'required|string|min:0|max:200',
-            'numero_casa' => 'required|string|min:0|max:200',
-            'complemanto' => 'nullable|string|min:0|max:200',
-            'bairro' => 'nullable|string|min:0|max:50',
-            'cidade' => 'required|string|min:0|max:50',
-            'estado' => 'required|string|min:0|max:50',
-            'data_instalacao' => 'required|string|min:0',
-            'grupo_id' => 'required',
-            'router_id' => 'required',
-            'profile_id' => 'required',
-            'tipo_autenticacao' => 'nullable',
-            'ip_pppoe' => 'nullable|string|min:0|max:20',
-            'ip_hotspot' => 'nullable|string|min:0|max:20',
-            'mac' => 'nullable|string|min:0|max:20',
-            'vencimento_dia_id' => 'required',
-            'dias_bloqueio' => 'required|numeric|min:-2147483648|max:2147483647',
-            'dias_msg_pendencia' => 'nullable|numeric|min:-2147483648|max:2147483647',
-            'inseto_mensalidade' => 'nullable|boolean',
-            'mensalidade_automatica' => 'nullable|boolean',
-            'msg_bloqueio_automatica' => 'nullable|boolean',
-            'msg_pendencia_automatica' => 'nullable|boolean',
-            'perm_alter_senha' => 'nullable|boolean',
-            'desconto_mensalidade' => 'nullable|numeric|min:-999.99|max:999.99',
-            'desconto_mensali_ate_venci' => 'nullable|numeric|min:-999.99|max:999.99',
-            'is_ativo' => 'nullable|boolean',
+            'nome' => 'nullable|string|min:0|max:255',
+            'celular' => 'nullable|string|min:0|max:20',
+            'email' => 'nullable|string|min:0|max:100',
+            'cpf_cnpj' => 'nullable|string|min:0|max:255',
+            'nome_empresa' => 'nullable|string|min:0|max:255',
+            'cep' => 'nullable|string|min:0|max:10',
+            'numero' => 'nullable|string|min:0|max:10',
+            'endereco' => 'nullable|string|min:0|max:200',
+            'complemento' => 'nullable|string|min:0|max:200',
+            'estado' => 'nullable|string|min:0|max:2',
+            'is_whatsapp' => 'nullable|boolean',
             'obs' => 'nullable',
-            'cpf' =>  'required_if:tipo,!=,Fisica',
-            'cnpj' =>  'required_if:tipo,!=,Juridico',
 
         ];
+
 
         return $this->validate($request, $rules);
     }
@@ -431,26 +291,10 @@ class ClienteController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['nome','login','senha','email','cpf', 'rg', 'insc_estadual','tipo','data_nascimento','cep','coordenadas', 'phone01', 'phone02','logradouro','complemanto','bairro','cidade', 'estado', 'numero_casa','data_instalacao','router_id', 'grupo_id','profile_id','tipo_autenticacao','ip_pppoe','ip_hotspot','mac','vencimento_dia_id','dias_bloqueio','dias_msg_pendencia','inseto_mensalidade','mensalidade_automatica','msg_bloqueio_automatica','msg_pendencia_automatica','perm_alter_senha','desconto_mensalidade','desconto_mensali_ate_venci','is_ativo','obs']);
-        $data['inseto_mensalidade'] = $request->has('inseto_mensalidade');
-        $data['mensalidade_automatica'] = $request->has('mensalidade_automatica');
-        $data['msg_bloqueio_automatica'] = $request->has('msg_bloqueio_automatica');
-        $data['msg_pendencia_automatica'] = $request->has('msg_pendencia_automatica');
-        $data['perm_alter_senha'] = $request->has('perm_alter_senha');
-        $data['is_ativo'] = $request->has('is_ativo');
+        $data = $request->only(['nome','celular','tipo','cpf_cnpj','email','nome_empresa','cep','numero','endereco','complemento','estado','is_whatsapp','obs']);
+        $data['is_whatsapp'] = $request->has('is_whatsapp');
 
         return $data;
-    }
-
-    protected function getTypePeople($people)
-    {
-        if($people == "Fisica"){
-            return PessoaFisica::class;
-
-        }else{
-            return PessoaJuridica::class;
-        }
-
     }
 
 }

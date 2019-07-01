@@ -26,25 +26,26 @@ function template(d){
     return  html;
 }
 
-var table = $('#cliente').DataTable({
-    "searching": false,
+var table = $('#projeto').DataTable({
+    "searching": true,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
     bFilter: true,
-    order: [[ 1, "asc" ]],
+    order: [[ 0, "desc" ]],
     ajax: {
-        url: "/index.php/cliente/grid",
+        url: "/index.php/projeto/grid",
         data: function (d) {
             d.inativo = 'sss';
         }
     },
     columns: [
-        {data: 'id', name: 'id'},
-        {data: 'nome', name: 'nome'},
-        {data: 'nome_empresa', name: 'nome_empresa'},
-        {data: 'email', name: 'email'},
-        {data: 'celular', name: 'celular'},
+        {data: 'id', name: 'projetos.id'},
+        {data: 'nome', name: 'clientes.nome'},
+        {data: 'projeto_codigo', name: 'projetos.projeto_codigo'},
+        {data: 'name', name: 'users.name'},
+        {data: 'created_at', name: 'created_at'},
+        {data: 'prioridade', name: 'prioridade'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });

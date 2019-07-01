@@ -6,25 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-
+    
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'mk_clientes';
+    protected $table = 'clientes';
 
     /**
-     * The database primary key value.
-     *
-     * @var string
-     */
+    * The database primary key value.
+    *
+    * @var string
+    */
     protected $primaryKey = 'id';
 
     /**
@@ -33,52 +33,20 @@ class Cliente extends Model
      * @var array
      */
     protected $fillable = [
-        'id',
-        'nome',
-        'login',
-        'senha',
-        'email',
+                  'nome',
+                  'celular',
+                  'email',
         'tipo',
-        'cpf',
-        'rg',
-        'cnpj',
-        'ins_estadual',
-        'cliente_id',
-        'cliente_type',
-        'data_nascimento',
-        'phone01',
-        'phone02',
-        'cep',
-        'logradouro',
-        'complemanto',
-        'bairro',
-        'cidade',
-        'data_instalacao',
-        'grupo_id',
-        'router_id',
-        'profile_id',
-        'tipo_autenticacao',
-        'ip_pppoe',
-        'ip_hotspot',
-        'mac',
-        'vencimento_dia_id',
-        'dias_bloqueio',
-        'dias_msg_pendencia',
-        'inseto_mensalidade',
-        'mensalidade_automatica',
-        'msg_bloqueio_automatica',
-        'msg_pendencia_automatica',
-        'perm_alter_senha',
-        'desconto_mensalidade',
-        'desconto_mensali_ate_venci',
-        'is_ativo',
-        'obs',
-        'clienteable_id',
-        'clienteable_type',
-        'estado',
-        'numero_casa',
-        'coordenadas'
-    ];
+                   'cpf_cnpj',
+                  'nome_empresa',
+                  'cep',
+                  'numero',
+                  'endereco',
+                  'complemento',
+                  'estado',
+                  'is_whatsapp',
+                  'obs'
+              ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -86,75 +54,47 @@ class Cliente extends Model
      * @var array
      */
     protected $dates = [];
-
+    
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-
+    
     /**
-     * Get the mkRouter for this model.
+     * Get the projeto for this model.
      */
-    public function mkRouter()
+    public function projeto()
     {
-        return $this->belongsTo('Serbinario\Entities\Router','router_id','id');
+        return $this->hasOne('Serbinario\Entities\Projeto','clientes_id','id');
     }
 
-    /**
-     * Get the mkProfile for this model.
+/*
+     * echo mask($cnpj,'##.###.###/####-##');
+	echo mask($cpf,'###.###.###-##');
+	echo mask($cep,'#####-###');
+	echo mask($data,'##/##/####');
      */
-    public function mkProfile()
+
+    function mask($val, $mask)
     {
-        return $this->belongsTo('Serbinario\Entities\Profile','profile_id','id');
-    }
-
-    /**
-     * Get the mkVencimentoDium for this model.
-     */
-    public function mkVencimentoDium()
-    {
-        return $this->belongsTo('Serbinario\Entities\VencimentoDia','vencimento_dia_id','id');
-    }
-
-    /**
-     * Get the mkProfile for this model.
-     */
-    public function mkGrupo()
-    {
-        return $this->belongsTo('Serbinario\Entities\Grupo','grupo_id','id');
-    }
-
-
-    public function getDataInstalacaoAttribute($value)
-    {
-        return date("d/m/Y", strtotime($value));
-    }
-
-
-    public function setDataInstalacaoAttribute($value)
-    {
-        if($value){
-            return $this->attributes['data_instalacao'] = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
+        $maskared = '';
+        $k = 0;
+        for($i = 0; $i<=strlen($mask)-1; $i++)
+        {
+            if($mask[$i] == '#')
+            {
+                if(isset($val[$k]))
+                    $maskared .= $val[$k++];
+            }
+            else
+            {
+                if(isset($mask[$i]))
+                    $maskared .= $mask[$i];
+            }
         }
-    }
-
-    public function getDataNascimentoAttribute($value)
-    {
-        return date("d/m/Y", strtotime($value));
-    }
-
-    public function setDataNascimentoAttribute($value)
-    {
-        if($value){
-            return $this->attributes['data_nascimento'] = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
-        }
-    }
-
-    public function clienteable()
-    {
-        return $this->morphTo('','');
+        return $maskared;
     }
 
 

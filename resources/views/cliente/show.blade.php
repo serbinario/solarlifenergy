@@ -24,62 +24,24 @@
                             <dl class="dl-horizontal">
                                 <dt>Nome</dt>
             <dd>{{ $cliente->nome }}</dd>
-            <dt>Login</dt>
-            <dd>{{ $cliente->login }}</dd>
-            <dt>Senha</dt>
-            <dd>{{ $cliente->senha }}</dd>
+            <dt>Celular</dt>
+            <dd>{{ $cliente->celular }}</dd>
             <dt>Email</dt>
             <dd>{{ $cliente->email }}</dd>
-            <dt>Tipo</dt>
-            <dd>{{ $cliente->tipo }}</dd>
-            <dt>Data Nascimento</dt>
-            <dd>{{ $cliente->data_nascimento }}</dd>
+            <dt>Nome Empresa</dt>
+            <dd>{{ $cliente->nome_empresa }}</dd>
             <dt>Cep</dt>
             <dd>{{ $cliente->cep }}</dd>
-            <dt>Logradouro</dt>
-            <dd>{{ $cliente->logradouro }}</dd>
-            <dt>Complemanto</dt>
-            <dd>{{ $cliente->complemanto }}</dd>
-            <dt>Bairro</dt>
-            <dd>{{ $cliente->bairro }}</dd>
-            <dt>Cidade</dt>
-            <dd>{{ $cliente->cidade }}</dd>
-            <dt>Data Instalacao</dt>
-            <dd>{{ $cliente->data_instalacao }}</dd>
-            <dt>Router</dt>
-            <dd>{{  isset($cliente->mkRouter->nome) ? $cliente->mkRouter->nome : ''  }}</dd>
-            <dt>Profile</dt>
-            <dd>{{  isset($cliente->mkProfile->nome) ? $cliente->mkProfile->nome : ''  }}</dd>
-            <dt>Tipo Autenticacao</dt>
-            <dd>{{ $cliente->tipo_autenticacao }}</dd>
-            <dt>Ip Pppoe</dt>
-            <dd>{{ $cliente->ip_pppoe }}</dd>
-            <dt>Ip Hotspot</dt>
-            <dd>{{ $cliente->ip_hotspot }}</dd>
-            <dt>Mac</dt>
-            <dd>{{ $cliente->mac }}</dd>
-            <dt>Vencimento Dia</dt>
-            <dd>{{  isset($cliente->mkVencimentoDium->id) ? $cliente->mkVencimentoDium->id : ''  }}</dd>
-            <dt>Dias Bloqueio</dt>
-            <dd>{{ $cliente->dias_bloqueio }}</dd>
-            <dt>Dias Msg Pendencia</dt>
-            <dd>{{ $cliente->dias_msg_pendencia }}</dd>
-            <dt>Inseto Mensalidade</dt>
-            <dd>{{ ($cliente->inseto_mensalidade) ? 'Yes' : 'No' }}</dd>
-            <dt>Mensalidade Automatica</dt>
-            <dd>{{ ($cliente->mensalidade_automatica) ? 'Yes' : 'No' }}</dd>
-            <dt>Msg Bloqueio Automatica</dt>
-            <dd>{{ ($cliente->msg_bloqueio_automatica) ? 'Yes' : 'No' }}</dd>
-            <dt>Msg Pendencia Automatica</dt>
-            <dd>{{ ($cliente->msg_pendencia_automatica) ? 'Yes' : 'No' }}</dd>
-            <dt>Perm Alter Senha</dt>
-            <dd>{{ ($cliente->perm_alter_senha) ? 'Yes' : 'No' }}</dd>
-            <dt>Desconto Mensalidade</dt>
-            <dd>{{ $cliente->desconto_mensalidade }}</dd>
-            <dt>Desconto Mensali Ate Venci</dt>
-            <dd>{{ $cliente->desconto_mensali_ate_venci }}</dd>
-            <dt>Is Ativo</dt>
-            <dd>{{ ($cliente->is_ativo) ? 'Yes' : 'No' }}</dd>
+            <dt>Numero</dt>
+            <dd>{{ $cliente->numero }}</dd>
+            <dt>Endereco</dt>
+            <dd>{{ $cliente->endereco }}</dd>
+            <dt>Complemento</dt>
+            <dd>{{ $cliente->complemento }}</dd>
+            <dt>Estado</dt>
+            <dd>{{ $cliente->estado }}</dd>
+            <dt>Is Whatsapp</dt>
+            <dd>{{ ($cliente->is_whatsapp) ? 'Yes' : 'No' }}</dd>
             <dt>Obs</dt>
             <dd>{{ $cliente->obs }}</dd>
 

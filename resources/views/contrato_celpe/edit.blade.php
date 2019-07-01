@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.app')
 
 @section('content')
 
@@ -26,30 +26,30 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('cliente.cliente.update', $cliente->id) }}" accept-charset="UTF-8" id="edit_cliente_form" name="edit_cliente_form" class="form-horizontal">
+                <form method="POST" action="{{ route('contrato_celpe.contrato_celpe.update', $contratoCelpe->id) }}" accept-charset="UTF-8" id="edit_contrato_celpe_form" name="edit_contrato_celpe_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Cliente</header>
+                            <header>Editar account</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('cliente.cliente.index') }}" class="btn btn-primary" title="Show All Cliente">
+                                    <a href="{{ route('contrato_celpe.contrato_celpe.index') }}" class="btn btn-primary" title="Show All Contrato Celpe">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
-                                    <a href="{{ route('cliente.cliente.create') }}" class="btn btn-primary" title="Create New Cliente">
+                                    <a href="{{ route('contrato_celpe.contrato_celpe.create') }}" class="btn btn-primary" title="Create New Contrato Celpe">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('cliente.form', ['cliente' => $cliente, ])
+                        @include ('contrato_celpe.form', ['contratoCelpe' => $contratoCelpe, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('cliente.cliente.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="Atualizar">
+                                <a href="{{ route('contrato_celpe.contrato_celpe.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <input class="btn btn-primary" type="submit" value="Update">
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -62,6 +62,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/cliente/edit.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/contratoCelpe/edit.js')}}" type="text/javascript"></script>
 @stop

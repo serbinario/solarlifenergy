@@ -25,24 +25,22 @@ $(document).ready(function () {
     });
 
     console.log("index");
-    var table = $('#profile').DataTable({
+    var table = $('#users').DataTable({
         "dom": 'lCfrtip',
         processing: true,
         serverSide: true,
         bFilter: true,
         order: [[ 1, "asc" ]],
         ajax: {
-            url: "/index.php/profile/grid",
+            url: "/index.php/users/grid",
             data: function (d) {
 
             }
         },
         columns: [
-            {data: 'descricao', name: 'descricao'},
-            {data: 'nome', name: 'nome'},
-            {data: 'valor', name: 'valor'},
-            {data: 'local_address', name: 'local_address'},
-            {data: 'rate_limit_tx_tx', name: 'rate_limit_tx_tx'},
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });

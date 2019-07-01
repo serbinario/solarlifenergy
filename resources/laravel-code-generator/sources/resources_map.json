@@ -19,11 +19,6 @@
         "resource-file": "test.json"
     },
     {
-        "model-name": "Cliente",
-        "resource-file": "mk_cliente.json",
-        "table-name": "mk_clientes"
-    },
-    {
         "model-name": "Grupo",
         "resource-file": "mk_grupo.json",
         "table-name": "mk_grupos"
@@ -42,5 +37,35 @@
         "model-name": "Log",
         "resource-file": "syslog.json",
         "table-name": "SystemEvents"
+    },
+    {
+        "model-name": "Aditivo",
+        "resource-file": "aditivo.json",
+        "table-name": "aditivo_tipossssssss"
+    },
+    {
+        "model-name": "Cliente",
+        "resource-file": "cliente.json",
+        "table-name": "clientes"
+    },
+    {
+        "model-name": "Projeto",
+        "resource-file": "projeto.json",
+        "table-name": "projetos"
+    },
+    {
+        "model-name": "Contrato",
+        "resource-file": "contrato.json",
+        "table-name": "sssssssssssscontrato_celpe"
+    },
+    {
+        "model-name": "ContratoCelpe",
+        "resource-file": "contrato_celpe.json",
+        "table-name": "contrato_celpe"
+    },
+    {
+        "model-name": "User",
+        "resource-file": "users.json",
+        "table-name": "users"
     }
 ]

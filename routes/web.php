@@ -14,8 +14,8 @@
 
 Auth::routes();
 
-Route::get('/', 'RouterController@index')
-    ->name('router.router.index');
+Route::get('/', 'ClienteController@index')
+    ->name('cliente.cliente.index');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
@@ -541,6 +541,112 @@ Route::group(
 
     Route::delete('/{log}/destroy','LogController@destroy')
          ->name('log.log.destroy')
+         ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'projeto',
+], function () {
+
+    Route::get('/', 'ProjetoController@index')
+         ->name('projeto.projeto.index');
+
+    Route::get('/create','ProjetoController@create')
+         ->name('projeto.projeto.create');
+
+    Route::get('/grid', 'ProjetoController@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{projeto}','ProjetoController@show')
+         ->name('projeto.projeto.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{projeto}/edit','ProjetoController@edit')
+         ->name('projeto.projeto.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'ProjetoController@store')
+         ->name('projeto.projeto.store');
+               
+    Route::put('projeto/{projeto}', 'ProjetoController@update')
+         ->name('projeto.projeto.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{projeto}/destroy','ProjetoController@destroy')
+         ->name('projeto.projeto.destroy')
+         ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'contrato_celpe',
+], function () {
+
+    Route::get('/', 'ContratoCelpeController@index')
+         ->name('contrato_celpe.contrato_celpe.index');
+
+    Route::get('/create','ContratoCelpeController@create')
+         ->name('contrato_celpe.contrato_celpe.create');
+
+    Route::get('/grid', 'ContratoCelpeController@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{contratoCelpe}','ContratoCelpeController@show')
+         ->name('contrato_celpe.contrato_celpe.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{contratoCelpe}/edit','ContratoCelpeController@edit')
+         ->name('contrato_celpe.contrato_celpe.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'ContratoCelpeController@store')
+         ->name('contrato_celpe.contrato_celpe.store');
+               
+    Route::put('contrato_celpe/{contratoCelpe}', 'ContratoCelpeController@update')
+         ->name('contrato_celpe.contrato_celpe.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{contratoCelpe}/destroy','ContratoCelpeController@destroy')
+         ->name('contrato_celpe.contrato_celpe.destroy')
+         ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'users',
+], function () {
+
+    Route::get('/', 'UsersController@index')
+         ->name('users.user.index');
+
+    Route::get('/create','UsersController@create')
+         ->name('users.user.create');
+
+    Route::get('/show/{user}','UsersController@show')
+         ->name('users.user.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/grid', 'UsersController@grid')
+        ->name('users.user.grid');
+
+
+    Route::get('/{user}/edit','UsersController@edit')
+         ->name('users.user.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'UsersController@store')
+         ->name('users.user.store');
+               
+    Route::put('user/{user}', 'UsersController@update')
+         ->name('users.user.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{user}/destroy','UsersController@destroy')
+         ->name('users.user.destroy')
          ->where('id', '[0-9]+');
 
 });

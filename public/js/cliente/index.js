@@ -27,7 +27,7 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
-    "searching": false,
+    "searching": true,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
@@ -43,6 +43,10 @@ var table = $('#cliente').DataTable({
         {data: 'id', name: 'id'},
         {data: 'nome', name: 'nome'},
         {data: 'nome_empresa', name: 'nome_empresa'},
+        {data: 'cpf_cnpj', "render": function ( data, type, row ) {
+                return '<span id="'+"WW"+'">'+data+'</span>';
+            }
+        },
         {data: 'email', name: 'email'},
         {data: 'celular', name: 'celular'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -95,6 +99,23 @@ function dateToEN(date)
 {
     return date.split('/').reverse().join('-');
 }
+
+var mascara = function (val) {
+    return $('val.cpf_cnpj').mask('00.000.000/0000-00')
+}
+
+$('.cpf').mask('000.000.000-00', {reverse: true});
+$('.cnpj').mask('00.000.000/0000-00', {reverse: true});
+var cpfMascara = function (val) {
+        return val.replace(/\D/g, '').length > 11 ? '00.000.000/0000-00' : '000.000.000-009';
+    },
+    cpfOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(cpfMascara.apply({}, arguments), options);
+        }
+    };
+$('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
+
 
 
 
