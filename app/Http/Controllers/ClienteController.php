@@ -11,6 +11,7 @@ use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Projeto;
 use Serbinario\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Http\Requests\ClienteFormRequest;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
@@ -128,10 +129,10 @@ class ClienteController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ClienteFormRequest $request)
     {
         try {
-            $this->affirm($request);
+            //$this->affirm($request);
             $data = $this->getData($request);
 
             $cliente = Cliente::create($data);
@@ -167,7 +168,8 @@ class ClienteController extends Controller
                 ->with('success_message', 'Cliente was successfully added!');
 
         } catch (Exception $exception) {
-
+            //dd($exception);
+            //dd($exception->getMessage());
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
@@ -266,7 +268,7 @@ class ClienteController extends Controller
             'nome' => 'nullable|string|min:0|max:255',
             'celular' => 'nullable|string|min:0|max:20',
             'email' => 'nullable|string|min:0|max:100',
-            'cpf_cnpj' => 'nullable|string|min:0|max:255',
+            'cpf_cnpj' => 'required',
             'nome_empresa' => 'nullable|string|min:0|max:255',
             'cep' => 'nullable|string|min:0|max:10',
             'numero' => 'nullable|string|min:0|max:10',
@@ -278,8 +280,12 @@ class ClienteController extends Controller
 
         ];
 
+        $messages =[
+            'cpf_cnpj.required' => "Hey, don't you want to tell us your name?"
+        ];
 
-        return $this->validate($request, $rules);
+
+        return $this->validate($request, $rules, $messages);
     }
 
 

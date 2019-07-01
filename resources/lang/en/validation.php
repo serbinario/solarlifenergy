@@ -103,6 +103,13 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'cpf_cnpj' => [
+            'required' => 'CNPJ/CPF são obrigatórios.',
+            'unique' => 'CNPJ/CPF já cadastrado',
+        ],
+        'nome' => [
+            'required' => 'Nome é obrigatórios.',
+        ],
     ],
 
     /*

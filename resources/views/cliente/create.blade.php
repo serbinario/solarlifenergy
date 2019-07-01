@@ -1,6 +1,26 @@
 @extends('layouts.menu')
 
 @section('content')
+    @if(Session::has('success_message'))
+        <div class="alert alert-success">
+            <span class="glyphicon glyphicon-ok"></span>
+            {!! session('success_message') !!}
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times&times;</span>
+            </button>
+
+        </div>
+    @endif
+
+    @if(Session::has('errors'))
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
+            @foreach($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        </div>
+    @endif
 
 <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
