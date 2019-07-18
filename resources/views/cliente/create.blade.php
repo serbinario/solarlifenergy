@@ -26,6 +26,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form method="POST" action="{{ route('cliente.cliente.store') }}" accept-charset="UTF-8" id="create_cliente_form" name="create_cliente_form" class="form-horizontal">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Novo Cliente</header>
@@ -57,4 +58,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/cliente/new.js')}}" type="text/javascript"></script>
 @stop

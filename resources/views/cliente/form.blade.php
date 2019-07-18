@@ -19,7 +19,15 @@
             </label>
         </div><!--end .col -->
     </div><!--end .form-group -->
-<div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
+    <div class="form-group {{ $errors->has('cpf_cnpj') ? 'has-error' : '' }}">
+        <label for="cpf_cnpj" class="col-md-2 control-label">CPF/CNPJ</label>
+        <div class="col-md-10">
+            <input class="form-control mascara-cpfcnpj input-sm" name="cpf_cnpj" type="text" id="cpf_cnpj" value="{{ old('cpf_cnpj', isset($cliente->cpf_cnpj) ? $cliente->cpf_cnpj : null) }}" maxlength="255" placeholder="CPF/CNPJ...">
+            {!! $errors->first('cpf_cnpj', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
     <label for="nome" class="col-md-2 control-label">Nome</label>
     <div class="col-md-10">
         <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($cliente->nome) ? $cliente->nome : null) }}" maxlength="255" placeholder="Enter nome here...">
@@ -32,7 +40,7 @@
             <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
                 <label for="login" class="col-sm-4 control-label">Telefone: *</label>
                 <div class="col-md-8">
-                    <input class="form-control input-sm" name="celular" type="text" id="celular" value="{{ old('celular', isset($cliente->celular) ? $cliente->celular : null) }}" maxlength="20" placeholder="Enter celular here...">
+                    <input class="form-control input-sm phone" name="celular" type="text" id="celular" value="{{ old('celular', isset($cliente->celular) ? $cliente->celular : null) }}" maxlength="20" placeholder="Enter celular here...">
                     {!! $errors->first('celular', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -69,13 +77,6 @@
         {!! $errors->first('nome_empresa', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-    <div class="form-group {{ $errors->has('cpf_cnpj') ? 'has-error' : '' }}">
-        <label for="cpf_cnpj" class="col-md-2 control-label">CPF/CNPJ</label>
-        <div class="col-md-10">
-            <input class="form-control mascara-cpfcnpj input-sm" name="cpf_cnpj" type="text" id="cpf_cnpj" value="{{ old('cpf_cnpj', isset($cliente->cpf_cnpj) ? $cliente->cpf_cnpj : null) }}" maxlength="255" placeholder="CPF/CNPJ...">
-            {!! $errors->first('cpf_cnpj', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
 
     <div class="col-lg-12">
         <h4 class="text-bold">Endereço</h4>
