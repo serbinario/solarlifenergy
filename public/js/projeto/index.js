@@ -45,6 +45,8 @@ var table = $('#projeto').DataTable({
         {data: 'projeto_codigo', name: 'projetos.projeto_codigo'},
         {data: 'name', name: 'users.name'},
         {data: 'created_at', name: 'created_at'},
+        {data: 'kw', name: 'kw'},
+        {data: 'valor_projeto', name: 'valor_projeto'},
         {data: 'prioridade', name: 'prioridade'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]

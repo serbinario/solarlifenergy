@@ -62,6 +62,8 @@ class ProjetoController extends Controller
                     'clientes.nome',
                     'projetos.id',
                     'projetos.projeto_codigo',
+                    'projetos.kw',
+                    'projetos.valor_projeto',
                     'users.name',
                     'projetos.prioridade',
                     \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at')
