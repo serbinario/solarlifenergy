@@ -80,6 +80,22 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('kw') ? 'has-error' : '' }}">
+        <label for="kw" class="col-md-2 control-label">KWP</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm money" name="kw" type="text" id="kw"  value="{{ old('kw', isset($projeto->kw) ? $projeto->kw : null) }}" placeholder="KW...">
+            {!! $errors->first('kw', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('valor_projeto') ? 'has-error' : '' }}">
+        <label for="valor_projeto" class="col-md-2 control-label">Valor de Projeto</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm money" name="valor_projeto" type="text" id="valor_projeto"  value="{{ old('valor_projeto', isset($projeto->valor_projeto) ? $projeto->valor_projeto : null) }}" placeholder="Valor Projeto...">
+            {!! $errors->first('valor_projeto', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
     <div class="col-lg-12">
         <h4 class="text-bold">Cadastro de Contas de Energia</h4>
         <hr class="ruler-lg"/>

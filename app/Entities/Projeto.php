@@ -39,7 +39,9 @@ class Projeto extends Model
                   'users_id',
         'projeto_codigo',
         'prioridade',
-        'obs'
+        'obs',
+        'valor_projeto',
+        'kw'
               ];
 
     /**
@@ -70,6 +72,24 @@ class Projeto extends Model
     public function contratos()
     {
         return $this->hasMany('Serbinario\Entities\ContratoCelpe','projetos_id','id');
+    }
+
+    public function setValorProjetoAttribute($value)
+    {
+        if(!$value == null){
+            $value = str_replace(".","",$value);
+            $value = str_replace(",",".",$value);
+            $this->attributes['valor_projeto'] =  $value;
+        }
+    }
+
+    public function setKwAttribute($value)
+    {
+        if(!$value == null){
+            $value = str_replace(".","",$value);
+            $value = str_replace(",",".",$value);
+            $this->attributes['kw'] =  $value;
+        }
     }
 
 

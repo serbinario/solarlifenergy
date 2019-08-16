@@ -277,7 +277,7 @@ class ProjetoController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['clientes_id','prioridade','projeto_codigo','consumo','area_disponivel','obs']);
+        $data = $request->only(['clientes_id','prioridade','projeto_codigo','consumo','area_disponivel','obs', 'valor_projeto','kw']);
 
         return $data;
     }
