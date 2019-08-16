@@ -46,9 +46,9 @@
                                                     <th>Cod. Projeto</th>
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>
-                                                    <th>Prioridade</th>
                                                     <th>KWP</th>
                                                     <th>V. Projeto</th>
+                                                    <th>Prioridade</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
