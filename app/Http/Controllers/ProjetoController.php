@@ -40,6 +40,7 @@ class ProjetoController extends Controller
     public function index()
     {
         $projetos = Projeto::with('cliente')->paginate(25);
+        //dd($projetos);
 
         return view('projeto.index', compact('projetos'));
     }
@@ -102,8 +103,9 @@ class ProjetoController extends Controller
     public function create()
     {
         $clientes = Cliente::pluck('nome','id')->all();
+        $users = User::orderBy('name')->pluck('name','id')->all();
         
-        return view('projeto.create', compact('clientes'));
+        return view('projeto.create', compact('clientes', 'users'));
     }
 
     /**
@@ -132,7 +134,13 @@ class ProjetoController extends Controller
             $projeto_codigo = $last->projeto_codigo +1;
 
             $data['projeto_codigo'] = $projeto_codigo;
-            $data['users_id'] = Auth::id();
+
+            //Coloquei essa opçao pois quando um usuario nao e adm o formulario nao manda o id do user pois esta
+            // em solente leitura
+            if(empty($data['users_id'])){
+                $data['users_id'] = Auth::id();
+            }
+
 
             $projeto = Projeto::create($data);
 
@@ -175,10 +183,12 @@ class ProjetoController extends Controller
     public function edit($id)
     {
         $projeto = Projeto::with('contratos')->findOrFail($id);
+        //dd($projeto);
         $clientes = Cliente::pluck('nome','id')->all();
+        $users = User::orderBy('name')->pluck('name','id')->all();
 
         //dd($projeto->contratos);
-        return view('projeto.edit', compact('projeto','clientes'));
+        return view('projeto.edit', compact('projeto','clientes', 'users'));
     }
 
     /**
@@ -200,10 +210,18 @@ class ProjetoController extends Controller
 
            // dd(array_filter($request->get('num_contrato')));
 
-           // dd($projeto);
+           // dd($data);
 
-            //Deleta primeiro todos os registors
+            //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
+
+
+            //Coloquei essa opçao pois quando um usuario nao e adm o formulario nao manda o id do user pois esta
+            // em solente leitura
+            if(empty($data['users_id'])){
+                $data['users_id'] = $projeto->users_id;
+            }
+
 
             /*
              * 1- Pega do formulario uma array chamada num_contrato
@@ -279,7 +297,7 @@ class ProjetoController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['clientes_id','prioridade','projeto_codigo','consumo','area_disponivel','obs', 'valor_projeto','kw']);
+        $data = $request->only(['clientes_id','prioridade','projeto_codigo','consumo','area_disponivel','obs', 'valor_projeto','kw', 'users_id']);
 
         return $data;
     }

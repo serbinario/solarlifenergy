@@ -45,7 +45,16 @@ class Cliente extends Model
                   'complemento',
                   'estado',
                   'is_whatsapp',
-                  'obs'
+                  'obs',
+        'conjugue',
+        'conjugue_cpf',
+        'rg',
+        'data_emissao_rg',
+        'orgao_emissor_rg',
+        'naturalidade_uf',
+        'naturalidade_cidade',
+        'data_nascimento',
+        'cidade'
               ];
 
     /**
@@ -96,6 +105,58 @@ class Cliente extends Model
         }
         return $maskared;
     }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDataEmissaoRgAttribute($value)
+    {
+        $this->attributes['data_emissao_rg'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDataNascimentoAttribute($value)
+    {
+        $this->attributes['data_nascimento'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDataEmissaoRgAttribute($value)
+    {
+        //dd($value);
+        return date('d/m/Y', strtotime($value));
+        //return strtotime($value);
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDataNascimentoAttribute($value)
+    {
+        //dd($value);
+        return date('d/m/Y', strtotime($value));
+        //return strtotime($value);
+    }
+
+
 
 
 

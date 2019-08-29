@@ -215,6 +215,7 @@ class ClienteController extends Controller
     public function update($id, Request $request)
     {
         try {
+            //dd($request->all());
             $this->affirm($request);
             $data = $this->getData($request);
 
@@ -227,6 +228,7 @@ class ClienteController extends Controller
 
         } catch (Exception $exception) {
 
+            dd($exception);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
@@ -297,7 +299,18 @@ class ClienteController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['nome','celular','tipo','cpf_cnpj','email','nome_empresa','cep','numero','endereco','complemento','estado','is_whatsapp','obs']);
+        $data = $request->only([
+            'nome','celular','tipo','cpf_cnpj','email','nome_empresa','cep','numero','endereco','complemento','estado','is_whatsapp','obs',
+            'conjugue',
+            'conjugue_cpf',
+            'rg',
+            'data_emissao_rg',
+            'orgao_emissor_rg',
+            'naturalidade_uf',
+            'naturalidade_cidade',
+            'data_nascimento',
+            'cidade'
+        ]);
         $data['is_whatsapp'] = $request->has('is_whatsapp');
 
         return $data;

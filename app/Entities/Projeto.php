@@ -67,6 +67,14 @@ class Projeto extends Model
     }
 
     /**
+     * Get the cliente for this model.
+     */
+    public function users()
+    {
+        return $this->belongsTo('Serbinario\User','users_id','id');
+    }
+
+    /**
      * Get the projeto for this model.
      */
     public function contratos()

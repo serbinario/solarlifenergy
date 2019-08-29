@@ -28,7 +28,7 @@
             <div class="col-lg-12">
                 <form method="POST" action="{{ route('cliente.cliente.update', $cliente->id) }}" accept-charset="UTF-8" id="edit_cliente_form" name="edit_cliente_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
                             <header>Editar Cliente</header>

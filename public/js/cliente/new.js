@@ -29,6 +29,7 @@ $(document).ready(function () {
 
             if(retorno.success) {
                 swal(retorno.msg, "Click no botão abaixo!", "error");
+                //$("input#cpf_cnpj").val( "" );
             }
         });
 

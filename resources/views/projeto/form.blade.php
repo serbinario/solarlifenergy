@@ -22,6 +22,29 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('users_id') ? 'has-error' : '' }}">
+        <label for="users_id" class="col-md-2 control-label">Intergrador</label>
+        <div class="col-md-10">
+
+            @role('admin')
+                <select   class="form-control" id="users_id" name="users_id">
+            @else
+                <select  disabled="true" class="form-control" id="users_id" name="users_id">
+                    @endrole
+
+
+                <option value="" style="display: none;" {{ old('users_id', isset($projeto->users_id) ? $projeto->users_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
+                @foreach ($users as $key => $user)
+                    <option value="{{ $key }}" {{ old('users_id', isset($projeto->users_id) ? $projeto->users_id : null) == $key ? 'selected' : '' }}>
+                        {{ $user }}
+                    </option>
+                @endforeach
+            </select>
+
+            {!! $errors->first('conta_bancaria_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
     <div class="form-group {{ $errors->has('consumo') ? 'has-error' : '' }}">
         <label for="consumo" class="col-md-2 control-label">Consumo</label>
         <div class="col-md-10">
