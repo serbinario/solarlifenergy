@@ -207,7 +207,7 @@
     <div class="form-group {{ $errors->has('cidade') ? 'has-error' : '' }}">
         <label for="cidade" class="col-md-2 control-label">Cidade</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($cliente->cidade) ? $cliente->cidade : null) }}" maxlength="2" placeholder="Cidade">
+            <input class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($cliente->cidade) ? $cliente->cidade : null) }}" placeholder="Cidade">
             {!! $errors->first('cidade', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

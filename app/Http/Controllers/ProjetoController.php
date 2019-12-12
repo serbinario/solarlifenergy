@@ -46,57 +46,60 @@ class ProjetoController extends Controller
     }
 
     /**
-         * Display a listing of the fornecedors.
-         *
-         * @return Illuminate\View\View
-         * @throws Exception
-         */
-        public function grid()
-        {
-            $this->token = csrf_token();
-            #Criando a consulta
+     * Display a listing of the fornecedors.
+     *
+     * @return Illuminate\View\View
+     * @throws Exception
+     */
+    public function grid()
+    {
+        $this->token = csrf_token();
+        #Criando a consulta
 
-            $rows = \DB::table('projetos')
-                ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
-                ->leftJoin('users', 'users.id', '=', 'projetos.users_id')
-                ->select([
-                    'clientes.nome',
-                    'projetos.id',
-                    'projetos.projeto_codigo',
-                    'projetos.kw',
-                    'projetos.valor_projeto',
-                    'users.name',
-                    'projetos.prioridade',
-                    \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at')
-                ]);
+        $rows = \DB::table('projetos')
+            ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
+            ->leftJoin('users', 'users.id', '=', 'projetos.users_id')
+            ->select([
+                'clientes.nome',
+                'projetos.id',
+                'projetos.projeto_codigo',
+                'projetos.kw',
+                'projetos.valor_projeto',
+                'users.name',
+                'projetos.prioridade',
+                \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at')
+            ]);
 
-            //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
-            $user = User::find(Auth::id());
-            if(!$user->hasRole('admin')) {
-                $rows->where('projetos.users_id', '=', $user->id);
-            }
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if(!$user->hasRole('admin')) {
+            $rows->where('projetos.users_id', '=', $user->id);
+        }
 
 
 
-            #Editando a grid
-            return Datatables::of($rows)->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="projeto/' . $row->id   . '/destroy" accept-charset="UTF-8">
+        #Editando a grid
+        return Datatables::of($rows)->addColumn('action', function ($row) {
+            return '<form id="' . $row->id   . '" method="POST" action="projeto/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                             
                                 <a href="projeto/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
+                                <a href="/report/'.$row->id.'/FichaElaboracaoProjeto" class="btn btn-primary" target="_blank" title="Relatorio">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                         </form>
                         ';
-                            })->make(true);
-        }
+        })->make(true);
+    }
 
     /**
-     * Show the form for creating a new projeto.
+     * Show the form for creating a new projeto.  glyphicon-file
      *
      * @return Illuminate\View\View
      */
@@ -104,7 +107,7 @@ class ProjetoController extends Controller
     {
         $clientes = Cliente::pluck('nome','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
-        
+
         return view('projeto.create', compact('clientes', 'users'));
     }
 
@@ -150,12 +153,12 @@ class ProjetoController extends Controller
 
 
             return redirect()->route('projeto.projeto.index')
-                             ->with('success_message', 'Projeto was successfully added!');
+                ->with('success_message', 'Projeto was successfully added!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
 
@@ -208,9 +211,9 @@ class ProjetoController extends Controller
 
             $projeto = Projeto::findOrFail($id);
 
-           // dd(array_filter($request->get('num_contrato')));
+            // dd(array_filter($request->get('num_contrato')));
 
-           // dd($data);
+            //dd($data);
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -221,6 +224,7 @@ class ProjetoController extends Controller
             if(empty($data['users_id'])){
                 $data['users_id'] = $projeto->users_id;
             }
+            //dd(array_filter($data['num_contrato']));
 
 
             /*
@@ -228,20 +232,23 @@ class ProjetoController extends Controller
              * 2 - se vinher alguma vazia e limpa com o metodo array_filter
              * 3 - E inserido em contrados
              */
-            foreach (array_filter($request->get('num_contrato')) as $contrato) {
-                $contratos = $projeto->contratos()->create(['num_contrato' => $contrato]);
+            for($i = 0; $i < count($data['num_contrato']); $i++){
+                $contratos = $projeto->contratos()->create(['num_contrato' => $data['num_contrato'][$i], 'percentual' => $data['percentual'][$i]]);
             }
+            //foreach (array_filter($request->get('num_contrato')) as $contrato) {
+            //$contratos = $projeto->contratos()->create(['num_contrato' => $contrato, 'percentual' => '1']);
+            //  }
 
             $projeto->update($data);
 
             return redirect()->route('projeto.projeto.index')
-                             ->with('success_message', 'Projeto was successfully updated!');
+                ->with('success_message', 'Projeto was successfully updated!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
-        }        
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+        }
     }
 
     /**
@@ -258,15 +265,15 @@ class ProjetoController extends Controller
             $projeto->delete();
 
             return redirect()->route('projeto.projeto.index')
-                             ->with('success_message', 'Projeto was successfully deleted!');
+                ->with('success_message', 'Projeto was successfully deleted!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
-    
+
     /**
      * Validate the given request with the defined rules.
      *
@@ -281,23 +288,39 @@ class ProjetoController extends Controller
             'consumo' => 'nullable',
             'area_disponivel' => 'nullable|numeric|min:-2147483648|max:2147483647',
             'users_id' => 'nullable',
-     
+
         ];
 
 
         return $this->validate($request, $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['clientes_id','prioridade','projeto_codigo','consumo','area_disponivel','obs', 'valor_projeto','kw', 'users_id']);
+        $data = $request->only(
+            [
+                'clientes_id',
+                'prioridade',
+                'projeto_codigo',
+                'num_contrato',
+                'percentual',
+                'consumo',
+                'area_disponivel',
+                'obs',
+                'valor_projeto',
+                'kw',
+                'users_id',
+                'res_acompanhamento',
+                'res_documentacao',
+                'end_intalacao'
+            ]);
 
         return $data;
     }

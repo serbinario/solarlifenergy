@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    console.log($( "input[name='tipo']:checked").val());
-    $('.phone').mask('(00)000000000');
-    $('.cpf').mask('000.000.000-00', {reverse: true});
-    $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
-    $('.ip').mask('099.099.099.099');
-    $('.date').mask('00/00/0000');
-
 
     $('.date').datepicker({autoclose: true, todayHighlight: true, format: "dd/mm/yyyy"});
 
@@ -40,6 +33,13 @@ $(document).ready(function () {
         $('.cpf').unmask();
         $('.cnpj').unmask();
     });
+
+    //Ao submeter tirar as mascaras
+  //  $("#edit_projeto_form").submit(function (event) {
+       // $('.kw').unmask();
+   // });
+
+
 
     //Ao submeter tirar as mascaras
     $("#create_cliente_form").submit(function (event) {
@@ -83,15 +83,23 @@ $(document).ready(function () {
     $(".add-more").click(function(){
 
         var html = '<div class="row copy">'
-        html += '<div class="col-sm-6">'
-        html += '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
-        html += '<label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe</label>'
-        html += '<div class="col-md-8">'
-        html += '<input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old(\'contrato_celpe\', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">'
+        html += '<div class="col-lg-6">'
+        html +=     '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
+        html +=         '<label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe</label>'
+        html +=         '<div class="col-md-3">'
+        html += '           <input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old(\'contrato_celpe\', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">'
+        html +=         '</div>'
+        html +=     '</div>'
         html += '</div>'
+        html += '<div class="col-lg-6">'
+        html +=     '<div class="form-group {{ $errors->has(\'percentual\') ? \'has-error\' : \'\' }}">'
+        html +=         '<label for="percentual" class="col-sm-4 control-label">Porcento.:</label>'
+        html +=         '<div class="col-md-3">'
+        html += '           <input class="form-control input-sm" name="percentual[]" type="number" id="percentual" value="{{ old(\'percentual\', isset($contrato) ? $contrato->percentual : null) }}" placeholder="Contrato Celpe...">'
+        html +=         '</div>'
+        html +=     '</div>'
         html += '</div>'
-        html += '</div>'
-        html += '<div class="col-sm-6">'
+        html += '<div class="col-lg-6">'
         html += '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
         html += '<div class="col-md-2">'
         html += '<div class="">'

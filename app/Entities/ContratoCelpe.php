@@ -34,7 +34,8 @@ class ContratoCelpe extends Model
      */
     protected $fillable = [
                   'num_contrato',
-                  'projetos_id'
+                  'projetos_id',
+                    'percentual'
               ];
 
     /**

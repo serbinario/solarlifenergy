@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -21,10 +21,10 @@ class Cliente extends Model
     protected $table = 'clientes';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -33,19 +33,19 @@ class Cliente extends Model
      * @var array
      */
     protected $fillable = [
-                  'nome',
-                  'celular',
-                  'email',
+        'nome',
+        'celular',
+        'email',
         'tipo',
-                   'cpf_cnpj',
-                  'nome_empresa',
-                  'cep',
-                  'numero',
-                  'endereco',
-                  'complemento',
-                  'estado',
-                  'is_whatsapp',
-                  'obs',
+        'cpf_cnpj',
+        'nome_empresa',
+        'cep',
+        'numero',
+        'endereco',
+        'complemento',
+        'estado',
+        'is_whatsapp',
+        'obs',
         'conjugue',
         'conjugue_cpf',
         'rg',
@@ -55,7 +55,7 @@ class Cliente extends Model
         'naturalidade_cidade',
         'data_nascimento',
         'cidade'
-              ];
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -63,14 +63,14 @@ class Cliente extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the projeto for this model.
      */
@@ -79,12 +79,12 @@ class Cliente extends Model
         return $this->hasOne('Serbinario\Entities\Projeto','clientes_id','id');
     }
 
-/*
-     * echo mask($cnpj,'##.###.###/####-##');
-	echo mask($cpf,'###.###.###-##');
-	echo mask($cep,'#####-###');
-	echo mask($data,'##/##/####');
-     */
+    /*
+         * echo mask($cnpj,'##.###.###/####-##');
+        echo mask($cpf,'###.###.###-##');
+        echo mask($cep,'#####-###');
+        echo mask($data,'##/##/####');
+         */
 
     function mask($val, $mask)
     {
@@ -156,8 +156,30 @@ class Cliente extends Model
         //return strtotime($value);
     }
 
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getNomeAttribute($value)
+    {
+        //dd($value);
+        return strtoupper($value);
+        //return strtotime($value);
+    }
 
-
-
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getEnderecoAttribute($value)
+    {
+        //dd($value);
+        return strtoupper($value);
+        //return strtotime($value);
+    }
 
 }

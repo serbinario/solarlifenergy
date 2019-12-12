@@ -52,6 +52,7 @@ class Mikrotik extends Command
     public function handle()
     {
         $list = $this->argument('list');
+        dd($list);
 
         switch($list){
             case "countqueues":
@@ -282,7 +283,7 @@ class Mikrotik extends Command
 
         $router = new RouterosService();
         $router->debug = false;
-        $router->connect('170.245.65.134', 'NetSerb', 'nets@2017#');
+        $router->connect('170.245.65.134', 'NetSerb', 'nets!2010#');
 
 
 

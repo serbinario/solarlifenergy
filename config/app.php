@@ -196,6 +196,8 @@ return [
         Serbinario\Providers\EventServiceProvider::class,
         Serbinario\Providers\RouteServiceProvider::class,
 
+        \PHPJasper\PHPJasperServiceProvider::class,
+
     ],
 
     /*

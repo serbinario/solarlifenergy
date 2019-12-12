@@ -44,11 +44,6 @@
         "table-name": "aditivo_tipossssssss"
     },
     {
-        "model-name": "Cliente",
-        "resource-file": "cliente.json",
-        "table-name": "clientes"
-    },
-    {
         "model-name": "Projeto",
         "resource-file": "projeto.json",
         "table-name": "projetos"
@@ -67,5 +62,10 @@
         "model-name": "User",
         "resource-file": "users.json",
         "table-name": "users"
+    },
+    {
+        "model-name": "ClienteWeb",
+        "resource-file": "cliente_webs.json",
+        "table-name": "clientes"
     }
 ]

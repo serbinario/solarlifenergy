@@ -28,6 +28,8 @@ Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
 //Url para receber reuqest do boletofacil
 Route::any('/notificationUrl', 'NotificationUrl@notificationUrl')->name('notificationUrl');
 
+Route::any('/report/{id}/FichaElaboracaoProjeto', 'ReportController@reportPdfFichaElaboracaoProjeto')->name('reportIndex');
+
 //RN-0001
 Route::get('/cobrancasAPI', 'CobrancasAPIController@gerenciant')->name('cobrancasAPI.gerencianet');
 
@@ -654,5 +656,18 @@ Route::group(
     Route::delete('/{user}/destroy','UsersController@destroy')
          ->name('users.user.destroy')
          ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'clienteweb',
+], function () {
+
+    Route::get('/', 'ClienteWebController@create')
+         ->name('clienteweb');
+
+    Route::post('/cliente_web.store', 'ClienteWebController@store')
+        ->name('cliente_web.store');
 
 });

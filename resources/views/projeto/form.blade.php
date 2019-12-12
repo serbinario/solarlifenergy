@@ -7,7 +7,7 @@
     <br> <br><br>
 
     <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
-        <label for="clientes_id" class="col-md-2 control-label">Clientes</label>
+        <label for="clientes_id" class="col-md-2 control-label">Clientes.:</label>
         <div class="col-md-10">
             <select class="form-control input-sm" id="clientes_id" name="clientes_id">
                 <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Select clientes</option>
@@ -23,7 +23,7 @@
     </div>
     @role('admin')
     <div class="form-group {{ $errors->has('users_id') ? 'has-error' : '' }}">
-        <label for="users_id" class="col-md-2 control-label">Intergrador</label>
+        <label for="users_id" class="col-md-2 control-label">Intergrador.:</label>
         <div class="col-md-10">
 
 
@@ -43,7 +43,7 @@
     @endrole
 
     <div class="form-group {{ $errors->has('consumo') ? 'has-error' : '' }}">
-        <label for="consumo" class="col-md-2 control-label">Consumo</label>
+        <label for="consumo" class="col-md-2 control-label">Consumo R$.:</label>
         <div class="col-md-10">
             <select class="form-control input-sm" id="consumo" name="consumo">
                 <option value="" style="display: none;" {{ old('consumo', isset($projeto->consumo) ? $projeto->consumo : '') == '' ? 'selected' : '' }} disabled selected>Enter consumo here...</option>
@@ -66,15 +66,15 @@
     </div>
 
     <div class="form-group {{ $errors->has('area_disponivel') ? 'has-error' : '' }}">
-        <label for="area_disponivel" class="col-md-2 control-label">Area Disponivel</label>
+        <label for="area_disponivel" class="col-md-2 control-label">Area Disponivel.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="area_disponivel" type="number" id="area_disponivel" value="{{ old('area_disponivel', isset($projeto->area_disponivel) ? $projeto->area_disponivel : null) }}" min="-2147483648" max="2147483647" placeholder="Enter area disponivel here...">
+            <input class="form-control input-sm number" name="area_disponivel" type="text" id="area_disponivel" value="{{ old('area_disponivel', isset($projeto->area_disponivel) ? $projeto->area_disponivel : null) }}" min="-2147483648" max="2147483647" placeholder="Enter area disponivel here...">
             {!! $errors->first('area_disponivel', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group {{ $errors->has('projeto_codigo') ? 'has-error' : '' }}">
-        <label for="projeto_codigo" class="col-md-2 control-label">Projeto Codigo</label>
+        <label for="projeto_codigo" class="col-md-2 control-label">Projeto Codigo.:</label>
         <div class="col-md-10">
             <input class="form-control input-sm" name="projeto_codigo" type="number" id="projeto_codigo" readonly value="{{ old('projeto_codigo', isset($projeto->projeto_codigo) ? $projeto->projeto_codigo : null) }}" placeholder="projeto_codigo...">
             {!! $errors->first('projeto_codigo', '<p class="help-block">:message</p>') !!}
@@ -82,7 +82,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('prioridade') ? 'has-error' : '' }}">
-        <label for="prioridade" class="col-md-2 control-label">Prioridade</label>
+        <label for="prioridade" class="col-md-2 control-label">Prioridade.:</label>
         <div class="col-md-10">
             <select class="form-control input-sm" id="prioridade" name="prioridade">
                 <option value="" style="display: none;" {{ old('prioridade', isset($projeto->prioridade) ? $projeto->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Prioridade...</option>
@@ -101,18 +101,42 @@
     </div>
 
     <div class="form-group {{ $errors->has('kw') ? 'has-error' : '' }}">
-        <label for="kw" class="col-md-2 control-label">KWP</label>
+        <label for="kw" class="col-md-2 control-label">KWP.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm money" name="kw" type="text" id="kw"  value="{{ old('kw', isset($projeto->kw) ? $projeto->kw : null) }}" placeholder="KW...">
+            <input class="form-control input-sm number" name="kw" type="text" id="kw"  value="{{ old('kw', isset($projeto->kw) ? $projeto->kw : null) }}" placeholder="KW...">
             {!! $errors->first('kw', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group {{ $errors->has('valor_projeto') ? 'has-error' : '' }}">
-        <label for="valor_projeto" class="col-md-2 control-label">Valor de Projeto</label>
+        <label for="valor_projeto" class="col-md-2 control-label">Valor de Projeto.:</label>
         <div class="col-md-10">
             <input class="form-control input-sm money" name="valor_projeto" type="text" id="valor_projeto"  value="{{ old('valor_projeto', isset($projeto->valor_projeto) ? $projeto->valor_projeto : null) }}" placeholder="Valor Projeto...">
             {!! $errors->first('valor_projeto', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('res_documentacao') ? 'has-error' : '' }}">
+        <label for="res_documentacao" class="col-md-2 control-label">Res. Documentação.:</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm" name="res_documentacao" type="text" id="res_documentacao"  value="{{ old('res_documentacao', isset($projeto->res_documentacao) ? $projeto->res_documentacao : null) }}" placeholder="">
+            {!! $errors->first('valor_projeto', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('res_acompanhamento') ? 'has-error' : '' }}">
+        <label for="res_acompanhamento" class="col-md-2 control-label">Res. Acompanhamento.:</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm" name="res_acompanhamento" type="text" id="res_acompanhamento"  value="{{ old('res_acompanhamento', isset($projeto->res_acompanhamento) ? $projeto->res_acompanhamento : null) }}" placeholder="">
+            {!! $errors->first('res_acompanhamento', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('end_intalacao') ? 'has-error' : '' }}">
+        <label for="end_intalacao" class="col-md-2 control-label">End. de Instalação.:</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm" name="end_intalacao" type="text" id="end_intalacao"  value="{{ old('end_intalacao', isset($projeto->end_intalacao) ? $projeto->end_intalacao : null) }}" placeholder="">
+            {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
@@ -122,22 +146,40 @@
     </div>
     <br> <br><br>
 
+
     @if(isset($projeto))
-        @foreach( $projeto->contratos as $contrato )
-            <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                <label for="num_contrato" class="col-md-2 control-label">Contrato Celpe</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
+        <div class="row">
+                @foreach( $projeto->contratos as $contrato )
+                <div class="col-sm-6">
+                    <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
+                        <label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe.:</label>
+                        <div class="col-md-3">
+                            <input class="form-control input-sm" name="num_contrato[]" type="text" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+                <div class="col-sm-6">
+                    <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
+                        <label for="percentual" class="col-sm-4 control-label">Porcento.:</label>
+                        <div class="col-md-3">
+                            <input class="form-control input-sm" name="percentual[]" type="text" id="percentual" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
+                        </div>
+                        {{--<div class="input-group-btn">
+                            <button class="btn btn-default" type="button">Excluir</button>
+                        </div>--}}
+                    </div>
+                </div>
+
+                @endforeach
+        </div>
     @else
         <div class="form-group{{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-            <label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe</label>
-            <div class="col-md-8">
+            <label for="num_contrato" class="col-sm-4 control-label">Contrato Celpe.:</label>
+            <div class="col-md-2">
                 <input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
             </div>
         </div>
+
     @endif
 
 
@@ -156,13 +198,11 @@
     </div>
 
     <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
-        <label for="obs" class="col-md-2 control-label">Obs</label>
+        <label for="obs" class="col-md-2 control-label">Obs.:</label>
         <div class="col-md-10">
             <textarea class="form-control input-sm" name="obs" cols="50" rows="10" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($projeto->obs) ? $projeto->obs : null) }}</textarea>
             {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
-
 </div>
 

@@ -62,7 +62,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('cliente.cliente.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
+                                <a href="{{ route('cliente.cliente.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Cliente</a>
                             </div>
                         </div>
                     </div><!--end .card -->
