@@ -58,11 +58,11 @@ class ReportController extends Controller
         $output = public_path() . '/reports/' .  'Clientes';// instancia um novo objeto JasperPHP
 
         $report = new PHPJasper();// chama o método que irá gerar o relatório
-        $report->process(
+        dd($report->process(
             public_path() . '/reports/Fixa_elaboracao_projeto.jrxml',
             $output,
             $options
-        )->execute();
+        )->output());
         $file = $output . '.pdf';
 
         //dd($file);
