@@ -14,9 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        Commands\Clientes::class,
-        Commands\Mikrotik::class,
-        Commands\LogCron::class
+        //Commands\Clientes::class,
+        //Commands\Mikrotik::class,
+        //Commands\LogCron::class
     ];
 
     /**
