@@ -35,9 +35,9 @@ $(document).ready(function () {
     });
 
     //Ao submeter tirar as mascaras
-  //  $("#edit_projeto_form").submit(function (event) {
-       // $('.kw').unmask();
-   // });
+    //  $("#edit_projeto_form").submit(function (event) {
+    // $('.kw').unmask();
+    // });
 
 
 
@@ -46,28 +46,6 @@ $(document).ready(function () {
         $('.cpf').unmask();
     });
 
-
-
-    $("input[name=cep]").blur(function(){
-        var cep_code = $(this).val();
-        if( cep_code.length <= 0 ) return;
-        //$.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
-        $.get("https://viacep.com.br/ws/51170-620/json/?callback=callback_name",
-            function(result){
-            console.log(result)
-                if( result.status!=1 ){
-                    alert(result.message || "Houve um erro desconhecido");
-                    return;
-                }
-                $("input#cep").val( result.code );
-                $("input#estado").val( result.state );
-                $("input#cidade").val( result.city );
-                $("input#bairro").val( result.district );
-                $("input#logradouro").val( result.address );
-                $("input#estado").val( result.state );
-                //alert("Dados recebidos e alterados");
-            });
-    });
 
     $('#map_coordenadas').click(function () {
         var width = (screen.availWidth - 100);
@@ -117,13 +95,92 @@ $(document).ready(function () {
 
     });
 
+    $(".propostas").click(function(){
+        console.log("ss")
+        console.log($( "#cep" ).val())
+
+        var dados = {
+            'lead[name]' : "Paulo+Vaz",
+            'lead[email]' : "psgva@gmail.com",
+            'lead[state]' : "PE",
+            'lead[city]' : "Recife",
+            'lead[postalcode]' : "51170620",
+            'lead[monthly_usage]' : "7000",
+            'lead[kind]' : "email"
+
+        }
+
+        jQuery.ajax({
+            crossDomain: true,
+            type: 'POST',
+            data: dados,
+            url: 'https://www.portalsolar.com.br/api/leads',
+        }).success(function (retorno) {
+            if(retorno.success) {
+                console.log("ssssssssssss")
+
+            } else {
+                swal(retorno.msg, "Click no botão abaixo!", "error");
+            }
+        }).error(function (retorno) {
+            console.log("ssssssssssss")
+        });
+
+       /* $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: 'https://www.portalsolar.com.br/api/leads',
+            data: JSON.stringify(record),
+            complete: function(xhr) {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 201) {
+                        alert("Created");
+                    }
+                } else {
+                    alert("NoGood");
+                }
+            }
+
+        });*/
+    });
+
 
     $("body").on("click",".remove",function(){
 
-        console.log("wwwww");
+        //console.log("wwwww");
         $(this).parents(".copy").remove();
 
     });
 
-
+    /*
+    * Retorna as cardendas
+     */
+    $("#coordenadas_btn").click(function () { //user clicks button
+        swal({
+                title: "Deseja Alterar a Coordenada?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Sim, Pegar nova Coordenada",
+                cancelButtonText: "Nao, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    if ("geolocation" in navigator){ //check geolocation available
+                        //try to get user current location using getCurrentPosition() method
+                        navigator.geolocation.getCurrentPosition(function(position){
+                            //console.log(position.coords.latitude)
+                            $("#coordenadas").val(position.coords.latitude + "," + position.coords.longitude);
+                            swal("Novar coordenada alterada", "Click no botão abaixo!", "success");
+                        });
+                    }else{
+                        swal("Seu Browser nao suporta", "Click no botão abaixo!", "error");
+                    }
+                }
+        });
+    });
 });

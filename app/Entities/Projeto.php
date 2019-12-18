@@ -44,7 +44,8 @@ class Projeto extends Model
         'kw',
         'res_documentacao',
         'res_acompanhamento',
-        'end_intalacao'
+        'end_intalacao',
+        'coordenadas'
     ];
 
     /**

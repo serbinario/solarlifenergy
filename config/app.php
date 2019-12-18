@@ -184,7 +184,7 @@ return [
         Collective\Remote\RemoteServiceProvider::class,
 
         //Gerador PDF
-        Barryvdh\DomPDF\ServiceProvider::class,
+       // Barryvdh\DomPDF\ServiceProvider::class,
 
 
         /*
@@ -197,6 +197,8 @@ return [
         Serbinario\Providers\RouteServiceProvider::class,
 
         \PHPJasper\PHPJasperServiceProvider::class,
+
+        Ixudra\Curl\CurlServiceProvider::class,
 
     ],
 
@@ -256,10 +258,12 @@ return [
          * https://github.com/yajra/laravel-datatables
          */
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-
+//ll
         //Gerador PDF
-        'PDF' => Barryvdh\DomPDF\Facade::class,
+        //'PDF' => Barryvdh\DomPDF\Facade::class,
 
-    ],
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
+
+    ],//dd
 
 ];

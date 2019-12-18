@@ -105,7 +105,7 @@ class ProjetoController extends Controller
      */
     public function create()
     {
-        $clientes = Cliente::pluck('nome','id')->all();
+        $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
 
         return view('projeto.create', compact('clientes', 'users'));
@@ -185,9 +185,10 @@ class ProjetoController extends Controller
      */
     public function edit($id)
     {
-        $projeto = Projeto::with('contratos')->findOrFail($id);
+        $projeto = Projeto::with('contratos', 'cliente')->findOrFail($id);
         //dd($projeto);
-        $clientes = Cliente::pluck('nome','id')->all();
+        $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
+        //dd($projeto);
         $users = User::orderBy('name')->pluck('name','id')->all();
 
         //dd($projeto->contratos);
@@ -208,7 +209,7 @@ class ProjetoController extends Controller
 
             $this->affirm($request);
             $data = $this->getData($request);
-
+            //dd($data);
             $projeto = Projeto::findOrFail($id);
 
             // dd(array_filter($request->get('num_contrato')));
@@ -226,6 +227,8 @@ class ProjetoController extends Controller
             }
             //dd(array_filter($data['num_contrato']));
 
+           $util = new UtilController();
+          $util->consultaPotencia($request);
 
             /*
              * 1- Pega do formulario uma array chamada num_contrato
@@ -242,7 +245,7 @@ class ProjetoController extends Controller
             $projeto->update($data);
 
             return redirect()->route('projeto.projeto.index')
-                ->with('success_message', 'Projeto was successfully updated!');
+                ->with('success_message', 'Projeto atualizado com sucesso!');
 
         } catch (Exception $exception) {
 
@@ -319,7 +322,8 @@ class ProjetoController extends Controller
                 'users_id',
                 'res_acompanhamento',
                 'res_documentacao',
-                'end_intalacao'
+                'end_intalacao',
+                'coordenadas'
             ]);
 
         return $data;

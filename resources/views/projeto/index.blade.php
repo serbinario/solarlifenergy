@@ -46,7 +46,6 @@
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>
                                                     <th>KWP</th>
-                                                    <th>V. Projeto</th>
                                                     <th>Prioridade</th>
                                                     <th>Acao</th>
                                                 </tr>

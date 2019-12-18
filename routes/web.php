@@ -555,8 +555,8 @@ Route::group(
 
 Route::group(
 [
-    'prefix' => 'projeto',
-], function () {
+    'prefix' => 'projeto'
+],  function () {
 
     Route::get('/', 'ProjetoController@index')
          ->name('projeto.projeto.index');
