@@ -46,7 +46,7 @@ class ReportController extends Controller
                 'port' => env('DB_PORT'),
                 'database' => env('DB_DATABASE'),
                 'username' => env('DB_USERNAME'),
-                'password' => env('DB_PASSWORD'),
+                'password' => "'" . env('DB_PASSWORD') . "'"
                 //'jdbc_driver' => 'com.mysql.jdbc.Driver',
                 //'jdbc_url' => 'jdbc:mysql://localhost:3306',
                 //'jdbc_dir' => '/usr/share/java/'
