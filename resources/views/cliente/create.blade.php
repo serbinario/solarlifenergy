@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form method="POST" action="{{ route('cliente.cliente.store') }}" accept-charset="UTF-8" id="create_cliente_form" name="create_cliente_form" class="form-horizontal">
-                <meta name="csrf-token" content="{{ csrf_token() }}">
+                {{ csrf_field() }}
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Novo Cliente</header>

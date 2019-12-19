@@ -143,7 +143,7 @@
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('kw') ? 'has-error' : '' }}">
+    <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
         <label for="kwh" class="col-md-2  text-bold control-label text-bold">Cons. mensal em kWh*.:</label>
         <div class="col-md-10">
             <input class="form-control input-sm number" name="kwh" type="text" id="kwh"  value="{{ old('kwh', isset($projeto->kwh) ? $projeto->kwh : null) }}" placeholder="KWh...">

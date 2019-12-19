@@ -33,10 +33,11 @@ class UtilController extends Controller
     public function consultaCpfCnpf(Request $request)
     {
        $cpf_cnpj =  Cliente::where('cpf_cnpj', '=', $request->input('cpf_cnpj') )->first();
-       if(isset($cpf_cnpj)){
+       //dd($cpf_cnpj);
+       if(isset($cpf_cnpj->cpf_cnpj)){
            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Ja existe um cliente cadastrado']);
        }
-        return \Illuminate\Support\Facades\Response::json(['success' => false,  'msg' => 'eeeeeeee']);
+        return \Illuminate\Support\Facades\Response::json(['success' => false,  'msg' => $cpf_cnpj]);
 
     }
 
