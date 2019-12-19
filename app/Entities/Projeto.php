@@ -99,13 +99,15 @@ class Projeto extends Model
 
     public function setKwAttribute($value)
     {
-        $this->attributes['kw'] = $value == "" ? "": str_replace(".","",$value);
+        $this->attributes['kw'] = $value == "" ? null: str_replace(".","",$value);
 
     }
 
     public function setKwhAttribute($value)
     {
-        $this->attributes['kwh'] = $value == "" ? "": str_replace(".","",$value);
+
+        $this->attributes['kwh'] = $value == "" ? null: str_replace(".","",$value);
+        //dd($value);
 
     }
 

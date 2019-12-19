@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
 
+    //Consulta o CPF?CNPJ
     $("input[name=cpf_cnpj]").blur(function(){
 
         //Recupera o id do registro
@@ -13,7 +14,7 @@ $(document).ready(function () {
         //Para isso coloquei no form <meta name="csrf-token" content="{{ csrf_token() }}">
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
 
@@ -29,7 +30,7 @@ $(document).ready(function () {
 
             if(retorno.success) {
                 swal(retorno.msg, "Click no botão abaixo!", "error");
-                //$("input#cpf_cnpj").val( "" );
+                $("input#cpf_cnpj").val( "" );
             }
         });
 

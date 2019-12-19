@@ -227,10 +227,9 @@ class ClienteController extends Controller
                 ->with('success_message', 'Cliente was successfully updated!');
 
         } catch (Exception $exception) {
-
-            dd($exception);
+            //dd($exception);
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
 
@@ -287,7 +286,7 @@ class ClienteController extends Controller
         ];
 
 
-        return $this->validate($request, $rules, $messages);
+        return $this->validate($request, $rules);
     }
 
 

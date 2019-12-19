@@ -209,12 +209,7 @@ class ProjetoController extends Controller
 
             $this->affirm($request);
             $data = $this->getData($request);
-            //dd($data);
             $projeto = Projeto::findOrFail($id);
-
-            // dd(array_filter($request->get('num_contrato')));
-
-
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -225,11 +220,9 @@ class ProjetoController extends Controller
             if(empty($data['users_id'])){
                 $data['users_id'] = $projeto->users_id;
             }
-            //dd(array_filter($data['num_contrato']));
 
            //$util = new UtilController();
           //$util->consultaPotencia($request);
-
             /*
              * 1- Pega do formulario uma array chamada num_contrato
              * 2 - se vinher alguma vazia e limpa com o metodo array_filter
@@ -241,15 +234,12 @@ class ProjetoController extends Controller
             //foreach (array_filter($request->get('num_contrato')) as $contrato) {
             //$contratos = $projeto->contratos()->create(['num_contrato' => $contrato, 'percentual' => '1']);
             //  }
-            //dd($data);
             $projeto->update($data);
-            //
 
             return redirect()->route('projeto.projeto.index')
                 ->with('success_message', 'Projeto atualizado com sucesso!');
 
         } catch (Exception $e) {
-
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -292,12 +282,13 @@ class ProjetoController extends Controller
             'consumo' => 'nullable',
             'area_disponivel' => 'nullable',
             'users_id' => 'nullable',
-            'kw' => 'nullable',
+            'kw' => 'required',
 
         ];
 
 
         return $this->validate($request, $rules);
+        //dd($rules);
     }
 
 
