@@ -214,7 +214,7 @@ class ProjetoController extends Controller
 
             // dd(array_filter($request->get('num_contrato')));
 
-            //dd($data);
+
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -227,8 +227,8 @@ class ProjetoController extends Controller
             }
             //dd(array_filter($data['num_contrato']));
 
-           $util = new UtilController();
-          $util->consultaPotencia($request);
+           //$util = new UtilController();
+          //$util->consultaPotencia($request);
 
             /*
              * 1- Pega do formulario uma array chamada num_contrato
@@ -236,21 +236,22 @@ class ProjetoController extends Controller
              * 3 - E inserido em contrados
              */
             for($i = 0; $i < count($data['num_contrato']); $i++){
-                $contratos = $projeto->contratos()->create(['num_contrato' => $data['num_contrato'][$i], 'percentual' => $data['percentual'][$i]]);
+               $contratos = $projeto->contratos()->create(['num_contrato' => $data['num_contrato'][$i], 'percentual' => $data['percentual'][$i]]);
             }
             //foreach (array_filter($request->get('num_contrato')) as $contrato) {
             //$contratos = $projeto->contratos()->create(['num_contrato' => $contrato, 'percentual' => '1']);
             //  }
 
             $projeto->update($data);
+            //dd($data);
 
             return redirect()->route('projeto.projeto.index')
                 ->with('success_message', 'Projeto atualizado com sucesso!');
 
-        } catch (Exception $exception) {
+        } catch (Exception $e) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
     }
 

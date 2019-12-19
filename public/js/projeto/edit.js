@@ -163,17 +163,19 @@ $(document).ready(function () {
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
-                confirmButtonText: "Sim, Pegar nova Coordenada",
+                confirmButtonText: "Sim, Pegar nova Coordenadasss",
                 cancelButtonText: "Nao, cancel!",
                 closeOnConfirm: false,
                 closeOnCancel: true
             },
             function(isConfirm) {
                 if (isConfirm) {
+
                     if ("geolocation" in navigator){ //check geolocation available
+                        console.log("ddddddddddd")
                         //try to get user current location using getCurrentPosition() method
                         navigator.geolocation.getCurrentPosition(function(position){
-                            //console.log(position.coords.latitude)
+                            console.log("wwwwwwwwwwwww")
                             $("#coordenadas").val(position.coords.latitude + "," + position.coords.longitude);
                             swal("Novar coordenada alterada", "Click no botão abaixo!", "success");
                         });
