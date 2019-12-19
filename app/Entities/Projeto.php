@@ -113,7 +113,7 @@ class Projeto extends Model
 
     public function setAreaDisponivelAttribute($value)
     {
-        $this->attributes['area_disponivel'] = $value == "" ? "": str_replace(".","",$value);
+        $this->attributes['area_disponivel'] = $value == "" ? null: str_replace(".","",$value);
     }
 
     /**
