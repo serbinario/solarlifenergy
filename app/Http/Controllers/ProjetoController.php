@@ -290,8 +290,9 @@ class ProjetoController extends Controller
         $rules = [
             'clientes_id' => 'nullable',
             'consumo' => 'nullable',
-            'area_disponivel' => 'nullable|numeric|min:-2147483648|max:2147483647',
+            'area_disponivel' => 'nullable',
             'users_id' => 'nullable',
+            'kw' => 'nullable',
 
         ];
 
@@ -325,7 +326,8 @@ class ProjetoController extends Controller
                 'res_documentacao',
                 'end_intalacao',
                 'coordenadas',
-                'data_prevista'
+                'data_prevista',
+                'kwh'
             ]);
 
         return $data;

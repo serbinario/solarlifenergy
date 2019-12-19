@@ -95,23 +95,24 @@
         </div>
     </div>
 
-    @role('admin')
+
+
+
+
+
+
     <div class="form-group {{ $errors->has('data_prevista') ? 'has-error' : '' }}">
         <label for="data_prevista" class="col-md-2 control-label text-bold">Previsão Data.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm date" name="data_prevista" type="text" id="data_prevista" value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
-            {!! $errors->first('data_prevista', '<p class="help-block">:message</p>') !!}
+            @role('admin')
+                <input class="form-control input-sm date" name="data_prevista" type="text" id="data_prevista" value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
+            @else
+                <input class="form-control input-sm" name="data_prevista" type="text" id="data_prevista" readonly value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
+            @endrole
+
         </div>
     </div>
-    @else
-        <div class="form-group {{ $errors->has('data_prevista') ? 'has-error' : '' }}">
-            <label for="data_prevista" class="col-md-2 control-label text-bold">Previsão Data.:</label>
-            <div class="col-md-10">
-                <input class="form-control input-sm" name="data_prevista" type="text" id="data_prevista" readonly value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
-                {!! $errors->first('data_prevista', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-    @endrole
+
 
 
 
