@@ -264,7 +264,7 @@ WHERE p.id = $P{idProjeto}]]>
 			</textField>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="ed08e6b3-4bc5-4c48-be27-4b6eaf4adfab"/>
-				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="180" y="137" width="266" height="18" uuid="19a0cf67-27b2-4328-8ed0-fa7dcd7bb2e7">
