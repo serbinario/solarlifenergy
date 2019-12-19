@@ -221,8 +221,6 @@
         </div>
     </div>
 
-
-
     <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
         <label for="obs" class="col-md-2 control-label  text-bold">Obs.:</label>
         <div class="col-md-10">
@@ -230,21 +228,6 @@
             {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
-    <div class="row after-add-more">
-        <div class="col-sm-6">
-            <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                <div class="col-md-2">
-                    <div class="">
-                        <label for="">
-                            <button class="btn btn-success proposta btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Proposta</button>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 </div>
 
