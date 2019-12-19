@@ -46,7 +46,8 @@ class Projeto extends Model
         'res_acompanhamento',
         'end_intalacao',
         'coordenadas',
-        'data_prevista'
+        'data_prevista',
+        'kwh'
     ];
 
     /**
@@ -98,22 +99,19 @@ class Projeto extends Model
 
     public function setKwAttribute($value)
     {
-        //dd($value);
-        if(!$value == null){
-            $value = str_replace(".","",$value);
-            $value = str_replace(",",".",$value);
-            $this->attributes['kw'] =  $value;
-        }
+        $this->attributes['kw'] = $value == "" ? "": str_replace(".","",$value);
+
+    }
+
+    public function setKwhAttribute($value)
+    {
+        $this->attributes['kwh'] = $value == "" ? "": str_replace(".","",$value);
+
     }
 
     public function setAreaDisponivelAttribute($value)
     {
-        //dd($value);
-        if(!$value == null){
-            $value = str_replace(".","",$value);
-            $value = str_replace(",",".",$value);
-            $this->attributes['area_disponivel'] =  $value;
-        }
+        $this->attributes['area_disponivel'] = $value == "" ? "": str_replace(".","",$value);
     }
 
     /**
