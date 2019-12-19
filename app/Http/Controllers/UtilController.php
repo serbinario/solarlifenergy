@@ -53,8 +53,8 @@ class UtilController extends Controller
                 ) )
             //->asJson()
             ->post();
-        dd(json_decode($response, true));
-        return \Illuminate\Support\Facades\Response::json(['success' => true,  'msg' => $response]);
+        //dd(json_decode($response, true));
+        //return \Illuminate\Support\Facades\Response::json(['success' => true,  'msg' => $response]);
     }
 
 
