@@ -117,6 +117,8 @@ class Cliente extends Model
         $this->attributes['data_emissao_rg'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
+
+
     /**
      * Set the data_vencimento.
      *

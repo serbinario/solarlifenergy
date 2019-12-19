@@ -241,9 +241,9 @@ class ProjetoController extends Controller
             //foreach (array_filter($request->get('num_contrato')) as $contrato) {
             //$contratos = $projeto->contratos()->create(['num_contrato' => $contrato, 'percentual' => '1']);
             //  }
-
-            $projeto->update($data);
             //dd($data);
+            $projeto->update($data);
+            //
 
             return redirect()->route('projeto.projeto.index')
                 ->with('success_message', 'Projeto atualizado com sucesso!');
@@ -324,7 +324,8 @@ class ProjetoController extends Controller
                 'res_acompanhamento',
                 'res_documentacao',
                 'end_intalacao',
-                'coordenadas'
+                'coordenadas',
+                'data_prevista'
             ]);
 
         return $data;

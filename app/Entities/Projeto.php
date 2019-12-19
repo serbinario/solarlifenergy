@@ -45,7 +45,8 @@ class Projeto extends Model
         'res_documentacao',
         'res_acompanhamento',
         'end_intalacao',
-        'coordenadas'
+        'coordenadas',
+        'data_prevista'
     ];
 
     /**
@@ -151,6 +152,33 @@ class Projeto extends Model
     {
         //dd($value);
         return strtoupper($value);
+        //return strtotime($value);
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDataPrevistaAttribute($value)
+    {
+        //dd($value);
+        $this->attributes['data_prevista'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+        //dd($this->attributes['data_prevista']);
+
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDataPrevistaAttribute($value)
+    {
+        //dd($value);
+        return date('d/m/Y', strtotime($value));
         //return strtotime($value);
     }
 
