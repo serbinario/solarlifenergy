@@ -48,7 +48,6 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <button id="pre-proposta" class="btn btn-flat btn-primary left" type="button"><i class="glyphicon glyphicon-file"></i> Gerar Pré-Proposta</button>
                                 <a href="{{ route('projeto.projeto.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Update">
                             </div>
