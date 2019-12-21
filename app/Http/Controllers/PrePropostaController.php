@@ -252,6 +252,7 @@ class PrePropostaController extends Controller
             'minima_area',
             'qtd_paineis',
             'economia_anula',
+            'preco_kwh',
             'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'panel_potencia']);
 
         return $data;
