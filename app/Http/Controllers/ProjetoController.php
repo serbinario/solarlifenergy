@@ -222,7 +222,7 @@ class ProjetoController extends Controller
             }
 
            //$util = new UtilController();
-          //$util->consultaPotencia($request);
+         // dd($util->simulaGeracao($request->input('cep'), $request->input('kwh')));
             /*
              * 1- Pega do formulario uma array chamada num_contrato
              * 2 - se vinher alguma vazia e limpa com o metodo array_filter

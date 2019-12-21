@@ -171,6 +171,7 @@
 						<ul>
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
 							<li><a href="{{ route('projeto.projeto.index') }}" class="active"><span class="title">Projetos</span></a></li>
+							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Pré-Propostas</span></a></li>
 							@role('admin')
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
