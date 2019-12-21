@@ -53,7 +53,8 @@ class PreProposta extends Model
                   'oct',
                   'nov',
                   'dec',
-                  'panel_potencia'
+                  'panel_potencia',
+        'preco_kwh'
               ];
 
     /**
@@ -96,6 +97,17 @@ class PreProposta extends Model
     public function getEconomiaAnulaAttribute($value)
     {
         return $this->converteInglesReal($value);
+    }
+
+    public function setPrecoKwhAttribute($value)
+    {
+        $this->attributes['preco_kwh'] = $value == "" ? null: $this->convertesRealIngles($value);
+    }
+
+    public function getPrecoKwhAttribute($value)
+    {
+        //dd(number_format($value,4,",","."));
+        return number_format($value,4,",",".");
     }
 
 
