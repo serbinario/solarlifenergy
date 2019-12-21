@@ -23,6 +23,9 @@ Route::get('/error', 'ClienteController@index')
 Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
     ->name('cliente.consultaCpfCnpf');
 
+Route::post('/simulaGeracao', 'UtilController@simulaGeracao')
+    ->name('simulaGeracao');
+
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //Url para receber reuqest do boletofacil
@@ -669,5 +672,40 @@ Route::group(
 
     Route::post('/cliente_web.store', 'ClienteWebController@store')
         ->name('cliente_web.store');
+
+});
+
+Route::group(
+[
+    'prefix' => 'preProposta',
+], function () {
+
+    Route::get('/', 'PrePropostaController@index')
+         ->name('pre_proposta.pre_proposta.index');
+
+    Route::get('/create','PrePropostaController@create')
+         ->name('pre_proposta.pre_proposta.create');
+
+    Route::get('/grid', 'PrePropostaController@grid')
+         ->name('grid');
+
+    Route::get('/show/{preProposta}','PrePropostaController@show')
+         ->name('pre_proposta.pre_proposta.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{preProposta}/edit','PrePropostaController@edit')
+         ->name('pre_proposta.pre_proposta.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'PrePropostaController@store')
+         ->name('pre_proposta.pre_proposta.store');
+               
+    Route::put('pre_proposta/{preProposta}', 'PrePropostaController@update')
+         ->name('pre_proposta.pre_proposta.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{preProposta}/destroy','PrePropostaController@destroy')
+         ->name('pre_proposta.pre_proposta.destroy')
+         ->where('id', '[0-9]+');
 
 });

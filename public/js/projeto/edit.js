@@ -95,56 +95,6 @@ $(document).ready(function () {
 
     });
 
-    $(".propostas").click(function(){
-        console.log("ss")
-        console.log($( "#cep" ).val())
-
-        var dados = {
-            'lead[name]' : "Paulo+Vaz",
-            'lead[email]' : "psgva@gmail.com",
-            'lead[state]' : "PE",
-            'lead[city]' : "Recife",
-            'lead[postalcode]' : "51170620",
-            'lead[monthly_usage]' : "7000",
-            'lead[kind]' : "email"
-
-        }
-
-        jQuery.ajax({
-            crossDomain: true,
-            type: 'POST',
-            data: dados,
-            url: 'https://www.portalsolar.com.br/api/leads',
-        }).success(function (retorno) {
-            if(retorno.success) {
-                console.log("ssssssssssss")
-
-            } else {
-                swal(retorno.msg, "Click no botão abaixo!", "error");
-            }
-        }).error(function (retorno) {
-            console.log("ssssssssssss")
-        });
-
-       /* $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: 'https://www.portalsolar.com.br/api/leads',
-            data: JSON.stringify(record),
-            complete: function(xhr) {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 201) {
-                        alert("Created");
-                    }
-                } else {
-                    alert("NoGood");
-                }
-            }
-
-        });*/
-    });
-
 
     $("body").on("click",".remove",function(){
 
@@ -153,36 +103,5 @@ $(document).ready(function () {
 
     });
 
-    /*
-    * Retorna as cardendas
-     */
-    $("#coordenadas_btn").click(function () { //user clicks button
-        swal({
-                title: "Deseja Alterar a Coordenada?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Sim, Pegar nova Coordenadasss",
-                cancelButtonText: "Nao, cancel!",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            },
-            function(isConfirm) {
-                if (isConfirm) {
 
-                    if ("geolocation" in navigator){ //check geolocation available
-                        console.log("ddddddddddd")
-                        //try to get user current location using getCurrentPosition() method
-                        navigator.geolocation.getCurrentPosition(function(position){
-                            console.log("wwwwwwwwwwwww")
-                            $("#coordenadas").val(position.coords.latitude + "," + position.coords.longitude);
-                            swal("Novar coordenada alterada", "Click no botão abaixo!", "success");
-                        });
-                    }else{
-                        swal("Seu Browser nao suporta", "Click no botão abaixo!", "error");
-                    }
-                }
-        });
-    });
 });

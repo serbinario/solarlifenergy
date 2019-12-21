@@ -67,5 +67,10 @@
         "model-name": "ClienteWeb",
         "resource-file": "cliente_webs.json",
         "table-name": "clientes"
+    },
+    {
+        "model-name": "PreProposta",
+        "resource-file": "pre_proposta.json",
+        "table-name": "pre_propostas"
     }
 ]

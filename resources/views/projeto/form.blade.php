@@ -12,7 +12,6 @@
             <input name="clientes_id" type="hidden" id="clientes_id" value="{{ old('clientes_id', isset($projeto->cliente->id) ? $projeto->cliente->id : null) }}" >
             <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($projeto->cliente->cep) ? $projeto->cliente->cep : null) }}" >
             <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($projeto->cliente->estado) ? $projeto->cliente->estado : null) }}" >
-            <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($projeto->cliente->cep) ? $projeto->cliente->cep : null) }}" >
             <div class="col-md-10">
                 <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($projeto->cliente->nome) ? $projeto->cliente->nome : null) }}" readonly >
                 {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
@@ -35,20 +34,18 @@
             </div>
         </div>
     @endif
-
-
     @role('admin')
     <div class="form-group {{ $errors->has('users_id') ? 'has-error' : '' }}">
         <label for="users_id" class="col-md-2 text-bold control-label">Intergrador.:</label>
         <div class="col-md-10">
-                <select   class="form-control input-sm" id="users_id" name="users_id">
+            <select   class="form-control input-sm" id="users_id" name="users_id">
                 <option value="" style="display: none;" {{ old('users_id', isset($projeto->users_id) ? $projeto->users_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
                 @foreach ($users as $key => $user)
                     <option value="{{ $key }}" {{ old('users_id', isset($projeto->users_id) ? $projeto->users_id : null) == $key ? 'selected' : '' }}>
                         {{ $user }}
                     </option>
                 @endforeach
-                </select>
+            </select>
 
 
             {!! $errors->first('conta_bancaria_id', '<p class="help-block">:message</p>') !!}
@@ -95,26 +92,17 @@
         </div>
     </div>
 
-
-
-
-
-
-
     <div class="form-group {{ $errors->has('data_prevista') ? 'has-error' : '' }}">
         <label for="data_prevista" class="col-md-2 control-label text-bold">Previsão Data.:</label>
         <div class="col-md-10">
             @role('admin')
-                <input class="form-control input-sm date" name="data_prevista" type="text" id="data_prevista" value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
+            <input class="form-control input-sm date" name="data_prevista" type="text" id="data_prevista" value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
             @else
                 <input class="form-control input-sm" name="data_prevista" type="text" id="data_prevista" readonly value="{{ old('data_prevista', isset($projeto->data_prevista) ? $projeto->data_prevista : null) }}">
-            @endrole
+                @endrole
 
         </div>
     </div>
-
-
-
 
     <div class="form-group {{ $errors->has('prioridade') ? 'has-error' : '' }}">
         <label for="prioridade" class="col-md-2 control-label text-bold">Prioridade.:</label>
@@ -166,20 +154,14 @@
 
     <div class="form-group {{ $errors->has('end_intalacao') ? 'has-error' : '' }}">
         <label for="end_intalacao" class="col-md-2 control-label text-bold">End. de Instalação.:</label>
-        <div class="col-md-10">
+        <div class="col-md-4">
             <input class="form-control input-sm" name="end_intalacao" type="text" id="end_intalacao"  value="{{ old('end_intalacao', isset($projeto->end_intalacao) ? $projeto->end_intalacao : null) }}" placeholder="">
             {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
         </div>
-    </div>
-
-    <div class="form-group {{ $errors->has('coordenadas') ? 'has-error' : '' }}">
         <label for="coordenadas" class="col-md-2 control-label text-bold">Coordenadas.:</label>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <input class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($projeto->coordenadas) ? $projeto->coordenadas : null) }}" placeholder="">
             {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
-        </div>
-        <div class="input-group-btn">
-            <button class="btn btn-sm btn-default" id="coordenadas_btn" type="button">Consultar</button>
         </div>
     </div>
 
@@ -194,7 +176,7 @@
 
     @if(isset($projeto))
         <div class="row">
-                @foreach( $projeto->contratos as $contrato )
+            @foreach( $projeto->contratos as $contrato )
                 <div class="col-sm-6">
                     <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
                         <label for="num_contrato" class="col-sm-4 control-label text-bold">Contrato Celpe.:</label>
@@ -214,8 +196,7 @@
                         </div>--}}
                     </div>
                 </div>
-
-                @endforeach
+            @endforeach
         </div>
     @else
         <div class="form-group{{ $errors->has('num_contrato') ? 'has-error' : '' }}">
@@ -226,8 +207,6 @@
         </div>
 
     @endif
-
-
     <div class="row after-add-more">
         <div class="col-sm-6">
             <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
