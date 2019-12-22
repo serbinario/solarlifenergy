@@ -3,6 +3,7 @@ var fornecedorNome;
 var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
+
 function template(d){
     console.log(d);
     //Retirar os "&quot" da array aditivos
@@ -27,7 +28,7 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
-    "searching": true,
+    "searching": false,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
@@ -36,7 +37,9 @@ var table = $('#cliente').DataTable({
     ajax: {
         url: "/index.php/cliente/grid",
         data: function (d) {
-            d.inativo = 'sss';
+            d.nome = $('input[name=nome]').val();
+            d.data_cadadastro_ini = dateToEN($('input[name=data_cadadastro_ini]').val());
+            d.data_cadadastro_fim = dateToEN($('input[name=data_cadadastro_fim]').val())  + " 23:59:59";
         }
     },
     columns: [
@@ -70,35 +73,9 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
     }
 });
 
-$(document).on("keyup", "#localizar", function () {
+$( "#localizar" ).click(function() {
     table.draw();
 });
-
-$(document).on("change", "#status", function () {
-    table.draw();
-});
-$(document).on("change", "#vencimento", function () {
-    table.draw();
-});
-
-$(document).on("change", "#data_instalacao_fin", function () {
-    table.draw();
-});
-
-$(document).on("change", "#grupo_id", function () {
-    table.draw();
-});
-
-$(document).on("change", "#inativo", function () {
-    table.draw();
-
-
-});
-
-function dateToEN(date)
-{
-    return date.split('/').reverse().join('-');
-}
 
 var mascara = function (val) {
     return $('val.cpf_cnpj').mask('00.000.000/0000-00')

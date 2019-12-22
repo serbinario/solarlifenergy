@@ -19,4 +19,9 @@ var cpfMascara = function (val) {
     };
 $('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
 
+function dateToEN(date)
+{
+    return date.split('/').reverse().join('-');
+}
+
 
