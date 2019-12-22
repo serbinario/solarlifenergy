@@ -56,6 +56,27 @@
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
+                                                        <label for="cod_projeto" class="col-sm-4 control-label">Cod. Projeto:</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control input-sm" name="cod_projeto" type="text" id="cod_projeto"  placeholder="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="integrador" class="col-sm-4 control-label">Intergrador:</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control input-sm" name="integrador" type="text" id="integrador"  placeholder="Integrador">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Prioridade</label>
                                                         <div class="col-md-8">
                                                             <select id="prioridade" name="prioridade" class="form-control input-sm">
@@ -83,6 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <br>
 
