@@ -93,6 +93,12 @@ class ProjetoController extends Controller
                 if ($request->has('prioridade')) {
                     $query->where('projetos.prioridade', 'like', "%" . $request->get('prioridade') . "%");
                 }
+                if ($request->has('cod_projeto')) {
+                    $query->where('projetos.projeto_codigo', 'like', "%" . $request->get('cod_projeto') . "%");
+                }
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
             })
 
             ->addColumn('action', function ($row) {
