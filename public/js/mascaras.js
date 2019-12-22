@@ -6,6 +6,7 @@ $('.money').mask('###.###.###.##0,00',  {reverse: true});
 $('.number').mask('###.###.###.###',  {reverse: true});
 $('.kwh').mask('0,0000',  {reverse: true});
 
+$('.date').datepicker({autoclose: true, todayHighlight: true, format: "dd/mm/yyyy"});
 $('.datepicker').datepicker({autoclose: true, todayHighlight: true});
 
 var cpfMascara = function (val) {

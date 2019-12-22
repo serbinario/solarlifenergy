@@ -63,7 +63,7 @@
     <div class="form-group {{ $errors->has('minima_area') ? 'has-error' : '' }}">
         <label for="preco_kwh" class="col-md-2 control-label text-bold">Preço do KWh.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm kwh" name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : null) }}" maxlength="10" placeholder="#,####">
+            <input class="form-control input-sm 7 " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : null) }}" maxlength="10" placeholder="#,####">
             {!! $errors->first('preco_kwh', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -90,6 +90,11 @@
             {!! $errors->first('economia_anula', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
+
+        <div class="col-lg-12">
+            <h4 class="text-bold">Histórico de Consumo</h4>
+            <hr class="ruler-lg"/>
+        </div>
 
     <div class="form-group {{ $errors->has('jan') ? 'has-error' : '' }}">
         <label for="jan" class="col-md-2 control-label text-bold">Jan.:</label>
