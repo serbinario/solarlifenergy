@@ -27,7 +27,7 @@ function template(d){
 }
 
 var table = $('#projeto').DataTable({
-    "searching": true,
+    "searching": false,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
