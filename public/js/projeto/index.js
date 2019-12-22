@@ -76,6 +76,15 @@ $( "#localizar" ).click(function() {
 });
 
 
+$( "#limpar" ).click(function() {
+    $('input[name=nome]').val("");
+    $('input[name=data_cadadastro_ini]').val("");
+    $('input[name=data_cadadastro_fim]').val("");
+});
+
+
+
+
 
 
 

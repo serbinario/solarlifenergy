@@ -77,6 +77,12 @@ $( "#localizar" ).click(function() {
     table.draw();
 });
 
+$( "#limpar" ).click(function() {
+    $('input[name=nome]').val("");
+    $('input[name=data_cadadastro_ini]').val("");
+    $('input[name=data_cadadastro_fim]').val("");
+});
+
 var mascara = function (val) {
     return $('val.cpf_cnpj').mask('00.000.000/0000-00')
 }

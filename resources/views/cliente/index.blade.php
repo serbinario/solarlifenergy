@@ -110,7 +110,7 @@
                                                     <div class="form-group">
                                                         <div class="col-md-8">
                                                             <a href="#" type="button" id="localizar" class="btn btn-sm btn-flat btn-primary ink-reaction">Localizar</a>
-                                                            <input class="btn btn-sm btn-primary"  id="clear" type="button" value="Limpar">
+                                                            <input class="btn btn-sm btn-primary"  id="limpar" type="button" value="Limpar">
                                                         </div>
                                                     </div>
                                                 </div>
