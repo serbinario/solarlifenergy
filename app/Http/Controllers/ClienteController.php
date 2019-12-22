@@ -52,8 +52,6 @@ class ClienteController extends Controller
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('clientes')
-            ->leftJoin('projetos', 'clientes.id', '=', 'projetos.clientes_id')
-            ->groupBy('clientes.id')
             ->select([
                 'clientes.id',
                 'clientes.nome',
@@ -72,7 +70,19 @@ class ClienteController extends Controller
 
 
         #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+        return Datatables::of($rows)
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('nome', 'like', "%" . $request->get('nome') . "%");
+                }
+                if ($request->has('data_cadadastro_ini')) {
+                    //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
+                    $query->whereBetween('created_at', [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
+                }
+            })
+
+            ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
@@ -86,26 +96,6 @@ class ClienteController extends Controller
                         </form>
                         ';
         })
-            /*->filter(function ($query) use ($request) {
-                # recuperando o valor da requisição
-                $localizar = $request->get('localizar');
-                $status = $request->get('status');
-                $vencimento = $request->get('vencimento');
-                $data_instalacao_ini = $request->get('data_instalacao_ini');
-                $data_instalacao_fin = $request->get('data_instalacao_fin');
-                $grupo_id = $request->get('grupo_id');
-                $inativo = $request->get('inativo');
-
-
-                #condição
-                $query->where(function ($where) use ($localizar) {
-
-                });
-
-                if ($request->has('status')){
-                    $query->where('mk_clientes.status_secret', '=', $status);
-                }
-            })*/
 
             ->make(true);
     }

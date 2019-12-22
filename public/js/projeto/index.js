@@ -36,7 +36,10 @@ var table = $('#projeto').DataTable({
     ajax: {
         url: "/index.php/projeto/grid",
         data: function (d) {
-            d.inativo = 'sss';
+            d.nome = $('input[name=nome]').val();
+            d.data_cadadastro_ini = dateToEN($('input[name=data_cadadastro_ini]').val());
+            d.data_cadadastro_fim = dateToEN($('input[name=data_cadadastro_fim]').val())  + " 23:59:59";
+            d.prioridade = $('select[name=prioridade] option:selected').val();
         }
     },
     columns: [
@@ -68,35 +71,10 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
     }
 });
 
-$(document).on("keyup", "#localizar", function () {
+$( "#localizar" ).click(function() {
     table.draw();
 });
 
-$(document).on("change", "#status", function () {
-    table.draw();
-});
-$(document).on("change", "#vencimento", function () {
-    table.draw();
-});
-
-$(document).on("change", "#data_instalacao_fin", function () {
-    table.draw();
-});
-
-$(document).on("change", "#grupo_id", function () {
-    table.draw();
-});
-
-$(document).on("change", "#inativo", function () {
-    table.draw();
-
-
-});
-
-function dateToEN(date)
-{
-    return date.split('/').reverse().join('-');
-}
 
 
 

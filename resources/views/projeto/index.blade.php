@@ -58,7 +58,7 @@
                                                     <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Prioridade</label>
                                                         <div class="col-md-8">
-                                                            <select id="prioridade" name="status" class="form-control input-sm">
+                                                            <select id="prioridade" name="prioridade" class="form-control input-sm">
                                                                 <option value="">Todos</option>
                                                                 <option value="Alta">Alta</option>
                                                                 <option value="Média">Média</option>
@@ -89,26 +89,26 @@
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_pag_ini" class="col-sm-6 control-label">Data Cad. Ini.:</label>
+                                                        <label for="data_cadadastro_ini" class="col-sm-6 control-label">Data Cad. Ini.:</label>
                                                         <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_pag_ini" type="text" id="data_pag_ini" value="{{ old('data_pag_ini',  null) }}" maxlength="20" placeholder="Início">
+                                                            <input class="form-control input-sm date" name="data_cadadastro_ini" type="text" id="data_cadadastro_ini" value="{{ old('data_cadadastro_ini',  null) }}" placeholder="Início">
 
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_pag_fim" class="col-sm-6 control-label">Data Cad. Fim.:</label>
+                                                        <label for="data_cadadastro_fim" class="col-sm-6 control-label">Data Cad. Fim.:</label>
                                                         <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_pag_fim" type="text" id="data_pag_fim" value="{{ old('login',  null) }}" maxlength="20" placeholder="Fim">
+                                                            <input class="form-control input-sm date" name="data_cadadastro_fim" type="text" id="data_cadadastro_fim" value="{{ old('data_cadadastro_fim',  null) }}" placeholder="Fim">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="prioridade" class="col-md-4 control-label">Estado</label>
+                                                        <label for="estado" class="col-md-4 control-label">Estado</label>
                                                         <div class="col-md-8">
-                                                            <select id="prioridade" name="status" class="form-control input-sm">
+                                                            <select id="estado" name="status" class="form-control input-sm">
                                                                 <option value="">Todos</option>
                                                                 <option value="Alta">PE</option>
                                                                 <option value="Alta">PB</option>
@@ -118,9 +118,9 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="prioridade" class="col-md-4 control-label">Cidade</label>
+                                                        <label for="cidade" class="col-md-4 control-label">Cidade</label>
                                                         <div class="col-md-8">
-                                                            <select id="prioridade" name="status" class="form-control input-sm">
+                                                            <select id="cidade" name="status" class="form-control input-sm">
                                                                 <option value="">Todos</option>
                                                                 <option value="Alta">Recife</option>
                                                                 <option value="Média">Cabo</option>
@@ -135,8 +135,8 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <div class="col-md-8">
-                                                            <a href="#" type="button" id="search" class="btn btn-flat btn-primary ink-reaction">Localizar</a>
-                                                            <input class="btn btn-primary"  id="clear" type="button" value="Limpar">
+                                                            <a href="#" type="button" id="localizar" class="btn btn-sm btn-flat btn-primary ink-reaction">Localizar</a>
+                                                            <input class="btn btn-sm btn-primary"  id="clear" type="button" value="Limpar">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -188,6 +188,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/projeto/index.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/projeto/index.js')}}" type="text/javascript"></script>
+
 @stop

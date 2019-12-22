@@ -51,7 +51,7 @@ class ProjetoController extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
         $this->token = csrf_token();
         #Criando a consulta
@@ -79,7 +79,23 @@ class ProjetoController extends Controller
 
 
         #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+        return Datatables::of($rows)
+
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
+                }
+                if ($request->has('data_cadadastro_ini')) {
+                    //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
+                    $query->whereBetween('projetos.created_at', [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
+                }
+                if ($request->has('prioridade')) {
+                    $query->where('projetos.prioridade', 'like', "%" . $request->get('prioridade') . "%");
+                }
+            })
+
+            ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="projeto/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
