@@ -48,9 +48,9 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label for="nome" class="col-sm-2 control-label">Nome:</label>
+                                                        <label for="nome" class="col-sm-2 control-label">Cliente:</label>
                                                         <div class="col-md-10">
-                                                            <input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="nome">
+                                                            <input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="Nome">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -91,7 +91,7 @@
                                                     <div class="form-group">
                                                         <label for="data_pag_ini" class="col-sm-6 control-label">Data Cad. Ini.:</label>
                                                         <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_pag_ini" type="text" id="data_pag_ini" value="{{ old('data_pag_ini',  null) }}" maxlength="20" placeholder="PAG. DE">
+                                                            <input class="form-control input-sm date" name="data_pag_ini" type="text" id="data_pag_ini" value="{{ old('data_pag_ini',  null) }}" maxlength="20" placeholder="Início">
 
                                                         </div>
                                                     </div>
@@ -100,7 +100,7 @@
                                                     <div class="form-group">
                                                         <label for="data_pag_fim" class="col-sm-6 control-label">Data Cad. Fim.:</label>
                                                         <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_pag_fim" type="text" id="data_pag_fim" value="{{ old('login',  null) }}" maxlength="20" placeholder="PAG. ATE">
+                                                            <input class="form-control input-sm date" name="data_pag_fim" type="text" id="data_pag_fim" value="{{ old('login',  null) }}" maxlength="20" placeholder="Fim">
                                                         </div>
                                                     </div>
                                                 </div>
