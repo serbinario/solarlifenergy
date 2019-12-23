@@ -63,8 +63,8 @@
     <div class="form-group {{ $errors->has('minima_area') ? 'has-error' : '' }}">
         <label for="preco_kwh" class="col-md-2 control-label text-bold">Preço do KWh.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm 7 " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : null) }}" maxlength="10" placeholder="#,####">
-            {!! $errors->first('preco_kwh', '<p class="help-block">:message</p>') !!}
+            <input class="form-control input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : null) }}" maxlength="10" placeholder="#,####">
+            {!! $errors->first('preco', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
