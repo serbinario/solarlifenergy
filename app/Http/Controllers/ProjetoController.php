@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\ContratoCelpe;
 use Serbinario\Entities\Projeto;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\ProjetoStatus;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
@@ -167,19 +168,19 @@ class ProjetoController extends Controller
 
             $data['projeto_codigo'] = $projeto_codigo;
 
+            //[RF001-RN002]:
+            $data['projeto_status_id'] = 1;
+
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario nao manda o id do user pois esta
             // em solente leitura
             if(empty($data['users_id'])){
                 $data['users_id'] = Auth::id();
             }
-
-
             $projeto = Projeto::create($data);
 
             foreach (array_filter($request->get('num_contrato')) as $contrato)  {
                 $contratos = $projeto->contratos()->create(['num_contrato' => $contrato]);
             }
-
 
             return redirect()->route('projeto.projeto.index')
                 ->with('success_message', 'Projeto was successfully added!');
@@ -220,8 +221,10 @@ class ProjetoController extends Controller
         //dd($projeto);
         $users = User::orderBy('name')->pluck('name','id')->all();
 
+        $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
+
         //dd($projeto->contratos);
-        return view('projeto.edit', compact('projeto','clientes', 'users'));
+        return view('projeto.edit', compact('projeto','clientes', 'users', 'projetosStatus'));
     }
 
     /**
@@ -239,6 +242,7 @@ class ProjetoController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
             $projeto = Projeto::findOrFail($id);
+            //dd($data);
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -260,9 +264,7 @@ class ProjetoController extends Controller
             for($i = 0; $i < count($data['num_contrato']); $i++){
                $contratos = $projeto->contratos()->create(['num_contrato' => $data['num_contrato'][$i], 'percentual' => $data['percentual'][$i]]);
             }
-            //foreach (array_filter($request->get('num_contrato')) as $contrato) {
-            //$contratos = $projeto->contratos()->create(['num_contrato' => $contrato, 'percentual' => '1']);
-            //  }
+
             $projeto->update($data);
 
             return redirect()->route('projeto.projeto.index')
@@ -332,6 +334,7 @@ class ProjetoController extends Controller
         $data = $request->only(
             [
                 'clientes_id',
+                'projeto_status_id',
                 'prioridade',
                 'projeto_codigo',
                 'num_contrato',

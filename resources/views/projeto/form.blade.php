@@ -4,7 +4,6 @@
         <h4 class="text-bold">Dados Pessoais</h4>
         <hr class="ruler-lg"/>
     </div>
-    <br> <br><br>
 
     @if(isset($projeto->cliente->id))
         <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
@@ -29,11 +28,37 @@
                         </option>
                     @endforeach
                 </select>
-
                 {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
     @endif
+
+    @role('admin')
+    <div class="form-group {{ $errors->has('projeto_status_id') ? 'has-error' : '' }}">
+        <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.:</label>
+        <div class="col-md-10">
+            <select   class="form-control input-sm" id="projeto_status_id" name="projeto_status_id">
+                <option value="" style="display: none;" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : '') == '' ? 'selected' : '' }} disabled selected>Projeto Status</option>
+                @foreach ($projetosStatus as $key => $statu)
+                    <option value="{{ $key }}" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : null) == $key ? 'selected' : '' }}>
+                        {{ $statu }}
+                    </option>
+                @endforeach
+            </select>
+            {!! $errors->first('projeto_status_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+    @else
+        <div class="form-group">
+            <label for="projeto_status_id" class="col-md-2 control-label  text-bold">Status Projeto.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm" readonly name="projeto_status_id" type="hidden" id="projeto_status_id" value="{{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : null) }}">
+                <input class="form-control input-sm" readonly name="projeto_status_nome" type="text" id="projeto_status_nome" value="{{ old('projeto_status_nome', isset($projeto->projetoStatus->status_nome) ? $projeto->projetoStatus->status_nome : null) }}">
+            </div>
+        </div>
+    @endrole
+
+
     @role('admin')
     <div class="form-group {{ $errors->has('users_id') ? 'has-error' : '' }}">
         <label for="users_id" class="col-md-2 text-bold control-label">Intergrador.:</label>
@@ -46,8 +71,6 @@
                     </option>
                 @endforeach
             </select>
-
-
             {!! $errors->first('conta_bancaria_id', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
