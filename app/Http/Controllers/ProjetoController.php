@@ -221,7 +221,7 @@ class ProjetoController extends Controller
         //dd($projeto);
         $users = User::orderBy('name')->pluck('name','id')->all();
 
-        $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
+        $projetosStatus = ProjetoStatus::orderBy('id','asc')->pluck('status_nome','id')->all();
 
         //dd($projeto->contratos);
         return view('projeto.edit', compact('projeto','clientes', 'users', 'projetosStatus'));
