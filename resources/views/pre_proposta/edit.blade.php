@@ -31,7 +31,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar account</header>
+                            <header>Editar Pré-Proposta</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('pre_proposta.pre_proposta.index') }}" class="btn btn-primary" title="Show All Pre Proposta">
@@ -62,6 +62,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+
     <script src="{{ asset('/js/pre_proposta/edit.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

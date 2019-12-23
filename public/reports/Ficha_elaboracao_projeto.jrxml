@@ -453,7 +453,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["333333"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="75" width="210" height="18" uuid="5c1441e2-3c12-4ebc-b812-c48c0c39d12c">
@@ -528,11 +528,38 @@ WHERE p.id = $P{idProjeto}]]>
 				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="210" width="556" height="1" uuid="8c0cf168-3a74-4cd9-adc3-6f9adda8d96c">
+				<reportElement positionType="Float" x="5" y="215" width="556" height="1" uuid="6b08f27e-3da1-454a-8ac6-db750bdb5c60">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
+			<line>
+				<reportElement positionType="Float" x="80" y="170" width="120" height="1" uuid="8ad69f4b-51b3-43df-aeaf-4b69655663d9">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="370" y="170" width="120" height="1" uuid="d9a404a2-37a6-4429-9b31-ced26537ec74">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="50" y="180" width="189" height="30" uuid="2f28f67b-a241-41e7-b688-bd10a76ff72a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="180" width="208" height="30" uuid="822ff4c8-7793-4e24-9b17-1fd8a4e232d9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 </jasperReport>
