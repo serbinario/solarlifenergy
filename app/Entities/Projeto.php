@@ -80,6 +80,14 @@ class Projeto extends Model
         return $this->belongsTo('Serbinario\User','users_id','id');
     }
 
+   /**
+     * Get the cliente for this model.
+     */
+    public function projetoStatus()
+    {
+        return $this->belongsTo('Serbinario\Entities\ProjetoStatus','projeto_status_id','id');
+    }
+
     /**
      * Get the projeto for this model.
      */

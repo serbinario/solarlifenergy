@@ -59,6 +59,7 @@ class ProjetoController extends Controller
         $rows = \DB::table('projetos')
             ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
             ->leftJoin('users', 'users.id', '=', 'projetos.users_id')
+            ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetos.projeto_status_id')
             ->select([
                 'clientes.nome',
                 'projetos.id',
@@ -66,6 +67,7 @@ class ProjetoController extends Controller
                 'projetos.kw',
                 'projetos.valor_projeto',
                 'users.name',
+                //'projetos_status.id',
                 'projetos.prioridade',
                 \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at')
             ]);
@@ -99,6 +101,11 @@ class ProjetoController extends Controller
                 if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
                 }
+                if ($request->has('projeto_status')) {
+                    $query->where('projetos_status.id', '=',  $request->get('projeto_status') );
+                }
+
+
             })
 
             ->addColumn('action', function ($row) {
@@ -207,7 +214,7 @@ class ProjetoController extends Controller
      */
     public function edit($id)
     {
-        $projeto = Projeto::with('contratos', 'cliente')->findOrFail($id);
+        $projeto = Projeto::with('contratos', 'cliente', 'projetoStatus')->findOrFail($id);
         //dd($projeto);
         $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
         //dd($projeto);

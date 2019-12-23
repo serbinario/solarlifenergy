@@ -42,6 +42,9 @@ var table = $('#projeto').DataTable({
             d.prioridade = $('select[name=prioridade] option:selected').val();
             d.cod_projeto = $('input[name=cod_projeto]').val();
             d.integrador = $('input[name=integrador]').val();
+            d.projeto_status = $('select[name=projeto_status] option:selected').val();
+
+
 
 
         }

@@ -90,16 +90,17 @@
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label for="prioridade" class="col-md-4 control-label">Status</label>
+                                                        <label for="projeto_status" class="col-md-4 control-label">Status</label>
                                                         <div class="col-md-8">
-                                                            <select id="prioridade" name="status" class="form-control input-sm">
+                                                            <select id="projeto_status" name="projeto_status" class="form-control input-sm">
                                                                 <option value="">Todos</option>
-                                                                <option value="Alta">Prospeccção e Elaboração de Projetos</option>
-                                                                <option value="Média">Proj. em Análise</option>
-                                                                <option value="Baixa">Proj. em Análise / fianlisado para Obras</option>
-                                                                <option value="">Obras em Execursão</option>
-                                                                <option value="">Obras em Fase Final</option>
-                                                                <option value="">Obras Finalisadas</option>
+                                                                <option value="1">Prospeccção e Elaboração de Projetos</option>
+                                                                <option value="2">Proj. em Análise</option>
+                                                                <option value="3">Proj. em Análise / fianlisado para Obras</option>
+                                                                <option value="4">Obras em Execursão</option>
+                                                                <option value="5">Obras em Fase Final</option>
+                                                                <option value="6">Obras Finalisadas</option>
+                                                                <option value="7">Obras Paradas</option>
                                                             </select>
                                                         </div>
                                                     </div>
