@@ -34,6 +34,7 @@ class Projeto extends Model
      */
     protected $fillable = [
         'clientes_id',
+        'projeto_status_id',
         'consumo',
         'area_disponivel',
         'users_id',

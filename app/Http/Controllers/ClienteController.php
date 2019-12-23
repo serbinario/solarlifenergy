@@ -52,6 +52,8 @@ class ClienteController extends Controller
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('clientes')
+            ->leftJoin('projetos', 'clientes.id', '=', 'projetos.clientes_id')
+            ->groupBy('clientes.id')
             ->select([
                 'clientes.id',
                 'clientes.nome',
@@ -149,6 +151,8 @@ class ClienteController extends Controller
             $projeto['clientes_id'] = $cliente->id;
             $projeto['projeto_codigo'] = $projeto_codigo;
             $projeto['users_id'] = \Auth::id();
+            //[RF001-RN002]:
+            $projeto['projeto_status_id'] = 1;
 
             //dd($projeto);
 
