@@ -5,6 +5,7 @@ $('.date').mask('00/00/0000');
 $('.money').mask('###.###.###.##0,00',  {reverse: true});
 $('.number').mask('###.###.###.###',  {reverse: true});
 $('.kwh').mask('0,0000',  {reverse: true});
+$('.kwp').mask('####0,00',  {reverse: true});
 
 $('.date').datepicker({autoclose: true, todayHighlight: true, format: "dd/mm/yyyy"});
 $('.datepicker').datepicker({autoclose: true, todayHighlight: true});

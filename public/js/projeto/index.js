@@ -60,7 +60,7 @@ var table = $('#projeto').DataTable({
         {data: 'id', name: 'projetos.id', targets: 0, visible: false},
         {data: 'nome', name: 'clientes.nome'},
         {data: 'projeto_codigo', name: 'projetos.projeto_codigo'},
-        {data: 'name', name: 'users.name'},
+        {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'created_at', name: 'created_at'},
         {data: 'updated_at', name: 'updated_at', targets: 0, visible: false},
         {data: 'kw', name: 'kw'},
