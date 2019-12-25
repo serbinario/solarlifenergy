@@ -3,10 +3,11 @@
 namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use \Serbinario\Traits\UtilEntities;
 
 class Projeto extends Model
 {
-
+    use UtilEntities;
     /**
      * Indicates if the model should be timestamped.
      *
@@ -106,12 +107,6 @@ class Projeto extends Model
         }
     }
 
-    public function setKwAttribute($value)
-    {
-        $this->attributes['kw'] = $value == "" ? null: str_replace(".","",$value);
-
-    }
-
     public function setKwhAttribute($value)
     {
 
@@ -189,6 +184,16 @@ class Projeto extends Model
         //dd( date('d/m/Y', strtotime($value)));
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
         //return strtotime($value);
+    }
+
+    public function setKwAttribute($value)
+    {
+        $this->attributes['kw'] = $value == "" ? null: $this->convertesRealIngles($value);
+    }
+
+    public function getKwAttribute($value)
+    {
+        return $this->convertesRealIngles($value);
     }
 
 
