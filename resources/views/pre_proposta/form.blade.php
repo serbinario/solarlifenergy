@@ -29,6 +29,13 @@
         </div>
     @endif
 
+        <div class="form-group {{ $errors->has('data_validade') ? 'has-error' : '' }}">
+            <label for="data_validade" class="col-md-2 control-label text-bold">Data Validade.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm date" name="data_validade" type="text" id="data_validade" value="{{ old('data_validade', isset($preProposta->data_validade) ? $preProposta->data_validade : null) }}">
+            </div>
+        </div>
+
     <div class="form-group {{ $errors->has('power') ? 'has-error' : '' }}">
         <label for="monthly_usage" class="col-md-2 control-label text-bold">Média consumo Kwh.:</label>
         <div class="col-md-10">

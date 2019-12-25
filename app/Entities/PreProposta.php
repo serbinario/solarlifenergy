@@ -35,6 +35,7 @@ class PreProposta extends Model
      */
     protected $fillable = [
                   'cliente_id',
+        'data_validade',
                     'monthly_usage',
                   'preco_medio_instalado',
                   'potencia_instalada',
@@ -108,6 +109,17 @@ class PreProposta extends Model
     {
         //dd(number_format($value,4,",","."));
         return number_format($value,4,",",".");
+    }
+
+    public function getDataValidadeAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    public function setDataValidadeAttribute($value)
+    {
+        $this->attributes['data_validade'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+
     }
 
 
