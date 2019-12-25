@@ -181,9 +181,7 @@ class Projeto extends Model
      */
     public function getDataPrevistaAttribute($value)
     {
-        //dd( date('d/m/Y', strtotime($value)));
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
-        //return strtotime($value);
     }
 
     public function setKwAttribute($value)

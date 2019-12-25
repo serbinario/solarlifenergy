@@ -245,6 +245,7 @@ class PrePropostaController extends Controller
     protected function getData(Request $request)
     {
         $data = $request->only(['cliente_id',
+            'data_validade',
             'power',
             'monthly_usage',
             'preco_medio_instalado',
