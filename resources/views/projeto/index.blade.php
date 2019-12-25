@@ -181,6 +181,7 @@
                                                     <th>Cod. Projeto</th>
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>
+                                                    <th>Data Atuali.</th>
                                                     <th>KWP</th>
                                                     <th>Prioridade</th>
                                                     <th>Acao</th>

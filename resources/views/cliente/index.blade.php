@@ -133,6 +133,7 @@
                                                     <th>CPF/CNPJ</th>
                                                     <th>Email</th>
                                                     <th>Telefone</th>
+                                                    <th>Data Cadastro</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

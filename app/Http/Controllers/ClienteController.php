@@ -60,7 +60,8 @@ class ClienteController extends Controller
                 'clientes.nome_empresa',
                 'clientes.cpf_cnpj',
                 'clientes.email',
-                'clientes.celular'
+                'clientes.celular',
+                \DB::raw('DATE_FORMAT(clientes.created_at,"%d/%m/%Y") as created_at'),
 
             ]);
 

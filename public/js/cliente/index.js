@@ -28,6 +28,13 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
+    "dom": 'lCfrtip',
+    "order": [],
+    "colVis": {
+        "buttonText": "Colunas",
+        "overlayFade": 0,
+        "align": "right"
+    },
     "searching": false,
     "bLengthChange": false,
     processing: true,
@@ -43,15 +50,16 @@ var table = $('#cliente').DataTable({
         }
     },
     columns: [
-        {data: 'id', name: 'id'},
+        {data: 'id', name: 'id', targets: 0, visible: false},
         {data: 'nome', name: 'nome'},
         {data: 'nome_empresa', name: 'nome_empresa'},
         {data: 'cpf_cnpj', "render": function ( data, type, row ) {
                 return '<span id="'+"WW"+'">'+data+'</span>';
             }
         },
-        {data: 'email', name: 'email'},
+        {data: 'email', name: 'email', targets: 0, visible: false},
         {data: 'celular', name: 'celular'},
+        {data: 'created_at', name: 'created_at'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });

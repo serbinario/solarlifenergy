@@ -70,7 +70,8 @@ class ProjetoController extends Controller
                 'users.name',
                 //'projetos_status.id',
                 'projetos.prioridade',
-                \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at')
+                \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at'),
+                \DB::raw('DATE_FORMAT(projetos.updated_at,"%d/%m/%Y") as updated_at')
             ]);
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele

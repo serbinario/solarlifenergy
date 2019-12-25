@@ -27,6 +27,13 @@ function template(d){
 }
 
 var table = $('#projeto').DataTable({
+    "dom": 'lCfrtip',
+    "order": [],
+    "colVis": {
+        "buttonText": "Colunas",
+        "overlayFade": 0,
+        "align": "right"
+    },
     "searching": false,
     "bLengthChange": false,
     processing: true,
@@ -50,13 +57,14 @@ var table = $('#projeto').DataTable({
         }
     },
     columns: [
-        {data: 'id', name: 'projetos.id'},
+        {data: 'id', name: 'projetos.id', targets: 0, visible: false},
         {data: 'nome', name: 'clientes.nome'},
         {data: 'projeto_codigo', name: 'projetos.projeto_codigo'},
         {data: 'name', name: 'users.name'},
         {data: 'created_at', name: 'created_at'},
+        {data: 'updated_at', name: 'updated_at', targets: 0, visible: false},
         {data: 'kw', name: 'kw'},
-        {data: 'prioridade', name: 'prioridade'},
+        {data: 'prioridade', name: 'prioridade', targets: 0, visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });
