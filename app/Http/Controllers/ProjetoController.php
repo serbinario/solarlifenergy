@@ -91,8 +91,8 @@ class ProjetoController extends Controller
                     $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_cadadastro_ini')) {
-                    //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
-                    $query->whereBetween('projetos.created_at', [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
+                    $tableName = $request->get('filtro_por');
+                    $query->whereBetween('projetos.' . $tableName, [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
                 }
                 if ($request->has('prioridade')) {
                     $query->where('projetos.prioridade', 'like', "%" . $request->get('prioridade') . "%");
