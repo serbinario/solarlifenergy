@@ -67,7 +67,7 @@
 				<ul class="header-nav header-nav-profile">
 					<li class="dropdown">
 						<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-							<img src="" alt="" />
+							{{--<img src="" alt="" />--}}
 							<span class="profile-info">
 									{{ Auth::user()->name }}
 								@role('admin')
@@ -80,10 +80,9 @@
 						</a>
 						<ul class="dropdown-menu animation-dock">
 							<li class="dropdown-header">Config</li>
-							<li><a href="#">My profile</a></li>
-							<li><a href="#">My blog <span class="badge style-danger pull-right">16</span></a></li>
+							<li><a href="#">Meus Dados</a></li>
 							<li class="divider"></li>
-							<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+							<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-fw fa-power-off text-danger"></i> Sair</a></li>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 								{{ csrf_field() }}
 							</form>
