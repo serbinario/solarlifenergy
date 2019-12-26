@@ -136,10 +136,11 @@ class ProjetoController extends Controller
      */
     public function create()
     {
+        $projetosStatus = ProjetoStatus::orderBy('id','asc')->pluck('status_nome','id')->all();
         $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
 
-        return view('projeto.create', compact('clientes', 'users'));
+        return view('projeto.create', compact('clientes', 'users', 'projetosStatus'));
     }
 
     /**
