@@ -18,7 +18,7 @@
                 <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
                     <label for="cliente_id" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <div class="col-md-8">
-                        <select class="form-control" id="cliente_id" name="cliente_id">
+                        <select class="form-control  input-sm" id="cliente_id" name="cliente_id">
                             <option value="" style="display: none;" {{ old('cliente_id', isset($preProposta->cliente_id) ? $preProposta->cliente_id : '') == '' ? 'selected' : '' }} disabled selected>Select cliente</option>
                             @foreach ($Clientes as $key => $Cliente)
                                 <option value="{{ $key }}" {{ old('cliente_id', isset($preProposta->cliente_id) ? $preProposta->cliente_id : null) == $key ? 'selected' : '' }}>
