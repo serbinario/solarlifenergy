@@ -44,8 +44,8 @@ var table = $('#projeto').DataTable({
         url: "/index.php/projeto/grid",
         data: function (d) {
             d.nome = $('input[name=nome]').val();
-            d.data_cadadastro_ini = dateToEN($('input[name=data_cadadastro_ini]').val());
-            d.data_cadadastro_fim = dateToEN($('input[name=data_cadadastro_fim]').val())  + " 23:59:59";
+            d.data_ini = dateToEN($('input[name=data_ini]').val());
+            d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
             d.prioridade = $('select[name=prioridade] option:selected').val();
             d.cod_projeto = $('input[name=cod_projeto]').val();
             d.integrador = $('input[name=integrador]').val();
@@ -94,13 +94,10 @@ $( "#localizar" ).click(function() {
 
 $( "#limpar" ).click(function() {
     $('input[name=nome]').val("");
-    $('input[name=data_cadadastro_ini]').val("");
-    $('input[name=data_cadadastro_fim]').val("");
+    $('input[name=data_ini]').val("");
+    $('input[name=data_fim]').val("");
     $('input[name=cod_projeto]').val("");
     $('input[name=integrador]').val("");
-
-
-
 });
 
 

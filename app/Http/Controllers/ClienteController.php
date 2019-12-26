@@ -79,10 +79,15 @@ class ClienteController extends Controller
                 if ($request->has('nome')) {
                     $query->where('nome', 'like', "%" . $request->get('nome') . "%");
                 }
-                if ($request->has('data_cadadastro_ini')) {
+                if ($request->has('data_ini')) {
+                    $tableName = $request->get('filtro_por');
+                    $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
+                }
+
+                /*if ($request->has('data_cadadastro_ini')) {
                     //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
                     $query->whereBetween('created_at', [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
-                }
+                }*/
             })
 
             ->addColumn('action', function ($row) {

@@ -57,26 +57,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label for="data_cadadastro_ini" class="col-sm-6 control-label">Data Cad. Ini.:</label>
-                                                        <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_cadadastro_ini" type="text" id="data_cadadastro_ini" value="{{ old('data_cadadastro_ini',  null) }}" maxlength="20" placeholder="Início">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label for="data_cadadastro_fim" class="col-sm-6 control-label">Data Cad. Fim.:</label>
-                                                        <div class="col-md-6">
-                                                            <input class="form-control input-sm date" name="data_cadadastro_fim" type="text" id="data_cadadastro_fim" value="{{ old('data_cadadastro_fim',  null) }}" maxlength="20" placeholder="Fim">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Estado</label>
@@ -100,6 +80,40 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="data_ini" class="col-sm-4 control-label">Data Ini.:</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control input-sm date" name="data_ini" type="text" id="data_ini" value="{{ old('data_ini',  null) }}" placeholder="Início">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="data_fim" class="col-sm-4 control-label">Data Fim.:</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control input-sm date" name="data_fim" type="text" id="data_fim" value="{{ old('data_fim',  null) }}" placeholder="Fim">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Filtrar data por:</label>
+                                                        <div class="col-sm-9">
+                                                            <label class="radio-inline radio-styled">
+                                                                <input type="radio" name="filtro_por" checked value="created_at"><span>Cadastro</span>
+                                                            </label>
+                                                            <label class="radio-inline radio-styled">
+                                                                <input type="radio" name="filtro_por" value="updated_at"><span>Atualização</span>
+                                                            </label>
+                                                        </div><!--end .col -->
+                                                    </div><!--end .form-group -->
                                                 </div>
                                             </div>
                                             <br>

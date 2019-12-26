@@ -27,7 +27,14 @@ function template(d){
 }
 
 var table = $('#preProposta').DataTable({
-    "searching": true,
+    "dom": 'lCfrtip',
+    "order": [],
+    "colVis": {
+        "buttonText": "Colunas",
+        "overlayFade": 0,
+        "align": "right"
+    },
+    "searching": false,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
@@ -36,16 +43,22 @@ var table = $('#preProposta').DataTable({
     ajax: {
         url: "/index.php/preProposta/grid",
         data: function (d) {
-            d.inativo = 'sss';
+            d.nome = $('input[name=nome]').val();
+            d.codigo = $('input[name=codigo]').val();
+            d.integrador = $('input[name=integrador]').val();
+            d.data_ini = dateToEN($('input[name=data_ini]').val());
+            d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
+            d.filtro_por = $("input[name='filtro_por']:checked").val();
         }
     },
     columns: [
-        {data: 'id', name: 'id'},
+        {data: 'id', name: 'id',  targets: 0, visible: false},
         {data: 'nome', name: 'clientes.nome'},
         {data: 'codigo', name: 'codigo'},
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'created_at', name: 'pre_propostas.created_at'},
+        {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });
@@ -67,29 +80,17 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
     }
 });
 
-$(document).on("keyup", "#localizar", function () {
+$( "#localizar" ).click(function() {
     table.draw();
 });
 
-$(document).on("change", "#status", function () {
-    table.draw();
-});
-$(document).on("change", "#vencimento", function () {
-    table.draw();
-});
 
-$(document).on("change", "#data_instalacao_fin", function () {
-    table.draw();
-});
-
-$(document).on("change", "#grupo_id", function () {
-    table.draw();
-});
-
-$(document).on("change", "#inativo", function () {
-    table.draw();
-
-
+$( "#limpar" ).click(function() {
+    $('input[name=nome]').val("");
+    $('input[name=data_ini]').val("");
+    $('input[name=data_fim]').val("");
+    $('input[name=codigo]').val("");
+    $('input[name=integrador]').val("");
 });
 
 function dateToEN(date)

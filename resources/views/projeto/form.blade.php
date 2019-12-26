@@ -38,7 +38,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group {{ $errors->has('projeto_codigo') ? 'has-error' : '' }}">
-                <label for="projeto_codigo" class="col-sm-4 control-label text-bold">Projeto Codigo.:</label>
+                <label for="projeto_codigo" class="col-sm-4 control-label text-bold">Código.:</label>
                 <div class="col-md-8">
                     <input class="form-control input-sm" name="projeto_codigo" type="number" id="projeto_codigo" readonly value="{{ old('projeto_codigo', isset($projeto->projeto_codigo) ? $projeto->projeto_codigo : null) }}" placeholder="projeto_codigo...">
                     {!! $errors->first('projeto_codigo', '<p class="help-block">:message</p>') !!}

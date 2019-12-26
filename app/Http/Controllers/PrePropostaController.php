@@ -44,7 +44,7 @@ class PrePropostaController extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
         $this->token = csrf_token();
         #Criando a consulta
@@ -61,11 +61,34 @@ class PrePropostaController extends Controller
                 'clientes.email',
                 'clientes.celular',
                 \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
+                \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
 
             ]);
 
         #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+        return Datatables::of($rows)
+
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
+                }
+                if ($request->has('data_ini')) {
+                    $tableName = $request->get('filtro_por');
+                    $query->whereBetween('pre_propostas.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
+                }
+                if ($request->has('codigo')) {
+                    $query->where('pre_propostas.codigo', 'like', "%" . $request->get('codigo') . "%");
+                }
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
+
+
+            })
+
+
+            ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">

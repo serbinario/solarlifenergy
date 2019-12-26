@@ -68,7 +68,6 @@ class ProjetoController extends Controller
                 'projetos.kw',
                 'projetos.valor_projeto',
                 'users.name',
-                //'projetos_status.id',
                 'projetos.prioridade',
                 \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(projetos.updated_at,"%d/%m/%Y") as updated_at')
@@ -90,9 +89,9 @@ class ProjetoController extends Controller
                 if ($request->has('nome')) {
                     $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
-                if ($request->has('data_cadadastro_ini')) {
+                if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
-                    $query->whereBetween('projetos.' . $tableName, [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
+                    $query->whereBetween('projetos.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
                 if ($request->has('prioridade')) {
                     $query->where('projetos.prioridade', 'like', "%" . $request->get('prioridade') . "%");
