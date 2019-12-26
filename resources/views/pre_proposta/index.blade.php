@@ -76,4 +76,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/pre_proposta/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop
