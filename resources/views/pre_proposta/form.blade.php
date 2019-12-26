@@ -36,6 +36,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label for="codigo" class="col-md-2 control-label text-bold">Codigo.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm" name="codigo" type="number" id="codigo" readonly value="{{ old('codigo', isset($preProposta->codigo) ? $preProposta->codigo : null) }}" >
+            </div>
+        </div>
+
     <div class="form-group {{ $errors->has('power') ? 'has-error' : '' }}">
         <label for="monthly_usage" class="col-md-2 control-label text-bold">Média consumo Kwh.:</label>
         <div class="col-md-10">
