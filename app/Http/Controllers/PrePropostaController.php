@@ -51,13 +51,16 @@ class PrePropostaController extends Controller
             $rows = \DB::table('pre_propostas')
                 ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
                 ->select([
-
+                    'pre_propostas.codigo',
                     'pre_propostas.id',
+                    \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
+                    'pre_propostas.preco_medio_instalado',
                     'clientes.nome',
                     'clientes.nome_empresa',
                     'clientes.cpf_cnpj',
                     'clientes.email',
-                    'clientes.celular'
+                    'clientes.celular',
+                    \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
 
                 ]);
 

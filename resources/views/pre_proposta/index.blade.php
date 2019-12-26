@@ -42,7 +42,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nome</th>
+                                                    <th>Cliente</th>
+                                                    <th>Código</th>
+                                                    <th>Valor Proposta</th>
+                                                    <th>Data Validade</th>
+                                                    <th>Data Criação</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
