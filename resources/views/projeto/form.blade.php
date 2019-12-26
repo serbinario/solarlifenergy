@@ -147,7 +147,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('kw') ? 'has-error' : '' }}">
-        <label for="kw" class="col-md-2  text-bold control-label text-bold">KWP.:</label>
+        <label for="kw" class="col-md-2  text-bold control-label text-bold">Pot. do gerador (KWp).:</label>
         <div class="col-md-10">
             <input class="form-control input-sm kwp" name="kw" type="text" id="kw"  value="{{ old('kw', isset($projeto->kw) ? $projeto->kw : null) }}" placeholder="KW...">
             {!! $errors->first('kw', '<p class="help-block">:message</p>') !!}
