@@ -53,7 +53,7 @@ class PrePropostaController extends Controller
                 ->select([
                     'pre_propostas.codigo',
                     'pre_propostas.id',
-                    'pre_propostas.data_validade',
+                    \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
                     'pre_propostas.preco_medio_instalado',
                     'clientes.nome',
                     'clientes.nome_empresa',
