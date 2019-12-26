@@ -42,6 +42,10 @@ var table = $('#preProposta').DataTable({
     columns: [
         {data: 'id', name: 'id'},
         {data: 'nome', name: 'clientes.nome'},
+        {data: 'codigo', name: 'clientes.codigo'},
+        {data: 'created_at', name: 'pre_propostas.created_at'},
+        {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
+        {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });
