@@ -35,6 +35,7 @@ class PreProposta extends Model
      */
     protected $fillable = [
                   'cliente_id',
+        'codigo',
         'data_validade',
                     'monthly_usage',
                   'preco_medio_instalado',

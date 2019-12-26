@@ -105,6 +105,12 @@ class PrePropostaController extends Controller
         try {
             $this->affirm($request);
             $data = $this->getData($request);
+
+            //Retorna o ultimo registro
+            $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->first();
+            //Corrigir o problema da virada do ano
+            $codigo = $last->codigo +1;
+            $data['codigo'] = $codigo;
             
             PreProposta::create($data);
 
@@ -245,6 +251,7 @@ class PrePropostaController extends Controller
     protected function getData(Request $request)
     {
         $data = $request->only(['cliente_id',
+            'codigo',
             'data_validade',
             'power',
             'monthly_usage',
