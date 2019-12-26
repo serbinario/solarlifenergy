@@ -49,7 +49,9 @@ class Projeto extends Model
         'end_intalacao',
         'coordenadas',
         'data_prevista',
-        'kwh'
+        'kwh',
+        'conta_contrato_atual',
+        'conta_contrato_anterior'
     ];
 
     /**

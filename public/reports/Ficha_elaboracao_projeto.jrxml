@@ -118,6 +118,8 @@ WHERE a.id = $P{idCliente2}]]>
 	p.projeto_codigo,
 	p.prioridade,
 	p.kw,
+	p.conta_contrato_atual,
+	p.data_prevista,
 	u.name,
 	p.obs
 FROM clientes AS a
@@ -163,6 +165,14 @@ WHERE p.id = $P{idProjeto}]]>
 	</field>
 	<field name="kw" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="kw"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	</field>
+	<field name="conta_contrato_atual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="conta_contrato_atual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	</field>
+	<field name="data_prevista" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_prevista"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
 	</field>
 	<field name="name" class="java.lang.String">
@@ -264,7 +274,7 @@ WHERE p.id = $P{idProjeto}]]>
 			</textField>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="ed08e6b3-4bc5-4c48-be27-4b6eaf4adfab"/>
-				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="180" y="137" width="266" height="18" uuid="19a0cf67-27b2-4328-8ed0-fa7dcd7bb2e7">
@@ -358,11 +368,11 @@ WHERE p.id = $P{idProjeto}]]>
 		</band>
 	</title>
 	<detail>
-		<band height="205">
+		<band height="235">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="142" y="143" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="154" y="180" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
@@ -453,7 +463,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{conta_contrato_atual}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="75" width="210" height="18" uuid="5c1441e2-3c12-4ebc-b812-c48c0c39d12c">
@@ -505,6 +515,24 @@ WHERE p.id = $P{idProjeto}]]>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kw} == null ? "" : new DecimalFormat("#,##0.00").format($F{kw})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="136" width="210" height="33" uuid="8dec7741-bab5-4c9e-9b96-c47046f993cc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Prevista aguardando data de confirmação.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="136" width="266" height="18" uuid="0f6c9456-b6e5-454f-be7e-2b27b85474ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data_prevista})]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -558,7 +586,7 @@ WHERE p.id = $P{idProjeto}]]>
 			<textField>
 				<reportElement x="330" y="180" width="208" height="30" uuid="822ff4c8-7793-4e24-9b17-1fd8a4e232d9"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{name}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

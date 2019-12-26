@@ -116,7 +116,7 @@
         <div class="form-group {{ $errors->has('area_disponivel') ? 'has-error' : '' }}">
             <label for="area_disponivel" class="col-md-2 control-label  text-bold">Area Disponivel.:</label>
             <div class="col-md-10">
-                <input class="form-control input-sm number" name="area_disponivel" type="text" id="area_disponivel" value="{{ old('area_disponivel', isset($projeto->area_disponivel) ? $projeto->area_disponivel : null) }}" min="-2147483648" max="2147483647" placeholder="Enter area disponivel here...">
+                <input class="form-control input-sm number" name="area_disponivel" type="text" id="area_disponivel" value="{{ old('area_disponivel', isset($projeto->area_disponivel) ? $projeto->area_disponivel : null) }}" placeholder="Enter area disponivel here...">
                 {!! $errors->first('area_disponivel', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -203,6 +203,22 @@
             <hr class="ruler-lg"/>
         </div>
         <br> <br><br>
+
+        <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
+            <label for="conta_contrato_anterior" class="col-md-2  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projeto->conta_contrato_anterior) ? $projeto->conta_contrato_anterior : null) }}" >
+                {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+
+        <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
+            <label for="kwh" class="col-md-2  text-bold control-label text-bold">Conta Contrato Atual.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projeto->conta_contrato_atual) ? $projeto->conta_contrato_atual : null) }}" >
+                {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
 
 
         @if(isset($projeto))
