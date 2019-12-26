@@ -310,11 +310,11 @@ class ProjetoController extends Controller
     protected function affirm(Request $request)
     {
         $rules = [
-            'clientes_id' => 'nullable',
-            'consumo' => 'nullable',
-            'area_disponivel' => 'nullable',
-            'users_id' => 'nullable',
-            'kw' => 'required',
+           // 'clientes_id' => 'nullable',
+           // 'consumo' => 'nullable',
+           // 'area_disponivel' => 'nullable',
+            //'users_id' => 'nullable',
+            //'kw' => 'required',
 
         ];
 
