@@ -117,10 +117,10 @@ class Projeto extends Model
 
     }
 
-    public function setAreaDisponivelAttribute($value)
-    {
-        $this->attributes['area_disponivel'] = $value == "" ? null: str_replace(".","",$value);
-    }
+   // public function setAreaDisponivelAttribute($value)
+   // {
+       // $this->attributes['area_disponivel'] = !empty($value) ? null: str_replace(".","",$value);
+   // }
 
     /**
      * Get data_vencimento in array format

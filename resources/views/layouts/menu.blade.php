@@ -51,7 +51,7 @@
 					<li class="header-nav-brand" >
 						<div class="brand-holder">
 							<a href="../../html/dashboards/dashboard.html">
-								<span class="text-lg text-bold text-primary">SOLAR LIFE ENERG</span>
+								<span class="text-lg text-bold text-primary">SOLAR LIFE ENERGY</span>
 							</a>
 						</div>
 					</li>

@@ -8,13 +8,13 @@ $(document).ready(function () {
         var cpf_cnpj = document.getElementById("cpf_cnpj");
         cpf_cnpj  = cpf_cnpj.value;
 
-        console.log(cpf_cnpj)
+        //console.log($('meta[name="csrf-token"]').attr('content'))
 
         //Necessario para que o ajax envie o csrf-token
         //Para isso coloquei no form <meta name="csrf-token" content="{{ csrf_token() }}">
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
