@@ -53,14 +53,14 @@
     <div class="form-group {{ $errors->has('power') ? 'has-error' : '' }}">
         <label for="monthly_usage" class="col-md-2 control-label text-bold">Média consumo Kwh.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="monthly_usage" type="text" id="monthly_usage" value="{{ old('monthly_usage', isset($preProposta->monthly_usage) ? $preProposta->monthly_usage : null) }}" maxlength="10" placeholder="Consumo médio em Kwh">
+            <input class="form-control input-sm number" name="monthly_usage" type="text" id="monthly_usage" value="{{ old('monthly_usage', isset($preProposta->monthly_usage) ? $preProposta->monthly_usage : null) }}" maxlength="10" placeholder="Consumo médio em Kwh">
             {!! $errors->first('monthly_usage', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
     <div class="form-group {{ $errors->has('power') ? 'has-error' : '' }}">
         <label for="preco_medio_instalado" class="col-md-2 control-label text-bold">Valor Proposta.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="10" placeholder="Enter power here...">
+            <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="12" placeholder="Enter power here...">
             {!! $errors->first('preco_medio_instalado', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

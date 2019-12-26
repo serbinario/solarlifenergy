@@ -135,21 +135,20 @@
                                             <br>
 
                                             <div class="row">
-
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_cadadastro_ini" class="col-sm-4 control-label">Data Ini.:</label>
+                                                        <label for="data_ini" class="col-sm-4 control-label">Data Ini.:</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control input-sm date" name="data_cadadastro_ini" type="text" id="data_cadadastro_ini" value="{{ old('data_cadadastro_ini',  null) }}" placeholder="Início">
+                                                            <input class="form-control input-sm date" name="data_ini" type="text" id="data_ini" value="{{ old('data_ini',  null) }}" placeholder="Início">
 
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_cadadastro_fim" class="col-sm-4 control-label">Data Fim.:</label>
+                                                        <label for="data_fim" class="col-sm-4 control-label">Data Fim.:</label>
                                                         <div class="col-md-8">
-                                                            <input class="form-control input-sm date" name="data_cadadastro_fim" type="text" id="data_cadadastro_fim" value="{{ old('data_cadadastro_fim',  null) }}" placeholder="Fim">
+                                                            <input class="form-control input-sm date" name="data_fim" type="text" id="data_fim" value="{{ old('data_fim',  null) }}" placeholder="Fim">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +165,6 @@
                                                         </div><!--end .col -->
                                                     </div><!--end .form-group -->
                                                 </div>
-
                                             </div>
                                             <br>
 

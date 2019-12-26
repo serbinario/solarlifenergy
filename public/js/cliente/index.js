@@ -45,8 +45,9 @@ var table = $('#cliente').DataTable({
         url: "/index.php/cliente/grid",
         data: function (d) {
             d.nome = $('input[name=nome]').val();
-            d.data_cadadastro_ini = dateToEN($('input[name=data_cadadastro_ini]').val());
-            d.data_cadadastro_fim = dateToEN($('input[name=data_cadadastro_fim]').val())  + " 23:59:59";
+            d.data_ini = dateToEN($('input[name=data_ini]').val());
+            d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
+            d.filtro_por = $("input[name='filtro_por']:checked").val();
         }
     },
     columns: [
