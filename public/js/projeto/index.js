@@ -98,9 +98,6 @@ $( "#limpar" ).click(function() {
     $('input[name=data_fim]').val("");
     $('input[name=cod_projeto]').val("");
     $('input[name=integrador]').val("");
-
-
-
 });
 
 

@@ -157,7 +157,7 @@
                                                         <label class="col-sm-3 control-label">Filtrar data por:</label>
                                                         <div class="col-sm-9">
                                                             <label class="radio-inline radio-styled">
-                                                                <input type="radio" name="filtro_por" checked value="created_at"><span>Criação</span>
+                                                                <input type="radio" name="filtro_por" checked value="created_at"><span>Cadastro</span>
                                                             </label>
                                                             <label class="radio-inline radio-styled">
                                                                 <input type="radio" name="filtro_por" value="updated_at"><span>Atualização</span>
