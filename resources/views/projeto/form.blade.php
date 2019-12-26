@@ -114,7 +114,7 @@
         </div>
 
         <div class="form-group {{ $errors->has('area_disponivel') ? 'has-error' : '' }}">
-            <label for="area_disponivel" class="col-md-2 control-label  text-bold">Area Disponivel.:</label>
+            <label for="area_disponivel" class="col-md-2 control-label  text-bold">Área ( m²).:</label>
             <div class="col-md-10">
                 <input class="form-control input-sm number" name="area_disponivel" type="text" id="area_disponivel" value="{{ old('area_disponivel', isset($projeto->area_disponivel) ? $projeto->area_disponivel : null) }}" placeholder="Enter area disponivel here...">
                 {!! $errors->first('area_disponivel', '<p class="help-block">:message</p>') !!}
