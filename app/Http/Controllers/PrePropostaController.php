@@ -39,40 +39,37 @@ class PrePropostaController extends Controller
     }
 
     /**
-         * Display a listing of the fornecedors.
-         *
-         * @return Illuminate\View\View
-         * @throws Exception
-         */
-        public function grid()
-        {
-            $this->token = csrf_token();
-            #Criando a consulta
-            $rows = \DB::table('pre_propostas')
-                ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
-                ->select([
-                    'pre_propostas.codigo',
-                    'pre_propostas.id',
-                    \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
-                    'pre_propostas.preco_medio_instalado',
-                    'clientes.nome',
-                    'clientes.nome_empresa',
-                    'clientes.cpf_cnpj',
-                    'clientes.email',
-                    'clientes.celular',
-                    \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
+     * Display a listing of the fornecedors.
+     *
+     * @return Illuminate\View\View
+     * @throws Exception
+     */
+    public function grid()
+    {
+        $this->token = csrf_token();
+        #Criando a consulta
+        $rows = \DB::table('pre_propostas')
+            ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->select([
+                'pre_propostas.codigo',
+                'pre_propostas.id',
+                \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
+                'pre_propostas.preco_medio_instalado',
+                'clientes.nome',
+                'clientes.nome_empresa',
+                'clientes.cpf_cnpj',
+                'clientes.email',
+                'clientes.celular',
+                \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
 
-                ]);
+            ]);
 
-            #Editando a grid
-            return Datatables::of($rows)->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+        #Editando a grid
+        return Datatables::of($rows)->addColumn('action', function ($row) {
+            return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">
-                                <a href="preProposta/show/'.$row->id.'" class="btn btn-info" title="Show">
-                                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                                </a>
+                            <div class="btn-group btn-group-xs pull-right" role="group">                          
                                 <a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
@@ -81,8 +78,8 @@ class PrePropostaController extends Controller
                                 </button>
                         </form>
                         ';
-                            })->make(true);
-        }
+        })->make(true);
+    }
 
     /**
      * Show the form for creating a new pre proposta.
@@ -92,7 +89,7 @@ class PrePropostaController extends Controller
     public function create()
     {
         $Clientes = Cliente::pluck('nome','id')->all();
-        
+
         return view('pre_proposta.create', compact('Clientes'));
     }
 
@@ -114,11 +111,11 @@ class PrePropostaController extends Controller
             //Corrigir o problema da virada do ano
             $codigo = $last->codigo +1;
             $data['codigo'] = $codigo;
-            
+
             PreProposta::create($data);
 
             return redirect()->route('pre_proposta.pre_proposta.index')
-                             ->with('success_message', 'Pre Proposta was successfully added!');
+                ->with('success_message', 'Pre Proposta was successfully added!');
 
         } catch (Exception $e) {
             return back()->withInput()
@@ -171,12 +168,12 @@ class PrePropostaController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
-           // dd($data);
+            // dd($data);
             $preProposta = PreProposta::findOrFail($id);
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.index')
-                             ->with('success_message', 'Pre Proposta was successfully updated!');
+                ->with('success_message', 'Pre Proposta was successfully updated!');
 
         } catch (Exception $e) {
             return back()->withInput()
@@ -198,15 +195,15 @@ class PrePropostaController extends Controller
             $preProposta->delete();
 
             return redirect()->route('pre_proposta.pre_proposta.index')
-                             ->with('success_message', 'Pre Proposta was successfully deleted!');
+                ->with('success_message', 'Pre Proposta was successfully deleted!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
-    
+
     /**
      * Validate the given request with the defined rules.
      *
@@ -217,38 +214,38 @@ class PrePropostaController extends Controller
     protected function affirm(Request $request)
     {
         $rules = [
-                /*'cliente_id' => 'nullable',
-            'power' => 'nullable|string|min:0|max:10',
-            'quantity' => 'nullable|string|min:0|max:10',
-            'minimum_area' => 'nullable|string|min:0|max:10',
-            'average_weight' => 'nullable|numeric|string|min:0|max:10',
-            'value' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
-            'yearly_usage' => 'nullable|numeric|string|min:0|max:10',
-            'jan' => 'nullable|string|min:0|max:10',
-            'feb' => 'nullable|string|min:0|max:10',
-            'mar' => 'nullable|string|min:0|max:10',
-            'apr' => 'nullable|string|min:0|max:10',
-            'may' => 'nullable|string|min:0|max:10',
-            'jun' => 'nullable|string|min:0|max:10',
-            'jul' => 'nullable|string|min:0|max:10',
-            'aug' => 'nullable|string|min:0|max:10',
-            'sep' => 'nullable|string|min:0|max:10',
-            'oct' => 'nullable|string|min:0|max:10',
-            'nov' => 'nullable|string|min:0|max:10',
-            'dec' => 'nullable|string|min:0|max:10',
-            'real_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
-            'panel_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99', */
+            /*'cliente_id' => 'nullable',
+        'power' => 'nullable|string|min:0|max:10',
+        'quantity' => 'nullable|string|min:0|max:10',
+        'minimum_area' => 'nullable|string|min:0|max:10',
+        'average_weight' => 'nullable|numeric|string|min:0|max:10',
+        'value' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
+        'yearly_usage' => 'nullable|numeric|string|min:0|max:10',
+        'jan' => 'nullable|string|min:0|max:10',
+        'feb' => 'nullable|string|min:0|max:10',
+        'mar' => 'nullable|string|min:0|max:10',
+        'apr' => 'nullable|string|min:0|max:10',
+        'may' => 'nullable|string|min:0|max:10',
+        'jun' => 'nullable|string|min:0|max:10',
+        'jul' => 'nullable|string|min:0|max:10',
+        'aug' => 'nullable|string|min:0|max:10',
+        'sep' => 'nullable|string|min:0|max:10',
+        'oct' => 'nullable|string|min:0|max:10',
+        'nov' => 'nullable|string|min:0|max:10',
+        'dec' => 'nullable|string|min:0|max:10',
+        'real_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
+        'panel_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99', */
         ];
 
 
         return $this->validate($request, $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
