@@ -243,7 +243,7 @@ class ProjetoController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
             $projeto = Projeto::findOrFail($id);
-            //dd($data);
+           // dd($data);
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -272,8 +272,7 @@ class ProjetoController extends Controller
                 ->with('success_message', 'Projeto atualizado com sucesso!');
 
         } catch (Exception $e) {
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => $e->getMessage()]);
+            return redirect()->back()->with('errors', $e->getMessage());
         }
     }
 
@@ -311,8 +310,8 @@ class ProjetoController extends Controller
     {
         $rules = [
            // 'clientes_id' => 'nullable',
-           // 'consumo' => 'nullable',
-           // 'area_disponivel' => 'nullable',
+            //'consumo' => 'nullable',
+           // 'area_disponivel' => 'required',
             //'users_id' => 'nullable',
             //'kw' => 'required',
 

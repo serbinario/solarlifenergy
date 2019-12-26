@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form method="POST" action="{{ route('cliente.cliente.store') }}" accept-charset="UTF-8" id="create_cliente_form" name="create_cliente_form" class="form-horizontal">
-                {{ csrf_field() }}
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Novo Cliente</header>
@@ -38,7 +38,6 @@
                             </div>
                         </div>
                     </div>
-                    {{ csrf_field() }}
                     @include ('cliente.form', [ 'cliente' => null,   ])
 
                     <div class="card-actionbar">
