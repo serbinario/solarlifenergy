@@ -196,14 +196,6 @@
             </div>
         </div>
 
-
-
-        <div class="col-lg-12">
-            <h4 class="text-bold">Cadastro de Contas de Energia</h4>
-            <hr class="ruler-lg"/>
-        </div>
-        <br> <br><br>
-
         <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
             <label for="conta_contrato_anterior" class="col-md-2  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
             <div class="col-md-10">
@@ -219,6 +211,14 @@
                 {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+        <div class="col-lg-12">
+            <h4 class="text-bold">Cadastro de Contas de Energia</h4>
+            <hr class="ruler-lg"/>
+        </div>
+        <br> <br><br>
+
+
 
 
         @if(isset($projeto))
