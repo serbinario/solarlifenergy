@@ -281,7 +281,7 @@ class ClienteController extends Controller
             'obs' => 'nullable',
 
         ];
-        
+
         return $this->validate($request, $rules);
     }
 
