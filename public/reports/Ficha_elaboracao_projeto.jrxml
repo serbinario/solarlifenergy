@@ -372,11 +372,12 @@ WHERE p.id = $P{idProjeto}]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="154" y="180" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="154" y="200" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="contratos" uuid="28f6c926-4c17-4050-ab31-ea1385a6650f">
@@ -397,9 +398,9 @@ WHERE p.id = $P{idProjeto}]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table 1_TD" height="20">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="140" height="20" uuid="52fb1806-97ca-476f-8f38-8d0c0837da2e"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
 									<font size="12"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{num_contrato}]]></textFieldExpression>
@@ -417,7 +418,7 @@ WHERE p.id = $P{idProjeto}]]>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table 1_TD" height="20">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="5c6ec962-1347-4f00-9126-45997c25c445"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
@@ -582,7 +583,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[OBSERVAÇÕES:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="360" width="549" height="60" uuid="94e66090-f958-4028-bbc1-1c06a9793ca6">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
