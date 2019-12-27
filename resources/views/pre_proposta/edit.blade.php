@@ -49,7 +49,7 @@
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
                     </div><!--end .card -->
