@@ -108,8 +108,17 @@ return [
             'unique' => 'CNPJ/CPF já cadastrado',
         ],
         'nome' => [
-            'required' => 'Nome é obrigatórios.',
+            'required' => 'Nome é obrigatório.',
         ],
+        'email' => [
+            'required' => 'Email é obrigatório.',
+        ],
+        'celular' => [
+            'required' => 'Telefone é obrigatório.',
+        ],
+        'tipo' => [
+            'required' => 'Tipo Pessoa é obrigatório.',
+        ]
     ],
 
     /*

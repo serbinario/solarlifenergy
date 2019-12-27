@@ -141,7 +141,7 @@ class Cliente extends Model
     public function getDataEmissaoRgAttribute($value)
     {
         //dd($value);
-        return date('d/m/Y', strtotime($value));
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
         //return strtotime($value);
     }
 
@@ -154,7 +154,7 @@ class Cliente extends Model
     public function getDataNascimentoAttribute($value)
     {
         //dd($value);
-        return date('d/m/Y', strtotime($value));
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
         //return strtotime($value);
     }
 
