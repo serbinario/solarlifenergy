@@ -15,7 +15,7 @@
                     </div>
                 </div>
             @else
-                <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
+                <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
                     <label for="cliente_id" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <div class="col-md-8">
                         <select class="form-control  input-sm" id="cliente_id" name="cliente_id">
@@ -26,7 +26,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
+                        {!! $errors->first('cliente_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
             @endif
