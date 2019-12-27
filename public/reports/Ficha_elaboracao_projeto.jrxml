@@ -112,6 +112,7 @@ WHERE a.id = $P{idCliente2}]]>
 	a.nome,
 	a.endereco,
 	a.celular,
+	a.nome_empresa,
 	p.end_intalacao,
 	p.res_acompanhamento,
 	p.res_documentacao,
@@ -141,6 +142,10 @@ WHERE p.id = $P{idProjeto}]]>
 	</field>
 	<field name="celular" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="celular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="nome_empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_empresa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="end_intalacao" class="java.lang.String">
@@ -243,11 +248,11 @@ WHERE p.id = $P{idProjeto}]]>
 				<text><![CDATA[Solar Life Energy]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="95" y="55" width="245" height="15" uuid="b8cc42fd-b569-497d-834d-7e854040ad18"/>
+				<reportElement x="95" y="55" width="305" height="15" uuid="b8cc42fd-b569-497d-834d-7e854040ad18"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Tel: 81-3524-1290 81-98281-5540]]></text>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="95" y="40" width="335" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e"/>
@@ -270,7 +275,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_empresa}]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="ed08e6b3-4bc5-4c48-be27-4b6eaf4adfab"/>
@@ -354,7 +359,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Telenone.:]]></text>
+				<text><![CDATA[Telefone.:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="180" y="172" width="266" height="18" uuid="3ec65c80-b62c-4975-8100-87bb13b52543">
@@ -524,7 +529,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data Prevista aguardando data de confirmação.:]]></text>
+				<text><![CDATA[Data Prevista aguardando confirmação.:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="240" y="136" width="266" height="18" uuid="0f6c9456-b6e5-454f-be7e-2b27b85474ef">
