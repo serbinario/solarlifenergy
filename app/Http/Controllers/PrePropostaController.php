@@ -124,7 +124,7 @@ class PrePropostaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(ClienteFormRequest $request)
+    public function store(PrePropostaFormRequest $request)
     {
         try {
             $this->affirm($request);
