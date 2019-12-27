@@ -268,8 +268,8 @@ class ProjetoController extends Controller
 
             $projeto->update($data);
 
-            return redirect()->route('projeto.projeto.index')
-                ->with('success_message', 'Projeto atualizado com sucesso!');
+            return redirect()->route('projeto.projeto.edit', $projeto->id)
+                ->with('success_message', 'Cliente was successfully updated!');
 
         } catch (Exception $e) {
             return redirect()->back()->with('errors', $e->getMessage());

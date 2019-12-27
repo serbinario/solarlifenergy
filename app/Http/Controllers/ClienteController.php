@@ -164,8 +164,8 @@ class ClienteController extends Controller
 
             $projeto = Projeto::create($projeto);
 
-            return redirect()->route('cliente.cliente.index')
-                ->with('success_message', 'Cliente was successfully added!');
+            return redirect()->route('cliente.cliente.edit', $cliente->id)
+                ->with('success_message', 'Cadastro realizado com sucesso!');
 
         } catch (Exception $exception) {
             //dd($exception);
@@ -223,7 +223,7 @@ class ClienteController extends Controller
             $cliente = Cliente::findOrFail($id);
             $cliente->update($data);
             //dd($data);
-            return redirect()->route('cliente.cliente.index')
+            return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cliente was successfully updated!');
 
         } catch (Exception $exception) {
