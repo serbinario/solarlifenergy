@@ -135,10 +135,12 @@ class PrePropostaController extends Controller
             $codigo = $last->codigo +1;
             $data['codigo'] = $codigo;
 
-            PreProposta::create($data);
+            $preProposta = PreProposta::create($data);
 
-            return redirect()->route('pre_proposta.pre_proposta.index')
-                ->with('success_message', 'Pre Proposta was successfully added!');
+            return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
+                ->with('success_message', 'Cadastro realizado com sucesso');
+
+
 
         } catch (Exception $e) {
             return back()->withInput()
@@ -195,8 +197,8 @@ class PrePropostaController extends Controller
             $preProposta = PreProposta::findOrFail($id);
             $preProposta->update($data);
 
-            return redirect()->route('pre_proposta.pre_proposta.index')
-                ->with('success_message', 'Pre Proposta was successfully updated!');
+            return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
+                ->with('success_message', 'Cadastro atualizado com sucesso');
 
         } catch (Exception $e) {
             return back()->withInput()
