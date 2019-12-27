@@ -26,7 +26,7 @@ class PrePropostaFormRequest extends FormRequest
     {
 
         return  [
-            'clientes_id' => 'required',
+            'cliente_id' => 'required',
 
 
 

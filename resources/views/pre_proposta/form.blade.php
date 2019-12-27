@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-6">
             @if(isset($preProposta->cliente->id))
-                <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
+                <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
                     <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
                     <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
