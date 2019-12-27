@@ -61,7 +61,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <span class="text-lg text-bold text-primary">SOLAR LIFE ENERG </span>
+                    <span class="text-lg text-bold text-primary">SOLAR LIFE ENERGY </span>
                     <br/><br/>
                     <form class="form floating-label" action="{{ route('login') }}" accept-charset="utf-8" method="POST">
                         {{ csrf_field() }}
