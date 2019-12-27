@@ -225,7 +225,7 @@ class ClienteController extends Controller
             $cliente->update($data);
             //dd($data);
             return redirect()->route('cliente.cliente.edit', $cliente->id)
-                ->with('success_message', 'Cliente was successfully updated!');
+                ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $exception) {
             //dd($exception);
@@ -281,12 +281,7 @@ class ClienteController extends Controller
             'obs' => 'nullable',
 
         ];
-
-        $messages =[
-            'cpf_cnpj.required' => "Hey, don't you want to tell us your name?"
-        ];
-
-
+        
         return $this->validate($request, $rules);
     }
 
