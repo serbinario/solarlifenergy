@@ -10,18 +10,18 @@
         <div class="col-sm-6">
             @if(isset($projeto->cliente->id))
                 <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
-                    <label for="nome" class="col-sm-4 control-label  text-bold">Cliente.:</label>
+                    <label for="nome" class="col-sm-4 control-label  text-bold">Cliente.: *</label>
                     <input name="clientes_id" type="hidden" id="clientes_id" value="{{ old('clientes_id', isset($projeto->cliente->id) ? $projeto->cliente->id : null) }}" >
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($projeto->cliente->cep) ? $projeto->cliente->cep : null) }}" >
                     <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($projeto->cliente->estado) ? $projeto->cliente->estado : null) }}" >
                     <div class="col-md-8">
                         <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($projeto->cliente->nome) ? $projeto->cliente->nome : null) }}" readonly >
-                        {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
+                        {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
             @else
                 <div class="form-group {{ $errors->has('clientes_id') ? 'has-error' : '' }}">
-                    <label for="clientes_id" class="col-sm-4 control-label text-bold">Clientes.:</label>
+                    <label for="clientes_id" class="col-sm-4 control-label text-bold">Clientes.: *</label>
                     <div class="col-md-8">
                         <select class="form-control input-sm" id="clientes_id" name="clientes_id">
                             <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Select clientes</option>
@@ -49,7 +49,7 @@
 
     @role('admin')
     <div class="form-group {{ $errors->has('projeto_status_id') ? 'has-error' : '' }}">
-        <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.:</label>
+        <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.: *</label>
         <div class="col-md-10">
             <select   class="form-control input-sm" id="projeto_status_id" name="projeto_status_id">
                 <option value="" style="display: none;" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : '') == '' ? 'selected' : '' }} disabled selected>Projeto Status</option>
@@ -64,7 +64,7 @@
     </div>
     @else
         <div class="form-group">
-            <label for="projeto_status_id" class="col-md-2 control-label  text-bold">Status Projeto.:</label>
+            <label for="projeto_status_id" class="col-md-2 control-label  text-bold">Status Projeto.: *</label>
             <div class="col-md-10">
                 <input class="form-control input-sm" readonly name="projeto_status_id" type="hidden" id="projeto_status_id" value="{{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : null) }}">
                 <input class="form-control input-sm" readonly name="projeto_status_nome" type="text" id="projeto_status_nome" value="{{ old('projeto_status_nome', isset($projeto->projetoStatus->status_nome) ? $projeto->projetoStatus->status_nome : null) }}">
@@ -75,7 +75,7 @@
 
         @role('admin')
         <div class="form-group {{ $errors->has('users_id') ? 'has-error' : '' }}">
-            <label for="users_id" class="col-md-2 text-bold control-label">Intergrador.:</label>
+            <label for="users_id" class="col-md-2 text-bold control-label">Intergrador.: *</label>
             <div class="col-md-10">
                 <select   class="form-control input-sm" id="users_id" name="users_id">
                     <option value="" style="display: none;" {{ old('users_id', isset($projeto->users_id) ? $projeto->users_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
@@ -163,7 +163,7 @@
         </div>
 
         <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
-            <label for="kwh" class="col-md-2  text-bold control-label text-bold">Cons. mensal em kWh*.:</label>
+            <label for="kwh" class="col-md-2  text-bold control-label text-bold">Cons. mensal em kWh.: *</label>
             <div class="col-md-10">
                 <input class="form-control input-sm number" name="kwh" type="text" id="kwh"  value="{{ old('kwh', isset($projeto->kwh) ? $projeto->kwh : null) }}" placeholder="KWh...">
                 {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
@@ -196,19 +196,19 @@
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
             <label for="conta_contrato_anterior" class="col-md-2  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
             <div class="col-md-10">
                 <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projeto->conta_contrato_anterior) ? $projeto->conta_contrato_anterior : null) }}" >
-                {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
+                {!! $errors->first('conta_contrato_anterior', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('kwh') ? 'has-error' : '' }}">
-            <label for="kwh" class="col-md-2  text-bold control-label text-bold">Conta Contrato Atual.:</label>
+        <div class="form-group {{ $errors->has('conta_contrato_atual') ? 'has-error' : '' }}">
+            <label for="conta_contrato_atual" class="col-md-2  text-bold control-label text-bold">Conta Contrato Atual.:</label>
             <div class="col-md-10">
                 <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projeto->conta_contrato_atual) ? $projeto->conta_contrato_atual : null) }}" >
-                {!! $errors->first('kwh', '<p class="help-block">:message</p>') !!}
+                {!! $errors->first('conta_contrato_atual', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
 
@@ -217,10 +217,6 @@
             <hr class="ruler-lg"/>
         </div>
         <br> <br><br>
-
-
-
-
         @if(isset($projeto))
             <div class="row">
                 @foreach( $projeto->contratos as $contrato )
@@ -228,7 +224,7 @@
                         <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
                             <label for="num_contrato" class="col-sm-4 control-label text-bold">Conta Contrato.:</label>
                             <div class="col-md-3">
-                                <input class="form-control input-sm" name="num_contrato[]" type="text" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
+                                <input class="form-control input-sm" name="num_contrato[]" type="text" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}"">
                             </div>
                         </div>
                     </div>
@@ -246,12 +242,12 @@
                 @endforeach
             </div>
         @else
-            <div class="form-group{{ $errors->has('num_contrato') ? 'has-error' : '' }}">
+            {{--<div class="form-group{{ $errors->has('num_contrato') ? 'has-error' : '' }}">
                 <label for="num_contrato" class="col-sm-4 control-label text-bold">Contrato Celpe.:</label>
                 <div class="col-md-2">
                     <input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
                 </div>
-            </div>
+            </div>--}}
 
         @endif
         <div class="row after-add-more">
@@ -260,7 +256,7 @@
                     <div class="col-md-2">
                         <div class="">
                             <label for="">
-                                <button class="btn btn-success add-more btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                                <button class="btn btn-success add-more btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Adicionar conta contrato</button>
                             </label>
                         </div>
                     </div>
