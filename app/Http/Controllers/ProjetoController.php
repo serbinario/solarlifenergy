@@ -13,6 +13,7 @@ use Serbinario\Entities\Projeto;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\ProjetoStatus;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\ProjetoFormRequest;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
@@ -149,7 +150,7 @@ class ProjetoController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ProjetoFormRequest $request)
     {
         try {
             $this->affirm($request);
@@ -236,7 +237,7 @@ class ProjetoController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, ProjetoFormRequest $request)
     {
         try {
 

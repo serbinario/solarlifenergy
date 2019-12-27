@@ -118,6 +118,12 @@ return [
         ],
         'tipo' => [
             'required' => 'Tipo Pessoa é obrigatório.',
+        ],
+        'kwh' => [
+            'required' => 'Cons. mensal em kWh é obrigatório.',
+        ],
+        'clientes_id' => [
+            'required' => 'Cliente é obrigatório.',
         ]
     ],
 
