@@ -24,7 +24,7 @@
                     <label for="clientes_id" class="col-sm-4 control-label text-bold">Clientes.: *</label>
                     <div class="col-md-8">
                         <select class="form-control input-sm" id="clientes_id" name="clientes_id">
-                            <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Select clientes</option>
+                            <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Cliente</option>
                             @foreach ($clientes as $key => $cliente)
                                 <option value="{{ $key }}" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : null) == $key ? 'selected' : '' }}>
                                     {{ $cliente }}
@@ -40,7 +40,7 @@
             <div class="form-group {{ $errors->has('projeto_codigo') ? 'has-error' : '' }}">
                 <label for="projeto_codigo" class="col-sm-4 control-label text-bold">Código.:</label>
                 <div class="col-md-8">
-                    <input class="form-control input-sm" name="projeto_codigo" type="number" id="projeto_codigo" readonly value="{{ old('projeto_codigo', isset($projeto->projeto_codigo) ? $projeto->projeto_codigo : null) }}" placeholder="projeto_codigo...">
+                    <input class="form-control input-sm" name="projeto_codigo" type="number" id="projeto_codigo" readonly value="{{ old('projeto_codigo', isset($projeto->projeto_codigo) ? $projeto->projeto_codigo : null) }}" placeholder="Código do Projeto">
                     {!! $errors->first('projeto_codigo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -52,7 +52,7 @@
         <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.: *</label>
         <div class="col-md-10">
             <select   class="form-control input-sm" id="projeto_status_id" name="projeto_status_id">
-                <option value="" style="display: none;" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : '') == '' ? 'selected' : '' }} disabled selected>Projeto Status</option>
+                <option value="" style="display: none;" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Status</option>
                 @foreach ($projetosStatus as $key => $statu)
                     <option value="{{ $key }}" {{ old('projeto_status_id', isset($projeto->projeto_status_id) ? $projeto->projeto_status_id : null) == $key ? 'selected' : '' }}>
                         {{ $statu }}
@@ -94,7 +94,7 @@
             <label for="consumo" class="col-md-2 control-label text-bold">Consumo R$.:</label>
             <div class="col-md-10">
                 <select class="form-control input-sm" id="consumo" name="consumo">
-                    <option value="" style="display: none;" {{ old('consumo', isset($projeto->consumo) ? $projeto->consumo : '') == '' ? 'selected' : '' }} disabled selected>Enter consumo here...</option>
+                    <option value="" style="display: none;" {{ old('consumo', isset($projeto->consumo) ? $projeto->consumo : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Integrador</option>
                     @foreach (['30 - 100' => '30 - 100',
         '110 - 300' => '110 - 300',
         '350 - 600' => '350 - 600',
@@ -139,7 +139,7 @@
             <label for="prioridade" class="col-md-2 control-label text-bold">Prioridade.:</label>
             <div class="col-md-10">
                 <select class="form-control input-sm" id="prioridade" name="prioridade">
-                    <option value="" style="display: none;" {{ old('prioridade', isset($projeto->prioridade) ? $projeto->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Prioridade...</option>
+                    <option value="" style="display: none;" {{ old('prioridade', isset($projeto->prioridade) ? $projeto->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Prioridade</option>
                     @foreach ([
         'Alta' => 'Alta',
         'Media' => 'Media',
