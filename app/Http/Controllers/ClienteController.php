@@ -133,6 +133,7 @@ class ClienteController extends Controller
             //$this->affirm($request);
             $data = $this->getData($request);
 
+            //dd($data);
             $cliente = Cliente::create($data);
 
 
@@ -212,7 +213,7 @@ class ClienteController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, ClienteFormRequest $request)
     {
         try {
             //dd($request->all());

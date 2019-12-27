@@ -3,6 +3,8 @@
 namespace Serbinario\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+
 
 class ClienteFormRequest extends FormRequest
 {
@@ -23,11 +25,13 @@ class ClienteFormRequest extends FormRequest
      */
     public function rules()
     {
+
         return  [
+            'tipo' => 'required',
             'nome' => 'required|string|min:0|max:255',
-            'celular' => 'nullable|string|min:0|max:20',
-            'email' => 'nullable|string|min:0|max:100',
-            'cpf_cnpj' => 'required|unique:clientes,cpf_cnpj,'.$this->id,
+            'celular' => 'required|string|min:0|max:20',
+            'email' => 'required|string|min:0|max:100',
+            'cpf_cnpj' => 'required|unique:clientes,cpf_cnpj,'. $this->cliente,'id',
             'nome_empresa' => 'nullable|string|min:0|max:255',
             'cep' => 'nullable|string|min:0|max:10',
             'numero' => 'nullable|string|min:0|max:10',
