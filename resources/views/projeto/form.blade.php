@@ -226,7 +226,7 @@
                 @foreach( $projeto->contratos as $contrato )
                     <div class="col-sm-6">
                         <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                            <label for="num_contrato" class="col-sm-4 control-label text-bold">Contrato Celpe.:</label>
+                            <label for="num_contrato" class="col-sm-4 control-label text-bold">Conta Contrato.:</label>
                             <div class="col-md-3">
                                 <input class="form-control input-sm" name="num_contrato[]" type="text" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}" placeholder="Contrato Celpe...">
                             </div>
@@ -234,7 +234,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                            <label for="percentual" class="col-sm-4 control-label">Porcento.:</label>
+                            <label for="percentual" class="col-sm-4 control-label">Percentual.:</label>
                             <div class="col-md-3">
                                 <input class="form-control input-sm" name="percentual[]" type="text" id="percentual" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
                             </div>
