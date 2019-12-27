@@ -368,7 +368,7 @@ WHERE p.id = $P{idProjeto}]]>
 		</band>
 	</title>
 	<detail>
-		<band height="235">
+		<band height="439">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
@@ -534,43 +534,8 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{data_prevista})]]></textFieldExpression>
 			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="305">
-			<staticText>
-				<reportElement x="3" y="220" width="530" height="25" uuid="249351cf-daaa-4db4-927e-8e1915aeb65d">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[OBSERVAÇÕES:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="245" width="549" height="60" uuid="94e66090-f958-4028-bbc1-1c06a9793ca6"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
-			</textField>
 			<line>
-				<reportElement positionType="Float" x="5" y="215" width="556" height="1" uuid="6b08f27e-3da1-454a-8ac6-db750bdb5c60">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement positionType="Float" x="80" y="170" width="120" height="1" uuid="8ad69f4b-51b3-43df-aeaf-4b69655663d9">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement positionType="Float" x="370" y="170" width="120" height="1" uuid="d9a404a2-37a6-4429-9b31-ced26537ec74">
+				<reportElement positionType="Float" x="39" y="300" width="120" height="1" uuid="8ad69f4b-51b3-43df-aeaf-4b69655663d9">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -578,16 +543,55 @@ WHERE p.id = $P{idProjeto}]]>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 			</line>
+			<line>
+				<reportElement positionType="Float" x="340" y="300" width="120" height="1" uuid="d9a404a2-37a6-4429-9b31-ced26537ec74">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
 			<textField>
-				<reportElement x="50" y="180" width="189" height="30" uuid="2f28f67b-a241-41e7-b688-bd10a76ff72a"/>
+				<reportElement positionType="Float" x="1" y="310" width="249" height="30" uuid="2f28f67b-a241-41e7-b688-bd10a76ff72a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="180" width="208" height="30" uuid="822ff4c8-7793-4e24-9b17-1fd8a4e232d9"/>
+				<reportElement positionType="Float" x="300" y="310" width="208" height="30" uuid="822ff4c8-7793-4e24-9b17-1fd8a4e232d9"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{name}.toUpperCase()]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="335" width="556" height="1" uuid="6b08f27e-3da1-454a-8ac6-db750bdb5c60">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="340" width="530" height="25" uuid="249351cf-daaa-4db4-927e-8e1915aeb65d">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVAÇÕES:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="360" width="549" height="60" uuid="94e66090-f958-4028-bbc1-1c06a9793ca6">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
+			</textField>
 		</band>
-	</columnFooter>
+	</detail>
 </jasperReport>
