@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\PrePropostaFormRequest;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -123,7 +124,7 @@ class PrePropostaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ClienteFormRequest $request)
     {
         try {
             $this->affirm($request);
@@ -187,7 +188,7 @@ class PrePropostaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, PrePropostaFormRequest $request)
     {
         try {
             $this->affirm($request);

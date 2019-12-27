@@ -3,7 +3,6 @@
 namespace Serbinario\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
 
 class ClienteFormRequest extends FormRequest
