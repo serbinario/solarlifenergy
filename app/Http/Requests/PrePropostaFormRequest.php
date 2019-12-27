@@ -26,7 +26,10 @@ class PrePropostaFormRequest extends FormRequest
     {
 
         return  [
-
+            'projeto_status_id' => 'required',
+            'clientes_id' => 'required',
+            'kwh' => 'required',
+            'clientes_id' => 'required',
 
         ];
     }
