@@ -7,10 +7,12 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Pool;
 use Serbinario\Entities\Profile;
 use Serbinario\Entities\Router;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\UserFormRequest;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
@@ -49,7 +51,14 @@ class UsersController extends Controller
     {
         $this->token = csrf_token();
         #Criando a consulta
-        $rows = \DB::table('users');
+        $rows = \DB::table('users')
+            ->leftJoin('franquias', 'franquias.id', '=', 'users.franquia_id')
+            ->select([
+                'users.id',
+                'users.email',
+                'users.name',
+                'franquias.nome'
+            ]);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
@@ -75,8 +84,9 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $franquias = Franquia::pluck('nome','id')->all();
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
-        return view('users.create', compact('roles'));
+        return view('users.create', compact('roles', 'franquias'));
     }
 
     /**
@@ -86,7 +96,7 @@ class UsersController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
         try {
             $this->affirm($request);
@@ -103,8 +113,9 @@ class UsersController extends Controller
             $user->syncRoles($role_r);
 
 
-            return redirect()->route('users.user.index')
-                ->with('success_message', 'Profile was successfully added!');
+            return redirect()->route('users.user.edit', $user->id)
+                ->with('success_message', 'Cadastro atualizado com sucesso!');
+
 
         } catch (Exception $e) {
 
@@ -136,11 +147,13 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::with('roles')->find($id);
+        $franquias = Franquia::pluck('nome','id')->all();
+        $user = User::with('roles', 'franquia')->find($id);
+        //dd($user);
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
 
         //dd($user->roles[0]->id);
-        return view('users.edit', compact('user', 'roles'));
+        return view('users.edit', compact('user', 'roles', 'franquias'));
 
     }
 
@@ -154,16 +167,14 @@ class UsersController extends Controller
      * Exemplos
      * https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
      */
-    public function update($id, Request $request)
+    public function update($id, UserFormRequest $request)
     {
         try {
 
-            $this->affirm($request);
-            $data = $this->getData($request);
-
+            //$this->affirm($request);
+            $data = $request->getData();
+            //
             $user = User::findOrFail($id);
-
-
 
             if(empty($data['password'])){
                 $data['password'] = $user->password;
@@ -177,13 +188,13 @@ class UsersController extends Controller
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
             $user->syncRoles($role_r);
 
-            return redirect()->route('users.user.index')
-                ->with('success_message', 'Usuario was successfully updated!');
+            return redirect()->route('users.user.edit', $user->id)
+                ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => $e->getMessage()]);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -243,11 +254,11 @@ class UsersController extends Controller
      * @param Illuminate\Http\Request\Request $request
      * @return array
      */
-    protected function getData(Request $request)
-    {
-        $data = $request->only(['name', 'email', 'password', 'role']);
+   // protected function getData(Request $request)
+   // {
+        //$data = $request->only(['name', 'email', 'password', 'role', 'franquia_id']);
 
-        return $data;
-    }
+        //return $data;
+   // }
 
 }
