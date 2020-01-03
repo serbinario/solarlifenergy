@@ -1,4 +1,4 @@
-@extends('[% layout_name %]')
+@extends('layouts.menu')
 
 @section('content')
 
@@ -26,30 +26,30 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('[% update_route_name %]', $[% model_name_singular_variable %]->[% primary_key %]) }}" accept-charset="UTF-8" id="[% form_id %]" name="[% form_name %]" class="form-horizontal"[% upload_files %]>
+                <form method="POST" action="{{ route('franquia.franquia.update', $franquia->id) }}" accept-charset="UTF-8" id="edit_franquia_form" name="edit_franquia_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar account</header>
+                            <header>Editar Franquia</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('[% index_route_name %]') }}" class="btn btn-primary" title="[% show_all_models %]">
+                                    <a href="{{ route('franquia.franquia.index') }}" class="btn btn-primary" title="Show All Franquia">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
-                                    <a href="{{ route('[% create_route_name %]') }}" class="btn btn-primary" title="[% create_model %]">
+                                    <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Create New Franquia">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('[% form_view_name %]', ['[% model_name_singular_variable %]' => $[% model_name_singular_variable %], ])
+                        @include ('franquia.form', ['franquia' => $franquia, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('[% index_route_name %]') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="[% update %]">
+                                <a href="{{ route('franquia.franquia.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -62,6 +62,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/[% model_name_singular_variable %]/edit.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/franquia/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

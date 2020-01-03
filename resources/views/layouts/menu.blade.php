@@ -181,6 +181,7 @@
 								<!--start submenu -->
 								<ul>
 									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
+									<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 

@@ -72,5 +72,15 @@
         "model-name": "PreProposta",
         "resource-file": "pre_proposta.json",
         "table-name": "pre_propostas"
+    },
+    {
+        "model-name": "Procuracao",
+        "resource-file": "procuracao.json",
+        "table-name": "procuracoes"
+    },
+    {
+        "model-name": "Franquia",
+        "resource-file": "franquia.json",
+        "table-name": "franquias"
     }
 ]

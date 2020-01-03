@@ -1,29 +1,28 @@
-@extends('[% layout_name %]')
-
+@extends('layouts.menu')
 
 @section('content')
 
 <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
-            <form method="POST" action="{{ route('[% store_route_name %]') }}" accept-charset="UTF-8" id="[% form_id %]" name="[% form_name %]" class="form-horizontal"[% upload_files %]>
+            <form method="POST" action="{{ route('procuracao.procuracao.store') }}" accept-charset="UTF-8" id="create_procuracao_form" name="create_procuracao_form" class="form-horizontal">
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Create an account</header>
                         <div class="tools">
                             <div class="btn-group">
-                                <a href="{{ route('[% index_route_name %]') }}" class="btn btn-primary" title="[% show_all_models %]">
+                                <a href="{{ route('procuracao.procuracao.index') }}" class="btn btn-primary" title="Show All Procuracao">
                                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </div>
                     </div>
                     {{ csrf_field() }}
-                    @include ('[% form_view_name %]', [ '[% model_name_singular_variable %]' => null,   ])
+                    @include ('procuracao.form', [ 'procuracao' => null,   ])
 
                     <div class="card-actionbar">
                         <div class="card-actionbar-row">
-                            <a href="{{ route('[% index_route_name %]') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                            <a href="{{ route('procuracao.procuracao.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                             <button type="submit" class="btn btn-flat btn-primary ink-reaction">Salvar</button>
                         </div>
                     </div>

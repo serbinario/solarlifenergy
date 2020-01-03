@@ -709,3 +709,73 @@ Route::group(
          ->where('id', '[0-9]+');
 
 });
+
+Route::group(
+[
+    'prefix' => 'procuracao',
+], function () {
+
+    Route::get('/', 'ProcuracaoController@index')
+         ->name('procuracao.procuracao.index');
+
+    Route::get('/create','ProcuracaoController@create')
+         ->name('procuracao.procuracao.create');
+
+    Route::get('/grid', 'ProcuracaoController@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{procuracao}','ProcuracaoController@show')
+         ->name('procuracao.procuracao.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{procuracao}/edit','ProcuracaoController@edit')
+         ->name('procuracao.procuracao.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'ProcuracaoController@store')
+         ->name('procuracao.procuracao.store');
+               
+    Route::put('procuracao/{procuracao}', 'ProcuracaoController@update')
+         ->name('procuracao.procuracao.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{procuracao}/destroy','ProcuracaoController@destroy')
+         ->name('procuracao.procuracao.destroy')
+         ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'franquia',
+], function () {
+
+    Route::get('/', 'FranquiaController@index')
+         ->name('franquia.franquia.index');
+
+    Route::get('/create','FranquiaController@create')
+         ->name('franquia.franquia.create');
+
+    Route::get('/grid', 'FranquiaController@grid')
+         ->name('franquia');
+
+    Route::get('/show/{franquia}','FranquiaController@show')
+         ->name('franquia.franquia.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{franquia}/edit','FranquiaController@edit')
+         ->name('franquia.franquia.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'FranquiaController@store')
+         ->name('franquia.franquia.store');
+               
+    Route::put('franquia/{franquia}', 'FranquiaController@update')
+         ->name('franquia.franquia.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{franquia}/destroy','FranquiaController@destroy')
+         ->name('franquia.franquia.destroy')
+         ->where('id', '[0-9]+');
+
+});

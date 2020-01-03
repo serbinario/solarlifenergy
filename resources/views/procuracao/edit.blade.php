@@ -1,4 +1,4 @@
-@extends('[% layout_name %]')
+@extends('layouts.menu')
 
 @section('content')
 
@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('[% update_route_name %]', $[% model_name_singular_variable %]->[% primary_key %]) }}" accept-charset="UTF-8" id="[% form_id %]" name="[% form_name %]" class="form-horizontal"[% upload_files %]>
+                <form method="POST" action="{{ route('procuracao.procuracao.update', $procuracao->id) }}" accept-charset="UTF-8" id="edit_procuracao_form" name="edit_procuracao_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
@@ -34,22 +34,22 @@
                             <header>Editar account</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('[% index_route_name %]') }}" class="btn btn-primary" title="[% show_all_models %]">
+                                    <a href="{{ route('procuracao.procuracao.index') }}" class="btn btn-primary" title="Show All Procuracao">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
-                                    <a href="{{ route('[% create_route_name %]') }}" class="btn btn-primary" title="[% create_model %]">
+                                    <a href="{{ route('procuracao.procuracao.create') }}" class="btn btn-primary" title="Create New Procuracao">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('[% form_view_name %]', ['[% model_name_singular_variable %]' => $[% model_name_singular_variable %], ])
+                        @include ('procuracao.form', ['procuracao' => $procuracao, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('[% index_route_name %]') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="[% update %]">
+                                <a href="{{ route('procuracao.procuracao.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <input class="btn btn-primary" type="submit" value="Update">
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -62,6 +62,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/[% model_name_singular_variable %]/edit.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/procuracao/edit.js')}}" type="text/javascript"></script>
 @stop
