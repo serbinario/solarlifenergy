@@ -117,15 +117,11 @@
         </div>
     </div>
 
-
-
-
-
     <div class="col-lg-12">
         <h4 class="text-bold">Conjugue</h4>
         <hr class="ruler-lg"/>
     </div>
-    <br> <br><br>
+
 
     <div class="form-group {{ $errors->has('conjugue') ? 'has-error' : '' }}">
         <label for="conjugue" class="col-md-2 control-label text-bold">Nome Cojugue.:</label>
@@ -143,14 +139,10 @@
         </div>
     </div>
 
-
     <div class="col-lg-12">
         <h4 class="text-bold">Endereço</h4>
         <hr class="ruler-lg"/>
     </div>
-    <br> <br><br>
-
-
 
     <div class="form-group {{ $errors->has('cep') ? 'has-error' : '' }}">
         <label for="cep" class="col-md-2 control-label text-bold">Cep.:</label>
@@ -217,10 +209,6 @@
             {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
-
-
-
 
 
 </div>
