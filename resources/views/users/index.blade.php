@@ -24,7 +24,7 @@
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Lista de Clientes</header>
+                        <header>Lista de Usuários</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('users.user.create') }}" class="btn btn-primary" title="Novo Fornecedor">
@@ -44,6 +44,7 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Email</th>
+                                            <th>Franquia</th>
                                             <th>Acao</th>
                                         </tr>
                                         </thead>
@@ -59,7 +60,7 @@
 
                     <div class="card-actionbar">
                         <div class="card-actionbar-row">
-                            <a href="{{ route('users.user.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
+                            <a href="{{ route('users.user.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Usuário</a>
                         </div>
                     </div>
                 </div><!--end .card -->

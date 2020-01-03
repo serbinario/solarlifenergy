@@ -41,6 +41,7 @@ $(document).ready(function () {
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'nome', name: 'franquias.nome'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });

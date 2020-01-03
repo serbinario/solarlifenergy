@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'franquia_id',
     ];
 
     /**
@@ -28,6 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the projeto for this model.
+     */
+    public function franquia()
+    {
+        return $this->hasOne('Serbinario\Entities\Franquia','id','franquia_id');
+    }
 
     
 }
