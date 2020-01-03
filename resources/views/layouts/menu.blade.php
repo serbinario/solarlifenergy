@@ -71,9 +71,9 @@
 							<span class="profile-info">
 									{{ Auth::user()->name }}
 								@role('admin')
-                                        <small>Administrator</small>
+                                        <small>{{ isset(Auth::user()->franquia->nome) ? Auth::user()->franquia->nome : null }} - Adm</small>
 								@else
-									<small>Integrador</small>
+									<small>{{ isset(Auth::user()->franquia->nome) ? Auth::user()->franquia->nome : null }} - Integrador</small>
 									@endrole
 
 							</span>
