@@ -53,10 +53,7 @@ class FranquiaController extends Controller
                 return '<form id="' . $row->id   . '" method="POST" action="franquia/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">
-                                <a href="franquia/show/'.$row->id.'" class="btn btn-info" title="Show">
-                                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                                </a>
+                            <div class="btn-group btn-group-xs pull-right" role="group">                            
                                 <a href="franquia/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
