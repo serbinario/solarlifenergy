@@ -1,4 +1,4 @@
-@extends('[% layout_name %]')
+@extends('layouts.menu')
 
 @section('content')
 
@@ -24,10 +24,10 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Fornecedores</header>
+                            <header>Lista de Franquias</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('[% create_route_name %]') }}" class="btn btn-primary" title="Novo Fornecedor">
+                                    <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Novo Fornecedor">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
@@ -38,11 +38,14 @@
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="[% model_name_singular_variable %]" class="table order-column hover">
+                                        <table id="franquia" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nome</th>
+                                                    <th>Razão Social</th>
+                                                    <th>Contato</th>
+                                                    <th>CPF/CNPJ</th>
+                                                    <th>UF</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -58,7 +61,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('[% create_route_name %]') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
+                                <a href="{{ route('franquia.franquia.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Franquia</a>
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -71,6 +74,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/[% model_name_singular_variable %]/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/franquia/index.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

@@ -1,1 +1,2 @@
-return date('[% date_format %]', strtotime($value));
+return $value == "" ? "" : date('d/m/Y', strtotime($value));
+

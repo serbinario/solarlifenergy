@@ -1,4 +1,4 @@
-@extends('[% layout_name %]')
+@extends('layouts.menu')
 
 @section('content')
 
@@ -27,7 +27,7 @@
                             <header>Lista de Fornecedores</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('[% create_route_name %]') }}" class="btn btn-primary" title="Novo Fornecedor">
+                                    <a href="{{ route('procuracao.procuracao.create') }}" class="btn btn-primary" title="Novo Fornecedor">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
@@ -38,7 +38,7 @@
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="[% model_name_singular_variable %]" class="table order-column hover">
+                                        <table id="procuracao" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
@@ -58,7 +58,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('[% create_route_name %]') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
+                                <a href="{{ route('procuracao.procuracao.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -71,6 +71,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/[% model_name_singular_variable %]/index.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/procuracao/index.js')}}" type="text/javascript"></script>
 @stop
