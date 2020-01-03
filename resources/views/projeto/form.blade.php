@@ -5,7 +5,6 @@
         <hr class="ruler-lg"/>
     </div>
 
-
     <div class="row">
         <div class="col-sm-6">
             @if(isset($projeto->cliente->id))
@@ -216,7 +215,6 @@
             <h4 class="text-bold">Cadastro de Contas de Energia</h4>
             <hr class="ruler-lg"/>
         </div>
-        <br> <br><br>
         @if(isset($projeto))
             <div class="row">
                 @foreach( $projeto->contratos as $contrato )

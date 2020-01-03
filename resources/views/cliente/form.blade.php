@@ -4,7 +4,6 @@
         <h4 class="text-bold">Dados da Empresa</h4>
         <hr class="ruler-lg"/>
     </div>
-    <br> <br><br>
 
     <div class="form-group {{ $errors->has('tipo') ? 'has-error' : '' }}">
         <label class="col-sm-2 control-label text-bold">Tipo Pessoa.: *</label>
@@ -35,10 +34,6 @@
             {!! $errors->first('nome_empresa', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
-
-
-
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group {{ $errors->has('celular') ? 'has-error' : '' }}">
@@ -63,9 +58,6 @@
         </div>
     </div>
 
-
-
-
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
         <label for="email" class="col-md-2 control-label text-bold">Email.: *</label>
         <div class="col-md-10">
@@ -74,13 +66,10 @@
         </div>
     </div>
 
-
-
     <div class="col-lg-12">
         <h4 class="text-bold">Dados Pessoais</h4>
         <hr class="ruler-lg"/>
     </div>
-    <br> <br><br>
     <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
         <label for="nome" class="col-md-2 control-label text-bold">Nome.: *</label>
         <div class="col-md-10">
