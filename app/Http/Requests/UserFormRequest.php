@@ -26,7 +26,9 @@ class UserFormRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|min:1|max:200',
-            'email' => 'required|min:1|max:200'
+            'email' => 'required|min:1|max:200',
+            'franquia_id' => 'required',
+            'role' => 'required'
 
         ];
 

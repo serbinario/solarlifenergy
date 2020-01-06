@@ -187,10 +187,9 @@ class ProjetoController extends Controller
             return redirect()->route('projeto.projeto.index')
                 ->with('success_message', 'Projeto was successfully added!');
 
-        } catch (Exception $exception) {
-
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 

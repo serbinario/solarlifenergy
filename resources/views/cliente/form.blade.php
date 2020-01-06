@@ -30,7 +30,7 @@
     <div class="form-group {{ $errors->has('nome_empresa') ? 'has-error' : '' }}">
         <label for="nome_empresa" class="col-md-2 control-label text-bold">Razão Social</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome_empresa', isset($cliente->nome_empresa) ? $cliente->nome_empresa : null) }}" maxlength="255" placeholder="Rasão Social">
+            <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome_empresa', isset($cliente->nome_empresa) ? $cliente->nome_empresa : null) }}" maxlength="255" placeholder="Razão Social">
             {!! $errors->first('nome_empresa', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -77,11 +77,25 @@
             {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('rg') ? 'has-error' : '' }}">
-        <label for="rg" class="col-md-2 control-label text-bold">RG.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="rg" type="text" id="rg" value="{{ old('rg', isset($cliente->rg) ? $cliente->rg : null) }}" maxlength="255" placeholder="RG">
-            {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="cpf" class="col-sm-4 control-label text-bold">CPF.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm mascara-cpfcnpj" name="cpf" type="text" id="cpf" value="{{ old('cpf', isset($cliente->cpf) ? $cliente->cpf : null) }}" maxlength="11" placeholder="CPF">
+                    {!! $errors->first('cpf', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="rg" class="col-md-2 control-label text-bold">RG.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="rg" type="text" id="rg" value="{{ old('rg', isset($cliente->rg) ? $cliente->rg : null) }}" maxlength="255" placeholder="RG">
+                    {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 

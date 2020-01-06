@@ -93,7 +93,7 @@
             <label for="consumo" class="col-md-2 control-label text-bold">Consumo R$.:</label>
             <div class="col-md-10">
                 <select class="form-control input-sm" id="consumo" name="consumo">
-                    <option value="" style="display: none;" {{ old('consumo', isset($projeto->consumo) ? $projeto->consumo : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Integrador</option>
+                    <option value="" style="display: none;" {{ old('consumo', isset($projeto->consumo) ? $projeto->consumo : '') == '' ? 'selected' : '' }} disabled selected>Selecione um consumo</option>
                     @foreach (['30 - 100' => '30 - 100',
         '110 - 300' => '110 - 300',
         '350 - 600' => '350 - 600',
