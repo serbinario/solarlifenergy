@@ -49,6 +49,7 @@ class Cliente extends Model
         'conjugue',
         'conjugue_cpf',
         'rg',
+        'cpf',
         'data_emissao_rg',
         'orgao_emissor_rg',
         'naturalidade_uf',

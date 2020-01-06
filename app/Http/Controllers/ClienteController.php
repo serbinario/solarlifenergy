@@ -168,9 +168,9 @@ class ClienteController extends Controller
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro realizado com sucesso!');
 
-        } catch (Exception $exception) {
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -225,10 +225,9 @@ class ClienteController extends Controller
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
-        } catch (Exception $exception) {
-            //dd($exception);
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -297,6 +296,7 @@ class ClienteController extends Controller
             'conjugue',
             'conjugue_cpf',
             'rg',
+            'cpf',
             'data_emissao_rg',
             'orgao_emissor_rg',
             'naturalidade_uf',
