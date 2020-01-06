@@ -4,6 +4,7 @@ namespace Serbinario\Http\Controllers\Auth;
 
 use Serbinario\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,6 +37,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function credentials(Request $request)
+    {
+        return [
+            'email' => $request->{$this->username()},
+            'password' => $request->password,
+            //'is_active' => '1',
+        ];
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->is_active) {
+            auth()->logout();
+            return back()->with('error_message', 'Seu login está desativado');
+        }
+
+        if (!$user->franquia->is_active) {
+            auth()->logout();
+            return back()->with('error_message', 'Sua fraquia está desativada');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
+
 
 
 

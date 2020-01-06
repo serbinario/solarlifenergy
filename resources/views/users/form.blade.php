@@ -64,5 +64,19 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
+        <label for="is_active" class="col-md-2 control-label text-bold">Ativo?.:</label>
+        <div class="col-md-10">
+            <div class="checkbox">
+                <label for="is_active_1">
+                    <input id="is_active" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', isset($user->is_active) ? $user->is_active : null) == '1' ? 'checked' : '' }}>
+                    Sim
+                </label>
+            </div>
+
+            {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
 
 </div>
