@@ -81,6 +81,7 @@ class ReportController extends Controller
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
     public function reportPdfProcuracao($idProjeto)
@@ -131,3 +132,6 @@ class ReportController extends Controller
 
 }
 >>>>>>> 27c5e331be73a2bfc9672c9a0208171a090eec6b
+=======
+}
+>>>>>>> d173b7d62a696b5527c284ec2213bb7df6befbfa
