@@ -174,6 +174,19 @@
 							<li><a href="{{ route('projeto.projeto.index') }}" class="active"><span class="title">Projetos</span></a></li>
 
 							@role('admin')
+
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Documentos</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Procurações</span></a></li>
+									<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
+									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
+
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Cadastro</span>
@@ -182,6 +195,7 @@
 								<ul>
 									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
 									<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
+									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 

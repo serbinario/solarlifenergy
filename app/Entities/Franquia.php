@@ -82,7 +82,15 @@ class Franquia extends Model
     {
         return $value == "" ? "" : date('d/m/Y', strtotime($value));
 
-
     }
+    /**
+     * Get the projeto for this model.
+     */
+    public function parametro()
+    {
+        return $this->hasOne('Serbinario\Entities\Parametro','franquia_id','id');
+    }
+
+
 
 }

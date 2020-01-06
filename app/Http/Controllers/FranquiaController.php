@@ -6,6 +6,7 @@ namespace Serbinario\Http\Controllers;
 //meu teste
 
 use Serbinario\Entities\Franquia;
+use Serbinario\Entities\Parametro;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\FranquiaFormRequest;
 use Yajra\DataTables\DataTables;
@@ -89,8 +90,12 @@ class FranquiaController extends Controller
         try {
             
             $data = $request->getData();
+
             
             $franquia = Franquia::create($data);
+
+            //Toda franquia criada já se gera um parametro para ela
+            Parametro::create(['franquia_id' => $franquia->id]);
 
             return redirect()->route('franquia.franquia.edit', $franquia->id)
                 ->with('success_message', 'Cadastro realizado com sucesso!');
