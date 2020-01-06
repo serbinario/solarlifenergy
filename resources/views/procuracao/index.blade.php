@@ -24,7 +24,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Fornecedores</header>
+                            <header>Lista de Procurações</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('procuracao.procuracao.create') }}" class="btn btn-primary" title="Novo Fornecedor">
@@ -43,6 +43,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Nome</th>
+                                                    <th>Data Validade</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -58,7 +59,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('procuracao.procuracao.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
+                                <a href="{{ route('procuracao.procuracao.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Procuração</a>
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -72,4 +73,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/procuracao/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

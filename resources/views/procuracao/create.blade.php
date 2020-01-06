@@ -2,13 +2,22 @@
 
 @section('content')
 
+    @if(Session::has('errors'))
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
+            @foreach($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        </div>
+    @endif
+
 <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
             <form method="POST" action="{{ route('procuracao.procuracao.store') }}" accept-charset="UTF-8" id="create_procuracao_form" name="create_procuracao_form" class="form-horizontal">
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Create an account</header>
+                        <header>Nova Procuração</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('procuracao.procuracao.index') }}" class="btn btn-primary" title="Show All Procuracao">
