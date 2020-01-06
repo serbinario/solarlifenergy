@@ -181,7 +181,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="" class="active"><span class="title">Procurações</span></a></li>
+									<li><a href="{{ route('procuracao.procuracao.index') }}" class="active"><span class="title">Procurações</span></a></li>
 
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->

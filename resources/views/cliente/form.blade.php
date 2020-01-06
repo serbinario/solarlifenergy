@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="form-group {{ $errors->has('data_nascimento') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('is_whatsapp') ? 'has-error' : '' }}">
                 <label for="login" class="col-sm-4 control-label text-bold">É Whatsapp?.:</label>
                 <div class="col-md-8">
                     <div class="checkbox checkbox-styled">

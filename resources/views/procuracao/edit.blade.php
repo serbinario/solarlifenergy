@@ -31,7 +31,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar account</header>
+                            <header>Editar Procuração</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('procuracao.procuracao.index') }}" class="btn btn-primary" title="Show All Procuracao">
@@ -49,7 +49,7 @@
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
                                 <a href="{{ route('procuracao.procuracao.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -63,4 +63,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/procuracao/edit.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

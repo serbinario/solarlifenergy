@@ -5,10 +5,13 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 
-use Illuminate\Http\Request;
+use Serbinario\User;
+use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Cliente;
-use Serbinario\Entities\Procuracao;
+use Serbinario\Entities\Entities\Procuracao;
+use Serbinario\Entities\Franquia;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\ProcuracaoFormRequest;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -17,38 +20,50 @@ class ProcuracaoController extends Controller
     private $token;
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the procuracaos.
      *
      * @return Illuminate\View\View
      */
     public function index()
     {
-        $procuracaos = Procuracao::with('cliente')->paginate(25);
+        $procuracaos = Procuracao::with('cliente','franquium','updater','creator')->paginate(25);
 
         return view('procuracao.index', compact('procuracaos'));
     }
 
     /**
-         * Display a listing of the fornecedors.
-         *
-         * @return Illuminate\View\View
-         * @throws Exception
-         */
-        public function grid()
-        {
-            $this->token = csrf_token();
-            #Criando a consulta
-            $rows = \DB::table('[% table %]');
+     * Display a listing of the fornecedors.
+     *
+     * @return Illuminate\View\View
+     * @throws Exception
+     */
+    public function grid()
+    {
+        $this->token = csrf_token();
+        #Criando a consulta
+        $rows = \DB::table('procuracoes')
+            ->leftJoin('clientes', 'clientes.id', '=', 'procuracoes.cliente_id')
+            ->select([
+                'procuracoes.id',
+                'clientes.nome',
+                \DB::raw('DATE_FORMAT(procuracoes.data_validade,"%d/%m/%Y") as data_validade'),
+            ]);
 
-            #Editando a grid
-            return Datatables::of($rows)->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="procuracao/' . $row->id   . '/destroy" accept-charset="UTF-8">
+        #Editando a grid
+        return Datatables::of($rows)->addColumn('action', function ($row) {
+            return '<form id="' . $row->id   . '" method="POST" action="procuracao/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">
-                                <a href="procuracao/show/'.$row->id.'" class="btn btn-info" title="Show">
-                                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                                </a>
+                            <div class="btn-group btn-group-xs pull-right" role="group">                              
                                 <a href="procuracao/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
@@ -57,8 +72,8 @@ class ProcuracaoController extends Controller
                                 </button>
                         </form>
                         ';
-                            })->make(true);
-        }
+        })->make(true);
+    }
 
     /**
      * Show the form for creating a new procuracao.
@@ -68,32 +83,33 @@ class ProcuracaoController extends Controller
     public function create()
     {
         $clientes = Cliente::pluck('nome','id')->all();
-        
+
         return view('procuracao.create', compact('clientes'));
     }
 
     /**
      * Store a new procuracao in the storage.
      *
-     * @param Illuminate\Http\Request $request
+     * @param Serbinario\Http\Requests\ProcuracaoFormRequest $request
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ProcuracaoFormRequest $request)
     {
         try {
-            $this->affirm($request);
-            $data = $this->getData($request);
-            
+
+            $data = $request->getData();
+            $data['created_by'] = Auth::Id();
+            $data['franquia_id'] = Auth::user()->franquia->id;
             Procuracao::create($data);
 
             return redirect()->route('procuracao.procuracao.index')
-                             ->with('success_message', 'Procuracao was successfully added!');
+                ->with('success_message', 'Procuracao was successfully added!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
 
@@ -106,7 +122,7 @@ class ProcuracaoController extends Controller
      */
     public function show($id)
     {
-        $procuracao = Procuracao::with('cliente')->findOrFail($id);
+        $procuracao = Procuracao::with('cliente','franquia','updater','creator')->findOrFail($id);
 
         return view('procuracao.show', compact('procuracao'));
     }
@@ -130,27 +146,29 @@ class ProcuracaoController extends Controller
      * Update the specified procuracao in the storage.
      *
      * @param  int $id
-     * @param Illuminate\Http\Request $request
+     * @param Serbinario\Http\Requests\ProcuracaoFormRequest $request
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, ProcuracaoFormRequest $request)
     {
         try {
-            $this->affirm($request);
-            $data = $this->getData($request);
-            
+
+            $data = $request->getData();
+
+            $data['updated_by'] = Auth::Id();
             $procuracao = Procuracao::findOrFail($id);
+            //dd($data);
             $procuracao->update($data);
 
             return redirect()->route('procuracao.procuracao.index')
-                             ->with('success_message', 'Procuracao was successfully updated!');
+                ->with('success_message', 'Procuracao was successfully updated!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
-        }        
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+        }
     }
 
     /**
@@ -167,45 +185,15 @@ class ProcuracaoController extends Controller
             $procuracao->delete();
 
             return redirect()->route('procuracao.procuracao.index')
-                             ->with('success_message', 'Procuracao was successfully deleted!');
+                ->with('success_message', 'Procuracao was successfully deleted!');
 
         } catch (Exception $exception) {
 
             return back()->withInput()
-                         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
-    
-    /**
-     * Validate the given request with the defined rules.
-     *
-     * @param  Illuminate\Http\Request  $request
-     *
-     * @return boolean
-     */
-    protected function affirm(Request $request)
-    {
-        $rules = [
-                'cliente_id' => 'nullable',
-            'data_validade' => 'nullable|date_format:j/n/Y g:i A', 
-        ];
 
 
-        return $this->validate($request, $rules);
-    }
-
-    
-    /**
-     * Get the request's data from the request.
-     *
-     * @param Illuminate\Http\Request\Request $request 
-     * @return array
-     */
-    protected function getData(Request $request)
-    {
-        $data = $request->only(['cliente_id', 'data_validade']);
-
-        return $data;
-    }
 
 }

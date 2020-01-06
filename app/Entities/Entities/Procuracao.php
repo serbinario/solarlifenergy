@@ -1,6 +1,6 @@
 <?php
 
-namespace Serbinario\Entities;
+namespace Serbinario\Entities\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,7 +29,18 @@ class Procuracao extends Model
      */
     protected $fillable = [
                   'cliente_id',
-                  'data_validade'
+                  'franquia_id',
+                  'data_validade',
+                  'outorgante',
+                  'rg',
+                  'orgao_expeditor',
+                  'cpf',
+                  'endereco',
+                  'bairro',
+                  'cidade',
+                  'estado',
+                  'updated_by',
+                  'created_by'
               ];
 
     /**
@@ -55,6 +66,30 @@ class Procuracao extends Model
     }
 
     /**
+     * Get the franquium for this model.
+     */
+    public function franquium()
+    {
+        return $this->belongsTo('Serbinario\Entities\Franquia','franquia_id');
+    }
+
+    /**
+     * Get the updater for this model.
+     */
+    public function updater()
+    {
+        return $this->belongsTo('Serbinario\User','updated_by');
+    }
+
+    /**
+     * Get the creator for this model.
+     */
+    public function creator()
+    {
+        return $this->belongsTo('Serbinario\User','created_by');
+    }
+
+    /**
      * Set the data_validade.
      *
      * @param  string  $value
@@ -62,7 +97,7 @@ class Procuracao extends Model
      */
     public function setDataValidadeAttribute($value)
     {
-        $this->attributes['data_validade'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+        $this->attributes['data_validade'] = !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
     /**

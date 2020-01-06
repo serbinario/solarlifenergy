@@ -74,11 +74,6 @@
         "table-name": "pre_propostas"
     },
     {
-        "model-name": "Procuracao",
-        "resource-file": "procuracao.json",
-        "table-name": "procuracoes"
-    },
-    {
         "model-name": "Franquia",
         "resource-file": "franquia.json",
         "table-name": "franquias"
@@ -87,5 +82,10 @@
         "model-name": "Parametro",
         "resource-file": "parametro.json",
         "table-name": "parametros"
+    },
+    {
+        "model-name": "Procuracao",
+        "resource-file": "procuracao.json",
+        "table-name": "procuracoes"
     }
 ]

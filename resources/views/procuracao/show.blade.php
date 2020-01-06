@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.app')
 
 @section('content')
 
@@ -24,12 +24,34 @@
                             <dl class="dl-horizontal">
                                 <dt>Cliente</dt>
             <dd>{{ isset($procuracao->cliente->nome) ? $procuracao->cliente->nome : '' }}</dd>
+            <dt>Franquia</dt>
+            <dd>{{ isset($procuracao->franquium->id) ? $procuracao->franquium->id : '' }}</dd>
             <dt>Data Validade</dt>
             <dd>{{ $procuracao->data_validade }}</dd>
+            <dt>Outorgante</dt>
+            <dd>{{ $procuracao->outorgante }}</dd>
+            <dt>Rg</dt>
+            <dd>{{ $procuracao->rg }}</dd>
+            <dt>Orgao Expeditor</dt>
+            <dd>{{ $procuracao->orgao_expeditor }}</dd>
+            <dt>Cpf</dt>
+            <dd>{{ $procuracao->cpf }}</dd>
+            <dt>Endereco</dt>
+            <dd>{{ $procuracao->endereco }}</dd>
+            <dt>Bairro</dt>
+            <dd>{{ $procuracao->bairro }}</dd>
+            <dt>Cidade</dt>
+            <dd>{{ $procuracao->cidade }}</dd>
+            <dt>Estado</dt>
+            <dd>{{ $procuracao->estado }}</dd>
             <dt>Created At</dt>
             <dd>{{ $procuracao->created_at }}</dd>
             <dt>Updated At</dt>
             <dd>{{ $procuracao->updated_at }}</dd>
+            <dt>Updated By</dt>
+            <dd>{{ isset($procuracao->updater->name) ? $procuracao->updater->name : '' }}</dd>
+            <dt>Created By</dt>
+            <dd>{{ isset($procuracao->creator->name) ? $procuracao->creator->name : '' }}</dd>
 
                             </dl>
 
