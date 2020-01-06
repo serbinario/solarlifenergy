@@ -101,15 +101,14 @@ class ProcuracaoController extends Controller
             $data = $request->getData();
             $data['created_by'] = Auth::Id();
             $data['franquia_id'] = Auth::user()->franquia->id;
-            Procuracao::create($data);
+            $procuracao = Procuracao::create($data);
 
-            return redirect()->route('procuracao.procuracao.index')
-                ->with('success_message', 'Procuracao was successfully added!');
+            return redirect()->route('procuracao.procuracao.edit', $procuracao->id)
+                ->with('success_message', 'Cadastro realizado com sucesso!');
 
-        } catch (Exception $exception) {
-
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 
