@@ -82,5 +82,10 @@
         "model-name": "Franquia",
         "resource-file": "franquia.json",
         "table-name": "franquias"
+    },
+    {
+        "model-name": "Parametro",
+        "resource-file": "parametro.json",
+        "table-name": "parametros"
     }
 ]

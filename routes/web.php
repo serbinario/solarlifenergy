@@ -779,3 +779,38 @@ Route::group(
          ->where('id', '[0-9]+');
 
 });
+
+Route::group(
+[
+    'prefix' => 'parametro',
+], function () {
+
+    Route::get('/', 'ParametroController@index')
+         ->name('parametro.parametro.index');
+
+    Route::get('/create','ParametroController@create')
+         ->name('parametro.parametro.create');
+
+    Route::get('/grid', 'ParametroController@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{parametro}','ParametroController@show')
+         ->name('parametro.parametro.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{parametro}/edit','ParametroController@edit')
+         ->name('parametro.parametro.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'ParametroController@store')
+         ->name('parametro.parametro.store');
+               
+    Route::put('parametro/{parametro}', 'ParametroController@update')
+         ->name('parametro.parametro.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{parametro}/destroy','ParametroController@destroy')
+         ->name('parametro.parametro.destroy')
+         ->where('id', '[0-9]+');
+
+});
