@@ -173,7 +173,7 @@ class UsersController extends Controller
 
             //$this->affirm($request);
             $data = $request->getData();
-            //
+
             $user = User::findOrFail($id);
 
             if(empty($data['password'])){
@@ -183,7 +183,7 @@ class UsersController extends Controller
             }
 
             $user->update($data);
-
+            //dd($user);
             //Retora o id do ROLE
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
             $user->syncRoles($role_r);
