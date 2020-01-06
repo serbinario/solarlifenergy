@@ -58,7 +58,6 @@
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
-
 @endsection
 
 @section('javascript')
