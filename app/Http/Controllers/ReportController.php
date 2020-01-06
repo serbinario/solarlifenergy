@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: serbinario
- * Date: 06/08/18
- * Time: 18:14
- */
 
 namespace Serbinario\Http\Controllers;
-
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,8 +24,6 @@ class ReportController extends Controller
     {
         return view('report.index');
     }
-
-
 
     public function reportPdfFichaElaboracaoProjeto($idProjeto)
     {
