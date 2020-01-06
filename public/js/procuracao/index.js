@@ -1,32 +1,3 @@
-var gridDebitostable;
-var fornecedorNome;
-var valor_debito;
-var numero_cobranca;
-var id_debito; //id do debito
-
-function template(d){
-    console.log(d);
-    //Retirar os "&quot" da array aditivos
-    //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
-
-    var html = "<table class='table table-bordered'>";
-    html += "<thead>" +
-        "<tr><td>Profile</td><td>Grupo</td></tr>" +
-        "</thead>";
-
-
-
-    html += "<tr>";
-    html += "<td>"  + d.profile + "</td>";
-    html += "<td>"  + d.grupo + "</td>";
-
-    html += "</tr>"
-
-    html += "</table>";
-
-    return  html;
-}
-
 var table = $('#procuracao').DataTable({
     "dom": 'lCfrtip',
     "order": [],
