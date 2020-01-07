@@ -189,12 +189,7 @@ class PrePropostaController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
-            $prePropostas = PreProposta::all();
-            foreach ($prePropostas as $preProposta){
-                //dd($preProposta->cliente->user_id);
-                $preProposta->update(['user_id' => empty($preProposta->cliente->user_id )? null: $preProposta->cliente->user_id ]);
-            }
-            dd($data);
+            //dd($data);
             $preProposta = PreProposta::findOrFail($id);
             $preProposta->update($data);
 
