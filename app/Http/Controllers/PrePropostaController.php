@@ -133,6 +133,12 @@ class PrePropostaController extends Controller
             $codigo = $last->codigo +1;
             $data['codigo'] = $codigo;
 
+            //Coloquei essa opçao pois quando um usuario nao e adm o formulario nao manda o id do user pois esta
+            // em solente leitura
+            if(empty($data['users_id'])){
+                $data['users_id'] = Auth::id();
+            }
+
             $preProposta = PreProposta::create($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
