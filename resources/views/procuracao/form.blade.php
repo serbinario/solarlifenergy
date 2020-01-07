@@ -4,7 +4,7 @@
     <label for="cliente_id" class="col-md-2 control-label text-bold">Cliente.:</label>
     <div class="col-md-10">
         <select class="form-control input-sm" id="cliente_id" name="cliente_id">
-        	    <option value="" style="display: none;" {{ old('cliente_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : '') == '' ? 'selected' : '' }} disabled selected>Select cliente</option>
+        	    <option value="" style="display: none;" {{ old('cliente_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um cliente</option>
         	@foreach ($clientes as $key => $cliente)
 			    <option value="{{ $key }}" {{ old('cliente_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : null) == $key ? 'selected' : '' }}>
 			    	{{ $cliente }}
@@ -16,7 +16,10 @@
     </div>
 </div>
 
-
+    <div class="col-lg-12">
+        <h4 class="text-bold">Dados do Outorgado</h4>
+        <hr class="ruler-lg"/>
+    </div>
 <div class="form-group {{ $errors->has('data_validade') ? 'has-error' : '' }}">
     <label for="data_validade" class="col-md-2 control-label text-bold">Data Validade.:</label>
     <div class="col-md-10">
