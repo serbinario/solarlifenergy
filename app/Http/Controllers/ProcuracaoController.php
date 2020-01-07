@@ -85,7 +85,7 @@ class ProcuracaoController extends Controller
      */
     public function create()
     {
-        $clientes = Cliente::pluck('nome','id')->all();
+        $clientes =  Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
 
         return view('procuracao.create', compact('clientes'));
     }
@@ -139,7 +139,7 @@ class ProcuracaoController extends Controller
     public function edit($id)
     {
         $procuracao = Procuracao::findOrFail($id);
-        $clientes = Cliente::pluck('nome','id')->all();
+        $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
 
         return view('procuracao.edit', compact('procuracao','clientes'));
     }
