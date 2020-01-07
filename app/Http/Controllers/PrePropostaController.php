@@ -68,7 +68,6 @@ class PrePropostaController extends Controller
 
         #Editando a grid
         return Datatables::of($rows)
-
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
@@ -84,8 +83,6 @@ class PrePropostaController extends Controller
                 if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
                 }
-
-
             })
 
 
@@ -141,8 +138,6 @@ class PrePropostaController extends Controller
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
-
-
         } catch (Exception $e) {
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
@@ -194,7 +189,12 @@ class PrePropostaController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
-            // dd($data);
+            $prePropostas = PreProposta::all();
+            foreach ($prePropostas as $preProposta){
+                //dd($preProposta->cliente->user_id);
+                $preProposta->update(['user_id' => empty($preProposta->cliente->user_id )? null: $preProposta->cliente->user_id ]);
+            }
+            dd($data);
             $preProposta = PreProposta::findOrFail($id);
             $preProposta->update($data);
 
