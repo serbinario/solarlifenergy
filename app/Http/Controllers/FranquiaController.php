@@ -21,8 +21,7 @@ class FranquiaController extends Controller
      *
      * @return void
      */
-     public function __construct()
-     {
+     public function __construct(){
             $this->middleware('auth');
      }
     /**
@@ -30,8 +29,7 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function index()
-    {
+    public function index(){
         $franquias = Franquia::paginate(25);
 
         return view('franquia.index', compact('franquias'));
@@ -43,8 +41,7 @@ class FranquiaController extends Controller
          * @return Illuminate\View\View
          * @throws Exception
          */
-        public function grid()
-        {
+        public function grid(){
             $this->token = csrf_token();
             #Criando a consulta
             $rows = \DB::table('franquias');
@@ -71,9 +68,7 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function create()
-    {
-        
+    public function create(){
         
         return view('franquia.create');
     }
@@ -85,23 +80,18 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(FranquiaFormRequest $request)
-    {
+    public function store(FranquiaFormRequest $request){
         try {
-            
             $data = $request->getData();
-
-            
             $franquia = Franquia::create($data);
 
-            //Toda franquia criada já se gera um parametro para ela
+            //[RF006-RN003]:Toda franquia criada já se gera um parametro para ela
             Parametro::create(['franquia_id' => $franquia->id]);
 
             return redirect()->route('franquia.franquia.edit', $franquia->id)
                 ->with('success_message', 'Cadastro realizado com sucesso!');
 
         } catch (Exception $e) {
-
             return back()->withInput()
                          ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -114,8 +104,7 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function show($id)
-    {
+    public function show($id){
         $franquia = Franquia::findOrFail($id);
 
         return view('franquia.show', compact('franquia'));
@@ -128,10 +117,8 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $franquia = Franquia::findOrFail($id);
-        
 
         return view('franquia.edit', compact('franquia'));
     }
@@ -144,8 +131,7 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function update($id, FranquiaFormRequest $request)
-    {
+    public function update($id, FranquiaFormRequest $request){
         try {
             
             $data = $request->getData();
@@ -170,8 +156,7 @@ class FranquiaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         try {
             $franquia = Franquia::findOrFail($id);
             $franquia->delete();

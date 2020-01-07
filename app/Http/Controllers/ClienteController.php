@@ -34,8 +34,7 @@ class ClienteController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function index()
-    {
+    public function index(){
         $clientes = Cliente::paginate(25);
 
         return view('cliente.index', compact('clientes'));
@@ -103,9 +102,7 @@ class ClienteController extends Controller
                                 </button>
                         </form>
                         ';
-        })
-
-            ->make(true);
+        })->make(true);
     }
 
     /**
@@ -113,10 +110,7 @@ class ClienteController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function create()
-    {
-
-
+    public function create(){
         return view('cliente.create');
     }
 
@@ -133,15 +127,10 @@ class ClienteController extends Controller
             //$this->affirm($request);
             $data = $this->getData($request);
 
-            //dd($data);
+            $data['user_id'] = \Auth::id();
             $cliente = Cliente::create($data);
 
-
-            /*
-             * Apos criar um cliente e criado um projeto para o mesmo
-             */
             $cliente->id;
-
             $cur_date = Carbon::now();
 
             //Retorna o ano so os dois ultimos digitos
@@ -150,19 +139,17 @@ class ClienteController extends Controller
             //Retorna o ultimo registro
             $last = \DB::table('projetos')->orderBy('id', 'DESC')->first();
 
-
-            //Corrigir o problema da virada do ano
+            /*
+             * [RF003-RN004]: [RF003-RN005]:
+             * Corrigir o problema da virada do ano
+             *
+             */
             $projeto_codigo = $last->projeto_codigo +1;
-
             $projeto = array();
             $projeto['clientes_id'] = $cliente->id;
             $projeto['projeto_codigo'] = $projeto_codigo;
-            $projeto['users_id'] = \Auth::id();
-            //[RF001-RN002]:
+            $projeto['users_id'] = \Auth::id();  //[RF001-RN002]:
             $projeto['projeto_status_id'] = 1;
-
-            //dd($projeto);
-
             $projeto = Projeto::create($projeto);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
@@ -174,19 +161,6 @@ class ClienteController extends Controller
         }
     }
 
-    /**
-     * Display the specified cliente.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $cliente = Cliente::findOrFail($id);
-
-        return view('cliente.show', compact('cliente'));
-    }
 
     /**
      * Show the form for editing the specified cliente.
@@ -218,10 +192,11 @@ class ClienteController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
-            //dd($data);
             $cliente = Cliente::findOrFail($id);
-            $cliente->update($data);
+            $data['user_id'] = \Auth::id();
             //dd($data);
+            $cliente->update($data);
+
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
