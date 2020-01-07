@@ -6,10 +6,12 @@ namespace Serbinario\Http\Controllers;
 //meu teste
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
+use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -51,7 +53,9 @@ class PrePropostaController extends Controller
         #Criando a consulta
         $rows = \DB::table('pre_propostas')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->leftJoin('users', 'users.id', '=', 'pre_propostas.user_id')
             ->select([
+                'users.name',
                 'pre_propostas.codigo',
                 'pre_propostas.id',
                 \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
@@ -65,6 +69,11 @@ class PrePropostaController extends Controller
                 \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
 
             ]);
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if(!$user->hasRole('admin')) {
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+        }
 
         #Editando a grid
         return Datatables::of($rows)
@@ -124,7 +133,7 @@ class PrePropostaController extends Controller
     public function store(PrePropostaFormRequest $request)
     {
         try {
-            $this->affirm($request);
+
             $data = $this->getData($request);
 
             //Retorna o ultimo registro
@@ -133,8 +142,8 @@ class PrePropostaController extends Controller
             $codigo = $last->codigo +1;
             $data['codigo'] = $codigo;
 
-            //Coloquei essa opçao pois quando um usuario nao e adm o formulario nao manda o id do user pois esta
-            // em solente leitura
+            //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
+            // em somente leitura
             if(empty($data['users_id'])){
                 $data['users_id'] = Auth::id();
             }
@@ -192,7 +201,6 @@ class PrePropostaController extends Controller
     public function update($id, PrePropostaFormRequest $request)
     {
         try {
-            $this->affirm($request);
             $data = $this->getData($request);
 
             //dd($data);
@@ -229,43 +237,6 @@ class PrePropostaController extends Controller
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
-    }
-
-    /**
-     * Validate the given request with the defined rules.
-     *
-     * @param  Illuminate\Http\Request  $request
-     *
-     * @return boolean
-     */
-    protected function affirm(Request $request)
-    {
-        $rules = [
-            /*'cliente_id' => 'nullable',
-        'power' => 'nullable|string|min:0|max:10',
-        'quantity' => 'nullable|string|min:0|max:10',
-        'minimum_area' => 'nullable|string|min:0|max:10',
-        'average_weight' => 'nullable|numeric|string|min:0|max:10',
-        'value' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
-        'yearly_usage' => 'nullable|numeric|string|min:0|max:10',
-        'jan' => 'nullable|string|min:0|max:10',
-        'feb' => 'nullable|string|min:0|max:10',
-        'mar' => 'nullable|string|min:0|max:10',
-        'apr' => 'nullable|string|min:0|max:10',
-        'may' => 'nullable|string|min:0|max:10',
-        'jun' => 'nullable|string|min:0|max:10',
-        'jul' => 'nullable|string|min:0|max:10',
-        'aug' => 'nullable|string|min:0|max:10',
-        'sep' => 'nullable|string|min:0|max:10',
-        'oct' => 'nullable|string|min:0|max:10',
-        'nov' => 'nullable|string|min:0|max:10',
-        'dec' => 'nullable|string|min:0|max:10',
-        'real_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99',
-        'panel_power' => 'nullable|numeric|min:-99999999.99|max:99999999.99', */
-        ];
-
-
-        return $this->validate($request, $rules);
     }
 
 

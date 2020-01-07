@@ -57,6 +57,7 @@ var table = $('#preProposta').DataTable({
         {data: 'codigo', name: 'codigo'},
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
+        {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'created_at', name: 'pre_propostas.created_at'},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false}
