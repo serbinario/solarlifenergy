@@ -107,11 +107,11 @@ class ProcuracaoController extends Controller
             $procuracao = Procuracao::create($data);
 
             return redirect()->route('procuracao.procuracao.edit', $procuracao->id)
-                ->with('success_message', 'Cadastro realizado com sucesso!');
+                ->with('success_message', 'Procuracao was successfully updated!');
 
         } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['error' => $e->getMessage()]);
+                ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
 
@@ -164,13 +164,12 @@ class ProcuracaoController extends Controller
             //dd($data);
             $procuracao->update($data);
 
-            return redirect()->route('procuracao.procuracao.index')
+            return redirect()->route('procuracao.procuracao.edit', $procuracao->id)
                 ->with('success_message', 'Procuracao was successfully updated!');
 
-        } catch (Exception $exception) {
-
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
 

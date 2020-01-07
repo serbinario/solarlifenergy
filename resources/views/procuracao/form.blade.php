@@ -26,10 +26,6 @@
 
     @endif
 
-    <div class="col-lg-12">
-        <h4 class="text-bold">Dados do Outorgado</h4>
-        <hr class="ruler-lg"/>
-    </div>
     <div class="form-group {{ $errors->has('data_validade') ? 'has-error' : '' }}">
         <label for="data_validade" class="col-md-2 control-label text-bold">Data Validade.:</label>
         <div class="col-md-10">
@@ -37,7 +33,10 @@
             {!! $errors->first('data_validade', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
-
+        <div class="col-lg-12">
+            <h4 class="text-bold">Dados do Outorgado</h4>
+            <hr class="ruler-lg"/>
+        </div>
     <div class="form-group {{ $errors->has('outorgante') ? 'has-error' : '' }}">
         <label for="outorgante" class="col-md-2 control-label text-bold">Outorgante.:</label>
         <div class="col-md-10">
