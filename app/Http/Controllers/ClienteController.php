@@ -193,8 +193,6 @@ class ClienteController extends Controller
             $data = $this->getData($request);
 
             $cliente = Cliente::findOrFail($id);
-            $data['user_id'] = \Auth::id();
-            //dd($data);
             $cliente->update($data);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
