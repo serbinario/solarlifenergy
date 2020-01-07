@@ -71,16 +71,12 @@ class ReportController extends Controller
 
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
-    public function reportPdfProcuracao($idProjeto)
+    public function reportPdfProcuracao($idProcuracao)
     {
         $options = [
             'format' => ['pdf'],
             'locale' => 'pt_BR',
-            'params' => [ 'idProjeto' => $idProjeto],
+            'params' => [ 'id_procuracao' => $idProcuracao],
             'db_connection' => [
                 'driver' => env('DB_CONNECTION'),
                 'host' => env('DB_HOST'),
@@ -100,7 +96,7 @@ class ReportController extends Controller
 
         $report = new PHPJasper();// chama o método que irá gerar o relatório
         $report->process(
-            public_path() .  '/reports/Ficha_elaboracao_projeto.jrxml',
+            public_path() .  '/reports/Procuracao.jrxml',
             $output,
             $options
         )->execute();
@@ -122,7 +118,3 @@ class ReportController extends Controller
     }
 
 }
->>>>>>> 27c5e331be73a2bfc9672c9a0208171a090eec6b
-=======
-}
->>>>>>> d173b7d62a696b5527c284ec2213bb7df6befbfa
