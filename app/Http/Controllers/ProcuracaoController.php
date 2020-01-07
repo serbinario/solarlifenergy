@@ -67,6 +67,9 @@ class ProcuracaoController extends Controller
                                 <a href="procuracao/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
+                                <a href="/report/'.$row->id.'/Procuracao" class="btn btn-primary" target="_blank" title="Procuracao">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>

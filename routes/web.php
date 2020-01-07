@@ -32,6 +32,7 @@ Route::post('/simulaGeracao', 'UtilController@simulaGeracao')
 Route::any('/notificationUrl', 'NotificationUrl@notificationUrl')->name('notificationUrl');
 
 Route::any('/report/{id}/FichaElaboracaoProjeto', 'ReportController@reportPdfFichaElaboracaoProjeto')->name('reportIndex');
+Route::any('/report/{id}/Procuracao', 'ReportController@reportPdfProcuracao')->name('reportIndexProcuracao');
 
 //RN-0001
 Route::get('/cobrancasAPI', 'CobrancasAPIController@gerenciant')->name('cobrancasAPI.gerencianet');

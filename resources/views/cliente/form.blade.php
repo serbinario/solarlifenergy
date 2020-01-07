@@ -118,7 +118,7 @@
     <div class="form-group {{ $errors->has('naturalidade_uf') ? 'has-error' : '' }}">
         <label for="naturalidade_uf" class="col-md-2 control-label text-bold">Naturalidade UF.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="naturalidade_uf" type="text" id="naturalidade_uf" value="{{ old('naturalidade_uf', isset($cliente->naturalidade_uf) ? $cliente->naturalidade_uf : null) }}" maxlength="255" placeholder="Naturalidade UF">
+            <input class="form-control input-sm" name="naturalidade_uf" type="text" id="naturalidade_uf" value="{{ old('naturalidade_uf', isset($cliente->naturalidade_uf) ? $cliente->naturalidade_uf : null) }}" maxlength="2" placeholder="Naturalidade UF">
             {!! $errors->first('naturalidade_uf', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
