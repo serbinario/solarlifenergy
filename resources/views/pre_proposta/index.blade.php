@@ -138,6 +138,7 @@
                                                     <th>Código</th>
                                                     <th>Valor Proposta</th>
                                                     <th>Data Validade</th>
+                                                    <th>Integraador</th>
                                                     <th>Data Cadastro</th>
                                                     <th>Data Alteração</th>
                                                     <th>Acao</th>
