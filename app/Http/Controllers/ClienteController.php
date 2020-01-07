@@ -192,7 +192,18 @@ class ClienteController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
 
+
+            $clientes = Cliente::all();
+            foreach ($clientes as $cliente){
+                //dd($cliente->projeto->users_id);
+                $cliente->update(['user_id' => empty($cliente->projeto->users_id )? null: $cliente->projeto->users_id ]);
+            }
+            dd($clientes);
+
             $cliente = Cliente::findOrFail($id);
+
+
+            //******
             $cliente->update($data);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
