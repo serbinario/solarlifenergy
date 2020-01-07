@@ -168,6 +168,7 @@ class ProcuracaoController extends Controller
                 ->with('success_message', 'Procuracao was successfully updated!');
 
         } catch (Exception $e) {
+         ;
             return back()->withInput()
                 ->withErrors(['error_message' => $e->getMessage()]);
         }

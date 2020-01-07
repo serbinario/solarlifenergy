@@ -1,9 +1,10 @@
 <div class="card-body">
     @if(isset($procuracao->cliente->nome))
         <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
+            <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('clientes_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : null) }}" >
             <label for="cliente_id" class="col-md-2 control-label text-bold">Cliente.:</label>
             <div class="col-md-10">
-                <input class="form-control input-sm" name="cliente_id" type="text" id="nome" value="{{ old('cliente_id', isset($procuracao->cliente->nome) ? $procuracao->cliente->nome : null) }}" readonly >
+                <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('cliente_id', isset($procuracao->cliente->nome) ? $procuracao->cliente->nome : null) }}" readonly >
                 {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
