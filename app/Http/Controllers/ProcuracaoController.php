@@ -139,6 +139,7 @@ class ProcuracaoController extends Controller
     public function edit($id)
     {
         $procuracao = Procuracao::findOrFail($id);
+        //dd($procuracao);
         $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
 
         return view('procuracao.edit', compact('procuracao','clientes'));
