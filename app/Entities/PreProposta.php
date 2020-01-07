@@ -7,7 +7,7 @@ use \Serbinario\Traits\UtilEntities;
 class PreProposta extends Model
 {
     use UtilEntities;
-    
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -22,10 +22,10 @@ class PreProposta extends Model
     protected $table = 'pre_propostas';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -34,30 +34,31 @@ class PreProposta extends Model
      * @var array
      */
     protected $fillable = [
-                  'cliente_id',
+        'cliente_id',
+        'user_id',
         'codigo',
         'data_validade',
-                    'monthly_usage',
-                  'preco_medio_instalado',
-                  'potencia_instalada',
-                  'minima_area',
-                  'qtd_paineis',
-                  'economia_anula',
-                  'jan',
-                  'feb',
-                  'mar',
-                  'apr',
-                  'may',
-                  'jun',
-                  'jul',
-                  'aug',
-                  'sep',
-                  'oct',
-                  'nov',
-                  'dec',
-                  'panel_potencia',
+        'monthly_usage',
+        'preco_medio_instalado',
+        'potencia_instalada',
+        'minima_area',
+        'qtd_paineis',
+        'economia_anula',
+        'jan',
+        'feb',
+        'mar',
+        'apr',
+        'may',
+        'jun',
+        'jul',
+        'aug',
+        'sep',
+        'oct',
+        'nov',
+        'dec',
+        'panel_potencia',
         'preco_kwh'
-              ];
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -65,14 +66,14 @@ class PreProposta extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the Cliente for this model.
      */
