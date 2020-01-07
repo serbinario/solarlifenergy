@@ -118,9 +118,8 @@ class UsersController extends Controller
 
 
         } catch (Exception $e) {
-
             return back()->withInput()
-                ->withErrors(['unexpected_error' => $e->getMessage()]);
+                ->withErrors(['error__message' => $e->getMessage()]);
         }
     }
 
@@ -192,9 +191,8 @@ class UsersController extends Controller
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
-
             return back()->withInput()
-                ->withErrors(['error' => $e->getMessage()]);
+                ->withErrors(['error__message' => $e->getMessage()]);
         }
     }
 
@@ -221,10 +219,9 @@ class UsersController extends Controller
             return redirect()->route('users.user.index')
                 ->with('success_message', 'Profile was successfully deleted!');
 
-        } catch (Exception $exception) {
-
+        } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error__message' => $e->getMessage()]);
         }
     }
 
@@ -254,11 +251,11 @@ class UsersController extends Controller
      * @param Illuminate\Http\Request\Request $request
      * @return array
      */
-   // protected function getData(Request $request)
-   // {
-        //$data = $request->only(['name', 'email', 'password', 'role', 'franquia_id']);
+      protected function getData(Request $request)
+        {
+        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id']);
 
-        //return $data;
-   // }
+        return $data;
+    }
 
 }
