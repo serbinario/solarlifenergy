@@ -43,17 +43,18 @@ class LoginController extends Controller
         return [
             'email' => $request->{$this->username()},
             'password' => $request->password,
-            //'is_active' => '1',
         ];
     }
 
     public function authenticated(Request $request, $user)
     {
+        //[RF007-RN001]
         if (!$user->is_active) {
             auth()->logout();
             return back()->with('error_message', 'Seu login está desativado');
         }
 
+        //[RF004-RN002
         if (!$user->franquia->is_active) {
             auth()->logout();
             return back()->with('error_message', 'Sua fraquia está desativada');

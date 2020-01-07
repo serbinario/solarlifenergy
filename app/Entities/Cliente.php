@@ -55,7 +55,8 @@ class Cliente extends Model
         'naturalidade_uf',
         'naturalidade_cidade',
         'data_nascimento',
-        'cidade'
+        'cidade',
+        'user_id'
     ];
 
     /**
