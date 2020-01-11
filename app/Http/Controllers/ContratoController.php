@@ -70,6 +70,9 @@ class ContratoController extends Controller
                                 <a href="contrato/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
+                                <a href="/report/'.$row->id.'/Contrato" class="btn btn-primary" target="_blank" title="Contrato">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
