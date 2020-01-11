@@ -16,9 +16,10 @@ Auth::routes();
 
 Route::get('/', 'ClienteController@index')
     ->name('cliente.cliente.index');
-
+/*
 Route::get('/error', 'ClienteController@index')
     ->name('cliente.cliente.index');
+*/
 
 Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
     ->name('cliente.consultaCpfCnpf');
