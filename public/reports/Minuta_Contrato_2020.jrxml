@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="612" pageHeight="792" columnWidth="442" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="70" uuid="64495b37-dd17-4a88-97dc-4e20e04ab90b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<subDataset name="Dataset1" uuid="d3dd2ab4-746d-4f9b-a264-f0ac723aed6f">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+cl.nome, 
+cl.cpf_cnpj,  
+cl.endereco, 
+cl.cidade, 
+cl.cep,
+p.kw,
+c.ano 
+FROM  
+contratos AS c
+INNER JOIN projetos AS p ON p.id = c.projeto_id
+INNER JOIN clientes AS cl ON cl.id = p.clientes_id
+where c.id =  $P{id} ]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cpf_cnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf_cnpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="kw" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="kw"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	</field>
+	<field name="ano" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ano"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contratos"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="83">
+			<textField>
+				<reportElement x="342" y="0" width="100" height="30" uuid="bb67ae98-a519-43a3-9000-4fd1126ee5d1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="10" width="80" height="71" uuid="b6c6da28-4a37-4332-8b1f-0d278fe209d5"/>
+				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="95" y="55" width="305" height="15" uuid="33499192-aebc-42e3-9ad7-89ca99fc755d"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="40" width="335" height="15" uuid="d1ac7e08-e31d-4d7e-a55d-180294234ae6"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Rua Dr. José Bezerra Filho, 11B – Centro/ Cabo – PE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="25" width="335" height="15" uuid="fa084d51-1a29-4c97-af2c-68f9c4095e69"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[http://solarlifenergy.com.br/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="210" height="25" uuid="71b8f12f-3368-486d-8f2a-bd78a35bb514">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solar Life Energy]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="604" splitType="Stretch">
+			<break>
+				<reportElement positionType="Float" x="0" y="603" width="98" height="1" uuid="11969d76-0cbc-4d5d-a105-2ba1fa84c2c9"/>
+			</break>
+			<textField>
+				<reportElement x="140" y="12" width="302" height="78" uuid="921035f9-8f45-44e7-8c17-ce7958b1df4c"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="12" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRATO DE FORNECIMENTO E MONTAGEM DE GERADOR FOTOVOLTAICO DE MICRO GERAÇÃO ON-GRID " + $F{kw} + "Kwp Nº " + $F{cpf_cnpj} + " /" + $F{ano}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="116" width="442" height="109" uuid="d53dfab3-0d4a-491d-931c-093a62d08158"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>SOLAR LIFE ENERGY EIRELI - ME</style>" + ", com sede e foro na cidade de Cabo de Santo Agostinho, na Rua José Bezerra Filho, 61, Loja B, Centro, inscrita no CNPJ/MF sob o nº 00.823.358/0001-14, doravante denominada Contratada, neste ato representada por Josias Jasmelino Ferreira, portador da Cédula de Identidade RG nº 3.464.679, expedida pela SSP-PE, e inscrito no CPF/MF sob nº 606.927.074-68 residente e domiciliado em Cabo de Santo Agostinho, na rua José Bezerra Filho, 61, Centro."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="233" width="442" height="77" uuid="4682bab6-c9c9-4fc2-9766-99fb1d20cfac"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+$F{nome} + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{endereco} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="330" width="442" height="16" uuid="cfe9ac85-f4d4-432d-8458-6c9728413384"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MICRO GERAÇÃO ON-GRID " + $F{kw}+ " Kwp"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="94" width="100" height="22" uuid="6e3dee7f-5f2d-4365-9c89-d866475d68b1"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Das Partes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="378" width="442" height="20" uuid="e1831be4-4fbe-4a1b-96ce-9a12989552a1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Composto dos seguintes acessórios:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="403" width="442" height="197" uuid="e2257187-d42b-464d-9ef9-4255b92d6d4e"/>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[    
+1. Equipamentos do Sistema de Geração de Energia Solar Conectado à rede, contemplando módulos fotovoltaicos, inversores, estrutura de suporte e acessórios;
+2. Frete;
+3. Tramitação de processos e registro de documentação na concessionária;
+4. Projeto e coordenações das diversas etapas que compõe o normativo específico de Geração Distribuída da Celpe;
+5. Montagem e interligação Turn Key;
+6. Comissionamento (testes e energização);
+7. Projeto fotovoltaico (ART, plantas, esquemas elétricos, diagramas, especificações, memorial descritivo);
+
+]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="23" width="442" height="77" uuid="ebcf1681-001c-444d-bd5f-6947a27fdf1d"/>
+				<text><![CDATA[    
+8. Sistema de Monitoramento Remoto;
+9. Não contempla projeto de Cálculo estrutural e/ou reforço da coberta ou superfície que virá acomodar os painéis do sistema fotovoltaico, caso necessário;
+10. Material para interligação entre os inversores e o ponto de conexão com a Celpe;
+11. Custo do Medidor e de sua instalação;
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="115" width="442" height="20" uuid="9256e592-080b-4f4c-a3a8-70bd06dd5c9e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Que se regerá pelas cláusulas e condições abaixo descritas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="154" width="442" height="20" uuid="6876fcd4-70c0-4822-b74e-93e4ef53969e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA PRIMEIRA - DO OBJETO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="190" width="382" height="150" uuid="6efb65cb-118a-4169-aab3-5f0e9aa19485"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRTO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{kw}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
+          "        <style isBold='true'>Parágrafo único.</style>"+ " As instalações serão executadas conforme projeto preliminar, e as normas vigentes da concessionária local visando a aprovação da conexão do gerador." + "\n"+
+          "        Não sendo de responsabilidade da contratada custos referentes a adequação de reparos/reforços de estrutura civil/elétrica para adequação do sistema."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="360" width="442" height="20" uuid="9ef034b3-0630-4788-acf2-365d619ab260">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SEGUNDA - DAS OBRIGAÇÕES DA CONTRATANTE ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="390" width="382" height="30" uuid="26a2d770-ce27-4643-a41d-a2345f616d2f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A contratante deve fornecer todas as informações referente a instalação e estrutura civil que seja solicitado pela contratada."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="440" width="442" height="20" uuid="11284308-a32d-4e4b-884b-377cba1fe43d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA TERCEIRA – DA EXECUÇÃO ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="481" width="382" height="99" uuid="c9d865ca-f841-4d7b-a7ef-90bb7720a7de"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela CELPE, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
+"<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="60" y="20" width="382" height="584" uuid="26d4d8b9-8e6e-436e-9c8b-259c14e47742"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I. Os serviços serão executados de Segunda à Sexta, sendo o horário comercial respeitado. Com possibilidade de alteração conforme acordo." + "\n" +
+"II. A execução da obra só iniciará com aprovação do financiamento e liberação do credito conforme a data programada na cláusula 4."+ "\n" +
+"III. A contratada fica encarregada de projetar, e montar a infra-estrutura."+ "\n" +
+"IV. A estrutura metálica será composta em alumínio e aço galvanizado."+ "\n" +
+"V. Os módulos serão fixados sobre a estrutura projetada para tal finalidade."+ "\n" +
+"VI. " + "<style isBold='true'>Os eletrodutos serão conduzidos de forma aparente.</style>" + "\n" +
+"VII. Quantidade contratada no projeto " +$F{kw}+  " KWP " + "<style isBold='true'>(sem armazenagem de energia).</style>"  +"\n"+
+"VIII. Sempre que existente condição climática desfavoráveis (chuvas, ventos acima da média da região, raios e outros fenômenos naturais que possam colocar em risco a segurança da instalação) haverá paralisação justificada, não caracterizando atraso por parte da contratada." +"\n"+
+"IX. O contratante deverá disponibilizar um espaço no mesmo local da instalação do sistema fotovoltaico para fins de armazenagens do material." +"\n"+
+"X. A partir da chegada dos equipamentos no local da instalação, é de total responsabilidade da contratante a segurança dos mesmos." +"\n"+
+"XI. A contratada apresentará checklist técnico descritivo sobre as condições do local da instalação no dia do início da realização do serviço. Neste documento serão indicadas condições das telhas, estruturas, das lajes e forros, patologias construtivas (externas e internas da edificação), defeitos construtivos no oral, defeitos elétricos e outras características relevantes para início do serviço."+"\n"+
+"XII. Ao término da instalação do gerador fotovoltaico, a contratada apresentará novo checklist técnico descritivo sobre as condições de entrega do equipamento do cliente."+"\n"+
+"XIII. Após a aprovação a CONTRATADA deverá iniciar a execução dos serviços de instalação do gerador fotovoltaico em até 45 dias após a assinatura do contrato, caso sejam respeitadas as condições:"+"\n"+
+"      • Os pagamentos da contratada deverá ser executado nos prazos acordados;"+"\n"+
+"      • O contratante não poderá ter nenhuma pendência junto a contratada ou com a concessionária de energia regional." +"\n"+
+"XIV. O prazo para conclusão das instalações será de 90 dias podendo ser prorrogado por igual período."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="20" width="442" height="20" uuid="359e8b7c-dd49-4991-aae4-1ba6b528a05f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA QUARTA – DO PAGAMENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="204" width="382" height="128" uuid="4f8b1811-308b-4f77-adeb-33c5bfd76399"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente Termo terá vigência de 12 (doze) meses, contados a partir da sua assinatura, podendo ser prorrogado de comum acordo entre as partes através de Termo Aditivo." + "\n"+
+"<style isBold='true'>A contratada não se responsabiliza pelo atraso no funcionamento do sistema por problemas técnicos ocasionados por terceiros e pela CELPE, para fins de mudança de padrão de entrada, alteração de ramal, reforço de rede, adequação de subestação ou qualquer outro problema.</style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="51" width="382" height="129" uuid="43f54846-1291-4f82-952c-1b63b023a79b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[O pagamento referente a proposta (ANEXO I) prosseguirá de acordo com a alínea do financiamento presento no mesmo.
+O valor da instalação considera a moeda oficial brasileira (R$, Real), e pode sofrer alterações em casos excepcionais, de acordo com o artigo 393 do Código Civil Brasileiro.
+Para formatação desta proposta foram considerados os tributos:
+     	• ICMS e IPI: Isento para geradores fotovoltaicos.
+     	• Impostos como PIS e CONFINS já estão inclusos na proposta.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="442" height="20" uuid="d2eecf14-32c5-496d-b140-eb671fb52122">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA QUINTA – DO PRAZO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="327" width="442" height="20" uuid="cfdcb60c-6694-48ad-8e95-2a439b7d6daa">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SEXTA – DA RESCISÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="347" width="382" height="120" uuid="8caa72ec-96db-493b-b90e-7606818d91b5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Este termo poderá ser rescindido por qualquer uma das partes, devendo a outra parte ser comunicada com antecedência mínima de 30 dias. 
+Em caso de rescisão pela contratante após o relacionamento operacional, será cobrado os valores operacionais, adicionados de multa de 8% do valor do projeto.
+Não Havendo devoluções de valores já pagos na execução dos serviços.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="446" width="442" height="20" uuid="a9268467-60d9-4776-ad29-d43bc717db08">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SÉTIMA – GARANTIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="462" width="382" height="141" uuid="e3e3ca7a-faa0-4744-a70c-67944b21d26d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Sempre que acionada a prestar serviços de garantia técnica, a CONTRATADA adotará os procedimentos:
+    	• Averiguar queixas;
+    	• Contatar a contratante;
+    	• Realizar triagem de informações com o auxílio da contratante;
+    	• Programar visita, atendendo as condições estabelecidas na garantia proposta pela contratada e pelo fabricante;
+    	• Realizar reparos;
+	• Preenchimento de ficha de assistência técnica, constando assinatura da contratante.]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="60" y="26" width="382" height="574" uuid="a4683c2b-d4ce-4875-ae0d-77d475ec823c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[A garantia será invalidada sob as seguintes condições:
+    	• Quando as condições de uso do equipamento não forem respeitadas (orientações especificadas no manual e por meio de instruções técnicas);
+    	• Quando houver interferência de pessoas não autorizadas pela contratada;
+    	 Quando houver danos físicos e de funcionamento provocados por fenômenos naturais adversos na região;
+    	• Quando houver danos físicos nos equipamentos, causados por mau uso, como quebra, trincos, rachaduras;
+    	• Quando for detectada influências de natureza química, eletroquímica, elétrica, mecânica ou atmosférica alheias ao gerador fotovoltaico que possam comprometer seu funcionamento;    • 		•Quando for detectada a violação de componentes do gerador fotovoltaico;
+Quando acionada a garantia e caracterizada improdutiva e/ou a não cobertura da garantia perante os termos acima estabelecidos, será realizada cobrança diretamente a contratante sobre despesas de assistência técnica.
+     Custos por funcionários envolvidos:
+    	• R$ 90,00 (noventa reais) por hora trabalhada 2ª a 6ª (Dentro dos horários de funcionamento da contratada. Em caso de hora extra serão adicionados valore conforme sindicato da categoria)
+    	• R$ 75,00 (setenta e cinco reais) por hora de deslocamento
+    	• R$ 24,00 (vinte e quatro reais) por refeição
+    	• R$ 90,00 (noventa reais) por hospedagem (pernoite)
+    	• R$ 2,15 (2 reais e quinze centavos) por quilometragem
+Período de cobertura de garantia, quando atendidas as especificações detalhadas no contrato:
+    	• Módulo Solar: diretamente com o fabricante de 120 meses, e 12 meses com a contratada.
+    	• Inversor: 60 meses diretamente com o fabricante, sendo os 24 meses primeiros com a contratada.
+    	• Estrutura de fixação: para estruturas em aço com tratamento químico 24 meses.
+    	• Garantia da instalação: 12 meses.
+A contratada ficará responsabilizada durante o período de garantia em acionar os fornecedores em caso de problemas com os respectivos equipamentos.]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="60" y="20" width="382" height="330" uuid="be734935-ff21-4d43-a8f7-ee1364762ba7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+					<paragraph lineSpacing="Single" firstLineIndent="0" spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[É condição essencial para validade da garantia do sistema fotovoltaico que a contratante inspecione o produto adquirido imediatamente após a entrega, observando as especificações. O produto será considerado aceito, quando homologado pela concessionária.
+Quando detectada anomalia nos equipamentos e peças que compõem o gerador fotovoltaico, a parte reconhecida como defeituosa deverá estar desimpedida para retirada para análise, reparo ou troca, não podendo a contratante exigir que reparos tenham que obrigatoriamente ser realizados na propriedade do da contratante.
+Eventualmente, em função dos defeitos e problemas técnicos a serem reparados a contratante poderá ficar sem funcionamento do gerador fotovoltaico por até 60 dias corridos, para que seja feita substituição de peças e equipamentos, uma vez que são produtos importados. Em caso de falta de produto no mercado a contratante será notificado e a contratada se reservará ao direito realizar a troca por produto equivalente técnico.
+As condições citadas acima para manutenções são válidas para o endereço em que o projeto foi instalado, em caso de mudança do gerador é necessária nova revalidação deste contrato.
+A geração prevista apresentada na proposta comercial é válida enquanto as condições ambientes em torno do local de instalação, e no próprio local permanecerem constante desde o dia da celebração do contrato.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="380" width="442" height="20" uuid="cc65e3e0-895b-48b6-8810-23afb2227c80">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA OITAVA – RESPONSABILIDADES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="427" width="382" height="53" uuid="797163ea-d1cc-49f0-afc7-cbb9c98c0c16">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[A contratada ficará responsabilizada durante o período de garantia da instalação em realizar o monitoramento da usina fotovoltaica, desde que a contratante disponha boa qualidade internet para o monitoramento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="483" width="382" height="79" uuid="ff18243e-250b-48b4-b7f0-24a786cf962b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERÁ CONSIDERADA VISITA TÉCNICA IMPRODUTIVA, POR QUALQUER ALTERAÇÃO FEITA NA REDE WI-FI QUE SEJA NECESSÁRIO RECONFIGURAR O SISTEMA DE MONITORAMENTO FOTOVOLTAICO. SENDO NECESSÁRIO AVISO DE COBRANÇA A CONTRATANTE ANTES DE REALIZAÇÃO DO SERVIÇO.]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="60" y="30" width="382" height="470" uuid="37517b83-01c6-498c-97e9-56585bdb6587">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>O ACOMPANHAMENTO DA MONITORAÇÃO DO SISTEMA FOTOVOLTAICO CESSARÁ MEDIANTE TÉRMINO DA GARANTIA DE INSTALAÇÃO, EXCETO EM CASO DE CONTRATAÇÃO DO SERVIÇO CONFORME TABELA ABAIXO.</style>"+ "\n\n"+
+"<style isBold='true'>APÓS O TÉRMINO DO PRAZO DE ACOMPANHAMENTO DO SISTEMA FOTOVOLTAICO, A CONTRATADA NÃO SE RESPONSABILIZA POR PREJUÍZOS OCASIONADOS PELA AUSÊNCIA DO MESMO</style>"+ "\n\n"+
+"Em nenhuma hipótese serão responsáveis, uma perante a outra, por eventuais danos indiretos ou consequenciais, tais como lucros cessantes, perdas de receita, perdas de produção, penalizações pelos órgãos outorgantes (ANEEL, ONS, MME) ou outros danos correlatos/assemelhados."+ "\n\n" +
+"<style isBold='true'>TODOS OS PROJETOS ESTÃO SUJEITOS, APÓS ADESÃO AO SISTEMA DE MICROGERAÇÃO, A COBRANÇAS DE TAXA DE DISPONIBILIDADE PELA CONCESSIONÁRIA LOCAL. EM CASO DE TRIFÁSICO (100KWH), MONOFÁSICO (30KWH) E CLIENTES DO GRUPO A PERMANCEM A COBRANÇA DE DEMANDA.</style>"+ "\n\n"+
+"A contratada por descumprimento de qualquer obrigação contratual estará limitada, cumulativamente, ao máximo de 5% (cinco por cento), do valor do contrato a ser firmado e supressão das etapas de pagamento em aberto."+ "\n\n" +
+"As informações consideradas para dimensionamento do sistema, foi exclusivamente, baseada em quantidade de consumo informada na conta de energia apresentada pela CONTRATANTE, não sendo contemplados futuros aumentos de carga. Bem como, não é de responsabilidade da CONTRATADA geração abaixo"+ 
+"do estimado por motivos de condições climáticas, sombreamentos e afins que não contemple defeito do equipamento e/ou falha na instalação"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="20" width="442" height="20" uuid="925bc0fc-26bd-43dd-8724-e71735aadcf5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TABELA DE PREÇOS PARA ACOMPANHAMENTO DE MONITORAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="60" width="400" height="20" uuid="c76ccf32-3206-4587-bb74-29cd2ab93b53">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVIÇOS INCLUSOS NO ACOMPANHAMENTO DE MONITORAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="80" width="270" height="20" uuid="56780c36-f1d7-4a96-ba17-71f088dfd011">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[MONITORAMENTO ONLINE
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="100" width="270" height="20" uuid="1054501d-41bc-43da-ad14-640adfc319d0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[MANUTENÇÃO PREVENTIVA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="120" width="270" height="20" uuid="40e28e28-84c4-4cbf-aa65-c260f31d2a70">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[PRESENÇA DE EQUIPE EM CASO DE ACIONAMENTO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="140" width="270" height="20" uuid="da7b1dac-b9f2-44ff-986b-0beb2d0079f5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POTÊNCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="160" width="270" height="20" uuid="17d0fff5-eb58-4b0f-ac43-12293a9fd4d2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ATÉ 20KWP
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="180" width="270" height="20" uuid="e55bc6ce-0a2a-4d21-acc8-22f93618e5d9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DE 20,01  A 40 KWP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="200" width="270" height="20" uuid="1f5534c5-828c-42fd-a6b4-7d7c902b1b5c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DE 40,01  A 70 KWP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="220" width="270" height="20" uuid="f45bd73d-fad7-408f-b39c-11a292c84369">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DE 70,01  A 110 KWP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="240" width="270" height="20" uuid="b8a1056e-265d-40d8-91cd-73a9d4122879">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DE 110,01  A 300 KWP
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="260" width="270" height="20" uuid="2496d90f-782c-4618-bd9f-206b546f79a6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DE 300,01  A 1 MWP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="320" width="442" height="20" uuid="177a1ef2-da47-4b1a-b3c0-7325e6d31a89">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA NONA – DA OMISSÃO E DO FORO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="360" width="382" height="140" uuid="c5db629c-80c6-4035-bf4d-da791c1514b3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[As eventuais omissões, dúvidas ou controvérsias, quanto à interpretação ou cumprimento do presente cONTRATO, serão resolvidas de comum acordo entre as partes.
+As partes elegem o foro da Comarca de Cabo de Santo Agostinho (PE) para dirimir as questões acaso decorrentes do presente Instrumento, que não puderem ser resolvidas pelas vias administrativas, com renúncia expressa a qualquer outro, por mais privilegiado que seja.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="480" width="442" height="20" uuid="249523a6-cfcb-42c1-bbf8-69f5c6b8d3e2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA DÉCIMA – EXCLUDENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="80" width="130" height="20" uuid="54376e35-9106-413e-99e2-fe7f86aca9b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="100" width="130" height="20" uuid="769386f1-12e0-41b2-be1d-e6ec2081b4c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="120" width="130" height="20" uuid="fdf87eb7-a230-4881-9a6c-5522399cd07d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="140" width="130" height="20" uuid="f189ba39-b18c-4080-a73b-da28eee653c4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$/ MENSAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="160" width="130" height="20" uuid="344d46bc-cfc7-40d0-975e-44ec63b4de90">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 120,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="180" width="130" height="20" uuid="11cc421e-df51-4dd3-a0cd-d9b362b39f6e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 160,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="200" width="130" height="20" uuid="85ff17d5-631e-41d3-8ef7-673b56fe05b0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="220" width="130" height="20" uuid="480e8c21-a16c-49cc-b316-37ece9f3d0ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 240,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="240" width="130" height="20" uuid="2be4ba48-793b-4e97-af6e-3f9da73bf085">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 320,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="260" width="130" height="20" uuid="77310728-e5b2-4112-8984-9727d088cdb7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 430,00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="280" width="270" height="20" uuid="dbb6f37d-7618-4345-9619-46cd98a56440">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ACIMA DE 1 MWP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="280" width="130" height="20" uuid="a75694bf-151a-41b7-ba07-1abf34198078">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[R$ 2.400,00]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="60" y="35" width="382" height="385" uuid="034a20aa-0211-42bc-9939-1c51c366f822">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Para elaboração dessa proposta não foram considerados os seguintes itens:
+    • Realização de obras cíveis em geral, serviços de acabamento, serviços de embutir cabos e canaletas dentro de paredes e divisórias (a passagem de cabos será realizada por meio de canaletas externas);
+    • Eventuais despesas com serviços públicos (prefeitura, órgãos públicos e federais);
+    • Serviço de limpeza de componentes do gerador fotovoltaico;
+    • Serviço de manutenção preventiva;
+    • Assistência técnica improdutiva;
+    • Documentação, taxas, impostos e tarifas não previstas no escopo deste documento;
+    • Projetos complementares;
+    • Serviços de internet
+    • Reforços de estruturas e fundações, complementação de coberturas e telhas, quaisquer reforços distintos do escopo detalhado, que se façam ou não necessários pra atender ao suporte de carga do gerador fotovoltaico;
+    • Adequação e alteração das instalações elétricas do contratante para atender aos requisitos de conexão da concessionária local;
+    • Ensaios laboratoriais solicitados pelo contratante ou pela concessionária;
+    • Estudos e testes de seletividade, curto circuito e também ficam excluídos serviços de ajustes dos relés;
+
+E por acharem justas as suas cláusulas, as partes convenentes firmam o presente Instrumento em 02 (duas) vias de igual teor e forma, juntamente com as testemunhas abaixo, para os devidos efeitos legais.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="500" width="442" height="56" uuid="7445b9c0-9640-4aa4-ac20-3292af0d7407"/>
+				<text><![CDATA[ 			________________________________
+                                            SOLAR LIFE ENERGY EIRELI - ME
+					CONTRATADA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="560" width="442" height="41" uuid="2c5ffd73-f3f4-4d5a-8579-822572972661"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["__________________________________" +"\n"+ 
+									$F{nome}+"\n"+ 
+									"CONTRATANTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="454" width="442" height="30" uuid="5fa1ae8d-0b99-44d7-a16b-8e92020170a4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["                          ,        de                  de " + $F{ano}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

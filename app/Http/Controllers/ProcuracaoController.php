@@ -168,7 +168,6 @@ class ProcuracaoController extends Controller
                 ->with('success_message', 'Procuracao was successfully updated!');
 
         } catch (Exception $e) {
-         ;
             return back()->withInput()
                 ->withErrors(['error_message' => $e->getMessage()]);
         }
@@ -191,7 +190,6 @@ class ProcuracaoController extends Controller
                 ->with('success_message', 'Procuracao was successfully deleted!');
 
         } catch (Exception $exception) {
-
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
