@@ -45,10 +45,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException)
+        {
+            abort(404);
+        }
         if($exception instanceof NotFoundHttpException){
+
             return response()->view('error.error');
         }
+        //dd($exception);
         if($exception instanceof ModelNotFoundException){
+
             return response()->view('error.error');
         }
 
