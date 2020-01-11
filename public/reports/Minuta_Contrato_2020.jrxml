@@ -65,7 +65,7 @@ where c.id =  $P{id} ]]>
 			</textField>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="b6c6da28-4a37-4332-8b1f-0d278fe209d5"/>
-				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="95" y="55" width="305" height="15" uuid="33499192-aebc-42e3-9ad7-89ca99fc755d"/>
