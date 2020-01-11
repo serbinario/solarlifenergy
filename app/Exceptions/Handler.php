@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
 
             return response()->view('error.error');
         }
-        //dd($exception);
+        dd($exception);
         if($exception instanceof ModelNotFoundException){
 
             return response()->view('error.error');

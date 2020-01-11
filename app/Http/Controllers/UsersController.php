@@ -112,7 +112,6 @@ class UsersController extends Controller
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
             $user->syncRoles($role_r);
 
-
             return redirect()->route('users.user.edit', $user->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
@@ -147,7 +146,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $franquias = Franquia::pluck('nome','id')->all();
-        $user = User::with('roles', 'franquia')->find($id);
+        $user = User::with('roles', 'franquia')->findOrFail($id);
         //dd($user);
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
 
