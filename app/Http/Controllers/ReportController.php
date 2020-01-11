@@ -5,9 +5,12 @@ namespace Serbinario\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PHPJasper\PHPJasper;
+use Serbinario\Entities\Contrato;
+use Serbinario\Traits\UtilReports;
 
 class ReportController extends Controller
 {
+    use UtilReports;
     private $vencimento_ini;
     private $vencimento_fim;
     /**
@@ -117,4 +120,26 @@ class ReportController extends Controller
 
     }
 
+<<<<<<< HEAD
 }
+=======
+    public function reportPdfContrato($id)
+    {
+        try
+        {
+            $contrato = Contrato::with('reportLayout')->find($id);
+            $nome_arquivo = $contrato->reportLayout->nome;
+            $file = $this->gerarPdf($id, $nome_arquivo);
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+        //dd($id);
+
+
+    }
+
+}
+>>>>>>> 3567cdc5313149bfdcca7ffbccfac73f8f378777

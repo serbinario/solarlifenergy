@@ -33,6 +33,7 @@ Route::any('/notificationUrl', 'NotificationUrl@notificationUrl')->name('notific
 
 Route::any('/report/{id}/FichaElaboracaoProjeto', 'ReportController@reportPdfFichaElaboracaoProjeto')->name('reportIndex');
 Route::any('/report/{id}/Procuracao', 'ReportController@reportPdfProcuracao')->name('reportIndexProcuracao');
+Route::any('/report/{id}/Contrato', 'ReportController@reportPdfContrato')->name('reportIndexContrato');
 
 //RN-0001
 Route::get('/cobrancasAPI', 'CobrancasAPIController@gerenciant')->name('cobrancasAPI.gerencianet');
@@ -812,6 +813,41 @@ Route::group(
 
     Route::delete('/{parametro}/destroy','ParametroController@destroy')
          ->name('parametro.parametro.destroy')
+         ->where('id', '[0-9]+');
+
+});
+
+Route::group(
+[
+    'prefix' => 'contrato',
+], function () {
+
+    Route::get('/', 'ContratoController@index')
+         ->name('contrato.contrato.index');
+
+    Route::get('/create','ContratoController@create')
+         ->name('contrato.contrato.create');
+
+    Route::get('/grid', 'ContratoController@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{contrato}','ContratoController@show')
+         ->name('contrato.contrato.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{contrato}/edit','ContratoController@edit')
+         ->name('contrato.contrato.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'ContratoController@store')
+         ->name('contrato.contrato.store');
+               
+    Route::put('contrato/{contrato}', 'ContratoController@update')
+         ->name('contrato.contrato.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{contrato}/destroy','ContratoController@destroy')
+         ->name('contrato.contrato.destroy')
          ->where('id', '[0-9]+');
 
 });
