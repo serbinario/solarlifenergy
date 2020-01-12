@@ -124,7 +124,12 @@ return [
         ],
         'clientes_id' => [
             'required' => 'Cliente é obrigatório.',
+        ],
+        'estado_civil' => [
+            'required' => 'Estado Civil é obrigatório.',
         ]
+
+
     ],
 
     /*

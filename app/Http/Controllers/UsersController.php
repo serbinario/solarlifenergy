@@ -118,7 +118,7 @@ class UsersController extends Controller
 
         } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['error__message' => $e->getMessage()]);
+                ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
 
@@ -191,7 +191,7 @@ class UsersController extends Controller
 
         } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['error__message' => $e->getMessage()]);
+                ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
 
@@ -205,8 +205,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         try {
-            //dd($id);
-
             $user = User::findOrFail($id);
             $user->delete();
 
@@ -220,29 +218,9 @@ class UsersController extends Controller
 
         } catch (Exception $e) {
             return back()->withInput()
-                ->withErrors(['error__message' => $e->getMessage()]);
+                ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
-
-    /**
-     * Validate the given request with the defined rules.
-     *
-     * @param  Illuminate\Http\Request  $request
-     *
-     * @return boolean
-     */
-    protected function affirm(Request $request)
-    {
-
-        $rules = [
-            'name' => 'required|min:1|max:200',
-            'email' => 'required|min:1|max:200',
-
-        ];
-
-        return $this->validate($request, $rules);
-    }
-
 
     /**
      * Get the request's data from the request.

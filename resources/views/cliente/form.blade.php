@@ -82,7 +82,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="cpf" class="col-sm-4 control-label text-bold">CPF.:</label>
-                <div class="col-md-8">
+                <div class="col-sm-6">
                     <input class="form-control input-sm mascara-cpfcnpj" name="cpf" type="text" id="cpf" value="{{ old('cpf', isset($cliente->cpf) ? $cliente->cpf : null) }}" maxlength="11" placeholder="CPF">
                     {!! $errors->first('cpf', '<p class="help-block">:message</p>') !!}
                 </div>
@@ -90,8 +90,8 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="rg" class="col-md-2 control-label text-bold">RG.:</label>
-                <div class="col-md-8">
+                <label for="rg" class="col-md-4 control-label text-bold">RG.:</label>
+                <div class="col-sm-6">
                     <input class="form-control input-sm" name="rg" type="text" id="rg" value="{{ old('rg', isset($cliente->rg) ? $cliente->rg : null) }}" maxlength="255" placeholder="RG">
                     {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
                 </div>
@@ -99,19 +99,46 @@
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('rg') ? 'has-error' : '' }}">
-        <label for="data_emissao_rg" class="col-md-2 control-label text-bold">Data Emissão.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm date" name="data_emissao_rg" type="text" id="data_emissao_rg" value="{{ old('data_emissao_rg', isset($cliente->data_emissao_rg) ? $cliente->data_emissao_rg : null) }}" maxlength="255" placeholder="Data Emissão">
-            {!! $errors->first('data_emissao_rg', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="data_emissao_rg" class="col-md-4 control-label text-bold">Data Emissão.:</label>
+                <div class="col-md-6">
+                    <input class="form-control input-sm date" name="data_emissao_rg" type="text" id="data_emissao_rg" value="{{ old('data_emissao_rg', isset($cliente->data_emissao_rg) ? $cliente->data_emissao_rg : null) }}" maxlength="255" placeholder="Data Emissão">
+                    {!! $errors->first('data_emissao_rg', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="orgao_emissor_rg" class="col-md-4 control-label text-bold">Orgão Emissor.:</label>
+                <div class="col-md-6">
+                    <input class="form-control input-sm" name="orgao_emissor_rg" type="text" id="orgao_emissor_rg" value="{{ old('orgao_emissor_rg', isset($cliente->orgao_emissor_rg) ? $cliente->orgao_emissor_rg : null) }}" maxlength="255" placeholder="Orgão Emissor">
+                    {!! $errors->first('orgao_emissor_rg', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('orgao_emissor_rg') ? 'has-error' : '' }}">
-        <label for="orgao_emissor_rg" class="col-md-2 control-label text-bold">Orgão Emissor.:</label>
+
+    <div class="form-group {{ $errors->has('estado_civil') ? 'has-error' : '' }}">
+        <label for="estado_civil" class="col-md-2 control-label text-bold">Estado Civil.: *</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="orgao_emissor_rg" type="text" id="orgao_emissor_rg" value="{{ old('orgao_emissor_rg', isset($cliente->orgao_emissor_rg) ? $cliente->orgao_emissor_rg : null) }}" maxlength="255" placeholder="Orgão Emissor">
-            {!! $errors->first('orgao_emissor_rg', '<p class="help-block">:message</p>') !!}
+            <select class="form-control input-sm" id="estado_civil" name="estado_civil">
+                <option value="" style="display: none;" {{ old('consumo', isset($projeto->estado_civil) ? $cliente->estado_civil : '') == '' ? 'selected' : '' }} disabled selected>Selecione um estado civil</option>
+                @foreach (['Solteiro' => 'Solteiro',
+    'Casado' => 'Casado',
+    'Separado' => 'Separado',
+    '700 - 1.000' => '700 - 1.000',
+    'Divorciado' => 'Divorciado',
+    'Viúvo' => 'Viúvo'] as $key => $text)
+                    <option value="{{ $key }}" {{ old('estado_civil', isset($cliente->estado_civil) ? $cliente->estado_civil : null) == $key ? 'selected' : '' }}>
+                        {{ $text }}
+                    </option>
+                @endforeach
+            </select>
+
+            {!! $errors->first('estado_civil', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
@@ -166,11 +193,23 @@
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('endereco') ? 'has-error' : '' }}">
-        <label for="endereco" class="col-md-2 control-label text-bold">Endereco.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="endereco" type="text" id="endereco" value="{{ old('endereco', isset($cliente->endereco) ? $cliente->endereco : null) }}" maxlength="200" placeholder="Enter endereco here...">
-            {!! $errors->first('endereco', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="endereco" class="col-md-4 control-label text-bold">Endereco.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="endereco" type="text" id="endereco" value="{{ old('endereco', isset($cliente->endereco) ? $cliente->endereco : null) }}" maxlength="200" placeholder="Endereço">
+                    {!! $errors->first('endereco', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="bairro" class="col-sm-4 control-label text-bold">Bairro.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($cliente->bairro) ? $cliente->bairro : null) }}" maxlength="100" placeholder="Bairro">
+                </div>
+            </div>
         </div>
     </div>
 
