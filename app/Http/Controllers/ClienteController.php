@@ -189,7 +189,7 @@ class ClienteController extends Controller
     {
         try {
             //dd($request->all());
-            $this->affirm($request);
+            //$this->affirm($request);
             $data = $this->getData($request);
 
             $cliente = Cliente::findOrFail($id);
@@ -275,7 +275,8 @@ class ClienteController extends Controller
             'naturalidade_uf',
             'naturalidade_cidade',
             'data_nascimento',
-            'cidade'
+            'cidade',
+            'estado_civil'
         ]);
         $data['is_whatsapp'] = $request->has('is_whatsapp');
 

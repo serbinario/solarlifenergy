@@ -38,6 +38,7 @@ class Cliente extends Model
         'email',
         'tipo',
         'cpf_cnpj',
+        'estado_civil',
         'nome_empresa',
         'cep',
         'numero',
