@@ -94,7 +94,7 @@ where c.id =   $P{id} ]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="24e076ed-ce0c-4f8b-ab6b-4c47683c699d"/>
-				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="95" y="55" width="305" height="15" uuid="85ca5cab-cca8-4024-968a-8c405f39d54b"/>
