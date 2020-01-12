@@ -138,4 +138,21 @@ class ReportController extends Controller
 
     }
 
+    public function reportPdfDeclaracao($id)
+    {
+        try
+        {
+            $nome_arquivo = "Declaracao_ciencia";
+            $file = $this->gerarPdf($id, $nome_arquivo);
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+        //dd($id);
+
+
+    }
+
 }
