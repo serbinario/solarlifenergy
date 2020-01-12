@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Declaracao_ciencia" pageWidth="595" pageHeight="842" columnWidth="425" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="87" uuid="49829770-2da1-4532-bd0c-76a57134e614">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+cl.nome, 
+cl.nome_empresa,
+cl.tipo,
+cl.cpf_cnpj,  
+cl.estado_civil,
+cl.data_emissao_rg,
+cl.orgao_emissor_rg,
+cl.endereco, 
+cl.cidade, 
+cl.cep,
+cl.rg,
+p.kw,
+c.ano 
+FROM  
+contratos AS c
+INNER JOIN projetos AS p ON p.id = c.projeto_id
+INNER JOIN clientes AS cl ON cl.id = p.clientes_id
+where c.id =   $P{id} ]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="nome_empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_empresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cpf_cnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf_cnpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="estado_civil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estado_civil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="data_emissao_rg" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_emissao_rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="orgao_emissor_rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="orgao_emissor_rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="kw" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="kw"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	</field>
+	<field name="ano" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ano"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contratos"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="10" width="80" height="71" uuid="24e076ed-ce0c-4f8b-ab6b-4c47683c699d"/>
+				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="95" y="55" width="305" height="15" uuid="85ca5cab-cca8-4024-968a-8c405f39d54b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="40" width="335" height="15" uuid="b9b13616-fb12-497e-ba32-01568aa92487"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Rua Dr. José Bezerra Filho, 61B – Centro/ Cabo – PE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="25" width="335" height="15" uuid="cd8fd107-dd00-4072-a48f-7c77ceeebd79"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[http://solarlifenergy.com.br/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="210" height="25" uuid="259372ec-8ed1-453e-bd55-a85baad141c2">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solar Life Energy]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="604" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="63" width="425" height="30" uuid="a1ae23ba-d631-444d-a952-854c86505ae9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE CIÊNCIA E CONCORDÂNCIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="143" width="425" height="237" uuid="af5e7c43-db85-4a03-9fad-e91c3e16e930"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}.equals( "Fisico" )? "Eu " + $F{nome} +", _______ (nacionalidade), "+$F{estado_civil}+", _______ (profissão), portador da carteira de identidade n° "+$F{rg}+", expedida pelo "+$F{orgao_emissor_rg}+", em "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n° "+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+" , na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº _______________, que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração. "+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>": "Eu " + $F{nome} +", _______ (nacionalidade), "+$F{estado_civil}+" (profissão), portador da carteira de identidade n° "+$F{rg}+", expedida pelo  "+$F{orgao_emissor_rg}+", em  "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n°"+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+", na qualidade de representante legal da Empresa "+$F{nome_empresa}+", na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº _______________, que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração."+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="400" width="425" height="30" uuid="6aeaa6d2-c5c7-4b0f-8bb7-32b686f52c21"/>
+				<text><![CDATA[Nada mais a declarar, e ciente das responsabilidades pelas declarações prestadas, firmo a presente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="460" width="425" height="30" uuid="35b08f7f-67d2-41c1-a34c-5206c6da7069"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[___________________, _____ de _________________ de ______.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="530" width="425" height="60" uuid="53f274ee-cd44-4750-bb87-c932d4cc89b3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="519" width="425" height="43" uuid="7c9f5cfc-f288-43dc-9fa6-8162092f6cfe"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[  _______________________________
+  
+  CONTRATANTE]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
