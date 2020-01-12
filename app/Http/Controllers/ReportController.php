@@ -137,6 +137,7 @@ class ReportController extends Controller
 
 
     }
+
     public function reportPdfDeclaracao($id)
     {
         try
