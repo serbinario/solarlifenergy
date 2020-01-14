@@ -41,6 +41,7 @@ class ClienteFormRequest extends FormRequest
             'is_whatsapp' => 'nullable|boolean',
             'obs' => 'nullable',
             'naturalidade_uf' => 'nullable|string|min:0|max:2',
+            'nacionalidade' => 'nullable|string|min:0|max:100',
 
         ];
     }
