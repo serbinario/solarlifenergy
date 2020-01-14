@@ -106,7 +106,7 @@ where c.id =   $P{id}]]>
 				<textElement>
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540  (WhatsApp)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="95" y="40" width="335" height="15" uuid="b9b13616-fb12-497e-ba32-01568aa92487"/>
