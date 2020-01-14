@@ -124,7 +124,7 @@
 
 
     <div class="form-group {{ $errors->has('estado_civil') ? 'has-error' : '' }}">
-        <label for="estado_civil" class="col-md-2 control-label text-bold">Estado Civil.: *</label>
+        <label for="estado_civil" class="col-md-2 control-label text-bold">Estado Civil.:</label>
         <div class="col-md-10">
             <select class="form-control input-sm" id="estado_civil" name="estado_civil">
                 <option value="" style="display: none;" {{ old('consumo', isset($projeto->estado_civil) ? $cliente->estado_civil : '') == '' ? 'selected' : '' }} disabled selected>Selecione um estado civil</option>
