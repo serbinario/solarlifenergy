@@ -55,7 +55,7 @@ var table = $('#preProposta').DataTable({
         {data: 'id', name: 'id',  targets: 0, visible: false},
         {data: 'nome', name: 'clientes.nome'},
         {data: 'codigo', name: 'codigo'},
-        {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
+        {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'created_at', name: 'pre_propostas.created_at'},
@@ -97,6 +97,11 @@ $( "#limpar" ).click(function() {
 function dateToEN(date)
 {
     return date.split('/').reverse().join('-');
+}
+
+function formatMoney(n, c, d, t) {
+    c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
 
 var mascara = function (val) {
