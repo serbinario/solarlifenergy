@@ -26,13 +26,14 @@ cl.endereco,
 cl.cidade, 
 cl.cep,
 cl.rg,
+cl.nacionalidade,
 p.kw,
 c.ano 
 FROM  
 contratos AS c
 INNER JOIN projetos AS p ON p.id = c.projeto_id
 INNER JOIN clientes AS cl ON cl.id = p.clientes_id
-where c.id =   $P{id} ]]>
+where c.id =   $P{id}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>
@@ -76,6 +77,10 @@ where c.id =   $P{id} ]]>
 	</field>
 	<field name="rg" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="nacionalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="kw" class="java.lang.Double">
@@ -144,10 +149,10 @@ where c.id =   $P{id} ]]>
 				<textElement textAlignment="Justified" markup="styled">
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo}.equals( "Fisico" )? "Eu " + $F{nome} +", _______ (nacionalidade), "+$F{estado_civil}+", _______ (profissão), portador da carteira de identidade n° "+$F{rg}+", expedida pelo "+$F{orgao_emissor_rg}+", em "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n° "+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+" , na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº "+$F{cpf_cnpj}+ "/" + $F{ano}+", que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração. "+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>": "Eu " + $F{nome} +", _______ (nacionalidade), "+$F{estado_civil}+" (profissão), portador da carteira de identidade n° "+$F{rg}+", expedida pelo  "+$F{orgao_emissor_rg}+", em  "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n°"+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+", na qualidade de representante legal da Empresa "+$F{nome_empresa}+", na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº "+$F{cpf_cnpj}+ "/" + $F{ano}+", que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração."+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo}.equals( "Fisico" )? "Eu " + $F{nome} +", "+$F{nacionalidade}+" , "+$F{estado_civil}+", portador da carteira de identidade n° "+$F{rg}+", expedida pelo "+$F{orgao_emissor_rg}+", em "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n° "+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+" , na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº "+$F{cpf_cnpj}+ "/" + $F{ano}+", que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração. "+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>": "Eu " + $F{nome} +", "+$F{nacionalidade}+" , "+$F{estado_civil}+" (profissão), portador da carteira de identidade n° "+$F{rg}+", expedida pelo  "+$F{orgao_emissor_rg}+", em  "+new SimpleDateFormat("dd/MM/yyyy").format($F{data_emissao_rg})+", inscrito no CPF/MF sob o n°"+$F{cpf_cnpj}+", residente e domiciliado na Cidade de "+$F{cidade}+" , à "+$F{endereco}+", na qualidade de representante legal da Empresa "+$F{nome_empresa}+", na qualidade de contratante, DECLARO, para fins de direito, sob as penas da lei, e em atendimento ao aceite da proposta referente ao termo de adesão Nº "+$F{cpf_cnpj}+ "/" + $F{ano}+", que apresentei conta de energia para elaboração do projeto, onde consta o histórico de 12 meses apresentado na proposta que serviu média para determinar a geração."+ "<style isBold='true'>Sendo assim, estou ciente de que o projeto instalado terá geração compatível com a média de consumo apresentada na proposta orçamentária, e que posso consultar a geração no software fornecido pela contratada através do website ou aplicativo.</style>"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="400" width="425" height="30" uuid="6aeaa6d2-c5c7-4b0f-8bb7-32b686f52c21"/>
+				<reportElement x="0" y="399" width="425" height="30" uuid="6aeaa6d2-c5c7-4b0f-8bb7-32b686f52c21"/>
 				<text><![CDATA[Nada mais a declarar, e ciente das responsabilidades pelas declarações prestadas, firmo a presente.]]></text>
 			</staticText>
 			<staticText>
