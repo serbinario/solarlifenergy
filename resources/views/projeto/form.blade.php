@@ -24,9 +24,9 @@
                     <div class="col-md-8">
                         <select class="form-control input-sm" id="clientes_id" name="clientes_id">
                             <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Cliente</option>
-                            @foreach ($clientes as $key => $cliente)
+                            @foreach ($projetos as $key => $projeto)
                                 <option value="{{ $key }}" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : null) == $key ? 'selected' : '' }}>
-                                    {{ $cliente }}
+                                    {{ $projeto }}
                                 </option>
                             @endforeach
                         </select>
@@ -182,17 +182,97 @@
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('end_intalacao') ? 'has-error' : '' }}">
-            <label for="end_intalacao" class="col-md-2 control-label text-bold">End. de Instalação.:</label>
-            <div class="col-md-4">
-                <input class="form-control input-sm" name="end_intalacao" type="text" id="end_intalacao"  value="{{ old('end_intalacao', isset($projeto->end_intalacao) ? $projeto->end_intalacao : null) }}" placeholder="">
-                {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
+
+        <div class="col-lg-12">
+            <h4 class="text-bold">Endereço</h4>
+            <hr class="ruler-lg"/>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="cep" class="col-md-4 control-label text-bold">Cep.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="cep" type="text" id="cep" value="{{ old('cep', isset($projeto->cep) ? $projeto->cep : null) }}" maxlength="10" placeholder="Enter cep here...">
+                        {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
             </div>
-            <label for="coordenadas" class="col-md-2 control-label text-bold">Coordenadas.:</label>
-            <div class="col-md-4">
-                <input class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($projeto->coordenadas) ? $projeto->coordenadas : null) }}" placeholder="">
-                {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="coordenadas" class="col-md-4 control-label text-bold">Coordenadas.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($projeto->coordenadas) ? $projeto->coordenadas : null) }}" placeholder="">
+                        {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="end_intalacao" class="col-md-4 control-label text-bold">End. de Instalação.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="end_intalacao" type="text" id="end_intalacao" value="{{ old('end_intalacao', isset($projeto->end_intalacao) ? $projeto->end_intalacao : null) }}" maxlength="200" placeholder="Endereço">
+                        {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="bairro" class="col-sm-4 control-label text-bold">Bairro.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($projeto->bairro) ? $projeto->bairro : null) }}" maxlength="100" placeholder="Bairro">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
+                    <label for="numero" class="col-sm-4 control-label text-bold">Numero.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="numero" type="text" id="numero" value="{{ old('numero', isset($projeto->numero) ? $projeto->numero : null) }}" maxlength="10" placeholder="Enter numero here...">
+                        {!! $errors->first('numero', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group {{ $errors->has('complemento') ? 'has-error' : '' }}">
+                    <label for="complemento" class="col-sm-4 control-label text-bold">Complemento.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="complemento" type="text" id="complemento" value="{{ old('complemento', isset($projeto->complemento) ? $projeto->complemento : null) }}" maxlength="200" placeholder="Enter complemento here...">
+                        {!! $errors->first('complemento', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="estado" class="col-sm-4 control-label text-bold">Estado.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="estado" type="text" id="estado" value="{{ old('estado', isset($projeto->estado) ? $projeto->estado : null) }}" maxlength="2" placeholder="Enter estado here...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="cidade" class="col-sm-4 control-label text-bold">Cidade.:</label>
+                    <div class="col-md-8">
+                        <input class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($projeto->cidade) ? $projeto->cidade : null) }}" placeholder="Cidade">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <h4 class="text-bold">Cadastro de Contas de Energia</h4>
+            <hr class="ruler-lg"/>
         </div>
 
         <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
@@ -212,7 +292,7 @@
         </div>
 
         <div class="col-lg-12">
-            <h4 class="text-bold">Cadastro de Contas de Energia</h4>
+            <h4 class="text-bold">Contas Contrato</h4>
             <hr class="ruler-lg"/>
         </div>
         @if(isset($projeto))
