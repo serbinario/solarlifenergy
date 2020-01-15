@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PHPJasper\PHPJasper;
 use Serbinario\Entities\Contrato;
+use Serbinario\Entities\PreProposta;
 use Serbinario\Traits\UtilReports;
 
 class ReportController extends Controller
@@ -151,8 +152,39 @@ class ReportController extends Controller
             dd("sssssss");
         }
         //dd($id);
+    }
 
+    public function reportPdfPreProposta($id)
+    {
+        $preProposta = PreProposta::find($id);
+        $media = $this->getMediaMeses($preProposta);
 
+        $qtdModulos = $this->getQtdModulos($media, '0','4.7', '5.71', '30', '0.14', '1.7');
+
+        $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
+
+        $area = $this->getArea($qtdModulos, '2.1', '1.15');
+
+        $co2 = $this->getCo2($potenciaGerador);
+
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($qtdModulos, '30', '6.23', '1.72', '0.15');
+
+        $reducaoMediaConsumo = $this->getReducaoMediaConsumo($media, '0',array_sum($geracaoEnergiaFV)/12 );
+
+        echo "Potência do gerador (KWp) = " . $potenciaGerador . "<br>";
+        echo "Área ( m²) = " . $area . "<br>";
+        echo "MÉD REDUÇÃO DO CONSUMO (%) = " . $reducaoMediaConsumo. "<br>";
+        echo "Emissão de CO2 evitadas (KG/a ) = " . $co2 . "<br>";
+        echo "Média Fora da Ponta = " . $media . "<br>";
+        echo "GERAÇÃO ENERGIA FV = " . "<br>";
+        for($i=0; $i<12;$i++){
+            echo "Mes " .  $i . " ".$geracaoEnergiaFV[$i] . "<br>";
+        }
+        echo "MÓDULO FV DAH             = " .  $qtdModulos . " -- R$ 860" . " -- R$" . $qtdModulos * 860 . "<br>";
+        echo "INVERSOR KSTAR            = " .  1 . "     --  R$".  $qtdModulos * 860 * 0.48 . " -- R$" . $qtdModulos * 860 * 0.48 . "<br>";
+        echo "ESTRUTURA                 = " .  1 . " -- R$ " .$qtdModulos * 860 * 0.2  . "    -- R$" .$qtdModulos * 860 * 0.2 . "<br>";
+        echo "STRING BOX                = " .  1 . "  -- R$ ". (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.06 . " -- R$ " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.06 . "<br>";
+        echo "KIT MONITORAMENTO WIFI    = " .  1 . " -- R$ " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.03 . " -- " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.03 . "<br>";
     }
 
 }

@@ -36,6 +36,7 @@ Route::any('/report/{id}/FichaElaboracaoProjeto', 'ReportController@reportPdfFic
 Route::any('/report/{id}/Procuracao', 'ReportController@reportPdfProcuracao')->name('reportIndexProcuracao');
 Route::any('/report/{id}/Contrato', 'ReportController@reportPdfContrato')->name('reportIndexContrato');
 Route::any('/report/{id}/Declaracao', 'ReportController@reportPdfDeclaracao')->name('reportIndexDeclaracao');
+Route::any('/report/{id}/PreProposta', 'ReportController@reportPdfPreProposta')->name('reportIndexPreProposta');
 
 //RN-0001
 Route::get('/cobrancasAPI', 'CobrancasAPIController@gerenciant')->name('cobrancasAPI.gerencianet');
