@@ -138,7 +138,7 @@
                 <label for="estado_id" class="col-sm-4 control-label text-bold">Estado:</label>
                 <div class="col-md-8">
                     <select   class="form-control input-sm" id="estado_id" name="estado_id">
-                        <option value="" style="display: none;" {{ old('users_id', isset($preProposta->cidade->estado_id) ? $preProposta->cidade->estado_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
+                        <option value="" style="display: none;" {{ old('users_id', isset($preProposta->cidade->estado_id) ? $preProposta->cidade->estado_id : '') == '' ? 'selected' : '' }} disabled selected>Estado</option>
                         @foreach ($estados as $key => $estado)
                             <option value="{{ $key }}" {{ old('estado_id', isset($preProposta->cidade->estado_id) ? $preProposta->cidade->estado_id : null) == $key ? 'selected' : '' }}>
                                 {{ $estado }}
