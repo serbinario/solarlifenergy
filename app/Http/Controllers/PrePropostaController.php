@@ -162,19 +162,7 @@ class PrePropostaController extends Controller
         }
     }
 
-    /**
-     * Display the specified pre proposta.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $preProposta = PreProposta::with('cliente')->findOrFail($id);
 
-        return view('pre_proposta.show', compact('preProposta'));
-    }
 
     /**
      * Show the form for editing the specified pre proposta.
@@ -206,7 +194,6 @@ class PrePropostaController extends Controller
         try {
             $data = $this->getData($request);
 
-            //dd($data);
             $preProposta = PreProposta::findOrFail($id);
             $preProposta->update($data);
 
@@ -262,7 +249,20 @@ class PrePropostaController extends Controller
             'qtd_paineis',
             'economia_anula',
             'preco_kwh',
-            'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'panel_potencia']);
+            'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'panel_potencia',
+            'na_ponta_jan',
+            'na_ponta_feb',
+            'na_ponta_mar',
+            'na_ponta_apr',
+            'na_ponta_may',
+            'na_ponta_jun',
+            'na_ponta_jul',
+            'na_ponta_aug',
+            'na_ponta_sep',
+            'na_ponta_oct',
+            'na_ponta_nov',
+            'na_ponta_dec'
+            ]);
 
         return $data;
     }
