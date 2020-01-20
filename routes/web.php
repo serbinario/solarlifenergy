@@ -24,6 +24,9 @@ Route::get('/error', 'ClienteController@index')
 Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
     ->name('cliente.consultaCpfCnpf');
 
+Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
+    ->name('getEstado');
+
 Route::post('/simulaGeracao', 'UtilController@simulaGeracao')
     ->name('simulaGeracao');
 

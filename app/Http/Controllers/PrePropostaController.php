@@ -7,7 +7,9 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\Estado;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
@@ -122,8 +124,12 @@ class PrePropostaController extends Controller
     public function create()
     {
         $Clientes = Cliente::pluck('nome','id')->all();
+        $estados = Estado::pluck('nome','id')->all();
 
-        return view('pre_proposta.create', compact('Clientes'));
+        $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
+
+
+        return view('pre_proposta.create', compact('Clientes', 'estados', 'cidades'));
     }
 
     /**
@@ -174,11 +180,19 @@ class PrePropostaController extends Controller
     public function edit($id)
     {
         //dd($id);
-        $preProposta = PreProposta::with('cliente')->findOrFail($id);
+        $preProposta = PreProposta::with('cliente', 'cidade')->findOrFail($id);
+        $estados = Estado::pluck('nome','id')->all();
+        if($preProposta->cidade_id){
+            $cidades = Cidade::where('estado_id', '=', $preProposta->cidade->estado_id)->pluck('nome','id');
+        }else{
+            $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
+        };
+        //dd($preProposta);
+
 
         $Clientes = Cliente::pluck('nome','id')->all();
 
-        return view('pre_proposta.edit', compact('preProposta','Clientes'));
+        return view('pre_proposta.edit', compact('preProposta','Clientes', 'estados', 'cidades'));
     }
 
     /**
@@ -261,7 +275,8 @@ class PrePropostaController extends Controller
             'na_ponta_sep',
             'na_ponta_oct',
             'na_ponta_nov',
-            'na_ponta_dec'
+            'na_ponta_dec',
+            'cidade_id'
             ]);
 
         return $data;

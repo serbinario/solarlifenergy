@@ -69,7 +69,8 @@ class PreProposta extends Model
         'na_ponta_sep',
         'na_ponta_oct',
         'na_ponta_nov',
-        'na_ponta_dec'
+        'na_ponta_dec',
+        'cidade_id'
     ];
 
     /**
@@ -89,9 +90,14 @@ class PreProposta extends Model
     /**
      * Get the Cliente for this model.
      */
-    public function Cliente()
+    public function cliente()
     {
         return $this->belongsTo('Serbinario\Entities\Cliente','cliente_id','id');
+    }
+
+    public function cidade()
+    {
+        return $this->belongsTo('Serbinario\Entities\Cidade','cidade_id','id');
     }
 
     public function setPrecoMedioInstaladoAttribute($value)
