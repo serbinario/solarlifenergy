@@ -134,104 +134,250 @@
 
 
     <div class="col-lg-12">
-        <h4 class="text-bold">Histórico de Consumo</h4>
+        <h4 class="text-bold">Histórico de consumo fora da ponta</h4>
         <hr class="ruler-lg"/>
     </div>
 
-    <div class="form-group {{ $errors->has('jan') ? 'has-error' : '' }}">
-        <label for="jan" class="col-md-2 control-label text-bold">Jan.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="jan" type="text" id="jan" value="{{ old('jan', isset($preProposta->jan) ? $preProposta->jan : null) }}" maxlength="10" placeholder="Enter jan here...">
-            {!! $errors->first('jan', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('jan') ? 'has-error' : '' }}">
+                <label for="jan" class="col-sm-4 control-label text-bold">Jan.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="jan" type="text" id="jan" value="{{ old('minimum_area', isset($preProposta->jan) ? $preProposta->jan : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('jan', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('feb') ? 'has-error' : '' }}">
+                <label for="feb" class="col-sm-4 control-label text-bold">Fev.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="feb" type="text" id="feb" value="{{ old('feb', isset($preProposta->feb) ? $preProposta->feb : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('feb', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('mar') ? 'has-error' : '' }}">
+                <label for="mar" class="col-sm-4 control-label text-bold">Mar.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="mar" type="text" id="mar" value="{{ old('mar', isset($preProposta->mar) ? $preProposta->mar : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('mar', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('apr') ? 'has-error' : '' }}">
+                <label for="apr" class="col-sm-4 control-label text-bold">Abr.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="apr" type="text" id="apr" value="{{ old('apr', isset($preProposta->apr) ? $preProposta->apr : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('apr', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('feb') ? 'has-error' : '' }}">
-        <label for="feb" class="col-md-2 control-label text-bold">Feb.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="feb" type="text" id="feb" value="{{ old('feb', isset($preProposta->feb) ? $preProposta->feb : null) }}" maxlength="10" placeholder="Enter feb here...">
-            {!! $errors->first('feb', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('may') ? 'has-error' : '' }}">
+                <label for="may" class="col-sm-4 control-label text-bold">Mai.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="may" type="text" id="may" value="{{ old('may', isset($preProposta->may) ? $preProposta->may : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('may', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('jun') ? 'has-error' : '' }}">
+                <label for="jun" class="col-sm-4 control-label text-bold">Jun.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="jun" type="text" id="jun" value="{{ old('jun', isset($preProposta->jun) ? $preProposta->jun : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('jun', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('jul') ? 'has-error' : '' }}">
+                <label for="jul" class="col-sm-4 control-label text-bold">Jul.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="jul" type="text" id="jul" value="{{ old('jul', isset($preProposta->jul) ? $preProposta->jul : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('jul', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('aug') ? 'has-error' : '' }}">
+                <label for="aug" class="col-sm-4 control-label text-bold">Ago.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="aug" type="text" id="aug" value="{{ old('aug', isset($preProposta->aug) ? $preProposta->aug : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('aug', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('mar') ? 'has-error' : '' }}">
-        <label for="mar" class="col-md-2 control-label text-bold">Mar.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="mar" type="text" id="mar" value="{{ old('mar', isset($preProposta->mar) ? $preProposta->mar : null) }}" maxlength="10" placeholder="Enter mar here...">
-            {!! $errors->first('mar', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('sep') ? 'has-error' : '' }}">
+                <label for="sep" class="col-sm-4 control-label text-bold">Set.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="sep" type="text" id="sep" value="{{ old('sep', isset($preProposta->sep) ? $preProposta->sep : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('sep', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('oct') ? 'has-error' : '' }}">
+                <label for="oct" class="col-sm-4 control-label text-bold">Out.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="oct" type="text" id="oct" value="{{ old('oct', isset($preProposta->oct) ? $preProposta->oct : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('oct', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('nov') ? 'has-error' : '' }}">
+                <label for="nov" class="col-sm-4 control-label text-bold">Nov.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="nov" type="text" id="nov" value="{{ old('nov', isset($preProposta->nov) ? $preProposta->nov : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('nov', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('dec') ? 'has-error' : '' }}">
+                <label for="dec" class="col-sm-4 control-label text-bold">Dez.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="dec" type="text" id="dec" value="{{ old('dec', isset($preProposta->dec) ? $preProposta->dec : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('dec', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('apr') ? 'has-error' : '' }}">
-        <label for="apr" class="col-md-2 control-label text-bold">Apr.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="apr" type="text" id="apr" value="{{ old('apr', isset($preProposta->apr) ? $preProposta->apr : null) }}" maxlength="10" placeholder="Enter apr here...">
-            {!! $errors->first('apr', '<p class="help-block">:message</p>') !!}
+
+    <div class="col-lg-12">
+        <h4 class="text-bold">Histórico de consumo na ponta</h4>
+        <hr class="ruler-lg"/>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_jan') ? 'has-error' : '' }}">
+                <label for="na_ponta_jan" class="col-sm-4 control-label text-bold">Jan.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_jan" type="text" id="na_ponta_jan" value="{{ old('minimum_area', isset($preProposta->na_ponta_jan) ? $preProposta->na_ponta_jan : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('na_ponta_jan', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_feb') ? 'has-error' : '' }}">
+                <label for="na_ponta_feb" class="col-sm-4 control-label text-bold">Fev.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_feb" type="text" id="na_ponta_feb" value="{{ old('na_ponta_feb', isset($preProposta->na_ponta_feb) ? $preProposta->na_ponta_feb : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_feb', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_mar') ? 'has-error' : '' }}">
+                <label for="na_ponta_mar" class="col-sm-4 control-label text-bold">Mar.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_mar" type="text" id="na_ponta_mar" value="{{ old('na_ponta_mar', isset($preProposta->na_ponta_mar) ? $preProposta->na_ponta_mar : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_mar', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_apr') ? 'has-error' : '' }}">
+                <label for="na_ponta_apr" class="col-sm-4 control-label text-bold">Abr.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_apr" type="text" id="na_ponta_apr" value="{{ old('na_ponta_apr', isset($preProposta->na_ponta_apr) ? $preProposta->na_ponta_apr : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_apr', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('may') ? 'has-error' : '' }}">
-        <label for="may" class="col-md-2 control-label text-bold">May.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="may" type="text" id="may" value="{{ old('may', isset($preProposta->may) ? $preProposta->may : null) }}" maxlength="10" placeholder="Enter may here...">
-            {!! $errors->first('may', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_may') ? 'has-error' : '' }}">
+                <label for="na_ponta_may" class="col-sm-4 control-label text-bold">Mai.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_may" type="text" id="na_ponta_may" value="{{ old('na_ponta_may', isset($preProposta->na_ponta_may) ? $preProposta->na_ponta_may : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('na_ponta_may', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_jun') ? 'has-error' : '' }}">
+                <label for="na_ponta_jun" class="col-sm-4 control-label text-bold">Jun.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_jun" type="text" id="na_ponta_jun" value="{{ old('na_ponta_jun', isset($preProposta->na_ponta_jun) ? $preProposta->na_ponta_jun : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_jun', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_jul') ? 'has-error' : '' }}">
+                <label for="na_ponta_jul" class="col-sm-4 control-label text-bold">Jul.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_jul" type="text" id="na_ponta_jul" value="{{ old('na_ponta_jul', isset($preProposta->na_ponta_jul) ? $preProposta->na_ponta_jul : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_jul', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_aug') ? 'has-error' : '' }}">
+                <label for="na_ponta_aug" class="col-sm-4 control-label text-bold">Ago.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_aug" type="text" id="na_ponta_aug" value="{{ old('na_ponta_aug', isset($preProposta->na_ponta_aug) ? $preProposta->na_ponta_aug : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_aug', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('jun') ? 'has-error' : '' }}">
-        <label for="jun" class="col-md-2 control-label text-bold">Jun.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="jun" type="text" id="jun" value="{{ old('jun', isset($preProposta->jun) ? $preProposta->jun : null) }}" maxlength="10" placeholder="Enter jun here...">
-            {!! $errors->first('jun', '<p class="help-block">:message</p>') !!}
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_sep') ? 'has-error' : '' }}">
+                <label for="na_ponta_sep" class="col-sm-4 control-label text-bold">Set.::</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_sep" type="text" id="na_ponta_sep" value="{{ old('na_ponta_sep', isset($preProposta->na_ponta_sep) ? $preProposta->na_ponta_sep : null) }}" maxlength="10" placeholder="Enter minimum area here...">
+                    {!! $errors->first('na_ponta_sep', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_oct') ? 'has-error' : '' }}">
+                <label for="na_ponta_oct" class="col-sm-4 control-label text-bold">Out.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_oct" type="text" id="na_ponta_oct" value="{{ old('na_ponta_oct', isset($preProposta->na_ponta_oct) ? $preProposta->na_ponta_oct : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_oct', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_nov') ? 'has-error' : '' }}">
+                <label for="na_ponta_nov" class="col-sm-4 control-label text-bold">Nov.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_nov" type="text" id="na_ponta_nov" value="{{ old('na_ponta_nov', isset($preProposta->na_ponta_nov) ? $preProposta->na_ponta_nov : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_nov', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group"{{ $errors->has('na_ponta_dec') ? 'has-error' : '' }}">
+                <label for="na_ponta_dec" class="col-sm-4 control-label text-bold">Dez.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="na_ponta_dec" type="text" id="na_ponta_dec" value="{{ old('na_ponta_dec', isset($preProposta->na_ponta_dec) ? $preProposta->na_ponta_dec : null) }}" placeholder="Enter value here..." step="any">
+                    {!! $errors->first('na_ponta_dec', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('jul') ? 'has-error' : '' }}">
-        <label for="jul" class="col-md-2 control-label text-bold">Jul.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="jul" type="text" id="jul" value="{{ old('jul', isset($preProposta->jul) ? $preProposta->jul : null) }}" maxlength="10" placeholder="Enter jul here...">
-            {!! $errors->first('jul', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
 
-    <div class="form-group {{ $errors->has('aug') ? 'has-error' : '' }}">
-        <label for="aug" class="col-md-2 control-label text-bold">Aug.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="aug" type="text" id="aug" value="{{ old('aug', isset($preProposta->aug) ? $preProposta->aug : null) }}" maxlength="10" placeholder="Enter aug here...">
-            {!! $errors->first('aug', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-    <div class="form-group {{ $errors->has('sep') ? 'has-error' : '' }}">
-        <label for="sep" class="col-md-2 control-label text-bold">Sep.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="sep" type="text" id="sep" value="{{ old('sep', isset($preProposta->sep) ? $preProposta->sep : null) }}" maxlength="10" placeholder="Enter sep here...">
-            {!! $errors->first('sep', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-    <div class="form-group {{ $errors->has('oct') ? 'has-error' : '' }}">
-        <label for="oct" class="col-md-2 control-label text-bold">Oct.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="oct" type="text" id="oct" value="{{ old('oct', isset($preProposta->oct) ? $preProposta->oct : null) }}" maxlength="10" placeholder="Enter oct here...">
-            {!! $errors->first('oct', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-    <div class="form-group {{ $errors->has('nov') ? 'has-error' : '' }}">
-        <label for="nov" class="col-md-2 control-label text-bold">Nov.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="nov" type="text" id="nov" value="{{ old('nov', isset($preProposta->nov) ? $preProposta->nov : null) }}" maxlength="10" placeholder="Enter nov here...">
-            {!! $errors->first('nov', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-
-    <div class="form-group {{ $errors->has('dec') ? 'has-error' : '' }}">
-        <label for="dec" class="col-md-2 control-label text-bold">Dec.:</label>
-        <div class="col-md-10">
-            <input class="form-control input-sm" name="dec" type="text" id="dec" value="{{ old('dec', isset($preProposta->dec) ? $preProposta->dec : null) }}" maxlength="10" placeholder="Enter dec here...">
-            {!! $errors->first('dec', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
 </div>
 

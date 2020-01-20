@@ -57,7 +57,19 @@ class PreProposta extends Model
         'nov',
         'dec',
         'panel_potencia',
-        'preco_kwh'
+        'preco_kwh',
+        'na_ponta_jan',
+        'na_ponta_feb',
+        'na_ponta_mar',
+        'na_ponta_apr',
+        'na_ponta_may',
+        'na_ponta_jun',
+        'na_ponta_jul',
+        'na_ponta_aug',
+        'na_ponta_sep',
+        'na_ponta_oct',
+        'na_ponta_nov',
+        'na_ponta_dec'
     ];
 
     /**
