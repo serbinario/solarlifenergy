@@ -4,6 +4,7 @@ $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
 $('.date').mask('00/00/0000');
 $('.money').mask('###.###.###.##0,00',  {reverse: true});
 $('.number').mask('###.###.###.###',  {reverse: true});
+$('.numberWithoutDot').mask('###############',  {reverse: true});
 $('.kwh').mask('0,0000',  {reverse: true});
 $('.kwp').mask('####0,00',  {reverse: true});
 $('.contrato').mask('###0000',  {reverse: true});

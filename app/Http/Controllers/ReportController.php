@@ -157,10 +157,12 @@ class ReportController extends Controller
     public function reportPdfPreProposta($id)
     {
         $preProposta = PreProposta::find($id);
-        $media = $this->getMediaMeses($preProposta);
+        $media = $this->getMediaMesesForaPonta($preProposta);
 
+        $mediaNaPonta = $this->getMediaMesesNaPonta($preProposta);
+        //dd($mediaNaPonta);
         $qtdModulos = $this->getQtdModulos($media, '0','4.7', '5.71', '30', '0.14', '1.7');
-
+        dd($media);
         $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
 
         $area = $this->getArea($qtdModulos, '2.1', '1.15');

@@ -71,7 +71,9 @@ trait UtilReports
      * 4.7 fator de compensaçao, 5,71 - irradiação media, 30 qtd de dias, 0,14 é o rendimento, e 1,7 area
      */
     function getQtdModulos($mediaMeses, $mediaMesesPonta, $fatorCompensacao, $irradiacao, $qtdDias, $rendimentoModulo, $areaModulo){
+
         $result = ($mediaMeses + $mediaMesesPonta * $fatorCompensacao) / ($irradiacao * $qtdDias * $rendimentoModulo * $areaModulo);
+        dd($mediaMeses);
         return round($result, 0);
     }
 
@@ -79,9 +81,30 @@ trait UtilReports
      * CONSUMO FORA DE PONTA
      * É a média aritimética de todos os consumos mensais
      */
-    function getMediaMeses($model){
+    function getMediaMesesForaPonta($model){
         return $media = ($model->jan + $model->feb + $model->mar + $model->apr + $model->may + $model->jun + $model->jul + $model->aug + $model->sep + $model->oct + $model->nov + $model->dec)/12;
     }
+    /*
+    * CONSUMO NA PONTA
+    * É a média aritimética de todos os consumos mensais
+    */
+    function getMediaMesesNaPonta($model){
+        return $media = (
+                $model->na_ponta_jan +
+                $model->na_ponta_feb +
+                $model->na_ponta_mar +
+                $model->na_ponta_apr +
+                $model->na_ponta_may +
+                $model->na_ponta_jun +
+                $model->na_ponta_jul +
+                $model->na_ponta_aug +
+                $model->na_ponta_sep +
+                $model->na_ponta_oct +
+                $model->na_ponta_nov +
+                $model->na_ponta_dec
+            )/12;
+    }
+
 
     /*
     * Área ( m²)
@@ -137,7 +160,7 @@ trait UtilReports
      */
     function getReducaoMediaConsumo($mediaMes, $mediaMesesPonta, $mediaGeracaoEnergiaFV){
         //dd($mediaGeracaoEnergiaFV);
-         $result = ($mediaGeracaoEnergiaFV * 100)/($mediaMes + ($mediaMesesPonta * 4.7) );
+        $result = ($mediaGeracaoEnergiaFV * 100)/($mediaMes + ($mediaMesesPonta * 4.7) );
         return round($result, 2);
     }
 
