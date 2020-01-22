@@ -73,7 +73,6 @@ trait UtilReports
     function getQtdModulos($mediaMeses, $mediaMesesPonta, $fatorCompensacao, $irradiacao, $qtdDias, $rendimentoModulo, $areaModulo){
 
         $result = ($mediaMeses + $mediaMesesPonta * $fatorCompensacao) / ($irradiacao * $qtdDias * $rendimentoModulo * $areaModulo);
-        dd($mediaMeses);
         return round($result, 0);
     }
 
@@ -127,27 +126,29 @@ trait UtilReports
      * GERAÇÃO ENERGIA FV
      * Qtd de dias, irradiação no mês, área do módulo, e rendimento do módulo
      */
-    function getGeracaoEnergiaFV($qtdModulos, $qtdDias, $irradiacaoMes, $areaModulo, $rendimentoModulo){
+    function getGeracaoEnergiaFV($preProposta, $qtdModulos, $qtdDias, $irradiacaoMes, $areaModulo, $rendimentoModulo){
 
         $geracao = array();
         $irradiacao = array(
-            ['irradiacao' => '6.23', 'dias' => '30', 'rendimento' => '0.15'],
-            ['irradiacao' =>'6.22', 'dias' => '28', 'rendimento' => '0.14'],
-            ['irradiacao' =>'5.92', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'5.55', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'5', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'4.68', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'4.87', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'5.28', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'5.95', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'6.29', 'dias' => '30', 'rendimento' => '0.14'],
-            ['irradiacao' =>'6.34', 'dias' => '30', 'rendimento' => '0.15'],
-            ['irradiacao' =>'6.22', 'dias' => '30', 'rendimento' => '0.15']
+            ['irradiacao' => $preProposta->cidade->irradiacao_jan, 'dias' => '30', 'rendimento' => '0.15'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_fev, 'dias' => '28', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_mar, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_abri, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_mai, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_jun, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_jul, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_ago, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_set, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_out, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_nov, 'dias' => '30', 'rendimento' => '0.15'],
+            ['irradiacao' =>$preProposta->cidade->irradiacao_dez, 'dias' => '30', 'rendimento' => '0.15']
         );
+
+        //dd($irradiacao);
 
         for($i=0;$i<12;$i++){
             //$qtdModulos * $qtdDias * $irradiacaoMes * $areaModulo * $rendimentoModulo;
-            $result = $qtdModulos * $irradiacao[$i]['dias'] *  $irradiacao[$i]['irradiacao'] * $areaModulo *  $irradiacao[$i]['rendimento'] ;
+            $result = $qtdModulos * $irradiacao[$i]['dias'] *  $irradiacao[$i]['irradiacao']/1000 * $areaModulo *  $irradiacao[$i]['rendimento'] ;
             //dd($irradiacao[$i]['rendimento']);
             array_push($geracao, round($result, 1));
         }

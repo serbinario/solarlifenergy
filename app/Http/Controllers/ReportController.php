@@ -158,18 +158,19 @@ class ReportController extends Controller
     {
         $preProposta = PreProposta::find($id);
         $media = $this->getMediaMesesForaPonta($preProposta);
-
         $mediaNaPonta = $this->getMediaMesesNaPonta($preProposta);
-        //dd($mediaNaPonta);
-        $qtdModulos = $this->getQtdModulos($media, '0','4.7', '5.71', '30', '0.14', '1.7');
-        dd($media);
+
+        //dd($preProposta->cidade->irradiacao_anual/1000);
+
+        $qtdModulos = $this->getQtdModulos($media, $mediaNaPonta,'4.6', $preProposta->cidade->irradiacao_anual/1000, '30', '0.14', '1.7');
+
         $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
 
         $area = $this->getArea($qtdModulos, '2.1', '1.15');
 
         $co2 = $this->getCo2($potenciaGerador);
 
-        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($qtdModulos, '30', '6.23', '1.72', '0.15');
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($preProposta, $qtdModulos, '30', '6.23', '1.72', '0.14');
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($media, '0',array_sum($geracaoEnergiaFV)/12 );
 
