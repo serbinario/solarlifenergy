@@ -63,6 +63,7 @@ function atualizaInversor() {
     //2 - INVERSOR KSTAR
     qtd_inversores = $('input[name=qtd_inversores]').val()
     produto2_preco = $('input[name=produto2_preco]').val()
+
     produto2_nf = qtd_inversores * realDolar(produto2_preco)
     $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
 
