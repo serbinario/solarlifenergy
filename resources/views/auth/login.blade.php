@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Provedor,Internet, igarassu, fibra, otica, fibra otica">
-    <meta name="description" content="Netstart, o Primeiro provedor de internet de Igarassu">
+    <meta name="keywords" content="Enegia solar,energia, fotovoltaica, SISTEMA DE CONSULTORIA ENERGÉTICA">
+    <meta name="description" content="SCE - SISTEMA DE CONSULTORIA ENERGÉTICA">
     <link rel="shortcut icon" href="/images/icone-2-100x100.png" type="image/x-icon"/>
 
     <!-- BEGIN STYLESHEETS -->
