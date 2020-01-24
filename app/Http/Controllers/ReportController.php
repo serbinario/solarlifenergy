@@ -5,6 +5,7 @@ namespace Serbinario\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PHPJasper\PHPJasper;
+use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Contrato;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Traits\UtilReports;
@@ -170,7 +171,7 @@ class ReportController extends Controller
 
         $co2 = $this->getCo2($potenciaGerador);
 
-        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($preProposta, $qtdModulos, '30', '6.23', '1.72', '0.14');
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($preProposta, $qtdModulos, '1.72');
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($media, '0',array_sum($geracaoEnergiaFV)/12 );
 
@@ -188,6 +189,52 @@ class ReportController extends Controller
         echo "ESTRUTURA                 = " .  1 . " -- R$ " .$qtdModulos * 860 * 0.2  . "    -- R$" .$qtdModulos * 860 * 0.2 . "<br>";
         echo "STRING BOX                = " .  1 . "  -- R$ ". (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.06 . " -- R$ " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.06 . "<br>";
         echo "KIT MONITORAMENTO WIFI    = " .  1 . " -- R$ " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.03 . " -- " . (($qtdModulos * 860) +  ($qtdModulos * 860 * 0.48) + ($qtdModulos * 860 * 0.2) )*0.03 . "<br>";
+    }
+
+    function lerArquivo()
+    {
+        $delimitador = ',';
+        $cerca = '"';
+
+        // Abrir arquivo para leitura
+        $f = fopen('/home/paulo/Projetos/solar-life/app/Http/Controllers/global_horizontal_means_sedes-munic.csv', 'r');
+        if ($f) {
+
+            // Ler cabecalho do arquivo
+            $cabecalho = fgetcsv($f, 0, $delimitador, $cerca);
+
+            // Enquanto nao terminar o arquivo
+            while (!feof($f)) {
+
+                // Ler uma linha do arquivo
+                $linha = fgetcsv($f, 0, $delimitador, $cerca);
+                if (!$linha) {
+                    continue;
+                }
+
+                // Montar registro com valores indexados pelo cabecalho
+                $registro = array_combine($cabecalho, $linha);
+
+                // Obtendo o nome
+                $cidade =  Cidade::where('nome', '=', $registro['NAME'])->Where('estado_id', '=', $registro['STATE']);
+                //dd($cidade);
+                $cidade->update(['irradiacao_anual' => $registro['ANNUAL'],
+                    'irradiacao_jan' => $registro['JAN'],
+                    'irradiacao_fev' => $registro['FEB'],
+                    'irradiacao_mar' => $registro['MAR'],
+                    'irradiacao_abri' => $registro['APR'],
+                    'irradiacao_mai' => $registro['MAY'],
+                    'irradiacao_jun' => $registro['JUN'],
+                    'irradiacao_jul' => $registro['JUL'],
+                    'irradiacao_ago' => $registro['AUG'],
+                    'irradiacao_set' => $registro['SEP'],
+                    'irradiacao_out' => $registro['OCT'],
+                    'irradiacao_nov' => $registro['NOV'],
+                    'irradiacao_dez' => $registro['DEC'],
+                    ]);
+            }
+            fclose($f);
+        }
     }
 
 }

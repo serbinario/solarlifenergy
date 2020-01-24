@@ -60,6 +60,13 @@ class Handler extends ExceptionHandler
             return response()->view('error.error');
         }
 
+        if($exception instanceof TokenMismatchException){
+
+            return response()->view('error.error');
+        }
+
+
+
 
         //dd($exception);
         return parent::render($request, $exception);

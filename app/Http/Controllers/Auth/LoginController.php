@@ -57,7 +57,7 @@ class LoginController extends Controller
         //[RF004-RN002
         if (!$user->franquia->is_active) {
             auth()->logout();
-            return back()->with('error_message', 'Sua fraquia está desativada');
+            return back()->with('error_message', 'Sua franquia está desativada');
         }
         return redirect()->intended($this->redirectPath());
     }

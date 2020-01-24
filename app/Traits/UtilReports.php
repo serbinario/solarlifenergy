@@ -126,7 +126,7 @@ trait UtilReports
      * GERAÇÃO ENERGIA FV
      * Qtd de dias, irradiação no mês, área do módulo, e rendimento do módulo
      */
-    function getGeracaoEnergiaFV($preProposta, $qtdModulos, $qtdDias, $irradiacaoMes, $areaModulo, $rendimentoModulo){
+    function getGeracaoEnergiaFV($preProposta, $qtdModulos, $areaModulo){
 
         $geracao = array();
         $irradiacao = array(
@@ -147,9 +147,7 @@ trait UtilReports
         //dd($irradiacao);
 
         for($i=0;$i<12;$i++){
-            //$qtdModulos * $qtdDias * $irradiacaoMes * $areaModulo * $rendimentoModulo;
             $result = $qtdModulos * $irradiacao[$i]['dias'] *  $irradiacao[$i]['irradiacao']/1000 * $areaModulo *  $irradiacao[$i]['rendimento'] ;
-            //dd($irradiacao[$i]['rendimento']);
             array_push($geracao, round($result, 1));
         }
         //dd($geracao);
