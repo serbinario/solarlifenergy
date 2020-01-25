@@ -41,21 +41,7 @@ Route::any('/report/{id}/Contrato', 'ReportController@reportPdfContrato')->name(
 Route::any('/report/{id}/Declaracao', 'ReportController@reportPdfDeclaracao')->name('reportIndexDeclaracao');
 Route::any('/report/{id}/PreProposta', 'ReportController@reportPdfPreProposta')->name('reportIndexPreProposta');
 
-//RN-0001
-Route::get('/cobrancasAPI', 'CobrancasAPIController@gerenciant')->name('cobrancasAPI.gerencianet');
-
-Route::any('/cobrancasAPISend', 'CobrancasAPIController@cobrancasAPISend')->name('cobrancasAPI.cobrancasAPISend');
-
-//RN-0002
-Route::any('/cobrancasAPIMsg', 'CobrancasAPIController@cobrancasAPIMsg')->name('cobrancasAPI.cobrancasAPIMsg');
-Route::any('/cobrancasAPIMsgBoleto', 'CobrancasAPIController@cobrancasAPIMsgBoleto')->name('cobrancasAPI.cobrancasAPIMsgBoleto');
-Route::any('/inadimplentes', 'CobrancasAPIController@inadimplentes')->name('cobrancasAPI.inadimplentes');
-
-Route::any('/logMikrotik', 'SyslogAPIController@logMikrotik')->name('logMikrotik');
-
-
-
-
+Route::any('/report/lerArquivo', 'ReportController@lerArquivo')->name('lerArquivo');
 
 
 //Route::any('/enableDisableSecret', 'NotificationUrl@notificationUrl')->name('notificationUrl');
