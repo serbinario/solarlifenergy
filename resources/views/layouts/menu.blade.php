@@ -28,6 +28,9 @@
 
 	<link href="{{ asset('/assets/css/theme-default/libs/sweetalert/sweetalert.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/toastr/toastr.css')}}" rel="stylesheet">
+
+	<link href="{{ asset('/css/bootstrap_custon.css')}}" rel="stylesheet">
+
 	<!-- END STYLESHEETS -->
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
