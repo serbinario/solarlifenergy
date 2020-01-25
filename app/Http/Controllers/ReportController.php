@@ -197,7 +197,7 @@ class ReportController extends Controller
         $cerca = '"';
 
         // Abrir arquivo para leitura
-        $f = fopen('/home/paulo/Projetos/solar-life/app/Http/Controllers/global_horizontal_means_sedes-munic.csv', 'r');
+        $f = fopen('/var/www/html/solarlifenergy/app/Http/Controllers/global_horizontal_means_sedes-munic.csv', 'r');
         if ($f) {
 
             // Ler cabecalho do arquivo

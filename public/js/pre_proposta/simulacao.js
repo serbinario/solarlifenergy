@@ -166,3 +166,53 @@ function atualizaCampos() {
     $('input[name=produto5_nf]').val(formatMoney(produto5_nf))
 
 }
+/*
+/ Serviços Operacionais
+ */
+$("#produto6_preco, #qtd_homologacao").on('change', function () {
+    qtd_homologacao = $('input[name=qtd_homologacao]').val()
+    produto6_preco = $('input[name=produto6_preco]').val()
+    produto6_nf = qtd_homologacao * realDolar(produto6_preco)
+    $('input[name=produto6_nf]').val(formatMoney(produto6_nf))
+   // total()
+}).change();
+
+$("#produto7_preco, #qtd_mao_obra").on('change', function () {
+    qtd_mao_obra = $('input[name=qtd_mao_obra]').val()
+    produto7_preco = $('input[name=produto7_preco]').val()
+    produto7_nf = qtd_mao_obra * realDolar(produto7_preco)
+    $('input[name=produto7_nf]').val(formatMoney(produto7_nf))
+    // total()
+}).change();
+
+$("#produto8_preco, #qtd_inst_pde").on('change', function () {
+    qtd_inst_pde = $('input[name=qtd_inst_pde]').val()
+    produto8_preco = $('input[name=produto8_preco]').val()
+    produto8_nf = qtd_inst_pde * realDolar(produto8_preco)
+    $('input[name=produto8_nf]').val(formatMoney(produto8_nf))
+    // total()
+}).change();
+
+$("#produto9_preco, #qtd_mud_pde").on('change', function () {
+    qtd_mud_pde = $('input[name=qtd_mud_pde]').val()
+    produto9_preco = $('input[name=produto9_preco]').val()
+    produto9_nf = qtd_mud_pde * realDolar(produto9_preco)
+    $('input[name=produto9_nf]').val(formatMoney(produto9_nf))
+    // total()
+}).change();
+
+$("#produto10_preco, #qtd_substacao").on('change', function () {
+    qtd_substacao = $('input[name=qtd_substacao]').val()
+    produto10_preco = $('input[name=produto10_preco]').val()
+    produto10_nf = qtd_substacao * realDolar(produto10_preco)
+    $('input[name=produto10_nf]').val(formatMoney(produto10_nf))
+    // total()
+}).change();
+
+$("#produto11_preco, #qtd_refor_estrutura").on('change', function () {
+    qtd_refor_estrutura = $('input[name=qtd_refor_estrutura]').val()
+    produto11_preco = $('input[name=produto11_preco]').val()
+    produto11_nf = qtd_refor_estrutura * realDolar(produto11_preco)
+    $('input[name=produto11_nf]').val(formatMoney(produto11_nf))
+    // total()
+}).change();

@@ -4,7 +4,6 @@ var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
 function template(d){
-    console.log(d);
     //Retirar os "&quot" da array aditivos
     //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
 
