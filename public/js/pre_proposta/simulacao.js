@@ -116,6 +116,7 @@ function total() {
     somatotal =  parseFloat(realDolar(produto1_nf)) + parseFloat(realDolar(produto2_nf)) + parseFloat(realDolar(produto3_nf)) + parseFloat(realDolar(produto4_nf)) + parseFloat(realDolar(produto5_nf))
     console.log(somatotal)
     $('input[name=preco_medio_instalado]').val(formatMoney(somatotal))
+    $('.preco span').text('R$ ' + formatMoney(somatotal))
 
 }
 
