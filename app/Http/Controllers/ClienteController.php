@@ -51,7 +51,7 @@ class ClienteController extends Controller
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('clientes')
-            ->leftJoin('projetos', 'clientes.id', '=', 'projetos.clientes_id')
+            ->leftJoin('pre_propostas', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->groupBy('clientes.id')
             ->select([
                 'clientes.id',
@@ -61,13 +61,13 @@ class ClienteController extends Controller
                 'clientes.email',
                 'clientes.celular',
                 \DB::raw('DATE_FORMAT(clientes.created_at,"%d/%m/%Y") as created_at'),
-
+                \DB::raw('COUNT(pre_propostas.id) as propostas')
             ]);
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
-           $rows->where('projetos.users_id', '=', $user->id);
+           $rows->where('clientes.user_id', '=', $user->id);
         }
 
 
@@ -100,6 +100,7 @@ class ClienteController extends Controller
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
+                            </div>
                         </form>
                         ';
         })->make(true);
@@ -144,13 +145,13 @@ class ClienteController extends Controller
              * Corrigir o problema da virada do ano
              *
              */
-            $projeto_codigo = $last->projeto_codigo +1;
-            $projeto = array();
-            $projeto['clientes_id'] = $cliente->id;
-            $projeto['projeto_codigo'] = $projeto_codigo;
-            $projeto['users_id'] = \Auth::id();  //[RF001-RN002]:
-            $projeto['projeto_status_id'] = 1;
-            $projeto = Projeto::create($projeto);
+            //$projeto_codigo = $last->projeto_codigo +1;
+            //$projeto = array();
+            //$projeto['clientes_id'] = $cliente->id;
+            //$projeto['projeto_codigo'] = $projeto_codigo;
+            //$projeto['users_id'] = \Auth::id();  //[RF001-RN002]:
+            //$projeto['projeto_status_id'] = 1;
+            //$projeto = Projeto::create($projeto);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro realizado com sucesso!');

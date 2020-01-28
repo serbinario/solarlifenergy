@@ -143,7 +143,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Nome</th>
-                                                    <th>Empresa</th>
+                                                    <th>Razão Social</th>
                                                     <th>CPF/CNPJ</th>
                                                     <th>Email</th>
                                                     <th>Telefone</th>

@@ -52,17 +52,38 @@ var table = $('#cliente').DataTable({
     },
     columns: [
         {data: 'id', name: 'id', targets: 0, visible: false},
-        {data: 'nome', name: 'nome'},
-        {data: 'nome_empresa', name: 'nome_empresa'},
+        {data: 'nome', name: 'nome',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.propostas == '0'){
+                    $(nTd).html(oData.nome  + "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>")
+                }else{
+                    $(nTd).html(oData.nome  + "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>");
+                }
+            }
+        },
+        {data: 'nome_empresa', name: 'nome_empresa', visible: false},
         {data: 'cpf_cnpj', "render": function ( data, type, row ) {
                 return '<span id="'+"WW"+'">'+data+'</span>';
             }
         },
         {data: 'email', name: 'email', targets: 0, visible: false},
         {data: 'celular', name: 'celular'},
-        {data: 'created_at', name: 'created_at'},
+        {data: 'created_at', name: 'created_at', visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false}
-    ]
+    ],
+    "fnDrawCallback": function( oSettings ) {
+        //if ( data.DT_RowAttr ) $.each( data.DT_RowAttr, function( key, value ) {
+          //  $(tr).attr( key, value );
+        //});
+        $('tbody tr').each( function() {
+
+          //  this.setAttribute( 'title', '<span data-toggle="tooltip" title="ssss"</span>' );
+        } );
+        /* Apply the tooltips */
+        table.$('span').tooltip( {
+           // placement : 'top',
+            html : true } );
+    }
 });
 
 // Add event listener for opening and closing details
