@@ -2,7 +2,6 @@
 
 
     <div class="row">
-        <span class="badge badge-warning">0 propostas</span>
         <div class="col-sm-6">
             @if(isset($preProposta->cliente->id))
                 <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
@@ -72,67 +71,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('potencia_instalada') ? 'has-error' : '' }}">
-                <label for="potencia_instalada" class="col-sm-4 control-label text-bold">Pot. do gerador (KWp).:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm kwp" name="potencia_instalada" type="text" id="potencia_instalada" value="{{ old('potencia_instalada', isset($preProposta->potencia_instalada) ? $preProposta->potencia_instalada : null) }}" maxlength="10" placeholder="Enter quantity here...">
-                    {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('preco_medio_instalado') ? 'has-error' : '' }}">
-                <label for="preco_medio_instalado" class="col-sm-4 control-label text-bold">Valor Proposta R$.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="12" placeholder="Enter power here...">
-                    {!! $errors->first('preco_medio_instalado', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-       {{-- <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('qtd_paineis') ? 'has-error' : '' }}">
-                <label for="qtd_paineis" class="col-sm-4 control-label text-bold">Quantidade de painéis.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Enter average weight here...">
-                    {!! $errors->first('qtd_paineis', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>--}}
-        <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
-                <label for="panel_potencia" class="col-sm-4 control-label text-bold">Painel Potência.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : null) }}" min="-99999999" max="99999999" placeholder="Enter real power here..." step="any">
-                    {!! $errors->first('panel_potencia', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('minima_area') ? 'has-error' : '' }}">
-                <label for="minima_area" class="col-sm-4 control-label text-bold">Área ( m²).::</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
-                    {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
-                <label for="economia_anula" class="col-sm-4 control-label text-bold">Economia anual R$.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm money" name="economia_anula" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->economia_anula) ? $preProposta->economia_anula : null) }}" placeholder="" step="any">
-                    {!! $errors->first('economia_anula', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-    </div>
-
      <div class="row">
         <div class="col-sm-6">
             <div class="form-group"{{ $errors->has('estado_id') ? 'has-error' : '' }}">
@@ -167,6 +105,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <!--Acordion -->
@@ -563,6 +503,67 @@
             </div><!--end .panel -->
         </div><!--end .panel-group -->
     </div><!--end .Acordion -->
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group"{{ $errors->has('potencia_instalada') ? 'has-error' : '' }}">
+        <label for="potencia_instalada" class="col-sm-4 control-label text-bold">Pot. do gerador (KWp).:</label>
+        <div class="col-md-8">
+            <input class="form-control input-sm kwp" name="potencia_instalada" type="text" id="potencia_instalada" value="{{ old('potencia_instalada', isset($preProposta->potencia_instalada) ? $preProposta->potencia_instalada : null) }}" maxlength="10" placeholder="Enter quantity here...">
+            {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="form-group"{{ $errors->has('preco_medio_instalado') ? 'has-error' : '' }}">
+    <label for="preco_medio_instalado" class="col-sm-4 control-label text-bold">Valor Proposta R$.:</label>
+    <div class="col-md-8">
+        <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="12" placeholder="Enter power here...">
+        {!! $errors->first('preco_medio_instalado', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+</div>
+</div>
+<div class="row">
+    {{-- <div class="col-sm-6">
+         <div class="form-group"{{ $errors->has('qtd_paineis') ? 'has-error' : '' }}">
+             <label for="qtd_paineis" class="col-sm-4 control-label text-bold">Quantidade de painéis.:</label>
+             <div class="col-md-8">
+                 <input class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Enter average weight here...">
+                 {!! $errors->first('qtd_paineis', '<p class="help-block">:message</p>') !!}
+             </div>
+         </div>
+     </div>--}}
+    <div class="col-sm-6">
+        <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
+        <label for="panel_potencia" class="col-sm-4 control-label text-bold">Painel Potência.:</label>
+        <div class="col-md-8">
+            <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : null) }}" min="-99999999" max="99999999" placeholder="Enter real power here..." step="any">
+            {!! $errors->first('panel_potencia', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group"{{ $errors->has('minima_area') ? 'has-error' : '' }}">
+        <label for="minima_area" class="col-sm-4 control-label text-bold">Área ( m²).::</label>
+        <div class="col-md-8">
+            <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
+            {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
+    <label for="economia_anula" class="col-sm-4 control-label text-bold">Economia anual R$.:</label>
+    <div class="col-md-8">
+        <input class="form-control input-sm money" name="economia_anula" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->economia_anula) ? $preProposta->economia_anula : null) }}" placeholder="" step="any">
+        {!! $errors->first('economia_anula', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+</div>
 </div>
 
 </div>

@@ -31,15 +31,20 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Pré-Proposta</header>
+                            <header>Editar Pré-Proposta</header><header>Editar Pré-Proposta</header>
+
                             <div class="tools">
                                 <div class="btn-group">
+
+
+
                                     <a href="{{ route('pre_proposta.pre_proposta.index') }}" class="btn btn-primary" title="Show All Pre Proposta">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                     <a href="{{ route('pre_proposta.pre_proposta.create') }}" class="btn btn-primary" title="Create New Pre Proposta">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
+
                                 </div>
                             </div>
                         </div>

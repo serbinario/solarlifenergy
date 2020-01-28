@@ -23,10 +23,10 @@
                     <label for="clientes_id" class="col-sm-4 control-label text-bold">Clientes.: *</label>
                     <div class="col-md-8">
                         <select class="form-control input-sm" id="clientes_id" name="clientes_id">
-                            <option value="" style="display: none;" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Cliente</option>
-                            @foreach ($projetos as $key => $projeto)
-                                <option value="{{ $key }}" {{ old('clientes_id', isset($projeto->clientes_id) ? $projeto->clientes_id : null) == $key ? 'selected' : '' }}>
-                                    {{ $projeto }}
+                            <option value="" style="display: none;" {{ old('clientes_id', isset($clientes->id) ? $clientes->id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Cliente</option>
+                            @foreach ($clientes as $key => $cliente)
+                                <option value="{{ $key }}" {{ old('clientes_id', isset($clientes->id) ? $clientes->id : null) == $key ? 'selected' : '' }}>
+                                    {{ $cliente }}
                                 </option>
                             @endforeach
                         </select>

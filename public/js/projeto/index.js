@@ -57,7 +57,7 @@ var table = $('#projeto').DataTable({
         }
     },
     columns: [
-        {data: 'id', name: 'projetos.id', targets: 0, visible: false},
+        {data: "id",name: 'id'  },
         {data: 'nome', name: 'clientes.nome'},
         {data: 'projeto_codigo', name: 'projetos.projeto_codigo'},
         {data: 'name', name: 'users.name', targets: 0, visible: false},

@@ -62,17 +62,23 @@ class ProjetoController extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
             ->leftJoin('users', 'users.id', '=', 'projetos.users_id')
             ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetos.projeto_status_id')
+            ->leftJoin('pre_propostas', 'clientes.id', '=', 'pre_propostas.cliente_id')
+
             ->select([
-                'clientes.nome',
-                'projetos.id',
-                'projetos.projeto_codigo',
-                'projetos.kw',
-                'projetos.valor_projeto',
-                'users.name',
-                'projetos.prioridade',
+                \DB::raw(
+                'clientes.nome,
+                projetos.id,
+                projetos.projeto_codigo,
+                projetos.kw,
+                projetos.valor_projeto,
+                users.name,
+                users.email,
+                projetos.prioridade'),
                 \DB::raw('DATE_FORMAT(projetos.created_at,"%d/%m/%Y") as created_at'),
-                \DB::raw('DATE_FORMAT(projetos.updated_at,"%d/%m/%Y") as updated_at')
-            ]);
+                \DB::raw('DATE_FORMAT(projetos.updated_at,"%d/%m/%Y") as updated_at'),
+                \DB::raw('COUNT(projetos.id) as projetos')
+            ])
+            ->groupBy('projetos.id');
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
@@ -136,12 +142,13 @@ class ProjetoController extends Controller
      */
     public function create()
     {
-
+        $projetos = Projeto::with('contratos', 'cliente', 'projetoStatus')->get();
+        //dd($projetos);
         $projetosStatus = ProjetoStatus::orderBy('id','asc')->pluck('status_nome','id')->all();
         $clientes = Cliente::orderBy('nome','asc')->pluck('nome','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
 
-        return view('projeto.create', compact('clientes', 'users', 'projetosStatus'));
+        return view('projeto.create', compact('clientes', 'users', 'projetosStatus', 'projetos'));
     }
 
     /**
@@ -192,20 +199,6 @@ class ProjetoController extends Controller
             return back()->withInput()
                 ->withErrors(['error' => $e->getMessage()]);
         }
-    }
-
-    /**
-     * Display the specified projeto.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $projeto = Projeto::with('cliente','user')->findOrFail($id);
-
-        return view('projeto.show', compact('projeto'));
     }
 
     /**
