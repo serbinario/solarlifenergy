@@ -11,6 +11,19 @@
     white-space: pre-line;
 }
 
+.badge.badge-dark.float-right {
+
+    vertical-align: middle;
+    font-size: 19px;
+    background-color: #000;
+}
+.card-head header {
+    display: inline-block;
+    padding: 11px 24px;
+    vertical-align: middle;
+    line-height: 17px;
+    font-size: 20px;
+}
 .tooltip {
     position: relative;
     display: inline-block;
