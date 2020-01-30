@@ -27,8 +27,10 @@ Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 
-Route::any('/simulador', 'UtilController@simulador')
-    ->name('simulador');
+//Route::any('/simulador', ['middleware' => 'cors' , 'simulador'=> 'UtilController@simulador']);
+Route::any('/simulador', 'UtilController@simulador')->name('simulador')->middleware('cors');
+
+//Route::get('myRoute', ['middleware' => 'cors' , 'uses'=> 'MyController@Action']
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

@@ -20,7 +20,7 @@ class Kernel extends HttpKernel
         \Serbinario\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Serbinario\Http\Middleware\SessionDataCheckMiddleware::class,
-        //'cors' => \Serbinario\Http\Middleware\Cors::class,
+        //\Serbinario\Http\Middleware\Cors::class,
     ];
 
     /**
@@ -59,7 +59,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Serbinario\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        //'cors' => \Serbinario\Http\Middleware\Cors::class,
+        'cors' => \Serbinario\Http\Middleware\Cors::class,
 
         //'ajax-session-expired' => \Serbinario\Http\Middleware\AjaxSessionExpiredMiddleware::class,
     ];
