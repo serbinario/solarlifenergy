@@ -53,7 +53,8 @@ class UtilController extends Controller
     public function simulador(Request $request){
 
         //return \Illuminate\Support\Facades\Response::json(['success' => true,  'nome' => 'sss'  ]);
-
+        $ip = request()->ip();
+        //dd($ip);
 
         $validator = \Validator::make($request->all(), [
             'nome' => 'required',
@@ -154,14 +155,18 @@ class UtilController extends Controller
 
 
 
-        return \Illuminate\Support\Facades\Response::json(['success' => true,
-            'qtd_modulos' => $qtdModulos,
-            'potencia_gerador' => $potenciaGerador,
-            'area_minima' => $area,
-            'c02' => $co2,
-            'valor_kw' => $valor_kw,
-            'total_nvestimento' => round($total_nvestimento, 2)
-        ]);
+        return \Illuminate\Support\Facades\Response::json(
+            [
+                'success' => true,
+                'qtd_modulos' => $qtdModulos,
+                'potencia_gerador' => $potenciaGerador,
+                'area_minima' => $area,
+                'c02' => $co2,
+                'valor_kw' => $valor_kw,
+                'total_nvestimento' => round($total_nvestimento, 2)
+            ]
+
+        );
     }
 
 

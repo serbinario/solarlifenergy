@@ -52,17 +52,17 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof NotFoundHttpException){
 
-           // return response()->view('error.error');
+            return response()->view('error.error');
         }
         //dd($exception);
         if($exception instanceof ModelNotFoundException){
 
-           // return response()->view('error.error');
+            return response()->view('error.error');
         }
 
         if($exception instanceof TokenMismatchException){
 
-            //return response()->view('error.error');
+            return response()->view('error.error');
         }
 
 
