@@ -27,7 +27,7 @@ Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 
-Route::get('/simulador', 'UtilController@simulador')
+Route::any('/simulador', 'UtilController@simulador')
     ->name('simulador');
 
 //Route::get('/home', 'HomeController@index')->name('home');
