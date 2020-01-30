@@ -52,7 +52,9 @@ class UtilController extends Controller
 
     public function simulador(Request $request){
 
-        //dd($request->all());
+        //return \Illuminate\Support\Facades\Response::json(['success' => true,  'nome' => 'sss'  ]);
+
+
         $validator = \Validator::make($request->all(), [
             'nome' => 'required',
             'email' => 'required',
@@ -95,7 +97,8 @@ class UtilController extends Controller
                 break;
         }
 
-        $cidade = Cidade::findOrFail($cidade);
+        $cidade = Cidade::where('nome', '=', $cidade)->first();
+
         $qtdModulos = $this->getQtdModulos($valor_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
 
         $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
@@ -122,7 +125,7 @@ class UtilController extends Controller
             'c02' => $co2,
             'valor_kw' => $valor_kw,
             'total' => $total
-        ])->header("Access-Control-Allow-Origin",  "*");
+        ]);
     }
 
 
