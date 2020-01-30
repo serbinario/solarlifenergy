@@ -82,18 +82,54 @@ class UtilController extends Controller
         $valor_kw = $gasto_mensal * $valor_tarifa;
 
         switch ($valor_kw) {
-            case $valor_kw > 1000:
+            case $valor_kw < 300:
+                $inversor_mult = 0.56;
+                $estrutura_mult = 0.29;
+                $infra_mult = 0.18;
+                $kit_moni = 0.05;
+                $valor_modulo = 840;
+                break;
+            case $valor_kw > 301 && $valor_kw < 500:
+                $inversor_mult = 0.48;
+                $estrutura_mult = 0.27;
+                $infra_mult = 0.06;
+                $kit_moni = 0.05;
+                $valor_modulo = 790;
+                break;
+            case $valor_kw > 501 && $valor_kw < 800:
+                $inversor_mult = 0.48;
+                $estrutura_mult = 0.18;
+                $infra_mult = 0.03;
+                $kit_moni = 0.05;
+                $valor_modulo = 780;
+                break;
+            case $valor_kw > 801 && $valor_kw < 1200:
+                $inversor_mult = 0.4;
+                $estrutura_mult = 0.2;
+                $infra_mult = 0.04;
+                $kit_moni = 0.016;
+                $valor_modulo = 780;
+                break;
+            case $valor_kw > 1201 && $valor_kw < 4000:
                 $inversor_mult = 0.28;
                 $estrutura_mult = 0.11;
                 $infra_mult = 0.03;
                 $kit_moni = 0.01;
                 $valor_modulo = 760;
                 break;
-            case 1:
-                echo "i equals 1";
+            case $valor_kw > 4001 && $valor_kw < 5800:
+                $inversor_mult = 0.28;
+                $estrutura_mult = 0.11;
+                $infra_mult = 0.03;
+                $kit_moni = 0.01;
+                $valor_modulo = 760;
                 break;
-            case 2:
-                echo "i equals 2";
+            case $valor_kw > 5801:
+                $inversor_mult = 0.26;
+                $estrutura_mult = 0.07;
+                $infra_mult = 0.04;
+                $kit_moni = 0.004;
+                $valor_modulo = 760;
                 break;
         }
 
@@ -113,7 +149,7 @@ class UtilController extends Controller
         $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $infra_mult;
         $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $kit_moni;
 
-        $total = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
+        $total_nvestimento = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
 
 
 
@@ -124,7 +160,7 @@ class UtilController extends Controller
             'area_minima' => $area,
             'c02' => $co2,
             'valor_kw' => $valor_kw,
-            'total' => $total
+            'total_nvestimento' => round($total_nvestimento, 2)
         ]);
     }
 
