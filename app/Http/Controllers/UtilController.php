@@ -10,12 +10,14 @@ use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Traits\UtilReports;
 use Yajra\DataTables\DataTables;
 use Exception;
 use Ixudra\Curl\Facades\Curl;
 
 class UtilController extends Controller
 {
+    use UtilReports;
     private $token;
     /**
      * Create a new controller instance.
@@ -24,7 +26,7 @@ class UtilController extends Controller
      */
 	public function __construct()
 	{
-	    $this->middleware('auth');
+	    //$this->middleware('auth');
 	}
 	
     /**
@@ -46,6 +48,81 @@ class UtilController extends Controller
     public function getCidades($id){
         $cidades = Cidade::where('estado_id', '=', $id)->pluck('nome','id');
         return \Illuminate\Support\Facades\Response::json(['success' => false,  'cidades' => $cidades]);
+    }
+
+    public function simulador(Request $request){
+
+        //dd($request->all());
+        $validator = \Validator::make($request->all(), [
+            'nome' => 'required',
+            'email' => 'required',
+            'valor_tarifa' => 'required',
+            'gasto_mensal' => 'required',
+            'telefone' => 'required',
+            'cidade' => 'required',
+            'cep' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return \Illuminate\Support\Facades\Response::json(['success' => false,
+                $validator->errors()
+            ]);
+        }
+
+        $nome = $request->get('nome');
+        $email = $request->get('email');
+        $valor_tarifa = $request->get('valor_tarifa');
+        $gasto_mensal = $request->get('gasto_mensal');
+        $telefone = $request->get('telefone');
+        $cidade = $request->get('cidade');
+
+
+        $valor_kw = $gasto_mensal * $valor_tarifa;
+
+        switch ($valor_kw) {
+            case $valor_kw > 1000:
+                $inversor_mult = 0.28;
+                $estrutura_mult = 0.11;
+                $infra_mult = 0.03;
+                $kit_moni = 0.01;
+                $valor_modulo = 760;
+                break;
+            case 1:
+                echo "i equals 1";
+                break;
+            case 2:
+                echo "i equals 2";
+                break;
+        }
+
+        $cidade = Cidade::findOrFail($cidade);
+        $qtdModulos = $this->getQtdModulos($valor_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
+
+        $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
+
+        $area = $this->getArea($qtdModulos, '2.1', '1.15');
+
+        $co2 = $this->getCo2($potenciaGerador);
+
+        $somaModulos = $qtdModulos * $valor_modulo;
+        $somaInversor = $somaModulos * $inversor_mult;
+        $somaestrutura = $somaModulos * $estrutura_mult;
+        $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $infra_mult;
+        $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $kit_moni;
+
+        $total = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
+
+
+
+
+        return \Illuminate\Support\Facades\Response::json(['success' => true,
+            'qtd_modulos' => $qtdModulos,
+            'potencia_gerador' => $potenciaGerador,
+            'area_minima' => $area,
+            'c02' => $co2,
+            'valor_kw' => $valor_kw,
+            'total' => $total
+        ])->header("Access-Control-Allow-Origin",  "*");
     }
 
 
