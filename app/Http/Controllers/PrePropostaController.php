@@ -199,7 +199,7 @@ class PrePropostaController extends Controller
             //dd($data);
 
             $preProposta = PreProposta::create($data);
-            dd($return);
+            //dd($return);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
