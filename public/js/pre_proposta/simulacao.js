@@ -141,6 +141,61 @@ $(".atualizar").on('click', function () {
 
 
 function atualizaCampos() {
+    var valor_modulo = 0;
+    var valor_medio_kw =  $('input[name=monthly_usage]').val()
+
+    if(valor_medio_kw <= 300){
+        inversor_mult = 0.56;
+        estrutura_mult = 0.29;
+        infra_mult = 0.18;
+        kit_moni = 0.05;
+        valor_modulo = 840;
+    }
+
+    if( valor_medio_kw >= 301 && valor_medio_kw <= 500){
+        inversor_mult = 0.48;
+        estrutura_mult = 0.27;
+        infra_mult = 0.06;
+        kit_moni = 0.05;
+        valor_modulo = 790;
+    }
+    if(valor_medio_kw >= 501 && valor_medio_kw <= 800){
+        inversor_mult = 0.48;
+        estrutura_mult = 0.18;
+        infra_mult = 0.03;
+        kit_moni = 0.05;
+        valor_modulo = 780;
+    }
+    if(valor_medio_kw >= 801 && valor_medio_kw <= 1200){
+        inversor_mult = 0.4;
+        estrutura_mult = 0.2;
+        infra_mult = 0.04;
+        kit_moni = 0.016;
+        valor_modulo = 780;
+    }
+    if(valor_medio_kw >= 1201 && valor_medio_kw <= 4000){
+        inversor_mult = 0.28;
+        estrutura_mult = 0.11;
+        infra_mult = 0.03;
+        kit_moni = 0.01;
+        valor_modulo = 760;
+    }
+    if(valor_medio_kw >= 4001 && valor_medio_kw <= 5800){
+        inversor_mult = 0.26;
+        estrutura_mult = 0.11;
+        infra_mult = 0.03;
+        kit_moni = 0.01;
+        valor_modulo = 760;
+    }
+    if(valor_medio_kw >= 5801){
+        inversor_mult = 0.28;
+        estrutura_mult = 0.08;
+        infra_mult = 0.04;
+        kit_moni = 0.004;
+        valor_modulo = 760;
+    }
+
+    console.log(valor_modulo)
     /*
     * 1 - MÃ“DULO FV DAH
      */
@@ -151,14 +206,14 @@ function atualizaCampos() {
 
     //2 - INVERSOR KSTAR
     qtd_inversores = $('input[name=qtd_inversores]').val()
-    produto2_preco = qtd_paineis * realDolar(produto1_preco)* 0.28
+    produto2_preco = qtd_paineis * realDolar(produto1_preco)* inversor_mult
     $('input[name=produto2_preco]').val(formatMoney(produto2_preco))
     produto2_nf = qtd_inversores * produto2_preco
     $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
 
     //3 - ESTRUTURA
     qtd_estrutura = $('input[name=qtd_estrutura]').val()
-    produto3_preco = produto1_nf * 0.18
+    produto3_preco = produto1_nf * estrutura_mult
     $('input[name=produto3_preco]').val(formatMoney(produto3_preco))
     produto3_nf = qtd_estrutura * produto3_preco
     //console.log(produto3_nf)
@@ -166,7 +221,7 @@ function atualizaCampos() {
 
     //4 - STRING BOX
     qtd_string_box = $('input[name=qtd_string_box]').val()
-    produto4_preco = (produto1_nf + produto2_nf + produto3_nf) * 0.03
+    produto4_preco = (produto1_nf + produto2_nf + produto3_nf) * infra_mult
     $('input[name=produto4_preco]').val(formatMoney(produto4_preco))
     produto4_nf = qtd_string_box * produto4_preco
     //console.log(produto4_nf)
@@ -174,7 +229,7 @@ function atualizaCampos() {
 
     //5 - KIT MONITORAMENTO WIFI
     qtd_kit_monitoramento = $('input[name=qtd_kit_monitoramento]').val()
-    produto5_preco = (produto1_nf + produto2_nf + produto3_nf) * 0.01
+    produto5_preco = (produto1_nf + produto2_nf + produto3_nf) * kit_moni
     $('input[name=produto5_preco]').val(formatMoney(produto5_preco))
     produto5_nf = qtd_kit_monitoramento * produto5_preco
     //console.log(produto5_nf)
