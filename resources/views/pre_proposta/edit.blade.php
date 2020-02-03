@@ -32,8 +32,8 @@
                     <div class="card">
                         <div class="card-head style-primary">
                             <header>Editar Pré-Proposta</header>
-                            <div class="col-6 preco">
-												<span id="span_preco_medio_instalado" class=" badge badge-dark float-right">
+                            <div class="col-6 span_preco_medio_instalado">
+												<span class=" badge badge-dark float-right">
 														R$
 												</span>
                             </div>
@@ -54,7 +54,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <input class="btn btn-primary atualizar" type="button" value="Atualizar Dados">
+                                <input class="btn btn-primary atualizar" type="button" value="Simular">
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>

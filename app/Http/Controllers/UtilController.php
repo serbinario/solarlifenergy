@@ -2,18 +2,11 @@
 
 namespace Serbinario\Http\Controllers;
 
-
-//meu teste
-
 use Illuminate\Http\Request;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
-use Serbinario\Entities\PreProposta;
-use Serbinario\Http\Controllers\Controller;
 use Serbinario\Traits\UtilReports;
-use Yajra\DataTables\DataTables;
-use Exception;
-use Ixudra\Curl\Facades\Curl;
+
 
 class UtilController extends Controller
 {
@@ -42,7 +35,6 @@ class UtilController extends Controller
            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Ja existe um cliente cadastrado']);
        }
         return \Illuminate\Support\Facades\Response::json(['success' => false,  'msg' => $cpf_cnpj]);
-
     }
 
     public function getCidades($id){
@@ -52,9 +44,7 @@ class UtilController extends Controller
 
     public function simulador(Request $request){
 
-        //return \Illuminate\Support\Facades\Response::json(['success' => true,  'nome' => 'sss'  ]);
         $ip = request()->ip();
-        //dd($ip);
 
         $validator = \Validator::make($request->all(), [
             'nome' => 'required',
@@ -79,53 +69,52 @@ class UtilController extends Controller
         $telefone = $request->get('telefone');
         $cidade = $request->get('cidade');
 
+        $valor_medio_kw = $gasto_mensal * $valor_tarifa;
 
-        $valor_kw = $gasto_mensal * $valor_tarifa;
-
-        switch ($valor_kw) {
-            case $valor_kw < 300:
+        switch ($valor_medio_kw) {
+            case $valor_medio_kw < 300:
                 $inversor_mult = 0.56;
                 $estrutura_mult = 0.29;
                 $infra_mult = 0.18;
                 $kit_moni = 0.05;
                 $valor_modulo = 840;
                 break;
-            case $valor_kw > 301 && $valor_kw < 500:
+            case $valor_medio_kw > 301 && $valor_medio_kw < 500:
                 $inversor_mult = 0.48;
                 $estrutura_mult = 0.27;
                 $infra_mult = 0.06;
                 $kit_moni = 0.05;
                 $valor_modulo = 790;
                 break;
-            case $valor_kw > 501 && $valor_kw < 800:
+            case $valor_medio_kw > 501 && $valor_medio_kw < 800:
                 $inversor_mult = 0.48;
                 $estrutura_mult = 0.18;
                 $infra_mult = 0.03;
                 $kit_moni = 0.05;
                 $valor_modulo = 780;
                 break;
-            case $valor_kw > 801 && $valor_kw < 1200:
+            case $valor_medio_kw > 801 && $valor_medio_kw < 1200:
                 $inversor_mult = 0.4;
                 $estrutura_mult = 0.2;
                 $infra_mult = 0.04;
                 $kit_moni = 0.016;
                 $valor_modulo = 780;
                 break;
-            case $valor_kw > 1201 && $valor_kw < 4000:
+            case $valor_medio_kw > 1201 && $valor_medio_kw < 4000:
                 $inversor_mult = 0.28;
                 $estrutura_mult = 0.11;
                 $infra_mult = 0.03;
                 $kit_moni = 0.01;
                 $valor_modulo = 760;
                 break;
-            case $valor_kw > 4001 && $valor_kw < 5800:
+            case $valor_medio_kw > 4001 && $valor_medio_kw < 5800:
                 $inversor_mult = 0.28;
                 $estrutura_mult = 0.11;
                 $infra_mult = 0.03;
                 $kit_moni = 0.01;
                 $valor_modulo = 760;
                 break;
-            case $valor_kw > 5801:
+            case $valor_medio_kw > 5801:
                 $inversor_mult = 0.26;
                 $estrutura_mult = 0.07;
                 $infra_mult = 0.04;
@@ -136,7 +125,7 @@ class UtilController extends Controller
 
         $cidade = Cidade::where('nome', '=', $cidade)->first();
 
-        $qtdModulos = $this->getQtdModulos($valor_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
+        $qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
 
         $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
 
@@ -152,9 +141,6 @@ class UtilController extends Controller
 
         $total_nvestimento = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
 
-
-
-
         return \Illuminate\Support\Facades\Response::json(
             [
                 'success' => true,
@@ -162,10 +148,9 @@ class UtilController extends Controller
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
                 'c02' => $co2,
-                'valor_kw' => $valor_kw,
+                'valor_kw' => $valor_medio_kw,
                 'total_nvestimento' => round($total_nvestimento, 2)
             ]
-
         );
     }
 
