@@ -169,20 +169,37 @@ class PrePropostaController extends Controller
              * Regra de negócio do simulador
              */
 
-            $cidade = Cidade::where('id', '=', $request->get('cidade_id'))->first();
-            $qtd_paineis = $this->getQtdModulos($request->get('monthly_usage'), 0,'4.6', 5.71, '30', '0.14', '1.7');
+            $return = $this->simularGeracao($request->get('cidade_id'), (int)$request->get('monthly_usage'));
 
-            $data['qtd_paineis'] = $qtd_paineis;
+            $data['qtd_paineis'] = $return['qtd_modulos'];
 
-            $data['potencia_instalada'] = $this->getGeradorKwp($qtd_paineis, '330');
+            $data['potencia_instalada'] = $return['potencia_gerador'];
 
-            $data['minima_area'] = $this->getArea($qtd_paineis, '2.1', '1.15');
-
+            $data['minima_area'] = $return['area_minima'];
 
 
+            $data['total_nvestimento'] = $return['total_nvestimento'];
+
+            $data['produto1_nf'] = $return['soma_modulos'];
+            $data['produto1_preco'] = $return['valor_modulo'];
+
+            $data['produto2_nf'] = $return['soma_inversor'];
+            $data['produto2_preco'] = $return['soma_inversor'];
+
+            $data['produto3_nf'] = $return['soma_estrutura'];
+            $data['produto3_preco'] = $return['soma_estrutura'];
+
+
+            $data['produto4_nf'] = $return['soma_infra'];
+            $data['produto4_preco'] = $return['soma_infra'];
+
+            $data['produto5_nf'] = $return['soma_kit'];
+            $data['produto5_preco'] = $return['soma_kit'];
+
+            //dd($data);
 
             $preProposta = PreProposta::create($data);
-
+            dd($return);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
@@ -191,8 +208,6 @@ class PrePropostaController extends Controller
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
     }
-
-
 
     /**
      * Show the form for editing the specified pre proposta.
@@ -233,6 +248,38 @@ class PrePropostaController extends Controller
             $data = $this->getData($request);
 
             $preProposta = PreProposta::findOrFail($id);
+
+            /*
+             * Regra de negócio do simulador
+             */
+
+            $return = $this->simularGeracao($request->get('cidade_id'), (int)$request->get('monthly_usage'));
+
+            $data['qtd_paineis'] = $return['qtd_modulos'];
+
+            $data['potencia_instalada'] = $return['potencia_gerador'];
+
+            $data['minima_area'] = $return['area_minima'];
+
+
+            $data['total_nvestimento'] = $return['total_nvestimento'];
+
+            $data['produto1_nf'] = $return['soma_modulos'];
+            $data['produto1_preco'] = $return['valor_modulo'];
+
+            $data['produto2_nf'] = $return['soma_inversor'];
+            $data['produto2_preco'] = $return['soma_inversor'];
+
+            $data['produto3_nf'] = $return['soma_estrutura'];
+            $data['produto3_preco'] = $return['soma_estrutura'];
+
+
+            $data['produto4_nf'] = $return['soma_infra'];
+            $data['produto4_preco'] = $return['soma_infra'];
+
+            $data['produto5_nf'] = $return['soma_kit'];
+            $data['produto5_preco'] = $return['soma_kit'];
+
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -284,7 +331,6 @@ class PrePropostaController extends Controller
             'preco_medio_instalado',
             'potencia_instalada',
             'minima_area',
-            'qtd_paineis',
             'economia_anula',
             'preco_kwh',
             'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'panel_potencia',
@@ -300,7 +346,18 @@ class PrePropostaController extends Controller
             'na_ponta_oct',
             'na_ponta_nov',
             'na_ponta_dec',
-            'cidade_id'
+            'cidade_id',
+            'produto1', 'qtd_paineis' ,'produto1_preco', 'produto1_nf',
+            'produto2', 'qtd_inversores','produto2_preco', 'produto2_nf',
+            'produto3', 'qtd_estrutura',  'produto3_preco', 'produto3_nf',
+            'produto4', 'qtd_string_box', 'produto4_preco', 'produto4_nf',
+            'produto5', 'qtd_kit_monitoramento', 'produto5_preco', 'produto5_nf',
+            'qtd_homologacao', 'produto6_preco', 'produto6_nf',
+            'qtd_mao_obra', 'produto7_preco', 'produto7_nf',
+            'qtd_inst_pde', 'produto8_preco', 'produto8_nf',
+            'qtd_mud_pde', 'produto9_preco', 'produto9_nf',
+            'qtd_substacao', 'produto10_preco', 'produto10_nf',
+            'qtd_refor_estrutura', 'produto11_preco', 'produto11_nf',
             ]);
 
         return $data;
