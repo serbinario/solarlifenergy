@@ -54,6 +54,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
+                                <input class="btn btn-primary atualizar" type="button" value="Simular">
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input id="submit" class="btn btn-primary" type="submit" value="Atualizar">
                             </div>

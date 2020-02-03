@@ -249,37 +249,6 @@ class PrePropostaController extends Controller
 
             $preProposta = PreProposta::findOrFail($id);
 
-            /*
-             * Regra de negócio do simulador
-             */
-
-            $return = $this->simularGeracao($request->get('cidade_id'), (int)$request->get('monthly_usage'));
-
-            $data['qtd_paineis'] = $return['qtd_modulos'];
-
-            $data['potencia_instalada'] = $return['potencia_gerador'];
-
-            $data['minima_area'] = $return['area_minima'];
-
-
-            $data['total_nvestimento'] = $return['total_nvestimento'];
-
-            $data['produto1_nf'] = $return['soma_modulos'];
-            $data['produto1_preco'] = $return['valor_modulo'];
-
-            $data['produto2_nf'] = $return['soma_inversor'];
-            $data['produto2_preco'] = $return['soma_inversor'];
-
-            $data['produto3_nf'] = $return['soma_estrutura'];
-            $data['produto3_preco'] = $return['soma_estrutura'];
-
-
-            $data['produto4_nf'] = $return['soma_infra'];
-            $data['produto4_preco'] = $return['soma_infra'];
-
-            $data['produto5_nf'] = $return['soma_kit'];
-            $data['produto5_preco'] = $return['soma_kit'];
-
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)

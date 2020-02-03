@@ -151,7 +151,7 @@ function atualizaCampos() {
 
     //2 - INVERSOR KSTAR
     qtd_inversores = $('input[name=qtd_inversores]').val()
-    produto2_preco = qtd_paineis * realDolar(produto1_preco)* 0.35
+    produto2_preco = qtd_paineis * realDolar(produto1_preco)* 0.28
     $('input[name=produto2_preco]').val(formatMoney(produto2_preco))
     produto2_nf = qtd_inversores * produto2_preco
     $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
