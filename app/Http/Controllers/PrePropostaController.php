@@ -13,12 +13,15 @@ use Serbinario\Entities\Estado;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
+use Serbinario\Traits\Simulador;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
 
 class PrePropostaController extends Controller
 {
+    use Simulador;
+
     private $token;
     /**
      * Create a new controller instance.
@@ -147,15 +150,36 @@ class PrePropostaController extends Controller
 
             //Retorna o ultimo registro
             $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->first();
-            //Corrigir o problema da virada do ano
-            $codigo = $last->codigo +1;
-            $data['codigo'] = $codigo;
+            if($last == NULL){
 
+                $data['codigo'] = date("y") . "00001";
+            }else{
+                $codigo = $last->codigo +1;
+                $data['codigo'] = $codigo;
+            }
+
+            //dd($data);
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
             // em somente leitura
             if(empty($data['users_id'])){
                 $data['users_id'] = Auth::id();
             }
+
+            /*
+             * Regra de negócio do simulador
+             */
+
+            $cidade = Cidade::where('id', '=', $request->get('cidade_id'))->first();
+            $qtd_paineis = $this->getQtdModulos($request->get('monthly_usage'), 0,'4.6', 5.71, '30', '0.14', '1.7');
+
+            $data['qtd_paineis'] = $qtd_paineis;
+
+            $data['potencia_instalada'] = $this->getGeradorKwp($qtd_paineis, '330');
+
+            $data['minima_area'] = $this->getArea($qtd_paineis, '2.1', '1.15');
+
+
+
 
             $preProposta = PreProposta::create($data);
 
