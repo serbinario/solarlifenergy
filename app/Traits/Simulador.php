@@ -57,15 +57,15 @@ trait Simulador
                 $valor_modulo = 760;
                 break;
             case $valor_medio_kw >= 4001 && $valor_medio_kw <= 5800:
-                $inversor_mult = 0.28;
-                $estrutura_mult = 0.11;
-                $infra_mult = 0.03;
-                $kit_moni = 0.01;
+                $inversor_mult = 0.26;
+                $estrutura_mult = 0.07;
+                $infra_mult = 0.04;
+                $kit_moni = 0.004;
                 $valor_modulo = 760;
                 break;
             case $valor_medio_kw >= 5801:
-                $inversor_mult = 0.26;
-                $estrutura_mult = 0.07;
+                $inversor_mult = 0.28;
+                $estrutura_mult = 0.08;
                 $infra_mult = 0.04;
                 $kit_moni = 0.004;
                 $valor_modulo = 760;
