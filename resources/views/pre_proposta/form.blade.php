@@ -3,10 +3,14 @@
 
     <div class="row">
         <div class="col-sm-6">
-            @if(isset($preProposta->cliente->id))
+            @if(isset($preProposta->cliente->nome))
                 <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
                     <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
+
+                    <input name="total_equipamentos" type="hidden" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" >
+                    <input name="total_servico_operacional" type="hidden" id="total_servico_operacional" value="{{ old('total_servico_operacional', isset($preProposta->total_servico_operacional) ? $preProposta->total_servico_operacional : null) }}" >
+
                     <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
                     <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($preProposta->cliente->estado) ? $preProposta->cliente->estado : null) }}" >
                     <div class="col-md-8">
@@ -397,7 +401,7 @@
                         <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>
-                <div id="accordion2-3" class="collapse">
+                <div id="accordion2-3" class="collapse in">
                     <div class="card-body">
                         <table class="table table table-condensed no-margin">
                             <thead>
@@ -446,6 +450,7 @@
                     </div>
                 </div>
             </div><!--end .panel -->
+
             <div class="card panel">
                 <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-2">
                     <header class="text-bold">Serviços Operacionais</header>
@@ -459,7 +464,7 @@
                         <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>
-                <div id="accordion2-2" class="collapse in">
+                <div id="accordion2-2" class="collapse">
                     <div class="card-body">
 
                         <table class="table table table-condensed no-margin">
@@ -520,6 +525,104 @@
                     </div>
                 </div>
             </div><!--end .panel -->
+
+            <div class="card panel">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-4">
+                    <header class="text-bold">Formas de Pagamento</header>
+                    <div class="tools">
+                        <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+                <div id="accordion2-4" class="collapse">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada opção A.:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm money" name="entrada1_valor" type="text" id="entrada1_valor" value="{{ old('entrada1_valor', isset($preProposta->entrada1_valor) ? $preProposta->entrada1_valor : null) }}" maxlength="11" >
+                                        {!! $errors->first('entrada1_valor', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-3 control-label text-bold">Recurso Bancário.:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control input-sm" name="recurso1_banco" type="text" id="recurso1_banco" value="{{ old('recurso1_banco', isset($preProposta->recurso1_banco) ? $preProposta->recurso1_banco : null) }}" maxlength="255" >
+                                        {!! $errors->first('recurso1_banco', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada opção B.:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm money" name="entrada2_valor" type="text" id="cpf" value="{{ old('entrada2_valor', isset($preProposta->entrada2_valor) ? $preProposta->entrada2_valor : null) }}" maxlength="11" >
+                                        {!! $errors->first('entrada2_valor', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-3 control-label text-bold">Recurso Bancário.:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control input-sm" name="recurso2_banco" type="text" id="recurso2_banco" value="{{ old('recurso2_banco', isset($preProposta->recurso2_banco) ? $preProposta->recurso2_banco : null) }}" maxlength="255" >
+                                        {!! $errors->first('recurso2_banco', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada (60%).:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm money" name="entrada3_valor" type="text" id="entrada3_valor" value="{{ old('entrada3_valor', isset($preProposta->entrada3_valor) ? $preProposta->entrada3_valor : null) }}" maxlength="11">
+                                        {!! $errors->first('entrada3_valor', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-3 control-label text-bold">Qtd Parcelas.:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control input-sm" name="qtd_parcelas_entrada2" type="text" id="qtd_parcelas_entrada2" value="{{ old('qtd_parcelas_entrada2', isset($preProposta->qtd_parcelas_entrada2) ? $preProposta->qtd_parcelas_entrada2 : null) }}" maxlength="255">
+                                        {!! $errors->first('qtd_parcelas_entrada2', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Recurso SLE.:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control input-sm money" name="recurso_proprio" type="text" id="recurso_proprio" value="{{ old('recurso_proprio', isset($preProposta->recurso_proprio) ? $preProposta->recurso_proprio : null) }}" maxlength="11" >
+                                        {!! $errors->first('recurso_proprio', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-3 control-label text-bold">Valor Vencimento.:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control input-sm money" name="valor_vencimento" type="text" id="valor_vencimento" value="{{ old('valor_vencimento', isset($preProposta->valor_vencimento) ? $preProposta->valor_vencimento : null) }}" maxlength="255" >
+                                        {!! $errors->first('valor_vencimento', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end card-body -->
+                </div>
+            </div><!--end .panel -->
+
+
         </div><!--end .panel-group -->
     </div><!--end .Acordion -->
 </div>
@@ -564,6 +667,8 @@
             </div>
         </div>
     </div>
+
+
 
 </div>
 

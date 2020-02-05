@@ -41,6 +41,8 @@ class PreProposta extends Model
         'monthly_usage',
         'preco_medio_instalado',
         'potencia_instalada',
+        'total_equipamentos',
+        'total_servico_operacional',
         'minima_area',
         'qtd_paineis',
         'economia_anula',
@@ -82,6 +84,29 @@ class PreProposta extends Model
         'qtd_mud_pde', 'produto9_preco', 'produto9_nf',
         'qtd_substacao', 'produto10_preco', 'produto10_nf',
         'qtd_refor_estrutura', 'produto11_preco', 'produto11_nf',
+        'co2',
+        'reducao_media_consumo',
+        'gera_fv_jan',
+        'gera_fv_fev',
+        'gera_fv_mar',
+        'gera_fv_abr',
+        'gera_fv_mai',
+        'gera_fv_jun',
+        'gera_fv_jul',
+        'gera_fv_ago',
+        'gera_fv_set',
+        'gera_fv_out',
+        'gera_fv_nov',
+        'gera_fv_dez',
+        'entrada1_valor',
+        'recurso1_banco',
+        'entrada2_valor',
+        'recurso2_banco',
+        'entrada3_valor',
+        'qtd_parcelas_entrada2',
+        'recurso_proprio',
+        'valor_vencimento'
+
     ];
 
     /**
@@ -111,30 +136,30 @@ class PreProposta extends Model
         return $this->belongsTo('Serbinario\Entities\Cidade','cidade_id','id');
     }
 
-    public function setPrecoMedioInstaladoAttribute($value)
-    {
-        $this->attributes['preco_medio_instalado'] = $value == "" ? null: $this->convertesRealIngles($value);
-    }
+//    public function setPrecoMedioInstaladoAttribute($value)
+//    {
+//        $this->attributes['preco_medio_instalado'] = $value == "" ? null: $this->convertesRealIngles($value);
+//    }
 
     public function getPrecoMedioInstaladoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-    public function setEconomiaAnulaAttribute($value)
-    {
-        $this->attributes['economia_anula'] = $value == "" ? null: $this->convertesRealIngles($value);
-    }
+//    public function setEconomiaAnulaAttribute($value)
+//    {
+//        $this->attributes['economia_anula'] = $value == "" ? null: $this->convertesRealIngles($value);
+//    }
 
     public function getEconomiaAnulaAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-    public function setPrecoKwhAttribute($value)
-    {
-        $this->attributes['preco_kwh'] = $value == "" ? null: $this->convertesRealIngles($value);
-    }
+//    public function setPrecoKwhAttribute($value)
+//    {
+//        $this->attributes['preco_kwh'] = $value == "" ? null: $this->convertesRealIngles($value);
+//    }
 
     public function getPrecoKwhAttribute($value)
     {

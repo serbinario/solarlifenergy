@@ -169,7 +169,7 @@ class PrePropostaController extends Controller
              * Regra de negócio do simulador
              */
 
-            $return = $this->simularGeracao($request->get('cidade_id'), (int)$request->get('monthly_usage'));
+            $return = $this->simularGeracao($request);
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
@@ -178,7 +178,7 @@ class PrePropostaController extends Controller
             $data['minima_area'] = $return['area_minima'];
 
 
-            $data['total_nvestimento'] = $return['total_nvestimento'];
+            $data['preco_medio_instalado'] = $return['total_nvestimento'];
 
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
@@ -195,11 +195,29 @@ class PrePropostaController extends Controller
 
             $data['produto5_nf'] = $return['soma_kit'];
             $data['produto5_preco'] = $return['soma_kit'];
-
+            $data['co2'] = $return['co2'];
             //dd($data);
+            $data['gera_fv_jan'] = $return['geracao_fv']['0'];
+            $data['gera_fv_fev'] = $return['geracao_fv']['1'];
+            $data['gera_fv_mar'] = $return['geracao_fv']['2'];
+            $data['gera_fv_abr'] = $return['geracao_fv']['3'];
+            $data['gera_fv_mai'] = $return['geracao_fv']['4'];
+            $data['gera_fv_jun'] = $return['geracao_fv']['5'];
+            $data['gera_fv_jul'] = $return['geracao_fv']['6'];
+            $data['gera_fv_ago'] = $return['geracao_fv']['7'];
+            $data['gera_fv_set'] = $return['geracao_fv']['8'];
+            $data['gera_fv_out'] = $return['geracao_fv']['9'];
+            $data['gera_fv_nov'] = $return['geracao_fv']['10'];
+            $data['gera_fv_dez'] = $return['geracao_fv']['11'];
+
+            $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
+
+
+
+
 
             $preProposta = PreProposta::create($data);
-            //dd($return);
+            dd($data);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
@@ -245,10 +263,11 @@ class PrePropostaController extends Controller
     public function update($id, PrePropostaFormRequest $request)
     {
         try {
+            //dd($request->all());
             $data = $this->getData($request);
 
             $preProposta = PreProposta::findOrFail($id);
-
+            //dd($data);
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -298,6 +317,8 @@ class PrePropostaController extends Controller
             'power',
             'monthly_usage',
             'preco_medio_instalado',
+            'total_equipamentos',
+            'total_servico_operacional',
             'potencia_instalada',
             'minima_area',
             'economia_anula',
@@ -327,6 +348,14 @@ class PrePropostaController extends Controller
             'qtd_mud_pde', 'produto9_preco', 'produto9_nf',
             'qtd_substacao', 'produto10_preco', 'produto10_nf',
             'qtd_refor_estrutura', 'produto11_preco', 'produto11_nf',
+            'entrada1_valor',
+            'recurso1_banco',
+            'entrada2_valor',
+            'recurso2_banco',
+            'entrada3_valor',
+            'qtd_parcelas_entrada2',
+            'recurso_proprio',
+            'valor_vencimento'
             ]);
 
         return $data;
