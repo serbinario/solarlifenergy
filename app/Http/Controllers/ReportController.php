@@ -155,6 +155,21 @@ class ReportController extends Controller
         //dd($id);
     }
 
+    public function reportPdfProposta($id)
+    {
+        try
+        {
+            $nome_arquivo = "Proposta";
+            $file = $this->gerarPdf($id, $nome_arquivo);
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+        //dd($id);
+    }
+
     public function reportPdfPreProposta($id)
     {
         $preProposta = PreProposta::find($id);
