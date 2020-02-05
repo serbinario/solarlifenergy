@@ -108,7 +108,7 @@ class PrePropostaController extends Controller
                                 <a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
-                                <a href="/report/'.$row->id.'/PreProposta" class="btn btn-primary" target="_blank" title="Pré-Proposta">
+                                <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Pré-Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
