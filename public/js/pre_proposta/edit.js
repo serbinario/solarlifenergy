@@ -8,6 +8,9 @@ $(document).ready(function () {
             $(elem).val(realDolar($(elem).val()));
         });
 
+        $("#preco_kwh").val(realDolar($("#preco_kwh").val()));
+        $("#potencia_instalada").val(realDolar($("#potencia_instalada").val()));
+
     });
     /*
     * Gera uma pre-proposta

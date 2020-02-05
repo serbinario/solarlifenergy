@@ -131,6 +131,10 @@ function total() {
     $('.total_servico_operacional span').text('R$ ' + formatMoney(soma_servico_operacional))
     $('.total_equipamentos span').text('R$ ' + formatMoney(soma_equipamentos))
 
+    $('#total_servico_operacional').val(soma_servico_operacional)
+    $('#total_equipamentos').val(soma_equipamentos.toFixed(2))
+
+
 
 }
 
