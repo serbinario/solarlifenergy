@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Traits\UtilReports;
+use Serbinario\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UtilController extends Controller
@@ -21,6 +23,24 @@ class UtilController extends Controller
 	{
 	    //$this->middleware('auth');
 	}
+
+	public function getClientes(Request $request){
+
+	    //Falta  colocar o filtro por permissão 
+
+	    $user = User::find(Auth::id());
+	    $result = array();
+        $clientes = Cliente::select('id', 'nome')
+            ->where('nome', 'like', "%" . $request->get('searchTerm') . "%")
+
+            ->limit(10)->get();
+        foreach ( $clientes as $cliente) {
+            array_push($result, ['id' => $cliente->id, 'text' => $cliente->nome] );
+        }
+        $usersJson = json_encode($result);
+        return $usersJson;
+
+    }
 	
     /**
      * Display a listing of the pools.
