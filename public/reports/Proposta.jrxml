@@ -1444,7 +1444,7 @@
 				<reportElement x="0" y="412" width="100" height="1" uuid="6256adf7-8055-441b-a420-4d45c8c65aaf"/>
 			</break>
 			<staticText>
-				<reportElement x="0" y="380" width="788" height="30" uuid="53290365-4f17-4137-9951-c1ff85a51686"/>
+				<reportElement x="0" y="382" width="788" height="30" uuid="53290365-4f17-4137-9951-c1ff85a51686"/>
 				<text><![CDATA[*Válida enquanto as condições ambientes em torno do estabelecimento, e no estabelecimento permanecerem constante desde o dia da celebração do contrato.]]></text>
 			</staticText>
 		</band>
@@ -1735,7 +1735,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{qtd_estrutura}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="520" y="190" width="110" height="15" uuid="8acf7a8a-e3cb-4c72-a47f-92576c5948cd">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -2213,7 +2213,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_equipamentos})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total_equipamentos} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_equipamentos}) : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="340" y="295" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="abda0bd0-a583-49cc-8a53-15c6669cd753">
@@ -2242,7 +2242,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_servico_operacional})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total_servico_operacional} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_servico_operacional}) : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="340" y="310" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="15b4eea9-7860-4890-a3f1-c0c8d085470b">
@@ -2270,7 +2270,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{preco_medio_instalado})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{preco_medio_instalado} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{preco_medio_instalado}) : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="100" y="325" width="530" height="15" forecolor="#FAF5F5" backcolor="#17375E" uuid="fd91f51d-e912-463d-9a42-4acc326e71b5">
@@ -2329,7 +2329,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada1_valor})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{entrada1_valor} !=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada1_valor}) : "-"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="260" y="355" width="370" height="15" uuid="86f32962-7ece-49d1-9de1-d6fd1d2358f0">
@@ -2356,7 +2356,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada2_valor})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{entrada2_valor} !=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada2_valor}) : "-"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="260" y="370" width="370" height="15" uuid="eb07a599-96b6-4818-b8ab-ce1f5fbb2b30">
@@ -2383,7 +2383,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{recurso_proprio})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{recurso_proprio} != null ?java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{recurso_proprio}): "-"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="415" width="160" height="15" uuid="effa0a34-9616-4bb6-8ff5-76fe3492bba8">
@@ -2398,7 +2398,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada3_valor})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{entrada3_valor}!=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada3_valor}) : "-"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="430" width="200" height="15" uuid="1a765cf0-8ae8-45d4-98f0-b9d7bb5d057a">
@@ -2412,7 +2412,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{valor_vencimento})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valor_vencimento} !=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{valor_vencimento}) : "-"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="260" y="400" width="370" height="15" uuid="2b2b20a6-0e14-4a04-b74c-5243ba3cbd34">
@@ -2475,7 +2475,7 @@
 				</textElement>
 				<text><![CDATA[CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO SOLAR LIFE ENERGY]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="210" y="430" width="50" height="15" uuid="599277be-dfc4-4c91-af19-d82044a65efe">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
