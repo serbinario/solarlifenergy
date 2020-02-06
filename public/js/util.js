@@ -26,3 +26,4 @@ function realDolar(valor) {
     valor = valor.replace(",",".");
     return valor;
 }
+

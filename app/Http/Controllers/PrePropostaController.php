@@ -126,7 +126,7 @@ class PrePropostaController extends Controller
      */
     public function create()
     {
-        $Clientes = Cliente::pluck('nome','id')->all();
+        $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
@@ -145,7 +145,7 @@ class PrePropostaController extends Controller
     public function store(PrePropostaFormRequest $request)
     {
         try {
-
+            //dd($request->all());
             $data = $this->getData($request);
 
             //Retorna o ultimo registro
@@ -158,7 +158,7 @@ class PrePropostaController extends Controller
                 $data['codigo'] = $codigo;
             }
 
-            //dd($data);
+
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
             // em somente leitura
             if(empty($data['users_id'])){

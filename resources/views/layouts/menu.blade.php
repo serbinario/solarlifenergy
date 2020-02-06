@@ -16,13 +16,15 @@
 	<link href="{{ asset('/assets/css/theme-default/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/materialadmin.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/font-awesome.min.css')}}" rel="stylesheet">
+
 	<link href="{{ asset('/assets/css/theme-default/material-design-iconic-font.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/DataTables/jquery.dataTables.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/multi-select/multi-select.css')}}" rel="stylesheet">
 
-	<link href="{{ asset('/assets/css/theme-default/libs/select2/select2.css')}}" rel="stylesheet">
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' rel='stylesheet' type='text/css'>
+	{{--<link href="{{ asset('/assets/css/theme-default/libs/select2/select2.css')}}" rel="stylesheet">--}}
 
 	<link href="{{ asset('/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css')}}" rel="stylesheet">
 
@@ -261,7 +263,8 @@
 
 <script src="{{ asset('/assets/js/libs/multi-select/jquery.multi-select.js')}}" type="text/javascript"></script>
 
-<script src="{{ asset('/assets/js/libs/select2/select2.js')}}" type="text/javascript"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'></script>
+{{--<script src="{{ asset('/assets/js/libs/select2/select2.js')}}" type="text/javascript"></script>--}}
 
 <script src="{{ asset('/assets/js/libs/jquery-knob/jquery.knob.min.js')}}" type="text/javascript"></script>
 
