@@ -7,7 +7,7 @@ $('.select2_clientes').select2({
         url: "/index.php/getclientes",
         type: "post",
         dataType: 'json',
-        delay: 250,
+        delay: 500,
         data: function (params) {
             return {
                 searchTerm: params.term // search term
