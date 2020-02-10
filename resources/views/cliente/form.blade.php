@@ -131,7 +131,6 @@
                 @foreach (['Solteiro' => 'Solteiro',
     'Casado' => 'Casado',
     'Separado' => 'Separado',
-    '700 - 1.000' => '700 - 1.000',
     'Divorciado' => 'Divorciado',
     'Viúvo' => 'Viúvo'] as $key => $text)
                     <option value="{{ $key }}" {{ old('estado_civil', isset($cliente->estado_civil) ? $cliente->estado_civil : null) == $key ? 'selected' : '' }}>

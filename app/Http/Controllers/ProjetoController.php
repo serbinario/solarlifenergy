@@ -161,6 +161,7 @@ class ProjetoController extends Controller
     public function store(ProjetoFormRequest $request)
     {
         try {
+
             $this->affirm($request);
             $data = $this->getData($request);
 
@@ -171,12 +172,13 @@ class ProjetoController extends Controller
 
             //Retorna o ultimo registro
             $last = \DB::table('projetos')->orderBy('id', 'DESC')->first();
+            if($last == NULL){
 
-
-            //Corrigir o problema da virada do ano
-            $projeto_codigo = $last->projeto_codigo +1;
-
-            $data['projeto_codigo'] = $projeto_codigo;
+                $data['projeto_codigo'] = date("y") . "00001";
+            }else{
+                $codigo = $last->codigo +1;
+                $data['projeto_codigo'] = $codigo;
+            }
 
             //[RF001-RN002]:
             $data['projeto_status_id'] = 1;
@@ -186,14 +188,16 @@ class ProjetoController extends Controller
             if(empty($data['users_id'])){
                 $data['users_id'] = Auth::id();
             }
+
+
             $projeto = Projeto::create($data);
 
             foreach (array_filter($request->get('num_contrato')) as $contrato)  {
                 $contratos = $projeto->contratos()->create(['num_contrato' => $contrato]);
             }
-
+            //dd($data);
             return redirect()->route('projeto.projeto.index')
-                ->with('success_message', 'Projeto was successfully added!');
+                ->with('success_message', 'Projeto criado com sucesso!');
 
         } catch (Exception $e) {
             return back()->withInput()

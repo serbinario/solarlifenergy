@@ -26,7 +26,7 @@ class UtilController extends Controller
 
 	public function getClientes(Request $request){
 
-	    //Falta  colocar o filtro por permissão 
+	    //Falta  colocar o filtro por permissão
 
 	    $user = User::find(Auth::id());
 	    $result = array();

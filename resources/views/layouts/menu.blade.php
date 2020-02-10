@@ -26,6 +26,7 @@
 	<link href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' rel='stylesheet' type='text/css'>
 	{{--<link href="{{ asset('/assets/css/theme-default/libs/select2/select2.css')}}" rel="stylesheet">--}}
 
+
 	<link href="{{ asset('/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css')}}" rel="stylesheet">
 
 	<link href="{{ asset('/assets/css/theme-default/libs/sweetalert/sweetalert.css')}}" rel="stylesheet">
