@@ -1,5 +1,5 @@
 $('.select2_clientes').select2({
-    minimumInputLength: 3,
+    minimumInputLength: 4,
     ajax: {
         headers: {
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
