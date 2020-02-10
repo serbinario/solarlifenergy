@@ -58,6 +58,7 @@
 @section('javascript')
     <script src="{{ asset('/js/procuracao/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/select2_util.js')}}" type="text/javascript"></script>
 @stop
 
 

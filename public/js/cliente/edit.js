@@ -26,11 +26,11 @@ $(document).ready(function () {
             success: function( result ) {
                 console.log(result)
                 $("input#cep").val( result.code );
-                $("input#estado").val( result.state );
-                $("input#cidade").val( result.city );
-                $("input#bairro").val( result.district );
-                $("input#endereco").val( result.address );
-                $("input#estado").val( result.state );
+                $("input#estado").val( result.state.toUpperCase() );
+                $("input#cidade").val( result.city.toUpperCase() );
+                $("input#bairro").val( result.district.toUpperCase() );
+                $("input#endereco").val( result.address.toUpperCase() );
+                $("input#estado").val( result.state.toUpperCase() );
             }
 
         });

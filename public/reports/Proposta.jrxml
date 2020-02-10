@@ -425,7 +425,7 @@
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
 				<reportElement x="120" y="0" width="490" height="483" uuid="8919985b-e6bd-48df-9e55-57442680c028"/>
-				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/solar1.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/solar1.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">

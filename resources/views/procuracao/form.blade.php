@@ -11,15 +11,9 @@
     @else
 
         <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
-            <label for="cliente_id" class="col-md-2 control-label text-bold">Cliente.:</label>
+            <label for="cliente_id" class="col-sm-2 control-label text-bold">Cliente.:</label>
             <div class="col-md-10">
-                <select class="form-control input-sm" id="cliente_id" name="cliente_id">
-                    <option value="" style="display: none;" {{ old('cliente_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um cliente</option>
-                    @foreach ($clientes as $key => $cliente)
-                        <option value="{{ $key }}" {{ old('cliente_id', isset($procuracao->cliente_id) ? $procuracao->cliente_id : null) == $key ? 'selected' : '' }}>
-                            {{ $cliente }}
-                        </option>
-                    @endforeach
+                <select name="cliente_id" class="form-control select2_clientes" data-placeholder="Selecione">
                 </select>
                 {!! $errors->first('cliente_id', '<p class="help-block">:message</p>') !!}
             </div>

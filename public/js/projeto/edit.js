@@ -1,5 +1,38 @@
 $(document).ready(function () {
 
+    var html = '<div class="row copy">'
+    html += '<div class="col-lg-6">'
+    html +=     '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
+    html +=         '<label for="num_contrato" class="col-sm-4 control-label">Contrato Contrato</label>'
+    html +=         '<div class="col-md-3">'
+    html += '           <input class="form-control input-sm" name="num_contrato[]" type="number" id="num_contrato" value="{{ old(\'contrato_celpe\', isset($contrato) ? $contrato->num_contrato : null) }}">'
+    html +=         '</div>'
+    html +=     '</div>'
+    html += '</div>'
+    html += '<div class="col-lg-6">'
+    html +=     '<div class="form-group {{ $errors->has(\'percentual\') ? \'has-error\' : \'\' }}">'
+    html +=         '<label for="percentual" class="col-sm-4 control-label">Percentual.:</label>'
+    html +=         '<div class="col-md-3">'
+    html += '           <input class="form-control input-sm" name="percentual[]" type="number" id="percentual" value="{{ old(\'percentual\', isset($contrato) ? $contrato->percentual : null) }}" >'
+    html +=         '</div>'
+    html +=     '</div>'
+    html += '</div>'
+    html += '<div class="col-lg-6">'
+    html += '<div class="form-group {{ $errors->has(\'num_contrato\') ? \'has-error\' : \'\' }}">'
+    html += '<div class="col-md-2">'
+    html += '<div class="">'
+    html += '<label for="">'
+    html += '<button class="btn btn-danger remove btn-sm" type="button"><i class="glyphicon glyphicon-remove"></i> Remover</button>'
+    html += '</label>'
+    html += '</div>'
+    html += '</div>'
+    html += '</div>'
+    html += '</div>'
+    html += '</div>'
+
+
+    $(".after-add-more").after(html);
+
     $('.date').datepicker({autoclose: true, todayHighlight: true, format: "dd/mm/yyyy"});
 
     //Verifica se o cpf esta preenchido os campos juridico sao acultados
