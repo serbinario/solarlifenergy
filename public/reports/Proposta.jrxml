@@ -581,7 +581,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CLIENTE: " + $F{nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_empresa} != null ? "CLIENTE: " + $F{nome_empresa} : "CLIENTE:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="55" width="788" height="15" uuid="7435e681-6fc5-40b9-b9e2-4059b33b86c1">
@@ -598,7 +598,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ENDEREÇO: " + $F{endereco}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[ $F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} : "ENDEREÇO: "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="220" height="15" uuid="b2499200-8b14-4cbf-8ed3-7893e24cc890">
@@ -650,7 +650,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["EMAIL: " + $F{email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{email} != null ?  "EMAIL: " + $F{email}: "EMAIL:"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="240" y="100" width="295" height="15" uuid="6854e45a-ee33-4a8e-8752-375fe0624920">
@@ -2681,7 +2681,9 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO " + ($F{baco_fin_id} == 1? "SANTANDER" : "BV")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{baco_fin_id} == 1? "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO SANTANDER" : "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO BV")
+
+]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="100" y="340" width="160" height="15" uuid="670c6673-779a-4392-8f72-881420b216e1">
@@ -2725,7 +2727,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{entrada1_valor} !=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada1_valor}) : "-"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="260" y="355" width="370" height="15" uuid="86f32962-7ece-49d1-9de1-d6fd1d2358f0">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2752,7 +2754,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{entrada2_valor} !=null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{entrada2_valor}) : "-"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="260" y="370" width="370" height="15" uuid="eb07a599-96b6-4818-b8ab-ce1f5fbb2b30">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
