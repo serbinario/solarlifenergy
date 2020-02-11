@@ -585,10 +585,16 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada opção A.:</label>
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Banco Finan.:</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm money" name="entrada1_valor" type="text" id="entrada1_valor" value="{{ old('entrada1_valor', isset($preProposta->entrada1_valor) ? $preProposta->entrada1_valor : null) }}" maxlength="11" >
-                                        {!! $errors->first('entrada1_valor', '<p class="help-block">:message</p>') !!}
+                                        <select   class="form-control input-sm" id="baco_fin_id" name="baco_fin_id">
+                                            <option value="" style="display: none;" {{ old('baco_fin_id', isset($preProposta->bancoFinanciadora->id) ? $preProposta->bancoFinanciadora->id : '') == '' ? 'selected' : '' }} disabled selected>Financiadora</option>
+                                            @foreach ($bfs as $key => $bf)
+                                                <option value="{{ $key }}" {{ old('baco_fin_id', isset($preProposta->bancoFinanciadora->id) ? $preProposta->bancoFinanciadora->id : null) == $key ? 'selected' : '' }}>
+                                                    {{ $bf }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

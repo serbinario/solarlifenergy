@@ -17,6 +17,7 @@
     <link href="{{ asset('/assets/css/theme-default/materialadmin.css')}}" rel="stylesheet">
     <link href="{{ asset('/assets/css/theme-default/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{ asset('/assets/css/theme-default/material-design-iconic-font.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap_custon.css')}}" rel="stylesheet">
     <![endif]-->
 </head>
 <body class="menubar-hoverable header-fixed ">
@@ -61,7 +62,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <span class="text-lg text-bold text-primary">SOLAR LIFE ENERGY </span>
+                    <span class="text-lg color2 text-bold text-primary">SOLAR LIFE ENERGY </span>
                     <br/><br/>
                     <form class="form floating-label" action="{{ route('login') }}" accept-charset="utf-8" method="POST">
                         {{ csrf_field() }}
@@ -85,8 +86,8 @@
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-12 text-right">
-                                <button class="btn btn-primary btn-raised btn-block" type="submit">Login</button>
+                            <div class="col-xs-12 color2 text-right">
+                                <button class="btn btn-primary  btn-raised btn-block" type="submit">Login</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>

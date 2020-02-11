@@ -67,3 +67,14 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.color2 {
+    color:  #FF9800;
+}
+
+.btn-solar {
+    color: #0aa89e;
+    color: #ffffff;
+    background-color: #FF9800;
+    border-color: #0aa89e;
+}
