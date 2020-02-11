@@ -179,6 +179,8 @@ class PrePropostaController extends Controller
 
             $data['preco_medio_instalado'] = $return['total_nvestimento'];
 
+            $data['entrada2_valor'] = $return['total_nvestimento'] * 0.15;
+
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
 

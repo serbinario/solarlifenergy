@@ -30,12 +30,12 @@ class UtilController extends Controller
 
 	    $user = User::find(Auth::id());
 	    $result = array();
-        $clientes = Cliente::select('id', 'nome')
-            ->where('nome', 'like', "%" . $request->get('searchTerm') . "%")
+        $clientes = Cliente::select('id', 'nome_empresa')
+            ->where('nome_empresa', 'like', "%" . $request->get('searchTerm') . "%")
 
             ->limit(10)->get();
         foreach ( $clientes as $cliente) {
-            array_push($result, ['id' => $cliente->id, 'text' => $cliente->nome] );
+            array_push($result, ['id' => $cliente->id, 'text' => $cliente->nome_empresa] );
         }
         $usersJson = json_encode($result);
         return $usersJson;
