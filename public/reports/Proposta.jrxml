@@ -559,7 +559,7 @@ where pre_propostas.id =  $P{id}]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
 				<reportElement x="10" y="0" width="766" height="534" uuid="33286f1b-ab92-4edb-b325-91ce71228a4e"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/logo_solar.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
@@ -1828,7 +1828,7 @@ ou de difícil acesso]]></text>
 			</staticText>
 			<image scaleImage="FillFrame">
 				<reportElement x="140" y="48" width="430" height="195" uuid="45de595c-6a00-45e7-b639-0fabb9764df2"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/geracao_distribuida.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/geracao_distribuida.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="0" y="13" width="788" height="15" uuid="f2fb5cc3-c3b2-49aa-b947-0593a608f9ec">
@@ -3085,7 +3085,7 @@ CABOS BRASFIO HEPR FLEX 0,6KV/1KV]]></text>
 			</line>
 			<image scaleImage="FillFrame">
 				<reportElement x="0" y="47" width="300" height="113" uuid="4e9d79ee-84ea-4916-9c18-9430457ab090"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/cronograma.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/cronograma.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="0" y="174" width="210" height="15" uuid="1eebab69-61a1-4b37-bc17-0a34d1e159a8">
@@ -3187,14 +3187,14 @@ São Lourenço da Mata - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/mudinho1.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/mudinho1.png"]]></imageExpression>
 			</image>
 			<image scaleImage="FillFrame">
 				<reportElement x="420" y="130" width="245" height="120" uuid="4ca35924-dd8a-4b6c-8809-ba596266a425">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/mudinho2.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/mudinho2.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement x="-11" y="261" width="788" height="1" uuid="21909cef-d436-42b7-8cac-e69d182f9877">
@@ -3214,7 +3214,7 @@ Paulista - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/ourico1.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/ourico1.png"]]></imageExpression>
 			</image>
 			<image scaleImage="FillFrame">
 				<reportElement x="420" y="349" width="245" height="120" uuid="ea8b158a-d536-41cf-a4c6-f740f227767b">
@@ -3223,7 +3223,7 @@ Paulista - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/ourico2.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/ourico2.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
@@ -3246,7 +3246,7 @@ Aldeia - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/aldeia.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/aldeia.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="299" y="300" width="190" height="49" uuid="0f4ec402-f700-4381-a736-a3befa39c5c8"/>
@@ -3264,7 +3264,7 @@ Aldeia - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/residencial.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/residencial.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
@@ -3286,7 +3286,7 @@ Olinda - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/tecelagem.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/tecelagem.png"]]></imageExpression>
 			</image>
 		</band>
 	</detail>
