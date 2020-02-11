@@ -7,6 +7,7 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\BancoFinanciadora;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
@@ -110,10 +111,7 @@ class PrePropostaController extends Controller
                                 </a>
                                 <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Pré-Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>
-                                <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                                </a>                              
                         </form>
                         ';
         })->make(true);
@@ -128,11 +126,12 @@ class PrePropostaController extends Controller
     {
         $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
+        $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
 
 
-        return view('pre_proposta.create', compact('Clientes', 'estados', 'cidades'));
+        return view('pre_proposta.create', compact('Clientes', 'estados', 'cidades', 'bfs'));
     }
 
     /**
@@ -145,7 +144,7 @@ class PrePropostaController extends Controller
     public function store(PrePropostaFormRequest $request)
     {
         try {
-            //dd($request->all());
+
             $data = $this->getData($request);
 
             //Retorna o ultimo registro
@@ -212,10 +211,6 @@ class PrePropostaController extends Controller
 
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
 
-
-
-
-
             $preProposta = PreProposta::create($data);
             //dd($data);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -237,8 +232,10 @@ class PrePropostaController extends Controller
     public function edit($id)
     {
         //dd($id);
-        $preProposta = PreProposta::with('cliente', 'cidade')->findOrFail($id);
+        $preProposta = PreProposta::with('cliente', 'cidade', 'bancoFinanciadora')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
+        $bfs = BancoFinanciadora::pluck('nome','id')->all();
+
         if($preProposta->cidade_id){
             $cidades = Cidade::where('estado_id', '=', $preProposta->cidade->estado_id)->pluck('nome','id');
         }else{
@@ -249,7 +246,7 @@ class PrePropostaController extends Controller
 
         $Clientes = Cliente::pluck('nome','id')->all();
 
-        return view('pre_proposta.edit', compact('preProposta','Clientes', 'estados', 'cidades'));
+        return view('pre_proposta.edit', compact('preProposta','Clientes', 'estados', 'cidades', 'bfs'));
     }
 
     /**
@@ -313,6 +310,7 @@ class PrePropostaController extends Controller
     {
         $data = $request->only(['cliente_id',
             'codigo',
+            'baco_fin_id',
             'data_validade',
             'power',
             'monthly_usage',

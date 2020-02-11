@@ -35,6 +35,7 @@ class PreProposta extends Model
      */
     protected $fillable = [
         'cliente_id',
+        'baco_fin_id',
         'user_id',
         'codigo',
         'data_validade',
@@ -122,6 +123,11 @@ class PreProposta extends Model
      * @var array
      */
     protected $casts = [];
+
+    public function bancoFinanciadora()
+    {
+        return $this->belongsTo('Serbinario\Entities\BancoFinanciadora','baco_fin_id','id');
+    }
 
     /**
      * Get the Cliente for this model.
