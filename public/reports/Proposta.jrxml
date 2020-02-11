@@ -1027,7 +1027,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[Média Consumo]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="275" width="90" height="15" uuid="5fd6bdb1-34a2-4b66-976a-421798ab1dfd">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1040,7 +1040,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{potencia_instalada}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="290" width="90" height="15" uuid="604d6d64-6518-44e2-ae00-9b54487ec1d2">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1054,7 +1054,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{minima_area}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="305" width="90" height="15" uuid="617dc198-a6ca-4be7-9e93-9a984d78bc26">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1069,7 +1069,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{reducao_media_consumo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="320" width="90" height="15" uuid="22225f43-e35c-41aa-a0a6-237b9cdc6637">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1083,7 +1083,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{co2}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="335" width="90" height="15" uuid="2344ea6a-1c6e-4a94-bfec-ac2d31c4bba8">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1097,7 +1097,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{preco_kwh}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="249" y="350" width="90" height="15" uuid="7e49996a-f5c5-48e9-b131-34a2c1a428d6">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1189,7 +1189,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[JUNHO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="275" width="90" height="15" uuid="87e304ad-8a91-4a2c-8826-a4265bb3ef42">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1202,7 +1202,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{jan}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="290" width="90" height="15" uuid="32b9d3ea-4a9b-4adf-812c-bfa0e8acd3fb">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1215,7 +1215,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{feb}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="305" width="90" height="15" uuid="f5a16a02-5dec-4e60-ae18-dde22dcc48aa">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1228,7 +1228,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{mar}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="320" width="90" height="15" uuid="941ffdb6-b2f5-4155-b8ea-cc434e903c3c">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1241,7 +1241,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{apr}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="335" width="90" height="15" uuid="d03e6bce-8278-4cf7-afd9-3df34a690383">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1254,7 +1254,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{may}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="350" width="90" height="15" uuid="d68f8940-babf-4ab3-b182-b6435456661f">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1437,7 +1437,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[JULHO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="365" width="90" height="15" uuid="c8c22097-20e9-424b-9eba-ac20403565c3">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1490,7 +1490,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[AGOSTO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="380" width="90" height="15" uuid="627cda0c-3428-4364-af69-23cf995fc043">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1544,7 +1544,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[SETEMBRO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="395" width="90" height="15" uuid="bb4a0557-ccca-411d-9f23-097eb28c5c7c">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1597,7 +1597,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[OUTUBRO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="410" width="90" height="15" uuid="d1907718-223b-4ef8-961e-4ad0888d455e">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -1653,7 +1653,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[NOVEMBRO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="425" width="90" height="15" uuid="de661563-c6a7-48ad-920f-c65487e20386">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -1709,7 +1709,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[DEZEMBRO]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="429" y="440" width="90" height="15" uuid="4c97eba8-aa28-4321-b06f-35bbdb53acac">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
