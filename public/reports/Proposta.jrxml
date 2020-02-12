@@ -598,7 +598,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[ $F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} : "ENDEREÇO: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} : "ENDEREÇO: "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="220" height="15" uuid="b2499200-8b14-4cbf-8ed3-7893e24cc890">
@@ -700,7 +700,7 @@ em residências, comércios ou indústrias principalmente para gerar eletricidad
 				<text><![CDATA[Os sistemas fotovoltaicos conectados à rede (SFVCR) estão integrados à rede elétrica. Quando a energia produzida é insuficiente, o
 consumo é atendido pela concessionária local. Se houver excedente, a energia é injetada na rede.
 Do ponto de vista financeiro, paga-se apenas a diferença entre consumo e sendo a produção acima do que se consome o excedente é
-convertido em créditos que podem ser usados por até 36 meses ou em outras unidades consumidoras. Estes sistemas podem ser
+convertido em créditos que podem ser usados por até 60 meses ou em outras unidades consumidoras. Estes sistemas podem ser
 instalados em residências, empresas indústrias, geralmente sobre o telhado ou em áreas abertas e livres de sombra.]]></text>
 			</staticText>
 			<line>
@@ -720,7 +720,7 @@ instalados em residências, empresas indústrias, geralmente sobre o telhado ou 
 			<staticText>
 				<reportElement x="0" y="320" width="788" height="30" uuid="bff63d2a-a88c-42af-997e-3feb45481cc2"/>
 				<text><![CDATA[A Solar Life Energy é uma empresa que pensa no futuro, focada em soluções para energia solar. Atuando na área de treinamento, projeto,
-execução e distribuição de inversores da fabricante KLNE.]]></text>
+execução e distribuição de inversores da fabricante KSTAR.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="350" width="235" height="15" uuid="07f4019c-0798-49aa-b030-d899000f2756">
@@ -1279,7 +1279,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_jan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_jan} != null ? $F{na_ponta_jan} : 0]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="305" width="90" height="15" uuid="a0676ce1-fd86-4a0f-ae1b-bb393bf43735">
@@ -1292,7 +1292,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_feb}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_feb} != null ? $F{na_ponta_feb} : 0]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="320" width="90" height="15" uuid="c4571427-4ea0-48e7-a24f-be9a4928e480">
@@ -1305,7 +1305,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_mar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_mar} != null ? $F{na_ponta_mar} : 0]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="335" width="90" height="15" uuid="edb42afd-eeaf-4cd2-8a39-138ead149a3e">
@@ -1318,7 +1318,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_apr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_apr} != null ? $F{na_ponta_apr} : 0 ]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="350" width="90" height="15" uuid="32595d2a-51d7-4fe0-85ba-96a95fd51a93">
@@ -1331,7 +1331,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_may}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_may} != null ? $F{na_ponta_may} : 0]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="365" width="90" height="15" uuid="108ec813-c7fb-485f-a2ec-e93b796d46b3">
@@ -1344,7 +1344,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_jun}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_jun} != null ? $F{na_ponta_jun} : 0 ]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="290" width="90" height="15" uuid="7812dcaf-0b68-49e5-86bb-0d5fdf2b802f">
@@ -1462,7 +1462,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_jul}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_jul} != null ? $F{na_ponta_jul} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="380" width="90" height="15" uuid="1e46fc15-c021-4993-9fb9-8f6fe093cb0d">
@@ -1515,7 +1515,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_aug}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_aug} != null ? $F{na_ponta_aug} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="395" width="90" height="15" uuid="c91173a8-8b43-44eb-89dd-b1ae66efd6fb">
@@ -1569,7 +1569,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_sep}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_sep} != null ? $F{na_ponta_sep} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="410" width="90" height="15" uuid="b59dfd13-8775-4f54-8e26-064e64d231b8">
@@ -1624,7 +1624,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_oct}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_oct} != null ? $F{na_ponta_oct} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="425" width="90" height="15" uuid="b60dc7c1-af3d-43ed-8a1d-324efb7553df">
@@ -1680,7 +1680,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_nov}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_nov} != null ? $F{na_ponta_nov} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="440" width="90" height="15" uuid="33c245c8-c525-4ab8-b10f-110da7820e60">
@@ -1736,7 +1736,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_dec}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_dec} != null ? $F{na_ponta_dec} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="455" width="90" height="15" uuid="1f658e1a-69ae-4c8c-a172-bd08fea8e4b7">
@@ -2678,9 +2678,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{baco_fin_id} == 1? "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO SANTANDER" : "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO BV")
-
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{baco_fin_id} == 1? "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO SANTANDER" : "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO BV")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="100" y="340" width="160" height="15" uuid="670c6673-779a-4392-8f72-881420b216e1">
@@ -3083,7 +3081,7 @@ CABOS BRASFIO HEPR FLEX 0,6KV/1KV]]></text>
 				</reportElement>
 			</line>
 			<image scaleImage="FillFrame">
-				<reportElement x="0" y="47" width="300" height="113" uuid="4e9d79ee-84ea-4916-9c18-9430457ab090"/>
+				<reportElement x="244" y="47" width="300" height="113" uuid="4e9d79ee-84ea-4916-9c18-9430457ab090"/>
 				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/cronograma.png"]]></imageExpression>
 			</image>
 			<staticText>
