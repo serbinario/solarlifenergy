@@ -1,3 +1,16 @@
+var media_total = 0
+var soma = 0
+$(".fora-da-ponta").on('change', function () {
+    $('.fora-da-ponta').each(function(index, elem){
+
+        //$(elem).val() != null ? console.log(parseInt($(elem).val())): media_total + 0
+        if(typeof parseInt($(elem).val()) === 'number'){
+            soma = parseInt($(elem).val(), 10)
+            media_total + soma
+        }
+    });
+    console.log(media_total)
+}).change();
 
 $("#qtd_paineis").on('change', function () {
     atualizaPaineis()
