@@ -9,7 +9,7 @@
             <form method="POST" action="{{ route('contrato.contrato.store') }}" accept-charset="UTF-8" id="create_contrato_form" name="create_contrato_form" class="form-horizontal">
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Create an account</header>
+                        <header>Novo Contrato</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('contrato.contrato.index') }}" class="btn btn-primary" title="Show All Contrato">
