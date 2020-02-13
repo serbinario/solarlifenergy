@@ -52,16 +52,16 @@ var table = $('#cliente').DataTable({
     },
     columns: [
         {data: 'id', name: 'id', targets: 0, visible: false},
-        {data: 'nome', name: 'nome',
+        {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.propostas == '0'){
-                    $(nTd).html(oData.nome  + "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>")
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>")
                 }else{
-                    $(nTd).html(oData.nome  + "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>");
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>");
                 }
             }
         },
-        {data: 'nome_empresa', name: 'nome_empresa', visible: false},
+        {data: 'nome', name: 'nome', visible: false},
         {data: 'cpf_cnpj', "render": function ( data, type, row ) {
                 return '<span id="'+"WW"+'">'+data+'</span>';
             }
