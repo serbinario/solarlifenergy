@@ -55,7 +55,7 @@ class ContratoController extends Controller
             ->leftJoin('projetos', 'projetos.id', '=', 'contratos.projeto_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
             ->select([
-                'clientes.nome',
+                'clientes.nome_empresa',
                 'contratos.id',
                 'projetos.projeto_codigo',
                 'contratos.ano'
@@ -73,7 +73,7 @@ class ContratoController extends Controller
                                 <a href="/report/'.$row->id.'/Contrato" class="btn btn-primary" target="_blank" title="Contrato">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
-                                <a href="/report/'.$row->id.'/Declaracao" class="btn btn-primary" target="_blank" title="Declaação Ciência">
+                                <a href="/report/'.$row->id.'/Declaracao" class="btn btn-primary" target="_blank" title="Declaração Ciência">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
                                 <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">

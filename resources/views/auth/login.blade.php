@@ -23,7 +23,7 @@
 <body class="menubar-hoverable header-fixed ">
 <!-- BEGIN LOGIN SECTION -->
 <section class="section-account">
-    <div class="img-backdrop" style="background-image: url('/img/igarassu.png')"></div>
+    <div class="img-backdrop" style="background-image: url('/img/tela_login_desktop.png')"></div>
     <div class="spacer"></div>
     <div class="card contain-sm style-transparent">
         <div class="card-body">

@@ -42,8 +42,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Cód. Projeto</th>
                                                     <th>Cliente</th>
+                                                    <th>Cód. Projeto</th>
                                                     <th>Ano</th>
                                                     <th>Acao</th>
                                                 </tr>
