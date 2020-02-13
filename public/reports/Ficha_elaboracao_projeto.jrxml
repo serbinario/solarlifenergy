@@ -268,7 +268,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Res. Documentação.:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="119" width="369" height="18" uuid="12328d72-9571-470f-90a8-db80ea81e31f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -279,9 +279,9 @@ WHERE p.id = $P{idProjeto}]]>
 			</textField>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="ed08e6b3-4bc5-4c48-be27-4b6eaf4adfab"/>
-				<imageExpression><![CDATA["/var/www/html/solarlifenergy/public/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="137" width="369" height="18" uuid="19a0cf67-27b2-4328-8ed0-fa7dcd7bb2e7">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -290,7 +290,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="155" width="376" height="18" uuid="2d0fd176-2331-4375-b6e5-5ee35d8582d1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -299,7 +299,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="179" y="190" width="370" height="18" uuid="6e24e984-faae-436f-8992-aacb7a5c2c99">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -308,7 +308,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{res_documentacao}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="179" y="209" width="370" height="18" uuid="d224006f-964d-4b35-ab64-a42e19f89b63">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -345,7 +345,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Integrador.:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="228" width="376" height="18" uuid="d2b6a84b-950e-45d3-9a25-4f2ff29ff30b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -361,7 +361,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Telefone.:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="172" width="376" height="18" uuid="3ec65c80-b62c-4975-8100-87bb13b52543">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -428,7 +428,7 @@ WHERE p.id = $P{idProjeto}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{percentual} + "%"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{percentual} != null ? $F{percentual} + "%" : ""]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -453,7 +453,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Endereço de Instalação.: ]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="240" y="55" width="266" height="18" uuid="116f4b9d-0be4-40d2-8b45-6a754844dc36">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -462,7 +462,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{end_intalacao}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="240" y="75" width="266" height="18" uuid="3a399171-7b70-4ad8-8445-f6c0a4b2861d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -504,7 +504,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Prioridade.:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="240" y="115" width="266" height="18" uuid="0e7ef574-dcbe-4036-86d0-91121c267ac4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -531,7 +531,7 @@ WHERE p.id = $P{idProjeto}]]>
 				</textElement>
 				<text><![CDATA[Data Prevista aguardando confirmação.:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="240" y="136" width="266" height="18" uuid="0f6c9456-b6e5-454f-be7e-2b27b85474ef">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
