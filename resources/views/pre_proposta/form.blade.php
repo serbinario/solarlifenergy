@@ -14,7 +14,7 @@
                     <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
                     <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($preProposta->cliente->estado) ? $preProposta->cliente->estado : null) }}" >
                     <div class="col-md-8">
-                        <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($preProposta->cliente->nome) ? $preProposta->cliente->nome : null) }}" readonly >
+                        <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome', isset($preProposta->cliente->nome_empresa) ? $preProposta->cliente->nome_empresa : null) }}" readonly >
                         {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>

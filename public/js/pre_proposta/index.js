@@ -53,7 +53,7 @@ var table = $('#preProposta').DataTable({
     },
     columns: [
         {data: 'id', name: 'id',  targets: 0, visible: false},
-        {data: 'nome', name: 'clientes.nome'},
+        {data: 'nome_empresa', name: 'clientes.nome_empresa'},
         {data: 'codigo', name: 'codigo'},
         //{data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
