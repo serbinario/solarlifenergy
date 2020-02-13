@@ -1318,7 +1318,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_apr} != null ? $F{na_ponta_apr} : 0 ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_apr} != null ? $F{na_ponta_apr} : 0]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="350" width="90" height="15" uuid="32595d2a-51d7-4fe0-85ba-96a95fd51a93">
@@ -1344,7 +1344,7 @@ ou de difícil acesso]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{na_ponta_jun} != null ? $F{na_ponta_jun} : 0 ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{na_ponta_jun} != null ? $F{na_ponta_jun} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="609" y="290" width="90" height="15" uuid="7812dcaf-0b68-49e5-86bb-0d5fdf2b802f">
@@ -3226,7 +3226,10 @@ Paulista - PE]]></text>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="299" y="30" width="190" height="49" uuid="24b08fdc-bb14-4d5f-925c-051419dd5419"/>
+				<reportElement x="0" y="30" width="394" height="49" uuid="24b08fdc-bb14-4d5f-925c-051419dd5419">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Residencial - 17,49 KwP
 Aldeia - PE]]></text>
@@ -3237,7 +3240,7 @@ Aldeia - PE]]></text>
 				</reportElement>
 			</line>
 			<image scaleImage="FillFrame">
-				<reportElement x="260" y="90" width="268" height="150" uuid="6e96bc2e-adae-4e18-a91f-b715e2d281de">
+				<reportElement x="64" y="90" width="268" height="150" uuid="6e96bc2e-adae-4e18-a91f-b715e2d281de">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -3246,10 +3249,14 @@ Aldeia - PE]]></text>
 				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/aldeia.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="299" y="300" width="190" height="49" uuid="0f4ec402-f700-4381-a736-a3befa39c5c8"/>
+				<reportElement x="394" y="30" width="394" height="49" uuid="0f4ec402-f700-4381-a736-a3befa39c5c8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Residencial - 17,49 KwP
-Aldeia - PE]]></text>
+				<text><![CDATA[Residencial - 11,66 KwP
+Catende - PE]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="293" width="788" height="1" uuid="f067d853-dac0-4293-ae22-6b049bfde256">
@@ -3257,29 +3264,21 @@ Aldeia - PE]]></text>
 				</reportElement>
 			</line>
 			<image scaleImage="FillFrame">
-				<reportElement x="260" y="370" width="268" height="150" uuid="36f528e1-86b0-4f20-afeb-d8f4e707ca1c">
+				<reportElement x="457" y="90" width="268" height="150" uuid="36f528e1-86b0-4f20-afeb-d8f4e707ca1c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/residencial.png"]]></imageExpression>
 			</image>
-		</band>
-		<band height="535">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="288" y="55" width="190" height="49" uuid="33b85a9a-1aa1-4646-80b9-42bf229edfa8"/>
+				<reportElement x="292" y="305" width="190" height="49" uuid="33b85a9a-1aa1-4646-80b9-42bf229edfa8"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Comercial - 9,8 KwP
 Tecelagem JRM
 Olinda - PE]]></text>
 			</staticText>
-			<line>
-				<reportElement x="-11" y="48" width="788" height="1" uuid="aaef3d9e-74e9-4d9b-a639-55d82f643bd3">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
 			<image scaleImage="FillFrame">
-				<reportElement x="260" y="149" width="268" height="150" uuid="b32990ad-8320-400e-880e-d4fe1e9d853e">
+				<reportElement x="252" y="368" width="268" height="150" uuid="b32990ad-8320-400e-880e-d4fe1e9d853e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
