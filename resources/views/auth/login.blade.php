@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <img align="middle" src="/img/logo.png" alt="Italian Trulli">
                 </div>
-                <div id="over" class="col-sm-6 ">
+                <div id="over" class="col-sm-6-solar ">
 
 
                     @if(Session::has('success_message'))
@@ -71,7 +71,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
 
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Usuário">
+                            <input type="email" class="form-control-solar" id="email" name="email" placeholder="Usuário">
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -80,7 +80,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+                            <input type="password" class="form-control-solar" id="password" name="password" placeholder="Senha">
 
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -91,7 +91,7 @@
                         <br/>
                         <div class="row">
                             <div class="col-xs-12 color2 text-right">
-                                <button class="btn btn-primary  btn-raised btn-block" type="submit">Login</button>
+                                <button class="btn btn-primary-solar  btn-raised btn-block" type="submit">Login</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>
