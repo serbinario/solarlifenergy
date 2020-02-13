@@ -82,7 +82,7 @@
 
 @media only screen and (max-width: 600px) {
     .img-solar {
-        background-image: url('/img/tela_login_mobile.png');
+        background-image: url('/img/tela_login_mobile5.jpg');
     }
 
 }
@@ -90,7 +90,7 @@
 @media (min-width: 1281px) {
 
     .img-solar{
-        background-image: url('/img/tela_login_desktop.png');
+        background-image: url('/img/tela_login_desktop5.jpg');
 
     }
     .col-sm-6-solar {
