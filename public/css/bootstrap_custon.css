@@ -93,7 +93,7 @@
         background-image: url('/img/tela_login_desktop.png');
 
     }
-    .col-sm-6 {
+    .col-sm-6-solar {
 
         width: 50%;
         float: none;
@@ -108,7 +108,7 @@
     display: block;
 }
 
-.form-control {
+.form-control-solar {
 
     padding: 23px;
     height: 37px;
@@ -125,7 +125,7 @@
 
 }
 
-.btn-primary{
+.btn-primary-solar{
     border-radius: 30px;
 }
 
