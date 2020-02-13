@@ -23,13 +23,16 @@
 <body class="menubar-hoverable header-fixed ">
 <!-- BEGIN LOGIN SECTION -->
 <section class="section-account">
-    <div class="img-backdrop" style="background-image: url('/img/igarassu.png')"></div>
-    <div class="spacer"></div>
+
+
     <div class="card contain-sm style-transparent">
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-6">
-                    <br/>
+            <div class="row text-center">
+                <div class="form-group">
+                    <img align="middle" src="/img/logo.png" alt="Italian Trulli">
+                </div>
+                <div id="over" class="col-sm-6 ">
+
 
                     @if(Session::has('success_message'))
                         <div class="alert alert-success">
@@ -62,13 +65,14 @@
                             @endforeach
                         </div>
                     @endif
-                    <span class="text-lg color2 text-bold text-primary">SOLAR LIFE ENERGY </span>
-                    <br/><br/>
+
                     <form class="form floating-label" action="{{ route('login') }}" accept-charset="utf-8" method="POST">
+
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" name="email">
-                            <label for="username">Username</label>
+
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Usuário">
+
                             @if ($errors->has('email'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -76,8 +80,8 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password">
-                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>

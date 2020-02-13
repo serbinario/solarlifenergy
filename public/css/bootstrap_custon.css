@@ -78,3 +78,57 @@
     background-color: #FF9800;
     border-color: #0aa89e;
 }
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url('/img/tela_login_mobile.png');
+    }
+
+}
+
+@media (min-width: 1281px) {
+
+    body {
+        background-image: url('/img/tela_login_desktop.png');
+
+    }
+    .col-sm-6 {
+
+        width: 50%;
+        float: none;
+        margin: 0 auto;
+
+    }
+}
+
+#over img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.form-control {
+
+    padding: 23px;
+    height: 37px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-color:  rgba(12, 12, 12, 0.12);
+    background: white;
+    color: #0c0c0c;
+    font-size: 16px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 30px;
+
+}
+
+.btn-primary{
+    border-radius: 30px;
+}
+
+
+
+
