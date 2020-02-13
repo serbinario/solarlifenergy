@@ -66,7 +66,7 @@ class ProjetoController extends Controller
 
             ->select([
                 \DB::raw(
-                'clientes.nome,
+                'clientes.nome_empresa,
                 projetos.id,
                 projetos.projeto_codigo,
                 projetos.kw,
