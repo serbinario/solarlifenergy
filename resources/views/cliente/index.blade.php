@@ -142,8 +142,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nome</th>
                                                     <th>Razão Social</th>
+                                                    <th>Nome</th>
                                                     <th>CPF/CNPJ</th>
                                                     <th>Email</th>
                                                     <th>Telefone</th>
