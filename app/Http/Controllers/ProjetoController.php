@@ -176,7 +176,7 @@ class ProjetoController extends Controller
 
                 $data['projeto_codigo'] = date("y") . "00001";
             }else{
-                $codigo = $last->codigo +1;
+                $codigo = $last->projeto_codigo +1;
                 $data['projeto_codigo'] = $codigo;
             }
 
@@ -200,6 +200,7 @@ class ProjetoController extends Controller
                 ->with('success_message', 'Projeto criado com sucesso!');
 
         } catch (Exception $e) {
+            dd($e->getMessage());
             return back()->withInput()
                 ->withErrors(['error' => $e->getMessage()]);
         }
