@@ -81,7 +81,7 @@
 
 
 @media only screen and (max-width: 600px) {
-    body {
+    .img-solar {
         background-image: url('/img/tela_login_mobile.png');
     }
 
@@ -89,7 +89,7 @@
 
 @media (min-width: 1281px) {
 
-    body {
+    .img-solar{
         background-image: url('/img/tela_login_desktop.png');
 
     }
