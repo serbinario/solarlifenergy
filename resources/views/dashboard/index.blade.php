@@ -32,12 +32,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-head">
-                        <header>Histórico de Instalações por Mês</header>
+                        <header>Histórico de Projetos</header>
                     </div><!--end .card-head -->
-                    <div class="card-body height-8">
-                        <div id="flot-visitors-legend" class="flot-legend-horizontal stick-top-right no-y-padding"></div>
-                        <div id="IcecastGraph" class="flot height-7" data-title="Activity entry" data-color="#7dd8d2,#0aa89e"></div>
-                    </div><!--end .card-body -->
+                    <div id="graph"></div>
                 </div><!--end .col -->
             </div><!--end .row -->
         </div><!--end .card -->

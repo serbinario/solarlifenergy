@@ -7,6 +7,7 @@
  */
 
 namespace serbinario\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Serbinario\Http\Controllers\Controller;
 
@@ -45,6 +46,23 @@ class Dashboard extends Controller
         $result2018 = DB::select('call qtdInstalacaoes("2019-01-01", "2019-12-31")');
 
         return \Illuminate\Support\Facades\Response::json($result);
+    }
+
+    public function getProjetos(Request $request){
+
+        $rows = \DB::table('projetos')
+            ->rightJoin('projetos_status', 'projetos_status.id', '=', 'projetos.projeto_status_id')
+
+            ->select([
+
+                    'projetos_status.status_nome',
+
+                \DB::raw('COUNT(projetos.id) as soma')
+            ])
+            ->groupBy('projetos_status.id')
+            ->get();
+
+        return \Illuminate\Support\Facades\Response::json($rows);
     }
 
 
