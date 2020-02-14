@@ -50,7 +50,7 @@ function ShowGrpah(data) {
             {value: data[6].soma, label: data[6].status_nome},
 
         ],
-        formatter: function (x) { return x + "%"}
+        formatter: function (x) { return x }
     }).on('click', function(i, row){
         console.log(i, row);
     });
