@@ -136,11 +136,6 @@
 						<i class="fa fa-bars"></i>
 					</a>
 				</div>
-				<div class="expanded">
-					<a href="../../html/dashboards/dashboard.html">
-						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
-					</a>
-				</div>
 			</div>
 
 
@@ -154,7 +149,7 @@
 
 					<!-- BEGIN DASHBOARD -->
 					<li>
-						<a href="#" >
+						<a href="{{ route('dashboard.index') }}" >
 							<div class="gui-icon"><i class="md md-home"></i></div>
 							<span class="title">Dashboard</span>
 						</a>

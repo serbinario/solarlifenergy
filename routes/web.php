@@ -135,6 +135,11 @@ Route::group(
     Route::get('/grid', 'RouterController@grid')
         ->name('dashboard.router.grid');
 
+    Route::get('/getProjetos', 'Dashboard@getProjetos')
+        ->name('dashboard.getProjetos');
+
+
+
 
 });
 

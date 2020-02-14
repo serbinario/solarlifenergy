@@ -1,14 +1,14 @@
 //http://morrisjs.github.io/morris.js/index.html
 $.ajax({
-    url: "dashboard/clientesPorMes",
+    url: "/dashboard/getProjetos",
     type: "GET",
     dataType: "json",
     success: function (data) {
-        ShowGrpah(data);
+       ShowGrpah(data);
     },
 });
 
-
+/*
 function ShowGrpah(data) {
     Morris.Bar({
         element: 'IcecastGraph',
@@ -20,7 +20,39 @@ function ShowGrpah(data) {
         xLabelAngle: 35,
         hideHover: 'auto'
     });
+}*/
+
+/*Morris.Donut({
+    element: 'graph',
+    data: [
+        {value: 70, label: 'Aguardando intalação do cliente'},
+        {value: 15, label: 'Concluido'},
+        {value: 10, label: 'baz'},
+        {value: 5, label: 'A really really long label'}
+    ],
+    formatter: function (x) { return x + "%"}
+}).on('click', function(i, row){
+    console.log(i, row);
+});*/
+
+function ShowGrpah(data) {
+
+    Morris.Donut({
+        element: 'graph',
+        data: [
+            {value: data[0].soma, label: data[0].status_nome},
+            {value: data[1].soma, label: data[1].status_nome},
+            {value: data[2].soma, label: data[2].status_nome},
+            {value: data[3].soma, label: data[3].status_nome},
+            {value: data[4].soma, label: data[4].status_nome},
+            {value: data[5].soma, label: data[5].status_nome},
+            {value: data[5].soma, label: data[5].status_nome},
+            {value: data[6].soma, label: data[6].status_nome},
+
+        ],
+        formatter: function (x) { return x + "%"}
+    }).on('click', function(i, row){
+        console.log(i, row);
+    });
 }
-
-
 
