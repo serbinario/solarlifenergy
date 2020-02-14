@@ -27,7 +27,7 @@ class ProjetoFormRequest extends FormRequest
 
         return  [
             //'projeto_status_id' => 'required',
-            'users_id' => 'required',
+            //'users_id' => 'required',
             'kwh' => 'required',
             'clientes_id' => 'required',
         ];

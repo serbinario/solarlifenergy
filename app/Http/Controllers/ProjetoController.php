@@ -188,8 +188,7 @@ class ProjetoController extends Controller
             if(empty($data['users_id'])){
                 $data['users_id'] = Auth::id();
             }
-
-
+            //dd($data);
             $projeto = Projeto::create($data);
 
             foreach (array_filter($request->get('num_contrato')) as $contrato)  {
