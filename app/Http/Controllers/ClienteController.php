@@ -8,6 +8,7 @@ namespace Serbinario\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\MeioCaptacao;
 use Serbinario\Entities\Projeto;
 use Serbinario\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -113,7 +114,8 @@ class ClienteController extends Controller
      * @return Illuminate\View\View
      */
     public function create(){
-        return view('cliente.create');
+        $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
+        return view('cliente.create', compact('meiosCaptacao'));
     }
 
     /**
@@ -175,8 +177,8 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::findOrFail($id);
 
-
-        return view('cliente.edit', compact('cliente'));
+        $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
+        return view('cliente.edit', compact('cliente', 'meiosCaptacao'));
     }
 
     /**
@@ -280,7 +282,8 @@ class ClienteController extends Controller
             'cidade',
             'estado_civil',
             'nacionalidade',
-            'bairro'
+            'bairro',
+            'meio_captacao_id'
         ]);
         $data['is_whatsapp'] = $request->has('is_whatsapp');
 

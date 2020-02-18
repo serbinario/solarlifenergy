@@ -59,7 +59,8 @@ class Cliente extends Model
         'cidade',
         'user_id',
         'nacionalidade',
-        'bairro'
+        'bairro',
+        'meio_captacao_id'
     ];
 
     /**
