@@ -258,7 +258,7 @@ where c.id =  $P{id}]]>
 				<textElement textAlignment="Justified" markup="styled">
 					<font size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela concessionária, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
+				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela concessionária, conforme norma de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
 "<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
 			</textField>
 		</band>
@@ -471,6 +471,9 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 "As informações consideradas para dimensionamento do sistema, foi exclusivamente, baseada em quantidade de consumo informada na conta de energia apresentada pela CONTRATANTE, não sendo contemplados futuros aumentos de carga. Bem como, não é de responsabilidade da CONTRATADA geração abaixo"+ 
 " do estimado por motivos de condições climáticas, sombreamentos e afins que não contemple defeito do equipamento e/ou falha na instalação"]]></textFieldExpression>
 			</textField>
+			<break>
+				<reportElement x="0" y="584" width="100" height="1" uuid="d4a8501c-59a2-4831-aec8-d92c1e3a337d"/>
+			</break>
 		</band>
 		<band height="604">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -927,6 +930,16 @@ As partes elegem o foro da Comarca de Cabo de Santo Agostinho (PE) para dirimir 
 				</textElement>
 				<text><![CDATA[R$ 2.400,00]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="58" y="506" width="382" height="80" uuid="b07539ca-429f-42d8-a729-0317849b8621">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Para elaboração dessa proposta não foram considerados os seguintes itens:
+	• Realização de obras cíveis em geral, serviços de acabamento, serviços de embutir cabos e canaletas dentro de paredes e divisórias (a passagem de cabos será realizada por meio de canaletas externas);]]></text>
+			</staticText>
 		</band>
 		<band height="604">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -937,9 +950,7 @@ As partes elegem o foro da Comarca de Cabo de Santo Agostinho (PE) para dirimir 
 				<textElement textAlignment="Justified">
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Para elaboração dessa proposta não foram considerados os seguintes itens:
-	• Realização de obras cíveis em geral, serviços de acabamento, serviços de embutir cabos e canaletas dentro de paredes e divisórias (a passagem de cabos será realizada por meio de canaletas externas);
-	• Eventuais despesas com serviços públicos (prefeitura, órgãos públicos e federais);
+				<text><![CDATA[	• Eventuais despesas com serviços públicos (prefeitura, órgãos públicos e federais);
 	• Serviço de limpeza de componentes do gerador fotovoltaico;
 	• Serviço de manutenção preventiva;
 	• Assistência técnica improdutiva;
