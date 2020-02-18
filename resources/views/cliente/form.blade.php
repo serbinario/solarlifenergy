@@ -66,6 +66,21 @@
         </div>
     </div>
 
+    <div class="form-group {{ $errors->has('projeto_status_id') ? 'has-error' : '' }}">
+        <label for="meio_captacao_id" class="col-md-2 text-bold control-label">Como conheceu nossa empresa? *</label>
+        <div class="col-md-10">
+            <select   class="form-control input-sm" id="meio_captacao_id" name="meio_captacao_id">
+                <option value="" style="display: none;" {{ old('meio_captacao_id', isset($cliente->meio_captacao_id) ? $cliente->meio_captacao_id : '') == '' ? 'selected' : '' }} disabled selected>Meios de captação</option>
+                @foreach ($meiosCaptacao as $key => $meioCaptacao)
+                    <option value="{{ $key }}" {{ old('meio_captacao_id', isset($cliente->meio_captacao_id) ? $cliente->meio_captacao_id : null) == $key ? 'selected' : '' }}>
+                        {{ $meioCaptacao }}
+                    </option>
+                @endforeach
+            </select>
+            {!! $errors->first('meio_captacao_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
     <div class="col-lg-12">
         <h4 class="text-bold">Dados Pessoais</h4>
         <hr class="ruler-lg"/>
