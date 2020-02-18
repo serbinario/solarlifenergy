@@ -79,7 +79,7 @@ class Cliente extends Model
 
     public function dataCadastro(){
         $date = date_create($this->attributes['created_at']);
-        return date_format($date, 'd/m/Y');
+        return date_format($date, 'd/m');
         // $this->attributes['created_at'];
     }
     /**
