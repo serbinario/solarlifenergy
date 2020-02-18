@@ -37,8 +37,11 @@ function ShowGrpah(data) {
 
 function ShowGrpah(data) {
 
-    Morris.Donut({
+    var donut = new Morris.Donut({
         element: 'graph',
+        hoverCallback: function(index, options, content) {
+           console.log(index);
+        },
         data: [
             {value: data[0].soma, label: data[0].status_nome},
             {value: data[1].soma, label: data[1].status_nome},
@@ -53,6 +56,13 @@ function ShowGrpah(data) {
         formatter: function (x) { return x }
     }).on('click', function(i, row){
         console.log(i, row);
-    });
+    })
+    for(i = 0; i < donut.segments.length; i++) {
+        donut.segments[i].handlers['hover'].push( function(i){
+            console.log(donut.data[i].label)
+            //$('#morrisdetails-item .morris-hover-row-label').text(donut.data[i].label);
+            $('.morris-hover-point').text(donut.data[i].label);
+        });
+    }
 }
 

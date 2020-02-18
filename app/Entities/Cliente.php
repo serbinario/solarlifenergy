@@ -58,7 +58,8 @@ class Cliente extends Model
         'data_nascimento',
         'cidade',
         'user_id',
-        'nacionalidade'
+        'nacionalidade',
+        'bairro'
     ];
 
     /**

@@ -24,10 +24,8 @@
 @stop
 
 @section('content')
-
-
     <!-- BEGIN SITE ACTIVITY -->
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="card ">
             <div class="row">
                 <div class="col-md-12">
@@ -35,35 +33,16 @@
                         <header>Histórico de Projetos</header>
                     </div><!--end .card-head -->
                     <div id="graph"></div>
+                    <div class="morris-hover-point"></div>
                 </div><!--end .col -->
             </div><!--end .row -->
         </div><!--end .card -->
     </div><!--end .col -->
     <!-- END SITE ACTIVITY -->
-
-
-
-
-
-
-
-  {{--  @include('cliente.modal_financeiro')
-    @include('cliente.modal_financeiro_debito')
---}}
-
 @endsection
 
 @section('javascript')
-
-    {{--<script src="{{ asset('/js/cliente/index.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/cliente/modal_financeiro.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/cliente/modal_financeiro_debito.js')}}" type="text/javascript"></script>--}}
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
-
-
-    <script src="{{ asset('/assets/js/libs/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/dashboard/index.js')}}" type="text/javascript"></script>
 @stop
