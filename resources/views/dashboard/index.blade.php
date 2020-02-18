@@ -40,7 +40,7 @@
     </div><!--end .col -->
     <!-- END SITE ACTIVITY -->
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <div class="card">
             <div class="card-head">
                 <header>Últimos Clientes</header>
@@ -51,7 +51,7 @@
                     @foreach ($clientes as $cliente)
                         <li class="tile">
                             <div class="tile-content">
-                                <div class="tile-text"> {{ $cliente->nome }}</div>
+                                <div class="tile-text"> {{ $cliente->dataCadastro() }} - {{ $cliente->nome_empresa }}</div>
                             </div>
                         </li>
                     @endforeach
