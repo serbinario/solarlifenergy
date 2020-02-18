@@ -39,6 +39,27 @@
         </div><!--end .card -->
     </div><!--end .col -->
     <!-- END SITE ACTIVITY -->
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-head">
+                <header>Últimos Clientes</header>
+            </div><!--end .card-head -->
+            <div class="card-body ">
+                <ul class="list divider-full-bleed">
+
+                    @foreach ($clientes as $cliente)
+                        <li class="tile">
+                            <div class="tile-content">
+                                <div class="tile-text"> {{ $cliente->nome }}</div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div><!--end .card-body -->
+        </div><!--end .card -->
+    </div><!--end .col -->
+    <!-- END NEW REGISTRATIONS -->
 @endsection
 
 @section('javascript')

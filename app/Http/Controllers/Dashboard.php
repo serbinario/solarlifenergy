@@ -9,6 +9,8 @@
 namespace serbinario\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Serbinario\Entities\Cliente;
+use Serbinario\Entities\MeioCaptacao;
 use Serbinario\Http\Controllers\Controller;
 
 
@@ -31,7 +33,11 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $clientes = Cliente::orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
+
+        return view('dashboard.index', compact('clientes'));
     }
 
     /**
