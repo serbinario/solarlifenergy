@@ -77,6 +77,11 @@ class Cliente extends Model
      */
     protected $casts = [];
 
+    public function dataCadastro(){
+        $date = date_create($this->attributes['created_at']);
+        return date_format($date, 'd/m/Y');
+        // $this->attributes['created_at'];
+    }
     /**
      * Get the projeto for this model.
      */
