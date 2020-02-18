@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="612" pageHeight="792" columnWidth="442" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="70" uuid="64495b37-dd17-4a88-97dc-4e20e04ab90b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="595" pageHeight="842" columnWidth="425" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="41" uuid="64495b37-dd17-4a88-97dc-4e20e04ab90b">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
 	<subDataset name="Dataset1" uuid="d3dd2ab4-746d-4f9b-a264-f0ac723aed6f">
 		<queryString>
@@ -181,7 +182,7 @@ where c.id =  $P{id}]]>
 1. Equipamentos do Sistema de Geração de Energia Solar Conectado à rede, contemplando módulos fotovoltaicos, inversores, estrutura de suporte e acessórios;
 2. Frete;
 3. Tramitação de processos e registro de documentação na concessionária;
-4. Projeto e coordenações das diversas etapas que compõe o normativo específico de Geração Distribuída da Celpe;
+4. Projeto e coordenações das diversas etapas que compõe o normativo específico de Geração Distribuída da Concessionária;
 5. Montagem e interligação Turn Key;
 6. Comissionamento (testes e energização);
 7. Projeto fotovoltaico (ART, plantas, esquemas elétricos, diagramas, especificações, memorial descritivo);
@@ -223,7 +224,7 @@ where c.id =  $P{id}]]>
 				<textElement textAlignment="Justified" markup="styled">
 					<font size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRTO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{kw}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
+				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRATO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{kw}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
           "        <style isBold='true'>Parágrafo único.</style>"+ " As instalações serão executadas conforme projeto preliminar, e as normas vigentes da concessionária local visando a aprovação da conexão do gerador." + "\n"+
           "        Não sendo de responsabilidade da contratada custos referentes a adequação de reparos/reforços de estrutura civil/elétrica para adequação do sistema."]]></textFieldExpression>
 			</textField>
@@ -257,16 +258,19 @@ where c.id =  $P{id}]]>
 				<textElement textAlignment="Justified" markup="styled">
 					<font size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela CELPE, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
+				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela concessionária, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
 "<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="604">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<break>
+				<reportElement x="0" y="589" width="100" height="1" uuid="749d8a85-05a4-474f-8c70-5266e09576dd"/>
+			</break>
 			<textField>
-				<reportElement x="60" y="20" width="382" height="584" uuid="26d4d8b9-8e6e-436e-9c8b-259c14e47742"/>
-				<textElement textAlignment="Justified" markup="styled">
-					<font size="11"/>
+				<reportElement x="60" y="0" width="382" height="604" uuid="f1e86d8a-4478-4c1e-a150-9090ed0cb92e"/>
+				<textElement markup="styled">
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA["I. Os serviços serão executados de Segunda à Sexta, sendo o horário comercial respeitado. Com possibilidade de alteração conforme acordo." + "\n" +
 "II. A execução da obra só iniciará com aprovação do financiamento e liberação do credito conforme a data programada na cláusula 4."+ "\n" +
@@ -303,7 +307,7 @@ where c.id =  $P{id}]]>
 					<font size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA["O presente Termo terá vigência de 12 (doze) meses, contados a partir da sua assinatura, podendo ser prorrogado de comum acordo entre as partes através de Termo Aditivo." + "\n"+
-"<style isBold='true'>A contratada não se responsabiliza pelo atraso no funcionamento do sistema por problemas técnicos ocasionados por terceiros e pela CELPE, para fins de mudança de padrão de entrada, alteração de ramal, reforço de rede, adequação de subestação ou qualquer outro problema.</style>"]]></textFieldExpression>
+"<style isBold='true'>A contratada não se responsabiliza pelo atraso no funcionamento do sistema por problemas técnicos ocasionados por terceiros e pela concessionária, para fins de mudança de padrão de entrada, alteração de ramal, reforço de rede, adequação de subestação ou qualquer outro problema.</style>"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="60" y="51" width="382" height="129" uuid="43f54846-1291-4f82-952c-1b63b023a79b">
@@ -345,7 +349,7 @@ Para formatação desta proposta foram considerados os tributos:
 				</textElement>
 				<text><![CDATA[Este termo poderá ser rescindido por qualquer uma das partes, devendo a outra parte ser comunicada com antecedência mínima de 30 dias. 
 Em caso de rescisão pela contratante após o relacionamento operacional, será cobrado os valores operacionais, adicionados de multa de 8% do valor do projeto.
-Não Havendo devoluções de valores já pagos na execução dos serviços.]]></text>
+Não havendo devoluções de valores já pagos na execução dos serviços.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="446" width="442" height="20" uuid="a9268467-60d9-4776-ad29-d43bc717db08">
@@ -386,7 +390,8 @@ Não Havendo devoluções de valores já pagos na execução dos serviços.]]></
     	• Quando houver interferência de pessoas não autorizadas pela contratada;
     	 Quando houver danos físicos e de funcionamento provocados por fenômenos naturais adversos na região;
     	• Quando houver danos físicos nos equipamentos, causados por mau uso, como quebra, trincos, rachaduras;
-    	• Quando for detectada influências de natureza química, eletroquímica, elétrica, mecânica ou atmosférica alheias ao gerador fotovoltaico que possam comprometer seu funcionamento;    • 		•Quando for detectada a violação de componentes do gerador fotovoltaico;
+    	• Quando for detectada influências de natureza química, eletroquímica, elétrica, mecânica ou atmosférica alheias ao gerador fotovoltaico que possam comprometer seu funcionamento;    
+    	• Quando for detectada a violação de componentes do gerador fotovoltaico;
 Quando acionada a garantia e caracterizada improdutiva e/ou a não cobertura da garantia perante os termos acima estabelecidos, será realizada cobrança diretamente a contratante sobre despesas de assistência técnica.
      Custos por funcionários envolvidos:
     	• R$ 90,00 (noventa reais) por hora trabalhada 2ª a 6ª (Dentro dos horários de funcionamento da contratada. Em caso de hora extra serão adicionados valore conforme sindicato da categoria)
@@ -422,7 +427,7 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="380" width="442" height="20" uuid="cc65e3e0-895b-48b6-8810-23afb2227c80">
+				<reportElement x="0" y="343" width="442" height="20" uuid="cc65e3e0-895b-48b6-8810-23afb2227c80">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -431,7 +436,7 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 				<text><![CDATA[CLÁUSULA OITAVA – RESPONSABILIDADES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="60" y="427" width="382" height="53" uuid="797163ea-d1cc-49f0-afc7-cbb9c98c0c16">
+				<reportElement x="60" y="390" width="382" height="53" uuid="797163ea-d1cc-49f0-afc7-cbb9c98c0c16">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -440,7 +445,7 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 				<text><![CDATA[A contratada ficará responsabilizada durante o período de garantia da instalação em realizar o monitoramento da usina fotovoltaica, desde que a contratante disponha boa qualidade internet para o monitoramento.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="60" y="483" width="382" height="79" uuid="ff18243e-250b-48b4-b7f0-24a786cf962b">
+				<reportElement x="60" y="446" width="382" height="79" uuid="ff18243e-250b-48b4-b7f0-24a786cf962b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified">
@@ -464,7 +469,7 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 "<style isBold='true'>TODOS OS PROJETOS ESTÃO SUJEITOS, APÓS ADESÃO AO SISTEMA DE MICROGERAÇÃO, A COBRANÇAS DE TAXA DE DISPONIBILIDADE PELA CONCESSIONÁRIA LOCAL. EM CASO DE TRIFÁSICO (100KWH), MONOFÁSICO (30KWH) E CLIENTES DO GRUPO A PERMANCEM A COBRANÇA DE DEMANDA.</style>"+ "\n\n"+
 "A contratada por descumprimento de qualquer obrigação contratual estará limitada, cumulativamente, ao máximo de 5% (cinco por cento), do valor do contrato a ser firmado e supressão das etapas de pagamento em aberto."+ "\n\n" +
 "As informações consideradas para dimensionamento do sistema, foi exclusivamente, baseada em quantidade de consumo informada na conta de energia apresentada pela CONTRATANTE, não sendo contemplados futuros aumentos de carga. Bem como, não é de responsabilidade da CONTRATADA geração abaixo"+ 
-"do estimado por motivos de condições climáticas, sombreamentos e afins que não contemple defeito do equipamento e/ou falha na instalação"]]></textFieldExpression>
+" do estimado por motivos de condições climáticas, sombreamentos e afins que não contemple defeito do equipamento e/ou falha na instalação"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="604">
@@ -694,7 +699,7 @@ A geração prevista apresentada na proposta comercial é válida enquanto as co
 				<textElement textAlignment="Justified">
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[As eventuais omissões, dúvidas ou controvérsias, quanto à interpretação ou cumprimento do presente cONTRATO, serão resolvidas de comum acordo entre as partes.
+				<text><![CDATA[As eventuais omissões, dúvidas ou controvérsias, quanto à interpretação ou cumprimento do presente CONTRATO, serão resolvidas de comum acordo entre as partes.
 As partes elegem o foro da Comarca de Cabo de Santo Agostinho (PE) para dirimir as questões acaso decorrentes do presente Instrumento, que não puderem ser resolvidas pelas vias administrativas, com renúncia expressa a qualquer outro, por mais privilegiado que seja.]]></text>
 			</staticText>
 			<staticText>
@@ -933,18 +938,18 @@ As partes elegem o foro da Comarca de Cabo de Santo Agostinho (PE) para dirimir 
 					<font size="11"/>
 				</textElement>
 				<text><![CDATA[Para elaboração dessa proposta não foram considerados os seguintes itens:
-    • Realização de obras cíveis em geral, serviços de acabamento, serviços de embutir cabos e canaletas dentro de paredes e divisórias (a passagem de cabos será realizada por meio de canaletas externas);
-    • Eventuais despesas com serviços públicos (prefeitura, órgãos públicos e federais);
-    • Serviço de limpeza de componentes do gerador fotovoltaico;
-    • Serviço de manutenção preventiva;
-    • Assistência técnica improdutiva;
-    • Documentação, taxas, impostos e tarifas não previstas no escopo deste documento;
-    • Projetos complementares;
-    • Serviços de internet
-    • Reforços de estruturas e fundações, complementação de coberturas e telhas, quaisquer reforços distintos do escopo detalhado, que se façam ou não necessários pra atender ao suporte de carga do gerador fotovoltaico;
-    • Adequação e alteração das instalações elétricas do contratante para atender aos requisitos de conexão da concessionária local;
-    • Ensaios laboratoriais solicitados pelo contratante ou pela concessionária;
-    • Estudos e testes de seletividade, curto circuito e também ficam excluídos serviços de ajustes dos relés;
+	• Realização de obras cíveis em geral, serviços de acabamento, serviços de embutir cabos e canaletas dentro de paredes e divisórias (a passagem de cabos será realizada por meio de canaletas externas);
+	• Eventuais despesas com serviços públicos (prefeitura, órgãos públicos e federais);
+	• Serviço de limpeza de componentes do gerador fotovoltaico;
+	• Serviço de manutenção preventiva;
+	• Assistência técnica improdutiva;
+	• Documentação, taxas, impostos e tarifas não previstas no escopo deste documento;
+	• Projetos complementares;
+	• Serviços de internet;
+	• Reforços de estruturas e fundações, complementação de coberturas e telhas, quaisquer reforços distintos do escopo detalhado, que se façam ou não necessários pra atender ao suporte de carga do gerador fotovoltaico;
+	• Adequação e alteração das instalações elétricas do contratante para atender aos requisitos de conexão da concessionária local;
+	• Ensaios laboratoriais solicitados pelo contratante ou pela concessionária;
+	• Estudos e testes de seletividade, curto circuito e também ficam excluídos serviços de ajustes dos relés;
 
 E por acharem justas as suas cláusulas, as partes convenentes firmam o presente Instrumento em 02 (duas) vias de igual teor e forma, juntamente com as testemunhas abaixo, para os devidos efeitos legais.]]></text>
 			</staticText>
