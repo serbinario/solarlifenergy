@@ -5,6 +5,7 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 
+use Serbinario\Entities\BasePrecoRevenda;
 use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Parametro;
 use Serbinario\Http\Controllers\Controller;
@@ -69,8 +70,8 @@ class FranquiaController extends Controller
      * @return Illuminate\View\View
      */
     public function create(){
-        
-        return view('franquia.create');
+        $basePrecoRevendas = BasePrecoRevenda::pluck('nome','id')->all();
+        return view('franquia.create', compact('basePrecoRevendas'));
     }
 
     /**
@@ -118,9 +119,10 @@ class FranquiaController extends Controller
      * @return Illuminate\View\View
      */
     public function edit($id){
+        $basePrecoRevendas = BasePrecoRevenda::pluck('nome','id')->all();
         $franquia = Franquia::findOrFail($id);
 
-        return view('franquia.edit', compact('franquia'));
+        return view('franquia.edit', compact('franquia', 'basePrecoRevendas'));
     }
 
     /**
@@ -137,6 +139,7 @@ class FranquiaController extends Controller
             $data = $request->getData();
             
             $franquia = Franquia::findOrFail($id);
+            //dd($data);
             $franquia->update($data);
 
             return redirect()->route('franquia.franquia.edit', $franquia->id)

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Franquia extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -16,10 +16,10 @@ class Franquia extends Model
     protected $table = 'franquias';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,20 +28,21 @@ class Franquia extends Model
      * @var array
      */
     protected $fillable = [
-                  'nome',
-                  'cpf_cnpj',
-                  'contato',
-                  'telefone',
-                  'email',
-                  'cidade',
-                  'estado',
-                  'endereco',
-                  'cep',
-                  'bairro',
-                  'numero',
-                  'complemento',
-                  'is_active'
-              ];
+        'nome',
+        'cpf_cnpj',
+        'contato',
+        'telefone',
+        'email',
+        'cidade',
+        'estado',
+        'endereco',
+        'cep',
+        'bairro',
+        'numero',
+        'complemento',
+        'is_active',
+        'base_preco_revenda_id'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -49,14 +50,14 @@ class Franquia extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
 
 
     /**

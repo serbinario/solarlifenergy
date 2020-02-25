@@ -42,6 +42,21 @@
         {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
+    <div class="form-group {{ $errors->has('base_preco_revenda_id') ? 'has-error' : '' }}">
+        <label for="base_preco_revenda_id" class="col-md-2 control-label">Tabela de Preço</label>
+        <div class="col-md-10">
+            <select class="form-control input-sm" id="base_preco_revenda_id" name="base_preco_revenda_id">
+                <option value="" style="display: none;" {{ old('base_preco_revenda_id', isset($franquia->base_preco_revenda_id) ? $franquia->base_preco_revenda_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Tabela de Preço</option>
+                @foreach ($basePrecoRevendas as $key => $basePrecoRevenda)
+                    <option value="{{ $key }}" {{ old('base_preco_revenda_id', isset($franquia->base_preco_revenda_id) ? $franquia->base_preco_revenda_id : null) == $key ? 'selected' : '' }}>
+                        {{ $basePrecoRevenda }}
+                    </option>
+                @endforeach
+            </select>
+            {!! $errors->first('base_preco_revenda_id', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
     <div class="col-lg-12">
         <h4 class="text-bold">Endereço</h4>
         <hr class="ruler-lg"/>

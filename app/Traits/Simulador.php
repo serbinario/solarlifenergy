@@ -11,6 +11,7 @@ namespace Serbinario\Traits;
 
 use http\Env\Request;
 use PHPJasper\PHPJasper;
+use Serbinario\Entities\BasePreco;
 use Serbinario\Entities\Cidade;
 
 trait Simulador
@@ -24,58 +25,7 @@ trait Simulador
         //dd($request->all());
         $ip = request()->ip();
 
-        switch ($valor_medio_kw) {
-            case $valor_medio_kw <= 300:
-                $inversor_mult = 0.56;
-                $estrutura_mult = 0.29;
-                $infra_mult = 0.18;
-                $kit_moni = 0.05;
-                $valor_modulo = 840;
-                break;
-            case $valor_medio_kw >= 301 && $valor_medio_kw <= 500:
-                $inversor_mult = 0.48;
-                $estrutura_mult = 0.27;
-                $infra_mult = 0.06;
-                $kit_moni = 0.05;
-                $valor_modulo = 790;
-                break;
-            case $valor_medio_kw >= 501 && $valor_medio_kw <= 800:
-                $inversor_mult = 0.48;
-                $estrutura_mult = 0.18;
-                $infra_mult = 0.03;
-                $kit_moni = 0.05;
-                $valor_modulo = 780;
-                break;
-            case $valor_medio_kw >= 801 && $valor_medio_kw <= 1200:
-                $inversor_mult = 0.4;
-                $estrutura_mult = 0.2;
-                $infra_mult = 0.04;
-                $kit_moni = 0.016;
-                $valor_modulo = 780;
-                break;
-            case $valor_medio_kw >= 1201 && $valor_medio_kw <= 4000:
-                $inversor_mult = 0.28;
-                $estrutura_mult = 0.11;
-                $infra_mult = 0.03;
-                $kit_moni = 0.01;
-                $valor_modulo = 760;
-                break;
-            case $valor_medio_kw >= 4001 && $valor_medio_kw <= 5800:
-                $inversor_mult = 0.26;
-                $estrutura_mult = 0.07;
-                $infra_mult = 0.04;
-                $kit_moni = 0.004;
-                $valor_modulo = 760;
-                break;
-            case $valor_medio_kw >= 5801:
-                $inversor_mult = 0.28;
-                $estrutura_mult = 0.08;
-                $infra_mult = 0.04;
-                $kit_moni = 0.004;
-                $valor_modulo = 760;
-                break;
-        }
-
+        $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
 
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
@@ -98,26 +48,26 @@ trait Simulador
 
        // dd($reducaoMediaConsumo);
 
-        $somaModulos = $qtdModulos * $valor_modulo;
-        $somaInversor = $somaModulos * $inversor_mult;
+        $somaModulos = $qtdModulos * $basePreco->valor_modulo;
+        $somaInversor = $somaModulos * $basePreco->inversor_mult;
         //dd($somaInversor);
-        $somaestrutura = $somaModulos * $estrutura_mult;
-        $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $infra_mult;
-        $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $kit_moni;
+        $somaestrutura = $somaModulos * $basePreco->estrutura_mult;
+        $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $basePreco->infra_mult;
+        $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $basePreco->kit_moni;
 
         $total_nvestimento = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
 
         return
             [
                 'success' => true,
-                'valor_modulo' => $valor_modulo,
+                'valor_modulo' => $basePreco->valor_modulo,
                 'qtd_modulos' => $qtdModulos,
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
                 'co2' => $co2,
                 'valor_kw' => $valor_medio_kw,
                 'total_nvestimento' => round($total_nvestimento, 2),
-                'valor_modulo' => $valor_modulo,
+                'valor_modulo' => $basePreco->valor_modulo,
                 'soma_modulos' => $somaModulos,
                 'soma_inversor' => $somaInversor,
                 'soma_estrutura' => $somaestrutura,
