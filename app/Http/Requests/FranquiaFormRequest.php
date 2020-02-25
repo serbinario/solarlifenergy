@@ -51,7 +51,7 @@ class FranquiaFormRequest extends FormRequest
      */
     public function getData()
     {
-        $data = $this->only(['nome', 'cpf_cnpj', 'contato', 'telefone', 'email', 'cidade', 'estado', 'endereco', 'cep', 'bairro', 'numero', 'complemento', 'is_active']);
+        $data = $this->only(['nome', 'cpf_cnpj', 'contato', 'telefone', 'email', 'cidade', 'estado', 'endereco', 'cep', 'bairro', 'numero', 'complemento', 'is_active', 'base_preco_revenda_id']);
         $data['is_active'] = $this->has('is_active');
         return $data;
     }
