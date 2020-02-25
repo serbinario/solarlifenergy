@@ -4,7 +4,9 @@ namespace Serbinario\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
@@ -54,7 +56,7 @@ class Handler extends ExceptionHandler
 
             return response()->view('error.error');
         }
-        //dd($exception);
+
         if($exception instanceof ModelNotFoundException){
 
             return response()->view('error.error');
@@ -62,13 +64,9 @@ class Handler extends ExceptionHandler
 
         if($exception instanceof TokenMismatchException){
 
-            return response()->view('error.error');
+            return response()->view('auth.login');
         }
 
-
-
-
-        //dd($exception);
         return parent::render($request, $exception);
     }
 

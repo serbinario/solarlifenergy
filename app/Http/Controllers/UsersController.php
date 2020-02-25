@@ -99,7 +99,7 @@ class UsersController extends Controller
     public function store(UserFormRequest $request)
     {
         try {
-            $this->affirm($request);
+            //$this->affirm($request);
             $data = $this->getData($request);
 
 
@@ -117,6 +117,7 @@ class UsersController extends Controller
 
 
         } catch (Exception $e) {
+            dd($e);
             return back()->withInput()
                 ->withErrors(['error_message' => $e->getMessage()]);
         }
