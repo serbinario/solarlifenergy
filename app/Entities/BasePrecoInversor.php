@@ -4,7 +4,7 @@ namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BasePrecoRevenda extends Model
+class BasePrecoInversor extends Model
 {
 
 
@@ -13,7 +13,7 @@ class BasePrecoRevenda extends Model
      *
      * @var string
      */
-    protected $table = 'base_preco_revendas';
+    protected $table = 'base_preco_inversores';
 
     /**
      * The database primary key value.
@@ -28,7 +28,9 @@ class BasePrecoRevenda extends Model
      * @var array
      */
     protected $fillable = [
-        'nome'
+        'base_preco_revenda_id',
+        'max_modulos',
+        'valor'
     ];
 
     /**
@@ -48,18 +50,10 @@ class BasePrecoRevenda extends Model
     /**
      * Get the cliente for this model.
      */
-    public function basePrecoInversores()
-    {
-        return $this->hasMany('Serbinario\Entities\BasePrecoInversor','base_preco_revenda_id','id');
-    }
-
-    /**
-     * Get the cliente for this model.
-     */
-    public function basePrecoEstruturaEletrica()
-    {
-        return $this->hasMany('Serbinario\Entities\BasePrecoEstruturaEletrica','base_preco_revenda_id','id');
-    }
+   // public function basePrecoInversores()
+   // {
+       // return $this->belongsTo('Serbinario\Entities\basePrecoInversores','cidade_id','id');
+   // }
 
 
 }

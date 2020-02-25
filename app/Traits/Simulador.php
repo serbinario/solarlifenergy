@@ -9,74 +9,106 @@
 namespace Serbinario\Traits;
 
 
+use Hamcrest\Thingy;
 use http\Env\Request;
+use Illuminate\Support\Facades\Auth;
 use PHPJasper\PHPJasper;
 use Serbinario\Entities\BasePreco;
 use Serbinario\Entities\Cidade;
 
 trait Simulador
 {
+    private $valorModulo = 0;
+    private $somaModulos = 0;
+    private $somaInversor = 0;
+    private $somaestrutura = 0;
+    private $somaInfra = 0;
+    private $somaKit = 0;
+    private $totalInvestimento = 0;
+    private $qtdModulos = 0;
+
+
 
     function simularGeracao($request){
 
         $cidade = $request->get('cidade_id');
-        //dd($cidade);
         $valor_medio_kw = (int)$request->get('monthly_usage');
-        //dd($request->all());
-        $ip = request()->ip();
 
-        $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
 
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
 
-
         $mediaForaPonta = $request->get('monthly_usage');
-        //$mediaNaPonta = $this->getMediaMesesNaPonta($preProposta);
 
-        $qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
+        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
 
-        $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
+        //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
+        //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
+        if(!Auth::user()->franquia->id == '14'){
+            $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', $this->qtdModulos)->first();
+            $basePrecoInversores->valor;
 
-        $area = $this->getArea($qtdModulos, '2.1', '1.15');
+
+            dd(Auth::user()->franquia->basePrecoRevenda->basePrecoEstruturaEletrica()->where('max_modulos', '>=', $this->qtdModulos)->first());
+
+        }else{
+            $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
+            $this->valorModulo = $basePreco->valor_modulo;
+            $this->calculaGeracao($basePreco);
+
+        }
+        //dd($basePreco);
+
+        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, '330');
+
+        $area = $this->getArea($this->qtdModulos, '2.1', '1.15');
 
         $co2 = $this->getCo2($potenciaGerador);
 
-        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $qtdModulos, '1.72');
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, '1.72');
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
-       // dd($reducaoMediaConsumo);
 
-        $somaModulos = $qtdModulos * $basePreco->valor_modulo;
-        $somaInversor = $somaModulos * $basePreco->inversor_mult;
-        //dd($somaInversor);
-        $somaestrutura = $somaModulos * $basePreco->estrutura_mult;
-        $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $basePreco->infra_mult;
-        $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $basePreco->kit_moni;
-
-        $total_nvestimento = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
+       /* $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
+        $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
+        $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
+        $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->infra_mult;
+        $this->somaKit = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->kit_moni;
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
+       */
 
         return
             [
                 'success' => true,
-                'valor_modulo' => $basePreco->valor_modulo,
-                'qtd_modulos' => $qtdModulos,
+                'valor_modulo' => $this->valorModulo,
+                'qtd_modulos' => $this->qtdModulos,
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
                 'co2' => $co2,
                 'valor_kw' => $valor_medio_kw,
-                'total_nvestimento' => round($total_nvestimento, 2),
-                'valor_modulo' => $basePreco->valor_modulo,
-                'soma_modulos' => $somaModulos,
-                'soma_inversor' => $somaInversor,
-                'soma_estrutura' => $somaestrutura,
-                'soma_infra' => $somaInfra,
-                'soma_kit' => $somaKit,
+                'total_nvestimento' => round($this->totalInvestimento, 2),
+                'soma_modulos' =>  $this->somaModulos,
+                'soma_inversor' => $this->somaInversor,
+                'soma_estrutura' => $this->somaestrutura,
+                'soma_infra' => $this->somaInfra,
+                'soma_kit' => $this->somaKit,
                 'reducao_media_consumo' => $reducaoMediaConsumo,
                 'geracao_fv' => $geracaoEnergiaFV
-            ]
-        ;
+            ];
+    }
+
+    function calculaGeracao($basePreco){
+        $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
+        $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
+        $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
+        $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->infra_mult;
+        $this->somaKit = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->kit_moni_mult;
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
+    }
+
+    function calculaGeracaoFranquia(){
+
     }
 
     /*

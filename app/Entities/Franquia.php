@@ -92,6 +92,14 @@ class Franquia extends Model
         return $this->hasOne('Serbinario\Entities\Parametro','franquia_id','id');
     }
 
+    /**
+     * Get the projeto for this model.
+     */
+    public function basePrecoRevenda()
+    {
+        return $this->hasOne('Serbinario\Entities\BasePrecoRevenda','id','base_preco_revenda_id');
+    }
+
 
 
 }
