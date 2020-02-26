@@ -14,11 +14,11 @@
         </div>
     @endif
 
-    @if(Session::has('errors'))
+    @if(Session::has('$error_message'))
         <div class="alert alert-danger">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
             @foreach($errors->all() as $error)
-                <div>{{ $error }}</div>
+                <div>{{ $error_message }}</div>
             @endforeach
         </div>
     @endif
@@ -54,7 +54,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <input class="btn btn-primary atualizar" type="button" value="Simular">
+                                {{--<input class="btn btn-primary atualizar" type="button" value="Simular">--}}
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input id="submit" class="btn btn-primary" type="submit" value="Atualizar">
                             </div>

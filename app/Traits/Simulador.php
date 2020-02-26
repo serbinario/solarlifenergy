@@ -27,6 +27,7 @@ trait Simulador
     private $somaKit = 0;
     private $totalInvestimento = 0;
     private $qtdModulos = 0;
+    private $qtdInversores = 1;
 
     function simularGeracao($request){
 
@@ -42,43 +43,36 @@ trait Simulador
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
         if(Auth::user()->franquia->id != 14){
-           // dd("www");
+            $inversores = array();
+            //Calcula quantos inversores será necessário
+            if($this->qtdModulos > 126)
+            {
+                $i = 0;
+                for($i = $this->qtdModulos; $i >= 126; $i -=126 ){
+                    if($i >126){
+                        $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', 126)->first();
+                        $inversores[] += $basePrecoInversores->valor;
+                     }
+                }
+                $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', $i)->first();
+                $inversores[] += $basePrecoInversores->valor;
+            }else{
+                $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', $this->qtdModulos)->first();
+                $inversores[] += $basePrecoInversores->valor;
+            }
 
-//            if($this->qtdModulos > 126)
-//            {
-//
-//                $modulos = array();
-//                $modulos[] = 126;
-//                /*for($i = 126; $i <= $this->qtdModulos; $i++ ){
-//                    echo $i;
-//                    $i += 126;
-//                    $modulos[] += $this->qtdModulos - 126;
-//                }*/
-//
-//                for($i = $this->qtdModulos; $i >= 126; $i-- ){
-//                    echo $i;
-//                   // $i += 126;
-//                    //$modulos[] += $this->qtdModulos - 126;
-//                }
-//                dd($modulos, $this->qtdModulos);
-//
-//            }
-//            dd("Maior");
-            $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', $this->qtdModulos)->first();
-
-           // dd($basePrecoInversores,  $this->qtdModulos);
             $basePrecoEstruturaEletrica = Auth::user()->franquia->basePrecoRevenda->basePrecoEstruturaEletrica()->where('max_modulos', '>=', $this->qtdModulos)->first();
 
             $basePrecoModulos = Auth::user()->franquia->basePrecoRevenda->basePrecoModulos()->first();
-
-            $this->calculaGeracaoFranquia($basePrecoInversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
-            //dd("Revenda");
+            //dd("www", $inversores);
+            $this->calculaGeracaoFranquia($inversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
 
         }else{
             $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
             $this->valorModulo = $basePreco->valor_modulo;
             $this->calculaGeracao($basePreco);
         }
+
 
         $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, '330');
 
@@ -101,6 +95,7 @@ trait Simulador
                 'valor_kw' => $valor_medio_kw,
                 'total_nvestimento' => round($this->totalInvestimento, 2),
                 'soma_modulos' =>  $this->somaModulos,
+                'qtd_inversores' => $this->qtdInversores,
                 'soma_inversor' => $this->somaInversor,
                 'soma_estrutura' => $this->somaestrutura,
                 'soma_infra' => $this->somaInfra,
@@ -112,6 +107,7 @@ trait Simulador
 
     private function calculaGeracao($basePreco){
         $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
+        $this->qtdInversores = 1;
         $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
         $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
         $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->infra_mult;
@@ -120,9 +116,9 @@ trait Simulador
     }
 
     private function calculaGeracaoFranquia($inversor, $estruturaEletrica, $modulo){
-        //Falta o valor do módulo que no banco esqueci
         $this->somaModulos = $this->qtdModulos * $modulo->valor ;
-        $this->somaInversor = $inversor->valor;
+        $this->qtdInversores = count($inversor);
+        $this->somaInversor = array_sum($inversor);
         $this->valorModulo = $modulo->valor;
         $this->somaestrutura = $this->qtdModulos * $estruturaEletrica->valor_estrutura;
         $this->somaInfra = $this->qtdModulos * $estruturaEletrica->valor_eletrica;
