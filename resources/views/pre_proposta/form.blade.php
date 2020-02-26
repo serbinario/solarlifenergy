@@ -115,7 +115,7 @@
             <div class="form-group"{{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-6 control-label text-bold">Preço do KWh R$.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : null) }}" maxlength="10" placeholder="#,####">
+                    <input class="form-control input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "0.8000") }}" maxlength="10" placeholder="#,####">
                     {!! $errors->first('preco_kwh', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -124,7 +124,7 @@
             <div class="form-group"{{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : null) }}" step="any">
+                    <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : "330") }}" step="any">
                     {!! $errors->first('panel_potencia', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

@@ -79,7 +79,9 @@ class PrePropostaController extends Controller
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
             $rows->where('pre_propostas.user_id', '=', $user->id);
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
         return Datatables::of($rows)
@@ -99,6 +101,13 @@ class PrePropostaController extends Controller
                 if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
                 }
+                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+                $user = User::find(Auth::id());
+                if(!$user->hasRole('admin')) {
+                    $query->where('clientes.user_id', '=', $user->id);
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
             })
 
 
@@ -158,11 +167,10 @@ class PrePropostaController extends Controller
                 $data['codigo'] = $codigo;
             }
 
-
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
             // em somente leitura
-            if(empty($data['users_id'])){
-                $data['users_id'] = Auth::id();
+            if(empty($data['user_id'])){
+                $data['user_id'] = Auth::id();
             }
 
             /*
@@ -170,8 +178,6 @@ class PrePropostaController extends Controller
              */
 
             $return = $this->simularGeracao($request);
-
-            //dd($return);
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
@@ -187,12 +193,12 @@ class PrePropostaController extends Controller
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
 
+            $data['qtd_inversores'] = $return['qtd_inversores'];
             $data['produto2_nf'] = $return['soma_inversor'];
             $data['produto2_preco'] = $return['soma_inversor'];
 
             $data['produto3_nf'] = $return['soma_estrutura'];
             $data['produto3_preco'] = $return['soma_estrutura'];
-
 
             $data['produto4_nf'] = $return['soma_infra'];
             $data['produto4_preco'] = $return['soma_infra'];
@@ -222,6 +228,7 @@ class PrePropostaController extends Controller
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
         } catch (Exception $e) {
+            //dd($e);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
