@@ -53,6 +53,7 @@ class ClienteController extends Controller
         #Criando a consulta
         $rows = \DB::table('clientes')
             ->leftJoin('pre_propostas', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->join('users', 'clientes.user_id', '=', 'users.id')
             ->groupBy('clientes.id')
             ->select([
                 'clientes.id',
@@ -61,6 +62,7 @@ class ClienteController extends Controller
                 'clientes.cpf_cnpj',
                 'clientes.email',
                 'clientes.celular',
+                'users.franquia_id',
                 \DB::raw('DATE_FORMAT(clientes.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('COUNT(pre_propostas.id) as propostas')
             ]);
@@ -69,7 +71,9 @@ class ClienteController extends Controller
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
            $rows->where('clientes.user_id', '=', $user->id);
+           $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
 
         #Editando a grid
@@ -84,6 +88,13 @@ class ClienteController extends Controller
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
+                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+                $user = User::find(Auth::id());
+                if(!$user->hasRole('admin')) {
+                    $query->where('clientes.user_id', '=', $user->id);
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
                 /*if ($request->has('data_cadadastro_ini')) {
                     //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
