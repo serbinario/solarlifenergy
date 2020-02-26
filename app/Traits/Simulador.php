@@ -14,6 +14,7 @@ use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPJasper\PHPJasper;
 use Serbinario\Entities\BasePreco;
+use Serbinario\Entities\BasePrecoEstruturaEletrica;
 use Serbinario\Entities\Cidade;
 
 trait Simulador
@@ -27,14 +28,10 @@ trait Simulador
     private $totalInvestimento = 0;
     private $qtdModulos = 0;
 
-
-
     function simularGeracao($request){
 
         $cidade = $request->get('cidade_id');
         $valor_medio_kw = (int)$request->get('monthly_usage');
-
-
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
 
@@ -44,20 +41,44 @@ trait Simulador
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
-        if(!Auth::user()->franquia->id == '14'){
+        if(Auth::user()->franquia->id != 14){
+           // dd("www");
+
+//            if($this->qtdModulos > 126)
+//            {
+//
+//                $modulos = array();
+//                $modulos[] = 126;
+//                /*for($i = 126; $i <= $this->qtdModulos; $i++ ){
+//                    echo $i;
+//                    $i += 126;
+//                    $modulos[] += $this->qtdModulos - 126;
+//                }*/
+//
+//                for($i = $this->qtdModulos; $i >= 126; $i-- ){
+//                    echo $i;
+//                   // $i += 126;
+//                    //$modulos[] += $this->qtdModulos - 126;
+//                }
+//                dd($modulos, $this->qtdModulos);
+//
+//            }
+//            dd("Maior");
             $basePrecoInversores = Auth::user()->franquia->basePrecoRevenda->basePrecoInversores()->where('max_modulos', '>=', $this->qtdModulos)->first();
-            $basePrecoInversores->valor;
 
+           // dd($basePrecoInversores,  $this->qtdModulos);
+            $basePrecoEstruturaEletrica = Auth::user()->franquia->basePrecoRevenda->basePrecoEstruturaEletrica()->where('max_modulos', '>=', $this->qtdModulos)->first();
 
-            dd(Auth::user()->franquia->basePrecoRevenda->basePrecoEstruturaEletrica()->where('max_modulos', '>=', $this->qtdModulos)->first());
+            $basePrecoModulos = Auth::user()->franquia->basePrecoRevenda->basePrecoModulos()->first();
+
+            $this->calculaGeracaoFranquia($basePrecoInversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
+            //dd("Revenda");
 
         }else{
             $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
             $this->valorModulo = $basePreco->valor_modulo;
             $this->calculaGeracao($basePreco);
-
         }
-        //dd($basePreco);
 
         $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, '330');
 
@@ -68,15 +89,6 @@ trait Simulador
         $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, '1.72');
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
-
-
-       /* $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
-        $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
-        $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
-        $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->infra_mult;
-        $this->somaKit = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->kit_moni;
-        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
-       */
 
         return
             [
@@ -98,7 +110,7 @@ trait Simulador
             ];
     }
 
-    function calculaGeracao($basePreco){
+    private function calculaGeracao($basePreco){
         $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
         $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
         $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
@@ -107,7 +119,14 @@ trait Simulador
         $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
     }
 
-    function calculaGeracaoFranquia(){
+    private function calculaGeracaoFranquia($inversor, $estruturaEletrica, $modulo){
+        //Falta o valor do módulo que no banco esqueci
+        $this->somaModulos = $this->qtdModulos * $modulo->valor ;
+        $this->somaInversor = $inversor->valor;
+        $this->valorModulo = $modulo->valor;
+        $this->somaestrutura = $this->qtdModulos * $estruturaEletrica->valor_estrutura;
+        $this->somaInfra = $this->qtdModulos * $estruturaEletrica->valor_eletrica;
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
 
     }
 
