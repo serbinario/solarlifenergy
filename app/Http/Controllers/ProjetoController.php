@@ -83,8 +83,10 @@ class ProjetoController extends Controller
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
-            $rows->where('projetos.users_id', '=', $user->id);
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
 
 
@@ -112,6 +114,13 @@ class ProjetoController extends Controller
                 if ($request->has('projeto_status')) {
                     $query->where('projetos_status.id', '=',  $request->get('projeto_status') );
                 }
+                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+                $user = User::find(Auth::id());
+                if(!$user->hasRole('admin')) {
+                    $query->where('clientes.user_id', '=', $user->id);
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
 
             })
