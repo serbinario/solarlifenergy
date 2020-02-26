@@ -54,12 +54,16 @@ class ContratoController extends Controller
         $rows = \DB::table('contratos')
             ->leftJoin('projetos', 'projetos.id', '=', 'contratos.projeto_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
+            ->join('users', 'clientes.user_id', '=', 'users.id')
             ->select([
                 'clientes.nome_empresa',
                 'contratos.id',
                 'projetos.projeto_codigo',
                 'contratos.ano'
             ]);
+
+        $user = User::find(Auth::id());
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
@@ -113,6 +117,7 @@ class ContratoController extends Controller
 
             $data = $request->getData();
             $data['created_by'] = Auth::Id();
+            $data['franquia_id'] = Auth::user()->franquia->id;
             $contrato = Contrato::create($data);
 
             return redirect()->route('contrato.contrato.edit', $contrato->id)
@@ -157,6 +162,7 @@ class ContratoController extends Controller
 
             $data = $request->getData();
             $data['updated_by'] = Auth::Id();
+            $data['franquia_id'] = Auth::user()->franquia->id;
             //dd($data);
             $contrato = Contrato::findOrFail($id);
             $contrato->update($data);
