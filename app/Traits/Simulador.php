@@ -42,7 +42,7 @@ trait Simulador
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
-        if(Auth::user()->franquia->id != 14){
+        if(Auth::user()->franquia->franqueadora != 1){
             $inversores = array();
             //Calcula quantos inversores será necessário
             if($this->qtdModulos > 126)
