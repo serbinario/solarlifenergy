@@ -195,7 +195,9 @@
 								<!--start submenu -->
 								<ul>
 									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
+									@if(Auth::user()->franquia->franqueadora == 1)
 									<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
+									@endif
 									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->

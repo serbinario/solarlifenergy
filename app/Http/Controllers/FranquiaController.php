@@ -47,6 +47,7 @@ class FranquiaController extends Controller
             #Criando a consulta
             $rows = \DB::table('franquias');
 
+
             #Editando a grid
             return Datatables::of($rows)->addColumn('action', function ($row) {
                 return '<form id="' . $row->id   . '" method="POST" action="franquia/' . $row->id   . '/destroy" accept-charset="UTF-8">
