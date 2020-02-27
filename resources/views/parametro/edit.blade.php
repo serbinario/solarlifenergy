@@ -48,7 +48,6 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('parametro.parametro.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Ataulizar">
                             </div>
                         </div>
