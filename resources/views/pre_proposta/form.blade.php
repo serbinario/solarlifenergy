@@ -106,7 +106,7 @@
             <div class="form-group"{{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-sm-6 control-label text-bold">Média consumo Kwh.:*</label>
                 <div class="col-md-6">
-                    <input class="form-control input-sm" name="monthly_usage" type="text" id="monthly_usage" value="{{ old('monthly_usage', isset($preProposta->monthly_usage) ? $preProposta->monthly_usage : null) }}" maxlength="10" placeholder="">
+                    <input class="form-control input-sm numberWithoutDot" name="monthly_usage" type="text" id="monthly_usage" value="{{ old('monthly_usage', isset($preProposta->monthly_usage) ? $preProposta->monthly_usage : null) }}" maxlength="10" placeholder="">
                     {!! $errors->first('monthly_usage', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
