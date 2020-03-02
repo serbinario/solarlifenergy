@@ -657,11 +657,21 @@
                 <label for="economia_anula" class="col-sm-4 control-label text-bold">Economia anual R$.:</label>
                 <div class="col-md-8">
                     <input class="form-control input-sm money" name="economia_anula" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->economia_anula) ? $preProposta->economia_anula : null) }}" placeholder="" step="any">
-                    {!! $errors->first('economia_anula', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
     </div>
+
+<div class="form-group">
+    <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Finalizada?.:</label>
+    <div class="col-md-10">
+        <div class="checkbox checkbox-styled">
+            <label for="estar_finalizado">
+                <input id="estar_finalizado" class="" name="estar_finalizado" type="checkbox" value="1" {{ old('estar_finalizado', isset($preProposta->estar_finalizado) ? $preProposta->estar_finalizado : null) == '1' ? 'checked' : '' }}>
+            </label>
+        </div>
+    </div>
+</div>
 
 </div>
 
