@@ -12,19 +12,11 @@
 
         </div>
     @endif
-
-    @if(Session::has('errors'))
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
-            @foreach($errors->all() as $error)
-                <div>{{ $error }}</div>
-            @endforeach
-        </div>
-    @endif
+    
 <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
-            <form method="POST" action="{{ route('pre_proposta.pre_proposta.store') }}" accept-charset="UTF-8" id="create_pre_proposta_form" name="create_pre_proposta_form" class="form-horizontal">
+            <form method="POST" action="{{ route('pre_proposta.pre_proposta.store') }}" accept-charset="UTF-8" id="create_pre_proposta_form" name="create_pre_proposta_form" onsubmit="return validateForm()" class="form-horizontal">
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Nova Pré-Proposta</header>
@@ -55,6 +47,23 @@
 @endsection
 
 @section('javascript')
+    <script>
+    function validateForm() {
+        var monthly_usage = document.forms["create_pre_proposta_form"]["monthly_usage"].value;
+        var preco_kwh = document.forms["create_pre_proposta_form"]["preco_kwh"].value;
+        var panel_potencia = document.forms["create_pre_proposta_form"]["panel_potencia"].value;
+        var cidade_id = document.forms["create_pre_proposta_form"]["cidade_id"].value;
+        var cliente_id = document.forms["create_pre_proposta_form"]["cliente_id"].value;
+
+        if(monthly_usage == "" || preco_kwh == "" || panel_potencia == "" || cidade_id == "" || cliente_id == "" ){
+            alert(monthly_usage);
+            //return false;
+        }
+
+        //return false;
+
+    }
+    </script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/util.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/select2_util.js')}}" type="text/javascript"></script>

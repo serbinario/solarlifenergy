@@ -24,7 +24,6 @@
                     <div class="col-md-8">
                         <select name="cliente_id" class="form-control select2_clientes" data-placeholder="Selecione">
                         </select>
-                        {!! $errors->first('cliente_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
             @endif
@@ -46,86 +45,31 @@
             </div>
         </div>
     </div>
-
-
-   {{-- <div class="row">
-        <div class="col-sm-6">
-            @if(isset($preProposta->cliente->nome))
-                <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
-                    <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
-                    <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
-
-                    <input name="total_equipamentos" type="hidden" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" >
-                    <input name="total_servico_operacional" type="hidden" id="total_servico_operacional" value="{{ old('total_servico_operacional', isset($preProposta->total_servico_operacional) ? $preProposta->total_servico_operacional : null) }}" >
-
-                    <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
-                    <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($preProposta->cliente->estado) ? $preProposta->cliente->estado : null) }}" >
-                    <div class="col-md-8">
-                        <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($preProposta->cliente->nome) ? $preProposta->cliente->nome : null) }}" readonly >
-                        {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-            @else
-                <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
-                    <label for="cliente_id" class="col-sm-4 control-label text-bold">Cliente.:</label>
-                    <div class="col-md-8">
-                        <select class="form-control  input-sm" id="cliente_id" name="cliente_id">
-                            <option value="" style="display: none;" {{ old('cliente_id', isset($preProposta->cliente_id) ? $preProposta->cliente_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Cliente</option>
-                            @foreach ($Clientes as $key => $Cliente)
-                                <option value="{{ $key }}" {{ old('cliente_id', isset($preProposta->cliente_id) ? $preProposta->cliente_id : null) == $key ? 'selected' : '' }}>
-                                    {{ $Cliente }}
-                                </option>
-                            @endforeach
-                        </select>
-                        {!! $errors->first('cliente_id', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-            @endif
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="data_validade" class="col-sm-5 control-label text-bold">Data Validade.:</label>
-                <div class="col-md-7">
-                    <input class="form-control input-sm date" name="data_validade" type="text" id="data_validade" value="{{ old('data_validade', isset($preProposta->data_validade) ? $preProposta->data_validade : null) }}">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="codigo" class="col-sm-4 control-label text-bold">Codigo.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="codigo" type="number" id="codigo" readonly value="{{ old('codigo', isset($preProposta->codigo) ? $preProposta->codigo : null) }}" >
-                </div>
-            </div>
-        </div>
-    </div>
---}}
 
     <div class="row">
         <div class="col-sm-4">
-            <div class="form-group"{{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-sm-6 control-label text-bold">Média consumo Kwh.:*</label>
                 <div class="col-md-6">
                     <input class="form-control input-sm numberWithoutDot" name="monthly_usage" type="text" id="monthly_usage" value="{{ old('monthly_usage', isset($preProposta->monthly_usage) ? $preProposta->monthly_usage : null) }}" maxlength="10" placeholder="">
-                    {!! $errors->first('monthly_usage', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="form-group"{{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-6 control-label text-bold">Preço do KWh R$.:*</label>
                 <div class="col-md-4">
                     <input class="form-control input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "0.8000") }}" maxlength="10" placeholder="#,####">
-                    {!! $errors->first('preco_kwh', '<p class="help-block">:message</p>') !!}
+
                 </div>
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="form-group"{{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
                     <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : "330") }}" step="any">
-                    {!! $errors->first('panel_potencia', '<p class="help-block">:message</p>') !!}
+
                 </div>
             </div>
         </div>
@@ -133,7 +77,7 @@
 
      <div class="row">
         <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('estado_id') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('estado_id') ? 'has-error' : '' }}">
                 <label for="estado_id" class="col-sm-4 control-label text-bold">Estado:*</label>
                 <div class="col-md-8">
                     <select   class="form-control input-sm" id="estado_id" name="estado_id">
@@ -144,12 +88,11 @@
                             </option>
                         @endforeach
                     </select>
-                    {!! $errors->first('conta_bancaria_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="form-group"{{ $errors->has('cidade_id') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
                 <label for="cidade_id" class="col-sm-4 control-label text-bold">Cidade.:*</label>
                 <div class="col-md-8">
                     <select   class="form-control input-sm" id="cidade_id" name="cidade_id">
@@ -160,7 +103,6 @@
                             </option>
                         @endforeach
                     </select>
-                    {!! $errors->first('cidade_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
