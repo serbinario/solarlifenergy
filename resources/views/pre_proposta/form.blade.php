@@ -666,7 +666,7 @@
     </div>
 
 <div class="form-group">
-    <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Finalizada?.:</label>
+    <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Fechada?.:</label>
     <div class="col-md-10">
         <div class="checkbox checkbox-styled">
             <label for="estar_finalizado">
