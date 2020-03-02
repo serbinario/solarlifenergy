@@ -185,7 +185,10 @@ class PrePropostaController extends Controller
 
             $data['minima_area'] = $return['area_minima'];
 
+            //Valor que a franqueadora vai pagar
+            $data['valor_franqueadora'] = $return['total_nvestimento'];
 
+            //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $return['total_nvestimento'];
 
             $data['entrada2_valor'] = $return['total_nvestimento'] * 0.15;

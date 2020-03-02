@@ -107,7 +107,8 @@ class PreProposta extends Model
         'qtd_parcelas_entrada2',
         'recurso_proprio',
         'valor_vencimento',
-        'estar_finalizado'
+        'estar_finalizado',
+        'valor_franqueadora',
 
     ];
 
