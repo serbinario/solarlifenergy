@@ -636,10 +636,11 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group"{{ $errors->has('preco_medio_instalado') ? 'has-error' : '' }}">
-            <label for="preco_medio_instalado" class="col-sm-4 control-label text-bold">Valor Proposta R$.:</label>
-            <div class="col-md-8">
-                <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="12" placeholder="Enter power here...">
-                {!! $errors->first('preco_medio_instalado', '<p class="help-block">:message</p>') !!}
+                <label for="preco_medio_instalado" class="col-sm-4 control-label text-bold">Valor Proposta R$.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm money" name="preco_medio_instalado" type="text" id="preco_medio_instalado" value="{{ old('preco_medio_instalado', isset($preProposta->preco_medio_instalado) ? $preProposta->preco_medio_instalado : null) }}" maxlength="12" placeholder="Enter power here...">
+
+                </div>
             </div>
         </div>
     </div>
