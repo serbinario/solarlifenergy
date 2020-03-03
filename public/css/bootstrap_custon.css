@@ -1,3 +1,6 @@
+.span_valor_franqueadora {
+    padding-left: 10px;
+}
 .badge-warning {
     color: #f6f7f3;
     background-color:
@@ -228,8 +231,6 @@
         margin: 0 auto;
 
     }
-
-
 }
 
 /*

@@ -33,9 +33,15 @@
                         <div class="card-head style-primary">
                             <header>Editar Pré-Proposta</header>
                             <div class="col-6 span_preco_medio_instalado">
-												<span class=" badge badge-dark float-right">
-														R$
-												</span>
+                                <span class="badge badge-dark float-right">
+                                    R$
+                                </span>
+                            </div>
+                            <header>Valor Kit</header>
+                            <div class="col-6 span_valor_franqueadora">
+                                <span class="badge badge-dark float-right">
+                                    R$
+                                </span>
                             </div>
                             <div class="tools">
                                 <div class="btn-group">
