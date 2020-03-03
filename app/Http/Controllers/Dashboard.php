@@ -60,9 +60,7 @@ class Dashboard extends Controller
             ->rightJoin('projetos_status', 'projetos_status.id', '=', 'projetos.projeto_status_id')
 
             ->select([
-
                     'projetos_status.status_nome',
-
                 \DB::raw('COUNT(projetos.id) as soma')
             ])
             ->groupBy('projetos_status.id')

@@ -1,6 +1,6 @@
 var media_total = 0
 var soma = 0
-$(".fora-da-ponta").on('change', function () {
+/*$(".fora-da-ponta").on('change', function () {
     $('.fora-da-ponta').each(function(index, elem){
 
         //$(elem).val() != null ? console.log(parseInt($(elem).val())): media_total + 0
@@ -10,7 +10,7 @@ $(".fora-da-ponta").on('change', function () {
         }
     });
     console.log(media_total)
-}).change();
+}).change();*/
 
 $("#qtd_paineis").on('change', function () {
     atualizaPaineis()
@@ -140,6 +140,12 @@ function total() {
 
 
     $('input[name=preco_medio_instalado]').val(formatMoney(somatotal))
+    //$('input[name=span_valor_franqueadora]').val(formatMoney($('input[name=valor_franqueadora]').val()))
+    //console.log("wwwwwwwwwwwwwww")
+    //console.log(formatMoney($('input[name=valor_franqueadora]').val()))
+
+    $('.span_valor_franqueadora span').text('R$ ' + formatMoney($('input[name=valor_franqueadora]').val()))
+
     $('.span_preco_medio_instalado span').text('R$ ' + formatMoney(somatotal))
     $('.total_servico_operacional span').text('R$ ' + formatMoney(soma_servico_operacional))
     $('.total_equipamentos span').text('R$ ' + formatMoney(soma_equipamentos))
@@ -151,108 +157,8 @@ function total() {
 
 }
 
-$(".atualizar").on('click', function () {
-    atualizaCampos()
-    total()
-}).change();
 
 
-function atualizaCampos() {
-    var valor_modulo = 0;
-    var valor_medio_kw =  $('input[name=monthly_usage]').val()
-
-    if(valor_medio_kw <= 300){
-        inversor_mult = 0.56;
-        estrutura_mult = 0.29;
-        infra_mult = 0.18;
-        kit_moni = 0.05;
-        valor_modulo = 840;
-    }
-
-    if( valor_medio_kw >= 301 && valor_medio_kw <= 500){
-        inversor_mult = 0.48;
-        estrutura_mult = 0.27;
-        infra_mult = 0.06;
-        kit_moni = 0.05;
-        valor_modulo = 790;
-    }
-    if(valor_medio_kw >= 501 && valor_medio_kw <= 800){
-        inversor_mult = 0.48;
-        estrutura_mult = 0.18;
-        infra_mult = 0.03;
-        kit_moni = 0.05;
-        valor_modulo = 780;
-    }
-    if(valor_medio_kw >= 801 && valor_medio_kw <= 1200){
-        inversor_mult = 0.4;
-        estrutura_mult = 0.2;
-        infra_mult = 0.04;
-        kit_moni = 0.016;
-        valor_modulo = 780;
-    }
-    if(valor_medio_kw >= 1201 && valor_medio_kw <= 4000){
-        inversor_mult = 0.28;
-        estrutura_mult = 0.11;
-        infra_mult = 0.03;
-        kit_moni = 0.01;
-        valor_modulo = 760;
-    }
-    if(valor_medio_kw >= 4001 && valor_medio_kw <= 5800){
-        inversor_mult = 0.26;
-        estrutura_mult = 0.11;
-        infra_mult = 0.03;
-        kit_moni = 0.01;
-        valor_modulo = 760;
-    }
-    if(valor_medio_kw >= 5801){
-        inversor_mult = 0.28;
-        estrutura_mult = 0.08;
-        infra_mult = 0.04;
-        kit_moni = 0.004;
-        valor_modulo = 760;
-    }
-
-    console.log(valor_modulo)
-    /*
-    * 1 - MÃ“DULO FV DAH
-     */
-    qtd_paineis = $('input[name=qtd_paineis]').val()
-    produto1_preco = $('input[name=produto1_preco]').val()
-    produto1_nf = qtd_paineis * realDolar(produto1_preco)
-    $('input[name=produto1_nf]').val(formatMoney(produto1_nf))
-
-    //2 - INVERSOR KSTAR
-    qtd_inversores = $('input[name=qtd_inversores]').val()
-    produto2_preco = qtd_paineis * realDolar(produto1_preco)* inversor_mult
-    $('input[name=produto2_preco]').val(formatMoney(produto2_preco))
-    produto2_nf = qtd_inversores * produto2_preco
-    $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
-
-    //3 - ESTRUTURA
-    qtd_estrutura = $('input[name=qtd_estrutura]').val()
-    produto3_preco = produto1_nf * estrutura_mult
-    $('input[name=produto3_preco]').val(formatMoney(produto3_preco))
-    produto3_nf = qtd_estrutura * produto3_preco
-    //console.log(produto3_nf)
-    $('input[name=produto3_nf]').val(formatMoney(produto3_nf))
-
-    //4 - STRING BOX
-    qtd_string_box = $('input[name=qtd_string_box]').val()
-    produto4_preco = (produto1_nf + produto2_nf + produto3_nf) * infra_mult
-    $('input[name=produto4_preco]').val(formatMoney(produto4_preco))
-    produto4_nf = qtd_string_box * produto4_preco
-    //console.log(produto4_nf)
-    $('input[name=produto4_nf]').val(formatMoney(produto4_nf))
-
-    //5 - KIT MONITORAMENTO WIFI
-    qtd_kit_monitoramento = $('input[name=qtd_kit_monitoramento]').val()
-    produto5_preco = (produto1_nf + produto2_nf + produto3_nf) * kit_moni
-    $('input[name=produto5_preco]').val(formatMoney(produto5_preco))
-    produto5_nf = qtd_kit_monitoramento * produto5_preco
-    //console.log(produto5_nf)
-    $('input[name=produto5_nf]').val(formatMoney(produto5_nf))
-
-}
 /*
 / Serviços Operacionais
  */
