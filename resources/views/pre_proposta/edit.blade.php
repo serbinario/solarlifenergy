@@ -37,12 +37,14 @@
                                     R$
                                 </span>
                             </div>
-                            <header>Valor Kit</header>
-                            <div class="col-6 span_valor_franqueadora">
-                                <span class="badge badge-dark float-right">
-                                    R$
-                                </span>
-                            </div>
+                            @if(Auth::user()->franquia->franqueadora != 1)
+                                <header>Valor do Kit</header>
+                                <div class="col-6 span_valor_franqueadora">
+                                    <span class="badge badge-dark float-right">
+                                        R$
+                                    </span>
+                                </div>
+                            @endif
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('pre_proposta.pre_proposta.index') }}" class="btn btn-primary" title="Show All Pre Proposta">
