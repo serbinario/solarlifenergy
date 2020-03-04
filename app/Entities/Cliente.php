@@ -60,7 +60,8 @@ class Cliente extends Model
         'user_id',
         'nacionalidade',
         'bairro',
-        'meio_captacao_id'
+        'meio_captacao_id',
+        'telefone'
     ];
 
     /**
