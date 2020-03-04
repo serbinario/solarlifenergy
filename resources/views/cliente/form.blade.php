@@ -35,16 +35,24 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+            <div class="form-group {{ $errors->has('telefone') ? 'has-error' : '' }}">
+                <label for="telefone" class="col-sm-6 control-label text-bold">Telefone.: *</label>
+                <div class="col-md-6">
+                    <input class="form-control input-sm phone" name="telefone" type="text" id="telefone" value="{{ old('telefone', isset($cliente->telefone) ? $cliente->telefone : null) }}" maxlength="20">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
             <div class="form-group {{ $errors->has('celular') ? 'has-error' : '' }}">
-                <label for="celular" class="col-sm-4 control-label text-bold">Telefone.: *</label>
-                <div class="col-md-8">
+                <label for="celular" class="col-sm-4 control-label text-bold">Celular.: *</label>
+                <div class="col-md-6">
                     <input class="form-control input-sm phone" name="celular" type="text" id="celular" value="{{ old('celular', isset($cliente->celular) ? $cliente->celular : null) }}" maxlength="20" placeholder="Enter celular here...">
                     {!! $errors->first('celular', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group {{ $errors->has('is_whatsapp') ? 'has-error' : '' }}">
                 <label for="login" class="col-sm-4 control-label text-bold">É Whatsapp?.:</label>
                 <div class="col-md-8">

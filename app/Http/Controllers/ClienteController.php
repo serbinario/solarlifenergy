@@ -294,7 +294,8 @@ class ClienteController extends Controller
             'estado_civil',
             'nacionalidade',
             'bairro',
-            'meio_captacao_id'
+            'meio_captacao_id',
+            'telefone'
         ]);
         $data['is_whatsapp'] = $request->has('is_whatsapp');
 
