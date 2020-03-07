@@ -538,10 +538,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_133" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="nacionalidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
