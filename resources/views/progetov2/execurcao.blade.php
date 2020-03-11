@@ -73,7 +73,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="obter_protocolo_data" class="col-sm-7 control-label text-bold">Data Protocolo.:</label>
+                    <label for="obter_protocolo_data" class="col-sm-6 control-label text-bold">Data Protocolo.:</label>
                     <div class="col-md-5">
                         <input class="form-control input-sm date" name="obter_protocolo_data" type="text" id="obter_protocolo_data" value="{{ old('data_validade', isset($preProposta->data_validade) ? $preProposta->data_validade : null) }}">
                     </div>
@@ -105,7 +105,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="form-group">
-                    <label for="parecer_acesso_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                    <label for="parecer_acesso_image" class="col-sm-2 control-label text-bold">Documento.:</label>
                     <div class="col-md-9">
                         <input class="form-control input-sm" name="parecer_acesso_image" type="file" id="parecer_acesso_image" value="{{ old('parecer_acesso_image', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "") }}">
                     </div>
@@ -129,7 +129,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="form-group">
-                    <label for="parecer_relacionamento_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                    <label for="parecer_relacionamento_image" class="col-sm-2 control-label text-bold">Documento.:</label>
                     <div class="col-md-9">
                         <input class="form-control input-sm" name="parecer_relacionamento_image" type="file" id="parecer_relacionamento_image" value="{{ old('parecer_relacionamento_image', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "") }}">
                     </div>

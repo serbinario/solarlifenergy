@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label for="agendar_nota" class="col-sm-7 control-label text-bold">Vistoria Nota.:</label>
                     <div class="col-md-5">
-                        <input class="form-control input-sm date" name="agendar_nota" type="text" id="agendar_nota" value="{{ old('agendar_nota', isset($preProposta->data_validade) ? $preProposta->data_validade : null) }}">
+                        <input class="form-control input-sm" name="agendar_nota" type="text" id="agendar_nota" value="{{ old('agendar_nota', isset($preProposta->data_validade) ? $preProposta->data_validade : null) }}">
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group {{ $errors->has('emitir_art') ? 'has-emitir_art' : '' }}">
             <label for="finalizado" class="col-md-2 control-label text-bold">Projeto Finalizado?.:</label>
             <div class="col-md-10">
