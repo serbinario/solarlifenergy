@@ -16,6 +16,7 @@
                     <br/><br/>
                     @include('progetov2.analize')
 
+
                 </div><!--end #tab1 -->
                 <div class="tab-pane" id="tab2">
                     <br/><br/>
@@ -28,6 +29,7 @@
                 <div class="tab-pane" id="tab4">
                     <br/><br/>
                     @include('progetov2.finalizado')
+
                 </div><!--end #tab4 -->
             </div><!--end .tab-content -->
             <ul class="pager wizard">
@@ -38,6 +40,8 @@
             </ul>
         </form>
     </div><!--end #rootwizard -->
+
+
 
 
 </div>
