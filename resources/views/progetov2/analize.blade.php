@@ -12,16 +12,16 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="codigo" class="col-sm-6 control-label text-bold">Potência Gerador</label>
-                                    <div class="col-md-6">
+                                    <label for="codigo" class="col-sm-8 control-label text-bold">Pot. gerador (KWp)</label>
+                                    <div class="col-md-4">
                                         <input class="form-control input-sm" name="codigo" type="text" id="codigo" readonly value="{{ old('minima_area', isset($progetov2->PreProposta->potencia_instalada) ? $progetov2->PreProposta->potencia_instalada : null) }}" >
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="minima_area" class="col-sm-4 control-label text-bold">Área.:</label>
-                                    <div class="col-md-8">
+                                    <label for="minima_area" class="col-sm-8 control-label text-bold">Área.:</label>
+                                    <div class="col-md-4">
                                         <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" readonly value="{{ old('minima_area', isset($progetov2->PreProposta->minima_area) ? $progetov2->PreProposta->minima_area : null) }}" >
                                     </div>
                                 </div>
@@ -29,8 +29,8 @@
 
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="monthly_usage" class="col-sm-7 control-label text-bold">Cons. mensal kWh.:</label>
-                                    <div class="col-md-5">
+                                    <label for="monthly_usage" class="col-sm-8 control-label text-bold">Cons. mensal kWh.:</label>
+                                    <div class="col-md-4">
                                         <input class="form-control input-sm" name="monthly_usage" type="text" id="monthly_usage" readonly value="{{ old('monthly_usage', isset($progetov2->PreProposta->monthly_usage) ? $progetov2->PreProposta->monthly_usage : null) }}" >
                                     </div>
                                 </div>

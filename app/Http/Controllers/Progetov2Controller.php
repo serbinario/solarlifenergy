@@ -53,7 +53,13 @@ class Progetov2Controller extends Controller
     {
         $this->token = csrf_token();
         #Criando a consulta
-        $rows = \DB::table('progetosv2');
+        $rows = \DB::table('progetosv2')
+            ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'progetosv2.proposta_id')
+            ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->select([
+                'progetosv2.id',
+                'clientes.nome_empresa'
+            ]);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
@@ -61,15 +67,12 @@ class Progetov2Controller extends Controller
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">
-                                <a href="progetov2/show/'.$row->id.'" class="btn btn-info" title="Show">
-                                    <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                                </a>
+                               
                                 <a href="progetov2/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
-                                <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                               
+                            </div>
                         </form>
                         ';
         })->make(true);

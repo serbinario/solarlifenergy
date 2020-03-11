@@ -39,7 +39,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nome</th>
+                                                    <th>Rasão Social</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
