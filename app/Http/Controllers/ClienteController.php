@@ -200,6 +200,7 @@ class ClienteController extends Controller
             //dd($data);
             $cliente = Cliente::findOrFail($id);
             $data = $this->getData($request, $cliente);
+            $data['user_id'] = \Auth::id();
             //dd($data);
             $cliente->update($data);
 
