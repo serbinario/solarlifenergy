@@ -300,6 +300,32 @@
         </div>
     </div>
 
+    {{--<div class="col-xl-6">
+        <div class="card">
+            <div class="card-body ">
+                <p class="ml-1"><strong>Histórico</strong></p>
+                <ul class="timeline" id="historico">
+                    <li class="timeline-item">
+                        <div class="d-flex justify-content-between">
+                            <strong>Projeto criado</strong>
+                            <span class="float-right text-muted text-sm">24/01/20 às 12:20</span>
+                        </div>
+                        <span class="text-sm"><i>Josias Junior</i></span>
+                        <p>Projeto criado com o título Projeto Casa do Joey (Exemplo)</p>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="d-flex justify-content-between">
+                            <strong>Projeto criado</strong>
+                            <span class="float-right text-muted text-sm">24/01/20 às 12:20</span>
+                        </div>
+                        <span class="text-sm"><i>Josias Junior</i></span>
+                        <p>Projeto criado com o título Projeto Casa do Joey (Exemplo)</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+--}}
 
 </div>
 

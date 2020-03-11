@@ -139,8 +139,10 @@ class ClienteController extends Controller
     public function store(ClienteFormRequest $request)
     {
         try {
+           // $asd = new Cliente();
+            //dd($asd);
             //$this->affirm($request);
-            $data = $this->getData($request);
+            $data = $this->getData($request, new Cliente());
 
             $data['user_id'] = \Auth::id();
             $cliente = Cliente::create($data);
@@ -153,19 +155,6 @@ class ClienteController extends Controller
 
             //Retorna o ultimo registro
             $last = \DB::table('projetos')->orderBy('id', 'DESC')->first();
-
-            /*
-             * [RF003-RN004]: [RF003-RN005]:
-             * Corrigir o problema da virada do ano
-             *
-             */
-            //$projeto_codigo = $last->projeto_codigo +1;
-            //$projeto = array();
-            //$projeto['clientes_id'] = $cliente->id;
-            //$projeto['projeto_codigo'] = $projeto_codigo;
-            //$projeto['users_id'] = \Auth::id();  //[RF001-RN002]:
-            //$projeto['projeto_status_id'] = 1;
-            //$projeto = Projeto::create($projeto);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro realizado com sucesso!');
@@ -202,18 +191,23 @@ class ClienteController extends Controller
      */
     public function update($id, ClienteFormRequest $request)
     {
+
         try {
+            //dd(Cliente::getTableColumns());
             //dd($request->all());
             //$this->affirm($request);
-            $data = $this->getData($request);
+
             //dd($data);
             $cliente = Cliente::findOrFail($id);
+            $data = $this->getData($request, $cliente);
+            //dd($data);
             $cliente->update($data);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
+            dd($e);
             return back()->withInput()
                 ->withErrors(['error' => $e->getMessage()]);
         }
@@ -277,26 +271,12 @@ class ClienteController extends Controller
      * @param Illuminate\Http\Request\Request $request
      * @return array
      */
-    protected function getData(Request $request)
+    protected function getData(Request $request, $entitie)
     {
-        $data = $request->only([
-            'nome','celular','tipo','cpf_cnpj','email','nome_empresa','cep','numero','endereco','complemento','estado','is_whatsapp','obs',
-            'conjugue',
-            'conjugue_cpf',
-            'rg',
-            'cpf',
-            'data_emissao_rg',
-            'orgao_emissor_rg',
-            'naturalidade_uf',
-            'naturalidade_cidade',
-            'data_nascimento',
-            'cidade',
-            'estado_civil',
-            'nacionalidade',
-            'bairro',
-            'meio_captacao_id',
-            'telefone'
-        ]);
+        //dd($entitie->getTableColumns());
+        $data = $request->only(
+            $entitie->getTableColumns()
+        );
         $data['is_whatsapp'] = $request->has('is_whatsapp');
 
         return $data;

@@ -1,0 +1,30 @@
+<?php
+
+namespace Serbinario\Entities;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class ProjetosDocumento
+ */
+class ProjetosDocumento extends Model
+{
+    protected $table = 'projetos_documentos';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'cpf_cnh_rg',
+        'cpf_cnh_rg_image',
+        'conprovante_residencia',
+        'conprovante_residencia_image',
+        'cpf_cnh_rg_conjugue',
+        'cpf_cnh_rg_conjugue_image',
+        'certidao_casamento',
+        'certidao_casamento_image'
+    ];
+
+    protected $guarded = [];
+
+        
+}

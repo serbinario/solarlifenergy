@@ -853,3 +853,39 @@ Route::group(
          ->where('id', '[0-9]+');
 
 });
+
+
+Route::group(
+[
+    'prefix' => 'progetov2',
+], function () {
+
+    Route::get('/', 'Progetov2Controller@index')
+         ->name('progetov2.progetov2.index');
+
+    Route::get('/create','Progetov2Controller@create')
+         ->name('progetov2.progetov2.create');
+
+    Route::get('/grid', 'Progetov2Controller@grid')
+         ->name('[% grid_route_name %]');
+
+    Route::get('/show/{progetov2}','Progetov2Controller@show')
+         ->name('progetov2.progetov2.show')
+         ->where('id', '[0-9]+');
+
+    Route::get('/{progetov2}/edit','Progetov2Controller@edit')
+         ->name('progetov2.progetov2.edit')
+         ->where('id', '[0-9]+');
+
+    Route::post('/', 'Progetov2Controller@store')
+         ->name('progetov2.progetov2.store');
+               
+    Route::put('progetov2/{progetov2}', 'Progetov2Controller@update')
+         ->name('progetov2.progetov2.update')
+         ->where('id', '[0-9]+');
+
+    Route::delete('/{progetov2}/destroy','Progetov2Controller@destroy')
+         ->name('progetov2.progetov2.destroy')
+         ->where('id', '[0-9]+');
+
+});

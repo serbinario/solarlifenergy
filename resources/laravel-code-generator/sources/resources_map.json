@@ -87,5 +87,10 @@
         "model-name": "Contrato",
         "resource-file": "contrato.json",
         "table-name": "contratos"
+    },
+    {
+        "model-name": "Progetov2",
+        "resource-file": "progetov2.json",
+        "table-name": "progetosv2"
     }
 ]

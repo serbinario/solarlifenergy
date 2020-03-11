@@ -32,6 +32,8 @@
 	<link href="{{ asset('/assets/css/theme-default/libs/sweetalert/sweetalert.css')}}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/theme-default/libs/toastr/toastr.css')}}" rel="stylesheet">
 
+	<link href="{{ asset('/assets/css/theme-default/libs/wizard/wizard.css')}}" rel="stylesheet">
+
 	<link href="{{ asset('/css/bootstrap_custon.css')}}" rel="stylesheet">
 
 	<!-- END STYLESHEETS -->
@@ -173,6 +175,7 @@
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
 							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Pré-Propostas</span></a></li>
 							<li><a href="{{ route('projeto.projeto.index') }}" class="active"><span class="title">Projetos</span></a></li>
+							<li><a href="{{ route('progetov2.progetov2.index') }}" class="active"><span class="title">ProjetosV2</span></a></li>
 
 							@role('admin')
 
@@ -259,7 +262,11 @@
 <script src="{{ asset('/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js')}}" type="text/javascript"></script>
 <!-- FIM Datatables -->
 
+<script src="{{ asset('/assets/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}" type="text/javascript"></script>
+
 <script src="{{ asset('/assets/js/libs/multi-select/jquery.multi-select.js')}}" type="text/javascript"></script>
+
+
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'></script>
 {{--<script src="{{ asset('/assets/js/libs/select2/select2.js')}}" type="text/javascript"></script>--}}
