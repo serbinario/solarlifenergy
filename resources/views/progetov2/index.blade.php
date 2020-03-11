@@ -13,9 +13,6 @@
 
         </div>
     @endif
-
-
-
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
@@ -24,7 +21,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Fornecedores</header>
+                            <header>Lista de Projetos</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('progetov2.progetov2.create') }}" class="btn btn-primary" title="Novo Fornecedor">
@@ -52,15 +49,11 @@
                             </div><!--end .col -->
                         </div><!--end .row -->
                         <!-- END DATATABLE 1 -->
-
-
-
-
-                        <div class="card-actionbar">
-                            <div class="card-actionbar-row">
-                                <a href="{{ route('progetov2.progetov2.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
-                            </div>
-                        </div>
+                        {{--<div class="card-actionbar">--}}
+                            {{--<div class="card-actionbar-row">--}}
+                                {{--<a href="{{ route('progetov2.progetov2.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Projeto</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div><!--end .card -->
 
                 </form>
