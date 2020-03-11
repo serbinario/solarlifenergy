@@ -64,6 +64,10 @@ class Cliente extends Model
         'telefone'
     ];
 
+    public function getTableColumns() {
+        return $this->fillable;
+    }
+
     /**
      * The attributes that should be mutated to dates.
      *

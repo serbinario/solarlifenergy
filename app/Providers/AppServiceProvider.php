@@ -41,5 +41,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('CrestApps\CodeGenerator\CodeGeneratorServiceProvider');
         }
 
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Iber\Generator\ModelGeneratorProvider');
+        }
+
     }
 }
