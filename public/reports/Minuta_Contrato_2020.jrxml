@@ -979,9 +979,9 @@ CONTRATADA]]></text>
 									"CONTRATANTE"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="429" width="442" height="30" uuid="5fa1ae8d-0b99-44d7-a16b-8e92020170a4"/>
+				<reportElement x="0" y="407" width="442" height="30" uuid="5fa1ae8d-0b99-44d7-a16b-8e92020170a4"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["                          ,        de                  de " + $F{ano}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["_____________________________,________________de_____________________de " + $F{ano}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
