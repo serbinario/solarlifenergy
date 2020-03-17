@@ -23,16 +23,43 @@ class ProjetosExecurcao extends Model
         'submeter_projeto_image',
         'submeter_projeto_data',
         'obter_protocolo',
-        'obter_protocolo_numero_protocolo',
+        'obter_protocolo_numero',
+        'obter_protocolo_data',
         'parecer_acesso',
         'parecer_acesso_image',
         'parecer_relacionamento',
         'parecer_relacionamento_image',
         'obra_fechada',
-        'obs'
+        'obs_execurcao'
     ];
 
     protected $guarded = [];
+
+    public function getColumnsTable() {
+        return $this->fillable;
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setObterProtocoloDataAttribute($value)
+    {
+        $this->attributes['obter_protocolo_data'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getObterProtocoloDataAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
 
         
 }

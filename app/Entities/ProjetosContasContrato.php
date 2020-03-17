@@ -5,11 +5,11 @@ namespace Serbinario\Entities;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ContasContrato
+ * Class ProjetosContasContrato
  */
-class ContasContrato extends Model
+class ProjetosContasContrato extends Model
 {
-    protected $table = 'contas_contrato';
+    protected $table = 'projetos_contas_contrato';
 
     public $timestamps = false;
 

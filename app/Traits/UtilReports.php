@@ -163,4 +163,5 @@ trait UtilReports
         return round($result, 2);
     }
 
+
 }

@@ -21,10 +21,15 @@ class ProjetosDocumento extends Model
         'cpf_cnh_rg_conjugue',
         'cpf_cnh_rg_conjugue_image',
         'certidao_casamento',
-        'certidao_casamento_image'
+        'certidao_casamento_image',
+        'ficha_elaboracao_projeto',
+        'ficha_elaboracao_projeto_image'
     ];
 
     protected $guarded = [];
 
-        
+    public function getColumnsTable() {
+        return $this->fillable;
+    }
+
 }

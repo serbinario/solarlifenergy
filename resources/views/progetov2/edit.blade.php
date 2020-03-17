@@ -18,7 +18,7 @@
         <div class="alert alert-danger">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
             @foreach($errors->all() as $error)
-                <div>{{ $error_message }}</div>
+                <div>{{ $error }}</div>
             @endforeach
         </div>
     @endif
@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('progetov2.progetov2.update', $progetov2->id) }}" accept-charset="UTF-8" id="edit_progetov2_form" name="edit_progetov2_form" class="form-horizontal">
+                <form method="POST" action="{{ route('progetov2.progetov2.update', $progetov2->id) }}" accept-charset="UTF-8" id="edit_progetov2_form" name="edit_progetov2_form" class="form-horizontal" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
@@ -37,7 +37,7 @@
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
                                 <a href="{{ route('progetov2.progetov2.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
                     </div><!--end .card -->
