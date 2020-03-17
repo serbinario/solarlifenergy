@@ -40,18 +40,18 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="minima_area" class="col-sm-4 control-label text-bold">Res. Documentação.:</label>
+                                    <label for="res_documentacao" class="col-sm-4 control-label text-bold">Res. Documentação.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="res_documentacao" type="text" id="res_documentacao"  value="{{ old('res_documentacao', isset($projeto->res_documentacao) ? $projeto->res_documentacao : null) }}" placeholder="">
+                                        <input class="form-control input-sm" name="res_documentacao" type="text" id="res_documentacao"  value="{{ old('res_documentacao', isset($progetov2->res_documentacao) ? $progetov2->res_documentacao : null) }}" placeholder="">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="monthly_usage" class="col-sm-4 control-label text-bold">Res. Acompanhamento.:</label>
+                                    <label for="res_acompanhamento" class="col-sm-4 control-label text-bold">Res. Acompanhamento.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="res_acompanhamento" type="text" id="res_acompanhamento"  value="{{ old('res_acompanhamento', isset($projeto->res_acompanhamento) ? $projeto->res_acompanhamento : null) }}" placeholder="">
+                                        <input class="form-control input-sm" name="res_acompanhamento" type="text" id="res_acompanhamento"  value="{{ old('res_acompanhamento', isset($progetov2->res_acompanhamento) ? $progetov2->res_acompanhamento : null) }}" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -60,9 +60,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="minima_area" class="col-sm-4 control-label text-bold">Data Prevista.:</label>
+                                    <label for="data_prevista" class="col-sm-4 control-label text-bold">Data Prevista.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="res_documentacao" type="text" id="res_documentacao"  value="{{ old('res_documentacao', isset($projeto->res_documentacao) ? $projeto->res_documentacao : null) }}" placeholder="">
+                                        <input class="form-control input-sm date" name="data_prevista" type="text" id="data_prevista"  value="{{ old('data_prevista', isset($progetov2->data_prevista) ? $progetov2->data_prevista : null) }}" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                                 <div class="form-group">
                                     <label for="cep" class="col-md-4 control-label text-bold">Cep.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="cep" type="text" id="cep" value="{{ old('cep', isset($projeto->cep) ? $projeto->cep : null) }}" maxlength="10" placeholder="Enter cep here...">
+                                        <input class="form-control input-sm" name="cep" type="text" id="cep" value="{{ old('cep', isset($progetov2->Endereco->cep) ? $progetov2->Endereco->cep : null) }}" maxlength="10" placeholder="Enter cep here...">
                                         {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                 <div class="form-group">
                                     <label for="coordenadas" class="col-md-4 control-label text-bold">Coordenadas.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($projeto->coordenadas) ? $projeto->coordenadas : null) }}" placeholder="">
+                                        <input class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($progetov2->Endereco->coordenadas) ? $progetov2->Endereco->coordenadas : null) }}" placeholder="">
                                         {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -125,9 +125,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="end_intalacao" class="col-md-4 control-label text-bold">End. de Instalação.:</label>
+                                    <label for="logradouro" class="col-md-4 control-label text-bold">End. de Instalação.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="end_intalacao" type="text" id="end_intalacao" value="{{ old('end_intalacao', isset($projeto->end_intalacao) ? $projeto->end_intalacao : null) }}" maxlength="200" placeholder="Endereço">
+                                        <input class="form-control input-sm" name="logradouro" type="text" id="logradouro" value="{{ old('logradouro', isset($progetov2->Endereco->logradouro) ? $progetov2->Endereco->logradouro : null) }}" maxlength="200" placeholder="Endereço">
                                         {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                 <div class="form-group">
                                     <label for="bairro" class="col-sm-4 control-label text-bold">Bairro.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($projeto->bairro) ? $projeto->bairro : null) }}" maxlength="100" placeholder="Bairro">
+                                        <input class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($progetov2->Endereco->bairro) ? $progetov2->Endereco->bairro : null) }}" maxlength="100" placeholder="Bairro">
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                 <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
                                     <label for="numero" class="col-sm-4 control-label text-bold">Numero.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="numero" type="text" id="numero" value="{{ old('numero', isset($projeto->numero) ? $projeto->numero : null) }}" maxlength="10" placeholder="Enter numero here...">
+                                        <input class="form-control input-sm" name="numero" type="text" id="numero" value="{{ old('numero', isset($progetov2->Endereco->numero) ? $progetov2->Endereco->numero : null) }}" maxlength="10" placeholder="Enter numero here...">
                                         {!! $errors->first('numero', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                                 <div class="form-group {{ $errors->has('complemento') ? 'has-error' : '' }}">
                                     <label for="complemento" class="col-sm-4 control-label text-bold">Complemento.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="complemento" type="text" id="complemento" value="{{ old('complemento', isset($projeto->complemento) ? $projeto->complemento : null) }}" maxlength="200" placeholder="Enter complemento here...">
+                                        <input class="form-control input-sm" name="complemento" type="text" id="complemento" value="{{ old('complemento', isset($progetov2->Endereco->complemento) ? $progetov2->Endereco->complemento : null) }}" maxlength="200" placeholder="Enter complemento here...">
                                         {!! $errors->first('complemento', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -167,9 +167,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="estado" class="col-sm-4 control-label text-bold">Estado.:</label>
+                                    <label for="uf" class="col-sm-4 control-label text-bold">Estado.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="estado" type="text" id="estado" value="{{ old('estado', isset($projeto->estado) ? $projeto->estado : null) }}" maxlength="2" placeholder="Enter estado here...">
+                                        <input class="form-control input-sm" name="uf" type="text" id="estado" value="{{ old('uf', isset($progetov2->Endereco->uf) ? $progetov2->Endereco->uf : null) }}" maxlength="2" placeholder="Enter estado here...">
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                                 <div class="form-group">
                                     <label for="cidade" class="col-sm-4 control-label text-bold">Cidade.:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($projeto->cidade) ? $projeto->cidade : null) }}" placeholder="Cidade">
+                                        <input class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($progetov2->Endereco->cidade) ? $progetov2->Endereco->cidade : null) }}" placeholder="Cidade">
                                     </div>
                                 </div>
                             </div>
@@ -196,16 +196,14 @@
                         <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
                             <label for="conta_contrato_anterior" class="col-md-2  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
                             <div class="col-md-10">
-                                <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projeto->conta_contrato_anterior) ? $projeto->conta_contrato_anterior : null) }}" >
-                                {!! $errors->first('conta_contrato_anterior', '<p class="help-block">:message</p>') !!}
+                                <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($progetov2->conta_contrato_anterior) ? $progetov2->conta_contrato_anterior : null) }}" >
                             </div>
                         </div>
 
                         <div class="form-group {{ $errors->has('conta_contrato_atual') ? 'has-error' : '' }}">
                             <label for="conta_contrato_atual" class="col-md-2  text-bold control-label text-bold">Conta Contrato Atual.:</label>
                             <div class="col-md-10">
-                                <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projeto->conta_contrato_atual) ? $projeto->conta_contrato_atual : null) }}" >
-                                {!! $errors->first('conta_contrato_atual', '<p class="help-block">:message</p>') !!}
+                                <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($progetov2->conta_contrato_atual) ? $progetov2->conta_contrato_atual : null) }}" >
                             </div>
                         </div>
 
@@ -213,30 +211,38 @@
                             <h4 class="text-bold">Contas Contrato</h4>
                             <hr class="ruler-lg"/>
                         </div>
-                        @if(isset($projeto))
-                            <div class="row">
-                                @foreach( $projeto->contratos as $contrato )
-                                    <div class="col-sm-6">
-                                        <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                                            <label for="num_contrato" class="col-sm-4 control-label text-bold">Conta Contrato.:</label>
-                                            <div class="col-md-3">
-                                                <input class="form-control input-sm" name="num_contrato[]" type="text" id="num_contrato" value="{{ old('contrato_celpe', isset($contrato) ? $contrato->num_contrato : null) }}"">
+                        @if(isset($progetov2))
+                                @foreach( $progetov2->contratos as $contrato )
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="num_contacontrato" class="col-sm-6 control-label text-bold">Conta Contrato.:</label>
+                                                <div class="col-md-6">
+                                                    <div class="">
+                                                        <label for="parecer_relacionamento">
+                                                            <input class="form-control input-sm" name="num_contacontrato[]" type="text" id="num_contacontrato" value="{{ old('num_contacontrato', isset($contrato) ? $contrato->num_contacontrato : null) }}"">
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group {{ $errors->has('num_contrato') ? 'has-error' : '' }}">
-                                            <label for="percentual" class="col-sm-4 control-label">Percentual.:</label>
-                                            <div class="col-md-3">
-                                                <input class="form-control input-sm" name="percentual[]" type="text" id="percentual" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="percentual" class="col-sm-6 control-label text-bold">Percentual.:</label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control input-sm" name="percentual[]" type="text" id="percentual" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
+                                                </div>
                                             </div>
-                                            {{--<div class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Excluir</button>
-                                            </div>--}}
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-danger remove btn-sm" type="button"><i class="glyphicon glyphicon-remove"></i> Remover</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
                         @else
                             {{--<div class="form-group{{ $errors->has('num_contrato') ? 'has-error' : '' }}">
                                 <label for="num_contrato" class="col-sm-4 control-label text-bold">Contrato Celpe.:</label>
@@ -252,7 +258,7 @@
                                     <div class="col-md-2">
                                         <div class="">
                                             <label for="">
-                                                <button class="btn btn-success add-more btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Adicionar conta contrato</button>
+                                                <button class="btn btn-primary add-more btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Adicionar conta contrato</button>
                                             </label>
                                         </div>
                                     </div>
@@ -263,6 +269,174 @@
                     </div>
                 </div>
             </div><!--end .panel -->
+
+            <div class="card panel">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-5">
+                    <header class="text-bold">Documentos</header>
+                </div>
+                <div id="accordion2-5" class="collapse">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf_cnh_rg" class="col-sm-8 control-label text-bold">CPF/RG.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="cpf_cnh_rg">
+                                                <input id="cpf_cnh_rg" class="" name="cpf_cnh_rg" type="checkbox" value="1" {{ old('cpf_cnh_rg', isset($progetov2->ProjetosDocumento->cpf_cnh_rg) ? $progetov2->ProjetosDocumento->cpf_cnh_rg : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="cpf_cnh_rg_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control input-sm" name="cpf_cnh_rg_image" type="file" id="cpf_cnh_rg_image" value="{{ old('cpf_cnh_rg_image', isset($progetov2->ProjetosDocumento->cpf_cnh_rg_image) ? $progetov2->ProjetosDocumento->cpf_cnh_rg_image : "") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <a target="_blank" href="{{ url("/storage/{$progetov2->ProjetosDocumento->cpf_cnh_rg_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="conprovante_residencia" class="col-sm-8 control-label text-bold">Comprovante Residência.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="conprovante_residencia">
+                                                <input id="conprovante_residencia" class="" name="conprovante_residencia" type="checkbox" value="1" {{ old('conprovante_residencia', isset($progetov2->ProjetosDocumento->conprovante_residencia) ? $progetov2->ProjetosDocumento->conprovante_residencia : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="conprovante_residencia_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control input-sm" name="conprovante_residencia_image" type="file" id="conprovante_residencia_image" value="{{ old('conprovante_residencia_image', isset($progetov2->ProjetosDocumento->conprovante_residencia_image) ? $progetov2->ProjetosDocumento->conprovante_residencia_image : "") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    @if($progetov2->ProjetosDocumento->conprovante_residencia_image)
+                                        <a target="_blank" href="{{ url("/storage/{$progetov2->ProjetosDocumento->conprovante_residencia_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf_cnh_rg_conjugue" class="col-sm-8 control-label text-bold">CPF/CNH/RG Conjugue.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="cpf_cnh_rg_conjugue">
+                                                <input id="cpf_cnh_rg_conjugue" class="" name="cpf_cnh_rg_conjugue" type="checkbox" value="1" {{ old('cpf_cnh_rg_conjugue', isset($progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue) ? $progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="cpf_cnh_rg_conjugue_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control input-sm" name="cpf_cnh_rg_conjugue_image" type="file" id="cpf_cnh_rg_conjugue_image" value="{{ old('cpf_cnh_rg_conjugue_image', isset($progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image) ? $progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image : "") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    @if($progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image)
+                                    @endif
+                                    <a target="_blank" href="{{ url("/storage/{$progetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="certidao_casamento" class="col-sm-8 control-label text-bold">Certidão de Casamento.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="certidao_casamento">
+                                                <input id="certidao_casamento" class="" name="certidao_casamento" type="checkbox" value="1" {{ old('certidao_casamento', isset($progetov2->ProjetosDocumento->certidao_casamento) ? $progetov2->ProjetosDocumento->certidao_casamento : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="certidao_casamento_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control input-sm" name="certidao_casamento_image" type="file" id="certidao_casamento_image" value="{{ old('certidao_casamento_image', isset($progetov2->ProjetosDocumento->certidao_casamento_image) ? $progetov2->ProjetosDocumento->certidao_casamento_image : "") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    @if($progetov2->ProjetosDocumento->certidao_casamento_image)
+                                        <a target="_blank" href="{{ url("/storage/{$progetov2->ProjetosDocumento->certidao_casamento_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="certidao_casamento" class="col-sm-8 control-label text-bold">Ficha de Elaboração Assinada?.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="ficha_elaboracao_projeto">
+                                                <input id="ficha_elaboracao_projeto" class="" name="ficha_elaboracao_projeto" type="checkbox" value="1" {{ old('ficha_elaboracao_projeto', isset($progetov2->ProjetosDocumento->ficha_elaboracao_projeto) ? $progetov2->ProjetosDocumento->ficha_elaboracao_projeto : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="ficha_elaboracao_projeto_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control input-sm" name="ficha_elaboracao_projeto_image" type="file" id="ficha_elaboracao_projeto_image" value="{{ old('ficha_elaboracao_projeto_image', isset($progetov2->ProjetosDocumento->ficha_elaboracao_projeto_image) ? $progetov2->ProjetosDocumento->ficha_elaboracao_projeto_image : "") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    @if($progetov2->ProjetosDocumento->ficha_elaboracao_projeto_image)
+                                        <a target="_blank" href="{{ url("/storage/{$progetov2->ProjetosDocumento->ficha_elaboracao_projeto_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div><!--end .panel -->
+
         </div><!--end .panel-group -->
     </div><!--end .Acordion -->
 </div>
@@ -270,7 +444,7 @@
 <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
     <label for="obs" class="col-md-1 control-label  text-bold">Obs.:</label>
     <div class="col-md-11">
-        <textarea class="form-control input-sm" name="obs" cols="50" rows="10" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($projeto->obs) ? $projeto->obs : null) }}</textarea>
+        <textarea class="form-control input-sm" name="obs" cols="50" rows="10" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($progetov2->obs) ? $progetov2->obs : null) }}</textarea>
         {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -11,15 +11,18 @@ use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\Progetov2;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
+use Serbinario\Entities\ProjetosFinalizado;
 use Serbinario\Entities\ProjetosFinalizando;
 use Serbinario\Entities\ProjetoStatus;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\Progetov2FormRequest;
+use Serbinario\Traits\UtilFiles;
 use Yajra\DataTables\DataTables;
 use Exception;
 
 class Progetov2Controller extends Controller
 {
+    use UtilFiles;
     private $token;
 
     /**
@@ -144,7 +147,7 @@ class Progetov2Controller extends Controller
      */
     public function edit($id)
     {
-        $progetov2 = Progetov2::findOrFail($id);
+        $progetov2 = Progetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos')->findOrFail($id);
         $clientes = Cliente::pluck('nome','id')->all();
         $ProjetosStatus = ProjetoStatus::pluck('id','id')->all();
         $PrePropostas = PreProposta::pluck('codigo','id')->all();
@@ -152,6 +155,8 @@ class Progetov2Controller extends Controller
         $ProjetosDocumentos = ProjetosDocumento::pluck('id','id')->all();
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
+
+       
 
         return view('progetov2.edit', compact('progetov2','clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
@@ -169,17 +174,86 @@ class Progetov2Controller extends Controller
         try {
 
             $data = $request->getData();
+            //dd($data);
 
             $progetov2 = Progetov2::findOrFail($id);
+
+            $endereco = Endereco::findOrFail($progetov2->endereco_id);
+            $enderecoData = $request->only(
+                $endereco->getColumnsTable()
+            );
+            $endereco->update($enderecoData);
+
+            /*
+             * Atualiza tabela Documentos
+             */
+            $analizeDocumento = ProjetosDocumento::findOrFail($progetov2->projeto_documento_id);
+            $analizeDocumentoData = $request->only(
+                $analizeDocumento->getColumnsTable()
+            );
+
+            $nameFileCpf_cnh_rg = $this->ImageStore($request, 'cpf_cnh_rg_image', $analizeDocumento->cpf_cnh_rg_image);
+            $nameFileComproResi = $this->ImageStore($request, 'conprovante_residencia_image', $analizeDocumento->conprovante_residencia_image);
+            $nameFileCpfCnhRgConju = $this->ImageStore($request, 'cpf_cnh_rg_conjugue_image', $analizeDocumento->cpf_cnh_rg_conjugue_image);
+            $nameFileCertidaoCasamento = $this->ImageStore($request, 'certidao_casamento_image', $analizeDocumento->certidao_casamento_image);
+            $nameFileFichaElaboracao = $this->ImageStore($request, 'ficha_elaboracao_projeto_image', $analizeDocumento->ficha_elaboracao_projeto_image);
+            $analizeDocumentoData['cpf_cnh_rg_image'] = $nameFileCpf_cnh_rg;
+            $analizeDocumentoData['conprovante_residencia_image'] = $nameFileComproResi;
+            $analizeDocumentoData['cpf_cnh_rg_conjugue_image'] = $nameFileCpfCnhRgConju;
+            $analizeDocumentoData['certidao_casamento_image'] = $nameFileCertidaoCasamento;
+            $analizeDocumentoData['ficha_elaboracao_projeto_image'] = $nameFileFichaElaboracao;
+            $analizeDocumento->update($analizeDocumentoData);
+
+
+            /*
+             * Atualiza tabela Projetos Execurcao
+             */
+            $execursao = ProjetosExecurcao::findOrFail($progetov2->projeto_execurcao_id);
+            $execursaoData = $request->only(
+                $execursao->getColumnsTable()
+            );
+
+            $nameFileAcesso = $this->ImageStore($request, 'parecer_acesso_image', $execursao->parecer_acesso_image);
+            $nameFileRelacionamento = $this->ImageStore($request, 'parecer_relacionamento_image', $execursao->parecer_relacionamento_image);
+            $execursaoData['parecer_acesso_image'] = $nameFileAcesso;
+            $execursaoData['parecer_relacionamento_image'] = $nameFileRelacionamento;
+            $execursao->update($execursaoData);
+
+            /*
+             * Atualiza tabela Projetos Finalizando
+             */
+            $finalizando = ProjetosFinalizando::findOrFail($progetov2->projeto_finalizando_id);
+            $finalizandoData = $request->only(
+                $finalizando->getColumnsTable()
+            );
+            $finalizando->update($finalizandoData);
+
+            $finalizado = ProjetosFinalizado::findOrFail($progetov2->projeto_finalizado_id);
+            $finalizadoData = $request->only(
+                $finalizado->getColumnsTable()
+            );
+            $finalizado->update($finalizadoData);
+
+            //Deleta primeiro todos os registors dos contratos
+            $contratos = $progetov2->contratos()->delete();
+            /*
+             * 1- Pega do formulario uma array chamada num_contrato
+             * 2 - se vinher alguma vazia e limpa com o metodo array_filter
+             * 3 - E inserido em contrados
+             */
+            for($i = 0; $i < count($request->num_contacontrato); $i++){
+                $contratos = $progetov2->contratos()->create(['num_contacontrato' => $request->num_contacontrato[$i], 'percentual' =>$request->percentual[$i]]);
+            }
+
             $progetov2->update($data);
 
             return redirect()->route('progetov2.progetov2.index')
                 ->with('success_message', 'Progetov2 was successfully updated!');
 
-        } catch (Exception $exception) {
-
+        } catch (Exception $e) {
+            dd("error2",$e);
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+                ->withErrors(['error' => $e->getMessage()]);
         }
     }
 

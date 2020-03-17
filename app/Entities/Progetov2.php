@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Progetov2 extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -16,10 +16,10 @@ class Progetov2 extends Model
     protected $table = 'progetosv2';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,16 +28,21 @@ class Progetov2 extends Model
      * @var array
      */
     protected $fillable = [
-                  'codigo',
-                  'cliente_id',
-                  'projeto_status_id',
-                  'proposta_id',
-                  'endereco_id',
-                  'projeto_documento_id',
-                  'projeto_execurcao_id',
-                  'projeto_finalizando_id',
-                  'obs'
-              ];
+        'codigo',
+        'cliente_id',
+        'projeto_status_id',
+        'proposta_id',
+        'endereco_id',
+        'projeto_documento_id',
+        'projeto_execurcao_id',
+        'projeto_finalizando_id',
+        'res_documentacao',
+        'res_acompanhamento',
+        'data_prevista',
+        'conta_contrato_anterior',
+        'conta_contrato_atual',
+        'obs'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -45,14 +50,44 @@ class Progetov2 extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
+    /**
+     * Get the projeto for this model.
+     */
+    public function contratos()
+    {
+        return $this->hasMany('Serbinario\Entities\ProjetosContasContrato','projetov2_id','id');
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDataPrevistaAttribute($value)
+    {
+        $this->attributes['data_prevista'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDataPrevistaAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
     /**
      * Get the cliente for this model.
      */
@@ -110,11 +145,19 @@ class Progetov2 extends Model
     }
 
     /**
+     * Get the ProjetosFinalizando for this model.
+     */
+    public function ProjetosFinalizado()
+    {
+        return $this->belongsTo('Serbinario\Entities\ProjetosFinalizado','projeto_finalizado_id','id');
+    }
+
+    /**
      * Get the contaContrato for this model.
      */
     public function contaContrato()
     {
-        return $this->hasOne('Serbinario\Entities\ContasContrato','projetov2_id','id');
+        return $this->hasOne('Serbinario\Entities\ProjetosContasContrato','projetov2_id','id');
     }
 
 

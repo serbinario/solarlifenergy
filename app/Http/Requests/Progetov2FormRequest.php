@@ -14,7 +14,7 @@ class Progetov2FormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -34,6 +34,7 @@ class Progetov2FormRequest extends FormRequest
             'projeto_execurcao_id' => 'nullable',
             'projeto_finalizando_id' => 'nullable',
             'obs' => 'nullable',
+            'parecer_acesso_image' => 'nullable|mimes:pdf|file|max:2048',
         ];
 
         return $rules;
@@ -47,9 +48,20 @@ class Progetov2FormRequest extends FormRequest
      */
     public function getData()
     {
-        $data = $this->only(['codigo', 'cliente_id', 'projeto_status_id', 'proposta_id', 'endereco_id', 'projeto_documento_id', 'projeto_execurcao_id', 'projeto_finalizando_id', 'obs']);
+        $data = $this->only(['codigo', 'cliente_id', 'projeto_status_id',
+            'proposta_id',
+            'endereco_id',
+            'projeto_documento_id',
+            'projeto_execurcao_id',
+            'projeto_finalizando_id',
+            'obs',
+            'res_documentacao',
+            'res_acompanhamento',
+            'data_prevista',
+            'conta_contrato_anterior',
+            'conta_contrato_atual',
+        ]);
 
-[% string_to_null_snippet %]
         return $data;
     }
 

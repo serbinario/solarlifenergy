@@ -14,15 +14,19 @@ class Endereco extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'rua',
+        'logradouro',
         'cep',
         'numero',
         'complemento',
         'bairro',
         'uf',
-        'cidade'
+        'cidade',
+        'coordenadas'
     ];
 
+    public function getColumnsTable() {
+        return $this->fillable;
+    }
     protected $guarded = [];
 
         

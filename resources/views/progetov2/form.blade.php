@@ -1,5 +1,18 @@
 <div class="card-body">
 
+    <input name="proposta_id" type="hidden" id="proposta_id" value="{{ old('proposta_id', isset($progetov2->proposta_id) ? $progetov2->proposta_id : null) }}" >
+    <input name="endereco_id" type="hidden" id="endereco_id" value="{{ old('endereco_id', isset($progetov2->endereco_id) ? $progetov2->endereco_id : null) }}" >
+    <input name="projeto_documento_id" type="hidden" id="projeto_documento_id" value="{{ old('projeto_documento_id', isset($progetov2->projeto_documento_id) ? $progetov2->projeto_documento_id : null) }}" >
+    <input name="projeto_execurcao_id" type="hidden" id="projeto_execurcao_id" value="{{ old('projeto_execurcao_id', isset($progetov2->projeto_execurcao_id) ? $progetov2->projeto_execurcao_id : null) }}" >
+    <input name="projeto_finalizando_id" type="hidden" id="projeto_finalizando_id" value="{{ old('projeto_finalizando_id', isset($progetov2->projeto_finalizando_id) ? $progetov2->projeto_finalizando_id : null) }}" >
+    <input name="projeto_finalizado_id" type="hidden" id="projeto_finalizado_id" value="{{ old('projeto_finalizado_id', isset($progetov2->projeto_finalizado_id) ? $progetov2->projeto_finalizado_id : null) }}" >
+
+
+
+
+
+
+
     <div id="rootwizard1" class="form-wizard form-wizard-horizontal">
         <form class="form floating-label">
             <div class="form-wizard-nav">
@@ -15,7 +28,6 @@
                 <div class="tab-pane active" id="tab1">
                     <br/><br/>
                     @include('progetov2.analize')
-
 
                 </div><!--end #tab1 -->
                 <div class="tab-pane" id="tab2">
