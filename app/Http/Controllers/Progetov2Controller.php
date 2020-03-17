@@ -247,8 +247,9 @@ class Progetov2Controller extends Controller
 
             $progetov2->update($data);
 
-            return redirect()->route('progetov2.progetov2.index')
-                ->with('success_message', 'Progetov2 was successfully updated!');
+            return redirect()->route('progetov2.progetov2.edit', $progetov2->id)
+                ->with('success_message', 'Cadastro atualizado com sucesso!');
+
 
         } catch (Exception $e) {
             dd("error2",$e);
