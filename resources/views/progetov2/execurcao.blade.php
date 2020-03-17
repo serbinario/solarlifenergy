@@ -5,7 +5,7 @@
             <label for="material_entrege" class="col-md-2 control-label text-bold">Material Entrege.:</label>
             <div class="col-md-10">
                 <div class="checkbox checkbox-styled">
-                    <label for="estar_finalizado">
+                    <label for="material_entrege">
                         <input id="material_entrege" class="" name="material_entrege" type="checkbox" value="1" {{ old('material_entrege', isset($progetov2->ProjetosExecurcao->material_entrege) ? $progetov2->ProjetosExecurcao->material_entrege : null) == '1' ? 'checked' : '' }}>
                     </label>
                 </div>
