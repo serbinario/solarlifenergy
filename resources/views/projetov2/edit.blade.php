@@ -26,17 +26,17 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('progetov2.progetov2.update', $progetov2->id) }}" accept-charset="UTF-8" id="edit_progetov2_form" name="edit_progetov2_form" class="form-horizontal" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('projetov2.projetov2.update', $projetov2->id) }}" accept-charset="UTF-8" id="edit_projetov2_form" name="edit_projetov2_form" class="form-horizontal" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Projeto - {{ $progetov2->PreProposta->cliente->nome }} - R$  {{ $progetov2->PreProposta->preco_medio_instalado }}</header>
+                            <header>Editar Projeto - {{ $projetov2->PreProposta->cliente->nome }} - R$  {{ $projetov2->PreProposta->preco_medio_instalado }}</header>
                         </div>
-                        @include ('progetov2.form', ['progetov2' => $progetov2, ])
+                        @include ('projetov2.form', ['projetov2' => $projetov2, ])
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('progetov2.progetov2.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <a href="{{ route('projetov2.projetov2.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
@@ -49,6 +49,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/progetov2/edit.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/projetov2/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

@@ -8,7 +8,7 @@ namespace Serbinario\Http\Controllers;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\PreProposta;
-use Serbinario\Entities\Progetov2;
+use Serbinario\Entities\Projetov2;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
@@ -20,7 +20,7 @@ use Serbinario\Traits\UtilFiles;
 use Yajra\DataTables\DataTables;
 use Exception;
 
-class Progetov2Controller extends Controller
+class Projetov2Controller extends Controller
 {
     use UtilFiles;
     private $token;
@@ -41,9 +41,9 @@ class Progetov2Controller extends Controller
      */
     public function index()
     {
-        $progetov2s = Progetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
+        $projetov2s = Projetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
 
-        return view('progetov2.index', compact('progetov2s'));
+        return view('projetov2.index', compact('projetov2s'));
     }
 
     /**
@@ -56,22 +56,22 @@ class Progetov2Controller extends Controller
     {
         $this->token = csrf_token();
         #Criando a consulta
-        $rows = \DB::table('progetosv2')
-            ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'progetosv2.proposta_id')
+        $rows = \DB::table('projetosv2')
+            ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->select([
-                'progetosv2.id',
+                'projetosv2.id',
                 'clientes.nome_empresa'
             ]);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
-            return '<form id="' . $row->id   . '" method="POST" action="progetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
+            return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">
                                
-                                <a href="progetov2/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                                <a href="projetov2/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
                                
@@ -82,7 +82,7 @@ class Progetov2Controller extends Controller
     }
 
     /**
-     * Show the form for creating a new progetov2.
+     * Show the form for creating a new projetov2.
      *
      * @return Illuminate\View\View
      */
@@ -96,11 +96,11 @@ class Progetov2Controller extends Controller
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
 
-        return view('progetov2.create', compact('clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
+        return view('projetov2.create', compact('clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
 
     /**
-     * Store a new progetov2 in the storage.
+     * Store a new projetov2 in the storage.
      *
      * @param Serbinario\Http\Requests\Progetov2FormRequest $request
      *
@@ -112,10 +112,10 @@ class Progetov2Controller extends Controller
 
             $data = $request->getData();
 
-            Progetov2::create($data);
+            Projetov2::create($data);
 
-            return redirect()->route('progetov2.progetov2.index')
-                ->with('success_message', 'Progetov2 was successfully added!');
+            return redirect()->route('projetov2.projetov2.index')
+                ->with('success_message', 'Projetov2 was successfully added!');
 
         } catch (Exception $exception) {
 
@@ -125,7 +125,7 @@ class Progetov2Controller extends Controller
     }
 
     /**
-     * Display the specified progetov2.
+     * Display the specified projetov2.
      *
      * @param int $idProjetosStatus
      *
@@ -133,13 +133,13 @@ class Progetov2Controller extends Controller
      */
     public function show($id)
     {
-        $progetov2 = Progetov2::with('cliente','projetostatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->findOrFail($id);
+        $progetov2 = Projetov2::with('cliente','projetostatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->findOrFail($id);
 
-        return view('progetov2.show', compact('progetov2'));
+        return view('projetov2.show', compact('progetov2'));
     }
 
     /**
-     * Show the form for editing the specified progetov2.
+     * Show the form for editing the specified projetov2.
      *
      * @param int $id
      *
@@ -147,7 +147,7 @@ class Progetov2Controller extends Controller
      */
     public function edit($id)
     {
-        $progetov2 = Progetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos')->findOrFail($id);
+        $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos')->findOrFail($id);
         $clientes = Cliente::pluck('nome','id')->all();
         $ProjetosStatus = ProjetoStatus::pluck('id','id')->all();
         $PrePropostas = PreProposta::pluck('codigo','id')->all();
@@ -156,13 +156,11 @@ class Progetov2Controller extends Controller
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
 
-       
-
-        return view('progetov2.edit', compact('progetov2','clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
+        return view('projetov2.edit', compact('projetov2','clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
 
     /**
-     * Update the specified progetov2 in the storage.
+     * Update the specified projetov2 in the storage.
      *
      * @param  int $id
      * @param Serbinario\Http\Requests\Progetov2FormRequest $request
@@ -176,7 +174,7 @@ class Progetov2Controller extends Controller
             $data = $request->getData();
             //dd($data);
 
-            $progetov2 = Progetov2::findOrFail($id);
+            $progetov2 = Projetov2::findOrFail($id);
 
             $endereco = Endereco::findOrFail($progetov2->endereco_id);
             $enderecoData = $request->only(
@@ -247,7 +245,7 @@ class Progetov2Controller extends Controller
 
             $progetov2->update($data);
 
-            return redirect()->route('progetov2.progetov2.edit', $progetov2->id)
+            return redirect()->route('projetov2.projetov2.edit', $progetov2->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
 
@@ -259,7 +257,7 @@ class Progetov2Controller extends Controller
     }
 
     /**
-     * Remove the specified progetov2 from the storage.
+     * Remove the specified projetov2 from the storage.
      *
      * @param  int $id
      *
@@ -268,11 +266,11 @@ class Progetov2Controller extends Controller
     public function destroy($id)
     {
         try {
-            $progetov2 = Progetov2::findOrFail($id);
+            $progetov2 = Projetov2::findOrFail($id);
             $progetov2->delete();
 
-            return redirect()->route('progetov2.progetov2.index')
-                ->with('success_message', 'Progetov2 was successfully deleted!');
+            return redirect()->route('projetov2.projetov2.index')
+                ->with('success_message', 'Projetov2 was successfully deleted!');
 
         } catch (Exception $exception) {
 

@@ -24,6 +24,9 @@ Route::get('/error', 'ClienteController@index')
 Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
     ->name('cliente.consultaCpfCnpf');
 
+Route::get('criarProjeto/{id}', 'UtilController@criarProjeto')
+    ->name('criarProjeto.criarProjeto');
+
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 
@@ -857,35 +860,35 @@ Route::group(
 
 Route::group(
 [
-    'prefix' => 'progetov2',
+    'prefix' => 'projetov2',
 ], function () {
 
-    Route::get('/', 'Progetov2Controller@index')
-         ->name('progetov2.progetov2.index');
+    Route::get('/', 'Projetov2Controller@index')
+         ->name('projetov2.projetov2.index');
 
-    Route::get('/create','Progetov2Controller@create')
-         ->name('progetov2.progetov2.create');
+    Route::get('/create','Projetov2Controller@create')
+         ->name('projetov2.projetov2.create');
 
-    Route::get('/grid', 'Progetov2Controller@grid')
-         ->name('[% grid_route_name %]');
+    Route::get('/grid', 'Projetov2Controller@grid')
+         ->name('projetov2.index');
 
-    Route::get('/show/{progetov2}','Progetov2Controller@show')
-         ->name('progetov2.progetov2.show')
+    Route::get('/show/{projetov2}','Projetov2Controller@show')
+         ->name('projetov2.projetov2.show')
          ->where('id', '[0-9]+');
 
-    Route::get('/{progetov2}/edit','Progetov2Controller@edit')
-         ->name('progetov2.progetov2.edit')
+    Route::get('/{projetov2}/edit','Projetov2Controller@edit')
+         ->name('projetov2.projetov2.edit')
          ->where('id', '[0-9]+');
 
-    Route::post('/', 'Progetov2Controller@store')
-         ->name('progetov2.progetov2.store');
+    Route::post('/', 'Projetov2Controller@store')
+         ->name('projetov2.projetov2.store');
                
-    Route::put('progetov2/{progetov2}', 'Progetov2Controller@update')
-         ->name('progetov2.progetov2.update')
+    Route::put('projetov2/{projetov2}', 'Projetov2Controller@update')
+         ->name('projetov2.projetov2.update')
          ->where('id', '[0-9]+');
 
-    Route::delete('/{progetov2}/destroy','Progetov2Controller@destroy')
-         ->name('progetov2.progetov2.destroy')
+    Route::delete('/{projetov2}/destroy','Projetov2Controller@destroy')
+         ->name('projetov2.projetov2.destroy')
          ->where('id', '[0-9]+');
 
 });

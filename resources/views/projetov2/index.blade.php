@@ -24,7 +24,7 @@
                             <header>Lista de Projetos</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('progetov2.progetov2.create') }}" class="btn btn-primary" title="Novo Fornecedor">
+                                    <a href="{{ route('projetov2.projetov2.create') }}" class="btn btn-primary" title="Novo Fornecedor">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
@@ -35,7 +35,7 @@
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="progetov2" class="table order-column hover">
+                                        <table id="projetov2" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
@@ -51,7 +51,7 @@
                         <!-- END DATATABLE 1 -->
                         {{--<div class="card-actionbar">--}}
                             {{--<div class="card-actionbar-row">--}}
-                                {{--<a href="{{ route('progetov2.progetov2.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Projeto</a>--}}
+                                {{--<a href="{{ route('projetov2.projetov2.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Projeto</a>--}}
                             {{--</div>--}}
                         {{--</div>--}}
                     </div><!--end .card -->
@@ -64,6 +64,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/progetov2/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/projetov2/index.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

@@ -85,6 +85,8 @@ $(document).ready(function () {
             $(this).parents(".copy").remove();
         });
 
+
+
     });
 
 });

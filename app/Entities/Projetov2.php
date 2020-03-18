@@ -4,7 +4,7 @@ namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Progetov2 extends Model
+class Projetov2 extends Model
 {
 
 
@@ -13,7 +13,7 @@ class Progetov2 extends Model
      *
      * @var string
      */
-    protected $table = 'progetosv2';
+    protected $table = 'projetosv2';
 
     /**
      * The database primary key value.
@@ -36,6 +36,7 @@ class Progetov2 extends Model
         'projeto_documento_id',
         'projeto_execurcao_id',
         'projeto_finalizando_id',
+        'projeto_finalizado_id',
         'res_documentacao',
         'res_acompanhamento',
         'data_prevista',
