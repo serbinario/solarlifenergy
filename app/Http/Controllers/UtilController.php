@@ -5,9 +5,15 @@ namespace Serbinario\Http\Controllers;
 use Illuminate\Http\Request;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\Endereco;
+use Serbinario\Entities\ProjetosDocumento;
+use Serbinario\Entities\ProjetosExecurcao;
+use Serbinario\Entities\ProjetosFinalizado;
+use Serbinario\Entities\ProjetosFinalizando;
 use Serbinario\Traits\UtilReports;
 use Serbinario\User;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\Projetov2;
 
 
 class UtilController extends Controller
@@ -172,6 +178,39 @@ class UtilController extends Controller
                 'total_nvestimento' => round($total_nvestimento, 2)
             ]
         );
+    }
+
+
+    public function criarProjeto($id){
+
+        try {
+            $projetoDocumento = ProjetosDocumento::create();
+            $projetosExecurcao = ProjetosExecurcao::create();
+            $projetosFinalizando = ProjetosFinalizando::create();
+            $projetosFinalizado = ProjetosFinalizado::create();
+            $endereco = Endereco::create();
+
+            //dd($projetoDocumento, $projetosExecurcao, $projetosFinalizando, $projetosFinalizado, $endereco);
+
+            $data = array();
+            $data['proposta_id'] = $id;
+            $data['projeto_status_id'] = 1;
+            $data['projeto_documento_id'] = $projetoDocumento->id;
+            $data['projeto_execurcao_id'] = $endereco->id;
+            $data['endereco_id'] = $endereco->id;
+            $data['projeto_finalizando_id'] = $projetosFinalizando->id;
+            $data['projeto_finalizado_id'] = $projetosFinalizado->id;
+
+            Projetov2::create($data);
+
+
+        } catch (Exception $e) {
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
+        }
+
+
+
+        return \Illuminate\Support\Facades\Response::json(['success' => true]);
     }
 
 

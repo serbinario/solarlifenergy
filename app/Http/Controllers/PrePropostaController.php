@@ -247,7 +247,7 @@ class PrePropostaController extends Controller
     public function edit($id)
     {
         //dd($id);
-        $preProposta = PreProposta::with('cliente', 'cidade', 'bancoFinanciadora')->findOrFail($id);
+        $preProposta = PreProposta::with('cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
@@ -256,9 +256,7 @@ class PrePropostaController extends Controller
         }else{
             $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
         };
-        //dd($preProposta);
-
-
+        //dd(isset($preProposta->projetov2()->first()->id));
         $Clientes = Cliente::pluck('nome','id')->all();
 
         return view('pre_proposta.edit', compact('preProposta','Clientes', 'estados', 'cidades', 'bfs'));

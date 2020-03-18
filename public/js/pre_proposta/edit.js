@@ -92,6 +92,37 @@ $(document).ready(function () {
 
     }
 
+    $("#novo_projeto").on('click', function () {
+        var projeto_id =  $('input[name="id"]').val()
+        criarProjeto(projeto_id)
+    })
+
+
+    function criarProjeto(projeto_id)
+    {
+        //Necessario para que o ajax envie o csrf-token
+        //Para isso coloquei no form <meta name="csrf-token" content="{{ csrf_token() }}">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        jQuery.ajax({
+            type: 'get',
+            url: '/index.php/criarProjeto/' + projeto_id,
+            datatype: 'json'
+        }).done(function (retorno) {
+            if(retorno.success) {
+                swal("", "Usuario Bloqueado com sucesso", "success");
+                location.reload();
+
+            } else {
+                swal("Error", "Click no botão abaixo!", "error");
+                table.ajax.reload();
+            }
+        });
+    }
 
 
 

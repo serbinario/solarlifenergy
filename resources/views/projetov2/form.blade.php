@@ -1,11 +1,11 @@
 <div class="card-body">
 
-    <input name="proposta_id" type="hidden" id="proposta_id" value="{{ old('proposta_id', isset($progetov2->proposta_id) ? $progetov2->proposta_id : null) }}" >
-    <input name="endereco_id" type="hidden" id="endereco_id" value="{{ old('endereco_id', isset($progetov2->endereco_id) ? $progetov2->endereco_id : null) }}" >
-    <input name="projeto_documento_id" type="hidden" id="projeto_documento_id" value="{{ old('projeto_documento_id', isset($progetov2->projeto_documento_id) ? $progetov2->projeto_documento_id : null) }}" >
-    <input name="projeto_execurcao_id" type="hidden" id="projeto_execurcao_id" value="{{ old('projeto_execurcao_id', isset($progetov2->projeto_execurcao_id) ? $progetov2->projeto_execurcao_id : null) }}" >
-    <input name="projeto_finalizando_id" type="hidden" id="projeto_finalizando_id" value="{{ old('projeto_finalizando_id', isset($progetov2->projeto_finalizando_id) ? $progetov2->projeto_finalizando_id : null) }}" >
-    <input name="projeto_finalizado_id" type="hidden" id="projeto_finalizado_id" value="{{ old('projeto_finalizado_id', isset($progetov2->projeto_finalizado_id) ? $progetov2->projeto_finalizado_id : null) }}" >
+    <input name="proposta_id" type="hidden" id="proposta_id" value="{{ old('proposta_id', isset($projetov2->proposta_id) ? $projetov2->proposta_id : null) }}" >
+    <input name="endereco_id" type="hidden" id="endereco_id" value="{{ old('endereco_id', isset($projetov2->endereco_id) ? $projetov2->endereco_id : null) }}" >
+    <input name="projeto_documento_id" type="hidden" id="projeto_documento_id" value="{{ old('projeto_documento_id', isset($projetov2->projeto_documento_id) ? $projetov2->projeto_documento_id : null) }}" >
+    <input name="projeto_execurcao_id" type="hidden" id="projeto_execurcao_id" value="{{ old('projeto_execurcao_id', isset($projetov2->projeto_execurcao_id) ? $projetov2->projeto_execurcao_id : null) }}" >
+    <input name="projeto_finalizando_id" type="hidden" id="projeto_finalizando_id" value="{{ old('projeto_finalizando_id', isset($projetov2->projeto_finalizando_id) ? $projetov2->projeto_finalizando_id : null) }}" >
+    <input name="projeto_finalizado_id" type="hidden" id="projeto_finalizado_id" value="{{ old('projeto_finalizado_id', isset($projetov2->projeto_finalizado_id) ? $projetov2->projeto_finalizado_id : null) }}" >
 
 
 
@@ -27,20 +27,20 @@
             <div class="tab-content clearfix" id="tabs-solar">
                 <div class="tab-pane active" id="tab1">
                     <br/><br/>
-                    @include('progetov2.analize')
+                    @include('projetov2.analize')
 
                 </div><!--end #tab1 -->
                 <div class="tab-pane" id="tab2">
                     <br/><br/>
-                    @include('progetov2.execurcao')
+                    @include('projetov2.execurcao')
                 </div><!--end #tab2 -->
                 <div class="tab-pane" id="tab3">
                     <br/><br/>
-                    @include('progetov2.finalizando')
+                    @include('projetov2.finalizando')
                 </div><!--end #tab3 -->
                 <div class="tab-pane" id="tab4">
                     <br/><br/>
-                    @include('progetov2.finalizado')
+                    @include('projetov2.finalizado')
 
                 </div><!--end #tab4 -->
             </div><!--end .tab-content -->

@@ -130,7 +130,13 @@ class PreProposta extends Model
     {
         return $this->belongsTo('Serbinario\Entities\BancoFinanciadora','baco_fin_id','id');
     }
-
+    /**
+     * Get the projeto for this model.
+     */
+    public function projetov2()
+    {
+        return $this->hasMany('Serbinario\Entities\Projetov2','proposta_id','id');
+    }
     /**
      * Get the Cliente for this model.
      */

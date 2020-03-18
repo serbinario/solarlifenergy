@@ -7,6 +7,7 @@
                 <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : '' }}">
                     <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
+                    <input name="id" type="hidden" id="id" value="{{ old('cep', isset($preProposta->id) ? $preProposta->id : null) }}" >
                     <input name="valor_franqueadora" type="hidden" id="valor_franqueadora" value="{{ old('valor_franqueadora', isset($preProposta->valor_franqueadora) ? $preProposta->valor_franqueadora : null) }}" >
 
                     <input name="total_equipamentos" type="hidden" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" >

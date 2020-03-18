@@ -25,7 +25,7 @@ function template(d){
     return  html;
 }
 
-var table = $('#progetov2').DataTable({
+var table = $('#projetov2').DataTable({
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {
@@ -40,7 +40,7 @@ var table = $('#progetov2').DataTable({
     bFilter: true,
     order: [[ 0, "desc" ]],
     ajax: {
-        url: "/index.php/progetov2/grid",
+        url: "/index.php/projetov2/grid",
         data: function (d) {
             d.nome = $('input[name=nome]').val();
 
