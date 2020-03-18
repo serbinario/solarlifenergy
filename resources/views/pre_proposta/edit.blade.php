@@ -62,7 +62,8 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                @if(!isset($preProposta->projetov2()->first()->id))
+                                <--! só irá mostar o botão se já estiver finalizado e não tiver nenhum projeto-->
+                                @if(!isset($preProposta->projetov2()->first()->id) && $preProposta->estar_finalizado == 1)
                                      <input class="btn btn-primary" id="novo_projeto" type="button" value="Criar Projeto">
                                 @endif
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
