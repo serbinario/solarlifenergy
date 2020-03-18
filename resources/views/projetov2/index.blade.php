@@ -40,6 +40,8 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Rasão Social</th>
+                                                    <th>Cod. Proposta</th>
+                                                    <th>Valor</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

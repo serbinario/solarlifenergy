@@ -72,12 +72,12 @@
                                     <label for="monthly_usage" class="col-sm-4 control-label text-bold">Prioridade.:</label>
                                     <div class="col-md-8">
                                         <select class="form-control input-sm" id="prioridade" name="prioridade">
-                                            <option value="" style="display: none;" {{ old('prioridade', isset($projeto->prioridade) ? $projeto->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Prioridade</option>
+                                            <option value="" style="display: none;" {{ old('prioridade', isset($projetov2->prioridade) ? $projetov2->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Prioridade</option>
                                             @foreach ([
                                                 'Alta' => 'Alta',
                                                 'Media' => 'Media',
                                                 'Baixa' => 'Baixa'] as $key => $text)
-                                                <option value="{{ $key }}" {{ old('prioridade', isset($projeto->prioridade) ? $projeto->prioridade : null) == $key ? 'selected' : '' }}>
+                                                <option value="{{ $key }}" {{ old('prioridade', isset($projetov2->prioridade) ? $projetov2->prioridade : null) == $key ? 'selected' : '' }}>
                                                     {{ $text }}
                                                 </option>
                                             @endforeach
@@ -86,6 +86,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+                        <div class="form-group">
+                            <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.: *</label>
+                            <div class="col-md-10">
+                                <select   class="form-control input-sm" id="projeto_status_id" name="projeto_status_id">
+                                    <option value="" style="display: none;" {{ old('projeto_status_id', isset($projetov2->projeto_status_id) ? $projetov2->projeto_status_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione um Status</option>
+                                    @foreach ($projetosStatus as $key => $statu)
+                                        <option value="{{ $key }}" {{ old('projeto_status_id', isset($projetov2->projeto_status_id) ? $projetov2->projeto_status_id : null) == $key ? 'selected' : '' }}>
+                                            {{ $statu }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first('projeto_status_id', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

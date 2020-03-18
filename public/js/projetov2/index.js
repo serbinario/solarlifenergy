@@ -49,6 +49,8 @@ var table = $('#projetov2').DataTable({
     columns: [
         {data: "id",name: 'id' , visible: true },
         {data: 'nome_empresa', name: 'nome_empresa'},
+        {data: 'codigo', name: 'codigo'},
+        {data: 'monthly_usage', name: 'monthly_usage'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });

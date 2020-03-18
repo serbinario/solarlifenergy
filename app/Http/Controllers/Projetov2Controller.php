@@ -61,7 +61,9 @@ class Projetov2Controller extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->select([
                 'projetosv2.id',
-                'clientes.nome_empresa'
+                'clientes.nome_empresa',
+                'pre_propostas.codigo',
+                'pre_propostas.monthly_usage'
             ]);
 
         #Editando a grid
@@ -149,14 +151,14 @@ class Projetov2Controller extends Controller
     {
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos')->findOrFail($id);
         $clientes = Cliente::pluck('nome','id')->all();
-        $ProjetosStatus = ProjetoStatus::pluck('id','id')->all();
+        $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
         $PrePropostas = PreProposta::pluck('codigo','id')->all();
         $Enderecos = Endereco::pluck('id','id')->all();
         $ProjetosDocumentos = ProjetosDocumento::pluck('id','id')->all();
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
 
-        return view('projetov2.edit', compact('projetov2','clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
+        return view('projetov2.edit', compact('projetov2','clientes','projetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
 
     /**
