@@ -87,7 +87,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="projeto_status_id" class="col-md-2 text-bold control-label">Status Projeto.: *</label>
                             <div class="col-md-10">

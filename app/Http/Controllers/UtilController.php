@@ -103,49 +103,49 @@ class UtilController extends Controller
                 $estrutura_mult = 0.29;
                 $infra_mult = 0.18;
                 $kit_moni = 0.05;
-                $valor_modulo = 840;
+                $valor_modulo = 940;
                 break;
             case $valor_medio_kw >= 301 && $valor_medio_kw <= 500:
                 $inversor_mult = 0.48;
                 $estrutura_mult = 0.27;
                 $infra_mult = 0.06;
                 $kit_moni = 0.05;
-                $valor_modulo = 790;
+                $valor_modulo = 890;
                 break;
             case $valor_medio_kw >= 501 && $valor_medio_kw <= 800:
                 $inversor_mult = 0.48;
                 $estrutura_mult = 0.18;
                 $infra_mult = 0.03;
                 $kit_moni = 0.05;
-                $valor_modulo = 780;
+                $valor_modulo = 880;
                 break;
             case $valor_medio_kw >= 801 && $valor_medio_kw <= 1200:
                 $inversor_mult = 0.4;
                 $estrutura_mult = 0.2;
                 $infra_mult = 0.04;
                 $kit_moni = 0.016;
-                $valor_modulo = 780;
+                $valor_modulo = 880;
                 break;
             case $valor_medio_kw >= 1201 && $valor_medio_kw <= 4000:
                 $inversor_mult = 0.28;
                 $estrutura_mult = 0.11;
                 $infra_mult = 0.03;
                 $kit_moni = 0.01;
-                $valor_modulo = 760;
+                $valor_modulo = 860;
                 break;
             case $valor_medio_kw >= 4001 && $valor_medio_kw <= 5800:
                 $inversor_mult = 0.28;
                 $estrutura_mult = 0.11;
                 $infra_mult = 0.03;
                 $kit_moni = 0.01;
-                $valor_modulo = 760;
+                $valor_modulo = 860;
                 break;
             case $valor_medio_kw >= 5801:
                 $inversor_mult = 0.26;
                 $estrutura_mult = 0.07;
                 $infra_mult = 0.04;
                 $kit_moni = 0.004;
-                $valor_modulo = 760;
+                $valor_modulo = 860;
                 break;
         }
 
