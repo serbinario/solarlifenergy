@@ -8,6 +8,7 @@ namespace Serbinario\Http\Controllers;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\PreProposta;
+use Serbinario\Entities\ProjetosPrioridade;
 use Serbinario\Entities\Projetov2;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
@@ -61,10 +62,12 @@ class Projetov2Controller extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetosv2.projeto_status_id')
             ->leftJoin('projetos_finalizado', 'projetos_finalizado.id', '=', 'projetosv2.projeto_finalizado_id')
+            ->leftJoin('projetos_prioridades', 'projetos_prioridades.id', '=', 'projetosv2.projeto_prioridade_id')
             ->select([
                 'projetosv2.id',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
+                'projetos_prioridades.prioridade_nome',
                 'pre_propostas.preco_medio_instalado',
                 \DB::raw('DATE_FORMAT(projetos_finalizado.data_conexao,"%d/%m/%Y") as data_conexao'),
                 \DB::raw('DATE_FORMAT(projetosv2.data_prevista,"%d/%m/%Y") as data_prevista'),
@@ -224,6 +227,9 @@ class Projetov2Controller extends Controller
             $execursaoData['parecer_relacionamento_image'] = $nameFileRelacionamento;
             $execursao->update($execursaoData);
 
+
+            //$finalizando->update($finalizandoData);
+
             /*
              * Atualiza tabela Projetos Finalizando
              */
@@ -252,6 +258,7 @@ class Projetov2Controller extends Controller
                 $contratos = $progetov2->contratos()->create(['num_contacontrato' => $request->num_contacontrato[$i], 'percentual' =>$request->percentual[$i]]);
             }
 
+            //dd($data);
             $progetov2->update($data);
 
             return redirect()->route('projetov2.projetov2.edit', $progetov2->id)

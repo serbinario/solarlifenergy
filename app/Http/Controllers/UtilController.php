@@ -10,6 +10,7 @@ use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
 use Serbinario\Entities\ProjetosFinalizando;
+use Serbinario\Entities\ProjetosPrioridade;
 use Serbinario\Traits\UtilReports;
 use Serbinario\User;
 use Illuminate\Support\Facades\Auth;
@@ -199,7 +200,7 @@ class UtilController extends Controller
             $data['projeto_execurcao_id'] = $endereco->id;
             $data['endereco_id'] = $endereco->id;
             $data['projeto_finalizando_id'] = $projetosFinalizando->id;
-            $data['projeto_finalizado_id'] = $projetosFinalizado->id;
+            $data['projeto_prioridade_id'] = 1;
 
             Projetov2::create($data);
 
