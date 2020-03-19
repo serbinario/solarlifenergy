@@ -13,6 +13,12 @@
                 {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+        <div class="form-group {{ $errors->has('data_conexao') ? 'has-error' : '' }}">
+            <label for="data_conexao" class="col-sm-2 control-label text-bold">Data Conexão.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm date" name="data_conexao" type="text" id="data_conexao"  value="{{ old('data_conexao', isset($projetov2->ProjetosFinalizado->data_conexao) ? $projetov2->ProjetosFinalizado->data_conexao : null) }}" placeholder="">
+            </div>
+        </div>
 
         <div class="form-group {{ $errors->has('obs_finalizado') ? 'has-error' : '' }}">
             <label for="obs_finalizado" class="col-md-2 control-label  text-bold">Obs.:</label>
@@ -21,6 +27,10 @@
                 {!! $errors->first('obs_finalizado', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+
+
+
 
 
     </div> <!-- Fim do col-md-12 -->

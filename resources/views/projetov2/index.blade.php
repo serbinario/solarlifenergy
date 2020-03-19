@@ -43,6 +43,7 @@
                                                     <th>Cod. Proposta</th>
                                                     <th>Valor</th>
                                                     <th>Previsão</th>
+                                                    <th>Data Conexao</th>
                                                     <th>Situação</th>
                                                     <th>Acao</th>
                                                 </tr>
