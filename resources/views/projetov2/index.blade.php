@@ -42,6 +42,8 @@
                                                     <th>Rasão Social</th>
                                                     <th>Cod. Proposta</th>
                                                     <th>Valor</th>
+                                                    <th>Previsão</th>
+                                                    <th>Situação</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

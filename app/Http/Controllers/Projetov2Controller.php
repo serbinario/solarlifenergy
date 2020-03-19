@@ -59,11 +59,14 @@ class Projetov2Controller extends Controller
         $rows = \DB::table('projetosv2')
             ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetosv2.projeto_status_id')
             ->select([
                 'projetosv2.id',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
-                'pre_propostas.monthly_usage'
+                'pre_propostas.monthly_usage',
+                \DB::raw('DATE_FORMAT(projetosv2.data_prevista,"%d/%m/%Y") as data_prevista'),
+                'projetos_status.status_nome'
             ]);
 
         #Editando a grid

@@ -50,7 +50,9 @@ var table = $('#projetov2').DataTable({
         {data: "id",name: 'id' , visible: true },
         {data: 'nome_empresa', name: 'nome_empresa'},
         {data: 'codigo', name: 'codigo'},
-        {data: 'monthly_usage', name: 'monthly_usage'},
+        {data: 'monthly_usage', name: 'monthly_usage', "render": function (data) { return formatMoney(data) }},
+        {data: 'data_prevista', name: 'data_prevista'},
+        {data: 'status_nome', name: 'status_nome'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });
@@ -84,6 +86,11 @@ $( "#limpar" ).click(function() {
     $('input[name=cod_projeto]').val("");
     $('input[name=integrador]').val("");
 });
+
+function formatMoney(n, c, d, t) {
+    c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+}
 
 
 
