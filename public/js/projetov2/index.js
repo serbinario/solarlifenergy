@@ -50,7 +50,7 @@ var table = $('#projetov2').DataTable({
         {data: "id",name: 'id' , visible: false },
         {data: 'nome_empresa', name: 'nome_empresa'},
         {data: 'codigo', name: 'codigo', visible: false},
-        {data: 'monthly_usage', name: 'monthly_usage', "render": function (data) { return formatMoney(data) }},
+        {data: 'preco_medio_instalado', name: 'preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'data_prevista', name: 'data_prevista'},
         {data: 'data_conexao', name: 'data_conexao'},
         {data: 'status_nome', name: 'status_nome'},
