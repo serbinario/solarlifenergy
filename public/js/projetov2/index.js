@@ -54,6 +54,7 @@ var table = $('#projetov2').DataTable({
         {data: 'data_prevista', name: 'data_prevista'},
         {data: 'data_conexao', name: 'data_conexao'},
         {data: 'status_nome', name: 'status_nome'},
+        {data: 'prioridade_nome', name: 'prioridade_nome', visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });

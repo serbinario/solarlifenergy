@@ -52,6 +52,7 @@ class Progetov2FormRequest extends FormRequest
             'proposta_id',
             'endereco_id',
             'projeto_documento_id',
+            'projeto_prioridade_id',
             'projeto_execurcao_id',
             'projeto_finalizando_id',
             'obs',

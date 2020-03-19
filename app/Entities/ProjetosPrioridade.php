@@ -4,7 +4,7 @@ namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProjetoStatus extends Model
+class ProjetosPrioridade extends Model
 {
 
     /**
@@ -18,7 +18,7 @@ class ProjetoStatus extends Model
      *
      * @var string
      */
-    protected $table = 'projetos_status';
+    protected $table = 'projetos_prioridades';
 
     /**
      * The database primary key value.
@@ -33,7 +33,7 @@ class ProjetoStatus extends Model
      * @var array
      */
     protected $fillable = [
-        'status_nome',
+        'prioridade_nome',
 
     ];
 
@@ -50,11 +50,6 @@ class ProjetoStatus extends Model
      * @var array
      */
     protected $casts = [];
-
-    public function getColumnsTable() {
-        return $this->fillable;
-    }
-
 
 
 

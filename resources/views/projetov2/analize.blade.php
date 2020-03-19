@@ -71,13 +71,13 @@
                                 <div class="form-group">
                                     <label for="monthly_usage" class="col-sm-4 control-label text-bold">Prioridade.:</label>
                                     <div class="col-md-8">
-                                        <select class="form-control input-sm" id="prioridade" name="prioridade">
-                                            <option value="" style="display: none;" {{ old('prioridade', isset($projetov2->prioridade) ? $projetov2->prioridade : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Prioridade</option>
+                                        <select class="form-control input-sm" id="projeto_prioridade_id" name="projeto_prioridade_id">
+                                            <option value="" style="display: none;" {{ old('projeto_prioridade_id', isset($projetov2->projeto_prioridade_id) ? $projetov2->projeto_prioridade_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Prioridade</option>
                                             @foreach ([
-                                                'Alta' => 'Alta',
-                                                'Media' => 'Media',
-                                                'Baixa' => 'Baixa'] as $key => $text)
-                                                <option value="{{ $key }}" {{ old('prioridade', isset($projetov2->prioridade) ? $projetov2->prioridade : null) == $key ? 'selected' : '' }}>
+                                                '1' => 'Alta',
+                                                '2' => 'Media',
+                                                '3' => 'Baixa'] as $key => $text)
+                                                <option value="{{ $key }}" {{ old('projeto_prioridade_id', isset($projetov2->projeto_prioridade_id) ? $projetov2->projeto_prioridade_id : null) == $key ? 'selected' : '' }}>
                                                     {{ $text }}
                                                 </option>
                                             @endforeach

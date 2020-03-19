@@ -31,6 +31,7 @@ class Projetov2 extends Model
         'codigo',
         'cliente_id',
         'projeto_status_id',
+        'projeto_prioridade_id',
         'proposta_id',
         'endereco_id',
         'projeto_documento_id',
