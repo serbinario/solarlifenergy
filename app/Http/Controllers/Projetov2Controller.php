@@ -65,7 +65,7 @@ class Projetov2Controller extends Controller
                 'projetosv2.id',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
-                'pre_propostas.monthly_usage',
+                'pre_propostas.preco_medio_instalado',
                 \DB::raw('DATE_FORMAT(projetos_finalizado.data_conexao,"%d/%m/%Y") as data_conexao'),
                 \DB::raw('DATE_FORMAT(projetosv2.data_prevista,"%d/%m/%Y") as data_prevista'),
                 'projetos_status.status_nome'
