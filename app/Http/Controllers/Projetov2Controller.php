@@ -60,11 +60,13 @@ class Projetov2Controller extends Controller
             ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetosv2.projeto_status_id')
+            ->leftJoin('projetos_finalizado', 'projetos_finalizado.id', '=', 'projetosv2.projeto_finalizado_id')
             ->select([
                 'projetosv2.id',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
                 'pre_propostas.monthly_usage',
+                \DB::raw('DATE_FORMAT(projetos_finalizado.data_conexao,"%d/%m/%Y") as data_conexao'),
                 \DB::raw('DATE_FORMAT(projetosv2.data_prevista,"%d/%m/%Y") as data_prevista'),
                 'projetos_status.status_nome'
             ]);
@@ -229,12 +231,14 @@ class Projetov2Controller extends Controller
             $finalizandoData = $request->only(
                 $finalizando->getColumnsTable()
             );
+
             $finalizando->update($finalizandoData);
 
             $finalizado = ProjetosFinalizado::findOrFail($progetov2->projeto_finalizado_id);
             $finalizadoData = $request->only(
                 $finalizado->getColumnsTable()
             );
+            //dd($finalizadoData);
             $finalizado->update($finalizadoData);
 
             //Deleta primeiro todos os registors dos contratos
