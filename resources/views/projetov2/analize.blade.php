@@ -317,8 +317,9 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cpf_cnh_rg_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
-
+                                    @if($projetov2->ProjetosDocumento->cpf_cnh_rg_imag)
+                                        <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cpf_cnh_rg_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -378,8 +379,8 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     @if($projetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image)
+                                        <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                                     @endif
-                                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cpf_cnh_rg_conjugue_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
 
                                 </div>
                             </div>
