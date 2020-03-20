@@ -69,6 +69,14 @@ class Projetov2 extends Model
     }
 
     /**
+     * Get the projeto for this model.
+     */
+    public function imagens()
+    {
+        return $this->hasMany('Serbinario\Entities\ProjetosImage','projetov2_id','id');
+    }
+
+    /**
      * Set the data_vencimento.
      *
      * @param  string  $value

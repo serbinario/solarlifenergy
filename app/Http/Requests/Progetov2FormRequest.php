@@ -34,7 +34,7 @@ class Progetov2FormRequest extends FormRequest
             'projeto_execurcao_id' => 'nullable',
             'projeto_finalizando_id' => 'nullable',
             'obs' => 'nullable',
-            'parecer_acesso_image' => 'nullable|mimes:pdf|file|max:2048',
+            //'parecer_acesso_image' => 'nullable|mimes:pdf|file|max:2048',
         ];
 
         return $rules;

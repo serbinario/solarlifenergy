@@ -16,7 +16,9 @@ class ProjetosContasContrato extends Model
     protected $fillable = [
         'num_contacontrato',
         'percentual',
-        'projetov2_id'
+        'projetov2_id',
+        'image',
+        'contrato_titularidade'
     ];
 
     protected $guarded = [];
