@@ -247,18 +247,40 @@ class Projetov2Controller extends Controller
             //dd($finalizadoData);
             $finalizado->update($finalizadoData);
 
+
             //Deleta primeiro todos os registors dos contratos
             $contratos = $progetov2->contratos()->delete();
+
+            $files = $request->file('imageN');
+            if(isset($files)){
+                foreach($files as $key => $file)
+                {
+                    $nameFile = $this->ImageStoreV2($file, 'parecer_acesso_image', null);
+                    $contratos = $progetov2->contratos()->create([
+                        'num_contacontrato' => $request->num_contacontratoN[$key],
+                        'percentual' => $request->percentualN[$key],
+                        'image' => $nameFile,
+                        'contrato_titularidade' => $request->contrato_titularidade[$key]
+                    ]);
+                }
+            }
+
             /*
              * 1- Pega do formulario uma array chamada num_contrato
              * 2 - se vinher alguma vazia e limpa com o metodo array_filter
              * 3 - E inserido em contrados
              */
+
             for($i = 0; $i < count($request->num_contacontrato); $i++){
-                $contratos = $progetov2->contratos()->create(['num_contacontrato' => $request->num_contacontrato[$i], 'percentual' =>$request->percentual[$i]]);
+
+                $contratos = $progetov2->contratos()->create([
+                    'num_contacontrato' => $request->num_contacontrato[$i],
+                    'percentual' => $request->percentual[$i],
+                    'image' => $request->image[$i],
+                    'contrato_titularidade' => $request->contrato_titularidade[$i]
+                ]);
             }
 
-            //dd($data);
             $progetov2->update($data);
 
             return redirect()->route('projetov2.projetov2.edit', $progetov2->id)

@@ -237,7 +237,7 @@
                                                 <div class="col-md-6">
                                                     <div class="">
                                                         <label for="parecer_relacionamento">
-                                                            <input class="form-control input-sm" name="num_contacontrato[]" type="text" id="num_contacontrato[]" value="{{ old('num_contacontrato', isset($contrato) ? $contrato->num_contacontrato : null) }}"">
+                                                            <input class="form-control input-sm" name="num_contacontrato[]" type="text" id="num_contacontrato" value="{{ old('num_contacontrato', isset($contrato) ? $contrato->num_contacontrato : null) }}"">
                                                         </label>
                                                     </div>
                                                 </div>
@@ -248,8 +248,8 @@
                                             <div class="form-group">
                                                 <div class="col-md-4">
                                                     <div class="checkbox checkbox-styled">
-                                                        <label>
-                                                            <input id="contrato_titularidade[]" class="" name="contrato_titularidade[]" type="checkbox" value="1" {{ old('cpf_cnh_rg', isset($contrato->contrato_titularidade) ? $contrato->contrato_titularidade : null) == '1' ? 'checked' : '' }}>
+                                                        <label for="contrato_titularidade">
+                                                            <input id="contrato_titularidade" class="" name="contrato_titularidade[]" type="checkbox" value="1" {{ old('cpf_cnh_rg', isset($projetov2->contrato_titularidade) ? $projetov2->contrato_titularidade : null) == '1' ? 'checked' : '' }}>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -269,7 +269,7 @@
                                             <div class="form-group">
                                                 <label for="image" class="col-sm-3 control-label text-bold"><a target="_blank" href="{{ url("/storage/{$contrato->image}") }}" >Link Arquivo</a></label>
                                                 <div class="col-md-9">
-                                                    <input readonly class="form-control input-sm" name="image[]" type="text" id="image" value="{{ old('image', isset($contrato) ? $contrato->image : null) }}">
+                                                    <input class="form-control input-sm" name="image[]" type="file" id="image" readonly>
                                                 </div>
                                             </div>
                                         </div>
