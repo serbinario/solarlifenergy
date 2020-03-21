@@ -206,7 +206,7 @@
 
             <div class="card panel">
                 <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-4">
-                    <header class="text-bold">Cadastro de contas energia</header>
+                    <header class="text-bold">Cadastro de Contas Energia</header>
                 </div>
                 <div id="accordion2-4" class="collapse">
                     <div class="card-body">
@@ -230,7 +230,7 @@
                         </div>
                         @if(isset($projetov2))
                                 @foreach( $projetov2->contratos as $contrato )
-                                    <div class="row">
+                                    <div class="row copy">
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label for="num_contacontrato" class="col-sm-6 control-label text-bold">C/Contrato.:</label>
@@ -276,7 +276,7 @@
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <button class="btn btn-danger remove btn-sm" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                                                    <button  class="btn btn-danger remove btn-sm"  type="button" onclick="removeElement('{{$contrato->id}}');"><i class="glyphicon glyphicon-remove"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -473,7 +473,37 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div><!--end .panel -->
 
+            <div class="card panel">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-6">
+                    <header class="text-bold">Documentos Diversos</header>
+                </div>
+                <div id="accordion2-6" class="collapse">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach ($projetov2->imagens as $key => $image)
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="descricao" class="col-sm-4 control-label text-bold">Descrição.:</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control input-sm" name="descricao[]" type="text" id="descricao[]"  value="{{ old('data_prevista', isset($image->descricao) ? $image->descricao : null) }}" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label for="descricao_image" class="col-sm-3 control-label text-bold"><a target="_blank" href="{{ url("/storage/{$image->descricao_image}") }}" >Link Arquivo</a></label>
+                                        <div class="col-md-9">
+                                            <input readonly class="form-control input-sm" name="descricao_image[]" type="text" id="descricao_image[]" value="{{ old('image', isset($image) ? $image->descricao_image : null) }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div><!--end .panel -->

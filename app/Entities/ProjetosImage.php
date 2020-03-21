@@ -33,7 +33,7 @@ class ProjetosImage extends Model
      * @var array
      */
     protected $fillable = [
-        'image',
+        'descricao_image',
         'descricao'
 
     ];
