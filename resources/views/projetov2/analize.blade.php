@@ -340,7 +340,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    @if($projetov2->ProjetosDocumento->cpf_cnh_rg_imag)
+                                    @if($projetov2->ProjetosDocumento->cpf_cnh_rg_image)
                                         <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cpf_cnh_rg_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                                     @endif
                                 </div>
