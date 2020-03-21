@@ -260,7 +260,7 @@
                                             <div class="form-group">
                                                 <label for="percentual" class="col-sm-6 control-label text-bold">Percentual.:</label>
                                                 <div class="col-md-6">
-                                                    <input class="form-control input-sm" name="percentual[]" type="text" id="percentual" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
+                                                    <input class="form-control input-sm" name="percentual[]" type="text" id="percentual[]" value="{{ old('percentual', isset($contrato) ? $contrato->percentual : null) }}" placeholder="%">
                                                 </div>
                                             </div>
                                         </div>
@@ -269,7 +269,7 @@
                                             <div class="form-group">
                                                 <label for="image" class="col-sm-3 control-label text-bold"><a target="_blank" href="{{ url("/storage/{$contrato->image}") }}" >Link Arquivo</a></label>
                                                 <div class="col-md-9">
-                                                    <input readonly class="form-control input-sm" name="image[]" type="text" id="image" value="{{ old('image', isset($contrato) ? $contrato->image : null) }}">
+                                                    <input readonly class="form-control input-sm" name="image[]" type="text" id="image[]" value="{{ old('image', isset($contrato) ? $contrato->image : null) }}">
                                                 </div>
                                             </div>
                                         </div>

@@ -42,8 +42,10 @@ trait UtilFiles
                     $nameFile = "{$name}.{$extension}";
                 }
 
+
                 $fileStatus = $file->move("storage",$nameFile);
                 if ( $fileStatus ){
+
                     return $nameFile;
                 }
             } catch (FileNotFoundException $e) {
