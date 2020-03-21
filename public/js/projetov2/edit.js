@@ -99,13 +99,13 @@ $(document).ready(function () {
 
         $(".after-add-more").before(html);
 
-        $("body").on("click",".remove",function(){
-            console.log("wwwww");
-            $(this).parents(".copy").remove();
-        });
 
 
+    });
 
+    $("body").on("click",".remove",function(){
+        console.log("wwwww");
+        $(this).parents(".copy").remove();
     });
 
 });

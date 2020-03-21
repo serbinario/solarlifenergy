@@ -157,7 +157,7 @@ class Projetov2Controller extends Controller
      */
     public function edit($id)
     {
-        $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos')->findOrFail($id);
+        $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
         $clientes = Cliente::pluck('nome','id')->all();
         $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
         $PrePropostas = PreProposta::pluck('codigo','id')->all();
@@ -166,6 +166,7 @@ class Projetov2Controller extends Controller
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
 
+        //dd($projetov2->imagens);
         return view('projetov2.edit', compact('projetov2','clientes','projetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
 
