@@ -221,10 +221,13 @@ class Projetov2Controller extends Controller
                 $execursao->getColumnsTable()
             );
 
+           // dd($execursao->parecer_relacionamento_image);
+
             $nameFileAcesso = $this->ImageStore($request, 'parecer_acesso_image', $execursao->parecer_acesso_image);
             $nameFileRelacionamento = $this->ImageStore($request, 'parecer_relacionamento_image', $execursao->parecer_relacionamento_image);
             $execursaoData['parecer_acesso_image'] = $nameFileAcesso;
             $execursaoData['parecer_relacionamento_image'] = $nameFileRelacionamento;
+            //dd($execursaoData);
             $execursao->update($execursaoData);
 
 
@@ -248,38 +251,46 @@ class Projetov2Controller extends Controller
             $finalizado->update($finalizadoData);
 
 
+            //dd($request->all());
             //Deleta primeiro todos os registors dos contratos
-            $contratos = $progetov2->contratos()->delete();
+            //$contratos = $progetov2->contratos()->delete();
 
             $files = $request->file('imageN');
+
             if(isset($files)){
                 foreach($files as $key => $file)
                 {
-                    $nameFile = $this->ImageStoreV2($file, 'parecer_acesso_image', null);
+                    $nameFile = $this->ImageStoreV2($file, 'parecer_acesso_imageN', null);
+
                     $contratos = $progetov2->contratos()->create([
-                        'num_contacontrato' => $request->num_contacontratoN[$key],
-                        'percentual' => $request->percentualN[$key],
+                        'num_contacontrato' => isset($request->num_contacontratoN[$key])? $request->num_contacontratoN[$key]: null ,
+                        'percentual' => isset($request->percentualN[$key])? $request->percentualN[$key]: null ,
                         'image' => $nameFile,
-                        'contrato_titularidade' => $request->contrato_titularidade[$key]
+                        'contrato_titularidade' => isset($request->contrato_titularidadeN[$key])? $request->contrato_titularidadeN[$key]: null ,
                     ]);
+                   // dd($request->num_contacontratoN[0]);
                 }
             }
 
-            /*
+
+
+           /* /*
              * 1- Pega do formulario uma array chamada num_contrato
              * 2 - se vinher alguma vazia e limpa com o metodo array_filter
              * 3 - E inserido em contrados
              */
 
-            for($i = 0; $i < count($request->num_contacontrato); $i++){
+            //dd(isset($request->num_contacontrato[4])? "v": "f");
+
+           /* for($i = 0; $i < count($request->num_contacontrato); $i++){
 
                 $contratos = $progetov2->contratos()->create([
-                    'num_contacontrato' => $request->num_contacontrato[$i],
-                    'percentual' => $request->percentual[$i],
-                    'image' => $request->image[$i],
-                    'contrato_titularidade' => $request->contrato_titularidade[$i]
+                    'num_contacontrato' => isset($request->num_contacontrato[$i])? $request->num_contacontrato[$i]: null,
+                    'percentual' => isset($request->percentual[$i])? $request->percentual[$i]: null,
+                    'image' => isset($request->$request->image[$i])? $request->$request->image[$i]: null,
+                    'contrato_titularidade' => isset($request->contrato_titularidade[$i])? $request->contrato_titularidade[$i]: null,
                 ]);
-            }
+            }*/
 
             $progetov2->update($data);
 
