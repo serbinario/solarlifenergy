@@ -206,11 +206,18 @@ class Projetov2Controller extends Controller
             $nameFileCpfCnhRgConju = $this->ImageStore($request, 'cpf_cnh_rg_conjugue_image', $analizeDocumento->cpf_cnh_rg_conjugue_image);
             $nameFileCertidaoCasamento = $this->ImageStore($request, 'certidao_casamento_image', $analizeDocumento->certidao_casamento_image);
             $nameFileFichaElaboracao = $this->ImageStore($request, 'ficha_elaboracao_projeto_image', $analizeDocumento->ficha_elaboracao_projeto_image);
+            $nameFileDeclaracao = $this->ImageStore($request, 'declaracao_ciencia_image', $analizeDocumento->declaracao_ciencia_image);
+            $nameFileProposta = $this->ImageStore($request, 'proposta_image', $analizeDocumento->proposta_image);
+            $nameFileContrato = $this->ImageStore($request, 'contrato_image', $analizeDocumento->contrato_image);
+
             $analizeDocumentoData['cpf_cnh_rg_image'] = $nameFileCpf_cnh_rg;
             $analizeDocumentoData['conprovante_residencia_image'] = $nameFileComproResi;
             $analizeDocumentoData['cpf_cnh_rg_conjugue_image'] = $nameFileCpfCnhRgConju;
             $analizeDocumentoData['certidao_casamento_image'] = $nameFileCertidaoCasamento;
             $analizeDocumentoData['ficha_elaboracao_projeto_image'] = $nameFileFichaElaboracao;
+            $analizeDocumentoData['declaracao_ciencia_image'] = $nameFileDeclaracao;
+            $analizeDocumentoData['proposta_image'] = $nameFileProposta;
+            $analizeDocumentoData['contrato_image'] = $nameFileContrato;
             $analizeDocumento->update($analizeDocumentoData);
 
 
