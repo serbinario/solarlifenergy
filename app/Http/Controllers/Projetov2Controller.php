@@ -4,7 +4,7 @@ namespace Serbinario\Http\Controllers;
 
 
 //meu teste
-
+use Serbinario\User;
 use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Endereco;
@@ -61,6 +61,7 @@ class Projetov2Controller extends Controller
         $rows = \DB::table('projetosv2')
             ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->leftJoin('users', 'pre_propostas.user_id', '=', 'users.id')
             ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetosv2.projeto_status_id')
             ->leftJoin('projetos_finalizado', 'projetos_finalizado.id', '=', 'projetosv2.projeto_finalizado_id')
             ->leftJoin('projetos_prioridades', 'projetos_prioridades.id', '=', 'projetosv2.projeto_prioridade_id')
@@ -74,6 +75,14 @@ class Projetov2Controller extends Controller
                 \DB::raw('DATE_FORMAT(projetosv2.data_prevista,"%d/%m/%Y") as data_prevista'),
                 'projetos_status.status_nome'
             ]);
+
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if(!$user->hasRole('admin')) {
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
@@ -92,7 +101,7 @@ class Projetov2Controller extends Controller
                         </form>
                         ';
             }else{
-                
+
                 return '';
             }
 
@@ -167,16 +176,10 @@ class Projetov2Controller extends Controller
     {
 
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
-        $clientes = Cliente::pluck('nome','id')->all();
         $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
-        $PrePropostas = PreProposta::pluck('codigo','id')->all();
-        $Enderecos = Endereco::pluck('id','id')->all();
-        $ProjetosDocumentos = ProjetosDocumento::pluck('id','id')->all();
-        $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
-        $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
 
         //dd($projetov2->imagens);
-        return view('projetov2.edit', compact('projetov2','clientes','projetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
+        return view('projetov2.edit', compact('projetov2','projetosStatus'));
     }
 
     /**
