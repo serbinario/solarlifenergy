@@ -53,9 +53,7 @@ $(document).ready(function () {
         html +=         '<label for="num_contacontrato" class="col-sm-6 control-label text-bold">C/Contrato.:</label>'
         html +=         '<div class="col-md-6">'
         html += '           <div class="">'
-        html +=                 '<label for="parecer_relacionamento">'
         html +=                     '<input class="form-control input-sm" name="num_contacontratoN[]" type="text" id="num_contacontrato[]" value="">'
-        html +=                 '</label>'
         html +=             '</div>'
         html +=         '</div>'
         html +=     '</div>'
@@ -101,6 +99,38 @@ $(document).ready(function () {
 
 
 
+    });
+
+    $(".add-more-documento").click(function(){
+
+
+        var html = '<div class="row copy">'
+        html += '<div class="col-sm-6">'
+        html +=     '<div class="form-group">'
+        html +=         '<label for="descricao" class="col-sm-4 control-label text-bold">Descrição.:</label>'
+        html +=         '<div class="col-md-8">'
+        html +=               '<input class="form-control input-sm" name="descricaoN[]" type="text" id="descricaoN[]" value="">'
+        html +=         '</div>'
+        html +=     '</div>'
+        html += '</div>'
+        html += '<div class="col-sm-5">'
+        html += '   <div class="form-group">'
+        html += '       <label for="image" class="col-sm-3 control-label text-bold">Link Arquivo</label>'
+        html += '       <div class="col-md-9">'
+        html += '           <input readonly class="form-control input-sm" name="descricao_imageN[]" type="file" id="descricao_imageN[]" value="">'
+        html += '       </div>'
+        html += '   </div>'
+        html += '</div>'
+        html += '<div class="col-sm-1">'
+        html +=     '<div class="form-group">'
+        html +=         '<div class="col-md-2">'
+        html +=             '<button class="btn btn-danger remove btn-sm" type="button"><i class="glyphicon glyphicon-remove"></i></button>'
+        html +=         '</div>'
+        html +=     '</div>'
+        html += '</div>'
+
+
+        $(".after-add-more-documento").before(html);
     });
 
     $("body").on("click",".remove",function(){

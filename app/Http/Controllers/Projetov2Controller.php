@@ -273,6 +273,37 @@ class Projetov2Controller extends Controller
                 }
             }
 
+            $files = $request->file('descricao_image');
+
+            if(isset($files)){
+                foreach($files as $key => $file)
+                {
+                    $nameFile = $this->ImageStoreV2($file, 'descricao_image', null);
+
+                    $contratos = $progetov2->imagens()->create([
+                        'descricao' => isset($request->descricao[$key])? $request->descricao[$key]: null ,
+                        'descricao_image' => $nameFile,
+
+                    ]);
+                    // dd($request->num_contacontratoN[0]);
+                }
+            }
+
+            $files = $request->file('descricao_imageN');
+
+            if(isset($files)){
+                foreach($files as $key => $file)
+                {
+                    $nameFile = $this->ImageStoreV2($file, 'descricao_imageN', null);
+
+                    $contratos = $progetov2->imagens()->create([
+                        'descricao' => isset($request->descricaoN[$key])? $request->descricaoN[$key]: null ,
+                        'descricao_image' => $nameFile,
+
+                    ]);
+                    // dd($request->num_contacontratoN[0]);
+                }
+            }
 
 
            /* /*
