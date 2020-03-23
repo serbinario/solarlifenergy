@@ -504,6 +504,21 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <div class="row after-add-more-documento">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <label for="">
+                                                <button class="btn btn-primary add-more-documento btn-sm" type="button"><i class="glyphicon glyphicon-plus"></i> Documento</button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div><!--end .panel -->
