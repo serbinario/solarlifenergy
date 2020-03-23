@@ -5,6 +5,7 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 
+use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\PreProposta;
@@ -76,7 +77,9 @@ class Projetov2Controller extends Controller
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
-            return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
+
+            if(Auth::user()->roles()->first()->name == 'admin'){
+                return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">
@@ -88,6 +91,10 @@ class Projetov2Controller extends Controller
                             </div>
                         </form>
                         ';
+            }else{
+                return '';
+            }
+
         })->make(true);
     }
 
@@ -157,6 +164,7 @@ class Projetov2Controller extends Controller
      */
     public function edit($id)
     {
+
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
         $clientes = Cliente::pluck('nome','id')->all();
         $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
