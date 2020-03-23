@@ -23,7 +23,13 @@ class ProjetosDocumento extends Model
         'certidao_casamento',
         'certidao_casamento_image',
         'ficha_elaboracao_projeto',
-        'ficha_elaboracao_projeto_image'
+        'ficha_elaboracao_projeto_image',
+        'declaracao_ciencia',
+        'declaracao_ciencia_image',
+        'proposta',
+        'proposta_image',
+        'contrato',
+        'contrato_image'
     ];
 
     protected $guarded = [];
