@@ -200,6 +200,7 @@ class UtilController extends Controller
             $data['projeto_execurcao_id'] = $endereco->id;
             $data['endereco_id'] = $endereco->id;
             $data['projeto_finalizando_id'] = $projetosFinalizando->id;
+            $data['projeto_finalizado_id'] = $projetosFinalizado->id;
             $data['projeto_prioridade_id'] = 1;
 
             Projetov2::create($data);
