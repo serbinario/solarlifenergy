@@ -19,7 +19,8 @@ class ProjetosExecurcao extends Model
         'validar_unidade_geradora',
         'elaborar_projeto',
         'emitir_art',
-        'submeter_projeto',
+        'solicitacao_acesso',
+        'obter_protocolo_data_prevista',
         'submeter_projeto_image',
         'submeter_projeto_data',
         'obter_protocolo',
@@ -57,6 +58,28 @@ class ProjetosExecurcao extends Model
      * @return array
      */
     public function getObterProtocoloDataAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setObterProtocoloDataPrevistaAttribute($value)
+    {
+        $this->attributes['obter_protocolo_data_prevista'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getObterProtocoloDataPrevistaAttribute($value)
     {
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
     }

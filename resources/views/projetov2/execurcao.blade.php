@@ -2,7 +2,7 @@
     <div class="col-md-12"> <!-- Início do col-md-12 -->
 
         <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
-            <label for="material_entrege" class="col-md-2 control-label text-bold">Material Entrege.:</label>
+            <label for="material_entrege" class="col-md-2 control-label text-bold">Material Entregue.:</label>
             <div class="col-md-10">
                 <div class="checkbox checkbox-styled">
                     <label for="material_entrege">
@@ -59,11 +59,11 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="monthly_usage" class="col-sm-8 control-label text-bold">Submeter Projeto.:</label>
+                    <label for="solicitacao_acesso" class="col-sm-8 control-label text-bold">Solicitação de Acesso.:</label>
                     <div class="col-md-4">
                         <div class="checkbox checkbox-styled">
-                            <label for="submeter_projeto">
-                                <input id="submeter_projeto" class="" name="submeter_projeto" type="checkbox" value="1" {{ old('submeter_projeto', isset($projetov2->ProjetosExecurcao->submeter_projeto) ? $projetov2->ProjetosExecurcao->submeter_projeto : null) == '1' ? 'checked' : '' }}>
+                            <label for="solicitacao_acesso">
+                                <input id="solicitacao_acesso" class="" name="solicitacao_acesso" type="checkbox" value="1" {{ old('solicitacao_acesso', isset($projetov2->ProjetosExecurcao->solicitacao_acesso) ? $projetov2->ProjetosExecurcao->solicitacao_acesso : null) == '1' ? 'checked' : '' }}>
                             </label>
                         </div>
 
@@ -80,7 +80,16 @@
                 </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="obter_protocolo_data_prevista" class="col-sm-6 control-label text-bold">Data Prevista.:</label>
+                    <div class="col-md-5">
+                        <input class="form-control input-sm date" name="obter_protocolo_data_prevista" type="text" id="obter_protocolo_data_prevista" value="{{ old('obter_protocolo_data_prevista', isset($projetov2->ProjetosExecurcao->obter_protocolo_data_prevista) ? $projetov2->ProjetosExecurcao->obter_protocolo_data_prevista : null) }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="monthly_usage" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
                     <div class="col-md-5">
