@@ -411,6 +411,13 @@ class PreProposta extends Model
         return $this->converteInglesReal($value);
     }
 
+    public function getRecursoProprioAttribute($value)
+    {
+        return $value;
+    }
+
+
+
 
 
 }

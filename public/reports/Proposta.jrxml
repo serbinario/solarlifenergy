@@ -586,7 +586,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} + " - BAIRRO: " + $F{bairro}  : "ENDEREÇO: "  ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} + " - BAIRRO: " + $F{bairro}  : "ENDEREÇO: "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="220" height="15" uuid="b2499200-8b14-4cbf-8ed3-7893e24cc890">
@@ -3105,7 +3105,7 @@ instalação com todos os equipamentos funcionando em perfeito.]]></text>
 				<reportElement x="0" y="460" width="788" height="47" uuid="e6938958-1cb8-4b39-8e7f-fc688bcd6076"/>
 				<text><![CDATA[Rua Dr. José Bezerra Filho, No. 61 – Centro – Cabo de Santo Agostinho - PE
 CNPJ 00.823.358/0001-14 INSC 18.3.080.0276735-1
-Fone (81) 3524-1290 81 3518-0563 E-mail: josiasjunior@solarlifenergy.com.br]]></text>
+Fone (81) 3524-1290 (81) 98281-5540  E-mail: josiasjunior@solarlifenergy.com.br]]></text>
 			</staticText>
 			<line>
 				<reportElement x="89" y="416" width="200" height="1" uuid="474c151d-3314-49b4-8a97-0be4f520fe9e">

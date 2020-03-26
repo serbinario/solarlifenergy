@@ -602,7 +602,7 @@
                                 <div class="form-group">
                                     <label for="cpf" class="col-sm-5 control-label text-bold">Recurso SLE.:</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm money" name="recurso_proprio" type="text" id="recurso_proprio" value="{{ old('recurso_proprio', isset($preProposta->recurso_proprio) ? $preProposta->recurso_proprio : null) }}" maxlength="11" >
+                                        <input class="form-control input-sm money" name="recurso_proprio" type="text" id="recurso_proprio" value="{{ old('recurso_proprio', isset($preProposta->recurso_proprio) ? $preProposta->recurso_proprio : null) }}" >
                                         {!! $errors->first('recurso_proprio', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
