@@ -4,6 +4,8 @@
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="708"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="278"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
@@ -77,67 +79,57 @@
 	</style>
 	<subDataset name="contratos" uuid="ecfab627-bb23-4ebe-957a-65aeac4c80a3">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SolarLife"/>
-		<parameter name="idCliente2" class="java.lang.Integer"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<parameter name="idProjeto" class="java.lang.String"/>
 		<queryString language="SQL">
-			<![CDATA[SELECT a.id,
-	a.nome,
-	cc.num_contrato,
-	cc.percentual
-FROM clientes AS a
-	INNER JOIN projetos AS p ON p.clientes_id = a.id
-	INNER JOIN contrato_celpe AS cc ON cc.projetos_id = p.id
-WHERE a.id = $P{idCliente2}]]>
+			<![CDATA[SELECT 
+	pcc.`num_contacontrato`,
+	pcc.`percentual`
+FROM projetosv2 AS p
+INNER JOIN projetos_contas_contrato AS pcc ON pcc.`projetov2_id` = p.`id`
+where pcc.`projetov2_id` =  $P{idProjeto} ]]>
 		</queryString>
-		<field name="id" class="java.lang.Long">
-			<property name="com.jaspersoft.studio.field.label" value="id"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+		<field name="num_contacontrato" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="num_contacontrato"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="projetos_contas_contrato"/>
 		</field>
-		<field name="nome" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.label" value="nome"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-		</field>
-		<field name="num_contrato" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.label" value="num_contrato"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="contrato_celpe"/>
-		</field>
-		<field name="percentual" class="java.lang.Integer">
+		<field name="percentual" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="percentual"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="contrato_celpe"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="projetos_contas_contrato"/>
 		</field>
 	</subDataset>
 	<parameter name="idProjeto" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[SELECT a.id,
+		<![CDATA[SELECT 
+	p.id,
 	a.nome,
-	a.endereco,
 	a.celular,
 	a.nome_empresa,
-	p.end_intalacao,
+	a.endereco,
 	p.res_acompanhamento,
 	p.res_documentacao,
-	p.projeto_codigo,
-	p.prioridade,
-	p.kw,
+	p.`obs`,
+	p.`data_prevista`,
+	pre.potencia_instalada,
+	pre.codigo,
 	p.conta_contrato_atual,
-	p.data_prevista,
-	u.name,
-	p.obs
-FROM clientes AS a
-INNER JOIN projetos AS p ON p.clientes_id = a.id
-INNER JOIN users AS u ON p.users_id = u.id
-WHERE p.id = $P{idProjeto}]]>
+	e.`logradouro`,
+	prio.`prioridade_nome`,
+	u.name
+FROM projetosv2 AS p
+INNER JOIN pre_propostas AS pre ON pre.id = p.proposta_id
+INNER JOIN clientes AS a ON a.id = pre.cliente_id
+INNER JOIN projetos_prioridades AS prio ON prio.id = p.`projeto_prioridade_id`
+INNER JOIN enderecos AS e ON  e.id = p.`endereco_id`
+INNER JOIN users AS u ON u.id = pre.`user_id`
+WHERE p.id =  $P{idProjeto}]]>
 	</queryString>
-	<field name="id" class="java.lang.Integer">
+	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
-	<field name="endereco" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="celular" class="java.lang.String">
@@ -148,45 +140,49 @@ WHERE p.id = $P{idProjeto}]]>
 		<property name="com.jaspersoft.studio.field.label" value="nome_empresa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="end_intalacao" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="end_intalacao"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="res_acompanhamento" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="res_acompanhamento"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
 	<field name="res_documentacao" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="res_documentacao"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
-	<field name="projeto_codigo" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="projeto_codigo"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
-	</field>
-	<field name="prioridade" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="prioridade"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
-	</field>
-	<field name="kw" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="kw"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
-	</field>
-	<field name="conta_contrato_atual" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="conta_contrato_atual"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="obs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="obs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
 	<field name="data_prevista" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="data_prevista"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
+	</field>
+	<field name="potencia_instalada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="conta_contrato_atual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="conta_contrato_atual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="logradouro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="prioridade_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prioridade_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos_prioridades"/>
 	</field>
 	<field name="name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="obs" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="obs"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
 	</field>
 	<title>
 		<band height="246" splitType="Stretch">
@@ -329,7 +325,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{projeto_codigo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="95" y="25" width="335" height="15" uuid="4c4b718c-a8fc-4c71-97dc-e69c2d40f2c0"/>
@@ -385,8 +381,8 @@ WHERE p.id = $P{idProjeto}]]>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="contratos" uuid="28f6c926-4c17-4050-ab31-ea1385a6650f">
-						<datasetParameter name="idCliente2">
+					<datasetRun subDataset="contratos" uuid="b50cf36b-6e35-4fdc-990a-0cac2e8d564c">
+						<datasetParameter name="idProjeto">
 							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -408,7 +404,7 @@ WHERE p.id = $P{idProjeto}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
 									<font size="12"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{num_contrato}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{num_contacontrato}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -460,7 +456,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{end_intalacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="240" y="75" width="266" height="18" uuid="3a399171-7b70-4ad8-8445-f6c0a4b2861d">
@@ -511,7 +507,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{prioridade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prioridade_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="95" width="266" height="18" uuid="61614e17-aea9-4629-9ffe-32b59d35a170">
@@ -520,7 +516,7 @@ WHERE p.id = $P{idProjeto}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{kw} == null ? "" : new DecimalFormat("#,##0.00").format($F{kw})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{potencia_instalada}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="136" width="210" height="33" uuid="8dec7741-bab5-4c9e-9b96-c47046f993cc">
