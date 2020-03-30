@@ -12,7 +12,7 @@ class ProjetosImage extends Model
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
     /**
      * The database table used by the model.
      *
