@@ -19,6 +19,7 @@ class ProjetosExecurcao extends Model
         'validar_unidade_geradora',
         'elaborar_projeto',
         'emitir_art',
+        'emitir_art_image',
         'solicitacao_acesso',
         'obter_protocolo_data_prevista',
         'submeter_projeto_image',

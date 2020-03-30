@@ -124,6 +124,140 @@
     </div>
 </div>
 
+
+
+@if($projetov2->PreProposta->cliente->tipo == "Juridico")
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="contrato" class="col-sm-8 control-label text-bold">Cartão CNPJ.:</label>
+                <div class="col-md-4">
+                    <div class="checkbox checkbox-styled">
+                        <label for="cartao_cnpj">
+                            <input id="cartao_cnpj" class="" name="cartao_cnpj" type="checkbox" value="1" {{ old('cartao_cnpj', isset($projetov2->ProjetosDocumento->cartao_cnpj) ? $projetov2->ProjetosDocumento->cartao_cnpj : null) == '1' ? 'checked' : '' }}>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                <label for="cartao_cnpj_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                <div class="col-md-9">
+                    <input class="form-control input-sm" name="cartao_cnpj_image" type="file" id="cartao_cnpj_image">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                @if($projetov2->ProjetosDocumento->cartao_cnpj_image)
+                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->cartao_cnpj_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                @endif
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="contrato_social" class="col-sm-8 control-label text-bold">Contrato Social.:</label>
+                <div class="col-md-4">
+                    <div class="checkbox checkbox-styled">
+                        <label for="contrato_social">
+                            <input id="contrato_social" class="" name="contrato_social" type="checkbox" value="1" {{ old('contrato_social', isset($projetov2->ProjetosDocumento->contrato_social) ? $projetov2->ProjetosDocumento->contrato_social : null) == '1' ? 'checked' : '' }}>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                <label for="contrato_social_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                <div class="col-md-9">
+                    <input class="form-control input-sm" name="contrato_social_image" type="file" id="contrato_social_image">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                @if($projetov2->ProjetosDocumento->contrato_social_image)
+                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->contrato_social_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                @endif
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="faturamento" class="col-sm-8 control-label text-bold">Faturamento.:</label>
+                <div class="col-md-4">
+                    <div class="checkbox checkbox-styled">
+                        <label for="faturamento">
+                            <input id="faturamento" class="" name="faturamento" type="checkbox" value="1" {{ old('faturamento', isset($projetov2->ProjetosDocumento->faturamento) ? $projetov2->ProjetosDocumento->faturamento : null) == '1' ? 'checked' : '' }}>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                <label for="faturamento_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                <div class="col-md-9">
+                    <input class="form-control input-sm" name="faturamento_image" type="file" id="faturamento_image">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                @if($projetov2->ProjetosDocumento->faturamento_image)
+                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->faturamento_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                @endif
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="comprovante_renda" class="col-sm-8 control-label text-bold">Comprovante de Renda.:</label>
+                <div class="col-md-4">
+                    <div class="checkbox checkbox-styled">
+                        <label for="comprovante_renda">
+                            <input id="comprovante_renda" class="" name="comprovante_renda" type="checkbox" value="1" {{ old('comprovante_renda', isset($projetov2->ProjetosDocumento->comprovante_renda) ? $projetov2->ProjetosDocumento->comprovante_renda : null) == '1' ? 'checked' : '' }}>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                <label for="comprovante_renda_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+                <div class="col-md-9">
+                    <input class="form-control input-sm" name="comprovante_renda_image" type="file" id="comprovante_renda_image">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                @if($projetov2->ProjetosDocumento->comprovante_renda_image)
+                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->comprovante_renda_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+                @endif
+
+            </div>
+        </div>
+    </div>
+@endif
+
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group">
