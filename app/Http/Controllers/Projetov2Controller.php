@@ -92,7 +92,7 @@ class Projetov2Controller extends Controller
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">
-                               <a href="/report/'.$row->id.'/FichaElaboracaoProjeto" class="btn btn-primary" target="_blank" title="Relatorio">
+                               <a href="/report/'.$row->id.'/FichaElaboracaoProjeto" class="btn btn-primary" target="_blank" title="Ficha de Elaboração de Projeto">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
                                 <a href="projetov2/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
@@ -224,6 +224,12 @@ class Projetov2Controller extends Controller
             $nameFileProposta = $this->ImageStore($request, 'proposta_image', $analizeDocumento->proposta_image);
             $nameFileContrato = $this->ImageStore($request, 'contrato_image', $analizeDocumento->contrato_image);
 
+            $nameFileCartaoCNPJ = $this->ImageStore($request, 'cartao_cnpj_image', $analizeDocumento->cartao_cnpj_image);
+            $nameFileDContratoSocial = $this->ImageStore($request, 'contrato_social_image', $analizeDocumento->contrato_social_image);
+            $nameFileFaturamento = $this->ImageStore($request, 'faturamento_image', $analizeDocumento->faturamento_image);
+            $nameFileComprovanteRenda = $this->ImageStore($request, 'comprovante_renda_image', $analizeDocumento->comprovante_renda_image);
+
+
             $analizeDocumentoData['cpf_cnh_rg_image'] = $nameFileCpf_cnh_rg;
             $analizeDocumentoData['conprovante_residencia_image'] = $nameFileComproResi;
             $analizeDocumentoData['cpf_cnh_rg_conjugue_image'] = $nameFileCpfCnhRgConju;
@@ -232,6 +238,12 @@ class Projetov2Controller extends Controller
             $analizeDocumentoData['declaracao_ciencia_image'] = $nameFileDeclaracao;
             $analizeDocumentoData['proposta_image'] = $nameFileProposta;
             $analizeDocumentoData['contrato_image'] = $nameFileContrato;
+
+            $analizeDocumentoData['cartao_cnpj_image'] = $nameFileCartaoCNPJ;
+            $analizeDocumentoData['contrato_social_image'] = $nameFileDContratoSocial;
+            $analizeDocumentoData['faturamento_image'] = $nameFileFaturamento;
+            $analizeDocumentoData['comprovante_renda_image'] = $nameFileComprovanteRenda;
+
             $analizeDocumento->update($analizeDocumentoData);
 
 
@@ -247,8 +259,12 @@ class Projetov2Controller extends Controller
 
             $nameFileAcesso = $this->ImageStore($request, 'parecer_acesso_image', $execursao->parecer_acesso_image);
             $nameFileRelacionamento = $this->ImageStore($request, 'parecer_relacionamento_image', $execursao->parecer_relacionamento_image);
+            $nameFileART = $this->ImageStore($request, 'emitir_art_image', $execursao->emitir_art_image);
+
+
             $execursaoData['parecer_acesso_image'] = $nameFileAcesso;
             $execursaoData['parecer_relacionamento_image'] = $nameFileRelacionamento;
+            $execursaoData['emitir_art_image'] = $nameFileART;
             //dd($execursaoData);
             $execursao->update($execursaoData);
 

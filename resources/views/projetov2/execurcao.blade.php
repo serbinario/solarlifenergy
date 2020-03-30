@@ -40,19 +40,36 @@
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('emitir_art') ? 'has-emitir_art' : '' }}">
-            <label for="emitir_art" class="col-md-2 control-label text-bold">Emitido ART?.:</label>
-            <div class="col-md-10">
-                <div class="checkbox checkbox-styled">
-                    <label for="emitir_art">
-                        <input id="emitir_art" class="" name="emitir_art" type="checkbox" value="1" {{ old('emitir_art', isset($projetov2->ProjetosExecurcao->emitir_art) ? $projetov2->ProjetosExecurcao->emitir_art : null) == '1' ? 'checked' : '' }}>
-                    </label>
-                </div>
 
-                {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="emitir_art" class="col-sm-8 control-label text-bold">Emitido ART?.:</label>
+                    <div class="col-md-4">
+                        <div class="checkbox checkbox-styled">
+                            <label for="emitir_art">
+                                <input id="emitir_art" class="" name="emitir_art" type="checkbox" value="1" {{ old('emitir_art', isset($projetov2->ProjetosExecurcao->emitir_art) ? $projetov2->ProjetosExecurcao->emitir_art : null) == '1' ? 'checked' : '' }}>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="emitir_art_image" class="col-sm-2 control-label text-bold">Documento.:</label>
+                    <div class="col-md-9">
+                        <input class="form-control input-sm" name="emitir_art_image" type="file" id="emitir_art_image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @if($projetov2->ProjetosExecurcao->emitir_art_image)
+                        <a target="_blank"  href="{{ url("/storage/{$projetov2->ProjetosExecurcao->emitir_art_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @endif
+                </div>
             </div>
         </div>
-
 
 
 

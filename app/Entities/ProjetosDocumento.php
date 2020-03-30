@@ -29,7 +29,15 @@ class ProjetosDocumento extends Model
         'proposta',
         'proposta_image',
         'contrato',
-        'contrato_image'
+        'contrato_image',
+        'cartao_cnpj',
+        'cartao_cnpj_image',
+        'contrato_social',
+        'contrato_social_image',
+        'faturamento',
+        'faturamento_image',
+        'comprovante_renda',
+        'comprovante_renda_image'
     ];
 
     protected $guarded = [];
