@@ -108,9 +108,9 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="monthly_usage" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
+                    <label for="obter_protocolo_numero" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
                     <div class="col-md-5">
-                        <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('probter_protocolo_numeroeco_kwh', isset($projetov2->ProjetosExecurcao->obter_protocolo_numero) ? $projetov2->ProjetosExecurcao->obter_protocolo_numero : "") }}">
+                        <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('obter_protocolo_numero', isset($projetov2->ProjetosExecurcao->obter_protocolo_numero) ? $projetov2->ProjetosExecurcao->obter_protocolo_numero : "") }}">
                     </div>
                 </div>
             </div>
