@@ -1,28 +1,14 @@
 <div class="row">
     <div class="col-md-12"> <!-- Início do col-md-12 -->
 
-        <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
-            <label for="submeter_vistoria" class="col-md-2 control-label text-bold">Submetido Vistoria?:</label>
-            <div class="col-md-10">
-                <div class="checkbox checkbox-styled">
-                    <label for="submeter_vistoria">
-                        <input id="submeter_vistoria" class="" name="submeter_vistoria" type="checkbox" value="1" {{ old('submeter_vistoria', isset($projetov2->ProjetosFinalizando->submeter_vistoria) ? $projetov2->ProjetosFinalizando->submeter_vistoria : null) == '1' ? 'checked' : '' }}>
-                    </label>
-                </div>
-
-                {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-
-
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="obter_protocolo" class="col-sm-8 control-label text-bold">Obtido Protocolo?.:</label>
+                    <label for="solicitacao_vistoria" class="col-sm-8 control-label text-bold">Solicitação de Vistoria.:</label>
                     <div class="col-md-4">
                         <div class="checkbox checkbox-styled">
-                            <label for="obter_protocolo">
-                                <input id="obter_protocolo" class="" name="obter_protocolo" type="checkbox" value="1" {{ old('obter_protocolo', isset($projetov2->ProjetosFinalizando->obter_protocolo) ? $projetov2->ProjetosFinalizando->obter_protocolo : null) == '1' ? 'checked' : '' }}>
+                            <label for="solicitacao_vistoria">
+                                <input id="solicitacao_vistoria" class="" name="solicitacao_vistoria" type="checkbox" value="1" {{ old('solicitacao_vistoria', isset($projetov2->ProjetosFinalizando->solicitacao_vistoria) ? $projetov2->ProjetosFinalizando->solicitacao_vistoria : null) == '1' ? 'checked' : '' }}>
                             </label>
                         </div>
 
@@ -32,9 +18,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="obter_protocolo_numero" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
+                    <label for="obter_protocolo_vistoria_numero" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
                     <div class="col-md-5">
-                        <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('obter_protocolo_numero', isset($projetov2->ProjetosFinalizando->obter_protocolo_numero) ? $projetov2->ProjetosFinalizando->obter_protocolo_numero : "") }}">
+                        <input class="form-control input-sm" name="obter_protocolo_vistoria_numero" type="text" id="obter_protocolo_vistoria_numero" value="{{ old('obter_protocolo_vistoria_numero', isset($projetov2->ProjetosFinalizando->obter_protocolo_vistoria_numero) ? $projetov2->ProjetosFinalizando->obter_protocolo_vistoria_numero : "") }}">
                     </div>
                 </div>
             </div>

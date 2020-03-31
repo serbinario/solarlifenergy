@@ -14,9 +14,8 @@ class ProjetosFinalizando extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'submeter_vistoria',
-        'obter_protocolo',
-        'obter_protocolo_numero',
+        'solicitacao_vistoria',
+        'obter_protocolo_vistoria_numero',
         'agendar',
         'agendar_nota',
         'agendar_data',
