@@ -61,7 +61,8 @@ class Cliente extends Model
         'nacionalidade',
         'bairro',
         'meio_captacao_id',
-        'telefone'
+        'telefone',
+        'palavras_chave'
     ];
 
     public function getTableColumns() {
