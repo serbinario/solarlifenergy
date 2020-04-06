@@ -291,6 +291,16 @@
         </div>
     </div>
 
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="palavras_chave" class="col-sm-2 control-label text-bold">Palavras Chaves.:</label>
+            <div class="col-md-10">
+                <input class="form-control input-sm" name="palavras_chave" type="text" id="palavras_chave" value="{{ old('palavras_chave', isset($cliente->palavras_chave) ? $cliente->palavras_chave : null) }}">
+            </div>
+        </div>
+    </div>
+    </div>
 
     <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
         <label for="obs" class="col-md-2 control-label text-bold">Obs.:</label>

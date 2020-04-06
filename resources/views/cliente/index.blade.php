@@ -49,10 +49,10 @@
                                     <div id="accordion7-1" class="collapse">
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="nome" class="col-sm-2 control-label">Cliente:</label>
-                                                        <div class="col-md-10">
+                                                        <div class="col-md-6">
                                                             <input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="Nome">
                                                         </div>
                                                     </div>

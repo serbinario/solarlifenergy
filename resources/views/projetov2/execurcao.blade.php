@@ -88,6 +88,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="obter_protocolo_numero" class="col-sm-6 control-label text-bold">Protocolo Número.:</label>
+                    <div class="col-md-6">
+                        <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('obter_protocolo_numero', isset($projetov2->ProjetosExecurcao->obter_protocolo_numero) ? $projetov2->ProjetosExecurcao->obter_protocolo_numero : "") }}">
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="obter_protocolo_data" class="col-sm-6 control-label text-bold">Data Protocolo.:</label>
@@ -106,14 +115,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="obter_protocolo_numero" class="col-sm-7 control-label text-bold">Protocolo Número.:</label>
-                    <div class="col-md-5">
-                        <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('obter_protocolo_numero', isset($projetov2->ProjetosExecurcao->obter_protocolo_numero) ? $projetov2->ProjetosExecurcao->obter_protocolo_numero : "") }}">
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <div class="row">
@@ -191,7 +193,7 @@
         </div>
 
         <div class="form-group {{ $errors->has('obs_execurcao') ? 'has-error' : '' }}">
-            <label for="obs_execurcao" class="col-md-2 control-label  text-bold">obs_execurcao.:</label>
+            <label for="obs_execurcao" class="col-md-2 control-label  text-bold">Obs.:</label>
             <div class="col-md-10">
                 <textarea class="form-control input-sm" name="obs_execurcao" cols="50" rows="10" id="obs_execurcao" placeholder="Enter obs_execurcao here...">{{ old('obs_execurcao', isset($projetov2->ProjetosExecurcao->obs_execurcao) ? $projetov2->ProjetosExecurcao->obs_execurcao : null) }}</textarea>
                 {!! $errors->first('obs_execurcao', '<p class="help-block">:message</p>') !!}
