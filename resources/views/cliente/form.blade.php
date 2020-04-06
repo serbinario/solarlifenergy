@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('nome_empresa') ? 'has-error' : '' }}">
-        <label for="nome_empresa" class="col-md-2 control-label text-bold">Razão Social</label>
+        <label for="nome_empresa" class="col-md-2 control-label text-bold">Razão Social.: *</label>
         <div class="col-md-10">
             <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome_empresa', isset($cliente->nome_empresa) ? $cliente->nome_empresa : null) }}" maxlength="255" placeholder="Razão Social">
             {!! $errors->first('nome_empresa', '<p class="help-block">:message</p>') !!}
@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group {{ $errors->has('telefone') ? 'has-error' : '' }}">
-                <label for="telefone" class="col-sm-6 control-label text-bold">Telefone.: *</label>
+                <label for="telefone" class="col-sm-6 control-label text-bold">Telefone.:</label>
                 <div class="col-md-6">
                     <input class="form-control input-sm phone" name="telefone" type="text" id="telefone" value="{{ old('telefone', isset($cliente->telefone) ? $cliente->telefone : null) }}" maxlength="20">
                 </div>
@@ -45,9 +45,9 @@
         </div>
         <div class="col-sm-4">
             <div class="form-group {{ $errors->has('celular') ? 'has-error' : '' }}">
-                <label for="celular" class="col-sm-4 control-label text-bold">Celular.: *</label>
+                <label for="celular" class="col-sm-4 control-label text-bold">Celular.:</label>
                 <div class="col-md-6">
-                    <input class="form-control input-sm phone" name="celular" type="text" id="celular" value="{{ old('celular', isset($cliente->celular) ? $cliente->celular : null) }}" maxlength="20" placeholder="Enter celular here...">
+                    <input class="form-control input-sm phone" name="celular" type="text" id="celular" value="{{ old('celular', isset($cliente->celular) ? $cliente->celular : null) }}" maxlength="20">
                     {!! $errors->first('celular', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -67,15 +67,15 @@
     </div>
 
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-        <label for="email" class="col-md-2 control-label text-bold">Email.: *</label>
+        <label for="email" class="col-md-2 control-label text-bold">Email.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="email" type="text" id="email" value="{{ old('email', isset($cliente->email) ? $cliente->email : null) }}" maxlength="100" placeholder="Enter email here...">
+            <input class="form-control input-sm" name="email" type="text" id="email" value="{{ old('email', isset($cliente->email) ? $cliente->email : null) }}" maxlength="100">
             {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group {{ $errors->has('projeto_status_id') ? 'has-error' : '' }}">
-        <label for="meio_captacao_id" class="col-md-2 text-bold control-label">Como conheceu nossa empresa? *</label>
+        <label for="meio_captacao_id" class="col-md-2 text-bold control-label">Como conheceu nossa empresa?</label>
         <div class="col-md-10">
             <select   class="form-control input-sm" id="meio_captacao_id" name="meio_captacao_id">
                 <option value="" style="display: none;" {{ old('meio_captacao_id', isset($cliente->meio_captacao_id) ? $cliente->meio_captacao_id : '') == '' ? 'selected' : '' }} disabled selected>Meios de captação</option>
