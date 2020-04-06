@@ -83,6 +83,7 @@ class ClienteController extends Controller
                 if ($request->has('nome')) {
                     $query->where('nome_empresa', 'like', "%" . $request->get('nome') . "%")
                         ->orWhere('nome', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('palavras_chave', 'like', "%" . $request->get('nome') . "%")
                         ->orWhere('cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
