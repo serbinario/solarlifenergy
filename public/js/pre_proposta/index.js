@@ -57,6 +57,8 @@ var table = $('#preProposta').DataTable({
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.projeto != null){
                     $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>")
+                }else{
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" + "Sem Projeto</span>");
                 }
             }
         },
