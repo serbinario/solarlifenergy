@@ -60,6 +60,7 @@ class PrePropostaController extends Controller
         $rows = \DB::table('pre_propostas')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('users', 'users.id', '=', 'pre_propostas.user_id')
+            ->leftJoin('projetosv2', 'projetosv2.proposta_id', '=', 'pre_propostas.id' )
             ->select([
                 'users.name',
                 'pre_propostas.codigo',
@@ -71,6 +72,7 @@ class PrePropostaController extends Controller
                 'clientes.cpf_cnpj',
                 'clientes.email',
                 'clientes.celular',
+                'projetosv2.id as projeto',
                 \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
 

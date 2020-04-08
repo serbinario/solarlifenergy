@@ -114,7 +114,7 @@ $(document).ready(function () {
             datatype: 'json'
         }).done(function (retorno) {
             if(retorno.success) {
-                swal("", "Usuario Bloqueado com sucesso", "success");
+                swal("", "Projeto Cadastrado com sucesso", "success");
                 location.reload();
 
             } else {

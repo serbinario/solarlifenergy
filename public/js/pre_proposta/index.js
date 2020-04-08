@@ -53,7 +53,13 @@ var table = $('#preProposta').DataTable({
     },
     columns: [
         {data: 'id', name: 'id',  targets: 0, visible: false},
-        {data: 'nome_empresa', name: 'clientes.nome_empresa'},
+        {data: 'nome_empresa', name: 'nome_empresa',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.projeto != null){
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>")
+                }
+            }
+        },
         {data: 'codigo', name: 'codigo'},
         //{data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
