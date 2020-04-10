@@ -73,6 +73,8 @@ class Projetov2Controller extends Controller
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
                 'pre_propostas.potencia_instalada',
+                \DB::raw('DATE_FORMAT(pre_propostas.data_financiamento_bancario,"%d/%m/%Y") as data_financiamento_bancario'),
+                \DB::raw('DATE_FORMAT(pre_propostas.data_prevista_parcela,"%d/%m/%Y") as data_prevista_parcela'),
                 'projetos_prioridades.prioridade_nome',
                 'pre_propostas.preco_medio_instalado',
                 \DB::raw('DATE_FORMAT(projetos_finalizado.data_conexao,"%d/%m/%Y") as data_conexao'),

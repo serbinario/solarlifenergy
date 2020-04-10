@@ -617,6 +617,39 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Data Financi.:</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control input-sm date" name="data_financiamento_bancario" type="text" id="data_financiamento_bancario" value="{{ old('data_financiamento_bancario', isset($preProposta->data_financiamento_bancario) ? $preProposta->data_financiamento_bancario : null) }}" >
+                                        {!! $errors->first('data_financiamento_bancario', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-6 control-label text-bold">Tempo Carência.:</label>
+                                    <div class="col-sm-3">
+                                        <input class="form-control input-sm" name="tempo_carencia" type="text" id="tempo_carencia" value="{{ old('tempo_carencia', isset($preProposta->tempo_carencia) ? $preProposta->tempo_carencia : null) }}" maxlength="3" >
+                                        {!! $errors->first('valor_vencimento', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="rg" class="col-md-6 control-label text-bold">Previsão Parcela.:</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control input-sm date" name="data_prevista_parcela" type="text" id="data_prevista_parcela" value="{{ old('data_prevista_parcela', isset($preProposta->data_prevista_parcela) ? $preProposta->data_prevista_parcela : null) }}" maxlength="255" >
+                                        {!! $errors->first('data_prevista_parcela', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div> <!-- end card-body -->
                 </div>
             </div><!--end .panel -->

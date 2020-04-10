@@ -369,7 +369,10 @@ class PrePropostaController extends Controller
             'qtd_parcelas_entrada2',
             'recurso_proprio',
             'valor_vencimento',
-            'estar_finalizado'
+            'estar_finalizado',
+            'data_financiamento_bancario',
+            'tempo_carencia,',
+            'data_prevista_parcela'
             ]);
 
         return $data;
