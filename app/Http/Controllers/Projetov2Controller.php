@@ -83,6 +83,7 @@ class Projetov2Controller extends Controller
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
             $rows->where('pre_propostas.user_id', '=', $user->id);
+            if(Auth::user()->franquia->id != 14)
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
         $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
