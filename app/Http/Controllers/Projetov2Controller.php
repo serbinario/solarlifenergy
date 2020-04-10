@@ -72,6 +72,7 @@ class Projetov2Controller extends Controller
                 'franquias.nome as franquaia',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
+                'pre_propostas.potencia_instalada',
                 'projetos_prioridades.prioridade_nome',
                 'pre_propostas.preco_medio_instalado',
                 \DB::raw('DATE_FORMAT(projetos_finalizado.data_conexao,"%d/%m/%Y") as data_conexao'),
@@ -85,6 +86,7 @@ class Projetov2Controller extends Controller
             $rows->where('pre_propostas.user_id', '=', $user->id);
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
+        //[RF003-RN004]
         if(Auth::user()->franquia->id != 14){
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
