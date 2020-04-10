@@ -44,8 +44,10 @@
                                                     <th>Valor</th>
                                                     <th>Previsão</th>
                                                     <th>Data Conexao</th>
-                                                    <th>Situação</th>
                                                     <th>Prioridade</th>
+                                                    <th>Integrador</th>
+                                                    <th>Franquia</th>
+                                                    <th>Situação</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

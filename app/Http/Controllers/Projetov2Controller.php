@@ -62,11 +62,14 @@ class Projetov2Controller extends Controller
             ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('users', 'pre_propostas.user_id', '=', 'users.id')
+            ->leftJoin('franquias', 'franquias.id', '=', 'users.franquia_id')
             ->leftJoin('projetos_status', 'projetos_status.id', '=', 'projetosv2.projeto_status_id')
             ->leftJoin('projetos_finalizado', 'projetos_finalizado.id', '=', 'projetosv2.projeto_finalizado_id')
             ->leftJoin('projetos_prioridades', 'projetos_prioridades.id', '=', 'projetosv2.projeto_prioridade_id')
             ->select([
                 'projetosv2.id',
+                'users.name as integrador',
+                'franquias.nome as franquaia',
                 'clientes.nome_empresa',
                 'pre_propostas.codigo',
                 'projetos_prioridades.prioridade_nome',
