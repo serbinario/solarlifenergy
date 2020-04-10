@@ -82,9 +82,12 @@ class Projetov2Controller extends Controller
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if(!$user->hasRole('admin')) {
-            $rows->where('pre_propostas.user_id', '=', $user->id);
-            if(Auth::user()->franquia->id != 14)
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+
+            if(Auth::user()->franquia->id != 14){
+                $rows->where('pre_propostas.user_id', '=', $user->id);
+                $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+            }
+
         }
         $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
