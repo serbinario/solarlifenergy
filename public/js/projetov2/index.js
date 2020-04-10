@@ -52,9 +52,11 @@ var table = $('#projetov2').DataTable({
         {data: 'codigo', name: 'codigo', visible: false},
         {data: 'preco_medio_instalado', name: 'preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'data_prevista', name: 'data_prevista'},
-        {data: 'data_conexao', name: 'data_conexao'},
-        {data: 'status_nome', name: 'status_nome'},
+        {data: 'data_conexao', name: 'data_conexao', visible: false},
         {data: 'prioridade_nome', name: 'prioridade_nome', visible: false},
+        {data: 'integrador', name: 'integrador'},
+        {data: 'franquaia', name: 'franquaia'},
+        {data: 'status_nome', name: 'status_nome'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });
