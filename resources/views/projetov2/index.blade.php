@@ -42,6 +42,7 @@
                                                     <th>Rasão Social</th>
                                                     <th>Cod. Proposta</th>
                                                     <th>Valor</th>
+                                                    <th>Kwp</th>
                                                     <th>Previsão</th>
                                                     <th>Data Conexao</th>
                                                     <th>Prioridade</th>
