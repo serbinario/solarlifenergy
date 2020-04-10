@@ -43,6 +43,8 @@
                                                     <th>Cod. Proposta</th>
                                                     <th>Valor</th>
                                                     <th>Kwp</th>
+                                                    <th>Data Financi.</th>
+                                                    <th>Previsão Parcela</th>
                                                     <th>Previsão</th>
                                                     <th>Data Conexao</th>
                                                     <th>Prioridade</th>
