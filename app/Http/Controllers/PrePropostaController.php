@@ -371,7 +371,7 @@ class PrePropostaController extends Controller
             'valor_vencimento',
             'estar_finalizado',
             'data_financiamento_bancario',
-            'tempo_carencia,',
+            'tempo_carencia',
             'data_prevista_parcela'
             ]);
 

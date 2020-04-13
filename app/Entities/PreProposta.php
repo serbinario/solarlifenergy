@@ -110,7 +110,7 @@ class PreProposta extends Model
         'estar_finalizado',
         'valor_franqueadora',
         'data_financiamento_bancario',
-        'tempo_carencia,',
+        'tempo_carencia',
         'data_prevista_parcela'
 
     ];
