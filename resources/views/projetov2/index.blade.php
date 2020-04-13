@@ -45,7 +45,7 @@
                                                     <th>Kwp</th>
                                                     <th>Data Financi.</th>
                                                     <th>Previsão Parcela</th>
-                                                    <th>Previsão</th>
+                                                    <th>Previsão Obra</th>
                                                     <th>Data Conexao</th>
                                                     <th>Prioridade</th>
                                                     <th>Integrador</th>
