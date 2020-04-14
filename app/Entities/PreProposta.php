@@ -193,6 +193,26 @@ class PreProposta extends Model
         $this->attributes['data_validade'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
+    public function setdataPrevistaParcelaAttribute($value)
+    {
+        $this->attributes['data_prevista_parcela'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    public function getdataPrevistaParcelaAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    public function setdataFinanciamentoBancarioAttribute($value)
+    {
+        $this->attributes['data_financiamento_bancario'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    public function getdataFinanciamentoBancarioAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
 //    public function setProduto1PrecoAttribute($value)
 //    {
 //       // $this->attributes['produto1_preco'] = $this->convertesRealIngles($value);
