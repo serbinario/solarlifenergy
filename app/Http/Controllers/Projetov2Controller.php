@@ -96,8 +96,6 @@ class Projetov2Controller extends Controller
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
-
-            if(Auth::user()->roles()->first()->name == 'admin'){
                 return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
@@ -112,10 +110,7 @@ class Projetov2Controller extends Controller
                             </div>
                         </form>
                         ';
-            }else{
-
-                return '';
-            }
+           
 
         })->make(true);
     }

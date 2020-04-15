@@ -19,9 +19,12 @@
                 <div class="progress"><div class="progress-bar progress-bar-primary"></div></div>
                 <ul class="nav nav-justified" id="teste">
                     <li class="active"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">Análise</span></a></li>
-                    <li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Em Execurção</span></a></li>
-                    <li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Finalizando</span></a></li>
-                    <li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">Finalizado</span></a></li>
+
+                    @role('admin')
+                        <li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Em Execurção</span></a></li>
+                        <li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Finalizando</span></a></li>
+                        <li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">Finalizado</span></a></li>
+                    @endrole
                 </ul>
             </div><!--end .form-wizard-nav -->
             <div class="tab-content clearfix" id="tabs-solar">
