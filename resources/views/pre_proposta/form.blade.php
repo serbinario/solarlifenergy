@@ -579,7 +579,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada (60%).:</label>
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Entrada.:</label>
                                     <div class="col-sm-6">
                                         <input class="form-control input-sm money" name="entrada3_valor" type="text" id="entrada3_valor" value="{{ old('entrada3_valor', isset($preProposta->entrada3_valor) ? $preProposta->entrada3_valor : null) }}" maxlength="11">
                                         {!! $errors->first('entrada3_valor', '<p class="help-block">:message</p>') !!}
