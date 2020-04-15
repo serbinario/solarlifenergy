@@ -49,6 +49,8 @@ Route::any('/report/{id}/Contrato', 'ReportController@reportPdfContrato')->name(
 Route::any('/report/{id}/Declaracao', 'ReportController@reportPdfDeclaracao')->name('reportIndexDeclaracao');
 Route::any('/report/{id}/proposta', 'ReportController@reportPdfProposta')->name('reportIndexProposta');
 
+Route::any('/report/reportProjetos', 'ReportController@reportProjeto')->name('reportProjeto');
+
 Route::any('/report/lerArquivo', 'ReportController@lerArquivo')->name('lerArquivo');
 
 

@@ -101,6 +101,32 @@ function formatMoney(n, c, d, t) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
 
+function report() {
+    var e = document.getElementById('prioridade')
+    var prioridade = e.options[e.selectedIndex].value;
+
+    var t = document.getElementById('status')
+    var statusText = t.options[t.selectedIndex].text;
+
+    var s = document.getElementById('status')
+    var status = s.options[s.selectedIndex].value;
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        }
+    });
+
+    var dados = {
+        'status': status,
+        'ordenar1': prioridade
+    }
+    var url = '/index.php/report/reportProjetos?status=' + status + "&ordenar1=" +  prioridade + "&titulo=" + statusText;
+    window.open(url, '_blank');
+
+
+}
+
 
 
 

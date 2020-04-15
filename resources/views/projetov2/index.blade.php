@@ -60,13 +60,67 @@
                             </div><!--end .col -->
                         </div><!--end .row -->
                         <!-- END DATATABLE 1 -->
-                        {{--<div class="card-actionbar">--}}
-                            {{--<div class="card-actionbar-row">--}}
-                                {{--<a href="{{ route('projetov2.projetov2.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Projeto</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    </div><!--end .card -->
 
+                        <!--Accordion -->
+                        <div class="col-md-12">
+                            <div class="panel-group" id="accordion">
+                                <div class="card panel">
+                                    <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion7" data-target="#accordion7-1">
+                                        <header>Relatórios</header>
+                                        <div class="tools">
+                                            <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div id="accordion7-1" class="collapse">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="status" class="col-md-2 control-label">Status:</label>
+                                                        <div class="col-md-8">
+                                                            <select id="status" name="status" class="form-control input-sm">
+                                                                <option value="1">Prospecção e Elaboração de Projetos</option>
+                                                                <option value="2">Proj. em Análise</option>
+                                                                <option value="3">Proj. em Análise - Finalizando p/ Inínicio de Obras</option>
+                                                                <option value="4">Obras em Execusão </option>
+                                                                <option value="5">Obras em Fase Final</option>
+                                                                <option value="6">Obras Finalizadas </option>
+                                                                <option value="7">Obras Paradas</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="prioridade" class="col-md-4 control-label">Ordenar Por</label>
+                                                        <div class="col-md-8">
+                                                            <select id="prioridade" name="prioridade" class="form-control input-sm">
+                                                                <option value="clientes.nome">Nome</option>
+                                                                <option value="pre_propostas.data_financiamento_bancario">Data Assinatura</option>
+                                                                <option value="pre_propostas.data_prevista_parcela">Data Parcela</option>
+                                                                <option value="users.name">Intergrador</option>
+                                                                <option value="banco_financiadora.nome">Banco</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="col-md-8">
+                                                            <input class="btn btn-sm btn-primary" onclick="report()" id="gerar_relatorio" type="button" value="Gerar Relatório">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--end .panel -->
+                            </div><!--end .panel-group -->
+
+                    </div><!--end .card -->
                 </form>
             </div><!--end .col -->
         </div><!--end .row -->
