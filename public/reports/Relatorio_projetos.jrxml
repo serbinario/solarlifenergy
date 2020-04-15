@@ -313,7 +313,7 @@ order by $P!{ordenarTable} desc]]>
 				</jr:table>
 			</componentElement>
 			<textField>
-				<reportElement x="0" y="20" width="802" height="30" uuid="35092ee7-fc67-4407-8a79-ef529de909cb"/>
+				<reportElement x="0" y="15" width="802" height="30" uuid="35092ee7-fc67-4407-8a79-ef529de909cb"/>
 				<textElement textAlignment="Center">
 					<font size="16"/>
 				</textElement>
