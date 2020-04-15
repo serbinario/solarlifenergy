@@ -66,7 +66,7 @@ INNER JOIN projetos_finalizado ON projetos_finalizado.id = projetosv2.projeto_fi
 INNER JOIN projetos_prioridades ON projetos_prioridades.id = projetosv2.projeto_prioridade_id
 LEFT JOIN banco_financiadora ON pre_propostas.baco_fin_id = banco_financiadora.id
 LEFT JOIN meios_captacao ON clientes.meio_captacao_id= meios_captacao.id
-where projetos_status.id =  $P!{statusTable}
+where projetos_status.id IN ( $P!{statusTable} )
 order by $P!{ordenarTable} desc]]>
 		</queryString>
 		<field name="cliente" class="java.lang.String">
@@ -107,7 +107,7 @@ order by $P!{ordenarTable} desc]]>
 		</field>
 	</subDataset>
 	<parameter name="ordenar1" class="java.lang.String"/>
-	<parameter name="status" class="java.lang.Integer"/>
+	<parameter name="status" class="java.lang.String"/>
 	<parameter name="titulo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>

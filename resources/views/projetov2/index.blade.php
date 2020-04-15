@@ -78,7 +78,7 @@
                                                     <div class="form-group">
                                                         <label for="status" class="col-md-2 control-label">Status:</label>
                                                         <div class="col-md-8">
-                                                            <select id="status" name="status" class="form-control input-sm">
+                                                            <select id="status" name="status" class="form-control input-sm" multiple="multiple">
                                                                 <option value="1">Prospecção e Elaboração de Projetos</option>
                                                                 <option value="2">Proj. em Análise</option>
                                                                 <option value="3">Proj. em Análise - Finalizando p/ Inínicio de Obras</option>
@@ -87,9 +87,14 @@
                                                                 <option value="6">Obras Finalizadas </option>
                                                                 <option value="7">Obras Paradas</option>
                                                             </select>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Ordenar Por</label>

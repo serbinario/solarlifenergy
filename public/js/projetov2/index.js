@@ -87,6 +87,8 @@ $( "#localizar" ).click(function() {
     table.draw();
 });
 
+$('#status').multiselect();
+
 
 $( "#limpar" ).click(function() {
     $('input[name=nome]').val("");
@@ -108,8 +110,14 @@ function report() {
     var t = document.getElementById('status')
     var statusText = t.options[t.selectedIndex].text;
 
-    var s = document.getElementById('status')
-    var status = s.options[s.selectedIndex].value;
+   // var s = document.getElementById('status')
+    //var status = s.options[s.selectedIndex].value;
+
+    const selected = document.querySelectorAll('#status option:checked');
+    const status = Array.from(selected).map(el => el.value);
+
+
+    //alert(status);
 
     $.ajaxSetup({
         headers: {
