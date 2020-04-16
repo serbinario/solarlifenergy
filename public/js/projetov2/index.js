@@ -27,6 +27,7 @@ function template(d){
 
 var table = $('#projetov2').DataTable({
     "stateSave": true,
+    "autoWidth": true,
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {
@@ -69,7 +70,7 @@ var table = $('#projetov2').DataTable({
         {data: 'integrador', name: 'integrador'},
         {data: 'franquaia', name: 'franquaia', visible: false},
         {data: 'status_nome', name: 'status_nome'},
-        {data: 'action', name: 'action', orderable: false, searchable: false}
+        {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ]
 });
 
