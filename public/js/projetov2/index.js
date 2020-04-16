@@ -26,6 +26,7 @@ function template(d){
 }
 
 var table = $('#projetov2').DataTable({
+    "stateSave": true,
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {
@@ -43,7 +44,13 @@ var table = $('#projetov2').DataTable({
         url: "/index.php/projetov2/grid",
         data: function (d) {
             d.nome = $('input[name=nome]').val();
-
+            d.data_ini = dateToEN($('input[name=data_ini]').val());
+            d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
+            d.prioridade = $('select[name=prioridade] option:selected').val();
+            d.cod_projeto = $('input[name=cod_projeto]').val();
+            d.integrador = $('input[name=integrador]').val();
+            d.projeto_status = $('select[name=projeto_status] option:selected').val();
+            d.filtro_por = $("input[name='filtro_por']:checked").val();
         }
     },
     columns: [

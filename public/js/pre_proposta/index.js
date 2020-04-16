@@ -27,6 +27,7 @@ function template(d){
 }
 
 var table = $('#preProposta').DataTable({
+    "stateSave": true,
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {

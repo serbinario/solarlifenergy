@@ -31,6 +31,8 @@
                             </div>
                         </div>
 
+                        @include('projetov2.filtro')
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
@@ -134,6 +136,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/projetov2/index.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/projetov2/index.js')}}" type="text/javascript"></script>
+
 @stop
