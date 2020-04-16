@@ -7,12 +7,6 @@
     <input name="projeto_finalizando_id" type="hidden" id="projeto_finalizando_id" value="{{ old('projeto_finalizando_id', isset($projetov2->projeto_finalizando_id) ? $projetov2->projeto_finalizando_id : null) }}" >
     <input name="projeto_finalizado_id" type="hidden" id="projeto_finalizado_id" value="{{ old('projeto_finalizado_id', isset($projetov2->projeto_finalizado_id) ? $projetov2->projeto_finalizado_id : null) }}" >
 
-
-
-
-
-
-
     <div id="rootwizard1" class="form-wizard form-wizard-horizontal">
         <form class="form floating-label">
             <div class="form-wizard-nav">
