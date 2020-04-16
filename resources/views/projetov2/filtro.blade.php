@@ -47,8 +47,8 @@
                                     <select id="prioridade" name="prioridade" class="form-control input-sm">
                                         <option value="">Todos</option>
                                         <option value="1">Alta</option>
-                                        <option value="1">Média</option>
-                                        <option value="1">Baixa</option>
+                                        <option value="2">Média</option>
+                                        <option value="3">Baixa</option>
                                     </select>
                                 </div>
                             </div>
