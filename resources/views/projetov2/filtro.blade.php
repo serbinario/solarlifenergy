@@ -1,14 +1,14 @@
 <!--Accordion -->
 <div class="col-md-12">
-    <div class="panel-group" id="accordion">
+    <div class="panel-group" id="accordion8">
         <div class="card panel">
-            <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion7" data-target="#accordion7-1">
+            <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion8" data-target="#accordion8-1">
                 <header>Filtro</header>
                 <div class="tools">
                     <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
                 </div>
             </div>
-            <div id="accordion7-1" class="collapse">
+            <div id="accordion8-1" class="collapse">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-4">
