@@ -70,7 +70,7 @@ var table = $('#cliente').DataTable({
         {data: 'email', name: 'email', targets: 0, visible: false},
         {data: 'celular', name: 'celular'},
         {data: 'created_at', name: 'created_at', visible: false},
-        {data: 'action', name: 'action', orderable: false, searchable: false}
+        {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ],
     "fnDrawCallback": function( oSettings ) {
         //if ( data.DT_RowAttr ) $.each( data.DT_RowAttr, function( key, value ) {
