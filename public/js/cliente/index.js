@@ -28,6 +28,7 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
+    "stateSave": true,
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {

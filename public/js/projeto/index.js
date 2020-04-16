@@ -50,10 +50,6 @@ var table = $('#projeto').DataTable({
             d.integrador = $('input[name=integrador]').val();
             d.projeto_status = $('select[name=projeto_status] option:selected').val();
             d.filtro_por = $("input[name='filtro_por']:checked").val();
-
-
-
-
         }
     },
     columns: [

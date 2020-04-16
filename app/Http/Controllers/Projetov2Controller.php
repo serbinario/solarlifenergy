@@ -5,18 +5,17 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 use Serbinario\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\PreProposta;
-use Serbinario\Entities\ProjetosPrioridade;
 use Serbinario\Entities\Projetov2;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
 use Serbinario\Entities\ProjetosFinalizando;
 use Serbinario\Entities\ProjetoStatus;
-use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\Progetov2FormRequest;
 use Serbinario\Traits\UtilFiles;
 use Yajra\DataTables\DataTables;
@@ -54,7 +53,7 @@ class Projetov2Controller extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
         $this->token = csrf_token();
         #Criando a consulta
@@ -95,7 +94,43 @@ class Projetov2Controller extends Controller
 
 
         #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+        return Datatables::of($rows)
+
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.palavras_chave', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
+                }
+                if ($request->has('data_ini')) {
+                    $tableName = $request->get('filtro_por');
+                    $query->whereBetween('projetos.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
+                }
+                if ($request->has('prioridade')) {
+                    $query->where('projetos_prioridades.id', '=',  $request->get('prioridade') );
+                }
+                if ($request->has('cod_projeto')) {
+                    $query->where('projetosv2.projeto_codigo', 'like', "%" . $request->get('cod_projeto') . "%");
+                }
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
+                if ($request->has('projeto_status')) {
+                    $query->where('projetos_status.id', '=',  $request->get('projeto_status') );
+                }
+                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+                $user = User::find(Auth::id());
+                if(!$user->hasRole('admin')) {
+                    $query->where('clientes.user_id', '=', $user->id);
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+
+
+            })
+            ->addColumn('action', function ($row) {
                 return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
@@ -110,7 +145,7 @@ class Projetov2Controller extends Controller
                             </div>
                         </form>
                         ';
-           
+
 
         })->make(true);
     }
