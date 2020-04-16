@@ -106,13 +106,13 @@ class Projetov2Controller extends Controller
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
-                    $query->whereBetween('projetos.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
+                    $query->whereBetween('projetosv2.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
                 if ($request->has('prioridade')) {
                     $query->where('projetos_prioridades.id', '=',  $request->get('prioridade') );
                 }
                 if ($request->has('cod_projeto')) {
-                    $query->where('projetosv2.projeto_codigo', 'like', "%" . $request->get('cod_projeto') . "%");
+                    $query->where('pre_propostas.codigo', 'like', "%" . $request->get('cod_projeto') . "%");
                 }
                 if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
