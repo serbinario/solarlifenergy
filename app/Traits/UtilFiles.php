@@ -21,19 +21,13 @@ trait UtilFiles
     {
 
         // Define o valor default para a variável que contém o nome da imagem
-        //dd($nameFile);
+
         // Verifica se informou o arquivo e se é válido
-        if ($request->file($field) != null ){
+        if ($request->hasFile($field)){
             $file = $request->file($field);
-            //dd($file);
 
             try {
-                // File Details
-                $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
-                $tempPath = $file->getRealPath();
-                $fileSize = $file->getSize();
-                $mimeType = $file->getMimeType();
 
                 if($nameFile){
                     $nameFile = "{$nameFile}";
@@ -42,10 +36,8 @@ trait UtilFiles
                     $nameFile = "{$name}.{$extension}";
                 }
 
-
                 $fileStatus = $file->move("storage",$nameFile);
                 if ( $fileStatus ){
-
                     return $nameFile;
                 }
             } catch (FileNotFoundException $e) {

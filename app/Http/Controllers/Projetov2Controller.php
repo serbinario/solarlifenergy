@@ -237,7 +237,6 @@ class Projetov2Controller extends Controller
         try {
 
             $data = $request->getData();
-            //dd($data);
 
             $progetov2 = Projetov2::findOrFail($id);
 
@@ -256,7 +255,9 @@ class Projetov2Controller extends Controller
             );
 
             $nameFileCpf_cnh_rg = $this->ImageStore($request, 'cpf_cnh_rg_image', $analizeDocumento->cpf_cnh_rg_image);
+
             $nameFileComproResi = $this->ImageStore($request, 'conprovante_residencia_image', $analizeDocumento->conprovante_residencia_image);
+
             $nameFileCpfCnhRgConju = $this->ImageStore($request, 'cpf_cnh_rg_conjugue_image', $analizeDocumento->cpf_cnh_rg_conjugue_image);
             $nameFileCertidaoCasamento = $this->ImageStore($request, 'certidao_casamento_image', $analizeDocumento->certidao_casamento_image);
             $nameFileFichaElaboracao = $this->ImageStore($request, 'ficha_elaboracao_projeto_image', $analizeDocumento->ficha_elaboracao_projeto_image);
@@ -408,7 +409,6 @@ class Projetov2Controller extends Controller
 
 
         } catch (Exception $e) {
-            dd("error2",$e);
             return back()->withInput()
                 ->withErrors(['error' => $e->getMessage()]);
         }
