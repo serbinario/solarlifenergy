@@ -96,8 +96,8 @@ class PrePropostaController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('nome', 'like', "%" . $request->get('nome') . "%");
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
@@ -114,7 +114,7 @@ class PrePropostaController extends Controller
                 if($user->hasRole('admin')) {
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
-                if($user->hasRole('super-admin')) {
+                if($user->hasRole('integrador')) {
                     $query->where('clientes.user_id', '=', $user->id);
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
