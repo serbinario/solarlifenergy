@@ -177,7 +177,7 @@
 							<li><a href="{{ route('projeto.projeto.index') }}" class="active"><span class="title">Projetos</span></a></li>
 							<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">ProjetosV2</span></a></li>
 
-							@role('admin')
+							@role('super-admin')
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
