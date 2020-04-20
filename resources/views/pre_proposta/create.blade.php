@@ -48,6 +48,17 @@
 
 @section('javascript')
     <script>
+
+        document.getElementById("jan").addEventListener("focus", myFunction);
+
+        function myFunction(){
+            var jan = document.querySelector("#jan").value;
+            var feb = document.querySelector("#feb").value;
+            alert(parseInt(jan) + parseInt(feb))
+        }
+
+        //var preco = document.querySelector("#preco").textContent;
+
     function validateForm() {
         //var monthly_usage = document.forms["create_pre_proposta_form"]["monthly_usage"].value;
         //var preco_kwh = document.forms["create_pre_proposta_form"]["preco_kwh"].value;
