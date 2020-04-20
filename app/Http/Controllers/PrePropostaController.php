@@ -96,7 +96,7 @@ class PrePropostaController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->orwhere('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
                         ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
