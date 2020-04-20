@@ -112,13 +112,13 @@ class PrePropostaController extends Controller
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
                 if($user->hasRole('admin')) {
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+                if($user->hasRole('super-admin')) {
+                    $query->where('clientes.user_id', '=', $user->id);
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
 
-                    $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
-                }
-                if($user->hasRole('integrador')) {
-                    $rows->where('pre_propostas.user_id', '=', $user->id);
-                    $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
-                }
             })
 
 
