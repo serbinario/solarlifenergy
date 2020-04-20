@@ -84,8 +84,8 @@ class ClienteController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('nome', 'like', "%" . $request->get('nome') . "%")
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
                         ->orWhere('palavras_chave', 'like', "%" . $request->get('nome') . "%")
                         ->orWhere('cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
                 }
@@ -103,11 +103,6 @@ class ClienteController extends Controller
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
 
-
-                /*if ($request->has('data_cadadastro_ini')) {
-                    //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
-                    $query->whereBetween('created_at', [$request->get('data_cadadastro_ini'), $request->get('data_cadadastro_fim')])->get();
-                }*/
             })
 
             ->addColumn('action', function ($row) {
