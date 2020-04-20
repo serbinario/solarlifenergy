@@ -54,7 +54,7 @@
         function myFunction(){
             var jan = document.querySelector("#jan").value;
             var feb = document.querySelector("#feb").value;
-            alert(parseInt(jan) + parseInt(feb))
+            //alert(parseInt(jan) + parseInt(feb))
         }
 
         //var preco = document.querySelector("#preco").textContent;
