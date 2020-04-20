@@ -83,7 +83,12 @@ class PrePropostaController extends Controller
             $rows->where('pre_propostas.user_id', '=', $user->id);
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
-        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        if(!$user->hasRole('integrador')) {
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
+
+
+
 
         #Editando a grid
         return Datatables::of($rows)

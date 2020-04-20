@@ -73,7 +73,10 @@ class ClienteController extends Controller
            $rows->where('clientes.user_id', '=', $user->id);
            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
-        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        if(!$user->hasRole('integrador')) {
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
+
 
 
         #Editando a grid
@@ -96,7 +99,10 @@ class ClienteController extends Controller
                     $query->where('clientes.user_id', '=', $user->id);
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
-                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                if(!$user->hasRole('integrador')) {
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
+
 
                 /*if ($request->has('data_cadadastro_ini')) {
                     //$data_fim = $request->get('data_cadadastro_fim') . " 23:59:59";
