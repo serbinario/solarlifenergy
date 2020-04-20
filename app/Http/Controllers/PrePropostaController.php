@@ -60,7 +60,7 @@ class PrePropostaController extends Controller
         $rows = \DB::table('pre_propostas')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('users', 'users.id', '=', 'pre_propostas.user_id')
-            ->leftJoin('projetosv2', 'projetosv2.proposta_id', '=', 'pre_propostas.id' )
+            ->rightJoin('projetosv2', 'projetosv2.proposta_id', '=', 'pre_propostas.id' )
             ->select([
                 'users.name',
                 'pre_propostas.codigo',
