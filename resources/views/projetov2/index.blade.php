@@ -53,6 +53,7 @@
                                                     <th>Integrador</th>
                                                     <th>Franquia</th>
                                                     <th>Situação</th>
+                                                    <th>Atualizado</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
