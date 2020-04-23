@@ -31,7 +31,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Pré-Proposta</header>
+                            <header>Editar Proposta</header>
                             <div class="col-6 span_preco_medio_instalado">
                                 <span class="badge badge-dark float-right">
                                     R$
