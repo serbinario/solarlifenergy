@@ -24,7 +24,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Pré-Proposta</header>
+                            <header>Lista de Propostas</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('pre_proposta.pre_proposta.create') }}" class="btn btn-primary" title="Novo Fornecedor">

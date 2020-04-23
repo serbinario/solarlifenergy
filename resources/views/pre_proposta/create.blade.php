@@ -19,7 +19,7 @@
             <form method="POST" action="{{ route('pre_proposta.pre_proposta.store') }}" accept-charset="UTF-8" id="create_pre_proposta_form" name="create_pre_proposta_form" onsubmit="return validateForm()" class="form-horizontal">
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Nova Pré-Proposta</header>
+                        <header>Nova Proposta</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" class="btn btn-primary" title="Show All Pre Proposta">
