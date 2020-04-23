@@ -70,7 +70,7 @@ var table = $('#projetov2').DataTable({
         {data: 'integrador', name: 'integrador'},
         {data: 'franquaia', name: 'franquaia', visible: false},
         {data: 'status_nome', name: 'status_nome'},
-        {data: 'updated_at', name: 'projetov2.updated_at', visible: false},
+        {data: 'atualizado', name: 'atualizado', visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ]
 });
