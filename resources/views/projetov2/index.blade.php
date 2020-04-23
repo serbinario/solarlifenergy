@@ -41,7 +41,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Rasão Social</th>
+                                                    <th>Razão Social</th>
                                                     <th>Cod. Proposta</th>
                                                     <th>Valor</th>
                                                     <th>Kwp</th>
