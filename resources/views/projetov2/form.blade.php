@@ -15,7 +15,7 @@
                     <li class="active"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">Análise</span></a></li>
 
                     @role('admin|super-admin')
-                        <li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Em Execurção</span></a></li>
+                        <li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Em Execução</span></a></li>
                         <li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Finalizando</span></a></li>
                         <li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">Finalizado</span></a></li>
                     @endrole
@@ -29,7 +29,7 @@
                 </div><!--end #tab1 -->
                 <div class="tab-pane" id="tab2">
                     <br/><br/>
-                    @include('projetov2.execurcao')
+                    @include('projetov2.execucao')
                 </div><!--end #tab2 -->
                 <div class="tab-pane" id="tab3">
                     <br/><br/>
