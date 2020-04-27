@@ -286,9 +286,18 @@ class PrePropostaController extends Controller
         try {
             //dd($request->all());
             $data = $this->getData($request);
-
-            $preProposta = PreProposta::findOrFail($id);
             //dd($data);
+
+            $cidade = Cidade::where('id', '=', $data['cidade_id'])->first();
+            $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $data['qtd_paineis'], '1.72');
+            $data['reducao_media_consumo'] = $this->getReducaoMediaConsumo($data['monthly_usage'], '0',array_sum($geracaoEnergiaFV)/12 );
+
+
+            $data['potencia_instalada'] = $this->getGeradorKwp($data['qtd_paineis'], $data['panel_potencia']);
+            //dd($data['qtd_paineis']);
+            $preProposta = PreProposta::findOrFail($id);
+
+
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
