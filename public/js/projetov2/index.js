@@ -113,8 +113,9 @@ function formatMoney(n, c, d, t) {
 }
 
 function report() {
-    var e = document.getElementById('prioridade')
-    var prioridade = e.options[e.selectedIndex].value;
+    var e = document.getElementById('ordenar')
+    var ordenar = e.options[e.selectedIndex].value;
+    console.log(ordenar);
 
     var t = document.getElementById('status')
     var statusText = t.options[t.selectedIndex].text;
@@ -136,9 +137,9 @@ function report() {
 
     var dados = {
         'status': status,
-        'ordenar1': prioridade
+        'ordenar1': ordenar
     }
-    var url = '/index.php/report/reportProjetos?status=' + status + "&ordenar1=" +  prioridade + "&titulo=" + statusText;
+    var url = '/index.php/report/reportProjetos?status=' + status + "&ordenar1=" +  ordenar + "&titulo=" + statusText;
     window.open(url, '_blank');
 
 

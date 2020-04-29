@@ -102,7 +102,7 @@
                                                     <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Ordenar Por</label>
                                                         <div class="col-md-8">
-                                                            <select id="prioridade" name="prioridade" class="form-control input-sm">
+                                                            <select id="ordenar" name="ordenar" class="form-control input-sm">
                                                                 <option value="clientes.nome">Nome</option>
                                                                 <option value="pre_propostas.data_financiamento_bancario">Data Assinatura</option>
                                                                 <option value="pre_propostas.data_prevista_parcela">Data Parcela</option>
