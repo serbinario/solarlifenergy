@@ -49,6 +49,7 @@ class ClienteController extends Controller
      */
     public function grid(Request $request)
     {
+        //dd($request->all());
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('clientes')
@@ -62,7 +63,9 @@ class ClienteController extends Controller
                 'clientes.cpf_cnpj',
                 'clientes.email',
                 'clientes.celular',
+                'users.name as integrador',
                 'users.franquia_id',
+                'pre_propostas.id as id_pre',
                 \DB::raw('DATE_FORMAT(clientes.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('COUNT(pre_propostas.id) as propostas')
             ]);
@@ -93,6 +96,22 @@ class ClienteController extends Controller
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
+
+                if ($request->has('is_propostas')) {
+                    $is_propostas = $request->get('is_propostas');
+                    if($is_propostas == 2) {
+                        $query->whereNotNull('pre_propostas.id')->get();
+                    }else{
+                        $query->whereNull('pre_propostas.id')->get();
+                    }
+                }
+
+                if ($request->has('integrador')) {
+                    $integrador = $request->get('integrador');
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
+
+
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
                 if($user->hasRole('admin')) {

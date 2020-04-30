@@ -116,6 +116,28 @@
                                                     </div><!--end .form-group -->
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="integrador" class="col-sm-2 control-label">Integrador:</label>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control input-sm" name="integrador" type="text" id="integrador" maxlength="20" placeholder="Intergrador">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="is_propostas" class="col-md-4 control-label">Status</label>
+                                                    <div class="col-md-8">
+                                                        <select id="is_propostas" name="is_propostas" class="form-control input-sm">
+                                                            <option value="">Todos</option>
+                                                            <option value="1">Sem Proosta</option>
+                                                            <option value="2">Propostas Geradas</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <br>
 
                                             <div class="row">
@@ -147,6 +169,7 @@
                                                     <th>CPF/CNPJ</th>
                                                     <th>Email</th>
                                                     <th>Telefone</th>
+                                                    <th>Integrador</th>
                                                     <th>Data Cadastro</th>
                                                     <th>Acao</th>
                                                 </tr>

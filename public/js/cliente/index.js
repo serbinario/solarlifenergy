@@ -28,7 +28,7 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
-    "stateSave": true,
+    "stateSave": false,
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {
@@ -45,10 +45,13 @@ var table = $('#cliente').DataTable({
     ajax: {
         url: "/index.php/cliente/grid",
         data: function (d) {
+            d.integrador = document.getElementById("integrador").value;
+            d.is_propostas = $('select[name=is_propostas] option:selected').val();
             d.nome = $('input[name=nome]').val();
             d.data_ini = dateToEN($('input[name=data_ini]').val());
             d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
             d.filtro_por = $("input[name='filtro_por']:checked").val();
+
         }
     },
     columns: [
@@ -69,6 +72,7 @@ var table = $('#cliente').DataTable({
         },
         {data: 'email', name: 'email', targets: 0, visible: false},
         {data: 'celular', name: 'celular'},
+        {data: 'integrador', name: 'integrador', visible: false},
         {data: 'created_at', name: 'created_at', visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ],
@@ -105,6 +109,7 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
 });
 
 $( "#localizar" ).click(function() {
+    //console.log(document.getElementById("integrador").value);
     table.draw();
 });
 
