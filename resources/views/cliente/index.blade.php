@@ -131,7 +131,7 @@
                                                     <div class="col-md-8">
                                                         <select id="is_propostas" name="is_propostas" class="form-control input-sm">
                                                             <option value="">Todos</option>
-                                                            <option value="1">Sem Proosta</option>
+                                                            <option value="1">Sem Proposta</option>
                                                             <option value="2">Propostas Geradas</option>
                                                         </select>
                                                     </div>

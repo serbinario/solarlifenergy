@@ -15,9 +15,10 @@
 
                     <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
                     <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($preProposta->cliente->estado) ? $preProposta->cliente->estado : null) }}" >
+                    <input name="user_id" type="hidden" id="user_id" value="{{  isset($preProposta->user_id) ? $preProposta->user_id : null }}" >
+
                     <div class="col-md-8">
                         <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome', isset($preProposta->cliente->nome_empresa) ? $preProposta->cliente->nome_empresa : null) }}" readonly >
-                        {!! $errors->first('clientes_id', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
             @else
@@ -80,7 +81,7 @@
     </div>
 
      <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group {{ $errors->has('estado_id') ? 'has-error' : '' }}">
                 <label for="estado_id" class="col-sm-4 control-label text-bold">Estado:*</label>
                 <div class="col-md-8">
@@ -95,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
                 <label for="cidade_id" class="col-sm-4 control-label text-bold">Cidade.:*</label>
                 <div class="col-md-8">
@@ -110,6 +111,32 @@
                 </div>
             </div>
         </div>
+         @role('admin1|super-admin1')
+         <div class="col-sm-4">
+             <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
+                 <label for="user_id" class="col-sm-4 control-label text-bold">Intergrador.:</label>
+                 <div class="col-md-8">
+                     <select   class="form-control input-sm" id="user_id" name="user_id">
+                         <option value="" style="display: none;" {{ old('user_id', isset($preProposta->user_id) ? $preProposta->user_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
+                         @foreach ($users as $key => $user)
+                             <option value="{{ $key }}" {{ old('user_id', isset($preProposta->user_id) ? $preProposta->user_id : null) == $key ? 'selected' : '' }}>
+                                 {{ $user }}
+                             </option>
+                         @endforeach
+                     </select>
+                 </div>
+             </div>
+         </div>
+         @else
+             <div class="col-sm-4">
+                 <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
+                     <label for="" class="col-sm-4 control-label text-bold">Intergrador.:</label>
+                     <div class="col-md-8">
+                         <input class="form-control input-sm" type="text" readonly value="{{  isset($preProposta->user->name) ? $preProposta->user->name : null }}" >
+                     </div>
+                 </div>
+             </div>
+         @endrole
     </div>
 
 

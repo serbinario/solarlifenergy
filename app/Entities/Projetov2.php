@@ -138,6 +138,7 @@ class Projetov2 extends Model
         return $this->belongsTo('Serbinario\Entities\ProjetosDocumento','projeto_documento_id','id');
     }
 
+
     /**
      * Get the ProjetosExecurcao for this model.
      */
