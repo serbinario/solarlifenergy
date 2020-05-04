@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-         @role('admin1|super-admin1')
+         @role('admin|super-admin')
          <div class="col-sm-4">
              <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
                  <label for="user_id" class="col-sm-4 control-label text-bold">Intergrador.:</label>
