@@ -167,8 +167,9 @@ class Projetov2Controller extends Controller
         $ProjetosDocumentos = ProjetosDocumento::pluck('id','id')->all();
         $ProjetosExecurcaos = ProjetosExecurcao::pluck('id','id')->all();
         $ProjetosFinalizandos = ProjetosFinalizando::pluck('id','id')->all();
+        $users = User::orderBy('name')->pluck('name','id')->all();
 
-        return view('projetov2.create', compact('clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
+        return view('projetov2.create', compact('users','clientes','ProjetosStatus','PrePropostas','Enderecos','ProjetosDocumentos','ProjetosExecurcaos','ProjetosFinalizandos'));
     }
 
     /**
@@ -223,7 +224,7 @@ class Projetov2Controller extends Controller
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
         $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
 
-        //dd($projetov2->imagens);
+        //dd($projetov2);
         return view('projetov2.edit', compact('projetov2','projetosStatus'));
     }
 

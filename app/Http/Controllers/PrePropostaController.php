@@ -150,9 +150,10 @@ class PrePropostaController extends Controller
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
+        $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
 
 
-        return view('pre_proposta.create', compact('Clientes', 'estados', 'cidades', 'bfs'));
+        return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs'));
     }
 
     /**
@@ -255,22 +256,19 @@ class PrePropostaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function edit($id)
-    {
-        //dd($id);
-        $preProposta = PreProposta::with('cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
+    public function edit($id){
+        $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
-
         if($preProposta->cidade_id){
             $cidades = Cidade::where('estado_id', '=', $preProposta->cidade->estado_id)->pluck('nome','id');
         }else{
             $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
         };
-        //dd(isset($preProposta->projetov2()->first()->id));
+        $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
 
-        return view('pre_proposta.edit', compact('preProposta','Clientes', 'estados', 'cidades', 'bfs'));
+        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs'));
     }
 
     /**
@@ -286,7 +284,6 @@ class PrePropostaController extends Controller
         try {
             //dd($request->all());
             $data = $this->getData($request);
-            //dd($data);
 
             $cidade = Cidade::where('id', '=', $data['cidade_id'])->first();
             $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $data['qtd_paineis'], '1.72');
@@ -295,6 +292,7 @@ class PrePropostaController extends Controller
 
             $data['potencia_instalada'] = $this->getGeradorKwp($data['qtd_paineis'], $data['panel_potencia']);
             //dd($data['qtd_paineis']);
+            //dd($data);
             $preProposta = PreProposta::findOrFail($id);
 
 
@@ -343,6 +341,7 @@ class PrePropostaController extends Controller
     {
         $data = $request->only(['cliente_id',
             'codigo',
+            'user_id',
             'baco_fin_id',
             'data_validade',
             'power',

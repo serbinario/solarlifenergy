@@ -35,6 +35,7 @@ class PreProposta extends Model
      */
     protected $fillable = [
         'cliente_id',
+        'user_id',
         'baco_fin_id',
         'user_id',
         'codigo',
@@ -146,6 +147,14 @@ class PreProposta extends Model
     public function cliente()
     {
         return $this->belongsTo('Serbinario\Entities\Cliente','cliente_id','id');
+    }
+
+    /**
+     * Get the cliente for this model.
+     */
+    public function user()
+    {
+        return $this->belongsTo('Serbinario\User','user_id','id');
     }
 
     public function cidade()
