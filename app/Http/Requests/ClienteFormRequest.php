@@ -30,7 +30,7 @@ class ClienteFormRequest extends FormRequest
             'nome' => 'required|string|min:0|max:255',
             'celular' => 'nullable|string|min:0|max:20',
             'email' => 'nullable|string|min:0|max:100',
-            'cpf_cnpj' => 'required|unique:clientes,cpf_cnpj,'. $this->cliente,'id',
+            'cpf_cnpj' => 'nullable|unique:clientes,cpf_cnpj,'. $this->cliente,'id',
             'estado_civil' => 'nullable',
             'nome_empresa' => 'required|string|min:0|max:255',
             'cep' => 'nullable|string|min:0|max:10',
