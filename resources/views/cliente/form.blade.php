@@ -20,7 +20,7 @@
 
     </div><!--end .form-group -->
     <div class="form-group {{ $errors->has('cpf_cnpj') ? 'has-error' : '' }}">
-        <label for="cpf_cnpj" class="col-md-2 control-label text-bold">CPF/CNPJ.: *</label>
+        <label for="cpf_cnpj" class="col-md-2 control-label text-bold">CPF/CNPJ.:</label>
         <div class="col-md-10">
             <input class="form-control mascara-cpfcnpj input-sm" name="cpf_cnpj" type="text" id="cpf_cnpj" value="{{ old('cpf_cnpj', isset($cliente->cpf_cnpj) ? $cliente->cpf_cnpj : null) }}" maxlength="255" placeholder="CPF/CNPJ...">
             {!! $errors->first('cpf_cnpj', '<p class="help-block">:message</p>') !!}
