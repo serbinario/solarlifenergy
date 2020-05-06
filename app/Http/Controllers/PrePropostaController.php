@@ -168,7 +168,6 @@ class PrePropostaController extends Controller
         try {
 
             $data = $this->getData($request);
-
             //Retorna o ultimo registro
             $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->first();
             if($last == NULL){
@@ -282,7 +281,7 @@ class PrePropostaController extends Controller
     public function update($id, PrePropostaFormRequest $request)
     {
         try {
-            //dd($request->all());
+            dd($request->all());
             $data = $this->getData($request);
 
             $cidade = Cidade::where('id', '=', $data['cidade_id'])->first();

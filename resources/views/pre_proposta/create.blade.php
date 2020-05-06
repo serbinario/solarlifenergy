@@ -47,6 +47,18 @@
 @endsection
 
 @section('javascript')
+
+    <script>
+        $("#create_pre_proposta_form").submit(function(evt) {
+            $('.money').each(function(index, elem){
+                $(elem).val(realDolar($(elem).val()));
+            });
+
+            $("#preco_kwh").val(realDolar($("#preco_kwh").val()));
+            $("#potencia_instalada").val(realDolar($("#potencia_instalada").val()));
+
+        });
+    </script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/util.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/select2_util.js')}}" type="text/javascript"></script>
