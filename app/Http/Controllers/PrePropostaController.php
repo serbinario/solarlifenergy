@@ -281,7 +281,7 @@ class PrePropostaController extends Controller
     public function update($id, PrePropostaFormRequest $request)
     {
         try {
-            dd($request->all());
+            //dd($request->all());
             $data = $this->getData($request);
 
             $cidade = Cidade::where('id', '=', $data['cidade_id'])->first();
