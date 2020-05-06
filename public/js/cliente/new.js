@@ -43,13 +43,16 @@ $(document).ready(function () {
             url: "https://apps.widenet.com.br/busca-cep/api/cep/" + cep_code + ".json",
             dataType: "json",
             success: function( result ) {
-                console.log(result)
-                $("input#cep").val( result.code );
-                $("input#estado").val( result.state );
-                $("input#cidade").val( result.city );
-                $("input#bairro").val( result.district );
-                $("input#endereco").val( result.address );
-                $("input#estado").val( result.state );
+                if(result.ok) {
+                    $("input#cep").val(result.code);
+                    $("input#estado").val(result.state.toUpperCase());
+                    $("input#cidade").val(result.city.toUpperCase());
+                    $("input#bairro").val(result.district.toUpperCase());
+                    $("input#endereco").val(result.address.toUpperCase());
+                    $("input#estado").val(result.state.toUpperCase());
+                }else {
+                    swal(result.message, "Click no botão abaixo!", "error");
+                }
             }
 
         });

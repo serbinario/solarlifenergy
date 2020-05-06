@@ -191,8 +191,6 @@ class UtilController extends Controller
             $projetosFinalizado = ProjetosFinalizado::create();
             $endereco = Endereco::create();
 
-            //dd($projetoDocumento, $projetosExecurcao, $projetosFinalizando, $projetosFinalizado, $endereco);
-
             $data = array();
             $data['proposta_id'] = $id;
             $data['projeto_status_id'] = 1;
@@ -205,13 +203,9 @@ class UtilController extends Controller
 
             Projetov2::create($data);
 
-
         } catch (Exception $e) {
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
         }
-
-
-
         return \Illuminate\Support\Facades\Response::json(['success' => true]);
     }
 
