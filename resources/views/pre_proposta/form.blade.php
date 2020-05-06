@@ -281,7 +281,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <input class="btn btn-sm btn-primary"  id="calcular_media" type="button" value="Calcular Media">
                     </div>
                     <div class="tab-pane" id="second2">
 
