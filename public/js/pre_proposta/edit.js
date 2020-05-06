@@ -1,9 +1,6 @@
 $(document).ready(function () {
 
     $("#edit_pre_proposta_form").submit(function(evt) {
-        //evt.preventDefault();
-       // $("#produto2_preco").val(realDolar($("#produto2_preco").val()));
-
         $('.money').each(function(index, elem){
             $(elem).val(realDolar($(elem).val()));
         });
