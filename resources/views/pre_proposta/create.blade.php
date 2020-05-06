@@ -47,34 +47,6 @@
 @endsection
 
 @section('javascript')
-    <script>
-
-        document.getElementById("jan").addEventListener("focus", myFunction);
-
-        function myFunction(){
-            var jan = document.querySelector("#jan").value;
-            var feb = document.querySelector("#feb").value;
-            //alert(parseInt(jan) + parseInt(feb))
-        }
-
-        //var preco = document.querySelector("#preco").textContent;
-
-    function validateForm() {
-        //var monthly_usage = document.forms["create_pre_proposta_form"]["monthly_usage"].value;
-        //var preco_kwh = document.forms["create_pre_proposta_form"]["preco_kwh"].value;
-        //var panel_potencia = document.forms["create_pre_proposta_form"]["panel_potencia"].value;
-        //var cidade_id = document.forms["create_pre_proposta_form"]["cidade_id"].value;
-        //var cliente_id = document.forms["create_pre_proposta_form"]["cliente_id"].value;
-
-        //if(monthly_usage == "" || preco_kwh == "" || panel_potencia == "" || cidade_id == "" || cliente_id == "" ){
-          //  alert(monthly_usage);
-            //return false;
-        //}
-
-        //return false;
-
-    }
-    </script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/util.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/select2_util.js')}}" type="text/javascript"></script>
