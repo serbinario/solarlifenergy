@@ -85,7 +85,7 @@
                                                                 <option value="1">Prospecção e Elaboração de Projetos</option>
                                                                 <option value="2">Proj. em Análise</option>
                                                                 <option value="3">Proj. em Análise - Finalizando p/ Inínicio de Obras</option>
-                                                                <option value="4">Obras em Execusão </option>
+                                                                <option value="4">Obras em Execucão </option>
                                                                 <option value="5">Obras em Fase Final</option>
                                                                 <option value="6">Obras Finalizadas </option>
                                                                 <option value="7">Obras Paradas</option>
