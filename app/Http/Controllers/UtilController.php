@@ -5,6 +5,7 @@ namespace Serbinario\Http\Controllers;
 use Illuminate\Http\Request;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\Contrato;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
@@ -209,7 +210,22 @@ class UtilController extends Controller
         return \Illuminate\Support\Facades\Response::json(['success' => true]);
     }
 
+    public function criarContrato(Request $request){
 
+        try {
+            $data = array();
+            $data['projeto_id'] = $request->get('projeto_id');
+            $data['franquia_id'] = Auth::user()->franquia->id;
+            $data['report_layout_id'] = $request->get('minuta_contrato');;
+            $data['projeto_id'] = $request->get('projeto_id');
+            $data['ano'] = $request->get('ano');
+            $data['created_by'] = Auth::user()->id;
 
+            Contrato::create($data);
 
+        } catch (Exception $e) {
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
+        }
+        return \Illuminate\Support\Facades\Response::json(['success' => true]);
+    }
 }

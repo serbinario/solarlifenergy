@@ -138,4 +138,56 @@ $(document).ready(function () {
         $(this).parents(".copy").remove();
     });
 
+    $("#modalContrato").on('click', function () {
+        $('#formModal').modal();
+        //var projeto_id =  document.getElementById("id").value
+        //criarContrato(projeto_id)
+    })
+
+    $("#novoContrato").on('click', function () {
+
+        criarContrato()
+    })
+
+
+    function criarContrato(projeto_id)
+    {
+
+        //Necessario para que o ajax envie o csrf-token
+        //Para isso coloquei no form <meta name="csrf-token" content="{{ csrf_token() }}">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+            }
+        });
+        var projeto_id =  document.getElementById("id").value;
+
+        var ano =  document.getElementById("ano").value;
+
+        var selector = document.getElementById('minuta_contrato');
+        var minuta_contrato = selector[selector.selectedIndex].value;
+
+        data = {
+            'ano': ano,
+            'projeto_id': projeto_id,
+            'minuta_contrato': minuta_contrato
+        }
+
+        jQuery.ajax({
+            type: 'POST',
+            url: '/index.php/criarContrato',
+            datatype: 'json',
+            data: data,
+        }).done(function (retorno) {
+            if(retorno.success) {
+                swal("", "Contrato Cadastrado com sucesso", "success");
+                $('#formModal').modal('toggle');
+
+            } else {
+                swal("Error", "Click no botão abaixo!", "error");
+            }
+        });
+    }
+
 });

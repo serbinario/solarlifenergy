@@ -43,7 +43,8 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Cliente</th>
-                                                    <th>Cód. Projeto</th>
+                                                    <th>Valor Proposta</th>
+                                                    <th>KWp</th>
                                                     <th>Ano</th>
                                                     <th>Acao</th>
                                                 </tr>
@@ -60,7 +61,6 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('contrato.contrato.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Contrato</a>
                             </div>
                         </div>
                     </div><!--end .card -->
@@ -69,6 +69,7 @@
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+    @include ('contrato.modalContrato')
 
 @endsection
 

@@ -71,6 +71,14 @@ class Projetov2 extends Model
     /**
      * Get the projeto for this model.
      */
+    public function contrato()
+    {
+        return $this->hasOne('Serbinario\Entities\Contrato','projeto_id','id');
+    }
+
+    /**
+     * Get the projeto for this model.
+     */
     public function imagens()
     {
         return $this->hasMany('Serbinario\Entities\ProjetosImage','projetov2_id','id');

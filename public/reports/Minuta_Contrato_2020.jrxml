@@ -18,16 +18,18 @@ cl.cpf_cnpj,
 cl.endereco, 
 cl.bairro,
 cl.numero,
-p.kw,
-p.end_intalacao,
-p.cep,
-p.cidade,
-p.estado,
+pr.potencia_instalada,
+en.logradouro,
+en.cep,
+en.cidade,
+en.uf,
 c.ano 
 FROM  
 contratos AS c
-INNER JOIN projetos AS p ON p.id = c.projeto_id
-INNER JOIN clientes AS cl ON cl.id = p.clientes_id
+INNER JOIN projetosv2 AS p ON p.id = c.projeto_id 
+INNER JOIN enderecos AS en ON en.id = p.`endereco_id`
+INNER JOIN pre_propostas AS pr ON pr.id = p.proposta_id 
+INNER JOIN clientes AS cl ON cl.id = pr.cliente_id
 where c.id =  $P{id}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
@@ -50,25 +52,25 @@ where c.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="numero"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="kw" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="kw"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="potencia_instalada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="end_intalacao" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="end_intalacao"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="logradouro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="logradouro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
 	</field>
 	<field name="cep" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cep"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
 	</field>
 	<field name="cidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
 	</field>
-	<field name="estado" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="estado"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="uf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="uf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
 	</field>
 	<field name="ano" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ano"/>
@@ -132,7 +134,7 @@ where c.id =  $P{id}]]>
 					<font size="12" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CONTRATO DE FORNECIMENTO E MONTAGEM DE GERADOR FOTOVOLTAICO DE MICRO GERAÇÃO ON-GRID " + $F{kw} + "Kwp Nº " + $F{cpf_cnpj} + " /" + $F{ano}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["CONTRATO DE FORNECIMENTO E MONTAGEM DE GERADOR FOTOVOLTAICO DE MICRO GERAÇÃO ON-GRID " + $F{potencia_instalada} + "Kwp Nº " + $F{cpf_cnpj} + " /" + $F{ano}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="116" width="442" height="109" uuid="d53dfab3-0d4a-491d-931c-093a62d08158"/>
@@ -148,14 +150,14 @@ where c.id =  $P{id}]]>
 					<font size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style isBold='true'>"+$F{nome} + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{end_intalacao} + "</style>" + " N. " + $F{numero}  + " bairro " + "<style isBold='true'>"+$F{bairro} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+$F{nome} + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{endereco} + "</style>" + " N. " + $F{numero}  + " bairro " + "<style isBold='true'>"+$F{bairro} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="330" width="442" height="16" uuid="cfe9ac85-f4d4-432d-8458-6c9728413384"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["MICRO GERAÇÃO ON-GRID " + $F{kw}+ " Kwp"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["MICRO GERAÇÃO ON-GRID " + $F{potencia_instalada}+ " Kwp"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="94" width="100" height="22" uuid="6e3dee7f-5f2d-4365-9c89-d866475d68b1"/>
@@ -224,7 +226,7 @@ where c.id =  $P{id}]]>
 				<textElement textAlignment="Justified" markup="styled">
 					<font size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRATO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{kw}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
+				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRATO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{potencia_instalada}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
           "        <style isBold='true'>Parágrafo único.</style>"+ " As instalações serão executadas conforme projeto preliminar, e as normas vigentes da concessionária local visando a aprovação da conexão do gerador." + "\n"+
           "        Não sendo de responsabilidade da contratada custos referentes a adequação de reparos/reforços de estrutura civil/elétrica para adequação do sistema."]]></textFieldExpression>
 			</textField>
@@ -278,7 +280,7 @@ where c.id =  $P{id}]]>
 "IV. A estrutura metálica será composta em alumínio e aço galvanizado."+ "\n" +
 "V. Os módulos serão fixados sobre a estrutura projetada para tal finalidade."+ "\n" +
 "VI. " + "<style isBold='true'>Os eletrodutos serão conduzidos de forma aparente.</style>" + "\n" +
-"VII. Quantidade contratada no projeto " +$F{kw}+  " KWP " + "<style isBold='true'>(sem armazenagem de energia).</style>"  +"\n"+
+"VII. Quantidade contratada no projeto " +$F{potencia_instalada}+  " KWP " + "<style isBold='true'>(sem armazenagem de energia).</style>"  +"\n"+
 "VIII. Sempre que existente condição climática desfavoráveis (chuvas, ventos acima da média da região, raios e outros fenômenos naturais que possam colocar em risco a segurança da instalação) haverá paralisação justificada, não caracterizando atraso por parte da contratada." +"\n"+
 "IX. O contratante deverá disponibilizar um espaço no mesmo local da instalação do sistema fotovoltaico para fins de armazenagens do material." +"\n"+
 "X. A partir da chegada dos equipamentos no local da instalação, é de total responsabilidade da contratante a segurança dos mesmos." +"\n"+

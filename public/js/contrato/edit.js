@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $("input[name=cep]").blur(function(){
         var cep_code = $(this).val();
         if( cep_code.length <= 0 ) return;
@@ -18,6 +17,7 @@ $(document).ready(function () {
 
         });
     });
+
 
 
 });

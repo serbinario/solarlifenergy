@@ -52,18 +52,20 @@ class ContratoController extends Controller
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('contratos')
-            ->leftJoin('projetos', 'projetos.id', '=', 'contratos.projeto_id')
-            ->leftJoin('clientes', 'clientes.id', '=', 'projetos.clientes_id')
-            ->join('users', 'clientes.user_id', '=', 'users.id')
+            ->leftJoin('projetosv2', 'projetosv2.id', '=', 'contratos.projeto_id')
+            ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
+            ->join('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->join('users', 'users.id', '=', 'pre_propostas.user_id')
             ->select([
                 'clientes.nome_empresa',
                 'contratos.id',
-                'projetos.projeto_codigo',
+                'pre_propostas.preco_medio_instalado',
+                'pre_propostas.potencia_instalada',
                 'contratos.ano'
             ]);
 
-        $user = User::find(Auth::id());
-        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        //$user = User::find(Auth::id());
+        //$rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
@@ -71,18 +73,13 @@ class ContratoController extends Controller
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                               
-                                <a href="contrato/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>
+                               
                                 <a href="/report/'.$row->id.'/Contrato" class="btn btn-primary" target="_blank" title="Contrato">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>
                                 <a href="/report/'.$row->id.'/Declaracao" class="btn btn-primary" target="_blank" title="Declaração Ciência">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>
-                                <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                                </a>                               
                         </form>
                         ';
         })->make(true);

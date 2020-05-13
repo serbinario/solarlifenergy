@@ -90,8 +90,6 @@
                                                                 <option value="6">Obras Finalizadas </option>
                                                                 <option value="7">Obras Paradas</option>
                                                             </select>
-
-
                                                         </div>
                                                     </div>
                                                 </div>
