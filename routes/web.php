@@ -27,6 +27,9 @@ Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
 Route::get('criarProjeto/{id}', 'UtilController@criarProjeto')
     ->name('criarProjeto.criarProjeto');
 
+Route::post('criarContrato/', 'UtilController@criarContrato')
+    ->name('criarContrato.criarContrato');
+
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 

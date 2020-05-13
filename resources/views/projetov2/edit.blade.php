@@ -33,9 +33,12 @@
                         <div class="card-head style-primary">
                             <header>Editar Projeto - {{ $projetov2->PreProposta->cliente->nome }} - R$  {{ $projetov2->PreProposta->preco_medio_instalado }}</header>
                         </div>
-                        @include ('projetov2.form', ['projetov2' => $projetov2, ])
+                        @include ('projetov2.form', ['projetov2' => $projetov2 ])
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
+                                @if(!isset($projetov2->contrato->id))
+                                    <input class="btn btn-primary" id="modalContrato" type="button" value="Criar Contrato">
+                                @endif
                                 <a href="{{ route('projetov2.projetov2.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
@@ -45,6 +48,8 @@
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+
+    @include ('projetov2.modalContrato', ['projetov2' => $projetov2 ])
 
 @endsection
 
