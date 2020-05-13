@@ -49,7 +49,7 @@ $(document).ready(function () {
         columns: [
             {data: 'id', name: 'id', targets: 0, visible: false},
             {data: 'nome_empresa', name: 'clientes.nome_empresa'},
-            {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
+            {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
             {data: 'potencia_instalada', name: 'pre_propostas.potencia_instalada'},
             {data: 'ano', name: 'contratos.ano'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -76,6 +76,11 @@ $(document).ready(function () {
     $(document).on('click', '#editModalContrato', function(){
         $('#modalContrato').modal();
     });
+
+    function formatMoney(n, c, d, t) {
+        c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
 
 
 })
