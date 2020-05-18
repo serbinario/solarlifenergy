@@ -373,7 +373,7 @@ WHERE p.id =  $P{idProjeto}]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="154" y="200" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="154" y="199" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
