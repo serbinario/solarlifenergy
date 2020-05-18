@@ -29,12 +29,13 @@ cl.cidade,
 cl.cep,
 cl.rg,
 cl.nacionalidade,
-p.kw,
+pr.potencia_instalada,
 c.ano 
 FROM  
 contratos AS c
-INNER JOIN projetos AS p ON p.id = c.projeto_id
-INNER JOIN clientes AS cl ON cl.id = p.clientes_id
+INNER JOIN projetosv2 AS p ON p.id = c.projeto_id 
+INNER JOIN pre_propostas AS pr ON pr.id = p.proposta_id 
+INNER JOIN clientes AS cl ON cl.id = pr.cliente_id
 where c.id =   $P{id}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
@@ -93,9 +94,9 @@ where c.id =   $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="kw" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="kw"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	<field name="potencia_instalada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
 	<field name="ano" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ano"/>
@@ -148,7 +149,7 @@ where c.id =   $P{id}]]>
 		<band height="604" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="0" y="63" width="425" height="30" uuid="a1ae23ba-d631-444d-a952-854c86505ae9"/>
+				<reportElement x="0" y="64" width="425" height="30" uuid="a1ae23ba-d631-444d-a952-854c86505ae9"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -185,3 +186,4 @@ where c.id =   $P{id}]]>
 		</band>
 	</detail>
 </jasperReport>
+
