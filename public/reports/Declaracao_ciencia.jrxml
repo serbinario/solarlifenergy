@@ -149,7 +149,7 @@ where c.id =   $P{id}]]>
 		<band height="604" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="0" y="63" width="425" height="30" uuid="a1ae23ba-d631-444d-a952-854c86505ae9"/>
+				<reportElement x="0" y="64" width="425" height="30" uuid="a1ae23ba-d631-444d-a952-854c86505ae9"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
