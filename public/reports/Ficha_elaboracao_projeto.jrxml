@@ -80,14 +80,14 @@
 	<subDataset name="contratos" uuid="ecfab627-bb23-4ebe-957a-65aeac4c80a3">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
-		<parameter name="idProjeto" class="java.lang.String"/>
+		<parameter name="idProjeto" class="java.lang.Float"/>
 		<queryString language="SQL">
 			<![CDATA[SELECT 
 	pcc.`num_contacontrato`,
 	pcc.`percentual`
 FROM projetosv2 AS p
 INNER JOIN projetos_contas_contrato AS pcc ON pcc.`projetov2_id` = p.`id`
-where pcc.`projetov2_id` =  $P{idProjeto} ]]>
+where pcc.`projetov2_id` =  $P{idProjeto}]]>
 		</queryString>
 		<field name="num_contacontrato" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="num_contacontrato"/>
@@ -124,7 +124,7 @@ INNER JOIN enderecos AS e ON  e.id = p.`endereco_id`
 INNER JOIN users AS u ON u.id = pre.`user_id`
 WHERE p.id =  $P{idProjeto}]]>
 	</queryString>
-	<field name="id" class="java.lang.Long">
+	<field name="id" class="java.lang.Float">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
@@ -369,11 +369,11 @@ WHERE p.id =  $P{idProjeto}]]>
 		</band>
 	</title>
 	<detail>
-		<band height="439">
+		<band height="540">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="154" y="200" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="154" y="199" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
@@ -585,7 +585,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[OBSERVAÇÕES:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="360" width="549" height="60" uuid="94e66090-f958-4028-bbc1-1c06a9793ca6">
+				<reportElement positionType="Float" x="0" y="360" width="549" height="180" uuid="94e66090-f958-4028-bbc1-1c06a9793ca6">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
