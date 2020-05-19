@@ -283,16 +283,57 @@ class PrePropostaController extends Controller
         try {
             //dd($request->all());
             $data = $this->getData($request);
-
-            $cidade = Cidade::where('id', '=', $data['cidade_id'])->first();
-            $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $data['qtd_paineis'], '1.72');
-            $data['reducao_media_consumo'] = $this->getReducaoMediaConsumo($data['monthly_usage'], '0',array_sum($geracaoEnergiaFV)/12 );
-
-
-            $data['potencia_instalada'] = $this->getGeradorKwp($data['qtd_paineis'], $data['panel_potencia']);
-            //dd($data['qtd_paineis']);
-            //dd($data);
             $preProposta = PreProposta::findOrFail($id);
+
+            $return = $this->simularGeracao($request);
+
+            $data['qtd_paineis'] = $return['qtd_modulos'];
+
+            $data['potencia_instalada'] = $return['potencia_gerador'];
+
+            $data['minima_area'] = $return['area_minima'];
+
+            //[RF002-RN002]
+            $data['valor_franqueadora'] = $return['total_nvestimento'];
+
+            //Valor que a franqueada vai pagar
+            $data['preco_medio_instalado'] = $return['total_nvestimento'] - $data['valor_descontos'];
+
+            $data['entrada2_valor'] = $request->get('entrada2_valor');
+
+            $data['produto1_nf'] = $return['soma_modulos'];
+            $data['produto1_preco'] = $return['valor_modulo'];
+
+            $data['qtd_inversores'] = $return['qtd_inversores'];
+            $data['produto2_nf'] = $return['soma_inversor'];
+            $data['produto2_preco'] = $return['soma_inversor'];
+
+            $data['produto3_nf'] = $return['soma_estrutura'];
+            $data['produto3_preco'] = $return['soma_estrutura'];
+
+            $data['produto4_nf'] = $return['soma_infra'];
+            $data['produto4_preco'] = $return['soma_infra'];
+
+            $data['produto5_nf'] = $return['soma_kit'];
+            $data['produto5_preco'] = $return['soma_kit'];
+            $data['co2'] = $return['co2'];
+            //dd($data);
+            $data['gera_fv_jan'] = $return['geracao_fv']['0'];
+            $data['gera_fv_fev'] = $return['geracao_fv']['1'];
+            $data['gera_fv_mar'] = $return['geracao_fv']['2'];
+            $data['gera_fv_abr'] = $return['geracao_fv']['3'];
+            $data['gera_fv_mai'] = $return['geracao_fv']['4'];
+            $data['gera_fv_jun'] = $return['geracao_fv']['5'];
+            $data['gera_fv_jul'] = $return['geracao_fv']['6'];
+            $data['gera_fv_ago'] = $return['geracao_fv']['7'];
+            $data['gera_fv_set'] = $return['geracao_fv']['8'];
+            $data['gera_fv_out'] = $return['geracao_fv']['9'];
+            $data['gera_fv_nov'] = $return['geracao_fv']['10'];
+            $data['gera_fv_dez'] = $return['geracao_fv']['11'];
+
+            $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
+
+
 
 
             $preProposta->update($data);
@@ -388,7 +429,8 @@ class PrePropostaController extends Controller
             'estar_finalizado',
             'data_financiamento_bancario',
             'tempo_carencia',
-            'data_prevista_parcela'
+            'data_prevista_parcela',
+            'valor_descontos'
             ]);
 
         return $data;

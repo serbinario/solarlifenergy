@@ -14,10 +14,6 @@
         </div>
     @endif
 
-
-
-
-
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
