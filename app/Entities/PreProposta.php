@@ -112,7 +112,8 @@ class PreProposta extends Model
         'valor_franqueadora',
         'data_financiamento_bancario',
         'tempo_carencia',
-        'data_prevista_parcela'
+        'data_prevista_parcela',
+        'valor_descontos'
 
     ];
 
@@ -162,30 +163,20 @@ class PreProposta extends Model
         return $this->belongsTo('Serbinario\Entities\Cidade','cidade_id','id');
     }
 
-//    public function setPrecoMedioInstaladoAttribute($value)
-//    {
-//        $this->attributes['preco_medio_instalado'] = $value == "" ? null: $this->convertesRealIngles($value);
-//    }
+    public function getValorDescontosAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
 
     public function getPrecoMedioInstaladoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setEconomiaAnulaAttribute($value)
-//    {
-//        $this->attributes['economia_anula'] = $value == "" ? null: $this->convertesRealIngles($value);
-//    }
-
     public function getEconomiaAnulaAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-//    public function setPrecoKwhAttribute($value)
-//    {
-//        $this->attributes['preco_kwh'] = $value == "" ? null: $this->convertesRealIngles($value);
-//    }
 
     public function getPrecoKwhAttribute($value)
     {
@@ -222,221 +213,121 @@ class PreProposta extends Model
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
     }
 
-//    public function setProduto1PrecoAttribute($value)
-//    {
-//       // $this->attributes['produto1_preco'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto1PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-//    public function setProduto2PrecoAttribute($value)
-//    {
-//        //$this->attributes['produto2_preco'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto2PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto3PrecoAttribute($value)
-//    {
-//       // $this->attributes['produto3_preco'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto3PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto4PrecoAttribute($value)
-//    {
-//       // $this->attributes['produto4_preco'] = $this->convertesRealIngles($value);
-//    }
+
 
     public function getProduto4PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto5PrecoAttribute($value)
-//    {
-//       // $this->attributes['produto5_preco'] = $this->convertesRealIngles($value);
-//    }
+
 
     public function getProduto5PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto6PrecoAttribute($value)
-//    {
-//        //$this->attributes['produto6_preco'] = $this->convertesRealIngles($value);
-//    }
+
 
     public function getProduto6PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto7PrecoAttribute($value)
-//    {
-//       // $this->attributes['produto7_preco'] = $this->convertesRealIngles($value);
-//    }
+
 
     public function getProduto7PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto8PrecoAttribute($value)
-//    {
-//        //$this->attributes['produto8_preco'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto8PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto9PrecoAttribute($value)
-//    {
-//        //$this->attributes['produto9_preco'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto9PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto10PrecoAttribute($value)
-//    {
-//        $this->attributes['produto10_preco'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto10PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto11PrecoAttribute($value)
-//    {
-//        $this->attributes['produto11_preco'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto11PrecoAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-
-
-
-
-//    public function setProduto1NfAttribute($value)
-//    {
-//        $this->attributes['produto1_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto1NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto2NfAttribute($value)
-//    {
-//        $this->attributes['produto2_nf'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto2NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-//    public function setProduto3NfAttribute($value)
-//    {
-//        $this->attributes['produto3_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto3NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-//    public function setProduto4NfAttribute($value)
-//    {
-//        $this->attributes['produto4_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto4NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-//    public function setProduto5NfAttribute($value)
-//    {
-//        $this->attributes['produto5_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto5NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto6NfAttribute($value)
-//    {
-//        $this->attributes['produto6_nf'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto6NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-//    public function setProduto7NfAttribute($value)
-//    {
-//        $this->attributes['produto7_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto7NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto8NfAttribute($value)
-//    {
-//        $this->attributes['produto8_nf'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto8NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-//    public function setProduto9NfAttribute($value)
-//    {
-//        $this->attributes['produto9_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto9NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
 
-//    public function setProduto10NfAttribute($value)
-//    {
-//        $this->attributes['produto10_nf'] = $this->convertesRealIngles($value);
-//    }
-
     public function getProduto10NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
-
-//    public function setProduto11NfAttribute($value)
-//    {
-//        $this->attributes['produto11_nf'] = $this->convertesRealIngles($value);
-//    }
 
     public function getProduto11NfAttribute($value)
     {

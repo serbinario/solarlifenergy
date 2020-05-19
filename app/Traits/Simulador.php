@@ -37,8 +37,7 @@ trait Simulador
         $cidade = Cidade::where('id', '=', $cidade)->first();
 
         $mediaForaPonta = $request->get('monthly_usage');
-
-        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
+        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', $cidade->irradiacao_anual/1000, '30', '0.14', '1.7');
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
@@ -70,6 +69,12 @@ trait Simulador
         }else{
             $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
             $this->valorModulo = $basePreco->valor_modulo;
+
+            //Valida da hora de editar, se mudar o valor do modulo vai respitar o valor que digitou
+            if($request->has('produto1_preco')){
+                $basePreco->valor_modulo = floatval($request->get('produto1_preco')) ;
+            }
+
             $this->calculaGeracao($basePreco);
         }
 
