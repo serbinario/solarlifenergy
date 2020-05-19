@@ -584,10 +584,10 @@
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="form-group">
+                                <div class="form-entrada2_valor">
                                     <label for="cpf" class="col-sm-5 control-label text-bold">Entrada opção B.:</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm money" name="entrada2_valor" type="text" id="cpf" value="{{ old('entrada2_valor', isset($preProposta->entrada2_valor) ? $preProposta->entrada2_valor : null) }}" maxlength="11" >
+                                        <input class="form-control input-sm money" name="entrada2_valor" type="text" id="entrada2_valor" value="{{ old('entrada2_valor', isset($preProposta->entrada2_valor) ? $preProposta->entrada2_valor : null) }}" maxlength="11" >
                                         {!! $errors->first('entrada2_valor', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
