@@ -73,6 +73,8 @@ trait Simulador
             //Valida da hora de editar, se mudar o valor do modulo vai respitar o valor que digitou
             if($request->has('produto1_preco')){
                 $basePreco->valor_modulo = floatval($request->get('produto1_preco')) ;
+                $this->valorModulo = floatval($request->get('produto1_preco')) ;
+                //dd($request->all());
             }
 
             $this->calculaGeracao($basePreco);

@@ -299,7 +299,7 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $return['total_nvestimento'] - $data['valor_descontos'];
 
-            $data['entrada2_valor'] = $request->get('entrada2_valor');
+            $data['entrada2_valor'] = $return['total_nvestimento'] * 0.15;
 
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
@@ -334,7 +334,7 @@ class PrePropostaController extends Controller
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
 
 
-
+            //dd($data);
 
             $preProposta->update($data);
 
