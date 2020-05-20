@@ -64,6 +64,11 @@ trait Simulador
 
             $basePrecoModulos = Auth::user()->franquia->basePrecoRevenda->basePrecoModulos()->first();
             //dd("www", $inversores);
+
+            if($request->has('produto1_preco')){
+                $basePrecoModulos->valor = $request->get('produto1_preco');
+            }
+            //dd($basePrecoModulos);
             $this->calculaGeracaoFranquia($inversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
 
         }else{
