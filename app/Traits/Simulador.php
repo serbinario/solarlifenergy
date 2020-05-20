@@ -100,7 +100,7 @@ trait Simulador
                 'area_minima' => $area,
                 'co2' => $co2,
                 'valor_kw' => $valor_medio_kw,
-                'total_nvestimento' => round($this->totalInvestimento, 2),
+                'total_investimento' => round($this->totalInvestimento, 2),
                 'soma_modulos' =>  $this->somaModulos,
                 'qtd_inversores' => $this->qtdInversores,
                 'soma_inversor' => $this->somaInversor,
@@ -108,7 +108,13 @@ trait Simulador
                 'soma_infra' => $this->somaInfra,
                 'soma_kit' => $this->somaKit,
                 'reducao_media_consumo' => $reducaoMediaConsumo,
-                'geracao_fv' => $geracaoEnergiaFV
+                'geracao_fv' => $geracaoEnergiaFV,
+                'total_equipamentos' =>
+                    $this->somaModulos
+                    + $this->somaInversor
+                    + $this->somaestrutura
+                    + $this->somaInfra
+                    + $this->somaKit
             ];
     }
 
