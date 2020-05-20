@@ -351,9 +351,7 @@ class PrePropostaController extends Controller
                 + floatval($request->get('produto10_nf'))
                 + floatval($request->get('produto11_nf'));
 
-            //[RF002-RN002]
-            $data['valor_franqueadora'] = $request->get('preco_medio_instalado');
-
+            
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
 
