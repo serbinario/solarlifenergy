@@ -189,6 +189,7 @@ class PrePropostaController extends Controller
              */
 
             $return = $this->simularGeracao($request);
+            //dd($return);
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
@@ -197,12 +198,12 @@ class PrePropostaController extends Controller
             $data['minima_area'] = $return['area_minima'];
 
             //[RF002-RN002]
-            $data['valor_franqueadora'] = $return['total_nvestimento'];
+            $data['valor_franqueadora'] = $return['total_investimento'];
 
             //Valor que a franqueada vai pagar
-            $data['preco_medio_instalado'] = $return['total_nvestimento'];
+            $data['preco_medio_instalado'] = $return['total_investimento'];
 
-            $data['entrada2_valor'] = $return['total_nvestimento'] * 0.15;
+            $data['entrada2_valor'] = $return['total_investimento'] * 0.15;
 
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
@@ -236,13 +237,29 @@ class PrePropostaController extends Controller
 
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
 
+            $data['total_equipamentos'] = $return['total_equipamentos'];
+
+            $data['total_servico_operacional'] =
+                floatval($request->get('produto6_nf'))
+                + floatval($request->get('produto7_nf'))
+                + floatval($request->get('produto8_nf'))
+                + floatval($request->get('produto9_nf'))
+                + floatval($request->get('produto10_nf'))
+                + floatval($request->get('produto11_nf'));
+
+            //[RF002-RN002]
+            $data['valor_franqueadora'] = $request->get('preco_medio_instalado');
+
+            //Valor que a franqueada vai pagar
+            $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
+
             $preProposta = PreProposta::create($data);
             //dd($data);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
         } catch (Exception $e) {
-            //dd($e);
+            dd($e);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -286,18 +303,12 @@ class PrePropostaController extends Controller
             $preProposta = PreProposta::findOrFail($id);
 
             $return = $this->simularGeracao($request);
-
+            //dd($return);
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
 
             $data['minima_area'] = $return['area_minima'];
-
-            //[RF002-RN002]
-            $data['valor_franqueadora'] = $return['total_nvestimento'];
-
-            //Valor que a franqueada vai pagar
-            $data['preco_medio_instalado'] = $return['total_nvestimento'] - $data['valor_descontos'];
 
             $data['entrada2_valor'] = $request->get('entrada2_valor');
 
@@ -332,6 +343,22 @@ class PrePropostaController extends Controller
             $data['gera_fv_dez'] = $return['geracao_fv']['11'];
 
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
+
+            $data['total_equipamentos'] = $return['total_equipamentos'];
+
+            $data['total_servico_operacional'] =
+                floatval($request->get('produto6_nf'))
+                + floatval($request->get('produto7_nf'))
+                + floatval($request->get('produto8_nf'))
+                + floatval($request->get('produto9_nf'))
+                + floatval($request->get('produto10_nf'))
+                + floatval($request->get('produto11_nf'));
+
+            //[RF002-RN002]
+            $data['valor_franqueadora'] = $request->get('preco_medio_instalado');
+
+            //Valor que a franqueada vai pagar
+            $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
 
 
             //dd($data);
