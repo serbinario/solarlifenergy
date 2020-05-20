@@ -49,6 +49,7 @@ function calculaServicosEquipamentosDescontos() {
 }
 function atualizaValores(){
     var valor_descontos = document.getElementById('valor_descontos').value
+    var valor_franqueadora = document.getElementById('valor_franqueadora').value
     //this.calculaDescontos()
 
     document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
@@ -56,6 +57,9 @@ function atualizaValores(){
     document.getElementsByClassName('span_preco_medio_instalado')[0]
         .children[0].innerHTML = 'R$ ' + formatMoney((  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2))
     document.getElementById('preco_medio_instalado').value = formatMoney((  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2))
+
+    document.getElementsByClassName('span_valor_franqueadora')[0].children[0].innerHTML = 'R$ ' + formatMoney(valor_franqueadora)
+
 }
 /*
 / Serviços Operacionais
