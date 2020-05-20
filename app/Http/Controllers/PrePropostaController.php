@@ -239,19 +239,16 @@ class PrePropostaController extends Controller
 
             $data['total_equipamentos'] = $return['total_equipamentos'];
 
-            $data['total_servico_operacional'] =
-                floatval($request->get('produto6_nf'))
-                + floatval($request->get('produto7_nf'))
-                + floatval($request->get('produto8_nf'))
-                + floatval($request->get('produto9_nf'))
-                + floatval($request->get('produto10_nf'))
-                + floatval($request->get('produto11_nf'));
+            $data['total_servico_operacional'] = 0;
 
             //[RF002-RN002]
-            $data['valor_franqueadora'] = $request->get('preco_medio_instalado');
+            $data['valor_franqueadora'] = $return['total_investimento'];
 
             //Valor que a franqueada vai pagar
-            $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
+            $data['preco_medio_instalado'] = $return['total_investimento'];
+
+            $data['valor_descontos'] = 0.0;
+            $data['total_servico_operacional'] = 0.0;
 
             $preProposta = PreProposta::create($data);
             //dd($data);
