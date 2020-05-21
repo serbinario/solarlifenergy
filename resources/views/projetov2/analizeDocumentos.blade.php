@@ -64,6 +64,38 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group">
+            <label for="comprovante_renda" class="col-sm-8 control-label text-bold">Comprovante de Renda.:</label>
+            <div class="col-md-4">
+                <div class="checkbox checkbox-styled">
+                    <label for="comprovante_renda">
+                        <input id="comprovante_renda" class="" name="comprovante_renda" type="checkbox" value="1" {{ old('comprovante_renda', isset($projetov2->ProjetosDocumento->comprovante_renda) ? $projetov2->ProjetosDocumento->comprovante_renda : null) == '1' ? 'checked' : '' }}>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="form-group">
+            <label for="comprovante_renda_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+            <div class="col-md-9">
+                <input class="form-control input-sm" name="comprovante_renda_image" type="file" id="comprovante_renda_image">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            @if($projetov2->ProjetosDocumento->comprovante_renda_image)
+                <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->comprovante_renda_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+            @endif
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
             <label for="cpf_cnh_rg_conjugue" class="col-sm-8 control-label text-bold">CPF/CNH/RG Conjugue.:</label>
             <div class="col-md-4">
                 <div class="checkbox checkbox-styled">
@@ -225,37 +257,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label for="comprovante_renda" class="col-sm-8 control-label text-bold">Comprovante de Renda.:</label>
-                <div class="col-md-4">
-                    <div class="checkbox checkbox-styled">
-                        <label for="comprovante_renda">
-                            <input id="comprovante_renda" class="" name="comprovante_renda" type="checkbox" value="1" {{ old('comprovante_renda', isset($projetov2->ProjetosDocumento->comprovante_renda) ? $projetov2->ProjetosDocumento->comprovante_renda : null) == '1' ? 'checked' : '' }}>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-5">
-            <div class="form-group">
-                <label for="comprovante_renda_image" class="col-sm-3 control-label text-bold">Documento.:</label>
-                <div class="col-md-9">
-                    <input class="form-control input-sm" name="comprovante_renda_image" type="file" id="comprovante_renda_image">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                @if($projetov2->ProjetosDocumento->comprovante_renda_image)
-                    <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->comprovante_renda_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
 
-                @endif
-
-            </div>
-        </div>
-    </div>
 @endif
 
 <div class="row">
