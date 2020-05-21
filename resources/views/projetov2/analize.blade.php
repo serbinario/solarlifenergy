@@ -210,19 +210,48 @@
                 </div>
                 <div id="accordion2-4" class="collapse">
                     <div class="card-body">
-                        <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
-                            <label for="conta_contrato_anterior" class="col-md-2  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
-                            <div class="col-md-10">
-                                <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projetov2->conta_contrato_anterior) ? $projetov2->conta_contrato_anterior : null) }}" >
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group {{ $errors->has('titularidade_projeto') ? 'has-error' : '' }}">
+                                    <label for="titularidade_projeto" class="col-md-4  text-bold control-label text-bold">Titularidade Projeto.:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" name="titularidade_projeto" type="text" id="titularidade_projeto"  value="{{ old('titularidade_projeto', isset($projetov2->titularidade_projeto) ? $projetov2->titularidade_projeto : null) }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group {{ $errors->has('titularidade_projeto_cpf') ? 'has-error' : '' }}">
+                                    <label for="titularidade_projeto_cpf" class="col-md-4  text-bold control-label text-bold">CPF/CNPJ.:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" name="titularidade_projeto_cpf" type="text" id="titularidade_projeto_cpf"  value="{{ old('titularidade_projeto_cpf', isset($projetov2->titularidade_projeto_cpf) ? $projetov2->titularidade_projeto_cpf : null) }}" >
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group {{ $errors->has('conta_contrato_atual') ? 'has-error' : '' }}">
-                            <label for="conta_contrato_atual" class="col-md-2  text-bold control-label text-bold">Conta Contrato Atual.:</label>
-                            <div class="col-md-10">
-                                <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projetov2->conta_contrato_atual) ? $projetov2->conta_contrato_atual : null) }}" >
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group {{ $errors->has('conta_contrato_atual') ? 'has-error' : '' }}">
+                                    <label for="conta_contrato_atual" class="col-md-4  text-bold control-label text-bold">Conta Contrato Atual.:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projetov2->conta_contrato_atual) ? $projetov2->conta_contrato_atual : null) }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
+                                    <label for="conta_contrato_anterior" class="col-md-4  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projetov2->conta_contrato_anterior) ? $projetov2->conta_contrato_anterior : null) }}" >
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
+
 
                         <div class="col-lg-12">
                             <h4 class="text-bold">Contas Contrato</h4>

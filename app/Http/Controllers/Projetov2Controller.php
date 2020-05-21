@@ -267,6 +267,9 @@ class Projetov2Controller extends Controller
             $nameFileDeclaracao = $this->ImageStore($request, 'declaracao_ciencia_image', $analizeDocumento->declaracao_ciencia_image);
             $nameFileProposta = $this->ImageStore($request, 'proposta_image', $analizeDocumento->proposta_image);
             $nameFileContrato = $this->ImageStore($request, 'contrato_image', $analizeDocumento->contrato_image);
+            $nameFileFormularioVistoriaImage = $this->ImageStore($request, 'formulario_vistoria_image', $analizeDocumento->formulario_vistoria_image);
+
+
 
             $nameFileCartaoCNPJ = $this->ImageStore($request, 'cartao_cnpj_image', $analizeDocumento->cartao_cnpj_image);
             $nameFileDContratoSocial = $this->ImageStore($request, 'contrato_social_image', $analizeDocumento->contrato_social_image);
@@ -282,6 +285,8 @@ class Projetov2Controller extends Controller
             $analizeDocumentoData['declaracao_ciencia_image'] = $nameFileDeclaracao;
             $analizeDocumentoData['proposta_image'] = $nameFileProposta;
             $analizeDocumentoData['contrato_image'] = $nameFileContrato;
+
+            $analizeDocumentoData['formulario_vistoria_image'] = $nameFileFormularioVistoriaImage;
 
             $analizeDocumentoData['cartao_cnpj_image'] = $nameFileCartaoCNPJ;
             $analizeDocumentoData['contrato_social_image'] = $nameFileDContratoSocial;

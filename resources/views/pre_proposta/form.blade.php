@@ -720,7 +720,7 @@
             <div class="form-group"{{ $errors->has('valor_descontos') ? 'has-error' : '' }}">
                 <label for="valor_descontos" class="col-sm-6 control-label text-bold">Descontos.:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm money" onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : null) }}"  min="0" max="10" placeholder="Descontos">
+                    <input class="form-control input-sm money" onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : 0) }}"  min="0" max="10" placeholder="Descontos">
                 </div>
             </div>
         </div>

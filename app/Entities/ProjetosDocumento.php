@@ -37,7 +37,9 @@ class ProjetosDocumento extends Model
         'faturamento',
         'faturamento_image',
         'comprovante_renda',
-        'comprovante_renda_image'
+        'comprovante_renda_image',
+        'formulario_vistoria',
+        'formulario_vistoria_image'
     ];
 
     protected $guarded = [];

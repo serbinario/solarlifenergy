@@ -386,4 +386,37 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="formulario_vistoria" class="col-sm-8 control-label text-bold">Formulário Vistoria Assinado?.:</label>
+            <div class="col-md-4">
+                <div class="checkbox checkbox-styled">
+                    <label for="formulario_vistoria">
+                        <input id="formulario_vistoria" class="" name="formulario_vistoria" type="checkbox" value="1" {{ old('formulario_vistoria', isset($projetov2->ProjetosDocumento->formulario_vistoria) ? $projetov2->ProjetosDocumento->formulario_vistoria : null) == '1' ? 'checked' : '' }}>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="form-group">
+            <label for="formulario_vistoria_image" class="col-sm-3 control-label text-bold">Documento.:</label>
+            <div class="col-md-9">
+                <input class="form-control input-sm" name="formulario_vistoria_image" type="file" id="formulario_vistoria_image" value="{{ old('formulario_vistoria_image', isset($projetov2->ProjetosDocumento->formulario_vistoria_image) ? $projetov2->ProjetosDocumento->formulario_vistoria_image : "") }}">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            @if($projetov2->ProjetosDocumento->formulario_vistoria_image)
+                <a target="_blank" href="{{ url("/storage/{$projetov2->ProjetosDocumento->formulario_vistoria_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+
+            @endif
+
+        </div>
+    </div>
+</div>
+
+
 

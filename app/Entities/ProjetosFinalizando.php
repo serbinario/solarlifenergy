@@ -16,6 +16,7 @@ class ProjetosFinalizando extends Model
     protected $fillable = [
         'solicitacao_vistoria',
         'obter_protocolo_vistoria_numero',
+        'data_solicitacao_vistoria',
         'agendar',
         'agendar_nota',
         'agendar_data',
@@ -49,6 +50,28 @@ class ProjetosFinalizando extends Model
      * @return array
      */
     public function getAgendarDataAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    /**
+     * Set the data_vencimento.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDataSolicitacaoVistoriaAttribute($value)
+    {
+        $this->attributes['data_solicitacao_vistoria'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    /**
+     * Get data_vencimento in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDataSolicitacaoVistoriaAttribute($value)
     {
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
     }
