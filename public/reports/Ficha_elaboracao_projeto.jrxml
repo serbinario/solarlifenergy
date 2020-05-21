@@ -383,7 +383,7 @@ WHERE p.id =  $P{idProjeto}]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="154" y="199" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="154" y="215" width="229" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
@@ -451,7 +451,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[CONDIÇÃO DE PROJETO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="73" width="196" height="18" uuid="2187bdd3-9c59-416f-a330-6fbeec2f67b1">
+				<reportElement x="1" y="93" width="196" height="18" uuid="2187bdd3-9c59-416f-a330-6fbeec2f67b1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -460,7 +460,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[Endereço de Instalação.: ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="73" width="266" height="18" uuid="116f4b9d-0be4-40d2-8b45-6a754844dc36">
+				<reportElement x="223" y="93" width="326" height="18" uuid="116f4b9d-0be4-40d2-8b45-6a754844dc36">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -469,7 +469,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="93" width="266" height="18" uuid="3a399171-7b70-4ad8-8445-f6c0a4b2861d">
+				<reportElement x="223" y="113" width="326" height="18" uuid="3a399171-7b70-4ad8-8445-f6c0a4b2861d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -478,7 +478,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<textFieldExpression><![CDATA[$F{conta_contrato_atual}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="93" width="210" height="18" uuid="5c1441e2-3c12-4ebc-b812-c48c0c39d12c">
+				<reportElement x="1" y="113" width="210" height="18" uuid="5c1441e2-3c12-4ebc-b812-c48c0c39d12c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -493,7 +493,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="1" y="113" width="196" height="18" uuid="1e866f01-d255-4098-a392-f32b53abe575">
+				<reportElement x="1" y="133" width="196" height="18" uuid="1e866f01-d255-4098-a392-f32b53abe575">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -502,7 +502,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[KwP.: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="133" width="210" height="18" uuid="9d19b81d-395c-463c-826b-da48d287b722">
+				<reportElement x="1" y="153" width="210" height="18" uuid="9d19b81d-395c-463c-826b-da48d287b722">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -511,7 +511,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[Prioridade.:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="133" width="266" height="18" uuid="0e7ef574-dcbe-4036-86d0-91121c267ac4">
+				<reportElement x="223" y="153" width="326" height="18" uuid="0e7ef574-dcbe-4036-86d0-91121c267ac4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -520,7 +520,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<textFieldExpression><![CDATA[$F{prioridade_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="113" width="266" height="18" uuid="61614e17-aea9-4629-9ffe-32b59d35a170">
+				<reportElement x="223" y="133" width="326" height="18" uuid="61614e17-aea9-4629-9ffe-32b59d35a170">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -529,7 +529,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<textFieldExpression><![CDATA[$F{potencia_instalada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="154" width="210" height="33" uuid="8dec7741-bab5-4c9e-9b96-c47046f993cc">
+				<reportElement x="1" y="174" width="210" height="33" uuid="8dec7741-bab5-4c9e-9b96-c47046f993cc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -538,7 +538,7 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[Data Prevista aguardando confirmação.:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="154" width="266" height="18" uuid="0f6c9456-b6e5-454f-be7e-2b27b85474ef">
+				<reportElement x="223" y="174" width="326" height="18" uuid="0f6c9456-b6e5-454f-be7e-2b27b85474ef">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -614,13 +614,31 @@ WHERE p.id =  $P{idProjeto}]]>
 				<text><![CDATA[Titularidade.: ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="240" y="56" width="266" height="18" uuid="7b070365-5304-4f3f-add1-a0f7fc72e0fd">
+				<reportElement x="223" y="56" width="326" height="18" uuid="7b070365-5304-4f3f-add1-a0f7fc72e0fd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titularidade_projeto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="75" width="196" height="18" uuid="49281eea-9974-4ff7-b757-8c983438f9e9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF/CNPJ.: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="224" y="75" width="326" height="18" uuid="a8dd3ef5-d22b-4506-ba64-1e8743c8f797">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="styled">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{titularidade_projeto} + " CPF/CNPJ " + $F{titularidade_projeto_cpf}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{titularidade_projeto_cpf}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
