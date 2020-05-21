@@ -17,7 +17,7 @@ $(document).ready(function () {
         var current = index + 0;
         var percent = (current / (total - 1)) * 100;
         var percentWidth = 100 - (100 / total) + '%';
-        //console.log(navigation)
+        console.log(percent)
         navigation.find('li').removeClass('done');
         navigation.find('li.active').prevAll().addClass('done');
 
