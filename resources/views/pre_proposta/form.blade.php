@@ -8,7 +8,7 @@
                     <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
                     <input name="id" type="hidden" id="id" value="{{ old('cep', isset($preProposta->id) ? $preProposta->id : null) }}" >
-                    <input name="valor_franqueadora" type="hidden" id="valor_franqueadora" value="{{ old('valor_franqueadora', isset($preProposta->valor_franqueadora) ? $preProposta->valor_franqueadora : null) }}" >
+                    <input type="hidden" id="valor_franqueadora" value="{{ old('valor_franqueadora', isset($preProposta->valor_franqueadora) ? $preProposta->valor_franqueadora : null) }}" >
 
                     <input name="total_equipamentos" type="hidden" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" >
                     <input name="total_servico_operacional" type="hidden" id="total_servico_operacional" value="{{ old('total_servico_operacional', isset($preProposta->total_servico_operacional) ? $preProposta->total_servico_operacional : null) }}" >
@@ -720,7 +720,7 @@
             <div class="form-group"{{ $errors->has('valor_descontos') ? 'has-error' : '' }}">
                 <label for="valor_descontos" class="col-sm-6 control-label text-bold">Descontos.:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm money" onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : null) }}"  min="0" max="10" placeholder="Descontos">
+                    <input class="form-control input-sm money" onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : 0) }}"  min="0" max="10" placeholder="Descontos">
                 </div>
             </div>
         </div>

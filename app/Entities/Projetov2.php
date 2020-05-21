@@ -43,6 +43,8 @@ class Projetov2 extends Model
         'data_prevista',
         'conta_contrato_anterior',
         'conta_contrato_atual',
+        'titularidade_projeto',
+        'titularidade_projeto_cpf',
         'obs'
     ];
 

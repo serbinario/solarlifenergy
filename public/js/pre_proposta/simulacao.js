@@ -51,6 +51,7 @@ function atualizaValores(){
     var valor_descontos = document.getElementById('valor_descontos').value
     var valor_franqueadora = document.getElementById('valor_franqueadora').value
     //this.calculaDescontos()
+    if(valor_descontos == "") valor_descontos = 0
 
     document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
     document.getElementsByClassName('total_equipamentos')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaEquipamentos())
