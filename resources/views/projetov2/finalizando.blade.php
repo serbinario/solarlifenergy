@@ -16,16 +16,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+
+            <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="obter_protocolo_vistoria_numero" class="col-sm-5 control-label text-bold">Número Protocolo.:</label>
+                    <label for="obter_protocolo_vistoria_numero" class="col-sm-5 control-label text-bold">N/Protocolo.:</label>
                     <div class="col-md-7">
                         <input class="form-control input-sm" name="obter_protocolo_vistoria_numero" type="text" id="obter_protocolo_vistoria_numero" value="{{ old('obter_protocolo_vistoria_numero', isset($projetov2->ProjetosFinalizando->obter_protocolo_vistoria_numero) ? $projetov2->ProjetosFinalizando->obter_protocolo_vistoria_numero : "") }}">
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="data_solicitacao_vistoria" class="col-sm-6 control-label text-bold">Data Solicitação.:</label>
                     <div class="col-md-5">
@@ -33,6 +33,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="data_prevista_vistoria" class="col-sm-6 control-label text-bold">Data Prevista.:</label>
+                    <div class="col-md-5">
+                        <input class="form-control input-sm date" name="data_prevista_vistoria" type="text" id="data_prevista_vistoria" value="{{ old('data_prevista_vistoria', isset($projetov2->ProjetosFinalizando->data_prevista_vistoria) ? $projetov2->ProjetosFinalizando->data_prevista_vistoria : null) }}">
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="row">
