@@ -91,7 +91,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="obter_protocolo_numero" class="col-sm-6 control-label text-bold">Número Protocolo.:</label>
+                    <label for="obter_protocolo_numero" class="col-sm-6 control-label text-bold">N/Protocolo.:</label>
                     <div class="col-md-6">
                         <input class="form-control input-sm" name="obter_protocolo_numero" type="text" id="obter_protocolo_numero" value="{{ old('obter_protocolo_numero', isset($projetov2->ProjetosExecurcao->obter_protocolo_numero) ? $projetov2->ProjetosExecurcao->obter_protocolo_numero : "") }}">
                     </div>
