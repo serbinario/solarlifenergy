@@ -328,6 +328,9 @@ class Projetov2Controller extends Controller
                 $finalizando->getColumnsTable()
             );
 
+            $nameFileSeloVistoriaImage = $this->ImageStore($request, 'selo_vistoria_image', $execursao->selo_vistoria_image);
+            $finalizandoData['selo_vistoria_image'] = $nameFileSeloVistoriaImage;
+
             $finalizando->update($finalizandoData);
 
             $finalizado = ProjetosFinalizado::findOrFail($progetov2->projeto_finalizado_id);

@@ -81,6 +81,36 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="emitir_art" class="col-sm-8 control-label text-bold">Selo de Vistoria?.:</label>
+                    <div class="col-md-4">
+                        <div class="checkbox checkbox-styled">
+                            <label for="selo_vistoria">
+                                <input id="selo_vistoria" class="" name="selo_vistoria" type="checkbox" value="1" {{ old('selo_vistoria', isset($projetov2->ProjetosFinalizando->selo_vistoria) ? $projetov2->ProjetosFinalizando->selo_vistoria : null) == '1' ? 'checked' : '' }}>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="ProjetosFinalizando" class="col-sm-2 control-label text-bold">Documento.:</label>
+                    <div class="col-md-9">
+                        <input class="form-control input-sm" name="selo_vistoria_image" type="file" id="selo_vistoria_image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @if($projetov2->ProjetosFinalizando->selo_vistoria_image)
+                        <a target="_blank"  href="{{ url("/storage/{$projetov2->ProjetosFinalizando->selo_vistoria_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+
         <div class="form-group {{ $errors->has('emitir_art') ? 'has-emitir_art' : '' }}">
             <label for="finalizado" class="col-md-2 control-label text-bold">Projeto Finalizado?.:</label>
             <div class="col-md-10">
