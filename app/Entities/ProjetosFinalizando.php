@@ -17,6 +17,8 @@ class ProjetosFinalizando extends Model
         'solicitacao_vistoria',
         'obter_protocolo_vistoria_numero',
         'data_solicitacao_vistoria',
+        'selo_vistoria_image',
+        'selo_vistoria',
         'agendar',
         'agendar_nota',
         'agendar_data',
