@@ -135,9 +135,32 @@ class ReportController extends Controller
         } catch (Exception $e) {
             dd("sssssss");
         }
-        //dd($id);
+    }
 
+    public function reportPdfVistoria()
+    {
+        try
+        {
+            $file = $this->gerarPdf("", "Relatorio_Vistoria");
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+    }
 
+    public function reportPdfParecerAcesso()
+    {
+        try
+        {
+            $file = $this->gerarPdf("", "Relatorio_Parecer_Acesso");
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
     }
 
     public function reportProjeto(Request $request){
