@@ -51,7 +51,7 @@
 pre_propostas.preco_medio_instalado AS preço,
 pre_propostas.potencia_instalada AS kwp,
 pre_propostas.data_financiamento_bancario AS "data Assinatura",
-pre_propostas.data_prevista_parcela AS "data parcela" ,
+pre_propostas.data_prevista_parcela AS "Previsão Parcela" ,
 meios_captacao.nome AS "Meio Captação",
 users.name AS integrador,
 projetos_status.status_nome AS STATUS,
@@ -312,13 +312,13 @@ order by $P!{ordenarTable} desc]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<staticText>
-				<reportElement x="0" y="15" width="802" height="30" uuid="058269fa-0531-4658-a1e4-c1575b38dea0"/>
+			<textField>
+				<reportElement x="0" y="15" width="802" height="30" uuid="35092ee7-fc67-4407-8a79-ef529de909cb"/>
 				<textElement textAlignment="Center">
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[RELATÓRIOS DE PROJETOS]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{titulo}.toUpperCase()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>

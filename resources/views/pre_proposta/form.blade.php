@@ -648,7 +648,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="cpf" class="col-sm-5 control-label text-bold">Data Financi.:</label>
+                                    <label for="cpf" class="col-sm-5 control-label text-bold">Data Assinatura.:</label>
                                     <div class="col-sm-4">
                                         <input class="form-control input-sm date" name="data_financiamento_bancario" type="text" id="data_financiamento_bancario" value="{{ old('data_financiamento_bancario', isset($preProposta->data_financiamento_bancario) ? $preProposta->data_financiamento_bancario : null) }}" >
                                         {!! $errors->first('data_financiamento_bancario', '<p class="help-block">:message</p>') !!}
