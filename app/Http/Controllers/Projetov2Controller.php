@@ -304,7 +304,9 @@ class Projetov2Controller extends Controller
                 $execursao->getColumnsTable()
             );
 
-           // dd($execursao->parecer_relacionamento_image);
+            $request->has('solicitacao_acesso')? : $execursaoData['solicitacao_acesso'] = 0;
+
+
 
             $nameFileAcesso = $this->ImageStore($request, 'parecer_acesso_image', $execursao->parecer_acesso_image);
             $nameFileRelacionamento = $this->ImageStore($request, 'parecer_relacionamento_image', $execursao->parecer_relacionamento_image);
@@ -328,6 +330,9 @@ class Projetov2Controller extends Controller
                 $finalizando->getColumnsTable()
             );
 
+            $request->has('solicitacao_vistoria')? : $finalizandoData['solicitacao_vistoria'] = 0;
+            $request->has('agendar')? : $finalizandoData['agendar'] = 0;
+
             $nameFileSeloVistoriaImage = $this->ImageStore($request, 'selo_vistoria_image', $execursao->selo_vistoria_image);
             $finalizandoData['selo_vistoria_image'] = $nameFileSeloVistoriaImage;
 
@@ -340,8 +345,6 @@ class Projetov2Controller extends Controller
             //dd($finalizadoData);
             $finalizado->update($finalizadoData);
 
-
-            //dd($request->all());
             //Deleta primeiro todos os registors dos contratos
             //$contratos = $progetov2->contratos()->delete();
 
