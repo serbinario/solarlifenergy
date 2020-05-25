@@ -22,7 +22,7 @@ function formatMoney(n, c, d, t) {
 }
 
 function realDolar(valor) {
-    valor = valor.replace(".","");
+    valor = valor.replace(/[$.]+/g,"");
     valor = valor.replace(",",".");
     return valor;
 }
