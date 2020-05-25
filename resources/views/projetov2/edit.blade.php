@@ -31,7 +31,12 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Projeto - {{ $projetov2->PreProposta->cliente->nome }} - R$  {{ $projetov2->PreProposta->preco_medio_instalado }}</header>
+                            <header>Editar Projeto - {{ $projetov2->PreProposta->cliente->nome }}
+
+                            </header>
+                            <div class="col-6 span_preco_medio_instalado">
+                                <span class="badge badge-dark float-right">R$ {{ $projetov2->PreProposta->preco_medio_instalado }}</span>
+                            </div>
                         </div>
                         @include ('projetov2.form', ['projetov2' => $projetov2 ])
                         <div class="card-actionbar">
