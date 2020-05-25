@@ -3,6 +3,7 @@ var fornecedorNome;
 var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
+var modalName;
 function template(d){
     //Retirar os "&quot" da array aditivos
     //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
@@ -112,6 +113,51 @@ function formatMoney(n, c, d, t) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
 
+var relatorios = document.getElementById('relatorios');
+
+var reportVistoriaAcessoa = document.getElementById('reportVistoriaAcessoa');
+
+reportVistoriaAcessoa.addEventListener('click', function (ev) {
+    reportVistoriaAcessoaJAX();
+})
+relatorios.addEventListener('change', function (ev) {
+    modalName = this.options[this.selectedIndex].value;
+    $(modalName).modal();
+})
+
+function formModalRelatorio() {
+    console.log("www");
+    $('#formModalRelatorio').modal();
+}
+
+function reportVistoriaAcessoaJAX() {
+    var e = document.getElementById('ordenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('order')
+    var order = t.options[t.selectedIndex].value;
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+
+
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    console.log(dados);
+
+    var url = '/index.php/report/ProjetosVistoria?modalName=' + "Relatorio_Vistoria" + "&order=" + order + "&ordenarPor=" +  ordenarPor;
+    window.open(url, '_blank');
+}
+
+
+
 function report() {
     var e = document.getElementById('ordenar')
     var ordenar = e.options[e.selectedIndex].value;
@@ -144,6 +190,11 @@ function report() {
 
 
 }
+
+
+
+
+
 
 
 

@@ -112,11 +112,27 @@
                                                 </div>
                                             </div>
                                             <br>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="relatorios" class="col-md-4 control-label">Relatórios</label>
+                                                        <div class="col-md-8">
+                                                            <select id="relatorios" name="relatorios" class="form-control input-sm">
+                                                                <option value="#formModalRelatorio">Vistoria</option>
+                                                                <option value="#formModalRelatorio">Parecer de Acesso</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <div class="col-md-8">
                                                             <input class="btn btn-sm btn-primary" onclick="report()" id="gerar_relatorio" type="button" value="Gerar Relatório">
+                                                            <input class="btn btn-sm btn-primary" onclick="formModalRelatorio()" type="button" value="Relatório">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,6 +147,8 @@
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+
+        @include ('projetov2.modalRelatorio')
 
 @endsection
 
