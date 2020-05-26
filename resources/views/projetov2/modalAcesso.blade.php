@@ -1,11 +1,11 @@
 
 <!-- BEGIN FORM MODAL MARKUP -->
-<div class="modal fade" id="formModalRelatorio" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModalAcesso" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Vistoria</h4>
+                <h4 class="modal-title" id="formModalLabel">Relatório de Acesso</h4>
             </div>
             <form class="form-horizontal" role="form">
                 <div class="modal-body">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="reportVistoriaAcessoa" class="btn btn-primary">Gerar</button>
+                    <button type="button" id="reportAcesso" class="btn btn-primary">Gerar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

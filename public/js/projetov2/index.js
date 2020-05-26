@@ -113,38 +113,26 @@ function formatMoney(n, c, d, t) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
 
-var relatorios = document.getElementById('relatorios');
 
-var reportVistoriaAcessoa = document.getElementById('reportVistoriaAcessoa');
 
-reportVistoriaAcessoa.addEventListener('click', function (ev) {
-    reportVistoriaAcessoaJAX();
-})
-relatorios.addEventListener('change', function (ev) {
-    modalName = this.options[this.selectedIndex].value;
-    $(modalName).modal();
-})
+/* Modal Projeto */
+var reportProjeto = document.getElementById('reportProjeto');
 
-function formModalRelatorio() {
-    console.log("www");
-    $('#formModalRelatorio').modal();
-}
-
-function reportVistoriaAcessoaJAX() {
-    var e = document.getElementById('ordenarPor')
+reportProjeto.addEventListener('click', function (ev) {
+    var e = document.getElementById('ProjetoOrdenarPor')
     var ordenarPor = e.options[e.selectedIndex].value;
 
 
-    var t = document.getElementById('order')
-    var order = t.options[t.selectedIndex].value;
+    //var t = document.getElementById('vistoriaOrder')
+    //var order = t.options[t.selectedIndex].value;
 
+    const selected = document.querySelectorAll('#projetoStatus option:checked');
+    const status = Array.from(selected).map(el => el.value);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
         }
     });
-
-
     var dados = {
         'order': order,
         'ordenarPor': ordenarPor
@@ -152,7 +140,63 @@ function reportVistoriaAcessoaJAX() {
 
     console.log(dados);
 
-    var url = '/index.php/report/ProjetosVistoria?modalName=' + "Relatorio_Vistoria" + "&order=" + order + "&ordenarPor=" +  ordenarPor;
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor;
+    window.open(url, '_blank');
+})
+
+/* Modal Vistoria */
+var reportVistoria = document.getElementById('reportVistoria');
+
+reportVistoria.addEventListener('click', function (ev) {
+    var e = document.getElementById('vistoriaOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('vistoriaOrder')
+    var order = t.options[t.selectedIndex].value;
+    reportAjax(ordenarPor, order);
+})
+
+/* Modal Acesso */
+var reportAcesso = document.getElementById('reportAcesso');
+
+reportAcesso.addEventListener('click', function (ev) {
+    var e = document.getElementById('vistoriaOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('vistoriaOrder')
+    var order = t.options[t.selectedIndex].value;
+    reportAjax(ordenarPor, order);
+})
+
+/* Modal de Relatório */
+var report = document.getElementById('report_id');
+
+report.addEventListener('change', function (ev) {
+    modalName = this.options[this.selectedIndex].value;
+    $('#' + modalName).modal();
+})
+
+function formModalRelatorio() {
+    console.log("www");
+    $('#formModalRelatorio').modal();
+}
+
+function reportAjax(ordenarPor, order) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    console.log(dados);
+
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&order=" + order + "&ordenarPor=" +  ordenarPor;
     window.open(url, '_blank');
 }
 

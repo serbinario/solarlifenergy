@@ -98,7 +98,6 @@ order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 			<property name="com.jaspersoft.studio.field.tree.path" value="projetos_status"/>
 		</field>
 	</subDataset>
-	<parameter name="id" class="java.lang.String"/>
 	<parameter name="order" class="java.lang.String"/>
 	<parameter name="ordenarPor" class="java.lang.String"/>
 	<queryString>
@@ -248,7 +247,7 @@ order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="-1" y="15" width="802" height="30" uuid="058269fa-0531-4658-a1e4-c1575b38dea0"/>
+				<reportElement x="-2" y="15" width="802" height="30" uuid="058269fa-0531-4658-a1e4-c1575b38dea0"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>

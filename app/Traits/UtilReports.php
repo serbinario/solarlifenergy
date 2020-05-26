@@ -10,6 +10,7 @@ namespace Serbinario\Traits;
 
 
 use PHPJasper\PHPJasper;
+use Serbinario\Entities\Report;
 
 trait UtilReports
 {
@@ -52,12 +53,13 @@ trait UtilReports
         return $file;
     }
 
-    function gerarPdfV3($parameter, $nome_arquivo){
-        unset($parameter['modalName']);
+    function gerarPdfV3($request){
+        $report = Report::select('file_name')->where('modal_name', '=', $request["modalName"])->first();
+        unset($request['modalName']);
         $options = [
             'format' => ['pdf'],
             'locale' => 'pt_BR',
-            'params' => $parameter,
+            'params' => $request,
             'db_connection' => [
                 'driver' => env('DB_CONNECTION'),
                 'host' => env('DB_HOST'),
@@ -67,14 +69,11 @@ trait UtilReports
                 'password' => "'" . env('DB_PASSWORD') . "'"
             ]
         ];
-
-        // coloca na variavel o caminho do novo relatório que será gerado
-        //$output = public_path() . '/reports/' . time() . '_Clientes';// instancia um novo objeto JasperPHP
         $output = public_path() . '/reports/' .  'Clientes';// instancia um novo objeto JasperPHP
-
+        $file_name = $report->file_name;
         $report = new PHPJasper();// chama o método que irá gerar o relatório
         $report->process(
-            public_path() .  '/reports/' . $nome_arquivo.'.jrxml',
+            public_path() .  '/reports/' . $file_name,
             $output,
             $options
         )->execute();
