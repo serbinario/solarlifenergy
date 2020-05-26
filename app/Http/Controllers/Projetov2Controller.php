@@ -4,6 +4,7 @@ namespace Serbinario\Http\Controllers;
 
 
 //meu teste
+use Serbinario\Entities\Report;
 use Serbinario\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,9 +43,9 @@ class Projetov2Controller extends Controller
      */
     public function index()
     {
+        $reports = Report::all();
         $projetov2s = Projetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
-
-        return view('projetov2.index', compact('projetov2s'));
+        return view('projetov2.index', compact('projetov2s', 'reports'));
     }
 
     /**
@@ -223,6 +224,7 @@ class Projetov2Controller extends Controller
 
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'contrato', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
         $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
+
 
         return view('projetov2.edit', compact('projetov2','projetosStatus'));
     }

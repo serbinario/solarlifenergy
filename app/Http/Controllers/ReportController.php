@@ -137,11 +137,11 @@ class ReportController extends Controller
         }
     }
 
-    public function reportPdfVistoria()
+    public function reportPdf(Request $request)
     {
         try
         {
-            $file = $this->gerarPdf("", "Relatorio_Vistoria");
+            $file = $this->gerarPdfV3($request->all());
             return response($file, 200)
                 ->header('Content-Type', 'application/pdf')
                 ->header('Content-Disposition', 'inline; filename="cliente.pdf"');

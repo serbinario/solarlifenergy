@@ -76,51 +76,24 @@
                                     </div>
                                     <div id="accordion7-1" class="collapse">
                                         <div class="card-body">
+
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label for="status" class="col-md-2 control-label">Status:</label>
+                                                        <label for="report_id" class="col-md-4 control-label">Relatórios</label>
                                                         <div class="col-md-8">
-                                                            <select id="status" name="status" class="form-control input-sm" multiple="multiple">
-                                                                <option value="1">Prospecção e Elaboração de Projetos</option>
-                                                                <option value="2">Proj. em Análise</option>
-                                                                <option value="3">Proj. em Análise - Finalizando p/ Inínicio de Obras</option>
-                                                                <option value="4">Obras em Execução </option>
-                                                                <option value="5">Obras em Fase Final</option>
-                                                                <option value="6">Obras Finalizadas </option>
-                                                                <option value="7">Obras Paradas</option>
+                                                            <select   class="form-control input-sm" id="report_id" name="report_id">
+                                                                @foreach ($reports->pluck('name','modal_name')->all() as $key => $report)
+                                                                    <option value="{{ $key }}" {{ old('report', isset($reports->id) ? $reports->id : null) == $key ? 'selected' : '' }}>
+                                                                        {{ $report }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label for="prioridade" class="col-md-4 control-label">Ordenar Por</label>
-                                                        <div class="col-md-8">
-                                                            <select id="ordenar" name="ordenar" class="form-control input-sm">
-                                                                <option value="clientes.nome">Nome</option>
-                                                                <option value="pre_propostas.data_financiamento_bancario">Data Assinatura</option>
-                                                                <option value="pre_propostas.data_prevista_parcela">Data Parcela</option>
-                                                                <option value="users.name">Intergrador</option>
-                                                                <option value="banco_financiadora.nome">Banco</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <div class="col-md-8">
-                                                            <input class="btn btn-sm btn-primary" onclick="report()" id="gerar_relatorio" type="button" value="Gerar Relatório">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div><!--end .panel -->
@@ -131,6 +104,10 @@
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+
+        @include ('projetov2.modalVistoria')
+        @include ('projetov2.modalAcesso')
+        @include ('projetov2.modalProjeto')
 
 @endsection
 

@@ -12,7 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+	<style name="Table_TH" mode="Opaque" backcolor="#00A95A">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -108,7 +108,6 @@ order by $P!{ordenarTable} desc]]>
 	</subDataset>
 	<parameter name="ordenar1" class="java.lang.String"/>
 	<parameter name="status" class="java.lang.String"/>
-	<parameter name="titulo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>
 	</queryString>

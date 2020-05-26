@@ -3,6 +3,7 @@ var fornecedorNome;
 var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
+var modalName;
 function template(d){
     //Retirar os "&quot" da array aditivos
     //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
@@ -112,6 +113,95 @@ function formatMoney(n, c, d, t) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
 
+
+
+/* Modal Projeto */
+var reportProjeto = document.getElementById('reportProjeto');
+
+reportProjeto.addEventListener('click', function (ev) {
+    var e = document.getElementById('ProjetoOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    //var t = document.getElementById('vistoriaOrder')
+    //var order = t.options[t.selectedIndex].value;
+
+    const selected = document.querySelectorAll('#projetoStatus option:checked');
+    const status = Array.from(selected).map(el => el.value);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    console.log(dados);
+
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor;
+    window.open(url, '_blank');
+})
+
+/* Modal Vistoria */
+var reportVistoria = document.getElementById('reportVistoria');
+
+reportVistoria.addEventListener('click', function (ev) {
+    var e = document.getElementById('vistoriaOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('vistoriaOrder')
+    var order = t.options[t.selectedIndex].value;
+    reportAjax(ordenarPor, order);
+})
+
+/* Modal Acesso */
+var reportAcesso = document.getElementById('reportAcesso');
+
+reportAcesso.addEventListener('click', function (ev) {
+    var e = document.getElementById('vistoriaOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('vistoriaOrder')
+    var order = t.options[t.selectedIndex].value;
+    reportAjax(ordenarPor, order);
+})
+
+/* Modal de Relatório */
+var report = document.getElementById('report_id');
+
+report.addEventListener('change', function (ev) {
+    modalName = this.options[this.selectedIndex].value;
+    $('#' + modalName).modal();
+})
+
+function formModalRelatorio() {
+    console.log("www");
+    $('#formModalRelatorio').modal();
+}
+
+function reportAjax(ordenarPor, order) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    console.log(dados);
+
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&order=" + order + "&ordenarPor=" +  ordenarPor;
+    window.open(url, '_blank');
+}
+
+
+
 function report() {
     var e = document.getElementById('ordenar')
     var ordenar = e.options[e.selectedIndex].value;
@@ -144,6 +234,11 @@ function report() {
 
 
 }
+
+
+
+
+
 
 
 

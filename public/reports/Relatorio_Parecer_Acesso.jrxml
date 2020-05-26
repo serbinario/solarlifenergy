@@ -41,7 +41,7 @@
 	</style>
 	<style name="Style1">
 		<conditionalStyle>
-			<conditionExpression><![CDATA[($F{obter_protocolo_data_prevista}.before(new Date()) && $F{solicitacao_acesso} == true)]]></conditionExpression>
+			<conditionExpression><![CDATA[$F{obter_protocolo_numero} == ""? true: false]]></conditionExpression>
 			<style mode="Opaque" forecolor="#FAFAFA" backcolor="#00A95A" isBold="true"/>
 		</conditionalStyle>
 	</style>
@@ -58,14 +58,16 @@
 		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="288"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="251"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="742"/>
+		<parameter name="ordenarPorTable" class="java.lang.String"/>
+		<parameter name="orderTable" class="java.lang.String"/>
 		<queryString>
-			<![CDATA[SELECT c.nome, pe.solicitacao_acesso, pe.obter_protocolo_data, pe.obter_protocolo_numero, pe.obter_protocolo_data_prevista, s.status_nome, s.id FROM projetosv2 AS p
+			<![CDATA[SELECT c.nome_empresa as nome, pe.solicitacao_acesso, pe.obter_protocolo_data, pe.obter_protocolo_numero, pe.obter_protocolo_data_prevista, s.status_nome, s.id FROM projetosv2 AS p
 INNER JOIN pre_propostas AS pp ON pp.id = p.proposta_id
 INNER JOIN projetos_execurcao AS pe ON pe.id = p.projeto_execurcao_id
 INNER JOIN clientes AS c ON c.id = pp.cliente_id
 INNER JOIN projetos_status AS s ON s.id = p.projeto_status_id
-WHERE s.id NOT IN (1)
-order by pe.obter_protocolo_data_prevista desc]]>
+WHERE s.id NOT IN (1,6)
+order by  $P!{ordenarPorTable}   $P!{orderTable} ]]>
 		</queryString>
 		<field name="nome" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="nome"/>
@@ -97,6 +99,8 @@ order by pe.obter_protocolo_data_prevista desc]]>
 		</field>
 	</subDataset>
 	<parameter name="id" class="java.lang.String"/>
+	<parameter name="ordenarPor" class="java.lang.String"/>
+	<parameter name="order" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>
 	</queryString>
@@ -104,28 +108,31 @@ order by pe.obter_protocolo_data_prevista desc]]>
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 	</field>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
+	<detail>
 		<band height="555" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="91" y="47" width="620" height="460" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
+				<reportElement x="0" y="50" width="802" height="60" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="d6c3cd24-73db-41ee-b450-7c3aeaf4cfc9">
+					<datasetRun subDataset="Dataset1" uuid="46f63b11-3c90-446f-adf8-3d5885c8e88f">
+						<datasetParameter name="ordenarPorTable">
+							<datasetParameterExpression><![CDATA[$P{ordenarPor}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="orderTable">
+							<datasetParameterExpression><![CDATA[$P{order}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="230" uuid="6f4dae0c-e644-4ee9-b0bc-da28e27045ed">
+					<jr:column width="380" uuid="6f4dae0c-e644-4ee9-b0bc-da28e27045ed">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="230" height="30" uuid="1be3ba78-efc1-477e-bf6c-69e6e858f2bd"/>
+								<reportElement x="0" y="0" width="380" height="30" uuid="1be3ba78-efc1-477e-bf6c-69e6e858f2bd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -134,8 +141,10 @@ order by pe.obter_protocolo_data_prevista desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement style="Style2" x="0" y="0" width="230" height="30" uuid="51414912-4f88-4c03-8711-890b870d9db2"/>
-								<textElement verticalAlignment="Middle"/>
+								<reportElement style="Style2" x="0" y="0" width="380" height="30" uuid="51414912-4f88-4c03-8711-890b870d9db2"/>
+								<textElement verticalAlignment="Middle">
+									<font isBold="false"/>
+								</textElement>
 								<textFieldExpression><![CDATA[" " + $F{nome}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -155,7 +164,7 @@ order by pe.obter_protocolo_data_prevista desc]]>
 							<textField isBlankWhenNull="true">
 								<reportElement style="Style2" x="0" y="0" width="80" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{obter_protocolo_data}) ]]></textFieldExpression>
+								<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{obter_protocolo_data})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -193,7 +202,7 @@ order by pe.obter_protocolo_data_prevista desc]]>
 							<textField isBlankWhenNull="true">
 								<reportElement style="Style2" x="0" y="0" width="80" height="30" uuid="8392f563-ba4d-4744-b735-cc5ab0ea03ab"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
-								<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{obter_protocolo_data_prevista}) ]]></textFieldExpression>
+								<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{obter_protocolo_data_prevista})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -238,17 +247,12 @@ order by pe.obter_protocolo_data_prevista desc]]>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="15" width="802" height="30" uuid="058269fa-0531-4658-a1e4-c1575b38dea0"/>
+				<reportElement x="2" y="15" width="802" height="30" uuid="058269fa-0531-4658-a1e4-c1575b38dea0"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PARECER DE ACESSO]]></text>
 			</staticText>
-		</band>
-	</title>
-	<detail>
-		<band height="555" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</band>
 	</detail>
 </jasperReport>
