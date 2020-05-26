@@ -18,7 +18,7 @@
                             <select id="vistoriaOrdenarPor" name="vistoriaOrdenarPor" class="form-control input-sm">
                                 <option value="c.nome_empresa">Nome do Cliente</option>
                                 <option value="s.status_nome">Status do Projeto</option>
-                                <option value="pe.obter_protocolo_data_prevista">Data da Vistoria</option>
+                                <option value="pf.data_solicitacao_vistoria">Data da Vistoria</option>
                             </select>
                         </div>
                     </div>
