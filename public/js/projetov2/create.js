@@ -6,7 +6,7 @@ $(document).ready(function () {
             return true
         },
         onTabShow: function(tab, navigation, index) {
-           handleTabShow(tab, navigation, index, $('#rootwizard1'));
+          // handleTabShow(tab, navigation, index, $('#rootwizard1'));
 
         },
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
     var percentWidth = 100 - (100 / 4) + '%';
 
     $('#tabs-solar div.tab-pane').removeClass('active')
-    console.log($($('#tabs-solar div.tab-pane')[count]).addClass('active'))
+    //console.log($($('#tabs-solar div.tab-pane')[count]).addClass('active'))
 
     for(i = 0 ; i < count ; i++){
         $($( '#teste > li' )[i]).addClass('done');
@@ -40,7 +40,5 @@ $(document).ready(function () {
 
     $('#rootwizard1').find('.progress-bar').css({width: percent + '%'});
     $('.form-wizard-horizontal').find('.progress').css({'width': percentWidth});
-
- 
 
 });

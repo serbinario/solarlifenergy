@@ -132,9 +132,7 @@ class ClienteController extends Controller
                                 <a href="cliente/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
-                                <button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                               
                             </div>
                         </form>
                         ';
