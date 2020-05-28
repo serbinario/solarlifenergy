@@ -706,13 +706,13 @@
         </div>
         <div class="col-sm-4">
             <div class="form-group"{{ $errors->has('minima_area') ? 'has-error' : '' }}">
-            <label for="minima_area" class="col-sm-6 control-label text-bold">Área ( m²).::</label>
-            <div class="col-md-4">
-                <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
-                {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
+                <label for="minima_area" class="col-sm-6 control-label text-bold">Área ( m²).::</label>
+                <div class="col-md-4">
+                    <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
+                    {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="row">
@@ -737,14 +737,21 @@
 
     </div>
 
-<div class="form-group">
-    <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Fechada?.:</label>
-    <div class="col-md-10">
-        <div class="checkbox checkbox-styled">
-            <label for="estar_finalizado">
-                <input id="estar_finalizado" class="" name="estar_finalizado" type="checkbox" value="1" {{ old('estar_finalizado', isset($preProposta->estar_finalizado) ? $preProposta->estar_finalizado : null) == '1' ? 'checked' : '' }}>
-            </label>
+    <div class="form-group">
+        <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Fechada?.:</label>
+        <div class="col-md-10">
+            <div class="checkbox checkbox-styled">
+                <label for="estar_finalizado">
+                    <input id="estar_finalizado" class="" name="estar_finalizado" type="checkbox" value="1" {{ old('estar_finalizado', isset($preProposta->estar_finalizado) ? $preProposta->estar_finalizado : null) == '1' ? 'checked' : '' }}>
+                </label>
+            </div>
         </div>
+    </div>
+
+<div class="form-group">
+    <label for="pre_proposta_obs" class="col-md-2 control-label text-bold">Obs.:</label>
+    <div class="col-md-10">
+        <textarea class="form-control input-sm" name="pre_proposta_obs" cols="50" rows="10" id="pre_proposta_obs" placeholder="Obs.">{{ old('pre_proposta_obs', isset($preProposta->pre_proposta_obs) ? $preProposta->pre_proposta_obs : null) }}</textarea>
     </div>
 </div>
 
