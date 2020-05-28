@@ -1878,7 +1878,7 @@ ou de difícil acesso]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="69" y="380" width="270" height="90" uuid="3e6549a9-4e94-4d65-9eb8-c10ed3614bc7">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
