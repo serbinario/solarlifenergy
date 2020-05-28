@@ -113,7 +113,8 @@ class PreProposta extends Model
         'data_financiamento_bancario',
         'tempo_carencia',
         'data_prevista_parcela',
-        'valor_descontos'
+        'valor_descontos',
+        'pre_proposta_obs'
 
     ];
 
