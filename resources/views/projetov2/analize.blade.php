@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel-group" id="accordion2">
-            <div class="card panel expanded">
-                <div class="card-head card-head-xs" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-3">
+            <div class="card panel">
+                <div class="card-head card-head-xs" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_1">
                     <header class="text-bold">Detalhamento do Projeto</header>
                     <div class="col-6 total_equipamentos">
                     </div>
                 </div>
-                <div id="accordion2-3" class="collapse in">
+                <div id="tab_1" class="collapse">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
@@ -109,13 +109,13 @@
             </div><!--end .panel -->
 
             <div class="card panel">
-                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-2">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_2">
                     <header class="text-bold">Endereço de Instalação</header>
                     <div class="tools">
                         <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
                     </div>
                 </div>
-                <div id="accordion2-2" class="collapse">
+                <div id="tab_2" class="collapse">
                     <div class="card-body">
 
                         <div class="row">
@@ -205,10 +205,10 @@
             </div><!--end .panel -->
 
             <div class="card panel">
-                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-4">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_3">
                     <header class="text-bold">Cadastro de Contas Energia</header>
                 </div>
-                <div id="accordion2-4" class="collapse">
+                <div id="tab_3" class="collapse">
                     <div class="card-body">
 
                         <div class="row">
@@ -340,10 +340,10 @@
             </div><!--end .panel -->
 
             <div class="card panel">
-                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-5">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_4">
                     <header class="text-bold">Documentos</header>
                 </div>
-                <div id="accordion2-5" class="collapse">
+                <div id="tab_4" class="collapse">
                     <div class="card-body">
                         @include('projetov2.analizeDocumentos')
 
@@ -352,10 +352,10 @@
             </div><!--end .panel -->
 
             <div class="card panel">
-                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-6">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_5">
                     <header class="text-bold">Documentos Diversos</header>
                 </div>
-                <div id="accordion2-6" class="collapse">
+                <div id="tab_5" class="collapse">
                     <div class="card-body">
                         <div class="row">
                             @foreach ($projetov2->imagens as $key => $image)

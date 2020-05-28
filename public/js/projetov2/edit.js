@@ -1,4 +1,52 @@
 $(document).ready(function () {
+    var projeto_status_id = document.getElementById('projeto_status_id').value
+    localStorage.setItem('projeto_status_id', projeto_status_id)
+
+    /* Ativa o último  acordion*/
+    var projeto_acordion = localStorage.getItem('projeto_acordion')
+
+    /* Ativa a aba no projeto */
+
+
+    if (localStorage.getItem('projeto_aba') === null) {
+        var projeto_aba = 0
+    }else{
+        var projeto_aba = localStorage.getItem('projeto_aba')
+    }
+
+    document.getElementById('tabs-solar').children[projeto_aba].setAttribute('class', 'tab-pane active')
+
+    document.getElementById('tab_' + projeto_acordion).setAttribute('class', 'collapse in')
+    document.getElementById('tab_' + projeto_acordion).parentElement.setAttribute('class', 'card panel expanded')
+
+    var tab_1 = document.getElementById('tab_1').previousElementSibling
+    tab_1.addEventListener('click', function () {
+        localStorage.setItem('projeto_acordion', 1)
+    })
+
+    var tab_2 = document.getElementById('tab_2').previousElementSibling
+    tab_2.addEventListener('click', function () {
+        localStorage.setItem('projeto_acordion', 2)
+    })
+
+    var tab_3 = document.getElementById('tab_3').previousElementSibling
+    tab_3.addEventListener('click', function () {
+        localStorage.setItem('projeto_acordion', 3)
+    })
+
+    var tab_4 = document.getElementById('tab_4').previousElementSibling
+    tab_4.addEventListener('click', function () {
+        localStorage.setItem('projeto_acordion', 4)
+    })
+
+    var tab_5 = document.getElementById('tab_5').previousElementSibling
+    tab_5.addEventListener('click', function () {
+        localStorage.setItem('projeto_acordion', 5)
+    })
+    /* FIM Ativa o último  acordion*/
+
+
+
     var o = this;
 
     $('#rootwizard1').bootstrapWizard({
@@ -6,7 +54,7 @@ $(document).ready(function () {
             return true
         },
         onTabShow: function(tab, navigation, index) {
-            handleTabShow(tab, navigation, index, $('#rootwizard1'));
+            //handleTabShow(tab, navigation, index, $('#rootwizard1'));
 
         },
 
@@ -25,23 +73,35 @@ $(document).ready(function () {
         $('.form-wizard-horizontal').find('.progress').css({'width': percentWidth});
     };
 
-    var count = 2
-    var current = count + 0;
+    /* Wizard */
+    var projetos_wizard_lis =  document.getElementById('projetos_wizard').children
+
+    for(projetos_wizard_li of projetos_wizard_lis){
+        projetos_wizard_li.addEventListener('click', function(ev){
+            //console.log(ev.target.getAttribute('data-tab_li'))
+            localStorage.setItem('projeto_aba', ev.target.getAttribute('data-tab_li'))
+        })
+    }
+
+    for(projetos_wizard_li of projetos_wizard_lis) {
+        projetos_wizard_li.setAttribute('class', '')
+    }
+
+    var projetos_status = ["0", "0", "0", "0", "1", "2", "3"];
+    console.log(projetos_status[localStorage.getItem('projeto_status_id')])
+    console.log(localStorage.getItem('projeto_status_id'))
+    var current = projetos_status[localStorage.getItem('projeto_status_id')]
+    //projetos_wizard_lis[current].setAttribute('class', 'active')
+
+
+    for(i=0; i<=current; i++){
+        projetos_wizard_lis[i].setAttribute('class', 'done')
+    }
     var percent = (current / (4 - 1)) * 100;
-    var percentWidth = 100 - (100 / 4) + '%';
+    document.getElementsByClassName('progress')[0].style.width = 75 + "%"
+    document.getElementsByClassName('progress-bar')[0].style.width = percent + "%"
 
-    //$('#tabs-solar div.tab-pane').removeClass('active')
-   // console.log($($('#tabs-solar div.tab-pane')[count]).addClass('active'))
-
-    //for(i = 0 ; i < count ; i++){
-       // $($( '#teste > li' )[i]).addClass('done');
-    //}
-   // count = 0
-
-    //$('#rootwizard1').find('.progress-bar').css({width: percent + '%'});
-    //$('.form-wizard-horizontal').find('.progress').css({'width': percentWidth});
-
-
+    /* Fim Wizard */
 
 
     $(".add-more").click(function(){
