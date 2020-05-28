@@ -700,7 +700,7 @@
             <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
                 <label for="reducao_media_consumo" class="col-sm-6 control-label text-bold">Redução Consumo %.:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm money" readonly name="reducao_media_consumo" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->reducao_media_consumo) ? $preProposta->reducao_media_consumo : null) }}">
+                    <input class="form-control input-sm money" name="reducao_media_consumo" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->reducao_media_consumo) ? $preProposta->reducao_media_consumo : null) }}">
                 </div>
             </div>
         </div>
