@@ -71,7 +71,9 @@ var table = $('#cliente').DataTable({
             }
         },
         {data: 'email', name: 'email', targets: 0, visible: false},
+
         {data: 'celular', name: 'celular'},
+        {data: 'name', name: 'cliente_tipos.name', targets: 0, visible: false},
         {data: 'integrador', name: 'integrador', visible: false},
         {data: 'created_at', name: 'created_at', visible: false},
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}

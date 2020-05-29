@@ -43,17 +43,8 @@
 
                 </div><!--end #tab4 -->
             </div><!--end .tab-content -->
-            <ul class="pager wizard">
-                <li class="previous first"><a class="btn-raised" href="javascript:void(0);">Primeiro</a></li>
-                <li class="previous"><a class="btn-raised" href="javascript:void(0);">Anterior</a></li>
-                <li class="next last"><a class="btn-raised" href="javascript:void(0);">Último</a></li>
-                <li class="next"><a class="btn-raised" href="javascript:void(0);">Próximo</a></li>
-            </ul>
+
         </form>
     </div><!--end #rootwizard -->
-
-
-
-
 </div>
 
