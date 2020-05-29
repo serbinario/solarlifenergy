@@ -1,6 +1,34 @@
 $(document).ready(function () {
     var projeto_status_id = document.getElementById('projeto_status_id').value
     localStorage.setItem('projeto_status_id', projeto_status_id)
+    localStorage.setItem('projeto_acordion', 1)
+
+
+    var o = this;
+
+    $('#rootwizard1').bootstrapWizard({
+        onTabClick: function(tab, navigation, index){
+            return true
+        },
+        onTabShow: function(tab, navigation, index) {
+            //handleTabShow(tab, navigation, index, $('#rootwizard1'));
+
+        },
+
+    });
+
+    function handleTabShow(tab, navigation, index, wizard){
+        var total = navigation.find('li').length;
+        var current = index + 0;
+        var percent = (current / (total - 1)) * 100;
+        var percentWidth = 100 - (100 / total) + '%';
+        console.log(percent)
+        navigation.find('li').removeClass('done');
+        navigation.find('li.active').prevAll().addClass('done');
+
+        wizard.find('.progress-bar').css({width: percent + '%'});
+        $('.form-wizard-horizontal').find('.progress').css({'width': percentWidth});
+    };
 
     /* Ativa o último  acordion*/
     var projeto_acordion = localStorage.getItem('projeto_acordion')
@@ -47,31 +75,7 @@ $(document).ready(function () {
 
 
 
-    var o = this;
 
-    $('#rootwizard1').bootstrapWizard({
-        onTabClick: function(tab, navigation, index){
-            return true
-        },
-        onTabShow: function(tab, navigation, index) {
-            //handleTabShow(tab, navigation, index, $('#rootwizard1'));
-
-        },
-
-    });
-
-    function handleTabShow(tab, navigation, index, wizard){
-        var total = navigation.find('li').length;
-        var current = index + 0;
-        var percent = (current / (total - 1)) * 100;
-        var percentWidth = 100 - (100 / total) + '%';
-        console.log(percent)
-        navigation.find('li').removeClass('done');
-        navigation.find('li.active').prevAll().addClass('done');
-
-        wizard.find('.progress-bar').css({width: percent + '%'});
-        $('.form-wizard-horizontal').find('.progress').css({'width': percentWidth});
-    };
 
     /* Wizard */
     var projetos_wizard_lis =  document.getElementById('projetos_wizard').children
