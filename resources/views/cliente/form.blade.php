@@ -95,7 +95,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="meio_captacao_id" class="col-md-4 text-bold control-label">Tipo Cliente</label>
+                <label for="meio_captacao_id" class="col-md-4 text-bold control-label">Classificação.:</label>
                 <div class="col-md-8">
                     <select   class="form-control input-sm" id="cliente_tipo_id" name="cliente_tipo_id">
                         <option value="" style="display: none;" {{ old('cliente_tipo_id', isset($cliente->cliente_tipo_id) ? $cliente->cliente_tipo_id : '') == '' ? 'selected' : '' }} disabled selected>Meios de captação</option>
