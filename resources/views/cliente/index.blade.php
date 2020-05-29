@@ -165,6 +165,7 @@
                                                     <th>CPF/CNPJ</th>
                                                     <th>Email</th>
                                                     <th>Telefone</th>
+                                                    <th>Tipo</th>
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>
                                                     <th>Acao</th>

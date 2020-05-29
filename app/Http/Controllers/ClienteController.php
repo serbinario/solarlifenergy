@@ -8,6 +8,7 @@ namespace Serbinario\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Serbinario\Entities\Cliente;
+use Serbinario\Entities\ClienteTipo;
 use Serbinario\Entities\MeioCaptacao;
 use Serbinario\Entities\Projeto;
 use Serbinario\Http\Controllers\Controller;
@@ -55,6 +56,7 @@ class ClienteController extends Controller
         $rows = \DB::table('clientes')
             ->leftJoin('pre_propostas', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->join('users', 'clientes.user_id', '=', 'users.id')
+            ->leftjoin('cliente_tipos', 'clientes.cliente_tipo_id', '=', 'cliente_tipos.id')
             ->groupBy('clientes.id')
             ->select([
                 'clientes.id',
@@ -62,6 +64,7 @@ class ClienteController extends Controller
                 'clientes.nome_empresa',
                 'clientes.cpf_cnpj',
                 'clientes.email',
+                'cliente_tipos.name',
                 'clientes.celular',
                 'users.name as integrador',
                 'users.franquia_id',
@@ -145,8 +148,9 @@ class ClienteController extends Controller
      * @return Illuminate\View\View
      */
     public function create(){
+        $clienteTipos = ClienteTipo::pluck('name','id')->all();
         $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
-        return view('cliente.create', compact('meiosCaptacao'));
+        return view('cliente.create', compact('meiosCaptacao', 'clienteTipos'));
     }
 
     /**
@@ -196,9 +200,10 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = Cliente::findOrFail($id);
+        $clienteTipos = ClienteTipo::pluck('name','id')->all();
 
         $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
-        return view('cliente.edit', compact('cliente', 'meiosCaptacao'));
+        return view('cliente.edit', compact('cliente', 'meiosCaptacao', 'clienteTipos'));
     }
 
     /**
