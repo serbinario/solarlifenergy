@@ -43,7 +43,7 @@ class Projetov2Controller extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $reports = Report::where('group', '=', 'projetos');
         $projetov2s = Projetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
         return view('projetov2.index', compact('projetov2s', 'reports'));
     }
