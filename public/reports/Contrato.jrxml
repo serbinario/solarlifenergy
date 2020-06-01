@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contrato" pageWidth="612" pageHeight="792" columnWidth="442" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="70" uuid="64495b37-dd17-4a88-97dc-4e20e04ab90b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+cl.nome, 
+cl.cpf_cnpj,  
+cl.endereco, 
+cl.cidade, 
+cl.cep,
+p.kw 
+FROM  
+contratos AS c
+INNER JOIN projetos AS p ON p.id = c.projeto_id
+INNER JOIN clientes AS cl ON cl.id = p.clientes_id
+limit 1]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cpf_cnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf_cnpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="kw" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="kw"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="projetos"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="83">
+			<textField>
+				<reportElement x="342" y="0" width="100" height="30" uuid="bb67ae98-a519-43a3-9000-4fd1126ee5d1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="10" width="80" height="71" uuid="b6c6da28-4a37-4332-8b1f-0d278fe209d5"/>
+				<imageExpression><![CDATA["/home/serbinario/Projetos/solar-life/public/reports/logo_solar_life.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="95" y="55" width="305" height="15" uuid="33499192-aebc-42e3-9ad7-89ca99fc755d"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="40" width="335" height="15" uuid="d1ac7e08-e31d-4d7e-a55d-180294234ae6"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Rua Dr. José Bezerra Filho, 11B – Centro/ Cabo – PE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="25" width="335" height="15" uuid="fa084d51-1a29-4c97-af2c-68f9c4095e69"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[http://solarlifenergy.com.br/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="210" height="25" uuid="71b8f12f-3368-486d-8f2a-bd78a35bb514">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solar Life Energy]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="604" splitType="Stretch">
+			<break>
+				<reportElement positionType="Float" x="0" y="603" width="98" height="1" uuid="11969d76-0cbc-4d5d-a105-2ba1fa84c2c9"/>
+			</break>
+			<textField>
+				<reportElement x="140" y="12" width="302" height="78" uuid="921035f9-8f45-44e7-8c17-ce7958b1df4c"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="12" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRATO DE FORNECIMENTO E MONTAGEM DE GERADOR FOTOVOLTAICO DE MICRO GERAÇÃO ON-GRID (POTENCIA DO PROJ) Kwp Nº " + $F{kw} + "  /2019"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="116" width="442" height="109" uuid="d53dfab3-0d4a-491d-931c-093a62d08158"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>SOLAR LIFE ENERGY EIRELI - ME</style>" + ", com sede e foro na cidade de Cabo de Santo Agostinho, na Rua José Bezerra Filho, 61, Loja B, Centro, inscrita no CNPJ/MF sob o nº 00.823.358/0001-14, doravante denominada Contratada, neste ato representada por Josias Jasmelino Ferreira, portador da Cédula de Identidade RG nº 3.464.679, expedida pela SSP-PE, e inscrito no CPF/MF sob nº 606.927.074-68 residente e domiciliado em Cabo de Santo Agostinho, na rua José Bezerra Filho, 61, Centro."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="233" width="442" height="77" uuid="4682bab6-c9c9-4fc2-9766-99fb1d20cfac"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+$F{nome} + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{endereco} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="330" width="442" height="16" uuid="cfe9ac85-f4d4-432d-8458-6c9728413384"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MICRO GERAÇÃO ON-GRID " + $F{kw}+ " Kwp"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="94" width="100" height="22" uuid="6e3dee7f-5f2d-4365-9c89-d866475d68b1"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Das Partes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="378" width="442" height="20" uuid="e1831be4-4fbe-4a1b-96ce-9a12989552a1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Composto dos seguintes acessórios:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="403" width="442" height="197" uuid="e2257187-d42b-464d-9ef9-4255b92d6d4e"/>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[    
+1. Equipamentos do Sistema de Geração de Energia Solar Conectado à rede, contemplando módulos fotovoltaicos, inversores, estrutura de suporte e acessórios;
+2. Frete;
+3. Tramitação de processos e registro de documentação na concessionária;
+4. Projeto e coordenações das diversas etapas que compõe o normativo específico de Geração Distribuída da Celpe;
+5. Montagem e interligação Turn Key;
+6. Comissionamento (testes e energização);
+7. Projeto fotovoltaico (ART, plantas, esquemas elétricos, diagramas, especificações, memorial descritivo);
+
+]]></text>
+			</staticText>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="23" width="442" height="67" uuid="ebcf1681-001c-444d-bd5f-6947a27fdf1d"/>
+				<text><![CDATA[    
+8. Sistema de Monitoramento Remoto;
+9. Não contempla projeto de Cálculo estrutural e/ou reforço da coberta ou superfície que virá acomodar os painéis do sistema fotovoltaico, caso necessário;
+10. Material para interligação entre os inversores e o ponto de conexão com a Celpe;
+11. Custo do Medidor e de sua instalação;
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="115" width="442" height="20" uuid="9256e592-080b-4f4c-a3a8-70bd06dd5c9e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Que se regerá pelas cláusulas e condições abaixo descritas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="154" width="442" height="20" uuid="6876fcd4-70c0-4822-b74e-93e4ef53969e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA PRIMEIRA - DO OBJETO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="190" width="382" height="150" uuid="6efb65cb-118a-4169-aab3-5f0e9aa19485"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente "+"<style isBold='true'>CONTRTO</style>"+" tem como objeto o fornecimento e instalação de um  "+"<style isBold='true'>GERADOR FOTOVOLTAICO PARA GERAÇÃO DISTRIBUIDA NA MODALIDADE MICRO GERAÇÃO ON-GRID " +$F{kw}+ " Kwp</style>" +" prestados pela contratada." +"\n\n" +
+          "        <style isBold='true'>Parágrafo único.</style>"+ " As instalações serão executadas conforme projeto preliminar, e as normas vigentes da concessionária local visando a aprovação da conexão do gerador." + "\n"+
+          "        Não sendo de responsabilidade da contratada custos referentes a adequação de reparos/reforços de estrutura civil/elétrica para adequação do sistema."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="360" width="442" height="20" uuid="9ef034b3-0630-4788-acf2-365d619ab260">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA SEGUNDA - DAS OBRIGAÇÕES DA CONTRATANTE ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="390" width="382" height="30" uuid="26a2d770-ce27-4643-a41d-a2345f616d2f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A contratante deve fornecer todas as informações referente a instalação e estrutura civil que seja solicitado pela contratada."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="440" width="442" height="20" uuid="11284308-a32d-4e4b-884b-377cba1fe43d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA TERCEIRA – DA EXECUÇÃO ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="481" width="382" height="99" uuid="c9d865ca-f841-4d7b-a7ef-90bb7720a7de"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela CELPE, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
+"<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="60" y="20" width="382" height="584" uuid="26d4d8b9-8e6e-436e-9c8b-259c14e47742"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I. Os serviços serão executados de Segunda à Sexta, sendo o horário comercial respeitado. Com possibilidade de alteração conforme acordo." + "\n" +
+"II. A execução da obra só iniciará com aprovação do financiamento e liberação do credito conforme a data programada na cláusula 4."+ "\n" +
+"III. A contratada fica encarregada de projetar, e montar a infra-estrutura."+ "\n" +
+"IV. A estrutura metálica será composta em alumínio e aço galvanizado."+ "\n" +
+"V. Os módulos serão fixados sobre a estrutura projetada para tal finalidade."+ "\n" +
+"VI. Os eletrodutos serão conduzidos de forma aparente."+ "\n" +
+"VII. Quantidade contratada no projeto XXXX KWP (sem armazenagem de energia)." +"\n"+
+"VIII. Sempre que existente condição climática desfavoráveis (chuvas, ventos acima da média da região, raios e outros fenômenos naturais que possam colocar em risco a segurança da instalação) haverá paralisação justificada, não caracterizando atraso por parte da contratada." +"\n"+
+"IX. O contratante deverá disponibilizar um espaço no mesmo local da instalação do sistema fotovoltaico para fins de armazenagens do material." +"\n"+
+"X. A partir da chegada dos equipamentos no local da instalação, é de total responsabilidade da contratante a segurança dos mesmos." +"\n"+
+"XI. A contratada apresentará checklist técnico descritivo sobre as condições do local da instalação no dia do início da realização do serviço. Neste documento serão indicadas condições das telhas, estruturas, das lajes e forros, patologias construtivas (externas e internas da edificação), defeitos construtivos no oral, defeitos elétricos e outras características relevantes para início do serviço."+"\n"+
+"XII. Ao término da instalação do gerador fotovoltaico, a contratada apresentará novo checklist técnico descritivo sobre as condições de entrega do equipamento do cliente."+"\n"+
+"XIII. Após a aprovação a CONTRATADA deverá iniciar a execução dos serviços de instalação do gerador fotovoltaico em até 45 dias após a assinatura do contrato, caso sejam respeitadas as condições:"+"\n"+
+"      • Os pagamentos da contratada deverá ser executado nos prazos acordados;"+"\n"+
+"      • O contratante não poderá ter nenhuma pendência junto a contratada ou com a concessionária de energia regional."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="604">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="20" width="442" height="20" uuid="359e8b7c-dd49-4991-aae4-1ba6b528a05f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA QUARTA – DO PAGAMENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="280" width="382" height="99" uuid="4f8b1811-308b-4f77-adeb-33c5bfd76399"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela CELPE, conforme norma da concessionária de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
+"<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="51" width="382" height="111" uuid="43f54846-1291-4f82-952c-1b63b023a79b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[O pagamento referente a proposta (ANEXO I) prosseguirá de acordo com a alínea do financiamento presento no mesmo.
+O valor da instalação considera a moeda oficial brasileira (R$, Real), e pode sofrer alterações em casos excepcionais, de acordo com o artigo 393 do Código Civil Brasileiro.
+Para formatação desta proposta foram considerados os tributos:
+     • ICMS e IPI: Isento para geradores fotovoltaicos.
+     • Impostos como PIS e CONFINS já estão inclusos na proposta.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="442" height="20" uuid="d2eecf14-32c5-496d-b140-eb671fb52122">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA QUARTA – DO PAGAMENTO]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -77,6 +77,7 @@
                                     <div id="accordion7-1" class="collapse">
                                         <div class="card-body">
 
+                                            @role('super-admin')
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
@@ -93,11 +94,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endrole
+
+
 
                                         </div>
                                     </div>
                                 </div><!--end .panel -->
                             </div><!--end .panel-group -->
+                        </div>
 
                     </div><!--end .card -->
                 </form>

@@ -11,6 +11,7 @@ use Serbinario\Entities\Cliente;
 use Serbinario\Entities\ClienteTipo;
 use Serbinario\Entities\MeioCaptacao;
 use Serbinario\Entities\Projeto;
+use Serbinario\Entities\Report;
 use Serbinario\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Serbinario\Http\Requests\ClienteFormRequest;
@@ -37,9 +38,10 @@ class ClienteController extends Controller
      * @return Illuminate\View\View
      */
     public function index(){
+        $reports = Report::where('group', '=', 'clientes');
         $clientes = Cliente::paginate(25);
 
-        return view('cliente.index', compact('clientes'));
+        return view('cliente.index', compact('clientes', 'reports'));
     }
 
     /**
@@ -199,6 +201,7 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+
         $cliente = Cliente::findOrFail($id);
         $clienteTipos = ClienteTipo::pluck('name','id')->all();
 

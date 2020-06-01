@@ -186,12 +186,16 @@
                                 <a href="{{ route('cliente.cliente.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Cliente</a>
                             </div>
                         </div>
+
+                            @include('cliente.relatorio')
                     </div><!--end .card -->
 
                 </form>
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+
+
 
 @endsection
 
