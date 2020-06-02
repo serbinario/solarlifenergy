@@ -29,7 +29,6 @@ trait Simulador
     private $qtdModulos = 0;
     private $qtdInversores = 1;
     private $irradiacao_anual = 0;
-
     function simularGeracao($request){
 
         $cidade = $request->get('cidade_id');
