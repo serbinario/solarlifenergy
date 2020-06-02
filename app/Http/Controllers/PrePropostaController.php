@@ -339,8 +339,8 @@ class PrePropostaController extends Controller
             $data['gera_fv_nov'] = $return['geracao_fv']['10'];
             $data['gera_fv_dez'] = $return['geracao_fv']['11'];
 
-            //$data['reducao_media_consumo'] = $return['reducao_media_consumo'];
-            $data['reducao_media_consumo'] = $request->get('reducao_media_consumo');
+            $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
+            //$data['reducao_media_consumo'] = $request->get('reducao_media_consumo');
 
             $data['total_equipamentos'] = $return['total_equipamentos'];
 

@@ -28,6 +28,7 @@ trait Simulador
     private $totalInvestimento = 0;
     private $qtdModulos = 0;
     private $qtdInversores = 1;
+    private $irradiacao_anual = 0;
 
     function simularGeracao($request){
 
@@ -35,9 +36,9 @@ trait Simulador
         $valor_medio_kw = (int)$request->get('monthly_usage');
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
-
+        $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
         $mediaForaPonta = $request->get('monthly_usage');
-        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', $cidade->irradiacao_anual/1000, '30', '0.14', '1.7');
+        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', $this->irradiacao_anual/1000, '30', '0.14', '1.7');
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
@@ -94,6 +95,7 @@ trait Simulador
 
         $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, '1.72');
 
+        //dd($geracaoEnergiaFV);
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
         return
@@ -159,7 +161,7 @@ trait Simulador
      * 4.7 fator de compensaçao, 5,71 - irradiação media, 30 qtd de dias, 0,14 é o rendimento, e 1,7 area
      */
     function getQtdModulos($mediaMeses, $mediaMesesPonta, $fatorCompensacao, $irradiacao, $qtdDias, $rendimentoModulo, $areaModulo){
-
+        //dd($irradiacao);
         $result = ($mediaMeses + $mediaMesesPonta * $fatorCompensacao) / ($irradiacao * $qtdDias * $rendimentoModulo * $areaModulo);
         return round($result, 0);
     }
@@ -169,7 +171,9 @@ trait Simulador
      * É a média aritimética de todos os consumos mensais
      */
     function getMediaMesesForaPonta($model){
-        return $media = ($model->jan + $model->feb + $model->mar + $model->apr + $model->may + $model->jun + $model->jul + $model->aug + $model->sep + $model->oct + $model->nov + $model->dec)/12;
+        return $media = ($model->jan +
+                $model->feb +
+                $model->mar + $model->apr + $model->may + $model->jun + $model->jul + $model->aug + $model->sep + $model->oct + $model->nov + $model->dec)/12;
     }
     /*
     * CONSUMO NA PONTA
@@ -208,6 +212,21 @@ trait Simulador
     function getCo2($potenciaGerador){
         $result = 464.3269 * $potenciaGerador;
         return round($result, 0);
+    }
+
+    function  getMediaAnualIrradiacao($cidade){
+        return ($cidade->irradiacao_jan +
+            $cidade->irradiacao_fev +
+            $cidade->irradiacao_mar +
+            $cidade->irradiacao_abri +
+            $cidade->irradiacao_mai +
+            $cidade->irradiacao_jun +
+            $cidade->irradiacao_jul +
+            $cidade->irradiacao_ago +
+            $cidade->irradiacao_set +
+            $cidade->irradiacao_out +
+            $cidade->irradiacao_nov +
+            $cidade->irradiacao_dez)/12;
     }
 
     /*
