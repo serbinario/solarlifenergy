@@ -158,13 +158,13 @@
                         <!-- tab -->
                             <div class="card-head">
                     <ul class="nav nav-tabs pull-left" data-toggle="tabs">
-                        <li class="active"><a href="#first2">Fora da ponta</a></li>
+                        <li class="active"><a href="#fora-da-ponta">Fora da ponta</a></li>
                         <li><a href="#second2">Na ponta</a></li>
                     </ul>
 
                 </div>
                 <div class="card-body tab-content">
-                    <div class="tab-pane active" id="first2">
+                    <div class="tab-pane active" id="fora-da-ponta">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group"{{ $errors->has('jan') ? 'has-error' : '' }}">

@@ -2,13 +2,20 @@ $(document).ready(function () {
 
     $("#edit_pre_proposta_form").submit(function(evt) {
         $('.money').each(function(index, elem){
-            $(elem).val(realDolar($(elem).val()));
-        });
+            $(elem).val(realDolar($(elem).val()));        });
 
         $("#preco_kwh").val(realDolar($("#preco_kwh").val()));
         $("#potencia_instalada").val(realDolar($("#potencia_instalada").val()));
 
     });
+
+    var fora_da_ponta = document.querySelectorAll('fora-da-ponta');
+    monthly_usage.addEventListener('focusout', function (evt) {
+
+        document.querySelectorAll('.fora-da-ponta').forEach(function(el) {
+            el.value = evt.target.value;
+        })
+    })
     /*
     * Gera uma pre-proposta
      */
