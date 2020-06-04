@@ -48,8 +48,8 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="projetoOrder" name="projetoOrder" class="form-control input-sm">
-                                <option value="asc">Ascendente</option>
-                                <option value="desc">Descendente</option>
+                                <option value="asc">Crescente</option>
+                                <option value="desc">Decrescente</option>
                             </select>
                         </div>
                     </div>
