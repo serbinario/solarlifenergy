@@ -41,7 +41,7 @@ var table = $('#cliente').DataTable({
     processing: true,
     serverSide: true,
     bFilter: true,
-    order: [[ 6, "desc" ]],
+    order: [[ 0, "desc" ]],
     ajax: {
         url: "/index.php/cliente/grid",
         data: function (d) {
