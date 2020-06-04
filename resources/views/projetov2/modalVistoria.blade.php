@@ -29,8 +29,9 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="vistoriaOrder" name="vistoriaOrder" class="form-control input-sm">
-                                <option value="asc">Ascendente</option>
-                                <option value="desc">Descendente</option>
+                                
+                                <option value="asc">Crescente</option>
+                                <option value="desc">Decrescente</option>
                             </select>
                         </div>
                     </div>
