@@ -271,7 +271,7 @@ where c.id =  $P{id}]]>
 					<font size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA["A execução se inicia com a vigência deste "+"<style isBold='true'>CONTRATO</style>" + ", e segue de acordo com as etapas exigidas pela concessionária, conforme norma de código "+"<style isBold='true'>NOR. DISTRIBU-ENGE-0002.</style>" + "\n\n\n"+
-"<style isBold='true'>As instalações seguiram o seguinte cronograma:</style>"]]></textFieldExpression>
+"<style isBold='true'>As instalações seguirão o seguinte cronograma:</style>"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="604">
@@ -406,7 +406,7 @@ Não havendo devoluções de valores já pagos na execução dos serviços.]]></
     	• Quando for detectada a violação de componentes do gerador fotovoltaico;
 Quando acionada a garantia e caracterizada improdutiva e/ou a não cobertura da garantia perante os termos acima estabelecidos, será realizada cobrança diretamente a contratante sobre despesas de assistência técnica.
      Custos por funcionários envolvidos:
-    	• R$ 90,00 (noventa reais) por hora trabalhada 2ª a 6ª (Dentro dos horários de funcionamento da contratada. Em caso de hora extra serão adicionados valore conforme sindicato da categoria)
+    	• R$ 90,00 (noventa reais) por hora trabalhada 2ª a 6ª (Dentro dos horários de funcionamento da contratada. Em caso de hora extra serão adicionados valores conforme sindicato da categoria)
     	• R$ 75,00 (setenta e cinco reais) por hora de deslocamento
     	• R$ 24,00 (vinte e quatro reais) por refeição
     	• R$ 90,00 (noventa reais) por hospedagem (pernoite)
