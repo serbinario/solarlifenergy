@@ -155,12 +155,12 @@ where c.id =  $P{id}]]>
 				<textFieldExpression><![CDATA["<style isBold='true'>SOLAR LIFE ENERGY EIRELI - ME</style>" + ", com sede e foro na cidade de Cabo de Santo Agostinho, na Rua José Bezerra Filho, 61, Loja B, Centro, inscrita no CNPJ/MF sob o nº 00.823.358/0001-14, doravante denominada Contratada, neste ato representada por Josias Jasmelino Ferreira, portador da Cédula de Identidade RG nº 3.464.679, expedida pela SSP-PE, e inscrito no CPF/MF sob nº 606.927.074-68 residente e domiciliado em Cabo de Santo Agostinho, na rua José Bezerra Filho, 61, Centro."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="0" y="233" width="442" height="77" uuid="4682bab6-c9c9-4fc2-9766-99fb1d20cfac"/>
+				<reportElement positionType="Float" x="0" y="232" width="442" height="77" uuid="4682bab6-c9c9-4fc2-9766-99fb1d20cfac"/>
 				<textElement textAlignment="Justified" markup="styled">
 					<font size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style isBold='true'>"+ $F{nome} == "juridico"? "as" : "bb" + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{endereco} + "</style>" + " N. " + $F{numero}  + " bairro " + "<style isBold='true'>"+$F{bairro} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+ $F{nome} + "</style>" + " com sede e foro na cidade de "+ "<style isBold='true'>"+$F{cidade} + "</style>"+", na "+  "<style isBold='true'>"+$F{endereco} + "</style>" + " N. " + $F{numero}  + " bairro " + "<style isBold='true'>"+$F{bairro} + "</style>"+", CEP " + "<style isBold='true'>"+$F{cep} + "</style>"+" inscrita no CNPJ/CPF sob nº " +  "<style isBold='true'>"+$F{cpf_cnpj} + "</style>" + " doravante denominada Contratante, celebram o presente CONTRATO para aquisição e instalação do gerador fotovoltaico para e instalação do gerador fotovoltaico para geração distribuída, na modalidade:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="330" width="442" height="16" uuid="cfe9ac85-f4d4-432d-8458-6c9728413384"/>
