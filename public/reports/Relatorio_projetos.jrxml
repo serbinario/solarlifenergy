@@ -321,10 +321,6 @@ order by $P!{ordenarTable} desc]]>
 				</textElement>
 				<text><![CDATA[RELATÓRIOS DE PROJETOS]]></text>
 			</staticText>
-			<textField evaluationTime="Auto">
-				<reportElement x="319" y="65" width="100" height="30" uuid="df423e5e-bba2-4370-8eea-de800ce3a85c"/>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
-			</textField>
 			<textField pattern=" dd/MM/yyyy">
 				<reportElement x="623" y="15" width="100" height="30" uuid="07cfc56b-7dee-4819-96e5-67009d8cb398"/>
 				<textElement>
