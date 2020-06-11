@@ -69,15 +69,32 @@
                 </div>
             </div>
         </div>
+
+        @if(!isset($preProposta->panel_potencia))
         <div class="col-sm-3">
-            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm" name="panel_potencia" type="text" id="panel_potencia" value="{{ old('panel_potencia', isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : "330") }}" step="any">
-
+                    <select  id="panel_potencia" name="panel_potencia" class="form-control input-sm" id="panel_potencia">
+                        <option value="">Módulo</option>
+                        <option value="330">330</option>
+                        <option value="410">410</option>
+                    </select>
                 </div>
             </div>
         </div>
+            @else
+
+
+        <div class="col-sm-4">
+            <div class="form-group {{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
+                <label for="" class="col-sm-4 control-label text-bold">Painel Potência.:</label>
+                <div class="col-md-8">
+                    <input class="form-control input-sm" name="panel_potencia" type="text" readonly value="{{  isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : null }}" >
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 
      <div class="row">

@@ -156,7 +156,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Pré-Proposta</a>
+                                <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Proposta</a>
                             </div>
                         </div>
                     </div><!--end .card -->
