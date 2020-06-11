@@ -399,7 +399,7 @@ class Projetov2Controller extends Controller
                 }
             }
 
-            
+
             if(isset($request->image)){
                 for($i = 0; $i < count($request->image); $i++) {
 
