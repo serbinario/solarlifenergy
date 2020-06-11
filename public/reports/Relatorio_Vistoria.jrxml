@@ -253,6 +253,13 @@ order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 				</textElement>
 				<text><![CDATA[VISTORIA]]></text>
 			</staticText>
+			<textField pattern=" dd/MM/yyyy">
+				<reportElement x="623" y="15" width="100" height="30" uuid="b773a48c-2733-4489-b6f4-1c440a5c677c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>
