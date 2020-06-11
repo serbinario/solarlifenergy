@@ -189,7 +189,7 @@ class PrePropostaController extends Controller
              */
 
             $return = $this->simularGeracao($request);
-            //dd($return);
+
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
@@ -280,7 +280,7 @@ class PrePropostaController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta);
+
         return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs'));
     }
 
@@ -300,7 +300,7 @@ class PrePropostaController extends Controller
             $preProposta = PreProposta::findOrFail($id);
 
             $return = $this->simularGeracao($request);
-            //dd($return);
+            //dd($return['qtd_modulos']);
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
@@ -355,7 +355,6 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
 
-
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -406,6 +405,7 @@ class PrePropostaController extends Controller
             'data_validade',
             'power',
             'monthly_usage',
+            'qtd_paineis' ,
             'preco_medio_instalado',
             'total_equipamentos',
             'total_servico_operacional',
@@ -427,7 +427,7 @@ class PrePropostaController extends Controller
             'na_ponta_nov',
             'na_ponta_dec',
             'cidade_id',
-            'produto1', 'qtd_paineis' ,'produto1_preco', 'produto1_nf',
+            'produto1','produto1_preco', 'produto1_nf',
             'produto2', 'qtd_inversores','produto2_preco', 'produto2_nf',
             'produto3', 'qtd_estrutura',  'produto3_preco', 'produto3_nf',
             'produto4', 'qtd_string_box', 'produto4_preco', 'produto4_nf',

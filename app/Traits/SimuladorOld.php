@@ -16,7 +16,6 @@ use PHPJasper\PHPJasper;
 use Serbinario\Entities\BasePreco;
 use Serbinario\Entities\BasePrecoEstruturaEletrica;
 use Serbinario\Entities\Cidade;
-use Serbinario\Entities\ModulosPropriedades;
 
 trait Simulador
 {
@@ -30,36 +29,15 @@ trait Simulador
     private $qtdModulos = 0;
     private $qtdInversores = 1;
     private $irradiacao_anual = 0;
-    private $potenciaModulo = 0;
-
     function simularGeracao($request){
 
         $cidade = $request->get('cidade_id');
         $valor_medio_kw = (int)$request->get('monthly_usage');
-        $this->potenciaModulo = $request->get('panel_potencia');
-
-        /* Corrigir */
-        /*
-         *
-         */
-        $this->potenciaModulo == 330 ? $modulos_propriedade = 2 : $modulos_propriedade = 1;
-        /* FIM CORRIGIR */
-
-        $moduloPropriedade = ModulosPropriedades::where('potencia', '=', $this->potenciaModulo)->first();
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
         $mediaForaPonta = $request->get('monthly_usage');
-        $this->qtdModulos = $this->getQtdModulos(
-            $valor_medio_kw,
-            0,
-            '4.6',
-            $this->irradiacao_anual/1000,
-            '30',
-            (float)$moduloPropriedade->rendimento -0.01,
-            $moduloPropriedade->area_geracao
-        );
-
+        $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', $this->irradiacao_anual/1000, '30', '0.14', '1.7');
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
@@ -93,8 +71,7 @@ trait Simulador
             $this->calculaGeracaoFranquia($inversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
 
         }else{
-            $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->where('modulos_propriedade_id', '=', $modulos_propriedade)->first();
-
+            $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->first();
             $this->valorModulo = $basePreco->valor_modulo;
 
             //Valida da hora de editar, se mudar o valor do modulo vai respitar o valor que digitou
@@ -107,41 +84,16 @@ trait Simulador
             $this->calculaGeracao($basePreco);
         }
 
-        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$this->potenciaModulo);
+        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, '330');
 
         $area = $this->getArea($this->qtdModulos, '2.1', '1.15');
 
         $co2 = $this->getCo2($potenciaGerador);
 
-        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $moduloPropriedade->area_total, $moduloPropriedade->rendimento);
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, '1.72');
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
-       /* dd(
-            [
-                'success' => true,
-                'valor_modulo' => $this->valorModulo,
-                'qtd_modulos' => $this->qtdModulos,
-                'potencia_gerador' => $potenciaGerador,
-                'area_minima' => $area,
-                'co2' => $co2,
-                'valor_kw' => $valor_medio_kw,
-                'total_investimento' => round($this->totalInvestimento, 2),
-                'soma_modulos' =>  $this->somaModulos,
-                'qtd_inversores' => $this->qtdInversores,
-                'soma_inversor' => $this->somaInversor,
-                'soma_estrutura' => $this->somaestrutura,
-                'soma_infra' => $this->somaInfra,
-                'soma_kit' => $this->somaKit,
-                'reducao_media_consumo' => $reducaoMediaConsumo,
-                'geracao_fv' => $geracaoEnergiaFV,
-                'total_equipamentos' =>
-                    $this->somaModulos
-                    + $this->somaInversor
-                    + $this->somaestrutura
-                    + $this->somaInfra
-                    + $this->somaKit
-            ]
-        );*/
+
         return
             [
                 'success' => true,
@@ -277,21 +229,22 @@ trait Simulador
      * GERAÇÃO ENERGIA FV
      * Qtd de dias, irradiação no mês, área do módulo, e rendimento do módulo
      */
-    function getGeracaoEnergiaFV($cidade, $qtdModulos, $areaModulo, $rendimento){
+    function getGeracaoEnergiaFV($cidade, $qtdModulos, $areaModulo){
+
         $geracao = array();
         $irradiacao = array(
-            ['irradiacao' => $cidade->irradiacao_jan, 'dias' => '30', 'rendimento' => $rendimento],
-            ['irradiacao' => $cidade->irradiacao_fev, 'dias' => '28', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_mar, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_abri, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_mai, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_jun, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_jul, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_ago, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_set, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_out, 'dias' => '30', 'rendimento' => $rendimento - 0.01],
-            ['irradiacao' => $cidade->irradiacao_nov, 'dias' => '30', 'rendimento' => $rendimento],
-            ['irradiacao' => $cidade->irradiacao_dez, 'dias' => '30', 'rendimento' => $rendimento]
+            ['irradiacao' => $cidade->irradiacao_jan, 'dias' => '30', 'rendimento' => '0.15'],
+            ['irradiacao' => $cidade->irradiacao_fev, 'dias' => '28', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_mar, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_abri, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_mai, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_jun, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_jul, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_ago, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_set, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_out, 'dias' => '30', 'rendimento' => '0.14'],
+            ['irradiacao' => $cidade->irradiacao_nov, 'dias' => '30', 'rendimento' => '0.15'],
+            ['irradiacao' => $cidade->irradiacao_dez, 'dias' => '30', 'rendimento' => '0.15']
         );
 
         for($i=0;$i<12;$i++){
