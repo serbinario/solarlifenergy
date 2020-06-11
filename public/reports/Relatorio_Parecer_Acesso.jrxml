@@ -253,7 +253,7 @@ order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 				</textElement>
 				<text><![CDATA[PARECER DE ACESSO]]></text>
 			</staticText>
-			<textField pattern=" dd/mm/yyyy">
+			<textField pattern=" dd/MM/yyyy">
 				<reportElement x="623" y="15" width="100" height="30" uuid="66df04b9-8a7a-4ca2-a1cc-477a962b3598"/>
 				<textElement>
 					<font size="12" isBold="true"/>
