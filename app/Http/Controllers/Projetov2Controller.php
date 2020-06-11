@@ -399,24 +399,16 @@ class Projetov2Controller extends Controller
                 }
             }
 
+            
+            if(isset($request->image)){
+                for($i = 0; $i < count($request->image); $i++) {
 
-           /* /*
-             * 1- Pega do formulario uma array chamada num_contrato
-             * 2 - se vinher alguma vazia e limpa com o metodo array_filter
-             * 3 - E inserido em contrados
-             */
-
-            //dd(isset($request->num_contacontrato[4])? "v": "f");
-
-           /* for($i = 0; $i < count($request->num_contacontrato); $i++){
-
-                $contratos = $progetov2->contratos()->create([
-                    'num_contacontrato' => isset($request->num_contacontrato[$i])? $request->num_contacontrato[$i]: null,
-                    'percentual' => isset($request->percentual[$i])? $request->percentual[$i]: null,
-                    'image' => isset($request->$request->image[$i])? $request->$request->image[$i]: null,
-                    'contrato_titularidade' => isset($request->contrato_titularidade[$i])? $request->contrato_titularidade[$i]: null,
-                ]);
-            }*/
+                    $progetov2->contratos()->where('image' , $request->image[$i])->update([
+                        'num_contacontrato' => $request->num_contacontrato[$i],
+                        'percentual' => $request->percentual[$i]
+                    ]);
+                }
+            }
 
             $progetov2->update($data);
 
