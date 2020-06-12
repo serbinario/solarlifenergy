@@ -4,7 +4,7 @@ namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ModulosPropriedades extends Model
+class Modulo extends Model
 {
 
 
@@ -13,7 +13,7 @@ class ModulosPropriedades extends Model
      *
      * @var string
      */
-    protected $table = 'modulos_propriedades';
+    protected $table = 'modulos';
 
     /**
      * The database primary key value.

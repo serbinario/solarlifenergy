@@ -70,31 +70,23 @@
             </div>
         </div>
 
-        @if(!isset($preProposta->panel_potencia))
-        <div class="col-sm-3">
-            <div class="form-group {{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
-                <label for="preco_kwh" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
+
+        <div class="col-sm-4">
+            <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
+                <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <select  id="panel_potencia" name="panel_potencia" class="form-control input-sm" id="panel_potencia">
-                        <option value="">Módulo</option>
-                        <option value="330">330</option>
-                        <option value="410">410</option>
+                    <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
+                        <option value="" style="display: none;" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione</option>
+                        @foreach ($modulos as $key => $modulo)
+                            <option value="{{ $key }}" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : null) == $key ? 'selected' : '' }}>
+                                {{ $modulo }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
         </div>
-            @else
 
-
-        <div class="col-sm-4">
-            <div class="form-group {{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
-                <label for="" class="col-sm-4 control-label text-bold">Painel Potência.:</label>
-                <div class="col-md-8">
-                    <input class="form-control input-sm" name="panel_potencia" type="text" readonly value="{{  isset($preProposta->panel_potencia) ? $preProposta->panel_potencia : null }}" >
-                </div>
-            </div>
-        </div>
-        @endif
     </div>
 
      <div class="row">
