@@ -37,6 +37,7 @@ class PreProposta extends Model
         'cliente_id',
         'user_id',
         'baco_fin_id',
+        'modulo_id',
         'user_id',
         'codigo',
         'data_validade',
@@ -149,6 +150,14 @@ class PreProposta extends Model
     public function cliente()
     {
         return $this->belongsTo('Serbinario\Entities\Cliente','cliente_id','id');
+    }
+
+    /**
+     * Get the Cliente for this model.
+     */
+    public function modulo()
+    {
+        return $this->belongsTo('Serbinario\Entities\Modulo','modulo_id','id');
     }
 
     /**

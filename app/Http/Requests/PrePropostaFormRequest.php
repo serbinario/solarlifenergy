@@ -28,7 +28,7 @@ class PrePropostaFormRequest extends FormRequest
             'cliente_id' => 'required',
             'monthly_usage' => 'required',
             'preco_kwh' => 'required',
-            'panel_potencia' => 'required',
+            'modulo_id' => 'required',
             'cidade_id' => 'required',
             'cidade_id' => 'required',
             'estado_id' => 'required',

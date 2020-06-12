@@ -11,6 +11,7 @@ use Serbinario\Entities\BancoFinanciadora;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
+use Serbinario\Entities\Modulo;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
@@ -147,13 +148,13 @@ class PrePropostaController extends Controller
     {
         $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
+        $modulos = Modulo::pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
 
-
-        return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs'));
+        return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos'));
     }
 
     /**
@@ -272,6 +273,7 @@ class PrePropostaController extends Controller
     public function edit($id){
         $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
+        $modulos = Modulo::pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
         if($preProposta->cidade_id){
             $cidades = Cidade::where('estado_id', '=', $preProposta->cidade->estado_id)->pluck('nome','id');
@@ -281,7 +283,7 @@ class PrePropostaController extends Controller
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
 
-        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs'));
+        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos'));
     }
 
     /**
@@ -294,13 +296,16 @@ class PrePropostaController extends Controller
      */
     public function update($id, PrePropostaFormRequest $request)
     {
+
         try {
-            //dd($request->all());
+
             $data = $this->getData($request);
             $preProposta = PreProposta::findOrFail($id);
 
             $return = $this->simularGeracao($request);
-            //dd($return['qtd_modulos']);
+
+            $data['panel_potencia'] = $return['modulo_potencia'];
+
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
@@ -355,12 +360,14 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
 
+            //dd($data);
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso');
 
         } catch (Exception $e) {
+            dd($e);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -402,6 +409,7 @@ class PrePropostaController extends Controller
             'codigo',
             'user_id',
             'baco_fin_id',
+            'modulo_id',
             'data_validade',
             'power',
             'monthly_usage',

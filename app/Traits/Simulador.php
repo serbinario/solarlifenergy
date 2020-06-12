@@ -16,7 +16,7 @@ use PHPJasper\PHPJasper;
 use Serbinario\Entities\BasePreco;
 use Serbinario\Entities\BasePrecoEstruturaEletrica;
 use Serbinario\Entities\Cidade;
-use Serbinario\Entities\ModulosPropriedades;
+use Serbinario\Entities\Modulo;
 
 trait Simulador
 {
@@ -38,14 +38,9 @@ trait Simulador
         $valor_medio_kw = (int)$request->get('monthly_usage');
         $this->potenciaModulo = $request->get('panel_potencia');
 
-        /* Corrigir */
-        /*
-         *
-         */
-        $this->potenciaModulo == 330 ? $modulos_propriedade = 2 : $modulos_propriedade = 1;
-        /* FIM CORRIGIR */
 
-        $moduloPropriedade = ModulosPropriedades::where('potencia', '=', $this->potenciaModulo)->first();
+        $modulo = Modulo::where('id', '=', $request->modulo_id)->first();
+
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
@@ -56,10 +51,9 @@ trait Simulador
             '4.6',
             $this->irradiacao_anual/1000,
             '30',
-            (float)$moduloPropriedade->rendimento -0.01,
-            $moduloPropriedade->area_geracao
+            (float)$modulo->rendimento -0.01,
+            $modulo->area_geracao
         );
-
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"
         //Corrigir isso não deveria pegar pelo id e sim verificar outro campo
@@ -93,7 +87,7 @@ trait Simulador
             $this->calculaGeracaoFranquia($inversores, $basePrecoEstruturaEletrica, $basePrecoModulos);
 
         }else{
-            $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->where('modulos_propriedade_id', '=', $modulos_propriedade)->first();
+            $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->where('modulo_id', '=', $modulo->id)->first();
 
             $this->valorModulo = $basePreco->valor_modulo;
 
@@ -107,13 +101,13 @@ trait Simulador
             $this->calculaGeracao($basePreco);
         }
 
-        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$this->potenciaModulo);
+        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$modulo->potencia);
 
         $area = $this->getArea($this->qtdModulos, '2.1', '1.15');
 
         $co2 = $this->getCo2($potenciaGerador);
 
-        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $moduloPropriedade->area_total, $moduloPropriedade->rendimento);
+        $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $modulo->area_total, $modulo->rendimento);
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
        /* dd(
@@ -146,6 +140,7 @@ trait Simulador
             [
                 'success' => true,
                 'valor_modulo' => $this->valorModulo,
+                'modulo_potencia' => $modulo->potencia,
                 'qtd_modulos' => $this->qtdModulos,
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
