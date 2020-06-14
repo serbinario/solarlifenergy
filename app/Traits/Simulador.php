@@ -89,6 +89,7 @@ trait Simulador
         }else{
             $basePreco = BasePreco::where('kw_maximo', '>=' ,$valor_medio_kw)->where('modulo_id', '=', $modulo->id)->first();
 
+
             $this->valorModulo = $basePreco->valor_modulo;
 
             //Valida da hora de editar, se mudar o valor do modulo vai respitar o valor que digitou
