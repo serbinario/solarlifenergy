@@ -92,9 +92,6 @@ class PrePropostaController extends Controller
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
 
-
-
-
         #Editando a grid
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
@@ -113,6 +110,9 @@ class PrePropostaController extends Controller
 
                 if ($request->has('prioridade')) {
                     $query->where('prioridades.id', '=', $request->get('prioridade') );
+                    $query->whereNull('projetosv2.id');
+
+
                 }
 
                 if ($request->has('integrador')) {
