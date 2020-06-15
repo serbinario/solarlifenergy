@@ -44,6 +44,7 @@ var table = $('#preProposta').DataTable({
     ajax: {
         url: "/index.php/preProposta/grid",
         data: function (d) {
+            d.prioridade = document.getElementById("prioridade_id").value;
             d.nome = $('input[name=nome]').val();
             d.codigo = $('input[name=codigo]').val();
             d.integrador = $('input[name=integrador]').val();
