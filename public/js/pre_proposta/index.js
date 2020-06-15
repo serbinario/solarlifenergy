@@ -70,6 +70,7 @@ var table = $('#preProposta').DataTable({
         {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'created_at', name: 'pre_propostas.created_at'},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
+        {data: 'prioridade', name: 'prioridades.name'},
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ]
 });
