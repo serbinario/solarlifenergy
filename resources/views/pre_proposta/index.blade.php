@@ -109,6 +109,20 @@
                                                     </div><!--end .form-group -->
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <label for="is_propostas" class="col-md-4 control-label">Prioridade</label>
+                                                    <div class="col-md-8">
+                                                        <select id="prioridade_id" name="prioridade_id" class="form-control input-sm">
+                                                            <option value="">Todos</option>
+                                                            <option value="1">Baixa</option>
+                                                            <option value="2">Méida</option>
+                                                            <option value="3">Alta</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <br>
 
                                             <div class="row">
@@ -141,6 +155,7 @@
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>
                                                     <th>Data Alteração</th>
+                                                    <th>Prioridade</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

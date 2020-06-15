@@ -37,6 +37,7 @@ trait Simulador
         $cidade = Cidade::where('id', '=', $cidade)->first();
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
         $mediaForaPonta = $request->get('monthly_usage');
+
         $this->qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', $this->irradiacao_anual/1000, '30', '0.14', '1.7');
 
         //Verifico se o usuário não for da solar, pega os valores da franquia se não pega os valores da tabela "base_preco"

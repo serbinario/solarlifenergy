@@ -39,6 +39,7 @@ class PreProposta extends Model
         'baco_fin_id',
         'modulo_id',
         'user_id',
+        'prioridade_id',
         'codigo',
         'data_validade',
         'monthly_usage',

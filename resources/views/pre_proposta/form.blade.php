@@ -16,6 +16,7 @@
                     <input name="cliente_id" type="hidden" id="cliente_id" value="{{ old('id', isset($preProposta->cliente->id) ? $preProposta->cliente->id : null) }}" >
                     <input name="estado" type="hidden" id="estado" value="{{ old('estado', isset($preProposta->cliente->estado) ? $preProposta->cliente->estado : null) }}" >
                     <input name="user_id" type="hidden" id="user_id" value="{{  isset($preProposta->user_id) ? $preProposta->user_id : null }}" >
+                    <input name="prioridade_id" type="hidden" id="prioridade_id" value="{{  isset($preProposta->prioridade_id) ? $preProposta->prioridade_id : null }}" >
 
                     <div class="col-md-8">
                         <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" value="{{ old('nome', isset($preProposta->cliente->nome_empresa) ? $preProposta->cliente->nome_empresa : null) }}" readonly >
@@ -90,7 +91,7 @@
     </div>
 
      <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group {{ $errors->has('estado_id') ? 'has-error' : '' }}">
                 <label for="estado_id" class="col-sm-4 control-label text-bold">Estado:*</label>
                 <div class="col-md-8">
@@ -105,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
                 <label for="cidade_id" class="col-sm-4 control-label text-bold">Cidade.:*</label>
                 <div class="col-md-8">
@@ -121,9 +122,9 @@
             </div>
         </div>
          @role('admin|super-admin')
-         <div class="col-sm-4">
+         <div class="col-sm-3">
              <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
-                 <label for="user_id" class="col-sm-4 control-label text-bold">Intergrador.:</label>
+                 <label for="user_id" class="col-sm-4 control-label text-bold">Integrador.:</label>
                  <div class="col-md-8">
                      <select   class="form-control input-sm" id="user_id" name="user_id">
                          <option value="" style="display: none;" {{ old('user_id', isset($preProposta->user_id) ? $preProposta->user_id : '') == '' ? 'selected' : '' }} disabled selected>Intergrador</option>
@@ -136,9 +137,24 @@
                  </div>
              </div>
          </div>
+         <div class="col-sm-3">
+             <div class="form-group">
+                 <label for="user_id" class="col-sm-4 control-label text-bold">Prioridade.:</label>
+                 <div class="col-md-8">
+                     <select   class="form-control input-sm" id="prioridade_id" name="prioridade_id">
+                         <option value="" style="display: none;" {{ old('prioridade_id', isset($preProposta->prioridade_id) ? $preProposta->prioridade_id : '') == '' ? 'selected' : '' }} disabled selected>Prioridade</option>
+                         @foreach ($prioridades as $key => $prioridade)
+                             <option value="{{ $key }}" {{ old('prioridade_id', isset($preProposta->prioridade_id) ? $preProposta->prioridade_id : null) == $key ? 'selected' : '' }}>
+                                 {{ $prioridade }}
+                             </option>
+                         @endforeach
+                     </select>
+                 </div>
+             </div>
+         </div>
          @else
-             <div class="col-sm-4">
-                 <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
+             <div class="col-sm-3">
+                 <div class="form-group">
                      <label for="" class="col-sm-4 control-label text-bold">Intergrador.:</label>
                      <div class="col-md-8">
                          <input class="form-control input-sm" type="text" readonly value="{{  isset($preProposta->user->name) ? $preProposta->user->name : null }}" >
@@ -147,9 +163,6 @@
              </div>
          @endrole
     </div>
-
-
-
 
     <!--Acordion -->
 <div class="row">

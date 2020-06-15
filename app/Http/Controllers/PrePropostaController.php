@@ -13,6 +13,7 @@ use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
 use Serbinario\Entities\Modulo;
 use Serbinario\Entities\PreProposta;
+use Serbinario\Entities\Prioridade;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
 use Serbinario\Traits\Simulador;
@@ -62,6 +63,7 @@ class PrePropostaController extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('users', 'users.id', '=', 'pre_propostas.user_id')
             ->leftJoin('projetosv2', 'projetosv2.proposta_id', '=', 'pre_propostas.id' )
+            ->leftJoin('prioridades', 'prioridades.id', '=', 'pre_propostas.prioridade_id')
             ->select([
                 'users.name',
                 'pre_propostas.codigo',
@@ -73,6 +75,7 @@ class PrePropostaController extends Controller
                 'clientes.cpf_cnpj',
                 'clientes.email',
                 'clientes.celular',
+                'prioridades.name as prioridade',
                 'projetosv2.id as projeto',
                 \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
@@ -146,6 +149,7 @@ class PrePropostaController extends Controller
      */
     public function create()
     {
+        $prioridades = Prioridade::pluck('name','id')->all();
         $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::pluck('potencia','id')->all();
@@ -154,7 +158,7 @@ class PrePropostaController extends Controller
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
 
-        return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos'));
+        return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
     /**
@@ -271,6 +275,7 @@ class PrePropostaController extends Controller
      * @return Illuminate\View\View
      */
     public function edit($id){
+        $prioridades = Prioridade::pluck('name','id')->all();
         $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::pluck('potencia','id')->all();
@@ -283,7 +288,7 @@ class PrePropostaController extends Controller
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
 
-        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos'));
+        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
     /**
@@ -410,6 +415,7 @@ class PrePropostaController extends Controller
             'user_id',
             'baco_fin_id',
             'modulo_id',
+            'prioridade_id',
             'data_validade',
             'power',
             'monthly_usage',
