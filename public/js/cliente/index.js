@@ -59,9 +59,15 @@ var table = $('#cliente').DataTable({
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.propostas == '0'){
-                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>")
+                    $(nTd).html(
+                        "<div class='tooltip'>" + oData.nome_empresa + "  <span class=\"tooltiptext\">" + "CPF/CNPJ " + oData.cpf_cnpj +  " </span></div>" +
+                        "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>"
+                    );
                 }else{
-                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>");
+                    $(nTd).html(
+                        "<div class='tooltip'>" + oData.nome_empresa + "  <span class=\"tooltiptext\">" + "CPF/CNPJ "  + oData.cpf_cnpj +  " </span></div>" +
+                        "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>"
+                    );
                 }
             }
         },

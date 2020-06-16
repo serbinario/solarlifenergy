@@ -121,8 +121,6 @@ class ProjetoController extends Controller
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
                 $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-
-
             })
 
             ->addColumn('action', function ($row) {
