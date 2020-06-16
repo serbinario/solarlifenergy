@@ -111,7 +111,14 @@ class PrePropostaController extends Controller
                 if ($request->has('prioridade')) {
                     $query->where('prioridades.id', '=', $request->get('prioridade') );
                     $query->whereNull('projetosv2.id');
+                }
 
+                if ($request->has('projetos')) {
+                    if($request->get('projetos') == 1){
+                        $query->whereNull('projetosv2.id');
+                    }else{
+                        $query->whereNotNull('projetosv2.id');
+                    }
 
                 }
 
