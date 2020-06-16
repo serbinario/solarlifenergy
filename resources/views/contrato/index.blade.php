@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        @include('contrato.filtro')
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
@@ -43,6 +43,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Cliente</th>
+                                                    <th>CPF/CNPJ</th>
                                                     <th>Valor Proposta</th>
                                                     <th>KWp</th>
                                                     <th>Ano</th>

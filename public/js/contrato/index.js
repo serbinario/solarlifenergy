@@ -44,11 +44,19 @@ $(document).ready(function () {
         ajax: {
             url: "/index.php/contrato/grid",
             data: function (d) {
+                d.nome = document.getElementById("nome").value;
             }
         },
         columns: [
             {data: 'id', name: 'id', targets: 0, visible: false},
-            {data: 'nome_empresa', name: 'clientes.nome_empresa'},
+            {data: 'nome_empresa', name: 'clientes.nome_empresa',
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html(
+                            "<div class='tooltip'>" + oData.nome_empresa + "  <span class=\"tooltiptext\">" + "CPF/CNPJ " + oData.cpf_cnpj +  " </span></div>"
+                        );
+                }
+            },
+            {data: 'cpf_cnpj', name: 'clientes.cpf_cnpj'},
             {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
             {data: 'potencia_instalada', name: 'pre_propostas.potencia_instalada'},
             {data: 'ano', name: 'contratos.ano'},
@@ -76,6 +84,11 @@ $(document).ready(function () {
 
     $(document).on('click', '#editModalContrato', function(){
         $('#modalContrato').modal();
+    });
+
+    $( "#localizar" ).click(function() {
+        //console.log(document.getElementById("integrador").value);
+        table.draw();
     });
 
     function formatMoney(n, c, d, t) {

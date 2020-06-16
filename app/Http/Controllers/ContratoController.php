@@ -7,6 +7,7 @@ namespace Serbinario\Http\Controllers;
 
 use Serbinario\Entities\ReportLayout;
 use Serbinario\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Contrato;
 use Serbinario\Entities\Franquia;
@@ -47,7 +48,7 @@ class ContratoController extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
         $this->token = csrf_token();
         #Criando a consulta
@@ -59,6 +60,7 @@ class ContratoController extends Controller
             ->select([
                 'clientes.nome_empresa',
                 'contratos.id',
+                'clientes.cpf_cnpj',
                 'pre_propostas.preco_medio_instalado',
                 'pre_propostas.potencia_instalada',
                 'contratos.ano'
@@ -68,7 +70,19 @@ class ContratoController extends Controller
         //$rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+        return Datatables::of($rows)
+
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('palavras_chave', 'like', "%" . $request->get('nome') . "%")
+                        ->orWhere('cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
+                }
+            })
+
+            ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="contrato/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
