@@ -28,7 +28,7 @@ var table = $('#projetov2').DataTable({
     processing: true,
     serverSide: true,
     bFilter: true,
-    order: [[ 0, "desc" ]],
+    order: [[ 0, "asc" ]],
     ajax: {
         url: "/index.php/projetov2/grid",
         data: function (d) {
@@ -55,8 +55,8 @@ var table = $('#projetov2').DataTable({
         {data: 'preco_medio_instalado', name: 'preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'potencia_instalada', name: 'potencia_instalada'},
 
-        {data: 'data_financiamento_bancario', name: 'data_financiamento_bancario'},
-        {data: 'data_prevista_parcela', name: 'data_prevista_parcela'},
+        {data: 'data_financiamento_bancario', name: 'data_financiamento_bancario', visible: false},
+        {data: 'data_prevista_parcela', name: 'data_prevista_parcela', visible: false},
 
         {data: 'data_prevista', name: 'data_prevista'},
         {data: 'data_conexao', name: 'data_conexao', visible: false},
