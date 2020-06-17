@@ -10,6 +10,12 @@
     color: #fff;
     background-color: #009C77;
 }
+
+.badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+}
+
 .popover {
     white-space: pre-line;
 }

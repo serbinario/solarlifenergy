@@ -4,26 +4,13 @@ var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
 var modalName;
-function template(d){
-    //Retirar os "&quot" da array aditivos
-    //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
-
-    var html = "<table class='table table-bordered'>";
-    html += "<thead>" +
-        "<tr><td>Profile</td><td>Grupo</td></tr>" +
-        "</thead>";
-
-
-
-    html += "<tr>";
-    html += "<td>"  + d.profile + "</td>";
-    html += "<td>"  + d.grupo + "</td>";
-
-    html += "</tr>"
-
-    html += "</table>";
-
-    return  html;
+function format ( d ) {
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+        '<td>Obs:</td>'+
+        '<td>'+d.obs+'</td>'+
+        '</tr>'+
+        '</table>';
 }
 
 var table = $('#projetov2').DataTable({
@@ -56,6 +43,12 @@ var table = $('#projetov2').DataTable({
         }
     },
     columns: [
+        {
+            "class":          "details-control",
+            "orderable":      false,
+            "data":           null,
+            "defaultContent": ""
+        },
         {data: "id",name: 'id' , visible: false },
         {data: 'nome_empresa', name: 'nome_empresa'},
         {data: 'codigo', name: 'codigo', visible: false},
@@ -72,12 +65,23 @@ var table = $('#projetov2').DataTable({
         {data: 'franquaia', name: 'franquaia', visible: false},
         {data: 'status_nome', name: 'status_nome'},
         {data: 'atualizado', name: 'atualizado', visible: false},
+        {data: 'pendencia', name: 'pendencia', visible: true,
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.pendencia != null){
+                    $(nTd).html("    <span class=\"badge badge-danger\">"+ "Pendente</span>")
+                }
+            }
+
+        },
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ]
 });
 
 // Add event listener for opening and closing details
-$('#cliente tbody').on('click', 'td.details-control', function () {
+var detailRows = [];
+
+// Add event listener for opening and closing details
+$('#projetov2 tbody').on('click', 'td.details-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row( tr );
 
@@ -88,10 +92,11 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
     }
     else {
         // Open this row
-        row.child( template(row.data()) ).show();
+        row.child( format(row.data()) ).show();
         tr.addClass('shown');
     }
-});
+} );
+
 
 $( "#localizar" ).click(function() {
     table.draw();

@@ -40,6 +40,7 @@
                                         <table id="projetov2" class="table order-column hover">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>Id</th>
                                                     <th>Razão Social</th>
                                                     <th>Cod. Proposta</th>
@@ -54,6 +55,7 @@
                                                     <th>Franquia</th>
                                                     <th>Situação</th>
                                                     <th>Atualizado</th>
+                                                    <th>Alerta</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

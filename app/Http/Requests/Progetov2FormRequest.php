@@ -63,7 +63,8 @@ class Progetov2FormRequest extends FormRequest
             'conta_contrato_atual',
             'titularidade_projeto',
             'titularidade_projeto_cpf',
-            'selo_vistoria_image'
+            'selo_vistoria_image',
+            'pendencia'
         ]);
 
         return $data;

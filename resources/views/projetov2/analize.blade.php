@@ -402,6 +402,18 @@
 </div>
 
 <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
+    <label for="obs" class="col-md-1 control-label  text-bold">Pendências?.:</label>
+
+    <div class="checkbox checkbox-styled">
+        <div class="col-md-4">
+            <label for="pendencia">
+                <input id="pendencia" class="" name="pendencia" type="checkbox" value="1" {{ old('cpf_cnh_rg', isset($projetov2->pendencia) ? $projetov2->pendencia : null) == '1' ? 'checked' : '' }}>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
     <label for="obs" class="col-md-1 control-label  text-bold">Obs.:</label>
     <div class="col-md-11">
         <textarea class="form-control input-sm" name="obs" cols="50" rows="10" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($projetov2->obs) ? $projetov2->obs : null) }}</textarea>
