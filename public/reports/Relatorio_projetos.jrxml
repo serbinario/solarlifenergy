@@ -54,6 +54,7 @@ pre_propostas.data_financiamento_bancario AS "data Assinatura",
 pre_propostas.data_prevista_parcela AS "data parcela" ,
 meios_captacao.nome AS "Meio Captação",
 users.name AS integrador,
+projetosv2.obs,
 projetos_status.status_nome AS STATUS,
 banco_financiadora.nome AS banco
 FROM projetosv2
@@ -81,11 +82,11 @@ order by $P!{ordenarTable} desc]]>
 			<property name="com.jaspersoft.studio.field.label" value="kwp"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 		</field>
-		<field name="data Assinatura" class="java.sql.Date">
+		<field name="data Assinatura" class="java.sql.Timestamp">
 			<property name="com.jaspersoft.studio.field.label" value="data Assinatura"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 		</field>
-		<field name="data parcela" class="java.sql.Date">
+		<field name="data parcela" class="java.sql.Timestamp">
 			<property name="com.jaspersoft.studio.field.label" value="data parcela"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 		</field>
@@ -96,6 +97,10 @@ order by $P!{ordenarTable} desc]]>
 		<field name="integrador" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="integrador"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+		</field>
+		<field name="obs" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="obs"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
 		</field>
 		<field name="STATUS" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="STATUS"/>
@@ -121,11 +126,11 @@ order by $P!{ordenarTable} desc]]>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
+	<detail>
 		<band height="555" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="0" y="90" width="802" height="460" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
+				<reportElement x="0" y="90" width="820" height="460" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -141,11 +146,11 @@ order by $P!{ordenarTable} desc]]>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="230" uuid="6f4dae0c-e644-4ee9-b0bc-da28e27045ed">
+					<jr:column width="180" uuid="6f4dae0c-e644-4ee9-b0bc-da28e27045ed">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="230" height="30" uuid="1be3ba78-efc1-477e-bf6c-69e6e858f2bd"/>
+								<reportElement x="0" y="0" width="180" height="30" uuid="1be3ba78-efc1-477e-bf6c-69e6e858f2bd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -154,17 +159,17 @@ order by $P!{ordenarTable} desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="230" height="30" uuid="51414912-4f88-4c03-8711-890b870d9db2"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="180" height="30" uuid="51414912-4f88-4c03-8711-890b870d9db2"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="5290501a-8e26-46d1-afd2-7fade4f5d6ed">
+					<jr:column width="70" uuid="5290501a-8e26-46d1-afd2-7fade4f5d6ed">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="faa98b15-8fc9-42b0-acb9-838383aa8246"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="faa98b15-8fc9-42b0-acb9-838383aa8246"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -173,7 +178,7 @@ order by $P!{ordenarTable} desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="70" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
 								<textElement textAlignment="Right" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[new java.text.DecimalFormat("R$ #,##0.00").format($F{preço});]]></textFieldExpression>
 							</textField>
@@ -192,26 +197,26 @@ order by $P!{ordenarTable} desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="40" height="30" uuid="742df4de-befc-4670-9cc7-76fec0892e97"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="40" height="30" uuid="742df4de-befc-4670-9cc7-76fec0892e97"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{kwp}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="82e30c19-0bf2-4e0c-9dcd-6dfc443e72b9">
+					<jr:column width="70" uuid="82e30c19-0bf2-4e0c-9dcd-6dfc443e72b9">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="b9771983-e8f5-433b-a06a-05c32e40f991"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="b9771983-e8f5-433b-a06a-05c32e40f991"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Data Assinatura]]></text>
+								<text><![CDATA[Data Assina.]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="8392f563-ba4d-4744-b735-cc5ab0ea03ab"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="70" height="30" uuid="8392f563-ba4d-4744-b735-cc5ab0ea03ab"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{data Assinatura} != null ? new SimpleDateFormat("dd/MM/yyyy").format($F{data Assinatura}): ""]]></textFieldExpression>
 							</textField>
@@ -230,7 +235,7 @@ order by $P!{ordenarTable} desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="70" height="30" uuid="e0445dcd-b725-4199-89d1-c8551315a21d"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="70" height="30" uuid="e0445dcd-b725-4199-89d1-c8551315a21d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{data parcela} != null ? new SimpleDateFormat("dd/MM/yyyy").format($F{data parcela}) : ""]]></textFieldExpression>
 							</textField>
@@ -244,14 +249,14 @@ order by $P!{ordenarTable} desc]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Meio Captação]]></text>
+								<text><![CDATA[Integrador]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="f4b0a496-8925-4602-8c44-d4594d515038"/>
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" x="0" y="0" width="80" height="30" uuid="f4b0a496-8925-4602-8c44-d4594d515038"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Meio Captação} != null ? $F{Meio Captação} : ""]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{integrador}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -263,41 +268,22 @@ order by $P!{ordenarTable} desc]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Integrador]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="fb724c26-b0c9-4e88-981b-1fc2b3a518cd"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{integrador}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="80" uuid="c8958f27-b26e-412e-af45-9e3a957e58de">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="e5c4655e-c36e-4faa-849a-b0cf4af7fa24"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="12" isBold="true"/>
-								</textElement>
 								<text><![CDATA[Status]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="ab2cfcf9-07fd-4a8c-84c1-136c826db68d"/>
-								<textElement verticalAlignment="Middle"/>
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="80" height="30" uuid="fb724c26-b0c9-4e88-981b-1fc2b3a518cd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="776b0248-8952-4b1c-af83-334de3ed27d4">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+					<jr:column width="50" uuid="c8958f27-b26e-412e-af45-9e3a957e58de">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="8f387666-c812-4f12-84cd-78e1a70acf89"/>
+								<reportElement x="0" y="0" width="50" height="30" uuid="e5c4655e-c36e-4faa-849a-b0cf4af7fa24"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -306,9 +292,28 @@ order by $P!{ordenarTable} desc]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="100b1d84-9c72-4c72-ace4-7bc88b49c64a"/>
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="50" height="30" uuid="ab2cfcf9-07fd-4a8c-84c1-136c826db68d"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{banco} != null ? $F{banco} : ""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="180" uuid="776b0248-8952-4b1c-af83-334de3ed27d4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="180" height="30" uuid="8f387666-c812-4f12-84cd-78e1a70acf89"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Banco]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" stretchType="ContainerBottom" x="0" y="0" width="180" height="30" uuid="100b1d84-9c72-4c72-ace4-7bc88b49c64a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{banco} != null ? $F{banco}: ""]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{obs} != null ? $F{obs} : ""]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -328,11 +333,6 @@ order by $P!{ordenarTable} desc]]>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-		</band>
-	</title>
-	<detail>
-		<band height="555" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</band>
 	</detail>
 </jasperReport>
