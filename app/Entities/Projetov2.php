@@ -45,7 +45,8 @@ class Projetov2 extends Model
         'conta_contrato_atual',
         'titularidade_projeto',
         'titularidade_projeto_cpf',
-        'obs'
+        'obs',
+        'pendencia'
     ];
 
     /**

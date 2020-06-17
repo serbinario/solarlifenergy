@@ -190,6 +190,7 @@
                                         <table id="projeto" class="table order-column hover">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>Id</th>
                                                     <th>Cliente</th>
                                                     <th>Cod. Projeto</th>

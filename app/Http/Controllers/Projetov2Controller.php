@@ -68,6 +68,8 @@ class Projetov2Controller extends Controller
             ->leftJoin('projetos_prioridades', 'projetos_prioridades.id', '=', 'projetosv2.projeto_prioridade_id')
             ->select([
                 'projetosv2.id',
+                'projetosv2.pendencia',
+                'projetosv2.obs',
                 \DB::raw('DATE_FORMAT(projetosv2.updated_at,"%d/%m/%Y") as atualizado'),
                 'users.name as integrador',
                 'franquias.nome as franquaia',
