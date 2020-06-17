@@ -16,6 +16,10 @@
     background-color: #dc3545;
 }
 
+.btn-group > .btn {
+    margin-right: 3px;
+}
+
 .popover {
     white-space: pre-line;
 }
