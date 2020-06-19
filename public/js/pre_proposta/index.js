@@ -3,27 +3,13 @@ var fornecedorNome;
 var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
-function template(d){
-    console.log(d);
-    //Retirar os "&quot" da array aditivos
-    //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
-
-    var html = "<table class='table table-bordered'>";
-    html += "<thead>" +
-        "<tr><td>Profile</td><td>Grupo</td></tr>" +
-        "</thead>";
-
-
-
-    html += "<tr>";
-    html += "<td>"  + d.profile + "</td>";
-    html += "<td>"  + d.grupo + "</td>";
-
-    html += "</tr>"
-
-    html += "</table>";
-
-    return  html;
+function format ( d ) {
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+        '<td>Obs:</td>'+
+        '<td>'+d.pendencia_obs+'</td>'+
+        '</tr>'+
+        '</table>';
 }
 
 var table = $('#preProposta').DataTable({
@@ -55,6 +41,12 @@ var table = $('#preProposta').DataTable({
         }
     },
     columns: [
+        {
+            "class":          "details-control",
+            "orderable":      false,
+            "data":           null,
+            "defaultContent": ""
+        },
         {data: 'id', name: 'id',  targets: 0, visible: false},
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -73,12 +65,23 @@ var table = $('#preProposta').DataTable({
         {data: 'created_at', name: 'pre_propostas.created_at'},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
         {data: 'prioridade', name: 'prioridades.name'},
+        {data: 'pendencia', name: 'pendencia', visible: true,
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.pendencia != null){
+                    $(nTd).html("    <span class=\"badge badge-danger\">"+ "Pendente</span>")
+                }
+            }
+
+        },
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
     ]
 });
 
 // Add event listener for opening and closing details
-$('#cliente tbody').on('click', 'td.details-control', function () {
+var detailRows = [];
+
+// Add event listener for opening and closing details
+$('#preProposta tbody').on('click', 'td.details-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row( tr );
 
@@ -89,10 +92,10 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
     }
     else {
         // Open this row
-        row.child( template(row.data()) ).show();
+        row.child( format(row.data()) ).show();
         tr.addClass('shown');
     }
-});
+} );
 
 $( "#localizar" ).click(function() {
     table.draw();

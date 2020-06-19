@@ -755,8 +755,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <div class="form-group">
@@ -769,6 +767,31 @@
             </div>
         </div>
     </div>
+
+@role('admin|super-admin')
+   <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="agendar" class="col-md-8 control-label text-bold">Pendente?.:</label>
+                    <div class="col-md-4">
+                        <div class="checkbox checkbox-styled">
+                            <label for="pendencia">
+                                <input id="pendencia" class="" name="pendencia" type="checkbox" value="1" {{ old('pendencia', isset($preProposta->pendencia) ? $preProposta->pendencia : null) == '1' ? 'checked' : '' }}>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label for="agendar_data" class="col-sm-1 control-label text-bold">Obs.:</label>
+                    <div class="col-md-11">
+                        <textarea class="form-control input-sm" name="pendencia_obs" cols="50" rows="1" id="pendencia_obs" placeholder="Obs.">{{ old('pendencia_obs', isset($preProposta->pendencia_obs) ? $preProposta->pendencia_obs : null) }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endrole
 
 <div class="form-group">
     <label for="pre_proposta_obs" class="col-md-2 control-label text-bold">Obs.:</label>

@@ -116,7 +116,9 @@ class PreProposta extends Model
         'tempo_carencia',
         'data_prevista_parcela',
         'valor_descontos',
-        'pre_proposta_obs'
+        'pre_proposta_obs',
+        'pendencia_obs',
+        'pendencia'
 
     ];
 

@@ -43,6 +43,7 @@
                                         <table id="preProposta" class="table order-column hover">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>Id</th>
                                                     <th>Cliente</th>
                                                     <th>Código</th>
@@ -52,6 +53,7 @@
                                                     <th>Data Cadastro</th>
                                                     <th>Data Alteração</th>
                                                     <th>Prioridade</th>
+                                                    <th>Alerta</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
