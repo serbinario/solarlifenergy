@@ -269,13 +269,17 @@ class PrePropostaController extends Controller
             $data['valor_descontos'] = 0.0;
             $data['total_servico_operacional'] = 0.0;
 
+            if ($return['qtd_modulos'] <= 20){
+                return back()->withInput()
+                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20"]);
+            }
+
             $preProposta = PreProposta::create($data);
             //dd($data);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
         } catch (Exception $e) {
-            dd($e);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -319,6 +323,8 @@ class PrePropostaController extends Controller
         try {
 
             $data = $this->getData($request);
+
+
             $preProposta = PreProposta::findOrFail($id);
 
             $return = $this->simularGeracao($request);
@@ -326,6 +332,7 @@ class PrePropostaController extends Controller
             $data['panel_potencia'] = $return['modulo_potencia'];
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
+
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
 
@@ -379,7 +386,12 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
 
-            //dd($data);
+
+            if ($return['qtd_modulos'] <= 20){
+                return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
+                    ->withErrors(['error_message' => "Projeto não pode ser alterado, quantidade de módulos é menor que 20"]);
+            }
+
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
