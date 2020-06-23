@@ -118,7 +118,8 @@ class PreProposta extends Model
         'valor_descontos',
         'pre_proposta_obs',
         'pendencia_obs',
-        'pendencia'
+        'pendencia',
+        'arquivado'
 
     ];
 

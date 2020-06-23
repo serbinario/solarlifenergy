@@ -25,6 +25,12 @@ var table = $('#projetov2').DataTable({
     },
     "searching": false,
     "bLengthChange": false,
+    "drawCallback": function( settings ) {
+        var arquivar = document.getElementsByClassName('arquivar')[0]
+        arquivar.addEventListener('click', function (e) {
+            arquivarProjeto(e.target.parentElement.parentElement.parentElement.id)
+        })
+    },
     processing: true,
     serverSide: true,
     bFilter: true,
@@ -73,7 +79,7 @@ var table = $('#projetov2').DataTable({
             }
 
         },
-        {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
+        {data: 'action', name: 'action', orderable: false, searchable: false, width: '90px'}
     ]
 });
 
@@ -96,6 +102,50 @@ $('#projetov2 tbody').on('click', 'td.details-control', function () {
         tr.addClass('shown');
     }
 } );
+
+function arquivarProjeto(arquivar_id){
+    swal({
+            title: "Arquivar Proposta?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Sim, Arquivar!",
+            cancelButtonText: "Não, cancelar!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+                    }
+                });
+                data = {
+                    'id': arquivar_id
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '/index.php/arquivarProjeto',
+                    datatype: 'json',
+                    data: data,
+                }).done(function (retorno) {
+                    if(retorno.success) {
+                        swal("", retorno.msg, "success");
+                        table.draw();
+
+                    } else {
+                        swal("Error", "Click no botão abaixo!", "error");
+                    }
+                });
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+}
 
 
 $( "#localizar" ).click(function() {

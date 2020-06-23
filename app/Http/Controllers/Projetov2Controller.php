@@ -85,6 +85,8 @@ class Projetov2Controller extends Controller
                 'projetos_status.status_nome'
             ]);
 
+        $rows->whereNull('projetosv2.arquivado');
+
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if($user->hasRole('admin')) {
@@ -147,6 +149,9 @@ class Projetov2Controller extends Controller
                                 <a href="projetov2/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
+                                <a href="#" class="btn btn-primary arquivar"  title="Arquivar">
+                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                </a>  
                                
                             </div>
                         </form>

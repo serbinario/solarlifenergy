@@ -46,7 +46,8 @@ class Projetov2 extends Model
         'titularidade_projeto',
         'titularidade_projeto_cpf',
         'obs',
-        'pendencia'
+        'pendencia',
+        'arquivado'
     ];
 
     /**
