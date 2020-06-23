@@ -26,10 +26,13 @@ var table = $('#projetov2').DataTable({
     "searching": false,
     "bLengthChange": false,
     "drawCallback": function( settings ) {
-        var arquivar = document.getElementsByClassName('arquivar')[0]
-        arquivar.addEventListener('click', function (e) {
-            arquivarProjeto(e.target.parentElement.parentElement.parentElement.id)
-        })
+        var inputs = document.getElementsByClassName('arquivar')
+
+        for(input of inputs) {
+            input.addEventListener('click', function(e) {
+                arquivarProjeto(e.target.parentElement.parentElement.parentElement.id)
+            })
+        }
     },
     processing: true,
     serverSide: true,

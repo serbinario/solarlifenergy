@@ -25,9 +25,11 @@ var table = $('#preProposta').DataTable({
     "bLengthChange": false,
     "drawCallback": function( settings ) {
         var arquivar = document.getElementsByClassName('arquivar')[0]
-        arquivar.addEventListener('click', function (e) {
-            arquivarModal(e.target.parentElement.parentElement.parentElement.id)
-        })
+        for(input of inputs) {
+            input.addEventListener('click', function(e) {
+                arquivarProposta(e.target.parentElement.parentElement.parentElement.id)
+            })
+        }
     },
     processing: true,
     serverSide: true,
@@ -108,7 +110,7 @@ $( "#localizar" ).click(function() {
 });
 
 
-function arquivarModal(arquivar_id){
+function arquivarProposta(arquivar_id){
     swal({
             title: "Arquivar Proposta?",
             text: "",
