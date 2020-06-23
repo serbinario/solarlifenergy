@@ -30,7 +30,12 @@ var table = $('#projetov2').DataTable({
 
         for(input of inputs) {
             input.addEventListener('click', function(e) {
-                arquivarProjeto(e.target.parentElement.parentElement.parentElement.id)
+                if(e.target.parentElement.parentElement.id){
+                    var target = e.target.parentElement.parentElement.id
+                }else{
+                    var target = e.target.parentElement.parentElement.parentElement.id
+                }
+                arquivarProjeto(target)
             })
         }
     },
@@ -138,7 +143,7 @@ function arquivarProjeto(arquivar_id){
                 }).done(function (retorno) {
                     if(retorno.success) {
                         swal("", retorno.msg, "success");
-                        table.draw();
+                        location.reload();
 
                     } else {
                         swal("Error", "Click no botão abaixo!", "error");
