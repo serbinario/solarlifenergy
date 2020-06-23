@@ -27,7 +27,12 @@ var table = $('#preProposta').DataTable({
         var inputs = document.getElementsByClassName('arquivar')
         for(input of inputs) {
             input.addEventListener('click', function(e) {
-                arquivarProposta(e.target.parentElement.parentElement.parentElement.id)
+                if(e.target.parentElement.parentElement.id){
+                    var target = e.target.parentElement.parentElement.id
+                }else{
+                    var target = e.target.parentElement.parentElement.parentElement.id
+                }
+                arquivarProposta(target)
             })
         }
     },
@@ -142,7 +147,7 @@ function arquivarProposta(arquivar_id){
                 }).done(function (retorno) {
                     if(retorno.success) {
                         swal("", retorno.msg, "success");
-                        table.draw();
+                        location.reload();
 
                     } else {
                         swal("Error", "Click no botão abaixo!", "error");
