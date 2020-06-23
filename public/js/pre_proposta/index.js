@@ -24,7 +24,7 @@ var table = $('#preProposta').DataTable({
     "searching": false,
     "bLengthChange": false,
     "drawCallback": function( settings ) {
-        var arquivar = document.getElementsByClassName('arquivar')[0]
+        var inputs = document.getElementsByClassName('arquivar')
         for(input of inputs) {
             input.addEventListener('click', function(e) {
                 arquivarProposta(e.target.parentElement.parentElement.parentElement.id)
