@@ -30,6 +30,12 @@ Route::get('criarProjeto/{id}', 'UtilController@criarProjeto')
 Route::post('criarContrato/', 'UtilController@criarContrato')
     ->name('criarContrato.criarContrato');
 
+Route::post('arquivarProposta/', 'UtilController@arquivarProposta')
+    ->name('arquivarProposta.arquivarProposta');
+
+Route::post('arquivarProjeto/', 'UtilController@arquivarProjeto')
+    ->name('arquivarProjeto.arquivarProjeto');
+
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 

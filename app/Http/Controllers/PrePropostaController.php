@@ -83,6 +83,8 @@ class PrePropostaController extends Controller
                 \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
 
             ]);
+
+        $rows->whereNull('pre_propostas.arquivado');
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if($user->hasRole('admin')) {
@@ -150,7 +152,10 @@ class PrePropostaController extends Controller
                                 </a>
                                 <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Pré-Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>                              
+                                </a>  
+                                <a href="#" class="btn btn-primary arquivar"  title="Arquivar">
+                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                </a>                            
                         </form>
                         ';
         })->make(true);
@@ -271,7 +276,7 @@ class PrePropostaController extends Controller
 
             if ($return['qtd_modulos'] <= 20){
                 return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20"]);
+                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
             }
 
             $preProposta = PreProposta::create($data);

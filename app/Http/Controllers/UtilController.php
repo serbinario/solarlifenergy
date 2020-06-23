@@ -7,6 +7,7 @@ use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Contrato;
 use Serbinario\Entities\Endereco;
+use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
@@ -47,6 +48,38 @@ class UtilController extends Controller
         }
         $usersJson = json_encode($result);
         return $usersJson;
+
+    }
+
+    public function arquivarProposta(Request $request){
+
+        try {
+            $proposta  = PreProposta::where('id', '=', $request->id)->first();
+
+            $proposta->update( [ 'arquivado' => '1']);
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Proposta arquivado com sucesso']);
+
+        } catch (Exception $exception) {;
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+        }
+	   //dd($request->id);
+
+    }
+
+    public function arquivarProjeto(Request $request){
+
+        try {
+            $projeto  = Projetov2::where('id', '=', $request->id)->first();
+
+            $projeto->update( [ 'arquivado' => '1']);
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Projeto arquivado com sucesso']);
+
+        } catch (Exception $exception) {;
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+        }
+        //dd($request->id);
 
     }
 	
