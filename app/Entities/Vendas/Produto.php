@@ -1,0 +1,51 @@
+<?php
+
+namespace Serbinario\Entities\Vendas;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Produto extends Model
+{
+    
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'produtos';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'id';
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+              ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [];
+    
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [];
+
+    function precos(){
+        return $this->hasMany('Serbinario\Entities\Vendas\Preco','produto_id','id');
+    }
+
+}

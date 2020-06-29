@@ -624,7 +624,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textFieldExpression><![CDATA[$F{nome_empresa} != null ? "CLIENTE: " + $F{nome_empresa} : "CLIENTE:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="55" width="788" height="15" uuid="7435e681-6fc5-40b9-b9e2-4059b33b86c1">
+				<reportElement x="0" y="55" width="380" height="15" uuid="7435e681-6fc5-40b9-b9e2-4059b33b86c1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -638,7 +638,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{endereco} != null ?  "ENDEREÇO: " + $F{endereco} + " - BAIRRO: " + $F{bairro}  : "ENDEREÇO: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco} != null ?  "ENDEREÇO: " + $F{endereco}: "ENDEREÇO:"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="70" width="220" height="15" uuid="b2499200-8b14-4cbf-8ed3-7893e24cc890">
@@ -655,7 +655,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TELEFONE: " + $F{celular}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["TELEFONE: " + $F{celular} != null ?  $F{celular} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="85" width="220" height="15" uuid="45fc3ec8-354a-4151-a865-65ee7e94eb12">
@@ -672,7 +672,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CPF/CNPJ: " + $F{cpf_cnpj}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["CPF/CNPJ: " + $F{cpf_cnpj} != null ? $F{cpf_cnpj} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="220" y="70" width="568" height="15" uuid="0a12c5e4-0cba-40ef-b742-83035f2c80ce">
@@ -948,6 +948,40 @@ ou de difícil acesso]]></text>
 				</box>
 				<text><![CDATA[Aquisição do selo solar e certificados de empresa sustentável]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="380" y="55" width="260" height="15" uuid="0b62a194-abad-49a3-b2b3-1b75703e5f05">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bairro} != null ?  "BAIRRO: " + $F{bairro}: "BAIRRO:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="54" width="148" height="15" uuid="42f395e3-3ba9-4854-a54c-b3f2aef027c5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado} != null ?  "ESTADO: " + $F{estado}: "ESTADO:"]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
