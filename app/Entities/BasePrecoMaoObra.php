@@ -4,22 +4,22 @@ namespace Serbinario\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prioridade extends Model
+class BasePrecoMaoObra extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'prioridades';
+    protected $table = 'base_preco_mao_obra';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,8 +28,7 @@ class Prioridade extends Model
      * @var array
      */
     protected $fillable = [
-                'name'
-              ];
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -37,7 +36,7 @@ class Prioridade extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *

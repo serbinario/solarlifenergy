@@ -9,7 +9,7 @@ use Serbinario\Entities\Vendas\Produto;
 use Serbinario\User;
 use Exception;
 
-class PedidoController extends Controller
+class ProdutoController extends Controller
 {
     private $token;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Serbinario\Http\Controllers\Vendas;
+namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +28,28 @@ class PedidoController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        $pedido = Pedido::find(1);
+        $pedido->produtos()->attach([1 => [ "quantidade" => 340, "valor_unitario" => 450.1  ], 2 => [  "quantidade" => 100, "valor_unitario" => 10.1 ]]);
+        dd("qq");
+
+
+        //$sync_data = [];
+        //for($i = 0; $i < count($allergy_ids); $i++))
+        //$sync_data[$allergy_ids[$i]] = ['severity' => $severities[$i]];
+
+        //$food->allergies()->sync($sync_data);
+
+
+        //$food = Food::find(1);
+        //$food->allergies()->sync([1 => ['severity' => 3], 4 => ['severity' => 1]]);
+
+        $pedido = Pedido::find($request[0]['pedido_id']);
+        $pedido->produtos()->attach('1');
+        dd($pedido);
+        //$shop->products()->attach($product_id);
+        return dd($request->all());
         return dd(Pedido::with('produtos')->get());
     }
 
