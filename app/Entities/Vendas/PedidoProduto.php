@@ -28,6 +28,8 @@ class PedidoProduto extends Model
      * @var array
      */
     protected $fillable = [
+                'quantidade',
+        'valor_unitario'
               ];
 
     /**

@@ -214,7 +214,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-
+            //dd($return);
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
@@ -244,6 +244,10 @@ class PrePropostaController extends Controller
 
             $data['produto5_nf'] = $return['soma_kit'];
             $data['produto5_preco'] = $return['soma_kit'];
+
+            $data['produto7_nf'] = $return['valor_mao_obra'];
+            $data['produto7_preco'] = $return['valor_mao_obra'];
+
             $data['co2'] = $return['co2'];
             //dd($data);
             $data['gera_fv_jan'] = $return['geracao_fv']['0'];
@@ -333,7 +337,7 @@ class PrePropostaController extends Controller
             $preProposta = PreProposta::findOrFail($id);
 
             $return = $this->simularGeracao($request);
-
+            //dd($return);
             $data['panel_potencia'] = $return['modulo_potencia'];
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
@@ -360,6 +364,10 @@ class PrePropostaController extends Controller
 
             $data['produto5_nf'] = $return['soma_kit'];
             $data['produto5_preco'] = $return['soma_kit'];
+
+            $data['produto7_nf'] = $return['valor_mao_obra'];
+            $data['produto7_preco'] = $return['valor_mao_obra'];
+
             $data['co2'] = $return['co2'];
             //dd($data);
             $data['gera_fv_jan'] = $return['geracao_fv']['0'];
@@ -380,6 +388,9 @@ class PrePropostaController extends Controller
 
             $data['total_equipamentos'] = $return['total_equipamentos'];
 
+            $data['valor_franqueadora'] = $return['valor_franqueadora'];
+
+
             $data['total_servico_operacional'] =
                 floatval($request->get('produto6_nf'))
                 + floatval($request->get('produto7_nf'))
@@ -387,6 +398,7 @@ class PrePropostaController extends Controller
                 + floatval($request->get('produto9_nf'))
                 + floatval($request->get('produto10_nf'))
                 + floatval($request->get('produto11_nf'));
+
 
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
@@ -498,7 +510,8 @@ class PrePropostaController extends Controller
             'valor_descontos',
             'pre_proposta_obs',
             'pendencia_obs',
-            'pendencia'
+            'pendencia',
+            'valor_mao_obra'
             ]);
 
         return $data;

@@ -44,8 +44,31 @@ class Produto extends Model
      */
     protected $casts = [];
 
-    function precos(){
-        return $this->hasMany('Serbinario\Entities\Vendas\Preco','produto_id','id');
+
+    /*
+     * One To Many
+     */
+    //function precos(){
+        //return $this->hasMany('Serbinario\Entities\Vendas\Preco','produto_id','id');
+    //}
+
+    /*
+     * Many to One
+     */
+    function marca(){
+        return $this->belongsTo('Serbinario\Entities\Vendas\Marca','marca_id','id');
     }
+
+    function grupo(){
+        return $this->belongsTo('Serbinario\Entities\Vendas\Grupo','grupo_id','id');
+    }
+
+    public function produtos()
+    {
+        return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produto');
+    }
+
+
+
 
 }

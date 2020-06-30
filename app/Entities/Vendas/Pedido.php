@@ -28,6 +28,7 @@ class Pedido extends Model
      * @var array
      */
     protected $fillable = [
+
               ];
 
     /**
@@ -43,5 +44,11 @@ class Pedido extends Model
      * @var array
      */
     protected $casts = [];
+
+    public function produtos()
+    {
+        return $this->belongsToMany('Serbinario\Entities\Vendas\Produto', 'pedido_produto')
+            ->withPivot('quantidade', 'valor_unitario');
+    }
 
 }
