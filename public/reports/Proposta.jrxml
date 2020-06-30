@@ -655,7 +655,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TELEFONE: " + $F{celular} != null ?  $F{celular} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{celular} != null ?  $F{celular} : "TELEFONE: "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="85" width="220" height="15" uuid="45fc3ec8-354a-4151-a865-65ee7e94eb12">
@@ -672,7 +672,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CPF/CNPJ: " + $F{cpf_cnpj} != null ? $F{cpf_cnpj} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cpf_cnpj} != null ? $F{cpf_cnpj} : "CPF/CNPJ: "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="220" y="70" width="568" height="15" uuid="0a12c5e4-0cba-40ef-b742-83035f2c80ce">
