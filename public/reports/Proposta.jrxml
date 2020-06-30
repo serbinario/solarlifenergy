@@ -949,7 +949,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[Aquisição do selo solar e certificados de empresa sustentável]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="380" y="55" width="260" height="15" uuid="0b62a194-abad-49a3-b2b3-1b75703e5f05">
+				<reportElement x="380" y="55" width="210" height="15" uuid="0b62a194-abad-49a3-b2b3-1b75703e5f05">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -966,7 +966,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{bairro} != null ?  "BAIRRO: " + $F{bairro}: "BAIRRO:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="640" y="54" width="148" height="15" uuid="42f395e3-3ba9-4854-a54c-b3f2aef027c5">
+				<reportElement x="590" y="55" width="198" height="15" uuid="42f395e3-3ba9-4854-a54c-b3f2aef027c5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -980,7 +980,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{estado} != null ?  "ESTADO: " + $F{estado}: "ESTADO:"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cidade} != null ?  "CIDADE: " + $F{cidade}: "CIDADE:"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="535">
