@@ -119,34 +119,7 @@ trait Simulador
         $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $modulo->area_total, $modulo->rendimento);
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
-
-
-       /* dd(
-            [
-                'success' => true,
-                'valor_modulo' => $this->valorModulo,
-                'qtd_modulos' => $this->qtdModulos,
-                'potencia_gerador' => $potenciaGerador,
-                'area_minima' => $area,
-                'co2' => $co2,
-                'valor_kw' => $valor_medio_kw,
-                'total_investimento' => round($this->totalInvestimento, 2),
-                'soma_modulos' =>  $this->somaModulos,
-                'qtd_inversores' => $this->qtdInversores,
-                'soma_inversor' => $this->somaInversor,
-                'soma_estrutura' => $this->somaestrutura,
-                'soma_infra' => $this->somaInfra,
-                'soma_kit' => $this->somaKit,
-                'reducao_media_consumo' => $reducaoMediaConsumo,
-                'geracao_fv' => $geracaoEnergiaFV,
-                'total_equipamentos' =>
-                    $this->somaModulos
-                    + $this->somaInversor
-                    + $this->somaestrutura
-                    + $this->somaInfra
-                    + $this->somaKit
-            ]
-        );*/
+        
         return
             [
                 'success' => true,

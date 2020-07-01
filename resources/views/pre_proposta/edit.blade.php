@@ -47,11 +47,8 @@
                             @endif
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('pre_proposta.pre_proposta.index') }}" class="btn btn-primary" title="Show All Pre Proposta">
-                                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="{{ route('pre_proposta.pre_proposta.create') }}" class="btn btn-primary" title="Create New Pre Proposta">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    <a  target="_blank" href="/report/{{ $preProposta->id }}/proposta" + class="btn btn-primary" title="Proposta">
+                                                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                     </a>
 
                                 </div>
