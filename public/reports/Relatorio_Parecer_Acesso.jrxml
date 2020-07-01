@@ -66,7 +66,7 @@ INNER JOIN pre_propostas AS pp ON pp.id = p.proposta_id
 INNER JOIN projetos_execurcao AS pe ON pe.id = p.projeto_execurcao_id
 INNER JOIN clientes AS c ON c.id = pp.cliente_id
 INNER JOIN projetos_status AS s ON s.id = p.projeto_status_id
-WHERE s.id NOT IN (1,6)
+WHERE s.id NOT IN (1,6) and p.arquivado <> 1
 order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 		</queryString>
 		<field name="nome" class="java.lang.String">

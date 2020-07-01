@@ -61,12 +61,13 @@
 		<parameter name="ordenarPorTable" class="java.lang.String"/>
 		<parameter name="orderTable" class="java.lang.String"/>
 		<queryString>
-			<![CDATA[SELECT c.nome_empresa, pf.solicitacao_vistoria, pf.obter_protocolo_vistoria_numero, s.status_nome, pf.data_solicitacao_vistoria, pf.data_prevista_vistoria, s.id FROM projetosv2 AS p
+			<![CDATA[SELECT c.nome_empresa, pf.solicitacao_vistoria, pf.obter_protocolo_vistoria_numero, s.status_nome, pf.data_solicitacao_vistoria, pf.data_prevista_vistoria, s.id 
+FROM projetosv2 AS p
 INNER JOIN pre_propostas AS pp ON pp.id = p.proposta_id
 INNER JOIN projetos_finalizando AS pf ON pf.id = p.projeto_finalizado_id
 INNER JOIN clientes AS c ON c.id = pp.cliente_id
 INNER JOIN projetos_status AS s ON s.id = p.projeto_status_id
-WHERE s.id NOT IN (1,6)
+WHERE s.id NOT IN (1,6)  AND  p.arquivado IS NULL
 order by  $P!{ordenarPorTable}   $P!{orderTable}]]>
 		</queryString>
 		<field name="nome_empresa" class="java.lang.String">
