@@ -50,6 +50,13 @@
                                         R$
                                     </span>
                                 </div>
+
+                                <header>Participação</header>
+                                <div class="col-6 participacao">
+                                    <span class="badge badge-dark float-right">
+                                        R$
+                                    </span>
+                                </div>
                             @endif
                             <div class="tools">
                                 <div class="btn-group">
