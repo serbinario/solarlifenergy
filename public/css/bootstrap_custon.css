@@ -27,7 +27,7 @@
 .badge.badge-dark.float-right {
 
     vertical-align: middle;
-    font-size: 19px;
+    font-size: 17px;
     background-color: #000;
 }
 
@@ -40,10 +40,10 @@
 
 .card-head header {
     display: inline-block;
-    padding: 11px 11px;
+    padding: 11px 10px;
     vertical-align: middle;
     line-height: 17px;
-    font-size: 20px;
+    font-size: 17px !important;
 }
 .tooltip {
     position: relative;
