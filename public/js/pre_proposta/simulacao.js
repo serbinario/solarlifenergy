@@ -54,15 +54,22 @@ function atualizaValores(){
     //this.calculaDescontos()
     if(valor_descontos == "") valor_descontos = 0
 
+    var valor_proposta = (parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2)
+
+    console.log(parseFloat(valor_proposta) - parseFloat(valor_franqueadora) - parseFloat(realDolar(produto7_nf)))
+
     document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
     document.getElementsByClassName('total_equipamentos')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaEquipamentos())
     document.getElementsByClassName('span_preco_medio_instalado')[0]
-        .children[0].innerHTML = 'R$ ' + formatMoney((  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2))
-    document.getElementById('preco_medio_instalado').value = formatMoney((  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2))
+        .children[0].innerHTML = 'R$ ' + formatMoney(valor_proposta)
+    document.getElementById('preco_medio_instalado').value = formatMoney(valor_proposta)
 
     document.getElementsByClassName('span_valor_franqueadora')[0].children[0].innerHTML = 'R$ ' + formatMoney(valor_franqueadora)
 
     document.getElementsByClassName('equipe_tecnica')[0].children[0].innerHTML = 'R$ ' + produto7_nf
+
+    document.getElementsByClassName('participacao')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_proposta) - parseFloat(valor_franqueadora) - parseFloat(realDolar(produto7_nf)))
+
 
 }
 /*
