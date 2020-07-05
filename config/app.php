@@ -200,6 +200,8 @@ return [
 
         Ixudra\Curl\CurlServiceProvider::class,
 
+        
+
     ],
 
     /*
