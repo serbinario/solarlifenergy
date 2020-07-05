@@ -528,7 +528,7 @@
                             </tr>
                             <tr>
                                 <td>MÃO-DE-OBRA DE INSTALAÇÃO (EQUIPE TÉCNICA)</td>
-                                <td><input class="form-control input-sm" name="qtd_mao_obra" type="text" id="qtd_mao_obra" value="{{ old('qtd_mao_obra', isset($preProposta->qtd_mao_obra) ? $preProposta->qtd_mao_obra : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
+                                <td ><input class="form-control input-sm" name="qtd_mao_obra" type="text" id="qtd_mao_obra" value="{{ old('qtd_mao_obra', isset($preProposta->qtd_mao_obra) ? $preProposta->qtd_mao_obra : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
                                 <td><input class="form-control input-sm money" name="produto7_preco" type="text" id="produto7_preco" value="{{ old('produto7_preco', isset($preProposta->produto7_preco) ? $preProposta->produto7_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
                                 <td><input class="form-control input-sm money" name="produto7_nf" type="text" id="produto7_nf" value="{{ old('produto7_nf', isset($preProposta->produto7_nf) ? $preProposta->produto7_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
 

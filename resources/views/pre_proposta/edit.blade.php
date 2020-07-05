@@ -31,7 +31,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Proposta</header>
+                            <header>Valor Proposta</header>
                             <div class="col-6 span_preco_medio_instalado">
                                 <span class="badge badge-dark float-right">
                                     R$
@@ -44,11 +44,17 @@
                                         R$
                                     </span>
                                 </div>
+                                <header>Equipe Técnica</header>
+                                <div class="col-6 equipe_tecnica">
+                                    <span class="badge badge-dark float-right">
+                                        R$
+                                    </span>
+                                </div>
                             @endif
                             <div class="tools">
                                 <div class="btn-group">
                                     <a  target="_blank" href="/report/{{ $preProposta->id }}/proposta" + class="btn btn-primary" title="Proposta">
-                                                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                     </a>
 
                                 </div>
