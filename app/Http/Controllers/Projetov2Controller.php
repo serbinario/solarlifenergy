@@ -85,7 +85,7 @@ class Projetov2Controller extends Controller
                 'projetos_status.status_nome'
             ]);
 
-        //$rows->whereNull('projetosv2.arquivado');
+        $rows->whereNull('projetosv2.arquivado');
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
@@ -105,10 +105,7 @@ class Projetov2Controller extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.palavras_chave', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
@@ -135,10 +132,6 @@ class Projetov2Controller extends Controller
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                     $query->where('pre_propostas.user_id', '=', $user->id);
                 }
-
-                $query->whereNull('projetosv2.arquivado');
-
-
             })
             ->addColumn('action', function ($row) {
                 return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
