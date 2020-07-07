@@ -139,7 +139,7 @@ class PrePropostaController extends Controller
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
 
-                //$query->whereNull('pre_propostas.arquivado');
+                $query->whereNull('pre_propostas.arquivado');
 
             })
 

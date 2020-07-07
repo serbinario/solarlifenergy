@@ -136,7 +136,7 @@ class Projetov2Controller extends Controller
                     $query->where('pre_propostas.user_id', '=', $user->id);
                 }
 
-                //$query->whereNull('projetosv2.arquivado');
+                $query->whereNull('projetosv2.arquivado');
 
 
             })
