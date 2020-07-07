@@ -85,7 +85,7 @@ class Projetov2Controller extends Controller
                 'projetos_status.status_nome'
             ]);
 
-        $rows->whereNull('projetosv2.arquivado');
+        //$rows->whereNull('projetosv2.arquivado');
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
