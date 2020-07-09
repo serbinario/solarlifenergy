@@ -304,6 +304,7 @@
                             </div>
                         </div>
                         <input class="btn btn-sm btn-primary"  id="calcular_media" type="button" value="Calcular Média">
+                        <input class="btn btn-sm btn-primary"  id="copiar_media" type="button" value="Copiar Média de Consumo para Meses">
                     </div>
                     <div class="tab-pane" id="second2">
 

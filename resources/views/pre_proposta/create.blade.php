@@ -66,15 +66,9 @@
             $("#potencia_instalada").val(realDolar($("#potencia_instalada").val()));
 
         });
-
-        var fora_da_ponta = document.querySelectorAll('fora-da-ponta');
-        monthly_usage.addEventListener('focusout', function (evt) {
-
-            document.querySelectorAll('.fora-da-ponta').forEach(function(el) {
-                el.value = evt.target.value;
-            })
-        })
     </script>
+
+    <script src="{{ asset('/js/pre_proposta/create.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/util.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/select2_util.js')}}" type="text/javascript"></script>
