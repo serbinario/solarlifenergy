@@ -72,12 +72,16 @@
                                 <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Proposta</a>
                             </div>
                         </div>
+
+                        @include('pre_proposta.relatorio')
                     </div><!--end .card -->
 
                 </form>
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
+
+    @include('pre_proposta.modalPropostas')
 
 @endsection
 
