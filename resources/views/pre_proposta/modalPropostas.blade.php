@@ -19,7 +19,7 @@
                                 <option value="c.nome_empresa">Nome do Cliente</option>
                                 <option value="pp.preco_medio_instalado">Valor Proposta</option>
                                 <option value="u.name">Integrador</option>
-                                <option value="pe.obter_protocolo_data_prevista">Data da Cadastro</option>
+                                <option value="pp.created_at">Data da Cadastro</option>
                             </select>
                         </div>
                     </div>
