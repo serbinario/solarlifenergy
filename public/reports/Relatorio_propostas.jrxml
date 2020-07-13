@@ -131,7 +131,7 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 							<textField>
 								<reportElement positionType="Float" x="0" y="0" width="275" height="30" uuid="51414912-4f88-4c03-8711-890b870d9db2"/>
 								<textElement verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{nome_empresa}]]></textFieldExpression>
+								<textFieldExpression><![CDATA["  " + $F{nome_empresa}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -149,7 +149,7 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
 								<reportElement positionType="Float" x="0" y="0" width="110" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[new java.text.DecimalFormat("R$ #,##0.00").format($F{preco_medio_instalado});]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
