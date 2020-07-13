@@ -197,6 +197,49 @@ $('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
 
 
 
+/* Abrir Modal de Clientes */
+var report = document.getElementById('report_id');
+
+report.addEventListener('change', function (ev) {
+    modalName = this.options[this.selectedIndex].value;
+    if(modalName){
+        console.log(modalName);
+        $('#' + modalName).modal();
+    }
+})
+
+/* Fim Abrir Modal de Clientes */
+
+/* Modal Projeto */
+var reportProposta = document.getElementById('reportProposta');
+
+reportProposta.addEventListener('click', function (ev) {
+    var e = document.getElementById('ordenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    var t = document.getElementById('order')
+    var order = t.options[t.selectedIndex].value;
+
+    const selected = document.querySelectorAll('#projetoStatus option:checked');
+    const status = Array.from(selected).map(el => el.value);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    //console.log(modalName);
+
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&inputOrdenaPor=" + ordenarPor + "&InputOrder=" +  order;
+    window.open(url, '_blank');
+})
+
+
 
 
 

@@ -188,13 +188,14 @@
                         </div>
 
                             @include('cliente.relatorio')
+
                     </div><!--end .card -->
 
                 </form>
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
-
+    @include('cliente.modalCliente')
 
 
 @endsection

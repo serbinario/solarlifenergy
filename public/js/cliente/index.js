@@ -60,13 +60,11 @@ var table = $('#cliente').DataTable({
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.propostas == '0'){
                     $(nTd).html(
-                        "<div class='tooltip'>" + oData.nome_empresa + "  <span class=\"tooltiptext\">" + "CPF/CNPJ " + oData.cpf_cnpj +  " </span></div>" +
-                        "    <span class=\"badge badge-warning\">" +oData.propostas + "  propostas</span>"
+                        oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ oData.propostas + "  propostas</span>"
                     );
                 }else{
                     $(nTd).html(
-                        "<div class='tooltip'>" + oData.nome_empresa + "  <span class=\"tooltiptext\">" + "CPF/CNPJ "  + oData.cpf_cnpj +  " </span></div>" +
-                        "    <span class=\"badge badge-primary\">" +oData.propostas + "  propostas</span>"
+                        oData.nome_empresa  + "    <span class=\"badge badge-warning\">"+ oData.propostas + "  propostas</span>"
                     );
                 }
             }
@@ -142,6 +140,56 @@ var cpfMascara = function (val) {
         }
     };
 $('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
+
+
+/* Abrir Modal de Clientes */
+var report = document.getElementById('report_id');
+
+report.addEventListener('change', function (ev) {
+    modalName = this.options[this.selectedIndex].value;
+    if(modalName){
+        console.log(modalName);
+        $('#' + modalName).modal();
+    }
+})
+
+/* Fim Abrir Modal de Clientes */
+
+/*  Modal */
+function formModalRelatorio() {
+    console.log("www");
+    //$('#formModalRelatorio').modal();
+}
+
+
+/*/!* Modal Projeto *!/
+var reportCliente = document.getElementById('reportCliente');
+
+reportCliente.addEventListener('click', function (ev) {
+    var e = document.getElementById('ProjetoOrdenarPor')
+    var ordenarPor = e.options[e.selectedIndex].value;
+
+
+    //var t = document.getElementById('vistoriaOrder')
+    //var order = t.options[t.selectedIndex].value;
+
+    const selected = document.querySelectorAll('#projetoStatus option:checked');
+    const status = Array.from(selected).map(el => el.value);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+        }
+    });
+    var dados = {
+        'order': order,
+        'ordenarPor': ordenarPor
+    }
+
+    console.log(dados);
+
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor;
+    window.open(url, '_blank');
+})*/
 
 
 

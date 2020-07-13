@@ -1,11 +1,11 @@
 
 <!-- BEGIN FORM MODAL MARKUP -->
-<div class="modal fade" id="formModalClientes" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModalPropotas" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Relatório de Acesso</h4>
+                <h4 class="modal-title" id="formModalLabel">Relatório de Propostas</h4>
             </div>
             <form class="form-horizontal" role="form">
                 <div class="modal-body">
@@ -18,7 +18,7 @@
                                 <option value="">Selecionar</option>
                                 <option value="c.nome_empresa">Nome do Cliente</option>
                                 <option value="pp.preco_medio_instalado">Valor Proposta</option>
-                                <option value="u.name,">Integrador</option>
+                                <option value="u.name">Integrador</option>
                                 <option value="pe.obter_protocolo_data_prevista">Data da Cadastro</option>
                             </select>
                         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="reportAcessod" class="btn btn-primary">Gerar</button>
+                    <button type="button" id="reportProposta" class="btn btn-primary">Gerar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

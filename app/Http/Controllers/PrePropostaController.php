@@ -14,6 +14,7 @@ use Serbinario\Entities\Estado;
 use Serbinario\Entities\Modulo;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\Prioridade;
+use Serbinario\Entities\Report;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
 use Serbinario\Traits\Simulador;
@@ -44,9 +45,10 @@ class PrePropostaController extends Controller
      */
     public function index()
     {
+        $reports = Report::where('group', '=', 'propostas');
         $prePropostas = PreProposta::with('cliente')->paginate(25);
 
-        return view('pre_proposta.index', compact('prePropostas'));
+        return view('pre_proposta.index', compact('prePropostas', 'reports'));
     }
 
     /**
