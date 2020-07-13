@@ -53,7 +53,7 @@ LEFT JOIN clientes AS c ON c.id = pp.cliente_id
 LEFT JOIN users AS u ON u.id = pp.user_id
 LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
 LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
-WHERE pv2.id IS NULL
+WHERE pv2.id IS NULL AND pp.arquivado IS NULL
 order by  $P!{ordenarPor}  $P!{order} ]]>
 		</queryString>
 		<field name="nome_empresa" class="java.lang.String">
