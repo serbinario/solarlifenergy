@@ -174,7 +174,14 @@
 						<ul>
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
 							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
-							<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+
+							@role('super-admin')
+								<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
+							@endrole
+								<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+							@role('super-admin')
+								<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
+							@endrole
 
 							@role('super-admin')
 
@@ -188,6 +195,7 @@
 									<li><a href="{{ route('contrato.contrato.index') }}" class="active"><span class="title">Contratos</span></a></li>
 
 								</ul><!--end /submenu -->
+
 							</li><!--end /menu-li -->
 
 							<li class="gui-folder">

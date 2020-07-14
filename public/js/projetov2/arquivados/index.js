@@ -26,7 +26,7 @@ var table = $('#projetov2').DataTable({
     "searching": false,
     "bLengthChange": false,
     "drawCallback": function( settings ) {
-        var inputs = document.getElementsByClassName('arquivar')
+        var inputs = document.getElementsByClassName('desarquivar')
 
         for(input of inputs) {
             input.addEventListener('click', function(e) {
@@ -44,7 +44,7 @@ var table = $('#projetov2').DataTable({
     bFilter: true,
     order: [[ 0, "asc" ]],
     ajax: {
-        url: "/index.php/projetov2/grid",
+        url: "/index.php/projetov2/arquivadas/grid",
         data: function (d) {
             d.nome = $('input[name=nome]').val();
             d.data_ini = dateToEN($('input[name=data_ini]').val());
@@ -77,9 +77,9 @@ var table = $('#projetov2').DataTable({
         {data: 'prioridade_nome', name: 'prioridade_nome', visible: false},
         {data: 'integrador', name: 'integrador'},
         {data: 'franquaia', name: 'franquaia', visible: false},
-        {data: 'status_nome', name: 'status_nome'},
+        {data: 'status_nome', name: 'status_nome', visible: false},
         {data: 'atualizado', name: 'atualizado', visible: false},
-        {data: 'pendencia', name: 'pendencia', visible: true,
+        {data: 'pendencia', name: 'pendencia', visible: false,
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.pendencia != null){
                     $(nTd).html("    <span class=\"badge badge-danger\">"+ "Pendente</span>")
@@ -133,7 +133,7 @@ function arquivarProjeto(arquivar_id){
                 });
                 data = {
                     'id': arquivar_id,
-                    'arquivar': "1"
+                    'arquivar': ""
                 }
 
                 jQuery.ajax({
