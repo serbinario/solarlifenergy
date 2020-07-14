@@ -20,7 +20,7 @@ mascara = (val) => $('val.cpf_cnpj').mask('00.000.000/0000-00')
 
 
 
-const table = $('#preProposta').DataTable({
+const table = $('#prePropostaArquivadas').DataTable({
     "stateSave": true,
     "dom": 'lCfrtip',
     "order": [],
@@ -32,7 +32,7 @@ const table = $('#preProposta').DataTable({
     "searching": false,
     "bLengthChange": false,
     "drawCallback": function( settings ) {
-        var inputs = document.getElementsByClassName('arquivar')
+        var inputs = document.getElementsByClassName('desarquivar')
         for(input of inputs) {
             input.addEventListener('click', function(e) {
                 if(e.target.parentElement.parentElement.id){
@@ -49,7 +49,7 @@ const table = $('#preProposta').DataTable({
     bFilter: true,
     order: [[ 0, "desc" ]],
     ajax: {
-        url: "/index.php/preProposta/grid",
+        url: "/index.php/preProposta/arquivadas/grid",
         data: function (d) {
             d.prioridade = document.getElementById("prioridade_id").value;
             d.projetos = document.getElementById("projetos").value;
@@ -83,10 +83,10 @@ const table = $('#preProposta').DataTable({
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'name', name: 'users.name', targets: 0, visible: false},
-        {data: 'created_at', name: 'pre_propostas.created_at'},
+        {data: 'created_at', name: 'pre_propostas.created_at', visible: false},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
-        {data: 'prioridade', name: 'prioridades.name'},
-        {data: 'pendencia', name: 'pendencia', visible: true,
+        {data: 'prioridade', name: 'prioridades.name', visible: false},
+        {data: 'pendencia', name: 'pendencia', visible: false,
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.pendencia != null){
                     $(nTd).html("    <span class=\"badge badge-danger\">"+ "Pendente</span>")
@@ -125,7 +125,7 @@ $( "#localizar" ).click(function() {
 
 arquivarProposta = (arquivar_id) => {
     swal({
-            title: "Arquivar Proposta?",
+            title: "Desarquivar Proposta?",
             text: "",
             type: "warning",
             showCancelButton: true,
@@ -145,7 +145,7 @@ arquivarProposta = (arquivar_id) => {
                 });
                 data = {
                     'id': arquivar_id,
-                    'arquivar': "1"
+                    'arquivar': ""
                 }
 
                 jQuery.ajax({
@@ -201,47 +201,6 @@ $('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
 
 
 
-/* Abrir Modal de Clientes */
-var report = document.getElementById('report_id');
-
-report.addEventListener('change', function (ev) {
-    modalName = this.options[this.selectedIndex].value;
-    if(modalName){
-        console.log(modalName);
-        $('#' + modalName).modal();
-    }
-})
-
-/* Fim Abrir Modal de Clientes */
-
-/* Modal Projeto */
-var reportProposta = document.getElementById('reportProposta');
-
-reportProposta.addEventListener('click', function (ev) {
-    var e = document.getElementById('ordenarPor')
-    var ordenarPor = e.options[e.selectedIndex].value;
-
-
-    var t = document.getElementById('order')
-    var order = t.options[t.selectedIndex].value;
-
-    const selected = document.querySelectorAll('#projetoStatus option:checked');
-    const status = Array.from(selected).map(el => el.value);
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
-        }
-    });
-    var dados = {
-        'order': order,
-        'ordenarPor': ordenarPor
-    }
-
-    //console.log(modalName);
-
-    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&inputOrdenaPor=" + ordenarPor + "&InputOrder=" +  order;
-    window.open(url, '_blank');
-})
 
 
 

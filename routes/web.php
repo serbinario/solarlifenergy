@@ -296,6 +296,12 @@ Route::group(
          ->name('pre_proposta.pre_proposta.destroy')
          ->where('id', '[0-9]+');
 
+    Route::get('/arquivadas/index', 'PrePropostaArquivaController@index')
+        ->name('pre_proposta.arquivadas.index');
+
+    Route::get('/arquivadas/grid', 'PrePropostaArquivaController@grid')
+        ->name('pre_proposta.arquivadas.grid');
+
 });
 
 Route::group(
@@ -471,5 +477,11 @@ Route::group(
     Route::delete('/{projetov2}/destroy','Projetov2Controller@destroy')
          ->name('projetov2.projetov2.destroy')
          ->where('id', '[0-9]+');
+
+    Route::get('/arquivadas/index', 'ProjetoArquivadoController@index')
+        ->name('projetov2.arquivados.index');
+
+    Route::get('/arquivadas/grid', 'ProjetoArquivadoController@grid')
+        ->name('projetov2.arquivados.grid');
 
 });

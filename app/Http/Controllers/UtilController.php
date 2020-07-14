@@ -55,9 +55,10 @@ class UtilController extends Controller
     public function arquivarProposta(Request $request){
 
         try {
+
             $proposta  = PreProposta::where('id', '=', $request->id)->first();
 
-            $proposta->update( [ 'arquivado' => '1']);
+            $proposta->update( [ 'arquivado' => $request->arquivar]);
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Proposta arquivado com sucesso']);
 
         } catch (Exception $exception) {;
@@ -73,7 +74,7 @@ class UtilController extends Controller
         try {
             $projeto  = Projetov2::where('id', '=', $request->id)->first();
 
-            $projeto->update( [ 'arquivado' => '1']);
+            $projeto->update( [ 'arquivado' => $request->arquivar] );
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Projeto arquivado com sucesso']);
 
         } catch (Exception $exception) {;
