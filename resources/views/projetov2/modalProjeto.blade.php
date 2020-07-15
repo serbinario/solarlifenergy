@@ -36,6 +36,7 @@
                                 <option value="clientes.nome_empresa">Nome</option>
                                 <option value="pre_propostas.data_financiamento_bancario">Data Assinatura</option>
                                 <option value="pre_propostas.data_prevista_parcela">Data Parcela</option>
+                                <option value="projetos_prioridades.id">Prioridade</option>
                                 <option value="users.name">Intergrador</option>
                                 <option value="banco_financiadora.nome">Banco</option>
                             </select>
