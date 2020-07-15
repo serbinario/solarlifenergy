@@ -42,10 +42,11 @@
 	<subDataset name="Dataset1" uuid="9b5debc5-6a59-4a31-a298-daa2eaf964a7">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="831"/>
-		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="155"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="767"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="219"/>
 		<parameter name="ordenarTable" class="java.lang.String"/>
 		<parameter name="statusTable" class="java.lang.String"/>
+		<parameter name="OrderTable" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[SELECT clientes.nome_empresa AS cliente,  
 pre_propostas.preco_medio_instalado AS preço,
@@ -69,7 +70,7 @@ INNER JOIN projetos_prioridades ON projetos_prioridades.id = projetosv2.projeto_
 LEFT JOIN banco_financiadora ON pre_propostas.baco_fin_id = banco_financiadora.id
 LEFT JOIN meios_captacao ON clientes.meio_captacao_id= meios_captacao.id
 where projetos_status.id IN ( $P!{statusTable} ) AND  projetosv2.arquivado IS NULL
-order by $P!{ordenarTable} desc]]>
+order by $P!{ordenarTable}  $P!{OrderTable} ]]>
 		</queryString>
 		<field name="cliente" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="cliente"/>
@@ -121,6 +122,7 @@ order by $P!{ordenarTable} desc]]>
 	</subDataset>
 	<parameter name="ordenar1" class="java.lang.String"/>
 	<parameter name="status" class="java.lang.String"/>
+	<parameter name="orderInput" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>
 	</queryString>
@@ -135,19 +137,22 @@ order by $P!{ordenarTable} desc]]>
 		<band height="555" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="0" y="90" width="820" height="460" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
+				<reportElement x="0" y="91" width="820" height="460" uuid="fa59f2fe-8611-4e86-92f5-944dd785fff4">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="054769ae-71ca-4646-b72f-9f0fbc4cb73b">
+					<datasetRun subDataset="Dataset1" uuid="107b33a4-520f-4ec3-bdeb-8379cf2ee090">
 						<datasetParameter name="ordenarTable">
 							<datasetParameterExpression><![CDATA[$P{ordenar1}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="statusTable">
 							<datasetParameterExpression><![CDATA[$P{status}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="OrderTable">
+							<datasetParameterExpression><![CDATA[$P{orderInput}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -292,7 +297,7 @@ order by $P!{ordenarTable} desc]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Banco]]></text>
+								<text><![CDATA[Obs.]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">

@@ -217,8 +217,8 @@ reportProjeto.addEventListener('click', function (ev) {
     var ordenarPor = e.options[e.selectedIndex].value;
 
 
-    //var t = document.getElementById('vistoriaOrder')
-    //var order = t.options[t.selectedIndex].value;
+    var t = document.getElementById('projetoPrioridadeOrder')
+    var order = t.options[t.selectedIndex].value;
 
     const selected = document.querySelectorAll('#projetoPrioridadeStatus option:checked');
     const status = Array.from(selected).map(el => el.value);
@@ -227,14 +227,8 @@ reportProjeto.addEventListener('click', function (ev) {
             'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
         }
     });
-    var dados = {
-        'order': order,
-        'ordenarPor': ordenarPor
-    }
 
-    console.log(dados);
-
-    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor;
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor + "&orderInput=" + order;
     window.open(url, '_blank');
 })
 
