@@ -16,9 +16,9 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="projetoStatus" name="projetoStatus" class="form-control input-sm" multiple="multiple">
-                                <option value="1">Prospecção e Elaboração de Projetos</option>
-                                <option value="2">Proj. em Análise</option>
-                                <option value="3">Proj. em Análise - Finalizando p/ Inínicio de Obras</option>
+                                <option value="1">Análise Preliminar</option>
+                                <option value="2">Elaboração Projeto</option>
+                                <option value="3">Finalizado p/ Inínicio de Obras</option>
                                 <option value="4">Obras em Execução </option>
                                 <option value="5">Obras em Fase Final</option>
                                 <option value="6">Obras Finalizadas </option>
