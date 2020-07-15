@@ -15,7 +15,6 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="ordenarPor" name="ordenarPor" class="form-control input-sm">
-                                <option value="">Selecionar</option>
                                 <option value="c.nome_empresa">Nome do Cliente</option>
                                 <option value="pp.preco_medio_instalado">Valor Proposta</option>
                                 <option value="u.name">Integrador</option>
@@ -30,7 +29,6 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="order" name="order" class="form-control input-sm">
-                                <option value="">Selecione</option>
                                 <option value="asc">Crescente</option>
                                 <option value="desc">Decrescente</option>
                             </select>
