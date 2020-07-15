@@ -183,7 +183,7 @@
 								<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
 							@endrole
 
-							@role('super-admin')
+							@role('super-admin|admin')
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -198,6 +198,9 @@
 
 							</li><!--end /menu-li -->
 
+							@endrole
+
+							@role('super-admin')
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Cadastro</span>
