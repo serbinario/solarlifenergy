@@ -115,6 +115,7 @@
         @include ('projetov2.modalVistoria')
         @include ('projetov2.modalAcesso')
         @include ('projetov2.modalProjeto')
+        @include ('projetov2.modalProjetoPrioridade')
 
 @endsection
 
