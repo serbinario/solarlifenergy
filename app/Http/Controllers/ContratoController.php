@@ -66,8 +66,8 @@ class ContratoController extends Controller
                 'contratos.ano'
             ]);
 
-        //$user = User::find(Auth::id());
-        //$rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        $user = User::find(Auth::id());
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid
         return Datatables::of($rows)
@@ -75,11 +75,10 @@ class ContratoController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('palavras_chave', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
+                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+
             })
 
             ->addColumn('action', function ($row) {
