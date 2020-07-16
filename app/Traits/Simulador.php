@@ -189,7 +189,13 @@ trait Simulador
     function getQtdModulos($mediaMeses, $mediaMesesPonta, $fatorCompensacao, $irradiacao, $qtdDias, $rendimentoModulo, $areaModulo){
         //dd($irradiacao);
         $result = ($mediaMeses + $mediaMesesPonta * $fatorCompensacao) / ($irradiacao * $qtdDias * $rendimentoModulo * $areaModulo);
-        return round($result, 0);
+        $result = round($result, 0);
+        if(($result % 2) == 0) {
+            return round($result, 0);
+        }else{
+            return round($result, 0) + 1;
+        }
+
     }
 
     /*
