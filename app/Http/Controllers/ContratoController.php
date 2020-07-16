@@ -65,8 +65,6 @@ class ContratoController extends Controller
                 'pre_propostas.potencia_instalada',
                 'contratos.ano'
             ]);
-
-        $user = User::find(Auth::id());
         $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
 
         #Editando a grid

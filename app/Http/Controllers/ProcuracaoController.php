@@ -52,12 +52,13 @@ class ProcuracaoController extends Controller
         #Criando a consulta
         $rows = \DB::table('procuracoes')
             ->leftJoin('clientes', 'clientes.id', '=', 'procuracoes.cliente_id')
+            ->leftJoin('users', 'clientes.user_id', '=' , 'users.id')
             ->select([
                 'procuracoes.id',
                 'clientes.nome',
                 \DB::raw('DATE_FORMAT(procuracoes.data_validade,"%d/%m/%Y") as data_validade'),
             ]);
-
+        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="procuracao/' . $row->id   . '/destroy" accept-charset="UTF-8">
