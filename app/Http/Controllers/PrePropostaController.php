@@ -87,9 +87,9 @@ class PrePropostaController extends Controller
             ]);
 
         $rows->whereNull('pre_propostas.arquivado');
-        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        //Se o usuario logado nao tiver role de franquia, so podera ver os cadastros dele
         $user = User::find(Auth::id());
-        if($user->hasRole('admin')) {
+        if($user->hasRole('franquia')) {
 
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
@@ -133,7 +133,7 @@ class PrePropostaController extends Controller
                 }
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
-                if($user->hasRole('admin')) {
+                if($user->hasRole('franquia')) {
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
                 if($user->hasRole('integrador')) {
@@ -179,7 +179,10 @@ class PrePropostaController extends Controller
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
-        $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
+
+        //Só pode ver os usuários da própria franquia
+        $franquia_id = Auth::user()->franquia_id;
+        $users = User::where('franquia_id' , '=', $franquia_id)->orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
 
         return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
