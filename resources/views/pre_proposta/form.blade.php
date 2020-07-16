@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-         @role('admin|super-admin')
+         @role('franquia|super-admin')
          <div class="col-sm-3">
              <div class="form-group {{ $errors->has('cidade_id') ? 'has-error' : '' }}">
                  <label for="user_id" class="col-sm-4 control-label text-bold">Integrador.:</label>
@@ -770,7 +770,7 @@
         </div>
     </div>
 
-@role('admin|super-admin')
+@role('franquia|super-admin')
    <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
