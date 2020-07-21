@@ -4,8 +4,7 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Serbinario\Entities\Vendas\Pedido;
-use Serbinario\Entities\Vendas\Produto;
+use Yajra\DataTables\DataTables;
 use Serbinario\User;
 use Exception;
 
@@ -30,7 +29,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return dd(Pedido::with('produtos')->get());
+
+        return view('produto.index');
     }
 
     /**
@@ -39,9 +39,37 @@ class ProdutoController extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
+        $this->token = csrf_token();
+        #Criando a consulta
+        $rows = \DB::table('produtos')
+            ->leftJoin('grupos', 'grupos.id', '=', 'produtos.grupo_id')
+            ->leftJoin('marcas', 'marcas.id', '=', 'produtos.marca_id')
+            ->select([
+                'produtos.id',
+                'produto',
+                'unidade',
+                'preco',
+                'estoque',
+                'produtos.ativo',
+                'grupos.grupo',
+                'marcas.marca'
 
+            ]);
+
+        #Editando a grid
+        return Datatables::of($rows)
+
+            ->addColumn('action', function ($row) {
+                return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+                            <input name="_method" value="DELETE" type="hidden">
+                            <input name="_token" value="'.$this->token .'" type="hidden">
+                            <div class="btn-group btn-group-xs pull-right" role="group">                          
+                                                       
+                        </form>
+                        ';
+            })->make(true);
     }
 
     /**
