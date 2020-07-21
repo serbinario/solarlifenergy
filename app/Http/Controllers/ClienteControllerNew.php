@@ -82,7 +82,7 @@ class ClienteController extends Controller
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
-        if($user->hasRole('admin')) {
+        if($user->hasRole('franquia')) {
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
         if($user->hasRole('integrador')) {
@@ -124,7 +124,8 @@ class ClienteController extends Controller
 
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
-                if($user->hasRole('admin')) {
+                dd($user->hasRole('franquia'));
+                if($user->hasRole('franquia')) {
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
                 if($user->hasRole('integrador')) {

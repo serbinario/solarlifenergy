@@ -77,7 +77,6 @@
                 <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
                     <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
-                        <option value="" style="display: none;" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione</option>
                         @foreach ($modulos as $key => $modulo)
                             <option value="{{ $key }}" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : null) == $key ? 'selected' : '' }}>
                                 {{ $modulo }}
