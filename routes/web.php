@@ -485,3 +485,40 @@ Route::group(
         ->name('projetov2.arquivados.grid');
 
 });
+
+Route::group(
+    [
+        'prefix' => 'produto',
+    ], function () {
+
+    Route::get('/', 'ProdutoController@index')
+        ->name('produto.index');
+
+    Route::get('/create','ProdutoController@create')
+        ->name('produto.create');
+
+    Route::get('/grid', 'ProdutoController@grid')
+        ->name('produto.grid');
+
+    Route::get('/{produto}/edit','ProdutoController@edit')
+        ->name('produto.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'ProdutoController@store')
+        ->name('produto.store');
+
+    Route::put('produto/{id}', 'ProdutoController@update')
+        ->name('produto.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{produto}/destroy','ProdutoController@destroy')
+        ->name('produto.destroy')
+        ->where('id', '[0-9]+');
+
+    Route::get('/arquivadas/index', 'ProjetoArquivadoController@index')
+        ->name('projetov2.arquivados.index');
+
+    Route::get('/arquivadas/grid', 'ProjetoArquivadoController@grid')
+        ->name('projetov2.arquivados.grid');
+
+});
