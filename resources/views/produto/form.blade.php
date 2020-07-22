@@ -8,17 +8,24 @@
     </div>
 
     <div class="form-group {{ $errors->has('outorgante') ? 'has-error' : '' }}">
-        <label for="unidade" class="col-md-2 control-label text-bold">Unidade.:</label>
+        <label for="unidade_id" class="col-md-2 control-label text-bold">Unidade.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="unidade" type="text" id="unidade" value="{{ old('unidade', isset($produto->unidade) ? $produto->unidade : null) }}" maxlength="200" placeholder="Enter outorgante here...">
-            {!! $errors->first('outorgante', '<p class="help-block">:message</p>') !!}
+            <select class="form-control input-sm" id="unidade_id" name="unidade_id">
+                <option value="" style="display: none;" {{ old('unidade_id', isset($produto->unidade_id) ? $produto->unidade_id : '') == '' ? 'selected' : '' }} disabled selected>Unidade</option>
+                @foreach ($unidades as $key => $unidade)
+                    <option value="{{ $key }}" {{ old('unidade_id', isset($produto->unidade_id) ? $produto->unidade_id : null) == $key ? 'selected' : '' }}>
+                        {{ $unidade }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+
     </div>
 
     <div class="form-group {{ $errors->has('rg') ? 'has-error' : '' }}">
         <label for="preco" class="col-md-2 control-label text-bold">Preço.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="preco" type="text" id="preco" value="{{ old('preco', isset($produto->preco) ? $produto->preco : null) }}" maxlength="20" placeholder="Enter rg here...">
+            <input class="form-control input-sm money" name="preco" type="text" id="preco" value="{{ old('preco', isset($produto->preco) ? $produto->preco : null) }}" maxlength="20" placeholder="Enter rg here...">
             {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -26,7 +33,7 @@
     <div class="form-group {{ $errors->has('orgao_expeditor') ? 'has-error' : '' }}">
         <label for="estoque" class="col-md-2 control-label text-bold">Estoque.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="estoque" type="text" id="estoque" value="{{ old('estoque', isset($produto->estoque) ? $produto->estoque : null) }}" maxlength="10" placeholder="Enter orgao expeditor here...">
+            <input class="form-control input-sm numberWithoutDot" name="estoque" type="text" id="estoque" value="{{ old('estoque', isset($produto->estoque) ? $produto->estoque : null) }}" maxlength="10" placeholder="Enter orgao expeditor here...">
             {!! $errors->first('orgao_expeditor', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
