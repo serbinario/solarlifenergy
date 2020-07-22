@@ -48,7 +48,7 @@ var table = $('#produto').DataTable({
     columns: [
         {data: "id",name: 'id' , visible: false },
         {data: 'produto', name: 'produto'},
-        {data: 'unidade', name: 'unidade'},
+        {data: 'unidade', name: 'unidades.unidade'},
         {data: 'estoque', name: 'estoque'},
         {data: 'preco', name: 'preco', "render": function (data) { return formatMoney(data) }},
         {data: 'marca', name: 'marcas.marca'},

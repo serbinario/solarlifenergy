@@ -33,7 +33,7 @@ class Produto extends Model
         'marca_id',
         'estoque',
         'grupo_id',
-        'unidade'
+        'unidade_id'
     ];
 
     /**
@@ -72,6 +72,11 @@ class Produto extends Model
     public function produtos()
     {
         return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produto');
+    }
+
+    public function getPrecoAttribute($value)
+    {
+        return number_format($value,2,",",".");
     }
 
 

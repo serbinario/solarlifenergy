@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Vendas\Grupo;
 use Serbinario\Entities\Vendas\Marca;
 use Serbinario\Entities\Vendas\Produto;
+use Serbinario\Entities\Vendas\Unidade;
 use Serbinario\Http\Requests\ProdutoFormRequest;
 use Yajra\DataTables\DataTables;
 use Serbinario\User;
@@ -50,10 +51,11 @@ class ProdutoController extends Controller
         $rows = \DB::table('produtos')
             ->leftJoin('grupos', 'grupos.id', '=', 'produtos.grupo_id')
             ->leftJoin('marcas', 'marcas.id', '=', 'produtos.marca_id')
+            ->leftJoin('unidades', 'unidades.id', '=', 'produtos.unidade_id')
             ->select([
                 'produtos.id',
                 'produto',
-                'unidade',
+                'unidades.unidade',
                 'preco',
                 'estoque',
                 'produtos.ativo',
@@ -150,8 +152,9 @@ class ProdutoController extends Controller
         $produto = Produto::findOrFail($id);
         $grupos = Grupo::pluck('grupo','id')->all();
         $marcas = Marca::pluck('marca','id')->all();
+        $unidades = Unidade::pluck('unidade','id')->all();
 
-        return view('produto.edit', compact( 'marcas', 'grupos', 'produto'));
+        return view('produto.edit', compact( 'marcas', 'grupos', 'produto', 'unidades'));
 
     }
 
@@ -168,10 +171,7 @@ class ProdutoController extends Controller
     public function update($id, ProdutoFormRequest $request)
     {
         try {
-
-            //$this->affirm($request);
             $data = $request->getData();
-
             $produto = Produto::findOrFail($id);
 
 
