@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('franquia.franquia.update', $franquia->id) }}" accept-charset="UTF-8" id="edit_franquia_form" name="edit_franquia_form" class="form-horizontal">
+                <form method="POST" action="{{ route('produto.update', $produto->id) }}" accept-charset="UTF-8" id="edit_produto_form" name="edit_produto_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
@@ -34,21 +34,21 @@
                             <header>Editar Franquia</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('franquia.franquia.index') }}" class="btn btn-primary" title="Show All Franquia">
+                                    <a href="{{ route('produto.index') }}" class="btn btn-primary" title="Show All Franquia">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
-                                    <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Create New Franquia">
+                                    <a href="{{ route('produto.create') }}" class="btn btn-primary" title="Create New Franquia">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('franquia.form', ['franquia' => $franquia, ])
+                        @include ('produto.form', ['produto' => $produto, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('franquia.franquia.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <a href="{{ route('produto.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>

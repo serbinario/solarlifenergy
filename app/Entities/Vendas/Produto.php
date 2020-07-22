@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -16,10 +16,10 @@ class Produto extends Model
     protected $table = 'produtos';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,7 +28,13 @@ class Produto extends Model
      * @var array
      */
     protected $fillable = [
-              ];
+        'produto',
+        'preco',
+        'marca_id',
+        'estoque',
+        'grupo_id',
+        'unidade'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -36,7 +42,7 @@ class Produto extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -49,7 +55,7 @@ class Produto extends Model
      * One To Many
      */
     //function precos(){
-        //return $this->hasMany('Serbinario\Entities\Vendas\Preco','produto_id','id');
+    //return $this->hasMany('Serbinario\Entities\Vendas\Preco','produto_id','id');
     //}
 
     /*
