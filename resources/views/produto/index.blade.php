@@ -46,7 +46,7 @@
                                                     <th>Unidade</th>
                                                     <th>Estoque</th>
                                                     <th>Preço</th>
-                                                    <th>Marca</th>
+                                                    <th>Fabricante</th>
                                                     <th>Grupo</th>
                                                     <th>Ativo</th>
                                                     <th>Acao</th>

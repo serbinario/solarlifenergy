@@ -56,7 +56,7 @@
         <label for="marca" class="col-md-2 control-label text-bold">Fabricante.:</label>
         <div class="col-md-10">
             <select class="form-control input-sm" id="marca_id" name="marca_id">
-                <option value="" style="display: none;" {{ old('marca_id', isset($produto->marca_id) ? $produto->marca_id : '') == '' ? 'selected' : '' }} disabled selected>Selecione uma Tabela de Preço</option>
+                <option value="" style="display: none;" {{ old('marca_id', isset($produto->marca_id) ? $produto->marca_id : '') == '' ? 'selected' : '' }} disabled selected>Fabricante</option>
                 @foreach ($marcas as $key => $marca)
                     <option value="{{ $key }}" {{ old('marca_id', isset($produto->marca_id) ? $produto->marca_id : null) == $key ? 'selected' : '' }}>
                         {{ $marca }}
