@@ -57,11 +57,7 @@
                                 </div>
                             </div><!--end .col -->
                         </div><!--end .row -->
-                        <!-- END DATATABLE 1 -->
-
-
-
-
+                        <!-- END DATATABLE 1
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
                                 <a href="{{ route('produto.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Produto</a>

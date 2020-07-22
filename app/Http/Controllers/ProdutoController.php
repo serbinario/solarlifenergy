@@ -4,6 +4,10 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\Vendas\Grupo;
+use Serbinario\Entities\Vendas\Marca;
+use Serbinario\Entities\Vendas\Produto;
+use Serbinario\Http\Requests\ProdutoFormRequest;
 use Yajra\DataTables\DataTables;
 use Serbinario\User;
 use Exception;
@@ -62,11 +66,15 @@ class ProdutoController extends Controller
         return Datatables::of($rows)
 
             ->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+                return '<form id="' . $row->id   . '" method="POST" action="produto/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">                          
-                                                       
+                            <div class="btn-group btn-group-xs pull-right" role="group">                              
+                                <a href="produto/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>                          
+                               
+                            </div>
                         </form>
                         ';
             })->make(true);
@@ -139,13 +147,11 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        $franquias = Franquia::pluck('nome','id')->all();
-        $user = User::with('roles', 'franquia')->findOrFail($id);
-        //dd($user);
-        $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
+        $produto = Produto::findOrFail($id);
+        $grupos = Grupo::pluck('grupo','id')->all();
+        $marcas = Marca::pluck('marca','id')->all();
 
-        //dd($user->roles[0]->id);
-        return view('users.edit', compact('user', 'roles', 'franquias'));
+        return view('produto.edit', compact( 'marcas', 'grupos', 'produto'));
 
     }
 
@@ -159,29 +165,19 @@ class ProdutoController extends Controller
      * Exemplos
      * https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
      */
-    public function update($id, UserFormRequest $request)
+    public function update($id, ProdutoFormRequest $request)
     {
         try {
 
             //$this->affirm($request);
             $data = $request->getData();
 
-            $user = User::findOrFail($id);
+            $produto = Produto::findOrFail($id);
 
-            if(empty($data['password'])){
-                $data['password'] = $user->password;
-            }else{
-                $data['password'] = \Hash::make($data['password']);
-            }
 
-            $user->update($data);
-            //dd($user);
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
-            $user->syncRoles($role_r);
-
-            return redirect()->route('users.user.edit', $user->id)
-                ->with('success_message', 'Cadastro atualizado com sucesso!');
+            $produto->update($data);
+            return redirect()->route('produto.edit', $produto->id)
+                ->with('success_message', 'Produto atualizado com sucesso!');
 
         } catch (Exception $e) {
             return back()->withInput()
@@ -216,17 +212,7 @@ class ProdutoController extends Controller
         }
     }
 
-    /**
-     * Get the request's data from the request.
-     *
-     * @param Illuminate\Http\Request\Request $request
-     * @return array
-     */
-      protected function getData(Request $request)
-        {
-        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id']);
 
-        return $data;
-    }
+
 
 }
