@@ -162,6 +162,21 @@
                      </div>
                  </div>
              </div>
+             <div class="col-sm-3">
+                 <div class="form-group">
+                     <label for="user_id" class="col-sm-4 control-label text-bold">Prioridade.:</label>
+                     <div class="col-md-8">
+                         <select   class="form-control input-sm" id="prioridade_id" name="prioridade_id">
+                             <option value="" style="display: none;" {{ old('prioridade_id', isset($preProposta->prioridade_id) ? $preProposta->prioridade_id : '') == '' ? 'selected' : '' }} disabled selected>Prioridade</option>
+                             @foreach ($prioridades as $key => $prioridade)
+                                 <option value="{{ $key }}" {{ old('prioridade_id', isset($preProposta->prioridade_id) ? $preProposta->prioridade_id : null) == $key ? 'selected' : '' }}>
+                                     {{ $prioridade }}
+                                 </option>
+                             @endforeach
+                         </select>
+                     </div>
+                 </div>
+             </div>
          @endrole
     </div>
 
