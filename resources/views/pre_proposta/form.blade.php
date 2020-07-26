@@ -136,7 +136,6 @@
                  </div>
              </div>
          </div>
-         @else
          <div class="col-sm-3">
              <div class="form-group">
                  <label for="user_id" class="col-sm-4 control-label text-bold">Prioridade.:</label>
@@ -152,6 +151,8 @@
                  </div>
              </div>
          </div>
+         @else
+
 
              <div class="col-sm-3">
                  <div class="form-group">

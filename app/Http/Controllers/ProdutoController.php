@@ -56,7 +56,8 @@ class ProdutoController extends Controller
                 'produtos.id',
                 'produto',
                 'unidades.unidade',
-                'preco',
+                'preco_revenda',
+                'preco_franquia',
                 'estoque',
                 'produtos.ativo',
                 'grupos.grupo',
@@ -173,8 +174,6 @@ class ProdutoController extends Controller
         try {
             $data = $request->getData();
             $produto = Produto::findOrFail($id);
-
-
             $produto->update($data);
             return redirect()->route('produto.edit', $produto->id)
                 ->with('success_message', 'Produto atualizado com sucesso!');

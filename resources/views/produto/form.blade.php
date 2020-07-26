@@ -23,9 +23,17 @@
     </div>
 
     <div class="form-group {{ $errors->has('rg') ? 'has-error' : '' }}">
-        <label for="preco" class="col-md-2 control-label text-bold">Preço.:</label>
+        <label for="preco_revenda" class="col-md-2 control-label text-bold">Preço Revenda.:</label>
         <div class="col-md-10">
-            <input class="form-control input-sm money" name="preco" type="text" id="preco" value="{{ old('preco', isset($produto->preco) ? $produto->preco : null) }}" maxlength="20" placeholder="Enter rg here...">
+            <input class="form-control input-sm money" name="preco_revenda" type="text" id="preco_revenda" value="{{ old('preco_revenda', isset($produto->preco_revenda) ? $produto->preco_revenda : null) }}" maxlength="20" placeholder="Enter rg here...">
+            {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group {{ $errors->has('rg') ? 'has-error' : '' }}">
+        <label for="preco_franquia" class="col-md-2 control-label text-bold">Preço Franquia.:</label>
+        <div class="col-md-10">
+            <input class="form-control input-sm money" name="preco_franquia" type="text" id="preco_franquia" value="{{ old('preco_franquia', isset($produto->preco_franquia) ? $produto->preco_franquia : null) }}" maxlength="20" placeholder="Enter rg here...">
             {!! $errors->first('rg', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

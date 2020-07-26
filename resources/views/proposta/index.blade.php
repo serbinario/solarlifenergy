@@ -24,32 +24,36 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Produtos</header>
+                            <header>Lista de Propostas</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-primary" title="Novo Produto">
+                                    <a href="{{ route('pre_proposta.pre_proposta.create') }}" class="btn btn-primary" title="Novo Fornecedor">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
+                        @include('pre_proposta.filtro')
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="produto" class="table order-column hover">
+                                        <table id="preProposta" class="table order-column hover">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>Id</th>
-                                                    <th>Produto</th>
-                                                    <th>Unidade</th>
-                                                    <th>Estoque</th>
-                                                    <th>Preço Revenda</th>
-                                                    <th>Preço Franquia</th>
-                                                    <th>Fabricante</th>
-                                                    <th>Grupo</th>
-                                                    <th>Ativo</th>
+                                                    <th>Cliente</th>
+                                                    <th>Código</th>
+                                                    <th>Valor Proposta</th>
+                                                    <th>Data Validade</th>
+                                                    <th>Integrador</th>
+                                                    <th>Data Cadastro</th>
+                                                    <th>Data Alteração</th>
+                                                    <th>Prioridade</th>
+                                                    <th>Alerta</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -58,12 +62,18 @@
                                 </div>
                             </div><!--end .col -->
                         </div><!--end .row -->
-                        <!-- END DATATABLE 1
+                        <!-- END DATATABLE 1 -->
+
+
+
+
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('produto.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Produto</a>
+                                <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Proposta</a>
                             </div>
                         </div>
+
+                        @include('pre_proposta.relatorio')
                     </div><!--end .card -->
 
                 </form>
@@ -71,8 +81,11 @@
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->
 
+    @include('pre_proposta.modalPropostas')
+
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/produto/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/pre_proposta/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop
