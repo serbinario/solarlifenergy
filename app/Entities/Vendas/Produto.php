@@ -29,7 +29,8 @@ class Produto extends Model
      */
     protected $fillable = [
         'produto',
-        'preco',
+        'preco_revenda',
+        'preco_franquia',
         'marca_id',
         'estoque',
         'grupo_id',
@@ -74,7 +75,12 @@ class Produto extends Model
         return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produto');
     }
 
-    public function getPrecoAttribute($value)
+    public function getPrecoRevendaAttribute($value)
+    {
+        return number_format($value,2,",",".");
+    }
+
+    public function getPrecoFranquiaAttribute($value)
     {
         return number_format($value,2,",",".");
     }

@@ -40,7 +40,7 @@ class ProdutoFormRequest extends FormRequest
      */
     function getData()
     {
-        $data = $this->only(['produto', 'preco', 'marca_id', 'estoque', 'grupo_id', 'unidade_id']);
+        $data = $this->only(['produto', 'preco_franquia', 'preco_revenda', 'marca_id', 'estoque', 'grupo_id', 'unidade_id']);
 
         return $data;
     }

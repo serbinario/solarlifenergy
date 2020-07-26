@@ -305,6 +305,44 @@ Route::group(
 });
 
 Route::group(
+    [
+        'prefix' => 'proposta',
+    ], function () {
+
+    Route::get('/', 'PropostaController@index')
+        ->name('proposta.index');
+
+    Route::get('/create','PropostaController@create')
+        ->name('proposta.create');
+
+    Route::get('/grid', 'PropostaController@grid')
+        ->name('grid');
+
+
+    Route::get('/{proposta}/edit','PropostaController@edit')
+        ->name('proposta.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'PropostaController@store')
+        ->name('proposta.store');
+
+    Route::put('pre_proposta/{preProposta}', 'PrePropostaController@update')
+        ->name('pre_proposta.pre_proposta.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{preProposta}/destroy','PrePropostaController@destroy')
+        ->name('pre_proposta.pre_proposta.destroy')
+        ->where('id', '[0-9]+');
+
+    Route::get('/arquivadas/index', 'PrePropostaArquivaController@index')
+        ->name('pre_proposta.arquivadas.index');
+
+    Route::get('/arquivadas/grid', 'PrePropostaArquivaController@grid')
+        ->name('pre_proposta.arquivadas.grid');
+
+});
+
+Route::group(
 [
     'prefix' => 'procuracao',
 ], function () {
