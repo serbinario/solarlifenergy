@@ -18,6 +18,16 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="qtd_paineis" class="col-sm-8 control-label text-bold">Qtd. Modulos</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" readonly value="{{ old('qtd_paineis', isset($projetov2->PreProposta->qtd_paineis) ? $projetov2->PreProposta->qtd_paineis : null) }}" >
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="minima_area" class="col-sm-8 control-label text-bold">Área.:</label>

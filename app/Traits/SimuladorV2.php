@@ -90,6 +90,7 @@ trait SimuladorV2
                 'soma_modulos' =>  $this->somaModulos,
                 'qtd_inversores' => $this->qtdInversores,
                 'soma_inversor' => $this->somaInversor,
+                'inversores' => $inversores,
                 'soma_estrutura' => $this->somaestrutura,
                 'soma_infra' => $this->somaInfra,
                 'soma_kit' => $this->somaKit,
@@ -106,6 +107,11 @@ trait SimuladorV2
             ];
     }
 
+    private function calculoEquipamentos($produtoId){
+        // Buscar a formula do calculo pelo id do produto
+
+    }
+
     private function calculaQtdInversores(){
         $inversores = array();
         if($this->qtdModulos > 126)
@@ -114,16 +120,19 @@ trait SimuladorV2
             for($i = $this->qtdModulos; $i >= 126; $i -=126 ){
                 if($i >126){
                     $basePrecoInversores = InversorModulo::with('produto')->where('max_modulos', '>=', 126)->first();
-                    //dd($basePrecoInversores);
-                    $inversores[] += $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+                    $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+                    $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id ];
                 }
             }
             $basePrecoInversores = InversorModulo::with('produto')->where('max_modulos', '>=', $i)->first();
-            $inversores[] += $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id ];
         }else{
             //dd($this->qtdModulos);
+
             $basePrecoInversores = InversorModulo::with('produto')->where('max_modulos', '>=', $this->qtdModulos)->first();
-            $inversores[] += $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id ];
         }
         return $inversores;
     }
