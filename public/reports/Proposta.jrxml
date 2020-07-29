@@ -621,10 +621,6 @@ where pre_propostas.id =  $P{id}]]>
 	<detail>
 		<band height="535" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<image scaleImage="FillFrame">
-				<reportElement x="10" y="0" width="766" height="534" uuid="33286f1b-ab92-4edb-b325-91ce71228a4e"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar.png"]]></imageExpression>
-			</image>
 		</band>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
