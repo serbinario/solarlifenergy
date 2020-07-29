@@ -69,6 +69,7 @@ trait SimuladorV2
 
         $this->qtdInversores = count($this->inversores );
 
+        //MÓDULO FOTOVOLTAICO POLICRITALINO CANADIAN SOLAR 330W = id = 2
         $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
 
 
@@ -122,7 +123,7 @@ trait SimuladorV2
     }
 
     private function calculaEsttutura(){
-        // Buscar a formula do calculo pelo id do produto  ((25×2)÷3)1,1
+        // PERFIL RETANGULAR ALUMINIO 3M - id = 15
         $perfilQtd = (($this->qtdModulos * 2) /3)* 1.1;
         $perfilValor = Produto::select('preco_franquia')->where('id' , '=', '15')->first()->preco_franquia;
         $PerfilTotal = $perfilQtd * $this->convertesRealIngles($perfilValor);
@@ -134,37 +135,37 @@ trait SimuladorV2
         //$ancoragemTotal = $ancoragemQtd * $this->convertesRealIngles($ancoragemValor);
         //dd($ancoragemQtd, $ancoragemValor, $ancoragemTotal);
 
-        //PARAFUSO ESTRUTURAL 250MM
+        //PARAFUSO ESTRUTURAL 250MM METAL id = 38
         $parafusoQtd = (($this->qtdModulos * 2) /1.3)* 1.1;
         $parafusoValor = Produto::select('preco_franquia')->where('id' , '=', '38')->first()->preco_franquia;
         $parafusoTotal = $parafusoQtd * $this->convertesRealIngles($parafusoValor);
         //dd($parafusoQtd, $parafusoValor, $parafusoTotal);
 
-        //CHAPAS INTERMERDIARIA QUADRADA ALUMINIO
+        //CHAPAS INTERMERDIARIA QUADRADA ALUMINIO id = 39
         $chapaInterQtd = ($this->qtdModulos * 2) -2;
         $chapaInterValor = Produto::select('preco_franquia')->where('id' , '=', '39')->first()->preco_franquia;
         $chapaInterTotal = $chapaInterQtd * $this->convertesRealIngles($chapaInterValor);
         //dd($chapaInterQtd, $chapaInterValor, $chapaInterTotal);
 
-        //FIXADOR ALUMINIO ( L )
+        //FIXADOR ALUMINIO ( L ) id 40
         $fixadorAluQtd = ($this->qtdModulos /8) * 4;
         $fixadorAluValor = Produto::select('preco_franquia')->where('id' , '=', '40')->first()->preco_franquia;
         $fixadorAluTotal = $fixadorAluQtd * $this->convertesRealIngles($fixadorAluValor);
         //dd($fixadorAluQtd, $fixadorAluValor, $fixadorAluTotal);
 
-        //PARAFUSO AUTOBROCANTE 12 x 4'' CT
+        //PARAFUSO AUTOBROCANTE 12 x 4'' CT - id = 13
         $parafusAuto12x4Qtd = (int)($this->qtdModulos/20);
         $parafusAuto12x4Valor = Produto::select('preco_franquia')->where('id' , '=', '13')->first()->preco_franquia;
         $parafusAuto12x4Total = $parafusAuto12x4Qtd * $this->convertesRealIngles($parafusAuto12x4Valor);
         //dd($parafusAuto12x4Qtd, $parafusAuto12x4Valor, $parafusAuto12x4Total);
 
-        //PARAFUSO AUTOBROCANTE 12x 2.1/2'' CT
+        //PARAFUSO AUTOBROCANTE 12x 2.1/2'' CT id = 14
         $parafusAuto12x2Qtd = (int)($this->qtdModulos/20);
         $parafusAuto12x2Valor = Produto::select('preco_franquia')->where('id' , '=', '14')->first()->preco_franquia;
         $parafusAuto12x2Total = $parafusAuto12x2Qtd * $this->convertesRealIngles($parafusAuto12x2Valor);
         //dd($parafusAuto12x2Qtd, $parafusAuto12x2Valor, $parafusAuto12x2Total);
 
-        //SELANTE PU 300G
+        //SELANTE PU 300G - id = 18
         $selanteQtd = ($this->qtdModulos/10);
         $selanteValor = Produto::select('preco_franquia')->where('id' , '=', '18')->first()->preco_franquia;
         $selanteTotal = $selanteQtd * $this->convertesRealIngles($selanteValor);
@@ -187,15 +188,12 @@ trait SimuladorV2
         $stringValor = 0;
         $stringTotal = 0;
         foreach ($this->inversores as $inversor){
-            //dd($inversor);
-
             $stringValor = StringboxPotencia::with('produto')->where('potencia' , '=', $inversor['potenciaInversor'])->first()->produto->preco_revenda;
             $stringTotal += $this->convertesRealIngles($stringValor) * $inversor['stringbox'];
             $stringQtd += $inversor['stringbox'];
         }
 
-
-        //CABO 4MM BRASFIO 1KV - COBRE / PRETO
+        //CABO 4MM BRASFIO 1KV - COBRE / PRETO - id = 42
         if($this->qtdModulos > 400 ){
             $metros = $this->qtdModulos * 1.4;
         }else{
@@ -205,7 +203,7 @@ trait SimuladorV2
         $caboTotal = (int)$metros * $this->convertesRealIngles($caboValor);
         //dd($metros, $caboValor, $caboTotal);
 
-        //CONECTOR MC4
+        //CONECTOR MC4 id = 41
         $conectorQtd = $this->mc4;
         $conectorValor = Produto::select('preco_franquia')->where('id' , '=', '41')->first()->preco_franquia;
         $conectorTotal = $conectorQtd * $this->convertesRealIngles($conectorValor);

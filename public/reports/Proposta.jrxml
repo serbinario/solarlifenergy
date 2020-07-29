@@ -406,7 +406,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="total_equipamentos"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="entrada1_valor" class="java.lang.Double">
+	<field name="entrada1_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada1_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -414,7 +414,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="recurso1_banco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="entrada2_valor" class="java.lang.Double">
+	<field name="entrada2_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada2_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -422,7 +422,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="recurso2_banco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="entrada3_valor" class="java.lang.Double">
+	<field name="entrada3_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada3_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -430,11 +430,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="qtd_parcelas_entrada2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="recurso_proprio" class="java.lang.Double">
+	<field name="recurso_proprio" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="recurso_proprio"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="valor_vencimento" class="java.lang.Double">
+	<field name="valor_vencimento" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="valor_vencimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -462,7 +462,19 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="pre_proposta_obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_112" class="java.lang.Long">
+	<field name="pendencia" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pendencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="pendencia_obs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pendencia_obs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="arquivado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="arquivado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="COLUMN_115" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -534,6 +546,14 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
+	<field name="COLUMN_133" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_134" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
 	<field name="mae" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="mae"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -576,6 +596,10 @@ where pre_propostas.id =  $P{id}]]>
 	</field>
 	<field name="data_nascimento" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_146" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="nacionalidade" class="java.lang.String">
@@ -716,7 +740,7 @@ where pre_propostas.id =  $P{id}]]>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="0" y="148" width="788" height="42" uuid="c96e770e-343f-4fe7-afea-6e859514d167"/>
+				<reportElement x="0" y="149" width="788" height="42" uuid="c96e770e-343f-4fe7-afea-6e859514d167"/>
 				<text><![CDATA[O Sistema de Energia Solar Fotovoltaica é um sistema capaz de gerar energia elétrica limpa através da radiação solar, permitindo que a
 energia solar seja uma opção viável, de baixo custo, com manutenção mínima, rentável, inesgotável e sustentável que pode ser utilizado
 em residências, comércios ou indústrias principalmente para gerar eletricidade, podendo reduzir ou zerar a conta de luz.]]></text>
@@ -3079,144 +3103,7 @@ ou de difícil acesso]]></text>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="0" y="26" width="100" height="15" uuid="e428ac3a-65f5-4f7e-a3fc-7a3a8d19a713">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Garantias]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="41" width="788" height="1" uuid="7cd38ee5-2844-4e9e-abeb-9c6922c7b888">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="52" width="788" height="67" uuid="25ba7b5e-74bb-47b7-8f83-c91f24b0f61d"/>
-				<text><![CDATA[Módulos FV DAH– 120 meses (Primeiros 12 meses direto com a SOLAR LIFE ENERGY), após com a
-fabricante.
-Inversor KSTAR – 5 anos (Primeiros 24 meses direto SOLAR LIFE ENERGY)
-Estrutura de Fixação – 2 anos de garantia
-Garantia da instalação: 1 ano, SEGUINDO AS NORMAS NOR.DISTRIBU-ENGE-0002, NOR.DISTRIBU-ENGE-00022, NBR]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="119" width="210" height="15" uuid="41af4b2e-637e-4fad-9387-145871d8f28d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Prazo de Entrega e Instalação]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="134" width="788" height="1" uuid="78039b05-455f-4afb-bdb7-d9b9df138553">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="143" width="788" height="15" uuid="ba0f4245-4c0b-469a-a632-15c080c60b7c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<text><![CDATA[A entrada em funcionamento do sistema tem prazo de: 90 DIAS ÚTEIS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="171" width="210" height="15" uuid="36abc9e1-d7d1-4d3e-b5f2-dd1024ad023e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Certificados]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="186" width="788" height="1" uuid="cf3ae8db-a8a0-4092-ae80-5bfbe1566e7f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="200" width="788" height="45" uuid="807259d5-ab56-4bd4-8999-05ecc1091537"/>
-				<text><![CDATA[Módulos DAH - INMETRO 003757/2014
-Inversor KSTAR- TUV, CE, EN61000, EN62109, IEC 61683, IEC 60068, IEC 62109, IEC 61215
-CABOS BRASFIO HEPR FLEX 0,6KV/1KV]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="245" width="210" height="15" uuid="5323fcd4-9cb5-444d-85ff-ae83160dd791">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Escopo do contrato]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="260" width="788" height="1" uuid="e1411945-de1c-425a-ba65-1417325037a1">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="270" width="788" height="185" uuid="27ae217a-a6ac-47fe-89ff-cf0251e0ac16"/>
-				<text><![CDATA[1. Equipamentos do Sistema de Geração de Energia Solar Conectado à rede, contempla módulos fotovoltaicos, inversores, estrutura de suporte e acessórios;
-2. Frete
-3. Projeto Executivo;
-4. Projeto e coordenações das diversas etapas que compõe o normativo específico de Geração Distribuída da Concessionária;
-5. Montagem e interligação Turn Key;
-6. Comissionamento ( testes e energização);
-7. As Built ( Manual de Operação e detalhamento do projeto instalado);
-8. Sistema de Monitoramento Remoto;
-9. Não contempla projeto de Cálculo estrutural e/ou reforço da coberta ou superfície que virá acomodar os painéis do sistema fotovoltaico, caso necessário;
-10. Adaptações na rede elétrica da concessionária de distribuição de energia, caso necessário;
-11. Material para interligação entre os inversores e o ponto de conexão com a Concessionária;
-12. Custo do Medidor e de sua instalação;
-13. Rede wifi ou cabeamento, que dê acesso à internet para viabilizar o monitoramento remot, sob responsabilidade da contratante.
-14. LOCAL DE INSTALAÇÃO: TELHADO DE FIBROCIMENTO, LOCALIZADO RUA NUMERO, BAIRRO, CIDADE,CEP, PERNAMBUCO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="463" width="210" height="15" uuid="ceaa1bb8-935f-4fd0-ae45-f1b9282716c6">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Previsão de manutenção do sistema]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="478" width="788" height="1" uuid="221a1ece-d24b-4834-9c3f-dc1e1236c878">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<staticText>
-				<reportElement x="0" y="488" width="788" height="15" uuid="7e2649d1-f841-4693-9d13-4c7a5d4d6e09">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<text><![CDATA[Manutenção corretiva prevista para 12 anos a partir da data do funcionamento.]]></text>
-			</staticText>
-			<break>
-				<reportElement x="0" y="503" width="100" height="1" uuid="26fdd8b2-f148-40d5-8e4d-1878af4aeaca"/>
-			</break>
-		</band>
-		<band height="535">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<staticText>
-				<reportElement x="0" y="20" width="210" height="15" uuid="68f01d3d-293f-4fc7-9f96-212f09e46b1e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cronograma de Instalação]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="35" width="788" height="1" uuid="a7121430-7c71-48b9-af82-870f4a7b9b0e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<image scaleImage="FillFrame">
-				<reportElement x="244" y="47" width="300" height="113" uuid="4e9d79ee-84ea-4916-9c18-9430457ab090"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/cronograma.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="0" y="174" width="210" height="15" uuid="1eebab69-61a1-4b37-bc17-0a34d1e159a8">
+				<reportElement x="0" y="20" width="210" height="15" uuid="1eebab69-61a1-4b37-bc17-0a34d1e159a8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
@@ -3225,12 +3112,12 @@ CABOS BRASFIO HEPR FLEX 0,6KV/1KV]]></text>
 				<text><![CDATA[CONDIÇÕES GERAIS]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="189" width="788" height="1" uuid="9610574e-2131-4008-a77a-30d7bb2292b6">
+				<reportElement x="0" y="35" width="788" height="1" uuid="9610574e-2131-4008-a77a-30d7bb2292b6">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="0" y="200" width="788" height="71" uuid="7801f733-ea4b-401c-ba8e-d4913041e24c"/>
+				<reportElement x="0" y="46" width="788" height="71" uuid="7801f733-ea4b-401c-ba8e-d4913041e24c"/>
 				<text><![CDATA[1. Prazo de Entrega do Material: 30 dias úteis a partir da compra
 2. Prazo para Inicio da Montagem: 7 dias úteis após entrega do material
 3. O IPI e o ICMS já estão inclusos nos preços acima.
@@ -3238,53 +3125,53 @@ CABOS BRASFIO HEPR FLEX 0,6KV/1KV]]></text>
 5. CONDIÇÃO DE PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="320" width="788" height="50" uuid="a5b48909-85cd-496d-97f0-3a16e32d7bd3"/>
+				<reportElement x="0" y="166" width="788" height="50" uuid="a5b48909-85cd-496d-97f0-3a16e32d7bd3"/>
 				<text><![CDATA[6. Esta planilha pode ser usada após a apresentação do projeto.
 7. Validade da proposta: 30 dias
 9. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
 instalação com todos os equipamentos funcionando em perfeito.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="460" width="788" height="47" uuid="e6938958-1cb8-4b39-8e7f-fc688bcd6076"/>
+				<reportElement x="0" y="306" width="788" height="47" uuid="e6938958-1cb8-4b39-8e7f-fc688bcd6076"/>
 				<text><![CDATA[Rua Dr. José Bezerra Filho, No. 61 – Centro – Cabo de Santo Agostinho - PE
 CNPJ 00.823.358/0001-14 INSC 18.3.080.0276735-1
 Fone (81) 3524-1290 (81) 98281-5540  E-mail: josiasjunior@solarlifenergy.com.br]]></text>
 			</staticText>
 			<line>
-				<reportElement x="89" y="416" width="200" height="1" uuid="474c151d-3314-49b4-8a97-0be4f520fe9e">
+				<reportElement x="89" y="262" width="200" height="1" uuid="474c151d-3314-49b4-8a97-0be4f520fe9e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement x="390" y="416" width="200" height="1" uuid="2628efca-466d-47f6-a07e-3c41fd935c12">
+				<reportElement x="390" y="262" width="200" height="1" uuid="2628efca-466d-47f6-a07e-3c41fd935c12">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="390" y="420" width="200" height="30" uuid="65d14e92-34be-4aec-b9e7-33f6e05daad8"/>
+				<reportElement x="390" y="266" width="200" height="30" uuid="65d14e92-34be-4aec-b9e7-33f6e05daad8"/>
 				<text><![CDATA[SOLAR LIFE ENERGY EIRELI - ME
 CONTRATADA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="86" y="420" width="200" height="30" uuid="79c0e289-e927-4cc5-999f-7fedf4be40d8">
+				<reportElement x="86" y="266" width="200" height="30" uuid="79c0e289-e927-4cc5-999f-7fedf4be40d8">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[CONTRATANTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="288" width="788" height="30" uuid="a25a2e20-33b7-4d6e-9f54-5f6a782a6581"/>
+				<reportElement x="0" y="134" width="788" height="30" uuid="a25a2e20-33b7-4d6e-9f54-5f6a782a6581"/>
 				<text><![CDATA[(   ) FINANCIAMENTO BANCÁRIO (   ) À VISTA (   ) FINANCIAMENTO SOLAR LIFE ENERGY]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="381" width="267" height="30" uuid="3a348c25-c461-47ea-ad8e-8f667b70d6ec"/>
+				<reportElement x="0" y="227" width="267" height="30" uuid="3a348c25-c461-47ea-ad8e-8f667b70d6ec"/>
 				<text><![CDATA[Cabo _______/_______/_______]]></text>
 			</staticText>
 			<break>
-				<reportElement x="0" y="506" width="100" height="1" uuid="55dabb62-e2dc-419d-abf2-b7f7e4880ecd"/>
+				<reportElement x="0" y="352" width="99" height="1" uuid="55dabb62-e2dc-419d-abf2-b7f7e4880ecd"/>
 			</break>
 		</band>
 		<band height="535">
