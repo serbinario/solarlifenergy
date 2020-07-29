@@ -172,6 +172,7 @@ class ProdutoController extends Controller
     public function update($id, ProdutoFormRequest $request)
     {
         try {
+            
             $data = $request->getData();
             $produto = Produto::findOrFail($id);
             $produto->update($data);

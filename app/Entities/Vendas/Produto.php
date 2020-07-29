@@ -75,6 +75,7 @@ class Produto extends Model
         return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produto');
     }
 
+
     public function getPrecoRevendaAttribute($value)
     {
         return number_format($value,2,",",".");
