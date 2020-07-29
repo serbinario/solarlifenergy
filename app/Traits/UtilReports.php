@@ -112,11 +112,11 @@ trait UtilReports
         $output = public_path() . '/reports/' .  'Clientes';// instancia um novo objeto JasperPHP
 
         $report = new PHPJasper();// chama o método que irá gerar o relatório
-        dd($report->process(
+        $report->process(
             public_path() .  '/reports/' . $nome_arquivo.'.jrxml',
             $output,
             $options
-        )->output());
+        )->execute();
         $file = $output . '.pdf';
 
         //dd($file);
