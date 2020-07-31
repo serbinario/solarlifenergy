@@ -599,7 +599,7 @@ where pre_propostas.id =  $P{id}]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
 				<reportElement x="10" y="0" width="766" height="534" uuid="33286f1b-ab92-4edb-b325-91ce71228a4e"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/logo_solar.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
@@ -987,7 +987,7 @@ ou de difícil acesso]]></text>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
 				<reportElement x="0" y="0" width="788" height="535" uuid="6edd765e-5de5-4d2e-99a4-f55a7c374a48"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/arte.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/arte.png"]]></imageExpression>
 			</image>
 			<break>
 				<reportElement x="0" y="520" width="99" height="1" uuid="abeb62da-4e9d-4002-9cd3-a851bf8146ea"/>
@@ -3178,14 +3178,14 @@ São Lourenço da Mata - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/mudinho1.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/mudinho1.png"]]></imageExpression>
 			</image>
 			<image scaleImage="FillFrame">
 				<reportElement x="420" y="130" width="245" height="120" uuid="4ca35924-dd8a-4b6c-8809-ba596266a425">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/mudinho2.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/mudinho2.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement x="-11" y="261" width="788" height="1" uuid="21909cef-d436-42b7-8cac-e69d182f9877">
@@ -3205,7 +3205,7 @@ Paulista - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/ourico1.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/ourico1.png"]]></imageExpression>
 			</image>
 			<image scaleImage="FillFrame">
 				<reportElement x="420" y="349" width="245" height="120" uuid="ea8b158a-d536-41cf-a4c6-f740f227767b">
@@ -3214,7 +3214,7 @@ Paulista - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/ourico2.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/ourico2.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
@@ -3240,7 +3240,7 @@ Aldeia - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/aldeia.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/aldeia.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="394" y="30" width="394" height="49" uuid="0f4ec402-f700-4381-a736-a3befa39c5c8">
@@ -3262,7 +3262,7 @@ Catende - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/residencial.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/residencial.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="292" y="305" width="190" height="49" uuid="33b85a9a-1aa1-4646-80b9-42bf229edfa8"/>
@@ -3276,7 +3276,7 @@ Olinda - PE]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/tecelagem.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://191.252.221.19/reports/tecelagem.png"]]></imageExpression>
 			</image>
 		</band>
 	</detail>
