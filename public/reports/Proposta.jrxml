@@ -3095,16 +3095,15 @@ ou de difícil acesso]]></text>
 			<staticText>
 				<reportElement x="0" y="46" width="788" height="71" uuid="7801f733-ea4b-401c-ba8e-d4913041e24c"/>
 				<text><![CDATA[1. Prazo de Entrega do Material: 30 dias úteis a partir da compra
-2. Prazo para Inicio da Montagem: 7 dias úteis após entrega do material
-3. O IPI e o ICMS já estão inclusos nos preços acima.
-4. Frete: GRÁTIS
-5. CONDIÇÃO DE PAGAMENTO]]></text>
+2. O IPI e o ICMS já estão inclusos nos preços acima.
+3. Frete: GRÁTIS
+4. CONDIÇÃO DE PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="166" width="788" height="50" uuid="a5b48909-85cd-496d-97f0-3a16e32d7bd3"/>
 				<text><![CDATA[6. Esta planilha pode ser usada após a apresentação do projeto.
-7. Validade da proposta: 30 dias
-9. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
+5. Validade da proposta: 30 dias
+6. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
 instalação com todos os equipamentos funcionando em perfeito.]]></text>
 			</staticText>
 			<staticText>
