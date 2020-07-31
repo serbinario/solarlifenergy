@@ -47,14 +47,19 @@
 		<parameter name="ordenarPor" class="java.lang.String"/>
 		<parameter name="order" class="java.lang.String"/>
 		<queryString>
-			<![CDATA[SELECT c.nome_empresa,  pp.preco_medio_instalado,  u.name as integrador, pp.created_at, prio.name as priorodade, pv2.id
+			<![CDATA[SELECT c.nome_empresa,  
+pp.preco_medio_instalado,  
+u.name as integrador, 
+pp.created_at, 
+pp.potencia_instalada,
+prio.name as priorodade, pv2.id
 FROM pre_propostas AS pp
 LEFT JOIN clientes AS c ON c.id = pp.cliente_id
 LEFT JOIN users AS u ON u.id = pp.user_id
 LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
 LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
 WHERE pv2.id IS NULL AND pp.arquivado IS NULL
-order by  $P!{ordenarPor}  $P!{order} ]]>
+order by  $P!{ordenarPor}  $P!{order}]]>
 		</queryString>
 		<field name="nome_empresa" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="nome_empresa"/>
@@ -72,6 +77,10 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 			<property name="com.jaspersoft.studio.field.label" value="created_at"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 		</field>
+		<field name="potencia_instalada" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+		</field>
 		<field name="priorodade" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="priorodade"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="prioridades"/>
@@ -84,14 +93,64 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 			<variableExpression><![CDATA[$F{nome_empresa}]]></variableExpression>
 		</variable>
 	</subDataset>
+	<subDataset name="Sum" uuid="9b182857-9a32-47a5-a785-da157181ec7c">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT SUM(pp.potencia_instalada), SUM(pp.preco_medio_instalado),
+u.name AS integrador, 
+pp.potencia_instalada,
+prio.name AS prioridade,
+pp.preco_medio_instalado
+FROM pre_propostas AS pp
+LEFT JOIN clientes AS c ON c.id = pp.cliente_id
+LEFT JOIN users AS u ON u.id = pp.user_id
+LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
+LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
+WHERE pv2.id IS NULL AND pp.arquivado IS NULL 
+ GROUP BY integrador]]>
+		</queryString>
+		<field name="integrador" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="integrador"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+		</field>
+		<field name="prioridade" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="prioridade"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="prioridades"/>
+		</field>
+		<field name="preco_medio_instalado" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="preco_medio_instalado"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+		</field>
+		<field name="potencia_instalada" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+		</field>
+	</subDataset>
 	<parameter name="inputOrdenaPor" class="java.lang.String"/>
 	<parameter name="InputOrder" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>
+		<![CDATA[SELECT SUM(pp.preco_medio_instalado),
+u.name AS integrador, 
+prio.name AS prioridade
+FROM pre_propostas AS pp
+LEFT JOIN clientes AS c ON c.id = pp.cliente_id
+LEFT JOIN users AS u ON u.id = pp.user_id
+LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
+LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
+WHERE pv2.id IS NULL AND pp.arquivado IS NULL AND prio.id = 3
+ GROUP BY integrador;]]>
 	</queryString>
-	<field name="id" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="projetosv2"/>
+	<field name="SUM(pp.preco_medio_instalado)" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="SUM(pp.preco_medio_instalado)"/>
+	</field>
+	<field name="integrador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="integrador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="prioridade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prioridade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="prioridades"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -135,11 +194,11 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="110" uuid="5290501a-8e26-46d1-afd2-7fade4f5d6ed">
+					<jr:column width="94" uuid="5290501a-8e26-46d1-afd2-7fade4f5d6ed">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="110" height="30" uuid="faa98b15-8fc9-42b0-acb9-838383aa8246"/>
+								<reportElement x="0" y="0" width="94" height="30" uuid="faa98b15-8fc9-42b0-acb9-838383aa8246"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -148,17 +207,36 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement positionType="Float" x="0" y="0" width="110" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
+								<reportElement positionType="Float" x="0" y="0" width="94" height="30" uuid="04007114-106c-4066-aaa6-4ed605e90e4d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[new java.text.DecimalFormat("R$ #,##0.00").format($F{preco_medio_instalado});]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="126" uuid="35ca62aa-abb5-4cf9-916f-a17daa540673">
+					<jr:column width="50" uuid="35ca62aa-abb5-4cf9-916f-a17daa540673">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="126" height="30" uuid="6a8b982a-b518-4810-9f2e-26edd030f3ac"/>
+								<reportElement x="0" y="0" width="50" height="30" uuid="6a8b982a-b518-4810-9f2e-26edd030f3ac"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[KWP]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="30" uuid="8f65b94c-6540-4438-afd8-bcb1629214f1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{potencia_instalada}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="e2a1feec-2806-4743-92f4-29b1a4a14520">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="d798557b-e7f5-48c6-9978-910e041e948a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -167,14 +245,14 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="126" height="30" uuid="8f65b94c-6540-4438-afd8-bcb1629214f1"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="3d52ca20-dbb5-437e-8790-5db5fe477d20"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{integrador}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="130" uuid="0ea65144-18c6-469e-9549-05092315fafe">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="130" height="30" uuid="cd24dac5-1a7a-4e0e-be16-ac46576cdc18"/>
@@ -193,7 +271,7 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="100" uuid="8a829adb-7ca1-434d-909f-147de74066cf">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="100" height="30" uuid="a7d32449-8f42-4aa8-9e44-986e1cf97f15"/>
@@ -229,4 +307,7 @@ order by  $P!{ordenarPor}  $P!{order} ]]>
 			</textField>
 		</band>
 	</detail>
+	<summary>
+		<band height="305"/>
+	</summary>
 </jasperReport>
