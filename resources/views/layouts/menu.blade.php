@@ -151,10 +151,13 @@
 
 					<!-- BEGIN DASHBOARD -->
 					<li>
-						<a href="{{ route('dashboard.index') }}" >
-							<div class="gui-icon"><i class="md md-home"></i></div>
-							<span class="title">Dashboard</span>
-						</a>
+						@role('super-admin')
+							<a href="{{ route('dashboard.index') }}" >
+								<div class="gui-icon"><i class="md md-home"></i></div>
+								<span class="title">Dashboard</span>
+							</a>
+						@endrole
+
 					</li><!--end /menu-li -->
 					<!-- END DASHBOARD -->
 
