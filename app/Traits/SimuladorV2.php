@@ -69,7 +69,7 @@ trait SimuladorV2
 
         $this->qtdInversores = count($this->inversores );
 
-        //MÓDULO FOTOVOLTAICO POLICRITALINO CANADIAN SOLAR 330W = id = 2
+        //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
         $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
 
 
