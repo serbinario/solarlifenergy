@@ -66,7 +66,7 @@ trait SimuladorV2
         //dd($this->qtdModulos);
 
         $this->inversores = $this->calculaQtdInversores();
-
+        //dd($this->inversores);
         $this->qtdInversores = count($this->inversores );
 
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
@@ -188,10 +188,15 @@ trait SimuladorV2
         $stringValor = 0;
         $stringTotal = 0;
         foreach ($this->inversores as $inversor){
-            $stringValor = StringboxPotencia::with('produto')->where('potencia' , '=', $inversor['potenciaInversor'])->first()->produto->preco_revenda;
+
+            $stringValor = StringboxPotencia::with('produto')->where('potencia' , '=',  $inversor['potenciaInversor']  )->first()->produto->preco_revenda;
+
             $stringTotal += $this->convertesRealIngles($stringValor) * $inversor['stringbox'];
+
             $stringQtd += $inversor['stringbox'];
+
         }
+
 
         //CABO 4MM BRASFIO 1KV - COBRE / PRETO - id = 42
         if($this->qtdModulos > 400 ){
@@ -220,8 +225,21 @@ trait SimuladorV2
 
     private function calculaQtdInversores(){
         $inversores = array();
-        if($this->qtdModulos > 126)
-        {
+
+        if($this->qtdModulos >= 21 && $this->qtdModulos <= 30){
+            $resultado = $this->qtdModulos - 20;
+            $basePrecoInversores = InversorModulo::with('produto')->where('max_modulos', '>=', 20)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $basePrecoInversores = InversorModulo::with('produto')->where('max_modulos', '>=', $resultado)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            return $inversores;
+        }
+
+        if($this->qtdModulos > 126){
             $i = 0;
             for($i = $this->qtdModulos; $i >= 126; $i -=126 ){
                 if($i >126){
