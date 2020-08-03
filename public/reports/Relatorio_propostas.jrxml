@@ -130,27 +130,11 @@ WHERE pv2.id IS NULL AND pp.arquivado IS NULL
 	<parameter name="inputOrdenaPor" class="java.lang.String"/>
 	<parameter name="InputOrder" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT SUM(pp.preco_medio_instalado),
-u.name AS integrador, 
-prio.name AS prioridade
-FROM pre_propostas AS pp
-LEFT JOIN clientes AS c ON c.id = pp.cliente_id
-LEFT JOIN users AS u ON u.id = pp.user_id
-LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
-LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
-WHERE pv2.id IS NULL AND pp.arquivado IS NULL AND prio.id = 3
- GROUP BY integrador;]]>
+		<![CDATA[select id from pre_propostas limit 1]]>
 	</queryString>
-	<field name="SUM(pp.preco_medio_instalado)" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="SUM(pp.preco_medio_instalado)"/>
-	</field>
-	<field name="integrador" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="integrador"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="prioridade" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="prioridade"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="prioridades"/>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
