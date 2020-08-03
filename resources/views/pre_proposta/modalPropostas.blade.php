@@ -16,7 +16,7 @@
                         <div class="col-sm-9">
                             <select id="ordenarPor" name="ordenarPor" class="form-control input-sm">
                                 <option value="c.nome_empresa">Nome do Cliente</option>
-                                <option value="prio.name">Prioridade</option>
+                                <option value="prio.id">Prioridade</option>
                                 <option value="pp.preco_medio_instalado">Valor Proposta</option>
                                 <option value="u.name">Integrador</option>
                                 <option value="pp.created_at">Data do Cadastro</option>
