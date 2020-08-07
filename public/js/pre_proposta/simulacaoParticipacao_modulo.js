@@ -21,10 +21,10 @@ function somaEquipamentos() {
     produto3_nf = document.getElementById('produto3_nf').value
     produto4_nf = document.getElementById('produto4_nf').value
     produto5_nf = document.getElementById('produto5_nf').value
-    //desconto_equipamentos = document.getElementById('desconto_equipamentos').value
+    desconto_equipamentos = document.getElementById('desconto_equipamentos').value
     //console.log(produto1_nf)
 
-    soma_equipamentos =  parseFloat(realDolar(produto1_nf)) + parseFloat(realDolar(produto2_nf)) + parseFloat(realDolar(produto3_nf)) + parseFloat(realDolar(produto4_nf)) + parseFloat(realDolar(produto5_nf))
+    soma_equipamentos =  parseFloat(realDolar(produto1_nf)) + parseFloat(realDolar(produto2_nf)) + parseFloat(realDolar(produto3_nf)) + parseFloat(realDolar(produto4_nf)) + parseFloat(realDolar(produto5_nf)) - parseFloat(realDolar(desconto_equipamentos))
 
     return soma_equipamentos.toFixed(2)
 }
@@ -39,9 +39,9 @@ function calculaDescontos(){
 
     $('.total_equipamentos span').text( 'R$ ' + formatMoney(total) )
 
-    /* var preco_medio_instalado = document.getElementById('preco_medio_instalado').value
-     $('.total_equipamentos span').text( 'R$ ' + formatMoney(realDolar(preco_medio_instalado) - realDolar(valor_descontos))  )
-     document.getElementById('preco_medio_instalado').value = formatMoney(realDolar(preco_medio_instalado) - realDolar(valor_descontos))*/
+   /* var preco_medio_instalado = document.getElementById('preco_medio_instalado').value
+    $('.total_equipamentos span').text( 'R$ ' + formatMoney(realDolar(preco_medio_instalado) - realDolar(valor_descontos))  )
+    document.getElementById('preco_medio_instalado').value = formatMoney(realDolar(preco_medio_instalado) - realDolar(valor_descontos))*/
 }
 
 function calculaServicosEquipamentosDescontos() {
@@ -55,16 +55,12 @@ function calculaServicosEquipamentosDescontos() {
 function atualizaValores(){
     var valor_descontos = document.getElementById('valor_descontos').value
     var valor_franqueadora = document.getElementById('valor_franqueadora').value
-    //var desconto_equipamentos = document.getElementById('desconto_equipamentos').value
+    var desconto_equipamentos = document.getElementById('desconto_equipamentos').value
     var total_equipamentos = document.getElementById('total_equipamentos').value
-    var produto12_nf = document.getElementById('produto12_nf').value
-    var equipe_tecnica = document.getElementById('produto7_nf').value
 
-    console.log(equipe_tecnica)
+   // console.log( parseFloat(valor_franqueadora) - parseFloat(realDolar(desconto_equipamentos)) )
 
-    // console.log( parseFloat(valor_franqueadora) - parseFloat(realDolar(desconto_equipamentos)) )
-
-    // console.log(  parseFloat(realDolar(valor_franqueadora)), parseFloat(realDolar(valor_franqueadora)) - parseFloat(realDolar(desconto_equipamentos)) )
+   // console.log(  parseFloat(realDolar(valor_franqueadora)), parseFloat(realDolar(valor_franqueadora)) - parseFloat(realDolar(desconto_equipamentos)) )
     var produto7_nf = document.getElementById('produto7_nf').value
     //this.calculaDescontos()
     if(valor_descontos == "") valor_descontos = 0
@@ -82,11 +78,11 @@ function atualizaValores(){
         .children[0].innerHTML = 'R$ ' + formatMoney(valor_proposta)
     document.getElementById('preco_medio_instalado').value = formatMoney(valor_proposta)
 
-    document.getElementsByClassName('span_valor_franqueadora')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora))
+    document.getElementsByClassName('span_valor_franqueadora')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora) - parseFloat(realDolar(desconto_equipamentos)))
 
     var totalServicos = this.somaServicos()
 
-    document.getElementsByClassName('equipe_tecnica')[0].children[0].innerHTML = 'R$ ' + equipe_tecnica
+    document.getElementsByClassName('equipe_tecnica')[0].children[0].innerHTML = 'R$ ' + formatMoney(totalServicos)
 
     //console.log(parseFloat(this.somaEquipamentos()) - parseFloat(valor_franqueadora))
 
@@ -95,43 +91,18 @@ function atualizaValores(){
     //console.log(valor_proposta, valor_franqueadora, totalServicos, desconto_equipamentos, realDolar(desconto_equipamentos))
     //console.log(parseFloat(valor_proposta) , parseFloat(valor_franqueadora) , parseFloat(totalServicos) , parseFloat(realDolar(desconto_equipamentos)))
 
-    console.log(parseFloat(realDolar(produto12_nf)) - parseFloat(realDolar(valor_descontos)))
-    document.getElementsByClassName('participacao')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(produto12_nf)) - parseFloat(realDolar(valor_descontos)))
+
+    document.getElementsByClassName('participacao')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_proposta) - parseFloat(valor_franqueadora) - parseFloat(totalServicos) + parseFloat(realDolar(desconto_equipamentos)))
+
+
 }
 
-$("#produto1_preco, #qtd_paineis").on('change', function () {
+$("#produto1_preco, #qtd_paineis, #desconto_equipamentos").on('change', function () {
     //console.log("ssssssssss");
     qtd_paineis = $('input[name=qtd_paineis]').val()
     produto1_preco = $('input[name=produto1_preco]').val()
     produto6_nf = qtd_paineis * realDolar(produto1_preco)
     $('input[name=produto1_nf]').val(formatMoney(produto6_nf))
-    atualizaValores()
-}).change();
-
-$("#produto2_preco, #qtd_inversores").on('change', function () {
-    //console.log("ssssssssss");
-    qtd_inversores = $('input[name=qtd_inversores]').val()
-    produto2_preco = $('input[name=produto2_preco]').val()
-    produto2_nf = qtd_inversores * realDolar(produto2_preco)
-    $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
-    atualizaValores()
-}).change();
-
-$("#produto3_preco, #qtd_estrutura").on('change', function () {
-    //console.log("ssssssssss");
-    qtd_estrutura = $('input[name=qtd_estrutura]').val()
-    produto3_preco = $('input[name=produto3_preco]').val()
-    produto3_nf = qtd_estrutura * realDolar(produto3_preco)
-    $('input[name=produto3_nf]').val(formatMoney(produto3_nf))
-    atualizaValores()
-}).change();
-
-$("#produto4_preco, #qtd_string_box").on('change', function () {
-    //console.log("ssssssssss");
-    qtd_string_box = $('input[name=qtd_string_box]').val()
-    produto4_preco = $('input[name=produto4_preco]').val()
-    produto4_nf = qtd_string_box * realDolar(produto4_preco)
-    $('input[name=produto4_nf]').val(formatMoney(produto4_nf))
     atualizaValores()
 }).change();
 
@@ -198,9 +169,9 @@ $("#produto12_preco, #qtd_homologacao_projeto").on('change', function () {
 window.addEventListener('load', function() {
     var valor_descontos = document.getElementById('valor_descontos').value
     this.atualizaValores()
-    /* document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
-     document.getElementsByClassName('span_preco_medio_instalado')[0]
-         .children[0].innerHTML = 'R$ ' + (  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2)*/
+   /* document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
+    document.getElementsByClassName('span_preco_medio_instalado')[0]
+        .children[0].innerHTML = 'R$ ' + (  parseFloat(this.somaServicos()) + parseFloat(this.somaEquipamentos()) - parseFloat(realDolar(valor_descontos))).toFixed(2)*/
 
 })
 

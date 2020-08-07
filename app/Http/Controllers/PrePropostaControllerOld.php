@@ -222,7 +222,6 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-            $data['pre_proposta_obs'] = $return['obs'];
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
@@ -241,10 +240,7 @@ class PrePropostaController extends Controller
             $data['produto1_nf'] = $return['soma_modulos'];
             $data['produto1_preco'] = $return['valor_modulo'];
 
-            $data['qtd_inversores'] = 1;
-            //$data['qtd_inversores'] = $return['qtd_inversores'];
-
-            $data['produto2'] = $return['obs'];
+            $data['qtd_inversores'] = $return['qtd_inversores'];
             $data['produto2_nf'] = $return['soma_inversor'];
             $data['produto2_preco'] = $return['soma_inversor'];
 
@@ -290,19 +286,20 @@ class PrePropostaController extends Controller
             $data['preco_medio_instalado'] = $return['total_investimento'];
 
             $data['valor_descontos'] = 0.0;
-            $data['total_servico_operacional'] =  $return['valor_mao_obra'];
+            $data['total_servico_operacional'] = 0.0;
 
-           /* if ($return['qtd_modulos'] < 20){
+            if ($return['qtd_modulos'] < 20){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
-            }*/
-            //dd($data);
+            }
+
             $preProposta = PreProposta::create($data);
-            //;
+            //dd($data);
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
         } catch (Exception $e) {
+            dd($e);
             return back()->withInput()
                 ->withErrors(['unexpected_error' => $e->getMessage()]);
         }
@@ -328,7 +325,7 @@ class PrePropostaController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta->produto1_nf);
+
         return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
@@ -347,12 +344,81 @@ class PrePropostaController extends Controller
 
             $data = $this->getData($request);
 
+
             $preProposta = PreProposta::findOrFail($id);
-            //dd((int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] +(int)$data['desconto_equipamentos']);
 
-            //$data['valor_franquia'] =  (int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] + (int)$data['desconto_equipamentos'];
-            $data['valor_franquia'] =  $data['produto12_nf'];
+            $return = $this->simularGeracao($request);
+            //dd($return);
+            $data['panel_potencia'] = $return['modulo_potencia'];
 
+            $data['qtd_paineis'] = $return['qtd_modulos'];
+
+
+            $data['potencia_instalada'] = $return['potencia_gerador'];
+
+            $data['minima_area'] = $return['area_minima'];
+
+            $data['entrada2_valor'] = $request->get('entrada2_valor');
+
+            $data['produto1_nf'] = $return['soma_modulos'];
+            $data['produto1_preco'] = $return['valor_modulo'];
+
+            $data['qtd_inversores'] = $return['qtd_inversores'];
+            $data['produto2_nf'] = $return['soma_inversor'];
+            $data['produto2_preco'] = $return['soma_inversor'];
+
+            $data['produto3_nf'] = $return['soma_estrutura'];
+            $data['produto3_preco'] = $return['soma_estrutura'];
+
+            $data['produto4_nf'] = $return['soma_infra'];
+            $data['produto4_preco'] = $return['soma_infra'];
+
+            $data['produto5_nf'] = $return['soma_kit'];
+            $data['produto5_preco'] = $return['soma_kit'];
+
+            $data['produto7_nf'] = $return['valor_mao_obra'];
+            $data['produto7_preco'] = $return['valor_mao_obra'];
+
+            $data['co2'] = $return['co2'];
+            //dd($data);
+            $data['gera_fv_jan'] = $return['geracao_fv']['0'];
+            $data['gera_fv_fev'] = $return['geracao_fv']['1'];
+            $data['gera_fv_mar'] = $return['geracao_fv']['2'];
+            $data['gera_fv_abr'] = $return['geracao_fv']['3'];
+            $data['gera_fv_mai'] = $return['geracao_fv']['4'];
+            $data['gera_fv_jun'] = $return['geracao_fv']['5'];
+            $data['gera_fv_jul'] = $return['geracao_fv']['6'];
+            $data['gera_fv_ago'] = $return['geracao_fv']['7'];
+            $data['gera_fv_set'] = $return['geracao_fv']['8'];
+            $data['gera_fv_out'] = $return['geracao_fv']['9'];
+            $data['gera_fv_nov'] = $return['geracao_fv']['10'];
+            $data['gera_fv_dez'] = $return['geracao_fv']['11'];
+
+            $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
+            //$data['reducao_media_consumo'] = $request->get('reducao_media_consumo');
+
+            $data['total_equipamentos'] = $return['total_equipamentos'];
+
+            $data['valor_franqueadora'] = $return['valor_franqueadora'];
+
+
+            $data['total_servico_operacional'] =
+                floatval($request->get('produto6_nf'))
+                + floatval($request->get('produto7_nf'))
+                + floatval($request->get('produto8_nf'))
+                + floatval($request->get('produto9_nf'))
+                + floatval($request->get('produto10_nf'))
+                + floatval($request->get('produto11_nf'));
+
+
+            //Valor que a franqueada vai pagar
+            $data['preco_medio_instalado'] = $request->get('preco_medio_instalado');
+
+
+            if ($return['qtd_modulos'] < 20){
+                return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
+                    ->withErrors(['error_message' => "Projeto não pode ser alterado, quantidade de módulos é menor que 20"]);
+            }
 
             $preProposta->update($data);
 
@@ -411,8 +477,6 @@ class PrePropostaController extends Controller
             'preco_medio_instalado',
             'total_equipamentos',
             'total_servico_operacional',
-            'desconto_equipamentos',
-            'valor_franquia',
             'potencia_instalada',
             'minima_area',
             'economia_anula',
@@ -442,7 +506,6 @@ class PrePropostaController extends Controller
             'qtd_mud_pde', 'produto9_preco', 'produto9_nf',
             'qtd_substacao', 'produto10_preco', 'produto10_nf',
             'qtd_refor_estrutura', 'produto11_preco', 'produto11_nf',
-            'qtd_homologacao_projeto', 'produto12_preco', 'produto12_nf',
             'entrada1_valor',
             'recurso1_banco',
             'entrada2_valor',

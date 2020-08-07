@@ -47,7 +47,7 @@ const table = $('#preProposta').DataTable({
     processing: true,
     serverSide: true,
     bFilter: true,
-    order: [[ 0, "desc" ]],
+    order: [[ 1, "desc" ]],
     ajax: {
         url: "/index.php/preProposta/grid",
         data: function (d) {

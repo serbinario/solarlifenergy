@@ -304,6 +304,10 @@
     opacity: 1;
 }
 
+.menubar-pin #menubar {
+    width: 214px !important;
+}
+
 
 
 

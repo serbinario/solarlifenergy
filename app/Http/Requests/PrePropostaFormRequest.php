@@ -25,13 +25,13 @@ class PrePropostaFormRequest extends FormRequest
     public function rules()
     {
         return  [
-            /*'cliente_id' => 'required',
+            'cliente_id' => 'required',
             'monthly_usage' => 'required',
             'preco_kwh' => 'required',
             'modulo_id' => 'required',
             'cidade_id' => 'required',
             'cidade_id' => 'required',
-            'estado_id' => 'required',*/
+            'estado_id' => 'required',
 
         ];
     }

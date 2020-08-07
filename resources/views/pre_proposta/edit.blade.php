@@ -37,7 +37,6 @@
                                     R$
                                 </span>
                             </div>
-                            @if(Auth::user()->franquia->franqueadora != 1)
                                 <header>Valor do Kit</header>
                                 <div class="col-6 span_valor_franqueadora">
                                     <span class="badge badge-dark float-right">
@@ -57,7 +56,6 @@
                                         R$
                                     </span>
                                 </div>
-                            @endif
                             <div class="tools">
                                 <div class="btn-group">
                                     <a  target="_blank" href="/report/{{ $preProposta->id }}/proposta" + class="btn btn-primary" title="Proposta">
