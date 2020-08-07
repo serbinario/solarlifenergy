@@ -28,8 +28,8 @@ trait SimuladorV2
     private $valorModulo = 0;
     private $somaModulos = 0;
     private $somaInversor = 0;
-    private $somaestrutura = 0;
-    private $somaInfra = 0;
+    private $somaEstrutura = 0;
+    private $somaString = 0;
     private $somaKit = 0;
     private $totalInvestimento = 0;
     private $qtdModulos = 0;
@@ -73,12 +73,26 @@ trait SimuladorV2
         $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
 
 
-        //Salva a quantidade de MC4
+        //Salva a quantidade de MC4 e a soma do inversor
         foreach ($this->inversores as $inversor){
             $this->mc4 += $inversor['mc4'];
             $this->somaInversor += $inversor['valor'];
         }
 
+        $obs = "INVERSOR KSTAR ";
+        $array = $this->inversores;
+        for($i=0; $i < count($array); $i++ ){
+            $obs .= $array[$i]['potenciaInversor'] . "k";
+            $i < count($array) -1 ? $obs .= " + ": "";
+        }
+
+        $this->somaModulos = $this->calculaModulos($this->valorModulo);
+        $this->somaEstrutura = $this->calculaEsttutura();
+        $this->somaString = $this->calculaString();
+
+        $this->valorMaoObra = $this->calculaMaoObra();
+
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaString +  $this->valorMaoObra;
 
         $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$modulo->potencia);
 
@@ -90,7 +104,6 @@ trait SimuladorV2
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
-        
         return
             [
                 'success' => true,
@@ -101,24 +114,29 @@ trait SimuladorV2
                 'area_minima' => $area,
                 'co2' => $co2,
                 'valor_kw' => $valor_medio_kw,
-                'total_investimento' => round($this->totalInvestimento, 2),
-                'soma_modulos' =>  $this->calculaModulos($this->valorModulo),
+
+                //Equipamentos
+                'soma_modulos' =>  $this->somaModulos,
                 'qtd_inversores' => $this->qtdInversores,
                 'soma_inversor' => $this->somaInversor,
-                'inversores' => $this->inversores,
-                'soma_estrutura' => $this->calculaEsttutura(),
-                'soma_string' => $this->calculaString(),
-                'soma_kit' => $this->somaKit,
-                'reducao_media_consumo' => $reducaoMediaConsumo,
-                'geracao_fv' => $geracaoEnergiaFV,
-                'valor_mao_obra' => $this->calculaMaoObra(),
-                'valor_franqueadora' =>  $this->valorFranqueadora,
+                'soma_estrutura' => $this->somaEstrutura,
+                'soma_string' => $this->somaString,
                 'total_equipamentos' =>
                     $this->somaModulos
                     + $this->somaInversor
-                    + $this->somaestrutura
-                    + $this->somaInfra
-                    + $this->somaKit
+                    + $this->somaEstrutura
+                    + $this->somaString,
+
+                //Seviço Operacional
+                'valor_mao_obra' =>  $this->valorMaoObra,
+                'total_investimento' => round($this->totalInvestimento, 2),
+
+                'inversores' => $this->inversores,
+                'reducao_media_consumo' => $reducaoMediaConsumo,
+                'geracao_fv' => $geracaoEnergiaFV,
+                'valor_franqueadora' =>  $this->valorFranqueadora,
+                'obs' => $obs
+
             ];
     }
 
@@ -265,10 +283,10 @@ trait SimuladorV2
         $this->somaModulos = $this->qtdModulos * $basePreco->valor_modulo;
         $this->qtdInversores = 1;
         $this->somaInversor = $this->somaModulos * $basePreco->inversor_mult;
-        $this->somaestrutura = $this->somaModulos * $basePreco->estrutura_mult;
-        $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->infra_mult;
-        $this->somaKit = ($this->somaModulos + $this->somaInversor + $this->somaestrutura) * $basePreco->kit_moni_mult;
-        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
+        $this->somaEstrutura = $this->somaModulos * $basePreco->estrutura_mult;
+        $this->somaInfra = ($this->somaModulos + $this->somaInversor + $this->somaEstrutura) * $basePreco->infra_mult;
+        $this->somaKit = ($this->somaModulos + $this->somaInversor + $this->somaEstrutura) * $basePreco->kit_moni_mult;
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaInfra + $this->somaKit;
     }
 
     private function calculaGeracaoFranquia($inversor, $estruturaEletrica, $modulo, $valorModulo){
@@ -276,10 +294,10 @@ trait SimuladorV2
         $this->qtdInversores = count($inversor);
         $this->somaInversor = array_sum($inversor);
         $this->valorModulo = $valorModulo;
-        $this->somaestrutura = $this->qtdModulos * $estruturaEletrica->valor_estrutura;
+        $this->somaEstrutura = $this->qtdModulos * $estruturaEletrica->valor_estrutura;
         $this->somaInfra = $this->qtdModulos * $estruturaEletrica->valor_eletrica;
-        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
-        $this->valorFranqueadora = ($modulo->valor * $this->qtdModulos) + $this->somaInversor + $this->somaestrutura + $this->somaInfra + $this->somaKit;
+        $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaInfra + $this->somaKit;
+        $this->valorFranqueadora = ($modulo->valor * $this->qtdModulos) + $this->somaInversor + $this->somaEstrutura + $this->somaInfra + $this->somaKit;
 
     }
 

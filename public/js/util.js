@@ -22,8 +22,34 @@ function formatMoney(n, c, d, t) {
 }
 
 function realDolar(valor) {
-    valor = valor.replace(/[$.]+/g,"");
+    valor = valor.replace(".","");
+    if (valor.length > 10) {
+        valor = valor.replace(".","");
+
+    }
     valor = valor.replace(",",".");
+    //console.log(valor)
     return valor;
+}
+
+function getMoney( str )
+{
+    return str.replace(/([0-9]{2})$/g, ",$1");
+}
+
+function formatarMoeda() {
+    var elemento = document.getElementById('valor');
+    var valor = elemento.value;
+
+    valor = valor + '';
+    valor = parseInt(valor.replace(/[\D]+/g,''));
+    valor = valor + '';
+    valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+    if (valor.length > 6) {
+        valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+
+    elemento.value = valor;
 }
 

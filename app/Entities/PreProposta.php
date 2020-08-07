@@ -44,6 +44,8 @@ class PreProposta extends Model
         'data_validade',
         'monthly_usage',
         'preco_medio_instalado',
+        'valor_franquia',
+        'desconto_equipamentos',
         'potencia_instalada',
         'total_equipamentos',
         'total_servico_operacional',
@@ -88,6 +90,7 @@ class PreProposta extends Model
         'qtd_mud_pde', 'produto9_preco', 'produto9_nf',
         'qtd_substacao', 'produto10_preco', 'produto10_nf',
         'qtd_refor_estrutura', 'produto11_preco', 'produto11_nf',
+        'qtd_homologacao_projeto', 'produto12_preco', 'produto12_nf',
         'co2',
         'reducao_media_consumo',
         'gera_fv_jan',
@@ -188,6 +191,11 @@ class PreProposta extends Model
     }
 
     public function getEconomiaAnulaAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
+
+    public function getDescontoEquipamentosAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
@@ -293,6 +301,11 @@ class PreProposta extends Model
         return $this->converteInglesReal($value);
     }
 
+    public function getProduto12PrecoAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
+
     public function getProduto1NfAttribute($value)
     {
         return $this->converteInglesReal($value);
@@ -344,6 +357,10 @@ class PreProposta extends Model
     }
 
     public function getProduto11NfAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
+    public function getProduto12NfAttribute($value)
     {
         return $this->converteInglesReal($value);
     }
