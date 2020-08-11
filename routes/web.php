@@ -33,6 +33,9 @@ Route::post('criarContrato/', 'UtilController@criarContrato')
 Route::post('arquivarProposta/', 'UtilController@arquivarProposta')
     ->name('arquivarProposta.arquivarProposta');
 
+Route::post('simular/', 'UtilController@simular')
+    ->name('simular.simular');
+
 Route::post('arquivarProjeto/', 'UtilController@arquivarProjeto')
     ->name('arquivarProjeto.arquivarProjeto');
 
