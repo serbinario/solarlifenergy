@@ -62,6 +62,18 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="valor_franqueadora"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
+	<field name="valor_franquia" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="valor_franquia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="total_servico_operacional" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total_servico_operacional"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="total_equipamentos" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total_equipamentos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
 	<field name="potencia_instalada" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="potencia_instalada"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
@@ -342,6 +354,18 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="produto11_nf"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
+	<field name="qtd_homologacao_projeto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="qtd_homologacao_projeto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="produto12_preco" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="produto12_preco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="produto12_nf" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="produto12_nf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
 	<field name="co2" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="co2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
@@ -398,15 +422,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="reducao_media_consumo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="total_servico_operacional" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="total_servico_operacional"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
-	</field>
-	<field name="total_equipamentos" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="total_equipamentos"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
-	</field>
-	<field name="entrada1_valor" class="java.lang.Double">
+	<field name="entrada1_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada1_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -414,7 +430,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="recurso1_banco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="entrada2_valor" class="java.lang.Double">
+	<field name="entrada2_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada2_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -422,7 +438,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="recurso2_banco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="entrada3_valor" class="java.lang.Double">
+	<field name="entrada3_valor" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="entrada3_valor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -430,11 +446,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="qtd_parcelas_entrada2"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="recurso_proprio" class="java.lang.Double">
+	<field name="recurso_proprio" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="recurso_proprio"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="valor_vencimento" class="java.lang.Double">
+	<field name="valor_vencimento" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="valor_vencimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -462,7 +478,23 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="pre_proposta_obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_112" class="java.lang.Long">
+	<field name="pendencia" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pendencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="pendencia_obs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pendencia_obs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="arquivado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="arquivado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="desconto_equipamentos" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="desconto_equipamentos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="COLUMN_120" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -534,6 +566,14 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
+	<field name="COLUMN_138" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_139" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
 	<field name="mae" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="mae"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -576,6 +616,10 @@ where pre_propostas.id =  $P{id}]]>
 	</field>
 	<field name="data_nascimento" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_151" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="nacionalidade" class="java.lang.String">
@@ -3075,6 +3119,50 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{valor_descontos} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{valor_descontos}) : ""]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="100" y="179" width="240" height="15" uuid="fd8eb454-a688-48b4-aea9-c2c655361731">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<text><![CDATA[HOMOLOGAÇÃO PROJETO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="175" width="90" height="15" uuid="777324a4-bf4a-4107-86eb-9a523ccd500d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qtd_homologacao_projeto}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="430" y="175" width="90" height="15" uuid="e397e216-7947-470a-89e6-d0ee4e5bfda3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto12_preco}.doubleValue())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="520" y="175" width="110" height="15" uuid="75f39988-00ec-45e3-82e6-7cace75ba9aa">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto12_nf}.doubleValue())]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -3101,9 +3189,9 @@ ou de difícil acesso]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="166" width="788" height="50" uuid="a5b48909-85cd-496d-97f0-3a16e32d7bd3"/>
-				<text><![CDATA[6. Esta planilha pode ser usada após a apresentação do projeto.
-5. Validade da proposta: 30 dias
-6. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
+				<text><![CDATA[5. Esta planilha pode ser usada após a apresentação do projeto.
+6. Validade da proposta: 30 dias
+7. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
 instalação com todos os equipamentos funcionando em perfeito.]]></text>
 			</staticText>
 			<staticText>
