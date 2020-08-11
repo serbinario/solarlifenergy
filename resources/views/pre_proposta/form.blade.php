@@ -486,7 +486,7 @@
 
                             <tr>
                                 <td><input class="form-control input-sm" name="produto1" type="text" id="produto1" value="{{ old('produto1', isset($preProposta->produto1) ? $preProposta->produto1 : "MÓDULO FV DAH") }}" min="0" max="10" placeholder="Nome do módulo"></td>
-                                <td><input   class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
+                                <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
                                 <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm money" name="produto1_preco" type="text" id="produto1_preco" value="{{ old('produto1_preco', isset($preProposta->produto1_preco) ? $preProposta->produto1_preco : null) }}" min="0" max="10" placeholder="Preço do Módulo"></td>
                                 <td><input readonly class="form-control input-sm money" name="produto1_nf" type="text" id="produto1_nf" value="{{ old('produto1_nf', isset($preProposta->produto1_nf) ? $preProposta->produto1_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                             </tr>
@@ -849,6 +849,7 @@
     </div>
 </div>
             @endif
+
 
 
 </div>

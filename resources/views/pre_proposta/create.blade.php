@@ -37,12 +37,14 @@
                         </div>
                     </div>
                     {{ csrf_field() }}
-                    @include ('pre_proposta.form', [ 'preProposta' => null,   ])
+                    @include ('pre_proposta.form_create', [ 'preProposta' => null,   ])
 
                     <div class="card-actionbar">
                         <div class="card-actionbar-row">
+                            <button id="simular" type="button" class="btn btn-flat btn-primary ink-reaction">Simular</button>
                             <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                             <button type="submit" class="btn btn-flat btn-primary ink-reaction">Salvar</button>
+
                         </div>
                     </div>
                 </div><!--end .card -->

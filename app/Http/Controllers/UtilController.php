@@ -13,6 +13,7 @@ use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
 use Serbinario\Entities\ProjetosFinalizando;
 use Serbinario\Entities\ProjetosPrioridade;
+use Serbinario\Traits\SimuladorV2;
 use Serbinario\Traits\UtilReports;
 use Serbinario\User;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ use Serbinario\Entities\Projetov2;
 
 class UtilController extends Controller
 {
-    use UtilReports;
+    use UtilReports, SimuladorV2;
     private $token;
     /**
      * Create a new controller instance.
@@ -50,6 +51,10 @@ class UtilController extends Controller
         $usersJson = json_encode($result);
         return $usersJson;
 
+    }
+
+    public function simular(Request $request){
+	    dd($request->all());
     }
 
     public function arquivarProposta(Request $request){
@@ -110,13 +115,10 @@ class UtilController extends Controller
         $ip = request()->ip();
 
         $validator = \Validator::make($request->all(), [
-            'nome' => 'required',
-            'email' => 'required',
-            'valor_tarifa' => 'required',
-            'gasto_mensal' => 'required',
-            'telefone' => 'required',
-            'cidade' => 'required',
-            'cep' => 'required',
+            'monthly_usage' => 'required',
+            'estado_id' => 'required',
+            'cidade_id' => 'required',
+            'modulo_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -125,94 +127,18 @@ class UtilController extends Controller
             ]);
         }
 
-        $nome = $request->get('nome');
-        $email = $request->get('email');
-        $valor_tarifa = $request->get('valor_tarifa');
-        $gasto_mensal = $request->get('gasto_mensal');
-        $telefone = $request->get('telefone');
-        $cidade = $request->get('cidade');
-
-        $valor_medio_kw = $gasto_mensal * $valor_tarifa;
-
-        switch ($valor_medio_kw) {
-            case $valor_medio_kw <= 300:
-                $inversor_mult = 0.56;
-                $estrutura_mult = 0.29;
-                $infra_mult = 0.18;
-                $kit_moni = 0.05;
-                $valor_modulo = 940;
-                break;
-            case $valor_medio_kw >= 301 && $valor_medio_kw <= 500:
-                $inversor_mult = 0.48;
-                $estrutura_mult = 0.27;
-                $infra_mult = 0.06;
-                $kit_moni = 0.05;
-                $valor_modulo = 890;
-                break;
-            case $valor_medio_kw >= 501 && $valor_medio_kw <= 800:
-                $inversor_mult = 0.48;
-                $estrutura_mult = 0.18;
-                $infra_mult = 0.03;
-                $kit_moni = 0.05;
-                $valor_modulo = 880;
-                break;
-            case $valor_medio_kw >= 801 && $valor_medio_kw <= 1200:
-                $inversor_mult = 0.4;
-                $estrutura_mult = 0.2;
-                $infra_mult = 0.04;
-                $kit_moni = 0.016;
-                $valor_modulo = 880;
-                break;
-            case $valor_medio_kw >= 1201 && $valor_medio_kw <= 4000:
-                $inversor_mult = 0.28;
-                $estrutura_mult = 0.11;
-                $infra_mult = 0.03;
-                $kit_moni = 0.01;
-                $valor_modulo = 860;
-                break;
-            case $valor_medio_kw >= 4001 && $valor_medio_kw <= 5800:
-                $inversor_mult = 0.28;
-                $estrutura_mult = 0.11;
-                $infra_mult = 0.03;
-                $kit_moni = 0.01;
-                $valor_modulo = 860;
-                break;
-            case $valor_medio_kw >= 5801:
-                $inversor_mult = 0.26;
-                $estrutura_mult = 0.07;
-                $infra_mult = 0.04;
-                $kit_moni = 0.004;
-                $valor_modulo = 860;
-                break;
-        }
-
-        $cidade = Cidade::where('nome', '=', $cidade)->first();
-
-        $qtdModulos = $this->getQtdModulos($valor_medio_kw, 0,'4.6', 5.71, '30', '0.14', '1.7');
-
-        $potenciaGerador = $this->getGeradorKwp($qtdModulos, '330');
-
-        $area = $this->getArea($qtdModulos, '2.1', '1.15');
-
-        $co2 = $this->getCo2($potenciaGerador);
-
-        $somaModulos = $qtdModulos * $valor_modulo;
-        $somaInversor = $somaModulos * $inversor_mult;
-        $somaestrutura = $somaModulos * $estrutura_mult;
-        $somaInfra = ($somaModulos + $somaInversor + $somaestrutura) * $infra_mult;
-        $somaKit = ($somaModulos + $somaInversor + $somaestrutura) * $kit_moni;
-
-        $total_nvestimento = $somaModulos + $somaInversor + $somaestrutura + $somaInfra + $somaKit;
+        $return = $this->simularGeracao($request);
 
         return \Illuminate\Support\Facades\Response::json(
             [
                 'success' => true,
-                'qtd_modulos' => $qtdModulos,
-                'potencia_gerador' => $potenciaGerador,
-                'area_minima' => $area,
-                'c02' => $co2,
-                'valor_kw' => $valor_medio_kw,
-                'total_nvestimento' => round($total_nvestimento, 2)
+                'qtd_modulos' => $return['qtd_modulos'],
+                'wkp' => $return['potencia_gerador'],
+                'area_minima' => $return['area_minima'],
+                'c02' => $return['co2'],
+                'valor_kw' => "",
+                //round(1, 2)
+                'total_nvestimento' => $return['total_investimento']
             ]
         );
     }
