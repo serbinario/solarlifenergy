@@ -54,6 +54,14 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="monthly_usage"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
+	<field name="equipe_tecnica" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="equipe_tecnica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="valor_modulo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="valor_modulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
 	<field name="preco_medio_instalado" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="preco_medio_instalado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
@@ -494,7 +502,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="desconto_equipamentos"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_120" class="java.lang.Long">
+	<field name="COLUMN_122" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -566,11 +574,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_138" class="java.sql.Timestamp">
+	<field name="COLUMN_140" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_139" class="java.sql.Timestamp">
+	<field name="COLUMN_141" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -618,7 +626,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_151" class="java.lang.Integer">
+	<field name="COLUMN_153" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -2004,7 +2012,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto2_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="520" y="220" width="110" height="15" uuid="8404869b-9e75-43f9-b640-b6d73556232f">
+				<reportElement x="520" y="190" width="110" height="15" uuid="8404869b-9e75-43f9-b640-b6d73556232f">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2016,19 +2024,6 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto8_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="340" y="175" width="90" height="15" uuid="cf4fa80c-5d6d-4412-9462-2b91cd77a3f0">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="340" y="145" width="90" height="15" uuid="4821defc-57bd-491c-a041-f21b7a8fb428">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -2056,7 +2051,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto4_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="220" width="90" height="15" uuid="f893f281-c979-4124-a40e-31ed3ef563ce">
+				<reportElement x="430" y="190" width="90" height="15" uuid="f893f281-c979-4124-a40e-31ed3ef563ce">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2069,7 +2064,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto8_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="205" width="90" height="15" uuid="949e7145-1222-463d-add3-d72ea1784719">
+				<reportElement x="430" y="175" width="90" height="15" uuid="949e7145-1222-463d-add3-d72ea1784719">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2082,7 +2077,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto7_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="220" width="240" height="15" uuid="5f34eee3-7f67-4cf6-a65d-7fab0490a032">
+				<reportElement x="100" y="190" width="240" height="15" uuid="5f34eee3-7f67-4cf6-a65d-7fab0490a032">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2096,7 +2091,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[INSTALAÇÃO DE NOVO PDE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="340" y="220" width="90" height="15" uuid="27d56a65-686c-45c4-8524-fd67d71646c8">
+				<reportElement x="340" y="190" width="90" height="15" uuid="27d56a65-686c-45c4-8524-fd67d71646c8">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2109,7 +2104,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{qtd_inst_pde}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="520" y="235" width="110" height="15" uuid="6afdd73c-30eb-412a-9f8e-1bab6df24072">
+				<reportElement x="520" y="205" width="110" height="15" uuid="6afdd73c-30eb-412a-9f8e-1bab6df24072">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2134,20 +2129,6 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto4_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="100" y="175" width="240" height="15" uuid="f77ef51f-0c33-49b2-95c4-c06465fcf0e5">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="430" y="145" width="90" height="15" uuid="3626108d-d83e-4ab9-b16e-7a9e2756df33">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -2190,7 +2171,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{produto5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="235" width="90" height="15" uuid="8d78511c-1f40-4760-9eae-38a69a134442">
+				<reportElement x="430" y="205" width="90" height="15" uuid="8d78511c-1f40-4760-9eae-38a69a134442">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2202,21 +2183,8 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto9_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="520" y="175" width="110" height="15" uuid="e39d1c84-9203-4b64-a1f3-46c414a91b51">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="520" y="250" width="110" height="15" uuid="aff4cb4a-c1b2-411a-afee-5cad4ee0baf0">
+				<reportElement x="520" y="220" width="110" height="15" uuid="aff4cb4a-c1b2-411a-afee-5cad4ee0baf0">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2274,19 +2242,6 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{qtd_estrutura}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="520" y="190" width="110" height="15" uuid="8acf7a8a-e3cb-4c72-a47f-92576c5948cd">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto6_nf}.doubleValue())]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="100" y="130" width="240" height="15" uuid="5b574d4e-54ec-4152-9d87-6960dce42d81">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -2330,7 +2285,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto1_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="340" y="250" width="90" height="15" uuid="ae25536c-ea51-4153-b734-baa291c5c63b">
+				<reportElement x="340" y="220" width="90" height="15" uuid="ae25536c-ea51-4153-b734-baa291c5c63b">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2343,7 +2298,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{qtd_substacao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="520" y="205" width="110" height="15" uuid="77a03ba1-8fd5-4bf0-9d67-5f3f52b13e09">
+				<reportElement x="520" y="175" width="110" height="15" uuid="77a03ba1-8fd5-4bf0-9d67-5f3f52b13e09">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2411,32 +2366,6 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{qtd_paineis}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="430" y="175" width="90" height="15" uuid="ffc5eef5-d1fb-4206-ba98-8d7ff3530a12">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="190" width="90" height="15" uuid="c357886c-232d-4c79-9429-b8faac0ddc54">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto6_preco}.doubleValue())]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="340" y="100" width="90" height="15" uuid="7bf23823-d6af-42d5-a3ab-a7129eda2ede">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -2451,7 +2380,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{qtd_inversores}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="250" width="90" height="15" uuid="bd3a8b34-1b06-4ae1-be35-c12c11653e65">
+				<reportElement x="430" y="220" width="90" height="15" uuid="bd3a8b34-1b06-4ae1-be35-c12c11653e65">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2478,22 +2407,8 @@ ou de difícil acesso]]></text>
 				</textElement>
 				<text><![CDATA[VALOR NF-E]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="100" y="190" width="240" height="15" uuid="e8943be0-c7bb-479b-b6a9-79fe638353a3">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<text><![CDATA[HOMOLOGAÇÃO CONCESSIONÁRIA]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="340" y="235" width="90" height="15" uuid="e253f607-edfa-4971-b1ea-dcf7cb7f61d7">
+				<reportElement x="340" y="205" width="90" height="15" uuid="e253f607-edfa-4971-b1ea-dcf7cb7f61d7">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2519,7 +2434,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto3_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="205" width="240" height="15" uuid="78c51bb8-7741-4642-a624-e975e0b4d8fc">
+				<reportElement x="100" y="175" width="240" height="15" uuid="78c51bb8-7741-4642-a624-e975e0b4d8fc">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2590,20 +2505,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[SERVIÇOS OPERACIONAIS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="340" y="190" width="90" height="15" uuid="77caaae0-2688-4249-a8a4-b8d8a0be1cc2">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{qtd_homologacao}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="340" y="205" width="90" height="15" uuid="640bbda2-f795-4510-b48c-bf13df9e9f76">
+				<reportElement x="340" y="175" width="90" height="15" uuid="640bbda2-f795-4510-b48c-bf13df9e9f76">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2616,7 +2518,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{qtd_mao_obra}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="250" width="240" height="15" uuid="34f11035-f635-459b-9e92-1bdad277dacb">
+				<reportElement x="100" y="220" width="240" height="15" uuid="34f11035-f635-459b-9e92-1bdad277dacb">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2630,7 +2532,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[SUBESTAÇÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="235" width="240" height="15" uuid="f0f57ddf-9a6e-41cb-90d1-7c1be3a3f6b1">
+				<reportElement x="100" y="205" width="240" height="15" uuid="f0f57ddf-9a6e-41cb-90d1-7c1be3a3f6b1">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2658,7 +2560,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{produto2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="265" width="240" height="15" uuid="d2bfccdb-283a-4ce0-b3ef-0cde0e89e27e">
+				<reportElement x="100" y="235" width="240" height="15" uuid="d2bfccdb-283a-4ce0-b3ef-0cde0e89e27e">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<box>
@@ -2671,7 +2573,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[REFORÇO ESTRUTURAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="340" y="265" width="90" height="15" uuid="276aa9c9-009c-4be9-8f41-9e073ea0450d">
+				<reportElement x="340" y="235" width="90" height="15" uuid="276aa9c9-009c-4be9-8f41-9e073ea0450d">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2685,7 +2587,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{qtd_refor_estrutura}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="265" width="90" height="15" uuid="e77dfaf2-90ef-40df-b6d2-9c6fbdacb002">
+				<reportElement x="430" y="235" width="90" height="15" uuid="e77dfaf2-90ef-40df-b6d2-9c6fbdacb002">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2699,7 +2601,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto11_preco}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="520" y="265" width="110" height="15" uuid="9594830b-37d1-4bf6-b9fd-b4ded1e8c3f0">
+				<reportElement x="520" y="235" width="110" height="15" uuid="9594830b-37d1-4bf6-b9fd-b4ded1e8c3f0">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2727,7 +2629,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto1_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="340" y="280" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="00662b8d-56d8-482f-ac88-24de0c47a735">
+				<reportElement mode="Opaque" x="340" y="250" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="00662b8d-56d8-482f-ac88-24de0c47a735">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -2742,7 +2644,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[TOTAL EQUIPAMENTOS>>]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="520" y="280" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="5d33512c-b2ea-4510-b9ca-fbbbc028890b">
+				<reportElement mode="Opaque" x="520" y="250" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="5d33512c-b2ea-4510-b9ca-fbbbc028890b">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -2755,7 +2657,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{total_equipamentos} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_equipamentos}) : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="340" y="295" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="abda0bd0-a583-49cc-8a53-15c6669cd753">
+				<reportElement mode="Opaque" x="340" y="265" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="abda0bd0-a583-49cc-8a53-15c6669cd753">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -2770,7 +2672,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[TOTAL OPERACIONAL>>]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="520" y="295" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="da0247d1-2306-4cd9-97d9-5add4f8e2ddd">
+				<reportElement mode="Opaque" x="520" y="265" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="da0247d1-2306-4cd9-97d9-5add4f8e2ddd">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -2784,7 +2686,7 @@ ou de difícil acesso]]></text>
 				<textFieldExpression><![CDATA[$F{total_servico_operacional} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{total_servico_operacional}) : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="340" y="325" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="15b4eea9-7860-4890-a3f1-c0c8d085470b">
+				<reportElement mode="Opaque" x="340" y="295" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="15b4eea9-7860-4890-a3f1-c0c8d085470b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -2799,7 +2701,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[TOTAL GERAL>>]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="520" y="325" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="2d7f4d50-df11-4950-bd8d-d9df2fcd8c28">
+				<reportElement mode="Opaque" x="520" y="295" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="2d7f4d50-df11-4950-bd8d-d9df2fcd8c28">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -3093,7 +2995,7 @@ ou de difícil acesso]]></text>
 				<reportElement x="0" y="501" width="100" height="1" uuid="40fe0b13-0d18-4acd-a425-237cce229b6a"/>
 			</break>
 			<staticText>
-				<reportElement mode="Opaque" x="340" y="310" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="fee62b83-0c0c-4eba-8f84-9607f1a93a71">
+				<reportElement mode="Opaque" x="340" y="280" width="180" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="fee62b83-0c0c-4eba-8f84-9607f1a93a71">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -3107,7 +3009,7 @@ ou de difícil acesso]]></text>
 				<text><![CDATA[DESCONTOS>>]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="520" y="310" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="e15f35c7-1fcf-4921-ad18-8ec31d75421a">
+				<reportElement mode="Opaque" x="520" y="280" width="110" height="15" forecolor="#FCF7F7" backcolor="#17375E" uuid="e15f35c7-1fcf-4921-ad18-8ec31d75421a">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<box>
@@ -3118,50 +3020,6 @@ ou de difícil acesso]]></text>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{valor_descontos} != null ? java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{valor_descontos}) : ""]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="100" y="179" width="240" height="15" uuid="fd8eb454-a688-48b4-aea9-c2c655361731">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<text><![CDATA[HOMOLOGAÇÃO PROJETO]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="340" y="175" width="90" height="15" uuid="777324a4-bf4a-4107-86eb-9a523ccd500d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{qtd_homologacao_projeto}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="175" width="90" height="15" uuid="e397e216-7947-470a-89e6-d0ee4e5bfda3">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto12_preco}.doubleValue())]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="520" y="175" width="110" height="15" uuid="75f39988-00ec-45e3-82e6-7cace75ba9aa">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt","br")).format($F{produto12_nf}.doubleValue())]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="535">

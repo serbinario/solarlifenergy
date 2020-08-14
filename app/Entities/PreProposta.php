@@ -43,6 +43,8 @@ class PreProposta extends Model
         'codigo',
         'data_validade',
         'monthly_usage',
+        'valor_modulo',
+        'equipe_tecnica',
         'preco_medio_instalado',
         'valor_franquia',
         'desconto_equipamentos',
@@ -233,6 +235,22 @@ class PreProposta extends Model
     public function getdataFinanciamentoBancarioAttribute($value)
     {
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+
+    public function getEquipeTecnicaAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
+
+    public function getValorFranquiaAttribute($value)
+    {
+        return $this->converteInglesReal($value);
+    }
+
+    public function getValorModuloAttribute($value)
+    {
+        return $this->converteInglesReal($value);
     }
 
     public function getProduto1PrecoAttribute($value)
