@@ -19,6 +19,7 @@ use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
 use Serbinario\Traits\Simulador;
 use Serbinario\Traits\SimuladorV2;
+use Serbinario\Traits\UtilEntities;
 use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
@@ -222,6 +223,8 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
+
+
             $data['pre_proposta_obs'] = $return['obs'];
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
@@ -238,8 +241,21 @@ class PrePropostaController extends Controller
 
             $data['entrada2_valor'] = $return['total_investimento'] * 0.15;
 
-            $data['produto1_nf'] = $return['soma_modulos'];
+
             $data['produto1_preco'] = $return['valor_modulo'];
+            //dd($return);
+            //////////////
+            $recalculoModulo = ($return['soma_modulos']  + $return['valor_mao_obra']) / $return['qtd_modulos'];
+            $data['produto1_preco'] =  round($recalculoModulo,2);
+
+            $data['produto1_nf'] = $return['soma_modulos']  + $return['valor_mao_obra'];
+
+            //dd($data['produto1_nf']);
+            $data['valor_modulo'] = $return['valor_modulo'];
+
+            //Valor da equipe técnica + produto7_nf
+            $data['equipe_tecnica'] = $return['valor_mao_obra'];
+
 
             $data['qtd_inversores'] = 1;
             //$data['qtd_inversores'] = $return['qtd_inversores'];
@@ -258,8 +274,8 @@ class PrePropostaController extends Controller
             //$data['produto5_nf'] = $return['soma_kit'];
             //$data['produto5_preco'] = $return['soma_kit'];
 
-            $data['produto7_nf'] = $return['valor_mao_obra'];
-            $data['produto7_preco'] = $return['valor_mao_obra'];
+            //$data['produto7_nf'] = $return['valor_mao_obra'];
+            //$data['produto7_preco'] = $return['valor_mao_obra'];
 
 
             $data['co2'] = $return['co2'];
@@ -351,8 +367,66 @@ class PrePropostaController extends Controller
             //dd((int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] +(int)$data['desconto_equipamentos']);
 
             //$data['valor_franquia'] =  (int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] + (int)$data['desconto_equipamentos'];
-            $data['valor_franquia'] =  $data['produto12_nf'];
+            //$data['valor_franquia'] =  $data['produto12_nf'];
 
+
+            // Recalcula o valor dos módulos
+            $recalculoModulo = (($data['valor_modulo'] * $data['qtd_paineis']) + $data['valor_franquia'] + $data['equipe_tecnica']) / $data['qtd_paineis'];
+            $data['produto1_preco'] =  round($recalculoModulo,2);
+            $somaModulos = round($recalculoModulo,2) * $data['qtd_paineis'];
+            $data['produto1_nf'] = $somaModulos;
+            // FIM Recalcula o valor dos módulos
+
+            //dd($data['qtd_paineis'], $data['produto1_preco'],  $data['produto1_nf'], $somaModulos);
+
+            //Calculo do valor Total dos equipamentos
+            $somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
+                + $this->convertesRealIngles($preProposta->produto3_nf)
+                + $this->convertesRealIngles($preProposta->produto4_nf)
+                + $this->convertesRealIngles($preProposta->produto5_nf)
+                + $somaModulos;
+            $data['total_equipamentos'] = $somaEquipamentos;
+            //FIM Calculo do valor Total dos equipamentos
+
+            //Servicos Operacionais
+            $maoObra            = $data['produto7_nf'];
+            $instalacaoPDE      = $data['produto8_nf'];
+            $mudancaPDE         = $data['produto9_nf'];
+            $substacao          = $data['produto10_nf'];
+            $reforcoEstrutural  = $data['produto11_nf'];
+            $somaServicosOperacionais = $data['total_servico_operacional'];
+            //Fim Servicos Operacionais
+
+            $descontoFranquia = $data['valor_descontos'];
+
+            //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
+            $data['preco_medio_instalado'] = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
+
+
+            //[RF002-RN002]
+            //$data['valor_franqueadora'] =  (int)$preProposta->produto2_nf + (int)$preProposta->produto3_nf + (int)$preProposta->produto4_nf + (int)$preProposta->produto5_nf;
+
+            $valor_franquia = $data['valor_franquia'];
+            $equipe_tecnica = $data['equipe_tecnica'];
+            $valor_modulo   = $data['valor_modulo'];
+
+
+
+
+            /*
+             * Valor da franquia (quantidade modulo * valor Modulo ) + inversor + Estrutura + String Box + kit Monitoramentep
+             */
+            $data['valor_franqueadora'] = $this->convertesRealIngles($preProposta->produto2_nf)
+                + $this->convertesRealIngles($preProposta->produto3_nf)
+                + $this->convertesRealIngles($preProposta->produto4_nf)
+                + $this->convertesRealIngles($preProposta->produto5_nf)
+                + ((int)$data['valor_modulo'] * $data['qtd_paineis']);
+
+            //dd( $data['valor_franqueadora'], (int)$data['valor_modulo'], $this->convertesRealIngles($preProposta->produto2_nf),$this->convertesRealIngles($preProposta->produto3_nf), $this->convertesRealIngles($preProposta->produto4_nf),$this->convertesRealIngles($preProposta->produto5_nf));
+
+            //$data['valor_franqueadora'] = $data['total_equipamentos'] - $data['equipe_tecnica'] - $data['valor_franquia'];
+
+            //dd($data['valor_modulo']);
 
             $preProposta->update($data);
 
@@ -407,6 +481,8 @@ class PrePropostaController extends Controller
             'data_validade',
             'power',
             'monthly_usage',
+            'valor_modulo',
+            'equipe_tecnica',
             'qtd_paineis' ,
             'preco_medio_instalado',
             'total_equipamentos',

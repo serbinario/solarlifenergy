@@ -222,7 +222,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-
+            $data['qtd_paineis'] = $return['qtd_modulos'];
             $data['qtd_paineis'] = $return['qtd_modulos'];
 
             $data['potencia_instalada'] = $return['potencia_gerador'];
