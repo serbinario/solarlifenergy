@@ -779,7 +779,7 @@
             <div class="form-group"{{ $errors->has('potencia_instalada') ? 'has-error' : '' }}">
                 <label for="potencia_instalada" class="col-sm-6 control-label text-bold">Pot. do gerador (KWp).:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm kwp" name="potencia_instalada" type="text" id="potencia_instalada" value="{{ old('potencia_instalada', isset($preProposta->potencia_instalada) ? $preProposta->potencia_instalada : null) }}" maxlength="10" placeholder="Enter quantity here...">
+                    <input readonly class="form-control input-sm kwp" name="potencia_instalada" type="text" id="potencia_instalada" value="{{ old('potencia_instalada', isset($preProposta->potencia_instalada) ? $preProposta->potencia_instalada : null) }}" maxlength="10" placeholder="Enter quantity here...">
                     {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
