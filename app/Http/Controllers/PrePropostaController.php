@@ -295,6 +295,8 @@ class PrePropostaController extends Controller
 
             $data['total_equipamentos'] = $return['total_equipamentos'];
 
+            //dd($return);
+
             $data['total_servico_operacional'] = 0;
 
             //[RF002-RN002]
@@ -306,10 +308,10 @@ class PrePropostaController extends Controller
             $data['valor_descontos'] = 0.0;
             $data['total_servico_operacional'] =  $return['valor_mao_obra'];
 
-           /* if ($return['qtd_modulos'] < 20){
+            if ($return['qtd_modulos'] < 20){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
-            }*/
+            }
             //dd($data);
             $preProposta = PreProposta::create($data);
             //;
@@ -407,9 +409,6 @@ class PrePropostaController extends Controller
             $valor_franquia = $data['valor_franquia'];
             $equipe_tecnica = $data['equipe_tecnica'];
             $valor_modulo   = $data['valor_modulo'];
-
-
-
 
             /*
              * Valor da franquia (quantidade modulo * valor Modulo ) + inversor + Estrutura + String Box + kit Monitoramentep

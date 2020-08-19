@@ -346,7 +346,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<text><![CDATA[CPF – MF nº:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="124" y="210" width="110" height="20" uuid="dcf4adec-15fa-4185-81bb-49b53fcfd47c">
+				<reportElement x="124" y="210" width="426" height="20" uuid="dcf4adec-15fa-4185-81bb-49b53fcfd47c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
