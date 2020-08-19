@@ -239,8 +239,6 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $return['total_investimento'];
 
-            $data['entrada2_valor'] = $return['total_investimento'] * 0.15;
-
 
             $data['produto1_preco'] = $return['valor_modulo'];
             //dd($return);
