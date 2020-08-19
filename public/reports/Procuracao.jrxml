@@ -35,7 +35,7 @@ p.estado,
 p.data_validade
  FROM procuracoes AS p
 INNER JOIN clientes AS c ON c.id = p.cliente_id
-WHERE p.id =  $P{id_procuracao} ]]>
+WHERE p.id =  $P{id_procuracao}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>
@@ -483,7 +483,7 @@ WHERE p.id =  $P{id_procuracao} ]]>
 				<textFieldExpression><![CDATA[$F{outorgante}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="300" width="557" height="150" uuid="d11bf5bf-2e42-47a2-83cb-379869b96912">
+				<reportElement x="0" y="301" width="557" height="150" uuid="d11bf5bf-2e42-47a2-83cb-379869b96912">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified">
