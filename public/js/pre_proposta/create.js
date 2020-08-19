@@ -33,6 +33,7 @@ $(document).ready(function () {
                 document.getElementById('max_one_payment').innerHTML = "R$ " + formatMoney(retorno.total_nvestimento)
                 document.getElementById('min_area').innerHTML = retorno.area_minima
                 document.getElementById('installed_power').innerHTML = retorno.wkp
+                document.getElementById('modulos').innerHTML = retorno.qtd_modulos
                 document.getElementById('simulator').style.display = 'flex';
             } else {
                 swal("Error", "Click no botão abaixo!", "error");

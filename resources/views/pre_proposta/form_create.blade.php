@@ -345,8 +345,13 @@
         <p><span class="simulator-v1-result_info-value" id="installed_power">10.7</span> kWp</p>
     </div>
     <div class="value">
+        <h3 class="simulator-v1-result">Módulos</h3>
+        <p><span class="simulator-v1-result_info-value" id="modulos">120</span></p>
+    </div>
+    <div class="value">
         <h3 class="simulator-v1-result">Área</h3>
         <p><span class="simulator-v1-result_info-value" id="min_area">102</span> m2</p>
     </div>
+
 </div>
 

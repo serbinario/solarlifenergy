@@ -344,7 +344,7 @@ div.value p {
     background-color: rebeccapurple;
 }
 
-@media (max-width: 900px)  {
+@media (max-width: 1300px)  {
 
     .result-container {
         flex-direction: column;
