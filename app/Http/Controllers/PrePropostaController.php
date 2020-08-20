@@ -177,7 +177,7 @@ class PrePropostaController extends Controller
         $prioridades = Prioridade::pluck('name','id')->all();
         $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
-        $modulos = Modulo::pluck('potencia','id')->all();
+        $modulos = Modulo::where('is_active', '=', 1)->pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
@@ -223,7 +223,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-
+           // dd($return);
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -239,14 +239,78 @@ class PrePropostaController extends Controller
             //Valor que a franqueada vai pagar
             $data['preco_medio_instalado'] = $return['total_investimento'];
 
+            //Corrigir esse item Deixar pelo Banco
+            $percentual = 0;
+
+            switch ($return['total_equipamentos']){
+                case $return['total_equipamentos'] < 20000  ;
+                $percentual = 7;
+                break;
+                case $return['total_equipamentos'] < 40000  ;
+                $percentual = 7;
+                break;
+                case $return['total_equipamentos'] < 100000  ;
+                    $percentual = 5;
+                    break;
+                case $return['total_equipamentos'] < 160000  ;
+                    $percentual = 5;
+                    break;
+                case $return['total_equipamentos'] < 240000  ;
+                    $percentual = 4;
+                    break;
+                case $return['total_equipamentos'] < 350000  ;
+                    $percentual = 4;
+                    break;
+                case $return['total_equipamentos'] < 650000  ;
+                    $percentual = 3;
+                    break;
+                default;
+                    $percentual = 2;
+            }
+
+            //Fim da correção
+
+            $participacao = ($return['total_equipamentos'] / 100) * $percentual;
+
 
             $data['produto1_preco'] = $return['valor_modulo'];
-            //dd($return);
             //////////////
-            $recalculoModulo = ($return['soma_modulos']  + $return['valor_mao_obra']) / $return['qtd_modulos'];
-            $data['produto1_preco'] =  round($recalculoModulo,2);
 
-            $data['produto1_nf'] = $return['soma_modulos']  + $return['valor_mao_obra'];
+            //Valor da soma dos módulos
+            $recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra']) / $return['qtd_modulos'];
+            $data['produto1_preco'] =  round($recalculoModulo,2);
+            $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
+            $data['produto1_nf'] = $somaModulos;
+
+            //Soma Inversor
+            $somaInversor = $return['soma_inversor'];
+            $data['produto2_nf'] = $somaInversor;
+            $data['produto2_preco'] = $somaInversor;
+
+            //Soma Estrutura
+            $somaEstrutura = $return['soma_estrutura'];
+            $data['produto3_nf'] =  $somaEstrutura;
+            $data['produto3_preco'] =  $somaEstrutura;
+
+            //Soma String
+            $somaString = $return['soma_string'];
+            $data['produto4_nf'] = $somaString;
+            $data['produto4_preco'] = $somaString;
+
+            $data['valor_franquia'] = $participacao;
+
+            //dd($return);
+
+            $somaEquipamentos = $somaModulos + $somaInversor + $somaEstrutura + $somaString;
+            $data['total_equipamentos'] = $somaEquipamentos;
+
+            $data['preco_medio_instalado'] = $somaEquipamentos;
+
+            //$data['total_equipamentos'] = $return['total_equipamentos'] + $return['valor_mao_obra'];
+
+
+            //dd($data['produto1_nf'], $data['produto1_preco']);
+
 
             //dd($data['produto1_nf']);
             $data['valor_modulo'] = $return['valor_modulo'];
@@ -259,15 +323,12 @@ class PrePropostaController extends Controller
             //$data['qtd_inversores'] = $return['qtd_inversores'];
 
             $data['produto2'] = $return['obs'];
-            $data['produto2_nf'] = $return['soma_inversor'];
-            $data['produto2_preco'] = $return['soma_inversor'];
-
-            $data['produto3_nf'] = $return['soma_estrutura'];
-            $data['produto3_preco'] = $return['soma_estrutura'];
 
 
-            $data['produto4_nf'] = $return['soma_string'];
-            $data['produto4_preco'] = $return['soma_string'];
+            //dd($data);
+
+
+
 
             //$data['produto5_nf'] = $return['soma_kit'];
             //$data['produto5_preco'] = $return['soma_kit'];
@@ -293,20 +354,16 @@ class PrePropostaController extends Controller
 
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
 
-            $data['total_equipamentos'] = $return['total_equipamentos'];
 
-            //dd($return);
+
 
             $data['total_servico_operacional'] = 0;
 
             //[RF002-RN002]
             $data['valor_franqueadora'] = $return['total_equipamentos'];
 
-            //Valor que a franqueada vai pagar
-            $data['preco_medio_instalado'] = $return['total_investimento'];
 
             $data['valor_descontos'] = 0.0;
-            $data['total_servico_operacional'] =  $return['valor_mao_obra'];
 
             if ($return['qtd_modulos'] < 20){
                 return back()->withInput()
@@ -424,6 +481,7 @@ class PrePropostaController extends Controller
             //$data['valor_franqueadora'] = $data['total_equipamentos'] - $data['equipe_tecnica'] - $data['valor_franquia'];
 
             //dd($data['valor_modulo']);
+            //dd($data);
 
             $preProposta->update($data);
 
@@ -486,7 +544,6 @@ class PrePropostaController extends Controller
             'total_servico_operacional',
             'desconto_equipamentos',
             'valor_franquia',
-            'potencia_instalada',
             'minima_area',
             'economia_anula',
             'preco_kwh',
