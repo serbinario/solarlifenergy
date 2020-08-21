@@ -65,7 +65,10 @@ class ContratoController extends Controller
                 'pre_propostas.potencia_instalada',
                 'contratos.ano'
             ]);
-        $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        $user = User::find(Auth::id());
+        if($user->hasRole('franquia')) {
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
 
         #Editando a grid
         return Datatables::of($rows)
@@ -75,8 +78,10 @@ class ContratoController extends Controller
                 if ($request->has('nome')) {
                     $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
-                $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-
+                $user = User::find(Auth::id());
+                if($user->hasRole('franquia')) {
+                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                }
             })
 
             ->addColumn('action', function ($row) {
