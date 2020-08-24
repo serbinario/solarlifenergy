@@ -73,6 +73,7 @@ trait SimuladorV2
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
         $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
 
+        $ModuloFabricante =  Produto::with('marca')->where('id' , '=', '2')->first()->marca->marca;
 
         //Salva a quantidade de MC4 e a soma do inversor
         foreach ($this->inversores as $inversor){
@@ -112,6 +113,7 @@ trait SimuladorV2
                 'valor_modulo' => $this->valorModulo,
                 'modulo_potencia' => $modulo->potencia,
                 'qtd_modulos' => $this->qtdModulos,
+                'modulo_marca' => $ModuloFabricante,
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
                 'co2' => $co2,

@@ -281,36 +281,41 @@ class PrePropostaController extends Controller
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
             $data['produto1_nf'] = $somaModulos;
+            $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'];
 
             //Soma Inversor
+            $data['qtd_inversores'] = 1;
             $somaInversor = $return['soma_inversor'];
             $data['produto2_nf'] = $somaInversor;
             $data['produto2_preco'] = $somaInversor;
 
             //Soma Estrutura
+            $data['qtd_estrutura'] = 1;
             $somaEstrutura = $return['soma_estrutura'];
             $data['produto3_nf'] =  $somaEstrutura;
             $data['produto3_preco'] =  $somaEstrutura;
+            $data['produto3'] = 'ESTRUTURA';
 
             //Soma String
+            $data['qtd_string_box'] = 1;
             $somaString = $return['soma_string'];
             $data['produto4_nf'] = $somaString;
             $data['produto4_preco'] = $somaString;
+            $data['produto4'] = 'STRING BOX';
+
+            //Kit Monitoramento
+            $data['qtd_kit_monitoramento'] = 1 ;
+            $somaString = $return['soma_string'];
+            $data['produto5_nf'] = 0;
+            $data['produto5_preco'] = 0;
+            $data['produto5'] = 'KIT MONITORAMENTO WIFI';
 
             $data['valor_franquia'] = $participacao;
-
-            //dd($return);
 
             $somaEquipamentos = $somaModulos + $somaInversor + $somaEstrutura + $somaString;
             $data['total_equipamentos'] = $somaEquipamentos;
 
             $data['preco_medio_instalado'] = $somaEquipamentos;
-
-            //$data['total_equipamentos'] = $return['total_equipamentos'] + $return['valor_mao_obra'];
-
-
-            //dd($data['produto1_nf'], $data['produto1_preco']);
-
 
             //dd($data['produto1_nf']);
             $data['valor_modulo'] = $return['valor_modulo'];
@@ -318,27 +323,10 @@ class PrePropostaController extends Controller
             //Valor da equipe técnica + produto7_nf
             $data['equipe_tecnica'] = $return['valor_mao_obra'];
 
-
-            $data['qtd_inversores'] = 1;
-            //$data['qtd_inversores'] = $return['qtd_inversores'];
-
             $data['produto2'] = $return['obs'];
 
 
-            //dd($data);
-
-
-
-
-            //$data['produto5_nf'] = $return['soma_kit'];
-            //$data['produto5_preco'] = $return['soma_kit'];
-
-            //$data['produto7_nf'] = $return['valor_mao_obra'];
-            //$data['produto7_preco'] = $return['valor_mao_obra'];
-
-
             $data['co2'] = $return['co2'];
-            //dd($data);
             $data['gera_fv_jan'] = $return['geracao_fv']['0'];
             $data['gera_fv_fev'] = $return['geracao_fv']['1'];
             $data['gera_fv_mar'] = $return['geracao_fv']['2'];
@@ -354,16 +342,37 @@ class PrePropostaController extends Controller
 
             $data['reducao_media_consumo'] = $return['reducao_media_consumo'];
 
-
-
-
             $data['total_servico_operacional'] = 0;
 
-            //[RF002-RN002]
             $data['valor_franqueadora'] = $return['total_equipamentos'];
 
-
             $data['valor_descontos'] = 0.0;
+
+            //Servicos Operacionais
+            $data['qtd_mao_obra'] = 0;
+            $data['produto7_preco'] =  0;
+            $data['produto7_nf'] =  0;
+            $data['produto7'] = 'MÃO-DE-OBRA DE INSTALAÇÃO (EQUIPE TÉCNICA)';
+
+            $data['qtd_inst_pde'] = 0;
+            $data['produto8_nf'] =  0;
+            $data['produto8_preco'] =  0;
+            $data['produto8'] = 'INSTALAÇÃO DE NOVO PDE';
+
+            $data['qtd_mud_pde'] = 0;
+            $data['produto9_nf'] =  0;
+            $data['produto9_preco'] =  0;
+            $data['produto9'] = 'MUDANÇA DE PDE';
+
+            $data['qtd_substacao'] = 0;
+            $data['produto10_nf'] =  0;
+            $data['produto10_preco'] =  0;
+            $data['produto10'] = 'SUBESTAÇÃO';
+
+            $data['qtd_refor_estrutura'] = 0;
+            $data['produto11_nf'] =  0;
+            $data['produto11_preco'] =  0;
+            $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
             if ($return['qtd_modulos'] < 20){
                 return back()->withInput()
