@@ -45,7 +45,7 @@ trait SimuladorV2
 
         $cidade = $request->get('cidade_id');
         $valor_medio_kw = (int)$request->get('monthly_usage');
-        $this->potenciaModulo = $request->get('panel_potencia');
+        $this->potenciaModulo = $request->get('modulo_id');
         $precoKwh = $request->get('preco_kwh');
 
         $modulo = Modulo::where('id', '=', $request->modulo_id)->first();
@@ -72,7 +72,8 @@ trait SimuladorV2
         }else{
             $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '1')->first()->preco_franquia;
         }
-
+//
+        //  dd($this->potenciaModulo, $this->valorModulo);
 
         $ModuloFabricante =  Produto::with('marca')->where('id' , '=', '2')->first()->marca->marca;
 
