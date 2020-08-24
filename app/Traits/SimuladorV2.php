@@ -62,14 +62,17 @@ trait SimuladorV2
             (float)$modulo->rendimento -0.01,
             $modulo->area_geracao
         );
-        //dd($this->qtdModulos);
 
         $this->inversores = $this->calculaQtdInversores($modulo->id);
-        //dd($this->inversores);
         $this->qtdInversores = count($this->inversores );
 
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
-        $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
+        if($this->potenciaModulo == 1){
+            $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
+        }else{
+            $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '1')->first()->preco_franquia;
+        }
+
 
         $ModuloFabricante =  Produto::with('marca')->where('id' , '=', '2')->first()->marca->marca;
 
@@ -272,11 +275,12 @@ trait SimuladorV2
             return $inversores;
         }
 
-        if($this->qtdModulos > 126){
+        if($this->qtdModulos > 126 && $id == 1){
             $i = 0;
             for($i = $this->qtdModulos; $i >= 126; $i -=126 ){
                 if($i >126){
                     $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 126)->first();
+                    //dd($basePrecoInversores);
                     $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                     $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
                 }
@@ -284,13 +288,37 @@ trait SimuladorV2
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $i)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
-        }else{
-            //dd($this->qtdModulos);
+        }elseif($id == 1){
+
 
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
         }
+
+        if($this->qtdModulos > 108 && $id == 2){
+            $i = 0;
+            for($i = $this->qtdModulos; $i >= 108; $i -=108 ){
+                if($i >108){
+                    $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 108)->first();
+                    //dd($basePrecoInversores);
+                    $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+                    $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+                }
+            }
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $i)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+        }elseif($id == 2){
+
+
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+        }
+
+
+
         return $inversores;
     }
 

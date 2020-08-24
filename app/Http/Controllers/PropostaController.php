@@ -251,18 +251,19 @@ class PropostaController extends Controller
         echo  "<br>" . "Total  =  " . $totalGeral. "<br>";
 
 
-         echo "ROI (Total do Projeto / (valor Medio * 0.8) / 12)= " . $this->roi(0.8, $totalGeral, $return['valor_kw']). "<br>";
+         echo "ROI (Total do Projeto / (valor Medio * 0.8 / 12))= " . $this->roi(0.8, $totalGeral, $return['valor_kw']). "<br>";
 
-        dd($return);
-        dd();
+         dd($return);
+
 
     }
 
     private function roi($precoKwh, $totalInvestimento, $valor_medio_kw){
         // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
-        $valorConta = (float)$valor_medio_kw / 0.8  ;
+        //dd($valor_medio_kw, $valor_medio_kw );
+        //dd(((float)$valor_medio_kw * (float)$valor_medio_kw * 0.79));
 
-        return round(($totalInvestimento / $valorConta) /12 , 1);
+        return round($totalInvestimento / ((float)$valor_medio_kw  * 0.79 * 12)  , 1);
 
     }
 
