@@ -250,6 +250,8 @@ class PropostaController extends Controller
 
         echo  "<br>" . "Total  =  " . $totalGeral. "<br>";
 
+        echo "Área minima " . $return['area_minima'] . "<br>";
+
 
          echo "ROI (Total do Projeto / (valor Medio * 0.8 / 12))= " . $this->roi(0.8, $totalGeral, $return['valor_kw']). "<br>";
 
