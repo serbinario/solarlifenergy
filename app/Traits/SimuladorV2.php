@@ -46,11 +46,9 @@ trait SimuladorV2
         $cidade = $request->get('cidade_id');
         $valor_medio_kw = (int)$request->get('monthly_usage');
         $this->potenciaModulo = $request->get('panel_potencia');
-
+        $precoKwh = $request->get('preco_kwh');
 
         $modulo = Modulo::where('id', '=', $request->modulo_id)->first();
-
-
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
@@ -107,6 +105,8 @@ trait SimuladorV2
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
+        $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
+
         return
             [
                 'success' => true,
@@ -118,6 +118,8 @@ trait SimuladorV2
                 'area_minima' => $area,
                 'co2' => $co2,
                 'valor_kw' => $valor_medio_kw,
+                'preco_kwh' => $precoKwh,
+                'roi' => $roi,
 
                 //Equipamentos
                 'soma_modulos' =>  $this->somaModulos,
@@ -142,6 +144,14 @@ trait SimuladorV2
                 'obs' => $obs
 
             ];
+    }
+
+    private function roi($precoKwh, $totalInvestimento, $valor_medio_kw){
+       // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
+        $valorConta = (float)$valor_medio_kw / 0.8  ;
+
+         return round(($totalInvestimento / $valorConta) /12 , 1);
+
     }
 
     private function calculaEsttutura(){

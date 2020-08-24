@@ -202,6 +202,8 @@ class PropostaController extends Controller
 
         //dd($return);
 
+        echo "ROI = " . $return['roi']. "<br>";
+        echo "Valor Médio KWh = " . $return['valor_kw']. "<br>";
         echo "Modulos    " . $return['modulo_potencia']. " " . $return['modulo_marca'] .  " qtd= " . $return['qtd_modulos'] . " Valor= " .  $return['valor_modulo'] . " Total= " . $return['soma_modulos'] . "<br>";
         echo "Inversores " .  "qtd= " . $return['qtd_inversores'] . " Valor= " .  $return['soma_inversor'] . " Total= " . $return['soma_inversor']. "<br>";
         echo "Estrutura  " .  "qtd= " . 1 . " Valor= " .  $return['soma_estrutura'] . " Total= " . $return['soma_estrutura']. "<br>";
