@@ -200,9 +200,38 @@ class PropostaController extends Controller
     {
         $return = $this->simularGeracao($request);
 
-        //dd($return);
+        //dd($return;
 
-        echo "ROI (Total do Projeto / (valor Medio * 0.8) / 12)= " . $return['roi']. "<br>";
+        $percentual = 0;
+        switch ($return['total_equipamentos']){
+            case $return['total_equipamentos'] < 20000  ;
+                $percentual = 7;
+                break;
+            case $return['total_equipamentos'] < 40000  ;
+                $percentual = 7;
+                break;
+            case $return['total_equipamentos'] < 100000  ;
+                $percentual = 5;
+                break;
+            case $return['total_equipamentos'] < 160000  ;
+                $percentual = 5;
+                break;
+            case $return['total_equipamentos'] < 240000  ;
+                $percentual = 4;
+                break;
+            case $return['total_equipamentos'] < 350000  ;
+                $percentual = 4;
+                break;
+            case $return['total_equipamentos'] < 650000  ;
+                $percentual = 3;
+                break;
+            default;
+                $percentual = 2;
+        }
+
+
+
+
         echo "Valor Médio KWh = " . $return['valor_kw']. "<br>";
         echo "Modulos    " . $return['modulo_potencia']. " " . $return['modulo_marca'] .  " qtd= " . $return['qtd_modulos'] . " Valor= " .  $return['valor_modulo'] . " Total= " . $return['soma_modulos'] . "<br>";
         echo "Inversores " .  "qtd= " . $return['qtd_inversores'] . " Valor= " .  $return['soma_inversor'] . " Total= " . $return['soma_inversor']. "<br>";
@@ -210,11 +239,30 @@ class PropostaController extends Controller
         echo "String     " .  "qtd= " . 1 . " Valor= " .  $return['soma_string'] . " Total= " . $return['soma_string']. "<br>";
         $total = $return['soma_string'] + $return['soma_estrutura'] + $return['soma_inversor'] + $return['soma_modulos'];
         echo "Total  " . $total . "<br>";
-        echo "Mão de Obra=  " . $return['valor_mao_obra'] ;
+        echo "Mão de Obra=  " . $return['valor_mao_obra'] . "<br>";
         $totalGeral = $total + $return['valor_mao_obra'] ;
-        echo  "<br>" . "Total Geral =  " . $totalGeral;
+
+        $participacao = round((($totalGeral / 100 ) * $percentual),2);
+
+        echo "Participação " . $participacao . "<br>";
+
+        $totalGeral = (float)$totalGeral + (float)$participacao;
+
+        echo  "<br>" . "Total  =  " . $totalGeral. "<br>";
+
+
+         echo "ROI (Total do Projeto / (valor Medio * 0.8) / 12)= " . $this->roi(0.8, $totalGeral, $return['valor_kw']). "<br>";
+
         dd($return);
         dd();
+
+    }
+
+    private function roi($precoKwh, $totalInvestimento, $valor_medio_kw){
+        // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
+        $valorConta = (float)$valor_medio_kw / 0.8  ;
+
+        return round(($totalInvestimento / $valorConta) /12 , 1);
 
     }
 
