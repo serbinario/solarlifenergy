@@ -94,7 +94,7 @@ trait SimuladorV2
         $this->somaEstrutura = $this->calculaEsttutura();
         $this->somaString = $this->calculaString();
 
-        $this->valorMaoObra = $this->calculaMaoObra();
+        $this->valorMaoObra = $this->calculaMaoObra($modulo->id);
 
         $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaString +  $this->valorMaoObra;
 
@@ -213,8 +213,8 @@ trait SimuladorV2
 
     }
 
-    private function calculaMaoObra(){
-        $valorMaoObra = MaoObraModulos::select('valor_mao_obra')->where('max_modulos' , '>=', $this->qtdModulos )->first()->valor_mao_obra;
+    private function calculaMaoObra($id){
+        $valorMaoObra = MaoObraModulos::select('valor_mao_obra')->where('modulo_id', '=', $id)->where('max_modulos' , '>=', $this->qtdModulos )->first()->valor_mao_obra;
         return $this->qtdModulos * $valorMaoObra;
     }
 
