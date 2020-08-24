@@ -200,7 +200,9 @@ class PropostaController extends Controller
     {
         $return = $this->simularGeracao($request);
 
-        echo "Modulos    " .  "qtd= " . $return['qtd_modulos'] . " Valor= " .  $return['valor_modulo'] . " Total= " . $return['soma_modulos'] . "<br>";
+        //dd($return);
+
+        echo "Modulos    " . $return['modulo_potencia']. " " . $return['modulo_marca'] .  " qtd= " . $return['qtd_modulos'] . " Valor= " .  $return['valor_modulo'] . " Total= " . $return['soma_modulos'] . "<br>";
         echo "Inversores " .  "qtd= " . $return['qtd_inversores'] . " Valor= " .  $return['soma_inversor'] . " Total= " . $return['soma_inversor']. "<br>";
         echo "Estrutura  " .  "qtd= " . 1 . " Valor= " .  $return['soma_estrutura'] . " Total= " . $return['soma_estrutura']. "<br>";
         echo "String     " .  "qtd= " . 1 . " Valor= " .  $return['soma_string'] . " Total= " . $return['soma_string']. "<br>";
