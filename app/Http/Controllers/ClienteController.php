@@ -202,11 +202,14 @@ class ClienteController extends Controller
     public function edit($id)
     {
 
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Cliente::with('user')->findOrFail($id);
         $clienteTipos = ClienteTipo::pluck('name','id')->all();
 
+        $users = User::pluck('name','id')->all();
+
+
         $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
-        return view('cliente.edit', compact('cliente', 'meiosCaptacao', 'clienteTipos'));
+        return view('cliente.edit', compact('cliente', 'meiosCaptacao', 'clienteTipos', 'users'));
     }
 
     /**
@@ -224,12 +227,11 @@ class ClienteController extends Controller
             //dd(Cliente::getTableColumns());
             //dd($request->all());
             //$this->affirm($request);
-
-            //dd($data);
+;
             $cliente = Cliente::findOrFail($id);
             $data = $this->getData($request, $cliente);
-            $data['user_id'] = \Auth::id();
-            //dd($data);
+            //$data['user_id'] = \Auth::id();
+            dd($data);
             $cliente->update($data);
 
             return redirect()->route('cliente.cliente.edit', $cliente->id)

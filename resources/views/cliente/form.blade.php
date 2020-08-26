@@ -111,6 +111,33 @@
         </div>
     </div>
 
+    @role('super-admin')
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="user_id" class="col-md-4 text-bold control-label">Integrador.:</label>
+                    <div class="col-md-8">
+                        <select   class="form-control input-sm" id="user_id" name="user_id">
+                            <option value="" style="display: none;" {{ old('user_id', isset($cliente->user_id) ? $cliente->user_id : '') == '' ? 'selected' : '' }} disabled selected>Meios de captação</option>
+                            @foreach ($users as $key => $user)
+                                <option value="{{ $key }}" {{ old('user_id', isset($cliente->user->id) ? $cliente->user->id : null) == $key ? 'selected' : '' }}>
+                                    {{ $user }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @else
+
+        <input style="display: none;" class="form-control input-sm" name="user_id" type="text" id="user_id" value="{{ old('user_id', isset($cliente->user_id) ? $cliente->user_id : null) }}" maxlength="100">
+
+    @endrole
+
+
+
 
     <div class="col-lg-12">
         <h4 class="text-bold">Dados Pessoais</h4>
