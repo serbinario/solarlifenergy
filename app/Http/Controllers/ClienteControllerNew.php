@@ -208,8 +208,9 @@ class ClienteController extends Controller
     public function edit($id)
     {
 
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Cliente::with('user')->findOrFail($id);
         $clienteTipos = ClienteTipo::pluck('name','id')->all();
+
 
         $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
         return view('cliente.edit', compact('cliente', 'meiosCaptacao', 'clienteTipos'));

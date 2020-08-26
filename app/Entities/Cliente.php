@@ -97,6 +97,12 @@ class Cliente extends Model
         return $this->hasOne('Serbinario\Entities\Projeto','clientes_id','id');
     }
 
+
+    public function user()
+    {
+        return $this->belongsTo('Serbinario\User','user_id','id');
+    }
+
     /*
          * echo mask($cnpj,'##.###.###/####-##');
         echo mask($cpf,'###.###.###-##');
