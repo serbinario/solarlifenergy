@@ -108,7 +108,7 @@ function atualizaValores(){
 
 
 
-$("#valor_modulo").on('change', function () {
+/*$("#valor_modulo").on('change', function () {
     valor_franquia = $('input[name=valor_franquia]').val()
     equipe_tecnica = $('input[name=equipe_tecnica]').val()
     valor_modulo = $('input[name=valor_modulo]').val()
@@ -121,9 +121,9 @@ $("#valor_modulo").on('change', function () {
     //document.getElementById('produto1_nf').value = parseFloat($QtdModulos).toFixed(0) * parseFloat(realDolar(valor_modulo))
     atualizaValores()
 
-}).change();
+}).change();*/
 
-$("#produto1_preco, #qtd_paineis").on('change', function () {
+/*$("#produto1_preco, #qtd_paineis").on('change', function () {
 
     qtd_paineis = $('input[name=qtd_paineis]').val()
     produto1_preco = $('input[name=produto1_preco]').val()
@@ -131,17 +131,18 @@ $("#produto1_preco, #qtd_paineis").on('change', function () {
     $('input[name=produto1_nf]').val(formatMoney(produto1_nf))
     console.log("dddddddddddddddd");
     atualizaValores()
-}).change();
+}).change();*/
 
-$("#produto2_preco, #qtd_inversores").on('change', function () {
+/*$("#produto2_preco, #qtd_inversores").on('change', function () {
     //console.log("ssssssssss");
     qtd_inversores = $('input[name=qtd_inversores]').val()
     produto2_preco = $('input[name=produto2_preco]').val()
     produto2_nf = qtd_inversores * realDolar(produto2_preco)
     $('input[name=produto2_nf]').val(formatMoney(produto2_nf))
     atualizaValores()
-}).change();
+}).change();*/
 
+/*
 $("#produto3_preco, #qtd_estrutura").on('change', function () {
     //console.log("ssssssssss");
     qtd_estrutura = $('input[name=qtd_estrutura]').val()
@@ -150,15 +151,16 @@ $("#produto3_preco, #qtd_estrutura").on('change', function () {
     $('input[name=produto3_nf]').val(formatMoney(produto3_nf))
     atualizaValores()
 }).change();
+*/
 
-$("#produto4_preco, #qtd_string_box").on('change', function () {
+/*$("#produto4_preco, #qtd_string_box").on('change', function () {
     //console.log("ssssssssss");
     qtd_string_box = $('input[name=qtd_string_box]').val()
     produto4_preco = $('input[name=produto4_preco]').val()
     produto4_nf = qtd_string_box * realDolar(produto4_preco)
     $('input[name=produto4_nf]').val(formatMoney(produto4_nf))
     atualizaValores()
-}).change();
+}).change();*/
 
 /*
 / Serviços Operacionais
