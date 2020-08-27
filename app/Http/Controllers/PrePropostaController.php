@@ -270,19 +270,25 @@ class PrePropostaController extends Controller
 
             //Fim da correção
 
+            //Prticipação
             $participacao = ($return['total_equipamentos'] / 100) * $percentual;
 
+            $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
+            //dd($porcentagemParticipacao);
             $data['produto1_preco'] = $return['valor_modulo'];
             //////////////
 
             //Valor da soma dos módulos
-            $recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra']) / $return['qtd_modulos'];
+            //$recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra'])  / $return['qtd_modulos'];
+            $recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra'] + $porcentagemParticipacao)  / $return['qtd_modulos'];
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
             $data['produto1_nf'] = $somaModulos;
             $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'];
 
+            //dd($return['soma_modulos'], $participacao, $return['valor_mao_obra'], $recalculoModulo,$data['produto1_preco'], $somaModulos, $data);
+            //dd($data['produto1_preco']);
             //Soma Inversor
             $data['qtd_inversores'] = 1;
             $somaInversor = $return['soma_inversor'];
@@ -410,7 +416,7 @@ class PrePropostaController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta->produto1_nf);
+        //dd($preProposta);
         return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
@@ -430,20 +436,18 @@ class PrePropostaController extends Controller
             $data = $this->getData($request);
 
             $preProposta = PreProposta::findOrFail($id);
-            //dd((int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] +(int)$data['desconto_equipamentos']);
 
-            //$data['valor_franquia'] =  (int)$data['preco_medio_instalado'] - (int)$preProposta->valor_franqueadora - (int)$data['total_servico_operacional'] + (int)$data['desconto_equipamentos'];
-            //$data['valor_franquia'] =  $data['produto12_nf'];
-
+            $participacao =  $data['valor_franquia'];
+            $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
             // Recalcula o valor dos módulos
-            $recalculoModulo = (($data['valor_modulo'] * $data['qtd_paineis']) + $data['valor_franquia'] + $data['equipe_tecnica']) / $data['qtd_paineis'];
-            $data['produto1_preco'] =  round($recalculoModulo,2);
+            $recalculoModulo = (($data['valor_modulo'] *  $data['qtd_paineis'] ) + $data['valor_franquia'] + $data['equipe_tecnica'] + $porcentagemParticipacao) / $data['qtd_paineis'];
             $somaModulos = round($recalculoModulo,2) * $data['qtd_paineis'];
+            $data['produto1_preco'] =  round($recalculoModulo,2);
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
 
-            //dd($data['qtd_paineis'], $data['produto1_preco'],  $data['produto1_nf'], $somaModulos);
+            //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
             //Calculo do valor Total dos equipamentos
             $somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)

@@ -527,6 +527,7 @@
                                 <tr>
                                     <td colspan="3" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
                                     <td><input  class="form-control input-sm money" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
+
                                 </tr>
 
                                 <tr>
@@ -544,6 +545,12 @@
 
                             </tbody>
                         </table>
+
+                        <div style="text-align: center; display: none" >
+                            <spa  > Obs: O Valor da PARTICIPAÇÃO será descontado 8% </spa>
+                        </div>
+
+
 
                     </div>
                 </div>
