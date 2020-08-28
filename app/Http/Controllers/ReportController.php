@@ -198,7 +198,7 @@ class ReportController extends Controller
     {
         try
         {
-            $nome_arquivo = "Proposta";
+            $nome_arquivo = "Proposta082020";
             $file = $this->gerarPdf($id, $nome_arquivo);
             return response($file, 200)
                 ->header('Content-Type', 'application/pdf')
