@@ -506,10 +506,10 @@ class PrePropostaController extends Controller
             $data['roi'] = $roi;
 
 
-//            if ($roi > 3.6){
-//                return back()->withInput()
-//                    ->withErrors(['error_message' => "Projeto não pode ser criado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-//            }
+            if ($roi > 3.6){
+                return back()->withInput()
+                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+            }
 
 
             $preProposta->update($data);
