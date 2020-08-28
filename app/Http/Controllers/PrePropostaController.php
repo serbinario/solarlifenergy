@@ -223,7 +223,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-           // dd($return);
+           //dd($return);
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -274,6 +274,8 @@ class PrePropostaController extends Controller
             $participacao = ($return['total_equipamentos'] / 100) * $percentual;
 
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
+
+            $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
 
             //dd($porcentagemParticipacao);
             $data['produto1_preco'] = $return['valor_modulo'];
@@ -440,6 +442,8 @@ class PrePropostaController extends Controller
             $participacao =  $data['valor_franquia'];
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
+            $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
+
             // Recalcula o valor dos módulos
             $recalculoModulo = (($data['valor_modulo'] *  $data['qtd_paineis'] ) + $data['valor_franquia'] + $data['equipe_tecnica'] + $porcentagemParticipacao) / $data['qtd_paineis'];
             $somaModulos = round($recalculoModulo,2) * $data['qtd_paineis'];
@@ -552,7 +556,6 @@ class PrePropostaController extends Controller
             'valor_modulo',
             'equipe_tecnica',
             'qtd_paineis' ,
-            'preco_medio_instalado',
             'total_equipamentos',
             'total_servico_operacional',
             'desconto_equipamentos',
@@ -574,11 +577,6 @@ class PrePropostaController extends Controller
             'na_ponta_nov',
             'na_ponta_dec',
             'cidade_id',
-            'produto1','produto1_preco', 'produto1_nf',
-            'produto2', 'qtd_inversores','produto2_preco', 'produto2_nf',
-            'produto3', 'qtd_estrutura',  'produto3_preco', 'produto3_nf',
-            'produto4', 'qtd_string_box', 'produto4_preco', 'produto4_nf',
-            'produto5', 'qtd_kit_monitoramento', 'produto5_preco', 'produto5_nf',
             'qtd_homologacao', 'produto6_preco', 'produto6_nf',
             'qtd_mao_obra', 'produto7_preco', 'produto7_nf',
             'qtd_inst_pde', 'produto8_preco', 'produto8_nf',
