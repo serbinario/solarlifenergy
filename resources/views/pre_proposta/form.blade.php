@@ -795,7 +795,7 @@
             <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
                 <label for="reducao_media_consumo" class="col-sm-6 control-label text-bold">Redução Consumo %.:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm money" name="reducao_media_consumo" type="text" id="value" value="{{ old('economia_anula', isset($preProposta->reducao_media_consumo) ? $preProposta->reducao_media_consumo : null) }}">
+                    <input class="form-control input-sm money" name="reducao_media_consumo" type="text" value="{{ old('economia_anula', isset($preProposta->reducao_media_consumo) ? $preProposta->reducao_media_consumo : null) }}">
                 </div>
             </div>
         </div>
@@ -815,7 +815,7 @@
             <div class="form-group"{{ $errors->has('valor_descontos') ? 'has-error' : '' }}">
                 <label for="valor_descontos" class="col-sm-6 control-label text-bold">Descontos.:</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm money" onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : 0) }}"  min="0" max="10" placeholder="Descontos">
+                    <input class="form-control input-sm money"  onblur="atualizaValores()" name="valor_descontos" type="text"   id="valor_descontos" value="{{ old('descontos', isset($preProposta->valor_descontos) ? $preProposta->valor_descontos : 0) }}"  min="0" max="10" placeholder="Descontos">
                 </div>
             </div>
         </div>
@@ -828,11 +828,13 @@
                 </div>
             </div>
         </div>
+
             <div class="col-sm-4">
                 <div class="form-group"{{ $errors->has('roi') ? 'has-error' : '' }}">
-                <label for="roi" class="col-sm-6 control-label text-bold">ROI.:</label>
-                <div class="col-md-4">
-                    <input class="form-control input-sm" readonly  type="text" value="{{ old('roi', isset($preProposta->roi) ? $preProposta->roi : null) }}" maxlength="12" placeholder="Enter power here...">
+                    <label for="roi" class="col-sm-6 control-label text-bold">ROI.:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-sm"  type="text" value="{{ old('roi', isset($preProposta->roi) ? $preProposta->roi : null) }}" maxlength="12" placeholder="Enter power here...">
+                    </div>
                 </div>
             </div>
 
