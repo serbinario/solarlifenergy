@@ -74,6 +74,14 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="valor_franquia"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
+	<field name="imposto_sobre_participacao" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="imposto_sobre_participacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="roi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="roi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
 	<field name="total_servico_operacional" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="total_servico_operacional"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
@@ -502,7 +510,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="desconto_equipamentos"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_122" class="java.lang.Long">
+	<field name="COLUMN_124" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -574,11 +582,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_140" class="java.sql.Timestamp">
+	<field name="COLUMN_142" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_141" class="java.sql.Timestamp">
+	<field name="COLUMN_143" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -626,7 +634,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_153" class="java.lang.Integer">
+	<field name="COLUMN_155" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
