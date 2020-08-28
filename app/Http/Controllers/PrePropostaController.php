@@ -474,7 +474,8 @@ class PrePropostaController extends Controller
             $descontoFranquia = $data['valor_descontos'];
 
             //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
-            $data['preco_medio_instalado'] = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
+            $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
+            $data['preco_medio_instalado'] = $totalInvestimento;
 
 
             //[RF002-RN002]
@@ -499,6 +500,10 @@ class PrePropostaController extends Controller
 
             //dd($data['valor_modulo']);
             //dd($data);
+
+
+            $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
+            $data['roi'] = $roi;
 
             $preProposta->update($data);
 

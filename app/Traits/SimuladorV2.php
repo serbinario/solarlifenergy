@@ -154,7 +154,7 @@ trait SimuladorV2
        // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
         $valorConta = (float)$valor_medio_kw / 0.8  ;
 
-         return round(($totalInvestimento / $valorConta) /12 , 1);
+        return round($totalInvestimento / ((float)$valor_medio_kw  * 0.79 * 12)  , 1);
 
     }
 
@@ -476,5 +476,8 @@ trait SimuladorV2
         $var = str_replace(".","",$value);
         return str_replace(",",".",$var);
     }
+
+
+
 
 }

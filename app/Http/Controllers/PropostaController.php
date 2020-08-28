@@ -261,9 +261,6 @@ class PropostaController extends Controller
     }
 
     private function roi($precoKwh, $totalInvestimento, $valor_medio_kw){
-        // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
-        //dd($valor_medio_kw, $valor_medio_kw );
-        //dd(((float)$valor_medio_kw * (float)$valor_medio_kw * 0.79));
 
         return round($totalInvestimento / ((float)$valor_medio_kw  * 0.79 * 12)  , 1);
 
