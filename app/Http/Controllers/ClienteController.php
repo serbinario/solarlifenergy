@@ -150,9 +150,10 @@ class ClienteController extends Controller
      * @return Illuminate\View\View
      */
     public function create(){
+        $users = User::pluck('name','id')->all();
         $clienteTipos = ClienteTipo::pluck('name','id')->all();
         $meiosCaptacao = MeioCaptacao::orderBy('nome','asc')->pluck('nome','id')->all();
-        return view('cliente.create', compact('meiosCaptacao', 'clienteTipos'));
+        return view('cliente.create', compact('meiosCaptacao', 'clienteTipos', 'users'));
     }
 
     /**
