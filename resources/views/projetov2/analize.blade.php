@@ -86,7 +86,9 @@
                                             @foreach ([
                                                 '1' => 'Alta',
                                                 '2' => 'Media',
-                                                '3' => 'Baixa'] as $key => $text)
+                                                '3' => 'Baixa',
+                                                '4' => 'Altíssima',
+                                                ] as $key => $text)
                                                 <option value="{{ $key }}" {{ old('projeto_prioridade_id', isset($projetov2->projeto_prioridade_id) ? $projetov2->projeto_prioridade_id : null) == $key ? 'selected' : '' }}>
                                                     {{ $text }}
                                                 </option>
