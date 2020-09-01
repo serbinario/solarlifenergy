@@ -291,8 +291,10 @@ class PrePropostaController extends Controller
 
             //dd($return['soma_modulos'], $participacao, $return['valor_mao_obra'], $recalculoModulo,$data['produto1_preco'], $somaModulos, $data);
             //dd($data['produto1_preco']);
+
+
             //Soma Inversor
-            $data['qtd_inversores'] = 1;
+            $data['qtd_inversores'] = count($return['inversores']);
             $somaInversor = $return['soma_inversor'];
             $data['produto2_nf'] = $somaInversor;
             $data['produto2_preco'] = $somaInversor;
@@ -418,7 +420,7 @@ class PrePropostaController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta);
+        //dd($preProposta->total_equipamentos);
         return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
@@ -450,6 +452,7 @@ class PrePropostaController extends Controller
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
+
 
             //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
@@ -506,7 +509,7 @@ class PrePropostaController extends Controller
             $data['roi'] = $roi;
 
 
-            if ($roi > 3.6){
+            if ($roi > 53.6){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }

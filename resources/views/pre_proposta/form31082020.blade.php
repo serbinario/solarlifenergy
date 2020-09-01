@@ -478,6 +478,8 @@
                             <tr>
                                 <th>PRODUTO</th>
                                 <th>QTD</th>
+                                <th>PREÇO UNIT. COM PIS-COFINS-ICMS</th>
+                                <th>VALOR NF-E</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -485,47 +487,56 @@
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto1" type="text" id="produto1" value="{{ old('produto1', isset($preProposta->produto1) ? $preProposta->produto1 : "MÓDULO FV DAH") }}" min="0" max="10" placeholder="Nome do módulo"></td>
                                     <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
-
+                                    <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm money" name="produto1_preco" type="text" id="produto1_preco" value="{{ old('produto1_preco', isset($preProposta->produto1_preco) ? $preProposta->produto1_preco : null) }}" min="0" max="10" placeholder="Preço do Módulo"></td>
+                                    <td><input readonly class="form-control input-sm money" name="produto1_nf" type="text" id="produto1_nf" value="{{ old('produto1_nf', isset($preProposta->produto1_nf) ? $preProposta->produto1_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto2" type="text" id="produto2" value="{{ old('produto2', isset($preProposta->produto2) ? $preProposta->produto2 : "INVERSOR KSTAR") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
-                                    </tr>
+                                    <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm money" name="produto2_preco" type="text" id="produto2_preco" value="{{ old('produto2_preco', isset($preProposta->produto2_preco) ? $preProposta->produto2_preco : null) }}" min="0" max="10" placeholder="Preço do Módulo"></td>
+                                    <td><input readonly class="form-control input-sm money" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
+                                </tr>
                                 </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto3" type="text" id="produto3" value="{{ old('produto3', isset($preProposta->produto3) ? $preProposta->produto3 : "ESTRUTURA") }}" min="0" max="10" placeholder="Estrutura"></td>
                                     <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->qtd_estrutura) ? $preProposta->qtd_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
-                                    </tr>
+                                    <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm money" name="produto3_preco" type="text" id="produto3_preco" value="{{ old('produto3_preco', isset($preProposta->produto3_preco) ? $preProposta->produto3_preco : null) }}" min="0" max="10" placeholder="Preço da Estrutura"></td>
+                                    <td><input readonly class="form-control input-sm money" name="produto3_nf" type="text" id="produto3_nf" value="{{ old('produto3_nf', isset($preProposta->produto3_nf) ? $preProposta->produto3_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
+                                </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto4" type="text" id="produto4" value="{{ old('produto4', isset($preProposta->produto4) ? $preProposta->produto4 : "STRING BOX") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->qtd_string_box) ? $preProposta->qtd_string_box : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
-                                  </tr>
+                                    <td><input  {{ Auth::user()->id == 17? null : 'readonly' }} class="form-control input-sm money" name="produto4_preco" type="text" id="produto4_preco" value="{{ old('produto4_preco', isset($preProposta->produto4_preco) ? $preProposta->produto4_preco : null) }}" min="0" max="10" placeholder="Preço do String Box"></td>
+                                    <td><input readonly class="form-control input-sm money" name="produto4_nf" type="text" id="produto4_nf" value="{{ old('produto4_nf', isset($preProposta->produto4_nf) ? $preProposta->produto4_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
+                                </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto5" type="text" id="produto5" value="{{ old('produto5', isset($preProposta->produto5) ? $preProposta->produto5 : "KIT MONITORAMENTO WIFI") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input {{ Auth::user()->id == 17? null : 'readonly' }} readonly class="form-control input-sm" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->qtd_kit_monitoramento) ? $preProposta->qtd_kit_monitoramento : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
-                                   </tr>
+                                    <td><input {{ Auth::user()->id == 17? null : 'readonly' }} readonly class="form-control input-sm money" name="produto5_preco" type="text" id="produto5_preco" value="{{ old('produto5_preco', isset($preProposta->produto5_preco) ? $preProposta->produto5_preco : null) }}" min="0" max="10" placeholder="Preço do kit monitoramento"></td>
+                                    <td><input readonly class="form-control input-sm money" name="produto5_nf" type="text" id="produto5_nf" value="{{ old('produto5_nf', isset($preProposta->produto5_nf) ? $preProposta->produto5_nf : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
+                                </tr>
                                {{-- <tr>
                                     <td colspan="3"><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm" value="DESCONTOS"></td>
                                     <td><input  class="form-control input-sm money" name="desconto_equipamentos" type="text" id="desconto_equipamentos" value="{{ old('desconto_equipamentos', isset($preProposta->desconto_equipamentos) ? $preProposta->desconto_equipamentos : null) }}" min="0" max="10" placeholder="Desconto"></td>
                                 </tr>--}}
                                 <tr>
-                                    <td><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm" value="TOTAL"></td>
+                                    <td colspan="3"><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm" value="TOTAL"></td>
                                     <td><input readonly class="form-control input-sm money" name="total_equipamentos" type="text" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
 
                                 <tr>
-                                    <td  style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                    <td colspan="3" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
                                     <td><input  class="form-control input-sm money" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td  style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
+                                    <td colspan="3" style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
                                     <td><input  readonly class="form-control input-sm money" name="equipe_tecnica" type="text" id="equipe_tecnica" value="{{ old('equipe_tecnica', isset($preProposta->equipe_tecnica) ? $preProposta->equipe_tecnica : null) }}" min="0" max="10" placeholder="Desconto"></td>
                                 </tr>
 
                                 <tr>
-                                    <td  style="display: none;" style="text-align:right; padding-right: 20px;">PREÇO DO MÓDULO</td>
+                                    <td  colspan="3" style="display: none;" style="text-align:right; padding-right: 20px;">PREÇO DO MÓDULO</td>
                                     <td  ><input  style="display: none;" class="form-control input-sm money" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
@@ -565,6 +576,8 @@
                             <thead>
                             <tr>
                                 <th>SERVIÇO</th>
+                                <th>QTD</th>
+                                <th>PREÇO UNIT. COM PIS-COFINS-ICMS</th>
                                 <th>VALOR NF-E</th>
                             </tr>
                             </thead>
@@ -585,25 +598,35 @@
                             {{--</tr>--}}
                             <tr style="display: none">
                                 <td>MÃO-DE-OBRA DE INSTALAÇÃO (EQUIPE TÉCNICA)</td>
+                                <td ><input class="form-control input-sm" name="qtd_mao_obra" type="text" id="qtd_mao_obra" value="{{ old('qtd_mao_obra', isset($preProposta->qtd_mao_obra) ? $preProposta->qtd_mao_obra : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
+                                <td><input class="form-control input-sm money" name="produto7_preco" type="text" id="produto7_preco" value="{{ old('produto7_preco', isset($preProposta->produto7_preco) ? $preProposta->produto7_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
                                 <td><input class="form-control input-sm money" name="produto7_nf" type="text" id="produto7_nf" value="{{ old('produto7_nf', isset($preProposta->produto7_nf) ? $preProposta->produto7_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
 
                             </tr>
                             </tr>
                             <tr>
                                 <td>INSTALAÇÃO DE NOVO PDE</td>
-                               <td><input class="form-control input-sm money" name="produto8_nf" type="text" id="produto8_nf" value="{{ old('produto8_nf', isset($preProposta->produto8_nf) ? $preProposta->produto8_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
+                                <td><input class="form-control input-sm" name="qtd_inst_pde" type="text" id="qtd_inst_pde" value="{{ old('qtd_inst_pde', isset($preProposta->qtd_inst_pde) ? $preProposta->qtd_inst_pde : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
+                                <td><input class="form-control input-sm money" name="produto8_preco" type="text" id="produto8_preco" value="{{ old('produto8_preco', isset($preProposta->produto8_preco) ? $preProposta->produto8_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
+                                <td><input class="form-control input-sm money" name="produto8_nf" type="text" id="produto8_nf" value="{{ old('produto8_nf', isset($preProposta->produto8_nf) ? $preProposta->produto8_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
 
                             </tr>
                             <tr>
                                 <td>MUDANÇA DE PDE</td>
+                                <td><input class="form-control input-sm" name="qtd_mud_pde" type="text" id="qtd_mud_pde" value="{{ old('qtd_mud_pde', isset($preProposta->qtd_mud_pde) ? $preProposta->qtd_mud_pde : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
+                                <td><input class="form-control input-sm money" name="produto9_preco" type="text" id="produto9_preco" value="{{ old('produto9_preco', isset($preProposta->produto9_preco) ? $preProposta->produto9_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
                                 <td><input class="form-control input-sm money" name="produto9_nf" type="text" id="produto9_nf" value="{{ old('produto9_nf', isset($preProposta->produto9_nf) ? $preProposta->produto9_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                             </tr>
                             <tr>
                                 <td>SUBESTAÇÃO</td>
+                                <td><input class="form-control input-sm" name="qtd_substacao" type="text" id="qtd_substacao" value="{{ old('qtd_substacao', isset($preProposta->qtd_substacao) ? $preProposta->qtd_substacao : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
+                                <td><input class="form-control input-sm money" name="produto10_preco" type="text" id="produto10_preco" value="{{ old('produto10_preco', isset($preProposta->produto10_preco) ? $preProposta->produto10_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
                                 <td><input class="form-control input-sm money" name="produto10_nf" type="text" id="produto10_nf" value="{{ old('produto10_nf', isset($preProposta->produto10_nf) ? $preProposta->produto10_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                             </tr>
                             <tr>
                                 <td>REFORÇO ESTRUTURAL</td>
+                                <td><input class="form-control input-sm" name="qtd_refor_estrutura" type="text" id="qtd_refor_estrutura" value="{{ old('qtd_refor_estrutura', isset($preProposta->qtd_refor_estrutura) ? $preProposta->qtd_refor_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
+                                <td><input class="form-control input-sm money" name="produto11_preco" type="text" id="produto11_preco" value="{{ old('produto11_preco', isset($preProposta->produto11_preco) ? $preProposta->produto11_preco : "0") }}" min="0" max="10" placeholder="R$"></td>
                                 <td><input class="form-control input-sm money" name="produto11_nf" type="text" id="produto11_nf" value="{{ old('produto11_nf', isset($preProposta->produto11_nf) ? $preProposta->produto11_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                             </tr>
                             </tbody>
