@@ -95,8 +95,8 @@ class ClienteController extends Controller
                     $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
 
-                if ($request->has('$request')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
+                if ($request->has('nome_empresa')) {
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome_empresa') . "%");
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
