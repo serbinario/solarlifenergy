@@ -53,14 +53,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{--<div class="col-sm-3">--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label for="nome" class="col-sm-2 control-label">Nome:</label>--}}
-                                                        {{--<div class="col-md-6">--}}
-                                                            {{--<input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="Nome">--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                {{--</div>--}}
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="nome" class="col-sm-2 control-label">Nome:</label>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="Nome">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="prioridade" class="col-md-4 control-label">Cidade</label>

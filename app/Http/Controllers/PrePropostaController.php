@@ -513,7 +513,7 @@ class PrePropostaController extends Controller
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
 
-
+            //dd($data);
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
