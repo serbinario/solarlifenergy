@@ -452,9 +452,6 @@ class PrePropostaController extends Controller
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
 
-
-            //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
-
             //Calculo do valor Total dos equipamentos
             $somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
                 + $this->convertesRealIngles($preProposta->produto3_nf)
@@ -479,34 +476,18 @@ class PrePropostaController extends Controller
             $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
             $data['preco_medio_instalado'] = $totalInvestimento;
 
-
-            //[RF002-RN002]
-            //$data['valor_franqueadora'] =  (int)$preProposta->produto2_nf + (int)$preProposta->produto3_nf + (int)$preProposta->produto4_nf + (int)$preProposta->produto5_nf;
-
             $valor_franquia = $data['valor_franquia'];
             $equipe_tecnica = $data['equipe_tecnica'];
             $valor_modulo   = $data['valor_modulo'];
 
-            /*
-             * Valor da franquia (quantidade modulo * valor Modulo ) + inversor + Estrutura + String Box + kit Monitoramentep
-             */
             $data['valor_franqueadora'] = $this->convertesRealIngles($preProposta->produto2_nf)
                 + $this->convertesRealIngles($preProposta->produto3_nf)
                 + $this->convertesRealIngles($preProposta->produto4_nf)
                 + $this->convertesRealIngles($preProposta->produto5_nf)
                 + ((int)$data['valor_modulo'] * $data['qtd_paineis']);
 
-            //dd( $data['valor_franqueadora'], (int)$data['valor_modulo'], $this->convertesRealIngles($preProposta->produto2_nf),$this->convertesRealIngles($preProposta->produto3_nf), $this->convertesRealIngles($preProposta->produto4_nf),$this->convertesRealIngles($preProposta->produto5_nf));
-
-            //$data['valor_franqueadora'] = $data['total_equipamentos'] - $data['equipe_tecnica'] - $data['valor_franquia'];
-
-            //dd($data['valor_modulo']);
-            //dd($data);
-
-
             $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
             $data['roi'] = $roi;
-
 
             if ($roi > 3.6){
                 return back()->withInput()
@@ -558,9 +539,7 @@ class PrePropostaController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['cliente_id',
-            'codigo',
-            'user_id',
+        $data = $request->only([
             'baco_fin_id',
             'modulo_id',
             'prioridade_id',
@@ -578,18 +557,6 @@ class PrePropostaController extends Controller
             'economia_anula',
             'preco_kwh',
             'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'panel_potencia',
-            'na_ponta_jan',
-            'na_ponta_feb',
-            'na_ponta_mar',
-            'na_ponta_apr',
-            'na_ponta_may',
-            'na_ponta_jun',
-            'na_ponta_jul',
-            'na_ponta_aug',
-            'na_ponta_sep',
-            'na_ponta_oct',
-            'na_ponta_nov',
-            'na_ponta_dec',
             'cidade_id',
             'qtd_homologacao', 'produto6_preco', 'produto6_nf',
             'qtd_mao_obra', 'produto7_preco', 'produto7_nf',
