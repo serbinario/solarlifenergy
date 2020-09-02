@@ -78,8 +78,8 @@
 							{{--<img src="" alt="" />--}}
 							<span class="profile-info">
 									{{ Auth::user()->name }}
-								@role('admin')
-                                        <small>{{ isset(Auth::user()->franquia->nome) ? Auth::user()->franquia->nome : null }} - Adm</small>
+								@role('super-admin')
+                                        <small>{{ isset(Auth::user()->franquia->nome) ? Auth::user()->franquia->nome : null }} - Super Adm</small>
 								@else
 									<small>{{ isset(Auth::user()->franquia->nome) ? Auth::user()->franquia->nome : null }} - Integrador</small>
 									@endrole
