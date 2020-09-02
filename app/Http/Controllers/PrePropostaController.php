@@ -210,6 +210,8 @@ class PrePropostaController extends Controller
                 $data['codigo'] = $codigo;
             }
 
+            $data['cliente_id'] = $request->get('cliente_id');
+
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
             // em somente leitura
             if(empty($data['user_id'])){
@@ -558,7 +560,7 @@ class PrePropostaController extends Controller
      */
     protected function getData(Request $request)
     {
-        $data = $request->only(['cliente_id',
+        $data = $request->only([
             'codigo',
             'user_id',
             'baco_fin_id',
