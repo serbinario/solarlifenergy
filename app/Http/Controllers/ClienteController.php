@@ -92,10 +92,11 @@ class ClienteController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('palavras_chave', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('cpf_cnpj', 'like', "%" . $request->get('nome') . "%");
+                    $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
+                }
+
+                if ($request->has('$request')) {
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
