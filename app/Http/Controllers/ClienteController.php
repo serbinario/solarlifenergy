@@ -91,13 +91,11 @@ class ClienteController extends Controller
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
-                if ($request->has('nome')) {
-                    $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
+                if ($request->has('nome_empresa')) {
+                    $query->where('clientes.nome', 'like', "%" . $request->get('nome_empresa') . "%");
+                    $query->orwhere('clientes.nome_empresa', 'like', "%" . $request->get('nome_empresa') . "%");
                 }
 
-                if ($request->has('nome_empresa')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome_empresa') . "%");
-                }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
