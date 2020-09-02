@@ -105,8 +105,7 @@ class PrePropostaController extends Controller
             ->filter(function ($query) use ($request) {
                 # Filtranto por disciplina
                 if ($request->has('nome')) {
-                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%")
-                        ->orWhere('clientes.nome', 'like', "%" . $request->get('nome') . "%");
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
@@ -130,18 +129,18 @@ class PrePropostaController extends Controller
 
                 }
 
-                if ($request->has('integrador')) {
-                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
-                }
-                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
-                $user = User::find(Auth::id());
-                if($user->hasRole('franquia')) {
-                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-                }
-                if($user->hasRole('integrador')) {
-                    $query->where('clientes.user_id', '=', $user->id);
-                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-                }
+//                if ($request->has('integrador')) {
+//                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+//                }
+//                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+//                $user = User::find(Auth::id());
+//                if($user->hasRole('franquia')) {
+//                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+//                }
+//                if($user->hasRole('integrador')) {
+//                    $query->where('clientes.user_id', '=', $user->id);
+//                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+//                }
 
                 $query->whereNull('pre_propostas.arquivado');
 
@@ -384,7 +383,7 @@ class PrePropostaController extends Controller
             $data['produto11_preco'] =  0;
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
-            if ($return['qtd_modulos'] < 20){
+            if ($return['qtd_modulos'] < 10){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
             }
