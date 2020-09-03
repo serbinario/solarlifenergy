@@ -59,8 +59,8 @@
                                 <div class="col-md-8">
                                     <select id="projeto_status" name="projeto_status" class="form-control input-sm">
                                         <option value="">Todos</option>
-                                        <option value="1">Prospeccção e Elaboração de Projetos</option>
-                                        <option value="2">Proj. em Análise</option>
+                                        <option value="1">Análise Preliminar</option>
+                                        <option value="2">Elaboração Projeto</option>
                                         <option value="3">Proj. em Análise / fianlisado para Obras</option>
                                         <option value="4">Obras em Execursão</option>
                                         <option value="5">Obras em Fase Final</option>
