@@ -22,8 +22,8 @@ cl.bairro,
 cl.numero,
 pr.potencia_instalada,
 en.logradouro,
-en.cep,
-en.cidade,
+cl.cep,
+cl.cidade,
 en.uf,
 c.ano 
 FROM  
@@ -72,11 +72,11 @@ where c.id =  $P{id}]]>
 	</field>
 	<field name="cep" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cep"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="cidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="uf" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="uf"/>
