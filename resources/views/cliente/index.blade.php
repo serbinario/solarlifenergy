@@ -47,40 +47,38 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label for="nome" class="col-sm-4 control-label">Rasão Social:</label>
-                                                        <div class="col-md-6">
-                                                            <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" maxlength="20" placeholder="Rasão Social">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
                                                         <label for="nome" class="col-sm-2 control-label">Nome:</label>
                                                         <div class="col-md-6">
                                                             <input class="form-control input-sm" name="nome" type="text" id="nome" maxlength="20" placeholder="Nome">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label for="prioridade" class="col-md-4 control-label">Cidade</label>
-                                                        <div class="col-md-8">
-                                                            <select id="prioridade" name="status" class="form-control input-sm">
-                                                                <option value="">Todos</option>
-                                                                <option value="Alta">Recife</option>
-                                                                <option value="Média">Cabo</option>
-                                                            </select>
+                                                        <label for="nome" class="col-sm-4 control-label">Rasão Social:</label>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control input-sm" name="nome_empresa" type="text" id="nome_empresa" maxlength="20" placeholder="Rasão Social">
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="cpf_cnpj" class="col-sm-4 control-label">CPF/CNPJ:</label>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control input-sm mascara-cpfcnpj" name="cpf_cnpj" type="text" id="cpf_cnpj" maxlength="20" placeholder="CPF/CNPJ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <br>
 
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_ini" class="col-sm-4 control-label">Data Ini.:</label>
-                                                        <div class="col-md-8">
+                                                        <label for="data_ini" class="col-sm-5 control-label">Data Ini.:</label>
+                                                        <div class="col-md-7">
                                                             <input class="form-control input-sm date" name="data_ini" type="text" id="data_ini" value="{{ old('data_ini',  null) }}" placeholder="Início">
 
                                                         </div>
@@ -88,8 +86,8 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label for="data_fim" class="col-sm-4 control-label">Data Fim.:</label>
-                                                        <div class="col-md-8">
+                                                        <label for="data_fim" class="col-sm-5 control-label">Data Fim.:</label>
+                                                        <div class="col-md-7">
                                                             <input class="form-control input-sm date" name="data_fim" type="text" id="data_fim" value="{{ old('data_fim',  null) }}" placeholder="Fim">
                                                         </div>
                                                     </div>

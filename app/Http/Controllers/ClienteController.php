@@ -99,10 +99,17 @@ class ClienteController extends Controller
                     $query->where('clientes.nome', 'like', "%" . $request->get('nome') . "%");
                 }
 
+                if ($request->has('cpf_cnpj')) {
+                    $query->where('clientes.cpf_cnpj', 'like', "%" . $request->get('cpf_cnpj') . "%");
+                }
+
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
+
+
+
 
                 if ($request->has('is_propostas')) {
                     $is_propostas = $request->get('is_propostas');
