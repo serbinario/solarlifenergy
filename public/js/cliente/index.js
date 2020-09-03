@@ -49,6 +49,7 @@ var table = $('#cliente').DataTable({
             d.is_propostas = $('select[name=is_propostas] option:selected').val();
             d.nome = $('input[name=nome]').val();
             d.nome_empresa = $('input[name=nome_empresa]').val();
+            d.cpf_cnpj = $('input[name=cpf_cnpj]').val();
             d.data_ini = dateToEN($('input[name=data_ini]').val());
             d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
             d.filtro_por = $("input[name='filtro_por']:checked").val();
