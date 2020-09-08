@@ -45,6 +45,40 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
+                            <label for="ano" class="control-label">Data Inicio</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control input-sm" name="date_init" type="text" id="date_init">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="ano" class="control-label">Data Fim</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control input-sm" name="date_end" type="text" id="date_end">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="franquia" class="control-label">Franquiar</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select id="franquia" name="franquia" class="form-control input-sm">
+                                <option value="14">SLE CABO</option>
+                                <option value="15">SLE MACEIO</option>
+                                <option value="18">SLE RN</option>
+                                <option value="22">SL RECIFE</option>
+                                <option value="20">SLE PARAIBA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
                             <label for="ano" class="control-label">Ordenar</label>
                         </div>
                         <div class="col-sm-9">
