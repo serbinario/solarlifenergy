@@ -188,7 +188,10 @@ reportProjeto.addEventListener('click', function (ev) {
 
 
     var date_init = document.getElementById('date_init').value
+    var date_init = date_init.split("/").reverse().join("-");
+
     var date_end = document.getElementById('date_end').value
+    var date_end = date_end.split("/").reverse().join("-");
 
     var f = document.getElementById('franquia')
     var franquia_id = f.options[f.selectedIndex].value;
