@@ -48,7 +48,7 @@
                             <label for="ano" class="control-label">Data Inicio</label>
                         </div>
                         <div class="col-sm-9">
-                            <input class="form-control input-sm" name="date_init" type="text" id="date_init">
+                            <input class="form-control input-sm date" name="date_init" type="text" id="date_init">
 
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <label for="ano" class="control-label">Data Fim</label>
                         </div>
                         <div class="col-sm-9">
-                            <input class="form-control input-sm" name="date_end" type="text" id="date_end">
+                            <input class="form-control input-sm date" name="date_end" type="text" id="date_end">
                         </div>
                     </div>
 
