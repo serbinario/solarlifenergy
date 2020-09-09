@@ -525,8 +525,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td  style="display: nofne;" style="text-align:right; padding-right: 20px;">PREÇO DO MÓDULO</td>
-                                    <td  ><input  style="display: nonfe;" class="form-control input-sm money" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
+                                    <td  style="display: none;" style="text-align:right; padding-right: 20px;">PREÇO DO MÓDULO</td>
+                                    <td  ><input  style="display: none;" class="form-control input-sm money" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
 
