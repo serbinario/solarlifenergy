@@ -385,10 +385,13 @@ class PrePropostaController extends Controller
             $data['produto11_preco'] =  0;
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
-            if ($return['qtd_modulos'] < 10){
-                return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
-            }
+//            if ($return['qtd_modulos'] < 10){
+//                return back()->withInput()
+//                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
+//            }
+            //$roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
+            //$data['roi'] = $roi;
+
             //dd($data);
             $preProposta = PreProposta::create($data);
             //;
@@ -510,10 +513,10 @@ class PrePropostaController extends Controller
             $data['roi'] = $roi;
 
             //dd($roi);
-//            if ($roi > 3.6){
-//                return back()->withInput()
-//                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-//            }
+            if ($roi > 3.6){
+                return back()->withInput()
+                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+            }
 
             //dd($data);
             $preProposta->update($data);
