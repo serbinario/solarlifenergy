@@ -43,10 +43,44 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
+                            <label for="ano" class="control-label">Data Inicio</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control input-sm date" name="date_init_prioridade" type="text" id="date_init_prioridade">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="ano" class="control-label">Data Fim</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control input-sm date" name="date_end_prioridade" type="text" id="date_end_prioridade">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="franquia" class="control-label">Franquiar</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select id="franquiaPrioridade" name="franquiaPrioridade" class="form-control input-sm">
+                                <option value="14">SLE CABO</option>
+                                <option value="15">SLE MACEIO</option>
+                                <option value="18">SLE RN</option>
+                                <option value="22">SL RECIFE</option>
+                                <option value="20">SLE PARAIBA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
                             <label for="ano" class="control-label">Ordenar</label>
                         </div>
                         <div class="col-sm-9">
-                            <select id="projetoPrioridadeOrder" name="projetoPrioridadeOrder" class="form-control input-sm">
+                            <select id="projetoOrderPrioridade" name="projetoOrderPrioridade" class="form-control input-sm">
                                 <option value="asc">Crescente</option>
                                 <option value="desc">Decrescente</option>
                             </select>

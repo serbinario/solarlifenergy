@@ -46,6 +46,9 @@
 		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="288"/>
 		<parameter name="ordenarPor" class="java.lang.String"/>
 		<parameter name="order" class="java.lang.String"/>
+		<parameter name="franquia_id1" class="java.lang.String"/>
+		<parameter name="date_init1" class="java.lang.String"/>
+		<parameter name="date_end1" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[SELECT c.nome_empresa,  
 pp.preco_medio_instalado,  
@@ -59,6 +62,8 @@ LEFT JOIN users AS u ON u.id = pp.user_id
 LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
 LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
 WHERE pv2.id IS NULL AND pp.arquivado IS NULL
+AND pp.created_at BETWEEN  '$P!{date_init1}' and  '$P!{date_end1}' 
+AND u.franquia_id =  $P!{franquia_id1} 
 order by  $P!{ordenarPor}  $P!{order}]]>
 		</queryString>
 		<field name="nome_empresa" class="java.lang.String">
@@ -129,6 +134,9 @@ WHERE pv2.id IS NULL AND pp.arquivado IS NULL
 	</subDataset>
 	<parameter name="inputOrdenaPor" class="java.lang.String"/>
 	<parameter name="InputOrder" class="java.lang.String"/>
+	<parameter name="date_end" class="java.lang.String"/>
+	<parameter name="date_init" class="java.lang.String"/>
+	<parameter name="franquia_id" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select id from pre_propostas limit 1]]>
 	</queryString>
@@ -150,12 +158,21 @@ WHERE pv2.id IS NULL AND pp.arquivado IS NULL
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="6f4cd2d0-d35a-4459-a3d8-672bcfc0a213">
+					<datasetRun subDataset="Dataset1" uuid="a399ee84-af86-4ab9-91ab-423b06dde072">
 						<datasetParameter name="ordenarPor">
 							<datasetParameterExpression><![CDATA[$P{inputOrdenaPor}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="order">
 							<datasetParameterExpression><![CDATA[$P{InputOrder}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_end1">
+							<datasetParameterExpression><![CDATA[$P{date_end}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_init1">
+							<datasetParameterExpression><![CDATA[$P{date_init}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="franquia_id1">
+							<datasetParameterExpression><![CDATA[$P{franquia_id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
