@@ -47,6 +47,9 @@
 		<parameter name="ordenarTable" class="java.lang.String"/>
 		<parameter name="statusTable" class="java.lang.String"/>
 		<parameter name="OrderTable" class="java.lang.String"/>
+		<parameter name="date_end1" class="java.lang.String"/>
+		<parameter name="date_init1" class="java.lang.String"/>
+		<parameter name="franquia_id1" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[SELECT clientes.nome_empresa AS cliente,  
 pre_propostas.preco_medio_instalado AS preço,
@@ -70,7 +73,9 @@ INNER JOIN projetos_prioridades ON projetos_prioridades.id = projetosv2.projeto_
 LEFT JOIN banco_financiadora ON pre_propostas.baco_fin_id = banco_financiadora.id
 LEFT JOIN meios_captacao ON clientes.meio_captacao_id= meios_captacao.id
 where projetos_status.id IN ( $P!{statusTable} ) AND  projetosv2.arquivado IS NULL
-order by $P!{ordenarTable}  $P!{OrderTable} ]]>
+AND projetosv2.created_at BETWEEN  '$P!{date_init1}' and  '$P!{date_end1}' 
+AND franquia_id =  $P!{franquia_id1} 
+order by $P!{ordenarTable}  $P!{OrderTable}]]>
 		</queryString>
 		<field name="cliente" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="cliente"/>
@@ -123,6 +128,9 @@ order by $P!{ordenarTable}  $P!{OrderTable} ]]>
 	<parameter name="ordenar1" class="java.lang.String"/>
 	<parameter name="status" class="java.lang.String"/>
 	<parameter name="orderInput" class="java.lang.String"/>
+	<parameter name="franquia_id" class="java.lang.String"/>
+	<parameter name="date_init" class="java.lang.String"/>
+	<parameter name="date_end" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id FROM projetosv2 LIMIT 1]]>
 	</queryString>
@@ -144,7 +152,7 @@ order by $P!{ordenarTable}  $P!{OrderTable} ]]>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="107b33a4-520f-4ec3-bdeb-8379cf2ee090">
+					<datasetRun subDataset="Dataset1" uuid="62bed6a0-98d9-43e0-9195-3f0b18e9d7dc">
 						<datasetParameter name="ordenarTable">
 							<datasetParameterExpression><![CDATA[$P{ordenar1}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -153,6 +161,15 @@ order by $P!{ordenarTable}  $P!{OrderTable} ]]>
 						</datasetParameter>
 						<datasetParameter name="OrderTable">
 							<datasetParameterExpression><![CDATA[$P{orderInput}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_end1">
+							<datasetParameterExpression><![CDATA[$P{date_end}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_init1">
+							<datasetParameterExpression><![CDATA[$P{date_init}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="franquia_id1">
+							<datasetParameterExpression><![CDATA[$P{franquia_id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>

@@ -225,6 +225,16 @@ reportProposta.addEventListener('click', function (ev) {
     var t = document.getElementById('order')
     var order = t.options[t.selectedIndex].value;
 
+    var date_init = document.getElementById('date_init_prioridade').value
+    date_init = date_init.split("/").reverse().join("-");
+
+    var date_end = document.getElementById('date_end_prioridade').value
+    date_end = date_end.split("/").reverse().join("-");
+
+    var f = document.getElementById('franquiaPrioridade')
+    var franquia_id = f.options[f.selectedIndex].value;
+
+
     const selected = document.querySelectorAll('#projetoStatus option:checked');
     const status = Array.from(selected).map(el => el.value);
     $.ajaxSetup({
@@ -239,7 +249,7 @@ reportProposta.addEventListener('click', function (ev) {
 
     //console.log(modalName);
 
-    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&inputOrdenaPor=" + ordenarPor + "&InputOrder=" +  order;
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&inputOrdenaPor=" + ordenarPor + "&InputOrder=" +  order + "&franquia_id=" + franquia_id + "&date_init=" + date_init + "&date_end=" + date_end ;
     window.open(url, '_blank');
 })
 

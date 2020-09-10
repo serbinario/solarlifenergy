@@ -389,10 +389,10 @@ class PrePropostaController extends Controller
 //                return back()->withInput()
 //                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
 //            }
-            //$roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
-            //$data['roi'] = $roi;
+            $roi = $this->roi(0, $somaEquipamentos, $request['monthly_usage'] );
+            $data['roi'] = $roi;
 
-            //dd($data);
+
             $preProposta = PreProposta::create($data);
             //;
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)

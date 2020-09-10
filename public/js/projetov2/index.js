@@ -223,8 +223,17 @@ reportProjeto.addEventListener('click', function (ev) {
     var e = document.getElementById('ProjetoPrioridadeOrdenarPor')
     var ordenarPor = e.options[e.selectedIndex].value;
 
+    var date_init = document.getElementById('date_init_prioridade').value
+    date_init = date_init.split("/").reverse().join("-");
 
-    var t = document.getElementById('projetoPrioridadeOrder')
+    var date_end = document.getElementById('date_end_prioridade').value
+    date_end = date_end.split("/").reverse().join("-");
+
+    var f = document.getElementById('franquiaPrioridade')
+    var franquia_id = f.options[f.selectedIndex].value;
+
+
+    var t = document.getElementById('projetoOrderPrioridade')
     var order = t.options[t.selectedIndex].value;
 
     const selected = document.querySelectorAll('#projetoPrioridadeStatus option:checked');
@@ -235,7 +244,7 @@ reportProjeto.addEventListener('click', function (ev) {
         }
     });
 
-    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor + "&orderInput=" + order;
+    var url = '/index.php/report/reportPdf?modalName=' + modalName + "&status=" + status + "&ordenar1=" +  ordenarPor + "&orderInput=" + order + "&franquia_id=" + franquia_id + "&date_init=" + date_init + "&date_end=" + date_end ;
     window.open(url, '_blank');
 })
 
