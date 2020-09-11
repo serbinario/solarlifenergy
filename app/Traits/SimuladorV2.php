@@ -151,8 +151,6 @@ trait SimuladorV2
     }
 
     private function roi($precoKwh, $totalInvestimento, $valor_medio_kw){
-       // dd($precoKwh, $totalInvestimento, $valor_medio_kw);
-        $valorConta = (float)$valor_medio_kw / 0.8  ;
 
         return round($totalInvestimento / ((float)$valor_medio_kw  * 0.79 * 12)  , 1);
 
