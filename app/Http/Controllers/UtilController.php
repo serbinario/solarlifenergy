@@ -40,11 +40,18 @@ class UtilController extends Controller
 
 	    $user = User::find(Auth::id());
 	    $result = array();
-        $clientes = Cliente::select('id', 'nome_empresa')
-            ->where('user_id', '=', $user->id)
-            ->where('nome_empresa', 'like', "%" . $request->get('searchTerm') . "%")
+        $user = User::find(Auth::id());
+        if($user->hasRole('super-admin')) {
+            $clientes = Cliente::select('id', 'nome_empresa')
+                ->where('nome_empresa', 'like', "%" . $request->get('searchTerm') . "%")
+                ->limit(10)->get();
+        }else{
+            $clientes = Cliente::select('id', 'nome_empresa')
+                ->where('user_id', '=', $user->id)
+                ->where('nome_empresa', 'like', "%" . $request->get('searchTerm') . "%")
+                ->limit(10)->get();
+        }
 
-            ->limit(10)->get();
         foreach ( $clientes as $cliente) {
             array_push($result, ['id' => $cliente->id, 'text' => $cliente->nome_empresa] );
         }
