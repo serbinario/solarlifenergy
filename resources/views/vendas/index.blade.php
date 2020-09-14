@@ -24,10 +24,10 @@
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Lista de Franquias</header>
+                        <header>Pedidos</header>
                         <div class="tools">
                             <div class="btn-group">
-                                <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Novo Fornecedor">
+                                <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Pedido">
                                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                 </a>
                             </div>
@@ -37,7 +37,7 @@
                     <div class="row">
 
                         <!-- BEGIN LAYOUT LEFT ALIGNED -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-head">
                                     <ul class="nav nav-tabs" data-toggle="tabs">
@@ -48,7 +48,45 @@
                                     </ul>
                                 </div><!--end .card-head -->
                                 <div class="card-body tab-content">
-                                    <div class="tab-pane active" id="inversores"><p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+                                    <div class="tab-pane active" id="inversores">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>Estoque</th>
+                                                <th>Produto</th>
+                                                <th>Valor</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>INVERSOR KSTAR KSG 15K</td>
+                                                <td>R$ 15.200,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-icon-toggle"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>INVERSOR KSTAR KSG 30K</td>
+                                                <td>R$ 26.400,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-icon-toggle" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>123</td>
+                                                <td>INVERSOR KSTAR KSG 5K</td>
+                                                <td>R$ 15.000,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-icon-toggle"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="tab-pane" id="modulos"><p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
                                     </div>
@@ -60,21 +98,13 @@
                                     </div>
                                 </div><!--end .card-body -->
                             </div><!--end .card -->
-                            <em class="text-caption">Left aligned tabs</em>
+
                         </div><!--end .col -->
                         <!-- END LAYOUT LEFT ALIGNED -->
 
                     </div><!--end .row -->
                     <!-- END DATATABLE 1 -->
 
-
-
-
-                    <div class="card-actionbar">
-                        <div class="card-actionbar-row">
-                            <a href="{{ route('franquia.franquia.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Franquia</a>
-                        </div>
-                    </div>
                 </div><!--end .card -->
 
             </form>
