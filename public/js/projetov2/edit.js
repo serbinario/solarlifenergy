@@ -17,6 +17,11 @@ $(document).ready(function () {
 
     });
 
+
+    function isnull(value){
+       return typeof value === "object" && !value
+    }
+
     function handleTabShow(tab, navigation, index, wizard){
         var total = navigation.find('li').length;
         var current = index + 0;
@@ -35,12 +40,13 @@ $(document).ready(function () {
 
     /* Ativa a aba no projeto */
 
+    var projeto_aba = localStorage.getItem('projeto_aba')
 
-    if (localStorage.getItem('projeto_aba') === null) {
+    if (projeto_aba) {
         var projeto_aba = 0
-    }else{
-        var projeto_aba = localStorage.getItem('projeto_aba')
+        console.log("www")
     }
+
 
     document.getElementById('tabs-solar').children[projeto_aba].setAttribute('class', 'tab-pane active')
 
