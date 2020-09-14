@@ -191,8 +191,6 @@ class PrePropostaController extends Controller
         }
 
 
-        dd($users);
-
         return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
