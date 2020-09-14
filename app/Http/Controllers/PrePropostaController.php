@@ -182,8 +182,16 @@ class PrePropostaController extends Controller
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
 
         //Só pode ver os usuários da própria franquia
+        $user = User::find(Auth::id());
         $franquia_id = Auth::user()->franquia_id;
-        $users = User::where('franquia_id' , '=', $franquia_id)->orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
+        if($user->hasRole('super-admin')) {
+            $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
+        }else{
+            $users = User::where('franquia_id' , '=', $franquia_id)->orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
+        }
+
+
+        dd($users);
 
         return view('pre_proposta.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
