@@ -85,7 +85,7 @@ Route::group(
 
 Route::group(
     [
-        'prefix' => 'vendas',
+        'prefix' => 'pedido',
     ], function () {
 
     Route::get('/', 'PedidoController@index')
