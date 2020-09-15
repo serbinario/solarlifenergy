@@ -261,6 +261,19 @@ trait SimuladorV2
         $inversores = array();
 
 
+        //Regra para módulo 330
+        if($this->qtdModulos >= 21 && $this->qtdModulos <= 30 && $id = 1){
+            $resultado = $this->qtdModulos - 20;
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 20)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $resultado)->first();
+            $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
+            $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            return $inversores;
+        }
 
         if($this->qtdModulos > 126 && $id == 1){
             $i = 0;
