@@ -50,96 +50,19 @@
                                 </div><!--end .card-head -->
                                 <div class="card-body tab-content">
                                     <div class="tab-pane active" id="inversores">
-                                        <table class="table table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th>Quantidade</th>
-                                                <th>Produto</th>
-                                                <th>Valor</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="1"/></td>
-                                                <td>INVERSOR KSTAR KSG 15K</td>
-                                                <td>R$ 15.200,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-succes"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="1"/></td>
-                                                <td>INVERSOR KSTAR KSG 30K</td>
-                                                <td>R$ 26.400,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-succes" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="1"/></td>
-                                                <td>INVERSOR KSTAR KSG 5K</td>
-                                                <td>R$ 15.000,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-succes"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
-                                                </td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
+                                        @include('vendas.inversores')
                                     </div>
-                                    <div class="tab-pane" id="modulos"><p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+                                    <div class="tab-pane" id="modulos">
+                                        @include('vendas.modulos')
                                     </div>
-                                    <div class="tab-pane" id="estrutura"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
-                                        <p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+                                    <div class="tab-pane" id="estrutura">
+                                        @include('vendas.estrutura')
                                     </div>
-                                    <div class="tab-pane" id="eletrica"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
-                                        <p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+                                    <div class="tab-pane" id="eletrica">
+                                        @include('vendas.eletrica')
                                     </div>
                                     <div class="tab-pane" id="finalizar">
-                                        <table class="table table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th>Qtd</th>
-                                                <th>Produto</th>
-                                                <th>Valor Unitário</th>
-                                                <th>Valor Total</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="1"/></td>
-                                                <td>INVERSOR KSTAR KSG 15K</td>
-                                                <td>R$ 15.200,00</td>
-                                                <td>R$ 15.200,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-danger"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="30"/></td>
-                                                <td>MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 360W</td>
-                                                <td>R$ 80.400,00</td>
-                                                <td>R$ 15.200,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-danger" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input style="width: 54px;" type="number" value="1"/></td>
-                                                <td>TRINGBOX CC CLAMPER 1000V 1E-1S</td>
-                                                <td>R$ 3.600,00</td>
-                                                <td>R$ 15.200,00</td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-danger"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
-                                                </td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
+                                        @include('vendas.finalizar')
                                     </div>
 
 
@@ -165,6 +88,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/franquia/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/vendas/index.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

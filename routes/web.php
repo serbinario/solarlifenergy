@@ -93,6 +93,11 @@ Route::group(
 
     Route::get('/financeiroCliente', 'ReportController@reportPdfFinanceiroCliente')
         ->name('report.financeiroCliente');
+
+    Route::get('/getallproducts', 'PedidoController@getAllProducts')
+        ->name('report.financeiroCliente');
+
+
 });
 
 
