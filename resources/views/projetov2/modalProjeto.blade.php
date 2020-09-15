@@ -68,6 +68,7 @@
                         </div>
                         <div class="col-sm-9">
                             <select id="franquia" name="franquia" class="form-control input-sm">
+                                <option value="14,15,18,22,20">TODAS</option>
                                 <option value="14">SLE CABO</option>
                                 <option value="15">SLE MACEIO</option>
                                 <option value="18">SLE RN</option>

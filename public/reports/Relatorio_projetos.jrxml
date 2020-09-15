@@ -72,7 +72,7 @@ LEFT JOIN banco_financiadora ON pre_propostas.baco_fin_id = banco_financiadora.i
 LEFT JOIN meios_captacao ON clientes.meio_captacao_id= meios_captacao.id
 where projetos_status.id IN ( $P!{statusTable} ) AND  projetosv2.arquivado IS NULL
 AND projetosv2.created_at BETWEEN  '$P!{date_init1}' and  '$P!{date_end1}' 
-AND franquia_id =  $P!{franquia_id} 
+AND franquia_id IN ( $P!{franquia_id} ) 
 order by $P!{ordenarTable} desc]]>
 		</queryString>
 		<field name="cliente" class="java.lang.String">
