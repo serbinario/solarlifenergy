@@ -21,7 +21,7 @@ function addCellInversores(inversores) {
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = inversor.produto;
         cell3.innerHTML = inversor.preco_revenda;
-        cell4.innerHTML = "<button type=\"button\" class=\"btn btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
+        cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
 
@@ -39,7 +39,7 @@ function addCellModulos(products) {
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
         cell3.innerHTML = product.preco_revenda;
-        cell4.innerHTML = "<button type=\"button\" class=\"btn btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
+        cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
 
@@ -58,7 +58,7 @@ function addCellEstrutura(products) {
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
         cell3.innerHTML = product.preco_revenda;
-        cell4.innerHTML = "<button type=\"button\" class=\"btn btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
+        cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
 
@@ -76,7 +76,7 @@ function addCellEletrica(products) {
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
         cell3.innerHTML = product.preco_revenda;
-        cell4.innerHTML = "<button type=\"button\" class=\"btn btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
+        cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
 
@@ -114,9 +114,38 @@ function getAllProducts(){
         addCellModulos(modulos)
         addCellEstrutura(estrutura)
         addCellEletrica(eletrica)
-    });
 
+        var buttons = document.getElementsByClassName("addProduct")
+
+        for (var button of buttons) {
+            button.addEventListener('click', function(event) {
+
+                if(event.target.parentElement.parentElement.id !== ""){
+                    updadeFinalizar(event.target.parentElement.parentElement)
+                }else{
+                    updadeFinalizar(event.target.parentElement.parentElement.parentElement)
+                }
+            })
+        }
+    });
 };
 
+var arrayPododucts = [];
+
+function updadeFinalizar(target){
+    var qtd = target.children[0].children[0].value
+    var produto_id = target.id
+    arrayPododucts.push({ 'produto_id': produto_id, 'qtd': qtd })
+    console.log(arrayPododucts )
+}
+
+
+
+
 products = getAllProducts();
+
+function modifyText() {
+    console.log("eeeeeeeeeeee")
+}
+
 
