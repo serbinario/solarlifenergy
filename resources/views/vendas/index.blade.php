@@ -24,7 +24,7 @@
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Pedidos</header>
+                        <header>Orçamento personalizado</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Pedido">
@@ -45,6 +45,7 @@
                                         <li><a href="#modulos">MÓDULOS</a></li>
                                         <li><a href="#estrutura">ESTRUTURA</a></li>
                                         <li><a href="#eletrica">ELÉTRICA</a></li>
+                                        <li><a href="#finalizar">FINALIZAR</a></li>
                                     </ul>
                                 </div><!--end .card-head -->
                                 <div class="card-body tab-content">
@@ -52,7 +53,7 @@
                                         <table class="table table-hover">
                                             <thead>
                                             <tr>
-                                                <th>Estoque</th>
+                                                <th>Quantidade</th>
                                                 <th>Produto</th>
                                                 <th>Valor</th>
                                                 <th></th>
@@ -60,28 +61,28 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td>123</td>
+                                                <td><input style="width: 54px;" type="number" value="1"/></td>
                                                 <td>INVERSOR KSTAR KSG 15K</td>
                                                 <td>R$ 15.200,00</td>
                                                 <td class="text-right">
-                                                    <button type="button" class="btn btn-icon-toggle"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+                                                    <button type="button" class="btn btn-succes"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>123</td>
+                                                <td><input style="width: 54px;" type="number" value="1"/></td>
                                                 <td>INVERSOR KSTAR KSG 30K</td>
                                                 <td>R$ 26.400,00</td>
                                                 <td class="text-right">
-                                                    <button type="button" class="btn btn-icon-toggle" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+                                                    <button type="button" class="btn btn-succes" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
 
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>123</td>
+                                                <td><input style="width: 54px;" type="number" value="1"/></td>
                                                 <td>INVERSOR KSTAR KSG 5K</td>
                                                 <td>R$ 15.000,00</td>
                                                 <td class="text-right">
-                                                    <button type="button" class="btn btn-icon-toggle"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
+                                                    <button type="button" class="btn btn-succes"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-plus"></i></button>
                                                 </td>
                                             </tr>
 
@@ -96,11 +97,60 @@
                                     <div class="tab-pane" id="eletrica"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
                                         <p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
                                     </div>
+                                    <div class="tab-pane" id="finalizar">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>Qtd</th>
+                                                <th>Produto</th>
+                                                <th>Valor Unitário</th>
+                                                <th>Valor Total</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><input style="width: 54px;" type="number" value="1"/></td>
+                                                <td>INVERSOR KSTAR KSG 15K</td>
+                                                <td>R$ 15.200,00</td>
+                                                <td>R$ 15.200,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-danger"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input style="width: 54px;" type="number" value="30"/></td>
+                                                <td>MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 360W</td>
+                                                <td>R$ 80.400,00</td>
+                                                <td>R$ 15.200,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-danger" data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input style="width: 54px;" type="number" value="1"/></td>
+                                                <td>TRINGBOX CC CLAMPER 1000V 1E-1S</td>
+                                                <td>R$ 3.600,00</td>
+                                                <td>R$ 15.200,00</td>
+                                                <td class="text-right">
+                                                    <button type="button" class="btn btn-danger"  data-placement="top" data-original-title="Edit row"><i class="glyphicon glyphicon-remove "></i></button>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
                                 </div><!--end .card-body -->
                             </div><!--end .card -->
 
                         </div><!--end .col -->
                         <!-- END LAYOUT LEFT ALIGNED -->
+
+
+
 
                     </div><!--end .row -->
                     <!-- END DATATABLE 1 -->

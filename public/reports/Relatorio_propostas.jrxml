@@ -63,7 +63,7 @@ LEFT JOIN prioridades AS prio ON prio.id = pp.prioridade_id
 LEFT JOIN projetosv2 AS pv2 ON pv2.proposta_id = pp.id
 WHERE pv2.id IS NULL AND pp.arquivado IS NULL
 AND pp.created_at BETWEEN  '$P!{date_init1}' and  '$P!{date_end1}' 
-AND u.franquia_id =  $P!{franquia_id1} 
+AND u.franquia_id IN ( $P!{franquia_id1} ) 
 order by  $P!{ordenarPor}  $P!{order}]]>
 		</queryString>
 		<field name="nome_empresa" class="java.lang.String">
