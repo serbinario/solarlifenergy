@@ -152,7 +152,7 @@ where c.id =  $P{id}]]>
 					<font size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style isBold='true'>SOLAR LIFE ENERGY EIRELI - ME</style>" + ", com sede e foro na cidade de Cabo de Santo Agostinho, na Rua José Bezerra Filho, 61, Loja B, Centro, inscrita no CNPJ/MF sob o nº 00.823.358/0001-14, doravante denominada Contratada, neste ato representada por Josias Jasmelino Ferreira, portador da Cédula de Identidade RG nº 3.464.679, expedida pela SSP-PE, e inscrito no CPF/MF sob nº 606.927.074-68 residente e domiciliado em Cabo de Santo Agostinho, na rua José Bezerra Filho, 61, Centro."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style isBold='true'>SOLAR LIFE ENERGY EIRELI - ME</style>" + ", com sede e foro na cidade de Cabo de Santo Agostinho, na Rua José Bezerra Filho, 61, Loja B, Centro, inscrita no CNPJ/MF sob o nº 00.823.358/0001-14, doravante denominada Contratada, neste ato representada por Josias Jasmelino Ferreira Junior, portador da Cédula de Identidade RG nº 7.813.407, expedida pela SDS-PE, e inscrito no CPF/MF sob nº 107.082.924-29 residente e domiciliado em Cabo de Santo Agostinho, na rua José Bezerra Filho, 61, Centro."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="0" y="231" width="442" height="77" uuid="4682bab6-c9c9-4fc2-9766-99fb1d20cfac"/>
