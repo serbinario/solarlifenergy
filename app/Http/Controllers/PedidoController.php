@@ -30,6 +30,8 @@ class PedidoController extends Controller
      */
     public function index(Request $request)
     {
+
+
         return view('vendas.index');
 //        $pedido = Pedido::find(1);
 //        $pedido->produtos()->attach([1 => [ "quantidade" => 340, "valor_unitario" => 450.1  ], 2 => [  "quantidade" => 100, "valor_unitario" => 10.1 ]]);
@@ -63,6 +65,29 @@ class PedidoController extends Controller
     public function grid()
     {
 
+    }
+
+    public function getAllProducts()
+    {
+        $rows = \DB::table('produtos')
+            ->Join('grupos', 'grupos.id', '=', 'produtos.grupo_id')
+            ->Join('marcas', 'marcas.id', '=', 'produtos.marca_id')
+            ->select([
+                'produtos.id',
+                'produto',
+                'preco_revenda',
+                'produtos.ativo',
+                'estoque',
+                'grupos.grupo',
+                'grupos.id as grupo_id',
+                'marcas.marca'
+
+            ]);
+        $header = array (
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'charset' => 'utf-8'
+        );
+        return  response()->json($rows->get(), 200, $header,  JSON_UNESCAPED_UNICODE);
     }
 
     /**
