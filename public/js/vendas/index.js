@@ -6,6 +6,7 @@ var quadrados = numeros.map(function(item){
 });
 
 var products;
+var finalizar;
 
 function addCellInversores(inversores) {
     var table_inversores = document.getElementById("table_inversores");
@@ -80,6 +81,25 @@ function addCellEletrica(products) {
     })
 }
 
+function addCellFinalizar(products) {
+    var table_finalizar = document.getElementById("table_finalizar");
+    $('#table_finalizar').empty()
+    products.map(function (product) {
+        var row = table_finalizar.insertRow(0);
+        row.id = product.id;
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell4.className = 'text-right'
+
+        cell1.innerHTML = product.qtd;
+        cell2.innerHTML = product.product_name;
+        cell3.innerHTML = 'R$ ' + product.unit_value;
+        cell4.innerHTML = 'R$ ' + product.total_value;
+    })
+}
+
 function checkModulos(grupo) {
     return grupo.grupo_id == 1;
 }
@@ -115,37 +135,57 @@ function getAllProducts(){
         addCellEstrutura(estrutura)
         addCellEletrica(eletrica)
 
+
         var buttons = document.getElementsByClassName("addProduct")
 
         for (var button of buttons) {
             button.addEventListener('click', function(event) {
 
                 if(event.target.parentElement.parentElement.id !== ""){
-                    updadeFinalizar(event.target.parentElement.parentElement)
+                    finalizar = updadeFinalizar(event.target.parentElement.parentElement)
+                    console.log(finalizar)
+                    addCellFinalizar(finalizar)
                 }else{
-                    updadeFinalizar(event.target.parentElement.parentElement.parentElement)
+                    finalizar = updadeFinalizar(event.target.parentElement.parentElement.parentElement)
+                    console.log(finalizar)
+                    addCellFinalizar(finalizar)
+
                 }
             })
         }
     });
 };
 
-var arrayPododucts = [];
+var arrayProducts = [];
+var products = [];
+
 
 function updadeFinalizar(target){
     var qtd = target.children[0].children[0].value
     var produto_id = target.id
-    arrayPododucts.push({ 'produto_id': produto_id, 'qtd': qtd })
-    console.log(arrayPododucts )
+    var value = parseFloat(target.children[2].innerHTML);
+    var product_name = target.children[1].innerHTML
+
+    arrayProducts.push({ 'produto_id': produto_id, 'qtd': qtd, 'product_name': product_name , 'unit_value': value  ,'total_value': value })
+
+    var result = [];
+    arrayProducts.reduce(function(res, value) {
+        if (!res[value.produto_id]) {
+            res[value.produto_id] = { produto_id: value.produto_id, qtd: 0, 'product_name': value.product_name , unit_value: value.unit_value, total_value: value.total_value };
+            result.push(res[value.produto_id])
+        }
+        res[value.produto_id].qtd = parseInt(value.qtd);
+        res[value.produto_id].total_value = res[value.produto_id].qtd * value.total_value
+        return res;
+    }, {});
+
+    return result
+
+    //console.log(products)
 }
-
-
-
 
 products = getAllProducts();
 
-function modifyText() {
-    console.log("eeeeeeeeeeee")
-}
+
 
 
