@@ -95,8 +95,8 @@ function addCellFinalizar(products) {
 
         cell1.innerHTML = product.qtd;
         cell2.innerHTML = product.product_name;
-        cell3.innerHTML = 'R$ ' + product.unit_value;
-        cell4.innerHTML = 'R$ ' + product.total_value;
+        cell3.innerHTML = product.unit_value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        cell4.innerHTML = product.total_value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     })
 }
 
