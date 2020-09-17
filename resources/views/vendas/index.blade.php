@@ -25,6 +25,12 @@
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Orçamento personalizado</header>
+                        <header>Valor Total</header>
+                        <div class="col-6 span_total">
+                                <span class="badge badge-dark float-right">
+                                    R$
+                                </span>
+                        </div>
                         <div class="tools">
                             <div class="btn-group">
                                 <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Pedido">

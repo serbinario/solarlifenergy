@@ -22,7 +22,7 @@ function addCellInversores(inversores) {
 
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = inversor.produto;
-        cell3.innerHTML = inversor.preco_revenda;
+        cell3.innerHTML = parseFloat(inversor.preco_revenda).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
         cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
@@ -40,7 +40,7 @@ function addCellModulos(products) {
 
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
-        cell3.innerHTML = product.preco_revenda;
+        cell3.innerHTML = parseFloat(product.preco_revenda).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
         cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
@@ -59,7 +59,7 @@ function addCellEstrutura(products) {
 
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
-        cell3.innerHTML = product.preco_revenda.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        cell3.innerHTML = parseFloat(product.preco_revenda).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
@@ -77,7 +77,7 @@ function addCellEletrica(products) {
 
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
-        cell3.innerHTML = product.preco_revenda;
+        cell3.innerHTML = parseFloat(product.preco_revenda).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
         cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
@@ -86,6 +86,7 @@ function addCellFinalizar(products) {
     var table_finalizar = document.getElementById("table_finalizar");
     $('#table_finalizar').empty()
     products.map(function (product) {
+       // console.log(product)
         var row = table_finalizar.insertRow(0);
         row.id = product.id;
         var cell1 = row.insertCell(0);
@@ -98,6 +99,8 @@ function addCellFinalizar(products) {
         cell2.innerHTML = product.product_name;
         cell3.innerHTML = product.unit_value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         cell4.innerHTML = product.total_value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+        document.getElementsByClassName('span_total')[0].children[0].innerHTML = total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     })
 }
 
@@ -145,7 +148,6 @@ function getAllProducts(){
                 if(event.target.parentElement.parentElement.id !== ""){
                     finalizar = updadeFinalizar(event.target.parentElement.parentElement)
                     addCellFinalizar(finalizar)
-                    total = finalizar.reduce(sumTotalProducts);
                 }else{
                     finalizar = updadeFinalizar(event.target.parentElement.parentElement.parentElement)
                     addCellFinalizar(finalizar)
@@ -156,35 +158,63 @@ function getAllProducts(){
 };
 
 var arrayProducts = [];
-var products = [];
 
-function sumTotalProducts(total, num) {
-    console.log("sssssss")
-}
 
 function updadeFinalizar(target){
-    var qtd = target.children[0].children[0].value
     var produto_id = target.id
-    var value = parseFloat(target.children[2].innerHTML);
-    var product_name = target.children[1].innerHTML
+    var qtd = target.children[0].children[0].value
 
-    arrayProducts.push({ 'produto_id': produto_id, 'qtd': qtd, 'product_name': product_name , 'unit_value': value  ,'total_value': value })
+    var productFilter = products.filter(function (product) {
+        return product.id == produto_id
+    })
 
-    var result = [];
-    arrayProducts.reduce(function(res, value) {
+//console.log(productFilter[0].produto)
+
+    arrayProducts.push({ 'produto_id': produto_id, 'qtd': qtd, 'product_name': productFilter[0].produto , 'unit_value': productFilter[0].preco_revenda  ,'total_value': productFilter[0].preco_revenda })
+    var results = [];
+
+    total = 0;
+    var arrayReduce = arrayProducts.reduce(function(res, value) {
         if (!res[value.produto_id]) {
-            res[value.produto_id] = { produto_id: value.produto_id, qtd: 0, 'product_name': value.product_name , unit_value: value.unit_value, total_value: value.total_value };
-            result.push(res[value.produto_id])
+            res[value.produto_id] = { produto_id: value.produto_id, qtd: 0, 'product_name': value.product_name , unit_value: parseFloat(value.unit_value), total_value: value.total_value };
+            results.push(res[value.produto_id])
+
         }
         res[value.produto_id].qtd = parseInt(value.qtd);
         res[value.produto_id].total_value = res[value.produto_id].qtd * value.total_value
         return res;
     }, {});
 
-    total = { 'products' : result,  'total': 100}
-    console.log(total.products)
-    return result
+    for (var result in results){
+        total += results[result].total_value
+    }
+    //console.log(results)
+    return results
 }
+
+// function updadeFinalizar(target){
+//     var qtd = target.children[0].children[0].value
+//     var produto_id = target.id
+//     var value = parseFloat(target.children[2].innerHTML);
+//     var product_name = target.children[1].innerHTML
+//
+//     arrayProducts.push({ 'produto_id': produto_id, 'qtd': qtd, 'product_name': product_name , 'unit_value': value  ,'total_value': value })
+//
+//     var result = [];
+//     arrayProducts.reduce(function(res, value) {
+//         if (!res[value.produto_id]) {
+//             res[value.produto_id] = { produto_id: value.produto_id, qtd: 0, 'product_name': value.product_name , unit_value: value.unit_value, total_value: value.total_value };
+//             result.push(res[value.produto_id])
+//         }
+//         res[value.produto_id].qtd = parseInt(value.qtd);
+//         res[value.produto_id].total_value = res[value.produto_id].qtd * value.total_value
+//         return res;
+//     }, {});
+//
+//     total = { 'products' : result,  'total': 100}
+//     console.log(total.products)
+//     return result
+// }
 
 products = getAllProducts();
 
