@@ -2,6 +2,7 @@ $(document).ready(function () {
     var projeto_status_id = document.getElementById('projeto_status_id').value
     localStorage.setItem('projeto_status_id', projeto_status_id)
     localStorage.setItem('projeto_acordion', 1)
+    localStorage.setItem('projeto_aba', 0)
 
 
     var o = this;
@@ -41,6 +42,7 @@ $(document).ready(function () {
     /* Ativa a aba no projeto */
 
     var projeto_aba = localStorage.getItem('projeto_aba')
+
 
     if (projeto_aba) {
         var projeto_aba = 0
