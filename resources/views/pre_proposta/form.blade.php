@@ -521,12 +521,12 @@
 
                                 <tr>
                                     <td  style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
-                                    <td><input  readonly class="form-control input-sm money" name="equipe_tecnica" type="text" id="equipe_tecnica" value="{{ old('equipe_tecnica', isset($preProposta->equipe_tecnica) ? $preProposta->equipe_tecnica : null) }}" min="0" max="10" placeholder="Desconto"></td>
+                                    <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm money" name="equipe_tecnica" type="text" id="equipe_tecnica" value="{{ old('equipe_tecnica', isset($preProposta->equipe_tecnica) ? $preProposta->equipe_tecnica : null) }}" min="0" max="10" placeholder="Desconto"></td>
                                 </tr>
 
                                 <tr>
-                                    <td  style="display: none;" style="text-align:right; padding-right: 20px;">PREÇO DO MÓDULO</td>
-                                    <td  ><input  style="display: none;" class="form-control input-sm money" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
+                                    <td style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO MÓDULO</td>
+                                    <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
 
