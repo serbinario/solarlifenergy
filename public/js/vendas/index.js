@@ -7,6 +7,7 @@ var quadrados = numeros.map(function(item){
 
 var products;
 var finalizar;
+var total;
 
 function addCellInversores(inversores) {
     var table_inversores = document.getElementById("table_inversores");
@@ -58,7 +59,7 @@ function addCellEstrutura(products) {
 
         cell1.innerHTML = "<input style=\"width: 54px;\" type=\"number\" value=\"1\"/>";
         cell2.innerHTML = product.produto;
-        cell3.innerHTML = product.preco_revenda;
+        cell3.innerHTML = product.preco_revenda.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         cell4.innerHTML = "<button type=\"button\" class=\"btn addProduct btn-succes\"  data-placement=\"top\" data-original-title=\"Edit row\"><i class=\"glyphicon glyphicon-plus\"></i></button>";
     })
 }
@@ -143,13 +144,11 @@ function getAllProducts(){
 
                 if(event.target.parentElement.parentElement.id !== ""){
                     finalizar = updadeFinalizar(event.target.parentElement.parentElement)
-                    console.log(finalizar)
                     addCellFinalizar(finalizar)
+                    total = finalizar.reduce(sumTotalProducts);
                 }else{
                     finalizar = updadeFinalizar(event.target.parentElement.parentElement.parentElement)
-                    console.log(finalizar)
                     addCellFinalizar(finalizar)
-
                 }
             })
         }
@@ -159,6 +158,9 @@ function getAllProducts(){
 var arrayProducts = [];
 var products = [];
 
+function sumTotalProducts(total, num) {
+    console.log("sssssss")
+}
 
 function updadeFinalizar(target){
     var qtd = target.children[0].children[0].value
@@ -179,9 +181,9 @@ function updadeFinalizar(target){
         return res;
     }, {});
 
+    total = { 'products' : result,  'total': 100}
+    console.log(total.products)
     return result
-
-    //console.log(products)
 }
 
 products = getAllProducts();
