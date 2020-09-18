@@ -362,6 +362,106 @@ div.value p {
 
 }
 
+div.vendas > div.card-head{
+    padding-left: 20px;
+}
+
+section.forma-pagamento {
+    display: flex;
+}
+
+section.forma-pagamento > div:nth-child( 1 ){
+    margin-right: 40px;
+}
+
+
+section.forma-pagamento .title{
+    position: absolute;
+    top: -11px;
+    left: 10px;
+    padding: 0px 8px !important;
+    font-size: 13px !important;
+    background-color: #fff;
+    color: rgb(28, 47, 84) !important;
+}
+
+section.forma-pagamento .sc-cLmFfZ {
+    position: relative;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1.2 1 0%;
+    border: 1px solid rgb(200, 208, 217);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+section.forma-pagamento .gEfkdM {
+    display: flex;
+    align-items: center;
+    -moz-box-align: center;
+    color: rgb(86, 120, 155);
+    font-size: 14px;
+    margin: 0px 2px;
+}
+
+
+
+.svg-inline--fa.fa-w-8 {
+    width: 0.5em;
+    vertical-align: -0.125em;
+}
+
+section.forma-produtos {
+    display: flex;
+}
+
+section.forma-produtos > div:nth-child( 1 ){
+    margin-right: 40px;
+}
+
+
+section.forma-produtos .title{
+    position: absolute;
+    top: -11px;
+    left: 10px;
+    padding: 0px 8px !important;
+    font-size: 13px !important;
+    background-color: #fff;
+    color: rgb(28, 47, 84) !important;
+}
+
+section.forma-produtos .sc-cLmFfZ {
+    position: relative;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1.2 1 0%;
+    border: 1px solid rgb(200, 208, 217);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+section.forma-produtos .produtos-detalhe{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+    font-weight: 600;
+    font-size: 18px;
+    background: #c8d0d9;
+
+}
+
+
+
+
+
 
 
 
