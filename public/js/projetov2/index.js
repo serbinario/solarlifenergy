@@ -24,7 +24,7 @@ var table = $('#projetov2').DataTable({
         "align": "right"
     },
     "searching": false,
-    "bLengthChange": false,
+    "bLengthChange": true,
     "drawCallback": function( settings ) {
         var inputs = document.getElementsByClassName('arquivar')
 

@@ -22,21 +22,14 @@
             <form method="POST" action="" accept-charset="UTF-8">
                 <input name="_method" value="DELETE" type="hidden">
                 {{ csrf_field() }}
-                <div class="card">
+                <div class="card vendas">
                     <div class="card-head style-primary">
                         <header>Orçamento personalizado</header>
-                        <header>Valor Total</header>
+                        <header>Valor total dos produtos</header>
                         <div class="col-6 span_total">
                                 <span class="badge badge-dark float-right">
-                                    R$
+                                    R$ 0,0
                                 </span>
-                        </div>
-                        <div class="tools">
-                            <div class="btn-group">
-                                <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Pedido">
-                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -47,15 +40,15 @@
                             <div class="card">
                                 <div class="card-head">
                                     <ul class="nav nav-tabs" data-toggle="tabs">
-                                        <li class="active"><a href="#inversores">INVERSORES</a></li>
+                                        <li ><a href="#inversores">INVERSORES</a></li>
                                         <li><a href="#modulos">MÓDULOS</a></li>
                                         <li><a href="#estrutura">ESTRUTURA</a></li>
                                         <li><a href="#eletrica">ELÉTRICA</a></li>
-                                        <li><a href="#finalizar">FINALIZAR</a></li>
+                                        <li class="active"><a href="#finalizar">FINALIZAR</a></li>
                                     </ul>
                                 </div><!--end .card-head -->
                                 <div class="card-body tab-content">
-                                    <div class="tab-pane active" id="inversores">
+                                    <div class="tab-pane" id="inversores">
                                         @include('vendas.inversores')
                                     </div>
                                     <div class="tab-pane" id="modulos">
@@ -67,7 +60,7 @@
                                     <div class="tab-pane" id="eletrica">
                                         @include('vendas.eletrica')
                                     </div>
-                                    <div class="tab-pane" id="finalizar">
+                                    <div class="tab-pane active" id="finalizar">
                                         @include('vendas.finalizar')
                                     </div>
 
@@ -83,8 +76,16 @@
 
                     </div><!--end .row -->
                     <!-- END DATATABLE 1 -->
+                    <div class="card-actionbar">
+                        <div class="card-actionbar-row">
+                            <button type="button" class="btn btn-primary">Salvar orçamento</button>
+
+                        </div>
+                    </div>
 
                 </div><!--end .card -->
+
+
 
             </form>
         </div><!--end .col -->

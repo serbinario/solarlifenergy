@@ -101,6 +101,7 @@ function addCellFinalizar(products) {
         cell4.innerHTML = product.total_value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
         document.getElementsByClassName('span_total')[0].children[0].innerHTML = total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        document.getElementsByClassName('produtos-detalhe')[0].children[1].innerHTML = total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     })
 }
 
@@ -192,29 +193,6 @@ function updadeFinalizar(target){
     return results
 }
 
-// function updadeFinalizar(target){
-//     var qtd = target.children[0].children[0].value
-//     var produto_id = target.id
-//     var value = parseFloat(target.children[2].innerHTML);
-//     var product_name = target.children[1].innerHTML
-//
-//     arrayProducts.push({ 'produto_id': produto_id, 'qtd': qtd, 'product_name': product_name , 'unit_value': value  ,'total_value': value })
-//
-//     var result = [];
-//     arrayProducts.reduce(function(res, value) {
-//         if (!res[value.produto_id]) {
-//             res[value.produto_id] = { produto_id: value.produto_id, qtd: 0, 'product_name': value.product_name , unit_value: value.unit_value, total_value: value.total_value };
-//             result.push(res[value.produto_id])
-//         }
-//         res[value.produto_id].qtd = parseInt(value.qtd);
-//         res[value.produto_id].total_value = res[value.produto_id].qtd * value.total_value
-//         return res;
-//     }, {});
-//
-//     total = { 'products' : result,  'total': 100}
-//     console.log(total.products)
-//     return result
-// }
 
 products = getAllProducts();
 
