@@ -37,6 +37,7 @@ trait SimuladorV2
     private $irradiacao_anual = 0;
     private $potenciaModulo = 0;
     private $valorMaoObra = 0;
+    private $valorMaoObraPorModulo = 0;
     private $valorFranqueadora = 0;
     private $inversores = 0;
     private $mc4 = 0;
@@ -139,6 +140,7 @@ trait SimuladorV2
 
                 //Seviço Operacional
                 'valor_mao_obra' =>  $this->valorMaoObra,
+                'valor_mao_obra_por_modulo' => $this->valorMaoObraPorModulo,
                 'total_investimento' => round($this->totalInvestimento, 2),
 
                 'inversores' => $this->inversores,
@@ -212,8 +214,9 @@ trait SimuladorV2
     }
 
     private function calculaMaoObra($id){
-        $valorMaoObra = MaoObraModulos::select('valor_mao_obra')->where('modulo_id', '=', $id)->where('max_modulos' , '>=', $this->qtdModulos )->first()->valor_mao_obra;
-        return $this->qtdModulos * $valorMaoObra;
+        $this->valorMaoObraPorModulo = MaoObraModulos::select('valor_mao_obra')->where('modulo_id', '=', $id)->where('max_modulos' , '>=', $this->qtdModulos )->orderBy('max_modulos', 'asc')->first()->valor_mao_obra;
+        //dd($valorMaoObra);
+        return $this->qtdModulos * $this->valorMaoObraPorModulo;
     }
 
     private function calculaString(){
