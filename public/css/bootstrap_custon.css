@@ -414,11 +414,6 @@ section.forma-produtos {
     display: flex;
 }
 
-section.forma-produtos > div:nth-child( 1 ){
-    margin-right: 40px;
-}
-
-
 section.forma-produtos .title{
     position: absolute;
     top: -11px;

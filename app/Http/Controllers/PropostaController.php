@@ -239,7 +239,10 @@ class PropostaController extends Controller
         echo "String     " .  "qtd= " . 1 . " Valor= " .  $return['soma_string'] . " Total= " . $return['soma_string']. "<br>";
         $total = $return['soma_string'] + $return['soma_estrutura'] + $return['soma_inversor'] + $return['soma_modulos'];
         echo "Total  " . $total . "<br>";
-        echo "Mão de Obra=  " . $return['valor_mao_obra'] . "<br>";
+
+        echo "Mão de Obra = " .$return['valor_mao_obra_por_modulo']. "<br>";
+        echo "Mão de Obra Total=  " . $return['valor_mao_obra'] . "<br>";
+
         $totalGeral = $total + $return['valor_mao_obra'] ;
 
         $participacao = round((($totalGeral / 100 ) * $percentual),2);
