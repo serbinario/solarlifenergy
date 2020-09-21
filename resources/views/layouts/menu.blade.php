@@ -227,6 +227,15 @@
 									<li><a href="{{ route('produto.index') }}" class="active"><span class="title">Produtos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Parâmetros Sistema</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('mao_obra.index') }}" class="active"><span class="title">Mão De Obra</span></a></li>
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
 
 							@endrole
 

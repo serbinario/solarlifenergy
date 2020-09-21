@@ -96,8 +96,27 @@ Route::group(
 
     Route::get('/getallproducts', 'PedidoController@getAllProducts')
         ->name('report.financeiroCliente');
+});
 
+Route::group(
+    [
+        'prefix' => 'maoObra',
+    ], function () {
 
+    Route::get('/', 'MaoObraModulosController@index')
+        ->name('mao_obra.index');
+
+    Route::get('/grid', 'MaoObraModulosController@grid')
+        ->name('mao_obra.index.grid');
+
+    Route::get('/{mao_obra}/edit','MaoObraModulosController@edit')
+        ->name('mao_obra.edit')
+        ->where('id', '[0-9]+');
+    Route::put('/{cliente}', 'MaoObraModulosController@update')
+        ->name('mao_obra.update')
+        ->where('id', '[0-9]+');
+    Route::get('/create','ClienteController@create')
+        ->name('mao_obra.create');
 });
 
 
