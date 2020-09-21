@@ -22,12 +22,16 @@ class MaoObraModulos extends Model
     */
     protected $primaryKey = 'id';
 
+    public $timestamps = false;
+
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'max_modulos',
+        'valor_mao_obra'
               ];
 
     /**
@@ -43,5 +47,10 @@ class MaoObraModulos extends Model
      * @var array
      */
     protected $casts = [];
+
+    public function modulo()
+    {
+        return $this->belongsTo('Serbinario\Entities\Modulo','modulo_id');
+    }
 
 }
