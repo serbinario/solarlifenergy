@@ -46,6 +46,7 @@
                                                     <th>Contato</th>
                                                     <th>CPF/CNPJ</th>
                                                     <th>UF</th>
+                                                    <th>Status</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>

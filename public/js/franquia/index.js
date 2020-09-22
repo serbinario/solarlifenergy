@@ -55,6 +55,16 @@ var table = $('#franquia').DataTable({
             }
         },
         {data: 'estado', name: 'estado'},
+        {data: 'is_active', name: 'is_active', visible: true,
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.is_active == 1){
+                    $(nTd).html("    <span class=\"badge badge-primary\">"+ "Ativo</span>")
+                }else{
+                    $(nTd).html("    <span class=\"badge badge-danger\">"+ "Desativado</span>")
+                }
+            }
+
+        },
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
 });

@@ -57,7 +57,8 @@ class UsersController extends Controller
                 'users.id',
                 'users.email',
                 'users.name',
-                'franquias.nome'
+                'franquias.nome',
+                'users.is_active'
             ]);
 
         #Editando a grid
