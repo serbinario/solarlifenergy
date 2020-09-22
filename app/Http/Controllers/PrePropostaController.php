@@ -115,6 +115,10 @@ class PrePropostaController extends Controller
                     $query->where('pre_propostas.codigo', 'like', "%" . $request->get('codigo') . "%");
                 }
 
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
+
                 if ($request->has('prioridade')) {
                     $query->where('prioridades.id', '=', $request->get('prioridade') );
                     $query->whereNull('projetosv2.id');
