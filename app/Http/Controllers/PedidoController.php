@@ -107,30 +107,29 @@ class PedidoController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(UserFormRequest $request)
+    public function store(Request $request)
     {
         try {
-            //$this->affirm($request);
-            $data = $this->getData($request);
+            $orcamento = json_decode($request->getContent(), true);
+            //dd($orcamento);
+            $products =  $orcamento['data'];
 
 
-            $data['password'] = \Hash::make($data['password']);
+            $userId = Auth::id();
 
+            $pedido = Pedido::create([ 'user_id' => $userId, 'faturado_por' => $orcamento['faturamento'] ]);
 
-            $user = User::create($data);
+            foreach ($products as $key => $product)
+            {
+                $produto = \DB::table('produtos')->where('id', '=', $product['produto_id'])->first();
+                $valor_total = (float)$produto->preco_revenda * $product['qtd'];
+                $pedido->produtos()->attach($key, [ 'produto_id' => $product['produto_id'], 'quantidade' => $product['qtd'], 'valor_unitario' => $produto->preco_revenda, 'valor_total' =>  $valor_total]);
+            }
 
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
-            $user->syncRoles($role_r);
-
-            return redirect()->route('users.user.edit', $user->id)
-                ->with('success_message', 'Cadastro atualizado com sucesso!');
-
+            return response()->json(['success' => true, 'msg' => 'Pedido criado com sucesso']);
 
         } catch (Exception $e) {
-            dd($e);
-            return back()->withInput()
-                ->withErrors(['error_message' => $e->getMessage()]);
+            return response()->json(['success' => false, 'msg' => 'Pedido não pode ser criado']);
         }
     }
 

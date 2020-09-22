@@ -237,6 +237,17 @@
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Pedido</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
+									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Pedidos</span></a></li>
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
+
 							@endrole
 
 						</ul><!--end /submenu -->
@@ -247,11 +258,6 @@
 				</ul><!--end .main-menu -->
 				<!-- END MAIN MENU -->
 
-				<div class="menubar-foot-panel">
-					<small class="no-linebreak hidden-folded">
-						<span class="opacity-75">Copyright &copy; 2014</span> <strong>Serbinario</strong>
-					</small>
-				</div>
 			</div><!--end .menubar-scroll-panel-->
 
 		</div><!--end #menubar-->
