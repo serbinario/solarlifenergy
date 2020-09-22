@@ -45,6 +45,7 @@
                                             <th>Nome</th>
                                             <th>Email</th>
                                             <th>Franquia</th>
+                                            <th>Status</th>
                                             <th>Acao</th>
                                         </tr>
                                         </thead>
