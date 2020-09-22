@@ -22,13 +22,17 @@ class Pedido extends Model
     */
     protected $primaryKey = 'id';
 
+    public $timestamps = true;
+
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
     protected $fillable = [
-
+                'cliente_id',
+                'user_id',
+        'faturado_por'
               ];
 
     /**

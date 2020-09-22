@@ -78,7 +78,7 @@
                     <!-- END DATATABLE 1 -->
                     <div class="card-actionbar">
                         <div class="card-actionbar-row">
-                            <button type="button" class="btn btn-primary">Salvar orçamento</button>
+                            <button type="button" id="salvar_orcamento" class="btn btn-primary">Salvar orçamento</button>
 
                         </div>
                     </div>

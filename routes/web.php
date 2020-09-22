@@ -91,6 +91,9 @@ Route::group(
     Route::get('/', 'PedidoController@index')
         ->name('pedido.index');
 
+    Route::post('/saveproducts', 'PedidoController@store')
+        ->name('pedido.create');
+
     Route::get('/financeiroCliente', 'ReportController@reportPdfFinanceiroCliente')
         ->name('report.financeiroCliente');
 

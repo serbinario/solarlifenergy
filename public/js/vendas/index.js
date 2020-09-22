@@ -196,6 +196,43 @@ function updadeFinalizar(target){
 
 products = getAllProducts();
 
+document.getElementById('salvar_orcamento').addEventListener('click', function (ev) {
+
+    if(finalizar == undefined){
+        return swal("Error", "É necessário selecionar pelo menos um produto!", "error");
+    }
+    var faturamento = document.querySelector('input[type="radio"]:checked').value;
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+        }
+    });
+
+    data = {
+        'data': finalizar,
+        faturamento: faturamento
+    }
+    var data = JSON.stringify(data)
+
+    console.log(data)
+    jQuery.ajax({
+        type: 'POST',
+        url: '/index.php/pedido/saveproducts',
+        contentType: 'json',
+        processData: false,
+        data: data,
+    }).done(function (retorno) {
+        if(retorno.success) {
+            swal(retorno.msg, "Seu pedido estar em análise", "success");
+            document.getElementById('salvar_orcamento').disabled = true;
+
+        } else {
+            swal("Error", "Click no botão abaixo!", "error");
+        }
+    });
+})
 
 
 
