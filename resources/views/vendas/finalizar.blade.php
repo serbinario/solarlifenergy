@@ -43,7 +43,7 @@
         <div>
             <span class="sc-fEVUGC title">Produtos</span>
             <label class="radio-inline radio-styled">
-                <input type="radio" name="faturamento" value="1"><span>Faturamento para o credenciado (Revenda)</span>
+                <input checked="checked" type="radio" name="faturamento" value="1"><span>Faturamento para o credenciado (Revenda)</span>
             </label>
             <label class="radio-inline radio-styled">
                 <input type="radio" name="faturamento" value="2"><span>Faturamento direto para o cliente</span>
