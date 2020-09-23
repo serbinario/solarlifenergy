@@ -181,7 +181,7 @@ class ClienteController extends Controller
             $data = $this->getData($request, new Cliente());
 
             $data['user_id'] = \Auth::id();
-            dd($data);
+            //dd($data);
             $cliente = Cliente::create($data);
 
             $cliente->id;
