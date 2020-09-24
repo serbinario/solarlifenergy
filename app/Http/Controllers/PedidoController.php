@@ -81,12 +81,48 @@ class PedidoController extends Controller
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                              
                                 
-                               
+                               <a  href="#" class="btn btn-primary edit" title="Edit">
+                                    <span id="' . $row->id . '" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
                             </div>
                         </form>
                         ';
             })->make(true);
 
+    }
+
+
+
+    public function getPedido(Request $request)
+    {
+
+        $id = $request->get('id');
+        $rows = \DB::table('pedidos')
+            ->leftJoin('pedido_produto', 'pedido_produto.pedido_id', '=', 'pedidos.id')
+            ->leftJoin('produtos', 'pedido_produto.produto_id', '=', 'produtos.id')
+            ->select([
+                'produtos.produto',
+                'pedido_produto.quantidade',
+                'pedido_produto.valor_unitario',
+                'pedido_produto.valor_total',
+            ])
+            ->where('pedidos.id', '=', $id)
+        ;
+        $header = array (
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'charset' => 'utf-8'
+        );
+        return  response()->json($rows->get(), 200, $header,  JSON_UNESCAPED_UNICODE);
+    }
+
+    public function updatePedido(Request $request)
+    {
+        $produto_id = $request->get('produto_id');
+        $pedido_status_id = $request->get('pedido_status_id');
+
+        $pedito = Pedido::find($produto_id);
+        $pedito->update([ 'pedido_status_id' => $pedido_status_id ] );
+        return \Illuminate\Support\Facades\Response::json(['success' => true]);
     }
 
     public function getAllProducts()

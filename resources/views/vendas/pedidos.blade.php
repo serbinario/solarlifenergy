@@ -38,6 +38,7 @@
                                     <table id="pedidos" class="table order-column hover">
                                         <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Id</th>
                                             <th>Integrador</th>
                                             <th>Data</th>
@@ -59,6 +60,8 @@
         </div><!--end .col -->
     </div><!--end .row -->
     <!-- END HORIZONTAL FORM -->
+
+    @include ('vendas.modalStatus')
 
 @endsection
 
