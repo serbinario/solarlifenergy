@@ -32,7 +32,8 @@ class Pedido extends Model
     protected $fillable = [
                 'cliente_id',
                 'user_id',
-        'faturado_por'
+        'faturado_por',
+        'pedido_status_id'
               ];
 
     /**

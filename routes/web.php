@@ -85,11 +85,17 @@ Route::group(
 
 Route::group(
     [
-        'prefix' => 'pedido',
+        'prefix' => 'orcamento',
     ], function () {
 
-    Route::get('/', 'PedidoController@index')
+    Route::get('/novo', 'PedidoController@index')
+        ->name('orcamento.index');
+
+    Route::get('/', 'PedidoController@indexPedido')
         ->name('pedido.index');
+
+    Route::get('/grid', 'PedidoController@grid')
+        ->name('pedido.grid');
 
     Route::post('/saveproducts', 'PedidoController@store')
         ->name('pedido.create');
@@ -141,18 +147,7 @@ Route::group(
 
     Route::get('/getProjetos', 'Dashboard@getProjetos')
         ->name('dashboard.getProjetos');
-
-
-
-
 });
-
-
-
-
-
-
-
 
 Route::group(
 [
