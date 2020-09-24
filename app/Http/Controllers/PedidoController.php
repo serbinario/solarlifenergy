@@ -58,8 +58,10 @@ class PedidoController extends Controller
             ->leftJoin('pedido_produto', 'pedido_produto.pedido_id', '=', 'pedidos.id')
             ->leftJoin('produtos', 'pedido_produto.produto_id', '=', 'produtos.id')
             ->join('pedido_status', 'pedido_status.id', '=', 'pedidos.pedido_status_id')
+            ->join('users', 'users.id', '=', 'pedidos.user_id')
             ->groupBy('pedidos.id')
             ->select([
+                'users.name',
                 'pedidos.id',
                 \DB::raw('DATE_FORMAT(pedidos.created_at,"%d/%m/%Y") as created_at'),
                 'faturado_por',

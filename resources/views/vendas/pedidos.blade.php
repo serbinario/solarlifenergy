@@ -39,6 +39,7 @@
                                         <thead>
                                         <tr>
                                             <th>Id</th>
+                                            <th>Integrador</th>
                                             <th>Data</th>
                                             <th>Faturado Por</th>
                                             <th>Total</th>
