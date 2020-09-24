@@ -100,6 +100,12 @@ Route::group(
     Route::post('/saveproducts', 'PedidoController@store')
         ->name('pedido.create');
 
+    Route::post('/getPedido', 'PedidoController@getPedido')
+        ->name('pedido.getpedido');
+
+    Route::post('/updatePedido', 'PedidoController@updatePedido')
+        ->name('pedido.updatePedido');
+
     Route::get('/financeiroCliente', 'ReportController@reportPdfFinanceiroCliente')
         ->name('report.financeiroCliente');
 

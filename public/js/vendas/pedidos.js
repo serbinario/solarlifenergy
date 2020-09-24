@@ -1,28 +1,30 @@
-var gridDebitostable;
-var fornecedorNome;
-var valor_debito;
-var numero_cobranca;
-var id_debito; //id do debito
-function template(d){
+var produto_id
+function template(data){
     //Retirar os "&quot" da array aditivos
     //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
 
+
     var html = "<table class='table table-bordered'>";
     html += "<thead>" +
-        "<tr><td>Profile</td><td>Grupo</td></tr>" +
+        "<tr><td>Qtd</td><td>Produto</td><td>Valor Unitário</td><td>Valor Total</td></tr>" +
         "</thead>";
 
+    data.map(function (produto) {
+        html += "<tr>";
+        html += "<td>"  + produto.quantidade + "</td>";
+        html += "<td>"  + produto.produto + "</td>";
+        html += "<td>"  + produto.valor_unitario + "</td>";
+        html += "<td>"  + produto.valor_total + "</td>";
+
+        html += "</tr>"
 
 
-    html += "<tr>";
-    html += "<td>"  + d.profile + "</td>";
-    html += "<td>"  + d.grupo + "</td>";
-
-    html += "</tr>"
-
+    })
     html += "</table>";
 
     return  html;
+
+
 }
 
 var table = $('#pedidos').DataTable({
@@ -45,7 +47,13 @@ var table = $('#pedidos').DataTable({
         }
     },
     columns: [
-        {data: "id",name: 'id' },
+        {
+            "class":          "details-control",
+            "orderable":      false,
+            "data":           null,
+            "defaultContent": ""
+        },
+        {data: "id",name: 'id', "visible" : false },
         {data: 'name', name: 'users.name'},
         {data: 'created_at', name: 'pedidos.created_at'},
         {data: 'faturado_por', name: 'faturado_por',
@@ -63,8 +71,10 @@ var table = $('#pedidos').DataTable({
     ]
 });
 
+
 // Add event listener for opening and closing details
-$('#cliente tbody').on('click', 'td.details-control', function () {
+// Add event listener for opening and closing details
+$('#pedidos tbody').on('click', 'td.details-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row( tr );
 
@@ -74,16 +84,65 @@ $('#cliente tbody').on('click', 'td.details-control', function () {
         tr.removeClass('shown');
     }
     else {
-        // Open this row
-        row.child( template(row.data()) ).show();
-        tr.addClass('shown');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+            }
+        });
+        data = {
+            'id': row.data().id,
+        }
+
+        jQuery.ajax({
+            type: 'POST',
+            url: '/index.php/orcamento/getPedido',
+            datatype: 'json',
+            data: data,
+        }).done(function (retorno) {
+            if(retorno) {
+                row.child( template(retorno) ).show();
+                tr.addClass('shown');
+            }
+        });
+
     }
 });
 
+// Modal
+$('#pedidos').on( 'click', '.edit', function (event) {
+    produto_id = event.target.id;
+    $('#formModalStatus').modal();
+});
 
+var pedido = document.getElementById('BtnPedidoStatus')
 
+pedido.addEventListener('click', function (ev) {
+    var t = document.getElementById('peditoStatus')
+    var status_id = t.options[t.selectedIndex].value;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
 
+        }
+    });
+    data = {
+        'pedido_status_id': status_id,
+        'produto_id': produto_id
+    }
 
+    jQuery.ajax({
+        type: 'POST',
+        url: '/index.php/orcamento/updatePedido',
+        datatype: 'json',
+        data: data,
+    }).done(function (retorno) {
 
+        if(retorno.success) {
+            console.log("wwwwwwwwww")
+            $('#pedidos').DataTable().ajax.reload();
+            $('#formModalStatus').modal('hide');
 
-
+        }
+    });
+})
