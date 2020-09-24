@@ -127,7 +127,7 @@ function getAllProducts(){
     });
     jQuery.ajax({
         type: 'GET',
-        url: '/index.php/pedido/getallproducts',
+        url: '/index.php/orcamento/getallproducts',
         datatype: 'json',
     }).done(function (retorno) {
        products = retorno
@@ -219,7 +219,7 @@ document.getElementById('salvar_orcamento').addEventListener('click', function (
     console.log(data)
     jQuery.ajax({
         type: 'POST',
-        url: '/index.php/pedido/saveproducts',
+        url: '/index.php/orcamento/saveproducts',
         contentType: 'json',
         processData: false,
         data: data,

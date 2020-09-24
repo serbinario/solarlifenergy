@@ -243,7 +243,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
+									<li><a href="{{ route('orcamento.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
 									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Pedidos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->

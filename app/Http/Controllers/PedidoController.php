@@ -8,6 +8,7 @@ use Serbinario\Entities\Vendas\Pedido;
 use Serbinario\Entities\Vendas\Produto;
 use Serbinario\User;
 use Exception;
+use Yajra\DataTables\DataTables;
 
 class PedidoController extends Controller
 {
@@ -30,31 +31,19 @@ class PedidoController extends Controller
      */
     public function index(Request $request)
     {
-
-
         return view('vendas.index');
-//        $pedido = Pedido::find(1);
-//        $pedido->produtos()->attach([1 => [ "quantidade" => 340, "valor_unitario" => 450.1  ], 2 => [  "quantidade" => 100, "valor_unitario" => 10.1 ]]);
-//        dd("qq");
-//
-//
-//        //$sync_data = [];
-//        //for($i = 0; $i < count($allergy_ids); $i++))
-//        //$sync_data[$allergy_ids[$i]] = ['severity' => $severities[$i]];
-//
-//        //$food->allergies()->sync($sync_data);
-//
-//
-//        //$food = Food::find(1);
-//        //$food->allergies()->sync([1 => ['severity' => 3], 4 => ['severity' => 1]]);
-//
-//        $pedido = Pedido::find($request[0]['pedido_id']);
-//        $pedido->produtos()->attach('1');
-//        dd($pedido);
-//        //$shop->products()->attach($product_id);
-//        return dd($request->all());
-//        return dd(Pedido::with('produtos')->get());
     }
+
+    /**
+     * Display a listing of the profiles.
+     *
+     * @return Illuminate\View\View
+     */
+    public function indexPedido(Request $request)
+    {
+        return view('vendas.pedidos');
+    }
+
 
     /**
      * Display a listing of the fornecedors.
@@ -62,8 +51,39 @@ class PedidoController extends Controller
      * @return Illuminate\View\View
      * @throws Exception
      */
-    public function grid()
+    public function grid(Request $request)
     {
+
+        $rows = \DB::table('pedidos')
+            ->leftJoin('pedido_produto', 'pedido_produto.pedido_id', '=', 'pedidos.id')
+            ->leftJoin('produtos', 'pedido_produto.produto_id', '=', 'produtos.id')
+            ->join('pedido_status', 'pedido_status.id', '=', 'pedidos.pedido_status_id')
+            ->groupBy('pedidos.id')
+            ->select([
+                'pedidos.id',
+                \DB::raw('DATE_FORMAT(pedidos.created_at,"%d/%m/%Y") as created_at'),
+                'faturado_por',
+                'pedido_status.status',
+                \DB::raw('SUM(pedido_produto.valor_total) as total')
+            ]);
+
+        #Editando a grid
+        return Datatables::of($rows)
+            ->filter(function ($query) use ($request) {
+
+            })
+
+            ->addColumn('action', function ($row) {
+                return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
+                            <input name="_method" value="DELETE" type="hidden">
+                            <input name="_token" value="'.$this->token .'" type="hidden">
+                            <div class="btn-group btn-group-xs pull-right" role="group">                              
+                                
+                               
+                            </div>
+                        </form>
+                        ';
+            })->make(true);
 
     }
 
@@ -117,7 +137,7 @@ class PedidoController extends Controller
 
             $userId = Auth::id();
 
-            $pedido = Pedido::create([ 'user_id' => $userId, 'faturado_por' => $orcamento['faturamento'] ]);
+            $pedido = Pedido::create([ 'user_id' => $userId, 'faturado_por' => $orcamento['faturamento'], 'pedido_status_id' => 1 ]);
 
             foreach ($products as $key => $product)
             {
