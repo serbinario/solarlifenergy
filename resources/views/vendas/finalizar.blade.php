@@ -38,6 +38,20 @@
     </div>
 </section>
 
+<section class="forma-pagamento">
+    <div class="sc-cLmFfZ covtfS">
+        <div>
+            <span class="sc-fEVUGC title">Cliente</span>
+            <div class="form-group {{ $errors->has('telefone') ? 'has-error' : '' }}">
+                <label for="nome" class="col-sm-1 text-bold">Nome *.:</label>
+                <div class="col-md-11">
+                    <input class="form-control input-sm" name="nome" type="text" id="nome" value="" maxlength="100">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="forma-produtos">
     <div class="sc-cLmFfZ covtfS">
         <div>

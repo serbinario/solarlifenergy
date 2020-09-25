@@ -41,6 +41,7 @@
                                             <th></th>
                                             <th>Id</th>
                                             <th>Integrador</th>
+                                            <th>Cliente</th>
                                             <th>Data</th>
                                             <th>Faturado Por</th>
                                             <th>Total</th>

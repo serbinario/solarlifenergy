@@ -198,9 +198,16 @@ products = getAllProducts();
 
 document.getElementById('salvar_orcamento').addEventListener('click', function (ev) {
 
+    var cliente = document.getElementById('nome').value
+
+    if(cliente == "") return swal("Error", "Campo nome é obrigatório!", "error");
+
+
     if(finalizar == undefined){
         return swal("Error", "É necessário selecionar pelo menos um produto!", "error");
     }
+
+
     var faturamento = document.querySelector('input[type="radio"]:checked').value;
 
     $.ajaxSetup({
@@ -212,7 +219,8 @@ document.getElementById('salvar_orcamento').addEventListener('click', function (
 
     data = {
         'data': finalizar,
-        faturamento: faturamento
+        faturamento: faturamento,
+        cliente: cliente
     }
     var data = JSON.stringify(data)
 

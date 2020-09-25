@@ -33,7 +33,8 @@ class Pedido extends Model
                 'cliente_id',
                 'user_id',
         'faturado_por',
-        'pedido_status_id'
+        'pedido_status_id',
+        'cliente'
               ];
 
     /**
