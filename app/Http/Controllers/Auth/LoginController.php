@@ -59,6 +59,10 @@ class LoginController extends Controller
             auth()->logout();
             return back()->with('error_message', 'Sua franquia está desativada');
         }
+
+        if ( $user->hasRole('revenda') ) {// do your magic here
+            return redirect()->route('orcamento.index');
+        }
         return redirect()->intended($this->redirectPath());
     }
 

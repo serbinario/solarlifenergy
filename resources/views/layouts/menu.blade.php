@@ -175,13 +175,15 @@
 						<!--start submenu -->
 
 						<ul>
+							@role('super-admin|franquia|integrador')
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
 							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
 
-							@role('super-admin')
+
 								<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
-							@endrole
 								<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+							@endrole
+
 							@role('super-admin')
 								<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
 							@endrole
@@ -203,20 +205,23 @@
 
 							@endrole
 
-							@role('super-admin')
+
+							@role('super-admin|revenda')
+
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
-									<span class="title">Cadastro</span>
+									<span class="title">Pedido</span>
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
-									@if(Auth::user()->franquia->franqueadora == 1)
-									<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
-									@endif
-									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
+									<li><a href="{{ route('orcamento.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
+									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Pedidos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
+
+							@endrole
+
+							@role('super-admin')
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -239,16 +244,22 @@
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
-									<span class="title">Pedido</span>
+									<span class="title">Cadastro</span>
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('orcamento.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
-									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Pedidos</span></a></li>
+									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
+									@if(Auth::user()->franquia->franqueadora == 1)
+										<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
+									@endif
+									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
+
+
 							@endrole
+
 
 						</ul><!--end /submenu -->
 					</li><!--end /menu-li -->

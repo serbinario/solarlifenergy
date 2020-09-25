@@ -63,6 +63,7 @@ class PedidoController extends Controller
             ->select([
                 'users.name',
                 'pedidos.id',
+                'pedidos.cliente',
                 \DB::raw('DATE_FORMAT(pedidos.created_at,"%d/%m/%Y") as created_at'),
                 'faturado_por',
                 'pedido_status.status',
@@ -172,10 +173,11 @@ class PedidoController extends Controller
             //dd($orcamento);
             $products =  $orcamento['data'];
 
+            $cliente = $orcamento['cliente'];
 
             $userId = Auth::id();
 
-            $pedido = Pedido::create([ 'user_id' => $userId, 'faturado_por' => $orcamento['faturamento'], 'pedido_status_id' => 1 ]);
+            $pedido = Pedido::create([ 'user_id' => $userId, 'faturado_por' => $orcamento['faturamento'], 'pedido_status_id' => 1, 'cliente' => $cliente ]);
 
             foreach ($products as $key => $product)
             {

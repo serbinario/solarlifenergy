@@ -55,6 +55,7 @@ var table = $('#pedidos').DataTable({
         },
         {data: "id",name: 'id', "visible" : false },
         {data: 'name', name: 'users.name'},
+        {data: 'cliente', name: 'pedidos.cliente'},
         {data: 'created_at', name: 'pedidos.created_at'},
         {data: 'faturado_por', name: 'faturado_por',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
