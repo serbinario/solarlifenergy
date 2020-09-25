@@ -80,9 +80,11 @@ class PedidoController extends Controller
             ->filter(function ($query) use ($request) {
 
             })
-
             ->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
+
+                $user = User::find(Auth::id());
+                if($user->hasRole('super-admin')) {
+                    return '<form id="' . $row->id   . '" method="POST" action="cliente/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                              
@@ -93,7 +95,12 @@ class PedidoController extends Controller
                             </div>
                         </form>
                         ';
-            })->make(true);
+                }
+
+            })
+
+
+            ->make(true);
 
     }
 
