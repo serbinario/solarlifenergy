@@ -70,6 +70,11 @@ class PedidoController extends Controller
                 \DB::raw('SUM(pedido_produto.valor_total) as total')
             ]);
 
+        $user = User::find(Auth::id());
+        if($user->hasRole('revenda')) {
+            $rows->where('pedidos.user_id', '=', Auth::user()->id);
+        }
+
         #Editando a grid
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
