@@ -262,12 +262,17 @@
 									<span class="title">Franqueada</span>
 								</a>
 								<!--start submenu -->
+								@role('super-admin|franquia')
 								<ul>
 									<li><a href="{{ '/franquia/' . Auth::user()->franquia->id . '/edit' }}" class="active"><span class="title">Dados Cadastrais</span></a></li>
 								</ul><!--end /submenu -->
+								@endrole
+
+								@role('super-admin|advocacia|franquia')
 								<ul>
 									<li><a href="{{ route('documento.index') }}" class="active"><span class="title">Documentos</span></a></li>
 								</ul><!--end /submenu -->
+								@endrole
 							</li><!--end /menu-li -->
 
 
