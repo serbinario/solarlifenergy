@@ -63,6 +63,10 @@ class LoginController extends Controller
         if ( $user->hasRole('revenda') ) {// do your magic here
             return redirect()->route('orcamento.index');
         }
+
+        if ( $user->hasRole('advocacia') ) {// do your magic here
+            return redirect()->route('documento.index');
+        }
         return redirect()->intended($this->redirectPath());
     }
 
