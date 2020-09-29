@@ -71,8 +71,7 @@ class FranquiaController extends Controller
      * @return Illuminate\View\View
      */
     public function create(){
-        $basePrecoRevendas = BasePrecoRevenda::pluck('nome','id')->all();
-        return view('franquia.create', compact('basePrecoRevendas'));
+        return view('franquia.create');
     }
 
     /**
