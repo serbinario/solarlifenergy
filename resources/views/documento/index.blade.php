@@ -24,7 +24,7 @@
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-head style-primary">
-                        <header>Lista de dddddddd</header>
+                        <header>Franquias - Lista de documentos</header>
                         <div class="tools">
                             <div class="btn-group">
                             </div>
