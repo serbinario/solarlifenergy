@@ -34,12 +34,14 @@
                             <header>Editar Franquia</header>
                             <div class="tools">
                                 <div class="btn-group">
+                                    @role('super-admin')
                                     <a href="{{ route('franquia.franquia.index') }}" class="btn btn-primary" title="Show All Franquia">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                     <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Create New Franquia">
                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
+                                    @endrole
                                 </div>
                             </div>
                         </div>

@@ -82,6 +82,32 @@ Route::group(
         ->name('report.financeiroCliente');
 });
 
+Route::group(
+    [
+        'prefix' => 'documento',
+    ], function () {
+
+    Route::get('/index', 'DocumentoController@index')
+        ->name('documento.index');
+
+    Route::get('/grid', 'DocumentoController@grid')
+        ->name('documento.grid');
+
+});
+
+Route::group(
+    [
+        'prefix' => 'documentoUpload',
+    ], function () {
+
+    Route::post('/upload', 'DocumentoUploadController@upload')
+        ->name('documentoUpload.upload');
+
+    Route::get('/grid', 'DocumentoController@grid')
+        ->name('documento.grid');
+
+});
+
 
 Route::group(
     [

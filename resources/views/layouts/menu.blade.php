@@ -255,10 +255,20 @@
 									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
-
-
-
 							@endrole
+
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Franqueada</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ '/franquia/' . Auth::user()->franquia->id . '/edit' }}" class="active"><span class="title">Dados Cadastrais</span></a></li>
+								</ul><!--end /submenu -->
+								<ul>
+									<li><a href="{{ route('documento.index') }}" class="active"><span class="title">Documentos</span></a></li>
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
 
 
 						</ul><!--end /submenu -->
