@@ -14,9 +14,6 @@
         </div>
     @endif
 
-
-
-
     <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
@@ -39,6 +36,7 @@
                                     <table id="documentos" class="table order-column hover">
                                         <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Id</th>
                                             <th>Franquia</th>
                                             <th>Documento</th>
