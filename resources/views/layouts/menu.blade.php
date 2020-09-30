@@ -259,7 +259,7 @@
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
-									<span class="title">Franqueada</span>
+									<span class="title">Franquia</span>
 								</a>
 								<!--start submenu -->
 								@role('super-admin|franquia')

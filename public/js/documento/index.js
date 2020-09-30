@@ -42,7 +42,7 @@ $(document).ready(function () {
                         $(nTd).html("<span class=\"badge badge-danger\">"+ "Pendente</span>")
                     }else{
                         $(nTd).html(
-                            "<a target='_blank' href=/storage/" + oData.upload + "><span class=\"badge badge-primary\">" + "Link" +" </span></a>"
+                            "<a target='_blank' href=/storage/" + oData.upload + "><span class=\"badge badge-primary\">" + "Dispoível" +" </span></a>"
                         );
                     }
 

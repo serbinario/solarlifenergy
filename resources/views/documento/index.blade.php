@@ -43,7 +43,7 @@
                                             <th>Franquia</th>
                                             <th>Documento</th>
                                             <th>Data</th>
-                                            <th>Upload</th>
+                                            <th>Assinado</th>
                                             <th>Data</th>
                                             <th>Status</th>
                                             <th>Acao</th>
