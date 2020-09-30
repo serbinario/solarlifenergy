@@ -89,8 +89,8 @@ class DocumentoController extends Controller
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                              
-                                <a  href="#" class="btn btn-primary edit" title="Edit">
-                                    <span id="' . $row->id . '" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                <a  href="#" class="btn btn-primary edit" title="importar arquivo">
+                                    <span id="' . $row->id . '" class="glyphicon glyphicon-download" aria-hidden="true"></span>
                                 </a>
                               
                         </form>

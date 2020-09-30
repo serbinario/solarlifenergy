@@ -5,14 +5,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Novo Status</h4>
+                <h4 class="modal-title" id="formModalLabel">Importar Arquivo</h4>
             </div>
             <form id="formUpload" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="ano" class="control-label">Status</label>
+                            <label for="ano" class="control-label">Nome do Arquivo:</label>
                         </div>
                         <div class="col-sm-9">
                             <input id="uploadArquivos" name="arquivo" type="file" />
