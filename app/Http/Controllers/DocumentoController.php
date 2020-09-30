@@ -38,7 +38,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        return view('documento.index');
+        $franquias = Franquia::pluck('nome','id')->all();
+        return view('documento.index', compact('franquias','franquias'));
     }
 
     /**
@@ -67,12 +68,23 @@ class DocumentoController extends Controller
                 \DB::raw('DATE_FORMAT(documentos.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(documentos_upload.created_at,"%d/%m/%Y") as upload_created_at'),
 
-            ])
-            //->where('franquias.id', '=', Auth::user()->franquia->id)
-        ;
+            ]);
+            //->where('franquias.id', '=', Auth::user()->franquia->id);
 
-        #Editando a grid
-        return Datatables::of($rows)->addColumn('action', function ($row) {
+         return Datatables::of($rows)
+             ->filter(function ($query) use ($request) {
+                 # Filtranto por disciplina
+                 if ($request->has('documento')) {
+                     $query->where('documentos.descricao', 'like', "%" . $request->get('documento') . "%");
+                 }
+
+                 if ($request->has('franquia_id')) {
+                     $query->where('franquias.id', '=' ,$request->get('franquia_id'));
+                 }
+
+             })
+
+             ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="sssss/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
