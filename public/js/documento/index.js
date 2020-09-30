@@ -1,5 +1,28 @@
 $(document).ready(function () {
 
+    function template(d){
+        console.log(d);
+        //Retirar os "&quot" da array aditivos
+        //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
+
+        var html = "<table class='table table-bordered'>";
+        html += "<thead>" +
+            "<tr><td></td><td></td></tr>" +
+            "</thead>";
+
+
+
+        html += "<tr>";
+        html += "<td>"  +"</td>";
+        html += "<td>"  +"</td>";
+
+        html += "</tr>"
+
+        html += "</table>";
+
+        return  html;
+    }
+
     var documento_franquia_id
     var table = $('#documentos').DataTable({
         "stateSave": false,
@@ -25,6 +48,12 @@ $(document).ready(function () {
             }
         },
         columns: [
+            {
+                "class":          "details-control",
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ""
+            },
             {data: 'id', name: 'id', visible: false},
             {data: 'nome', name: 'franquias.nome'},
             {data: 'descricao', name: 'descricao',
@@ -61,9 +90,25 @@ $(document).ready(function () {
         table.draw();
     });
 
+    $('#documentos tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( template(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+
 });
 
-$('#documentos').on( 'click', '.edit', function (event) {
+$('#documentos').on( 'click', '.importar-arquivo', function (event) {
 
     if(event.target.id){
         document.getElementById('documento_franquia_id').value = event.target.id
