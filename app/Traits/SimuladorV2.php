@@ -52,7 +52,11 @@ trait SimuladorV2
         $modulo = Modulo::where('id', '=', $request->modulo_id)->first();
 
         $cidade = Cidade::where('id', '=', $cidade)->first();
+
+
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
+
+        //dd($this->irradiacao_anual);
         $mediaForaPonta = $request->get('monthly_usage');
         $this->qtdModulos = $this->getQtdModulos(
             $valor_medio_kw,
@@ -63,6 +67,7 @@ trait SimuladorV2
             (float)$modulo->rendimento -0.01,
             $modulo->area_geracao
         );
+
 
         $this->inversores = $this->calculaQtdInversores($modulo->id);
         $this->qtdInversores = count($this->inversores );

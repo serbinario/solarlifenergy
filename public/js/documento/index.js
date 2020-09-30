@@ -19,7 +19,8 @@ $(document).ready(function () {
         ajax: {
             url: "/index.php/documento/grid",
             data: function (d) {
-
+                d.documento = document.getElementById("documento").value;
+                d.franquia_id = $('select[name=franquia_id] option:selected').val();
 
             }
         },
@@ -29,11 +30,11 @@ $(document).ready(function () {
             {data: 'descricao', name: 'descricao',
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                     $(nTd).html(
-                          "<a target='_blank' href=/storage/" + oData.image + ">" + oData.descricao + ""
+                        "<a target='_blank' href=/storage/" + oData.image + ">" + oData.descricao + ""
                     );
                 }
             },
-            {data: 'created_at', name: 'created_at'},
+            {data: 'created_at', name: 'documentos.created_at'},
 
             {data: 'upload', name: 'documentos_upload.image',
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -48,11 +49,16 @@ $(document).ready(function () {
                 }
             },
 
-            {data: 'upload_created_at', name: 'upload_created_at'},
+            {data: 'upload_created_at', name: 'documentos_upload.created_at'},
 
-            {data: 'status', name: 'status'},
+            {data: 'status', name: 'documento_status.descricao'},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
         ]
+    });
+
+    $( "#localizar" ).click(function() {
+        //console.log(document.getElementById("integrador").value);
+        table.draw();
     });
 
 });
@@ -90,9 +96,8 @@ $('#formUpload').on('submit', function(e) {
         success : function(data) {
             $('#documentos').DataTable().ajax.reload();
             $('#formModalUpload').modal('hide');
+            console.log(data)
         }
     })
-
-
-
 });
+

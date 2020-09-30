@@ -7,6 +7,7 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Serbinario\Entities\DocumentoUpload;
 use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Pool;
@@ -56,8 +57,19 @@ class DocumentoUploadController extends Controller
 
         $file = $this->ImageStore($request,'arquivo');
 
-        DocumentoUpload::create(['documento_status_id' => 1, 'fanquia_id' => 14, 'documento_franquia_id' => $documento_franquia_id, 'image' => $file]);
-        return response()->json(['success' => true, 'msg' => $file]);
+        $docUpload = DocumentoUpload::where('documento_franquia_id', '=', $documento_franquia_id)->first();
+
+        if($docUpload){
+            //dd($docUpload);
+            $data = DB::table('documentos_upload')
+                ->where('documento_franquia_id', $documento_franquia_id)
+                ->update(['image' =>$file]);
+            //$docUpload->update(['image' => $file ]);
+        }else{
+            DocumentoUpload::create(['documento_status_id' => 1, 'fanquia_id' => 14, 'documento_franquia_id' => $documento_franquia_id, 'image' => $file]);
+        }
+
+        return response()->json(['success' => true, 'msg' => $documento_franquia_id]);
     }
 
     /**

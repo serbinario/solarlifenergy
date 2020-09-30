@@ -16,6 +16,7 @@
 
 
 
+
     <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
@@ -30,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @include('documento.filtro')
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel-body panel-body-with-table">
