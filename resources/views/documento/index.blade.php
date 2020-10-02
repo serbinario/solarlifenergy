@@ -44,6 +44,7 @@
                                             <th>Assinado</th>
                                             <th>Data</th>
                                             <th>Status</th>
+                                            <th>Status id</th>
                                             <th>Acao</th>
                                         </tr>
                                         </thead>
@@ -65,6 +66,7 @@
     <!-- END HORIZONTAL FORM -->
 
     @include('documento.modalUpload')
+    @include('documento.modalEdit')
 
 @endsection
 

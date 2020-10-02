@@ -82,21 +82,6 @@ class DocumentoUploadController extends Controller
     public function store(UserFormRequest $request)
     {
         try {
-            //$this->affirm($request);
-            $data = $this->getData($request);
-
-
-            $data['password'] = \Hash::make($data['password']);
-
-
-            $user = User::create($data);
-
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
-            $user->syncRoles($role_r);
-
-            return redirect()->route('users.user.edit', $user->id)
-                ->with('success_message', 'Cadastro atualizado com sucesso!');
 
 
         } catch (Exception $e) {
@@ -106,19 +91,7 @@ class DocumentoUploadController extends Controller
         }
     }
 
-    /**
-     * Display the specified profile.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $profile = Profile::with('pool')->findOrFail($id);
 
-        return view('profile.show', compact('profile'));
-    }
 
     /**
      * Show the form for editing the specified profile.
@@ -153,25 +126,7 @@ class DocumentoUploadController extends Controller
     {
         try {
 
-            //$this->affirm($request);
-            $data = $request->getData();
 
-            $user = User::findOrFail($id);
-
-            if(empty($data['password'])){
-                $data['password'] = $user->password;
-            }else{
-                $data['password'] = \Hash::make($data['password']);
-            }
-
-            $user->update($data);
-            //dd($user);
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
-            $user->syncRoles($role_r);
-
-            return redirect()->route('users.user.edit', $user->id)
-                ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
             return back()->withInput()
@@ -189,16 +144,7 @@ class DocumentoUploadController extends Controller
     public function destroy($id)
     {
         try {
-            $user = User::findOrFail($id);
-            $user->delete();
 
-            //dd($user);
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('model_id', '=', $user->id)->first();
-            $user->syncRoles($role_r);
-
-            return redirect()->route('users.user.index')
-                ->with('success_message', 'Profile was successfully deleted!');
 
         } catch (Exception $e) {
             return back()->withInput()

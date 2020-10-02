@@ -7,6 +7,8 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Serbinario\Entities\DocumentoStatus;
 use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Pool;
 use Serbinario\Entities\Profile;
@@ -39,7 +41,8 @@ class DocumentoController extends Controller
     public function index()
     {
         $franquias = Franquia::pluck('nome','id')->all();
-        return view('documento.index', compact('franquias','franquias'));
+        $status_documentos = DocumentoStatus::pluck('descricao','id')->all();
+        return view('documento.index', compact('franquias','franquias', 'status_documentos', 'status_documentos'));
     }
 
     /**
@@ -65,6 +68,8 @@ class DocumentoController extends Controller
                 'documentos_upload.image as upload',
                 'documentos.descricao',
                 'documento_status.descricao as status',
+                'documento_status.id as status_id',
+                'documentos_upload.obs',
                 \DB::raw('DATE_FORMAT(documentos.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(documentos_upload.created_at,"%d/%m/%Y") as upload_created_at'),
 
@@ -92,7 +97,7 @@ class DocumentoController extends Controller
                                 <a  href="#" class="btn btn-primary importar-arquivo" title="importar arquivo">
                                     <span id="' . $row->id . '" class="glyphicon glyphicon-download" aria-hidden="true"></span>
                                 </a>
-                                <a  href="#" class="btn btn-primary" title="Editar">
+                                <a  href="#" class="btn btn-primary edit" ttitle="Editar">
                                     <span id="' . $row->id . '" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </a>
                               
@@ -180,6 +185,31 @@ class DocumentoController extends Controller
 
     }
 
+
+    public function updateUpload(Request $request)
+    {
+        try {
+
+            $obs = $request->get('obs');
+            $documento_franquia_id = $request->get('documento_franquia_id');
+            $documento_status_id = $request->get('documento_status_id');
+
+            if(!$documento_status_id) $documento_status_id = 1;
+
+
+            $data = DB::table('documentos_upload')
+                ->where('documento_franquia_id', $documento_franquia_id)
+                ->update(['obs' => $obs, 'documento_status_id' => $documento_status_id]);
+
+
+
+            return response()->json(['success' => true, 'msg' => $request->get('obs')]);
+
+        } catch (Exception $e) {
+            return back()->withInput()
+                ->withErrors(['error_message' => $e->getMessage()]);
+        }
+    }
     /**
      * Update the specified profile in the storage.
      *
