@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 
         html += "<tr>";
-        html += "<td>"  +"</td>";
+        html += "<td>" + d.obs +"</td>";
         html += "<td>"  +"</td>";
 
         html += "</tr>"
@@ -23,7 +23,8 @@ $(document).ready(function () {
         return  html;
     }
 
-    var documento_franquia_id
+    var documento_franquia_id;
+    var documento_status_id;
     var table = $('#documentos').DataTable({
         "stateSave": false,
         "dom": 'lCfrtip',
@@ -79,16 +80,16 @@ $(document).ready(function () {
             },
 
             {data: 'upload_created_at', name: 'documentos_upload.created_at'},
-
             {data: 'status', name: 'documento_status.descricao'},
+            {data: 'status_id', name: 'documento_status.id', visible: false},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
         ]
     });
 
     $( "#localizar" ).click(function() {
-        //console.log(document.getElementById("integrador").value);
         table.draw();
     });
+
 
     $('#documentos tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
@@ -106,43 +107,92 @@ $(document).ready(function () {
         }
     } );
 
-});
+    $('#documentos').on( 'click', '.importar-arquivo', function (event) {
 
-$('#documentos').on( 'click', '.importar-arquivo', function (event) {
-
-    if(event.target.id){
-        document.getElementById('documento_franquia_id').value = event.target.id
-    }else{
-        document.getElementById('documento_franquia_id').value = event.target.children[0].id
-    }
-    $('#formModalUpload').modal();
-});
-
-
-$('#formUpload').on('submit', function(e) {
-    e.preventDefault();
-
-    console.log("ssssss")
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
-
+        if(event.target.id){
+            documento_franquia_id = document.getElementById('documento_franquia_id').value = event.target.id
+        }else{
+            documento_franquia_id = document.getElementById('documento_franquia_id').value = event.target.children[0].id
         }
+        $('#formModalUpload').modal();
     });
-    $.ajax({
-        url : '/index.php/documentoUpload/upload',
-        type : 'POST',
-        data : new FormData(this),
-        processData: false,  // tell jQuery not to process the data
-        contentType: false,  // tell jQuery not to set contentType
-        dataType: 'JSON',
-        cache: false,
-        success : function(data) {
-            $('#documentos').DataTable().ajax.reload();
-            $('#formModalUpload').modal('hide');
-            console.log(data)
+
+    $('#documentos').on( 'click', '.edit', function (event) {
+
+        if(event.target.id){
+            documento_franquia_id = document.getElementById('documento_franquia_id').value = event.target.id
+        }else{
+            documento_franquia_id = document.getElementById('documento_franquia_id').value = event.target.children[0].id
         }
-    })
+        var row = $(this).closest('tr');
+        var data = $('#documentos').dataTable().fnGetData(row);
+        documento_status_id = data.status_id;
+
+        console.log(documento_franquia_id, documento_status_id, data.obs)
+
+        document.getElementById('obs').value = data.obs
+        document.getElementById('documento_status_id').value = documento_status_id
+        $('#formModalEdit').modal();
+    });
+
+    $('#btnModalEdit').on('click', function(e) {
+        e.preventDefault();
+
+        var obs = document.getElementById('obs').value
+        var documento_status_id = document.getElementById('documento_status_id').value
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+            }
+        });
+
+        data = {
+            'obs': obs,
+            'documento_status_id': documento_status_id,
+            'documento_franquia_id': documento_franquia_id
+
+        }
+        $.ajax({
+            type: 'POST',
+            url : '/index.php/documentoUpload/update',
+            datatype: 'json',
+            data: data,
+            success : function(data) {
+                $('#documentos').DataTable().ajax.reload();
+                $('#formModalEdit').modal('hide');
+            }
+        })
+    });
+
+    $('#formUpload').on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+            }
+        });
+        $.ajax({
+            url : '/index.php/documentoUpload/upload',
+            type : 'POST',
+            data : new FormData(this),
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            dataType: 'JSON',
+            cache: false,
+            success : function(data) {
+                $('#documentos').DataTable().ajax.reload();
+                $('#formModalUpload').modal('hide');
+                console.log(data)
+            }
+        })
+    });
+
 });
+
+
+
+
 

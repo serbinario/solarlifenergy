@@ -103,6 +103,9 @@ Route::group(
     Route::post('/upload', 'DocumentoUploadController@upload')
         ->name('documentoUpload.upload');
 
+    Route::post('/update', 'DocumentoController@updateUpload')
+        ->name('documento.update');
+
     Route::get('/grid', 'DocumentoController@grid')
         ->name('documento.grid');
 
