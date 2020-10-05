@@ -25,7 +25,7 @@ function template(d){
     return  html;
 }
 
-var table = $('#produto').DataTable({
+var table = $('#inversor_modulo').DataTable({
     "dom": 'lCfrtip',
     "order": [],
     "colVis": {
@@ -33,23 +33,23 @@ var table = $('#produto').DataTable({
         "overlayFade": 0,
         "align": "right"
     },
-    "searching": true,
-    "bLengthChange": true,
+    "searching": false,
+    "bLengthChange": false,
     processing: true,
     serverSide: true,
     bFilter: true,
     order: [[ 0, "desc" ]],
     ajax: {
-        url: "/index.php/maoObra/grid",
+        url: "/index.php/inversorModulo/grid",
         data: function (d) {
 
         }
     },
     columns: [
         {data: "id",name: 'id' , visible: false },
-        {data: 'potencia', name: 'modulos.potencia'},
+        {data: 'produto', name: 'produto'},
+        {data: 'potencia', name: 'potencia'},
         {data: 'max_modulos', name: 'max_modulos'},
-        {data: 'valor_mao_obra', name: 'valor_mao_obra', "render": function (data) { return parseFloat(data).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} },
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '90px'}
     ]
 });

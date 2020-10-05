@@ -44,8 +44,12 @@ class InversorModulo extends Model
      */
     protected $casts = [];
 
-    function produto(){
-        return $this->belongsTo('Serbinario\Entities\Vendas\Produto','produto_id','id');
+    function modulo(){
+        return $this->belongsTo('Serbinario\Entities\Modulo','modulo_id','id');
+    }
+    public function produto()
+    {
+        return $this->belongsTo('Serbinario\Entities\Vendas\Produto','produto_id', 'id');
     }
 
 }
