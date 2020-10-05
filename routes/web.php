@@ -97,6 +97,24 @@ Route::group(
 
 Route::group(
     [
+        'prefix' => 'inversorModulo',
+    ], function () {
+
+    Route::get('/index', 'InversorModulosController@index')
+        ->name('inversor_modulo.index');
+
+    Route::get('/grid', 'InversorModulosController@grid')
+        ->name('inversor_modulo.grid');
+
+    Route::get('/{id}/edit','InversorModulosController@edit')
+        ->name('inversor_modulo.edit')
+        ->where('id', '[0-9]+');
+
+});
+
+
+Route::group(
+    [
         'prefix' => 'documentoUpload',
     ], function () {
 

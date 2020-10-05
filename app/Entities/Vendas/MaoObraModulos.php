@@ -53,4 +53,6 @@ class MaoObraModulos extends Model
         return $this->belongsTo('Serbinario\Entities\Modulo','modulo_id');
     }
 
+
+
 }

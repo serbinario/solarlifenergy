@@ -24,27 +24,24 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Mão de obra / módulos</header>
+                            <header>Inversor Módulos</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-primary" title="Novo Produto">
-                                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
-
+                        @include('inversor_modulo.filtro')
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="produto" class="table order-column hover">
+                                        <table id="inversor_modulo" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Potência</th>
-                                                    <th>Max Módulos</th>
-                                                    <th>Valor</th>
+                                                    <th>Inversor</th>
+                                                    <th>Módulo</th>
+                                                    <th>Max. Módulos</th>
                                                     <th>Ação</th>
                                                 </tr>
                                             </thead>
@@ -69,5 +66,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/mao_obra/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/inversor_modulo/index.js')}}" type="text/javascript"></script>
 @stop
