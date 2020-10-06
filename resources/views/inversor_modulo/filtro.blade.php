@@ -13,9 +13,9 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="nome" class="col-sm-3 control-label">Inversor:</label>
+                                <label for="produto" class="col-sm-3 control-label">Inversor:</label>
                                 <div class="col-md-9">
-                                    <input class="form-control input-sm" name="documento" type="text" id="documento" maxlength="20" placeholder="documento">
+                                    <input class="form-control input-sm" name="produto" type="text" id="produto" maxlength="20" placeholder="produto">
                                 </div>
                             </div>
                         </div>

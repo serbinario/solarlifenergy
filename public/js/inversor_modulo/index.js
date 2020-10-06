@@ -42,6 +42,8 @@ var table = $('#inversor_modulo').DataTable({
     ajax: {
         url: "/index.php/inversorModulo/grid",
         data: function (d) {
+            d.modulo_id = $('select[name=modulo_id] option:selected').val();
+            d.produto = $('input[name=produto]').val();
 
         }
     },

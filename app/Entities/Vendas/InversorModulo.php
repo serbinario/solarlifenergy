@@ -22,12 +22,14 @@ class InversorModulo extends Model
     */
     protected $primaryKey = 'id';
 
+    public $timestamps = false;
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'max_modulos'
               ];
 
     /**
