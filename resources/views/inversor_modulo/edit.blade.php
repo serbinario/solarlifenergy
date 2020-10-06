@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('mao_obra.update', $inversorModulo->id) }}" accept-charset="UTF-8" id="edit_mao_obra_form" name="edit_mao_obra_form" class="form-horizontal">
+                <form method="POST" action="{{ route('inversor_modulo.update', $inversorModulo->id) }}" accept-charset="UTF-8" id="edit_mao_obra_form" name="edit_mao_obra_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">

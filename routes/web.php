@@ -110,6 +110,10 @@ Route::group(
         ->name('inversor_modulo.edit')
         ->where('id', '[0-9]+');
 
+    Route::put('/{id}', 'InversorModulosController@update')
+        ->name('inversor_modulo.update')
+        ->where('id', '[0-9]+');
+
 });
 
 

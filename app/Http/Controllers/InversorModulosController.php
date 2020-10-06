@@ -7,6 +7,7 @@ use Serbinario\Entities\Modulo;
 use Serbinario\Entities\Vendas\InversorModulo;
 use Serbinario\Entities\Vendas\InversorModulos;
 use Serbinario\Entities\Vendas\MaoObraModulos;
+use Serbinario\Http\Requests\InversorModuloFormRequest;
 use Serbinario\Http\Requests\MaoObraModuloFormRequest;
 use Yajra\DataTables\DataTables;
 use Serbinario\User;
@@ -61,6 +62,13 @@ class InversorModulosController extends Controller
         #Editando a grid
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('produto')) {
+                    $query->where('produtos.produto', 'like', "%" . $request->get('produto') . "%");
+                }
+                if ($request->has('modulo_id')) {
+                    $query->where('inversor_modulos.modulo_id',  '=' ,$request->get('modulo_id'));
+                }
             })
 
 
@@ -164,19 +172,20 @@ class InversorModulosController extends Controller
      * Exemplos
      * https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
      */
-    public function update($id, MaoObraModuloFormRequest $request)
+    public function update($id, InversorModuloFormRequest $request)
     {
         try {
 
             //$this->affirm($request);
             $data = $request->getData();
-            $maoObraModulo = MaoObraModulos::findOrFail($id);
-
-            $maoObraModulo->update($data);
+            $inversorModulo = InversorModulo::findOrFail($id);
 
 
+            $inversorModulo->update($data);
 
-            return redirect()->route('mao_obra.edit', $maoObraModulo->id)
+
+
+            return redirect()->route('inversor_modulo.edit', $inversorModulo->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
