@@ -526,7 +526,7 @@ class PrePropostaController extends Controller
             $ParametrRoi = ParametroGeral::where('id', '=', '1')->first();
 
 
-            if ($roi > $ParametrRoi->parameter_one && $roi->active){
+            if ($roi > $ParametrRoi->parameter_one && $ParametrRoi->active){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
