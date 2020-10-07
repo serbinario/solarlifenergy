@@ -12,6 +12,7 @@ use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
 use Serbinario\Entities\Modulo;
+use Serbinario\Entities\ParametroGeral;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\Prioridade;
 use Serbinario\Entities\Report;
@@ -522,8 +523,11 @@ class PrePropostaController extends Controller
             $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
             $data['roi'] = $roi;
 
+            $roi = ParametroGeral::where('id', '=', '1')->first();
+
+
             //dd($roi);
-            if ($roi > 3.6){
+            if ($roi > $roi->parameter_one && $roi->active){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }

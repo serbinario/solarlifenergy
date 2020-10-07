@@ -133,6 +133,36 @@ Route::group(
 
 });
 
+Route::group(
+    [
+        'prefix' => 'geral',
+    ], function () {
+
+    Route::get('/edit','GeralController@edit')
+        ->name('geral.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'GeralController@indexPedido')
+        ->name('geral.index');
+
+    Route::get('/grid', 'GeralController@grid')
+        ->name('geral.grid');
+
+    Route::post('/saveproducts', 'GeralController@store')
+        ->name('geral.create');
+
+    Route::post('/getPedido', 'GeralController@getPedido')
+        ->name('geral.getpedido');
+
+    Route::put('/update', 'GeralController@update')
+        ->name('geral.update');
+
+    Route::get('/financeiroCliente', 'GeralController@reportPdfFinanceiroCliente')
+        ->name('geral.financeiroCliente');
+
+    Route::get('/getallproducts', 'GeralController@getAllProducts')
+        ->name('geral.financeiroCliente');
+});
 
 Route::group(
     [
