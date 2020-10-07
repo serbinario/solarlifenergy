@@ -68,14 +68,13 @@ class GeralController extends Controller
     {
 
         try {
-            dd($request->all());
-            $cliente = Cliente::findOrFail($id);
-            $data = $this->getData($request, $cliente);
-            //$data['user_id'] = \Auth::id();
-            //dd($data);
-            $cliente->update($data);
 
-            return redirect()->route('cliente.cliente.edit', $cliente->id)
+            $roi = ParametroGeral::findOrFail($request->get('roi_id'));
+
+            $data = $this->getData($request);
+
+            $roi->update($data);
+            return redirect()->route('geral.edit')
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
         } catch (Exception $e) {
@@ -83,6 +82,12 @@ class GeralController extends Controller
             return back()->withInput()
                 ->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function getData(Request $request)
+    {
+        $data = $request->only(['active', 'parameter_one']);
+        return $data;
     }
 
 
