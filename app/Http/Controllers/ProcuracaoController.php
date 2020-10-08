@@ -58,6 +58,17 @@ class ProcuracaoController extends Controller
                 'clientes.nome',
                 \DB::raw('DATE_FORMAT(procuracoes.data_validade,"%d/%m/%Y") as data_validade'),
             ]);
+
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if($user->hasRole('franquia')) {
+
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
+        if($user->hasRole('integrador')) {
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+        }
         //$rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         #Editando a grid
         return Datatables::of($rows)->addColumn('action', function ($row) {
