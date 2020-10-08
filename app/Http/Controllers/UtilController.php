@@ -145,7 +145,8 @@ class UtilController extends Controller
                 'c02' => $return['co2'],
                 'valor_kw' => "",
                 //round(1, 2)
-                'total_nvestimento' => $return['total_investimento']
+                'total_nvestimento' => $return['total_investimento'],
+                'irradiacao_anual' => $return['irradiacao_anual']
             ]
         );
     }
