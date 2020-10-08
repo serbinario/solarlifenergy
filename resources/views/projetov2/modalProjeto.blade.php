@@ -17,6 +17,7 @@
                         <div class="col-sm-9">
                             <select id="projetoStatus" name="projetoStatus" class="form-control input-sm" multiple="multiple">
                                 <option value="1">Análise Preliminar</option>
+                                <option value="8">Análise Documental</option>
                                 <option value="2">Elaboração Projeto</option>
                                 <option value="3">Finalizado p/ Inínicio de Obras</option>
                                 <option value="4">Obras em Execução </option>
