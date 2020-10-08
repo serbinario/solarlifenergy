@@ -74,7 +74,11 @@ class DocumentoController extends Controller
                 \DB::raw('DATE_FORMAT(documentos_upload.created_at,"%d/%m/%Y") as upload_created_at'),
 
             ]);
-            //->where('franquias.id', '=', Auth::user()->franquia->id);
+        $user = User::find(Auth::id());
+        if($user->hasRole('franquia')) {
+            $rows->where('franquias.id', '=', Auth::user()->franquia->id);
+        }
+
 
          return Datatables::of($rows)
              ->filter(function ($query) use ($request) {
