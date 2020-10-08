@@ -225,7 +225,7 @@ class Projetov2Controller extends Controller
     {
 
         $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'contrato', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
-        $projetosStatus = ProjetoStatus::pluck('status_nome','id')->all();
+        $projetosStatus = ProjetoStatus::orderBy('status_nome')->pluck('status_nome','id')->all();
 
 
         return view('projetov2.edit', compact('projetov2','projetosStatus'));
