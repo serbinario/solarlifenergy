@@ -45,14 +45,17 @@ trait SimuladorV2
     function simularGeracao($request){
 
         $cidade = $request->get('cidade_id');
+        $estado_id = $request->get('estado_id');
+
         $valor_medio_kw = (int)$request->get('monthly_usage');
         $this->potenciaModulo = $request->get('modulo_id');
         $precoKwh = $request->get('preco_kwh');
 
         $modulo = Modulo::where('id', '=', $request->modulo_id)->first();
 
-        $cidade = Cidade::where('id', '=', $cidade)->first();
+        $cidade = Cidade::where('id', '=', $cidade)->where('estado_id', '=', $estado_id)->first();
 
+            //dd($cidade);
 
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
 
@@ -152,6 +155,7 @@ trait SimuladorV2
                 'reducao_media_consumo' => $reducaoMediaConsumo,
                 'geracao_fv' => $geracaoEnergiaFV,
                 'valor_franqueadora' =>  $this->valorFranqueadora,
+                'irradiacao_anual' => $this->irradiacao_anual,
                 'obs' => $obs
 
             ];
