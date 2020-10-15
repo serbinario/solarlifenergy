@@ -299,7 +299,7 @@ class PrePropostaController extends Controller
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
             $data['produto1_nf'] = $somaModulos;
-            $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'];
+            $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'] . " " . $return['modulo_potencia'] . "W";
 
             //dd($return['soma_modulos'], $participacao, $return['valor_mao_obra'], $recalculoModulo,$data['produto1_preco'], $somaModulos, $data);
             //dd($data['produto1_preco']);
