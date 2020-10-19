@@ -808,7 +808,7 @@
 
             <div class="col-sm-4">
                 <div class="form-group"{{ $errors->has('roi') ? 'has-error' : '' }}">
-                    <label for="roi" class="col-sm-6 control-label text-bold">ROI.:</label>
+                    <label for="roi" class="col-sm-6 control-label text-bold">Payback.:</label>
                     <div class="col-md-4">
                         <input class="form-control input-sm"  type="text" value="{{ old('roi', isset($preProposta->roi) ? $preProposta->roi : null) }}" maxlength="12" placeholder="Enter power here...">
                     </div>
