@@ -246,17 +246,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group {{ $errors->has('conta_contrato_atual') ? 'has-error' : '' }}">
-                                    <label for="conta_contrato_atual" class="col-md-4  text-bold control-label text-bold">Conta Contrato Atual.:</label>
+                                    <label for="conta_contrato_atual" class="col-md-4  text-bold control-label text-bold">Conta Geradora.:</label>
                                     <div class="col-md-6">
                                         <input class="form-control input-sm contrato" name="conta_contrato_atual" type="text" id="conta_contrato_atual"  value="{{ old('kwh', isset($projetov2->conta_contrato_atual) ? $projetov2->conta_contrato_atual : null) }}" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group {{ $errors->has('conta_contrato_anterior') ? 'has-error' : '' }}">
-                                    <label for="conta_contrato_anterior" class="col-md-4  text-bold control-label text-bold">Conta Contrato Anterior.:</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control input-sm contrato" name="conta_contrato_anterior" type="text" id="conta_contrato_anterior"  value="{{ old('kwh', isset($projetov2->conta_contrato_anterior) ? $projetov2->conta_contrato_anterior : null) }}" >
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,6 @@
                     <label for="data_solicitacao_vistoria" class="col-sm-6 control-label text-bold">Data Solicitação.:</label>
                     <div class="col-md-5">
                         <input class="form-control input-sm date" name="data_solicitacao_vistoria" type="text" id="data_solicitacao_vistoria" value="{{ old('data_solicitacao_vistoria', isset($projetov2->ProjetosFinalizando->data_solicitacao_vistoria) ? $projetov2->ProjetosFinalizando->data_solicitacao_vistoria : null) }}">
-                    </div>
                 </div>
             </div>
 
