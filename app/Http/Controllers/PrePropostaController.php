@@ -404,6 +404,11 @@ class PrePropostaController extends Controller
             $data['roi'] = $roi;
 
 
+            $data['qtd_paineis'] < 30 ? $data['pre_proposta_obs'] = $data['pre_proposta_obs'].  " " . "
+
+Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudanças que seguem abaixo.
+1-	O mercado está em falta com inversores de 1.5KW a 5KW, por esta razão, todas propostas emitidas com essa faixa de potência de inversores terá que ser informado ao cliente que o prazo de entrega está em 60 dias, e anexar o termo de aceite do prazo em que o mesmo aceita aguardar." :  $data['pre_proposta_obs'] ;
+           // dd($data);
             $preProposta = PreProposta::create($data);
             //;
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -535,6 +540,8 @@ class PrePropostaController extends Controller
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
+
+
 
             //dd($data);
             $preProposta->update($data);
