@@ -67,6 +67,7 @@ class PedidoController extends Controller
                 \DB::raw('DATE_FORMAT(pedidos.created_at,"%d/%m/%Y") as created_at'),
                 'faturado_por',
                 'pedido_status.status',
+                'pedidos.desconto',
                 \DB::raw('SUM(pedido_produto.valor_total) as total')
             ]);
 
@@ -132,10 +133,17 @@ class PedidoController extends Controller
     {
         $produto_id = $request->get('produto_id');
         $pedido_status_id = $request->get('pedido_status_id');
+        $desconto = $request->get('desconto');
+        $desconto = $this->convertesRealIngles($desconto);
 
         $pedito = Pedido::find($produto_id);
-        $pedito->update([ 'pedido_status_id' => $pedido_status_id ] );
-        return \Illuminate\Support\Facades\Response::json(['success' => true]);
+        $pedito->update([ 'pedido_status_id' => $pedido_status_id, 'desconto' => $desconto ] );
+        return \Illuminate\Support\Facades\Response::json(['success' => true, 'desconto' => $desconto]);
+    }
+
+    function convertesRealIngles($value){
+        $var = str_replace(".","",$value);
+        return str_replace(",",".",$var);
     }
 
     public function getAllProducts()

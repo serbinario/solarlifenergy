@@ -67,6 +67,13 @@ var table = $('#pedidos').DataTable({
             }
         },
         {data: 'total', name: 'total', "render": function (data) { return parseFloat(data).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} },
+        {data: 'desconto', name: 'pedidos.desconto', "render": function (data) { return parseFloat(data).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} },
+        {data: 'desconto', name: 'pedidos.desconto',
+            "fnCreatedCell": function (nTd, sData, oData) {
+            console.log(parseFloat(oData.total) - parseFloat(oData.desconto))
+                    $(nTd).html("   " + (parseFloat(oData.total) - parseFloat(oData.desconto)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) )
+            }
+        },
         {data: 'status', name: 'pedido_status.status'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
     ]
@@ -113,7 +120,9 @@ $('#pedidos tbody').on('click', 'td.details-control', function () {
 // Modal
 $('#pedidos').on( 'click', '.edit', function (event) {
     produto_id = event.target.id;
+    document.getElementById('desconto').value = ""
     $('#formModalStatus').modal();
+
 });
 
 var pedido = document.getElementById('BtnPedidoStatus')
@@ -121,6 +130,7 @@ var pedido = document.getElementById('BtnPedidoStatus')
 pedido.addEventListener('click', function (ev) {
     var t = document.getElementById('peditoStatus')
     var status_id = t.options[t.selectedIndex].value;
+    var desconto = document.getElementById('desconto').value
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
@@ -129,7 +139,8 @@ pedido.addEventListener('click', function (ev) {
     });
     data = {
         'pedido_status_id': status_id,
-        'produto_id': produto_id
+        'produto_id': produto_id,
+        'desconto': desconto
     }
 
     jQuery.ajax({

@@ -45,6 +45,8 @@
                                             <th>Data</th>
                                             <th>Faturado Por</th>
                                             <th>Total</th>
+                                            <th>Desconto</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                             <th>Acao</th>
                                         </tr>
@@ -68,4 +70,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/vendas/pedidos.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

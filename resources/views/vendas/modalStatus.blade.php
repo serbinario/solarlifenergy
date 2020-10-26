@@ -24,6 +24,15 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="desconto" class="control-label">Desconto</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="desconto" id="desconto" class="form-control input-sm money" placeholder="Desconto">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
