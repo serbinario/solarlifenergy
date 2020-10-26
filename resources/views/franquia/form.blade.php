@@ -6,6 +6,12 @@
 <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
     <label for="nome" class="col-md-2 control-label text-bold">Nome/Razão Social.:</label>
     <div class="col-md-10">
+
+        @role('super-admin')
+            <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($franquia->nome) ? $franquia->nome : null) }}" minlength="1" maxlength="200"  placeholder="Enter nome here...">
+        @else
+            <input  readonly class="form-control  input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($franquia->nome) ? $franquia->nome : null) }}" minlength="1" maxlength="200"  placeholder="Enter nome here...">
+            @endrole
         <input class="form-control input-sm" name="nome" type="text" id="nome" value="{{ old('nome', isset($franquia->nome) ? $franquia->nome : null) }}" minlength="1" maxlength="200"  placeholder="Enter nome here...">
         {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
     </div>
