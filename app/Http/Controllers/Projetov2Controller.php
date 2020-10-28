@@ -416,12 +416,26 @@ class Projetov2Controller extends Controller
                 }
             }
 
-            $value = $data['data_pagamento'];
-            $dataPagamaneto = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
-            $user = (new \Serbinario\Entities\ProjetosParticipacao)->updateOrCreate(
-                ['projetov2_id' =>   $progetov2->id],
-                [ 'pago' => $data['pago'], 'data_prevista' => $data['data_prevista'], 'obs' => $data['participacao_obs'], 'data_pagamento' => $dataPagamaneto]
-            );
+            if($data['data_pagamento']){
+                $value = $data['data_pagamento'];
+                $dataPagamaneto = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
+                $user = (new \Serbinario\Entities\ProjetosParticipacao)->updateOrCreate(
+                    ['projetov2_id' =>   $progetov2->id],
+                    [ 'pago' => $data['pago'], 'data_prevista' => $data['data_prevista'], 'obs' => $data['participacao_obs'], 'data_pagamento' => $dataPagamaneto]
+                );
+                //dd("ffffffffffffff");
+            }else{
+                $value = $data['data_pagamento'];
+                $dataPagamaneto = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
+                $user = (new \Serbinario\Entities\ProjetosParticipacao)->updateOrCreate(
+                    ['projetov2_id' =>   $progetov2->id],
+                    [ 'pago' => $data['pago'], 'data_prevista' => $data['data_prevista'], 'obs' => $data['participacao_obs']]
+                );
+                //dd("ddddddddddd");
+            }
+            //dd($dataPagamaneto);
+
+
 
             $progetov2->update($data);
 
