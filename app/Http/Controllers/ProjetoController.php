@@ -248,7 +248,7 @@ class ProjetoController extends Controller
             $this->affirm($request);
             $data = $this->getData($request);
             $projeto = Projeto::findOrFail($id);
-           // dd($data);
+            dd($data);
 
             //Deleta primeiro todos os registors dos contratos
             $contratos = $projeto->contratos()->delete();
@@ -363,7 +363,8 @@ class ProjetoController extends Controller
                 'data_prevista',
                 'kwh',
                 'conta_contrato_atual',
-                'conta_contrato_anterior'
+                'conta_contrato_anterior',
+                'pago'
             ]);
 
         return $data;

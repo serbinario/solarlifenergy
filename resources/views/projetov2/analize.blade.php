@@ -400,6 +400,69 @@
                     </div>
                 </div>
             </div><!--end .panel -->
+            @role('super-admin')
+            <div class="card panel">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_6">
+                    <header class="text-bold">Liberação de Participação</header>
+                </div>
+                <div id="tab_6" class="collapse">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for="monthly_usage" class="col-sm-4 text-bold control-label">Data referência.:</label>
+                                <div class="col-md-6">
+                                        <label class="radio-inline radio-styled radio-primary tipo_fisica">
+                                            <input id="10" class="10" name="data_prevista" type="radio" value="10" {{ old('tipo', isset($projetov2->participacao->data_prevista) ? $projetov2->participacao->data_prevista : null) == '10' ? 'checked' : '' }}>
+                                            10
+                                        </label>
+                                        <label class="radio-inline radio-styled radio-success tipo_juridico">
+                                            <input id="20" class="20" name="data_prevista" type="radio" value="20"  {{ old('tipo', isset($projetov2->participacao->data_prevista) ? $projetov2->participacao->data_prevista : null) == '20' ? 'checked' : '' }}>
+                                            20
+                                        </label>
+                                        <label class="radio-inline radio-styled radio-success tipo_juridico">
+                                            <input id="30" class="30" name="data_prevista" type="radio" value="30"  {{ old('tipo', isset($projetov2->participacao->data_prevista) ? $projetov2->participacao->data_prevista : null) == '30' ? 'checked' : '' }}>
+                                            30
+                                        </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="form-group">
+                                    <label for="pago" class="col-sm-8 control-label text-bold">Pago?.:</label>
+                                    <div class="col-md-4">
+                                        <div class="checkbox checkbox-styled">
+                                            <label for="pago">
+                                                <input id="pago" class="" name="pago" type="checkbox" value="1" {{ old('pago', isset($projetov2->participacao->pago) ? $projetov2->participacao->pago : null) == '1' ? 'checked' : '' }}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group {{ $errors->has('titularidade_projeto_cpf') ? 'has-error' : '' }}">
+                                        <label for="titularidade_projeto" class="col-md-4  text-bold control-label text-bold">Data Paga.:</label>
+                                        <div class="col-md-6">
+                                            <input class="form-control input-sm date" name="data_pagamento" type="text" id="titularidade_projeto"  value="{{ old('data_pagamento', isset($projetov2->participacao->data_pagamento) ? $projetov2->participacao->data_pagamento : null) }}" >
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
+                                <label for="participacao_obs" class="col-md-1 control-label  text-bold">Obs.:</label>
+                                <div class="col-md-11">
+                                    <textarea class="form-control input-sm" name="participacao_obs" cols="20" rows="10" id="participacao_obs" placeholder="">{{ old('obs', isset($projetov2->participacao->obs) ? $projetov2->participacao->obs : null) }}</textarea>
+                                    {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!--end .panel -->
+            @endrole
 
         </div><!--end .panel-group -->
     </div><!--end .Acordion -->

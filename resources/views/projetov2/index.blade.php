@@ -43,7 +43,6 @@
                                                     <th></th>
                                                     <th>Id</th>
                                                     <th>Razão Social</th>
-                                                    <th>Cod. Proposta</th>
                                                     <th>Valor</th>
                                                     <th>Kwp</th>
                                                     <th>Data Financi.</th>
@@ -54,6 +53,7 @@
                                                     <th>Integrador</th>
                                                     <th>Franquia</th>
                                                     <th>Situação</th>
+                                                    <th>Participação</th>
                                                     <th>Atualizado</th>
                                                     <th>Alerta</th>
                                                     <th>Acao</th>
