@@ -183,6 +183,13 @@ class Projetov2 extends Model
         return $this->hasOne('Serbinario\Entities\ProjetosContasContrato','projetov2_id','id');
     }
 
+    public function participacao()
+    {
+        return $this->hasOne('Serbinario\Entities\ProjetosParticipacao','projetov2_id','id');
+    }
+
+
+
 
     /**
      * Get created_at in array format

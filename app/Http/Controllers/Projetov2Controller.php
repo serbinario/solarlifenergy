@@ -4,7 +4,9 @@ namespace Serbinario\Http\Controllers;
 
 
 //meu teste
+use Serbinario\Entities\ProjetosParticipacao;
 use Serbinario\Entities\Report;
+use Serbinario\Traits\UtilEntities;
 use Serbinario\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,7 @@ use Exception;
 
 class Projetov2Controller extends Controller
 {
-    use UtilFiles;
+    use UtilFiles, UtilEntities;
     private $token;
 
     /**
@@ -74,7 +76,7 @@ class Projetov2Controller extends Controller
                 'users.name as integrador',
                 'franquias.nome as franquaia',
                 'clientes.nome_empresa',
-                'pre_propostas.codigo',
+                'pre_propostas.valor_franquia',
                 'pre_propostas.potencia_instalada',
                 \DB::raw('DATE_FORMAT(pre_propostas.data_financiamento_bancario,"%d/%m/%Y") as data_financiamento_bancario'),
                 \DB::raw('DATE_FORMAT(pre_propostas.data_prevista_parcela,"%d/%m/%Y") as data_prevista_parcela'),
@@ -224,9 +226,10 @@ class Projetov2Controller extends Controller
     public function edit($id)
     {
 
-        $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'contrato', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens')->findOrFail($id);
+        $projetov2 = Projetov2::with('Endereco', 'ProjetosExecurcao', 'contrato', 'ProjetosFinalizando', 'ProjetosFinalizado', 'ProjetosDocumento', 'contratos', 'imagens', 'participacao')->findOrFail($id);
         $projetosStatus = ProjetoStatus::orderBy('status_nome')->pluck('status_nome','id')->all();
 
+        //dd($projetov2->participacao);
 
         return view('projetov2.edit', compact('projetov2','projetosStatus'));
     }
@@ -245,7 +248,8 @@ class Projetov2Controller extends Controller
 
             $data = $request->getData();
 
-            $progetov2 = Projetov2::findOrFail($id);
+            $progetov2 = Projetov2::with('participacao')->findOrFail($id);
+
 
             $endereco = Endereco::findOrFail($progetov2->endereco_id);
             $enderecoData = $request->only(
@@ -411,6 +415,13 @@ class Projetov2Controller extends Controller
                     ]);
                 }
             }
+
+            $value = $data['data_pagamento'];
+            $dataPagamaneto = substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2);
+            $user = (new \Serbinario\Entities\ProjetosParticipacao)->updateOrCreate(
+                ['projetov2_id' =>   $progetov2->id],
+                [ 'pago' => $data['pago'], 'data_prevista' => $data['data_prevista'], 'obs' => $data['participacao_obs'], 'data_pagamento' => $dataPagamaneto]
+            );
 
             $progetov2->update($data);
 
