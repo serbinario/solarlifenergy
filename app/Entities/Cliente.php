@@ -141,6 +141,15 @@ class Cliente extends Model
         $this->attributes['data_emissao_rg'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
+    public function setNomeAttribute($value)
+    {
+        $this->attributes['nome'] = strtoupper($value);
+    }
+
+    public function setNomeEmpresaAttribute($value)
+    {
+        $this->attributes['nome_empresa'] = strtoupper($value);
+    }
 
 
     /**
