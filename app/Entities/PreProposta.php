@@ -126,7 +126,8 @@ class PreProposta extends Model
         'pendencia',
         'arquivado',
         'imposto_sobre_participacao',
-        'roi'
+        'roi',
+        'royalties'
 
     ];
 
