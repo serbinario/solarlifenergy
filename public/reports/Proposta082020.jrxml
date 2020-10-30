@@ -2802,7 +2802,7 @@ ou de difícil acesso]]></text>
 			<staticText>
 				<reportElement x="0" y="166" width="788" height="50" uuid="a5b48909-85cd-496d-97f0-3a16e32d7bd3"/>
 				<text><![CDATA[5. Esta planilha pode ser usada após a apresentação do projeto.
-6. Validade da proposta: 30 dias
+6. Validade da proposta: 15 dias
 7. A empresa entregará todas as matérias constantes desta proposta de obra se comprometendo a entrega da
 instalação com todos os equipamentos funcionando em perfeito.]]></text>
 			</staticText>

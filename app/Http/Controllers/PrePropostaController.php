@@ -410,10 +410,10 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
 1-	O mercado está em falta com inversores de 1.5KW a 5KW, por esta razão, todas propostas emitidas com essa faixa de potência de inversores terá que ser informado ao cliente que o prazo de entrega está em 60 dias, e anexar o termo de aceite do prazo em que o mesmo aceita aguardar." :  $data['pre_proposta_obs'] ;
 
             //dd($data['qtd_paineis']);
-            if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
-                return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
-            }
+            //if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
+            //    return back()->withInput()
+            //        ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
+            //}
            // dd($data);
             $preProposta = PreProposta::create($data);
             //;
