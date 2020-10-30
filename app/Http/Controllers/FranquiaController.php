@@ -10,6 +10,8 @@ use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Parametro;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\FranquiaFormRequest;
+use Illuminate\Support\Facades\Auth;
+use Serbinario\User;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -139,7 +141,13 @@ class FranquiaController extends Controller
             $data = $request->getData();
             
             $franquia = Franquia::findOrFail($id);
-            //dd($data);
+
+            $user = User::find(Auth::id());
+            //dd($user);
+            if(!$user->hasRole('super-admin')){
+                 $data['is_active'] = true;
+            }
+
             $franquia->update($data);
 
             return redirect()->route('franquia.franquia.edit', $franquia->id)
