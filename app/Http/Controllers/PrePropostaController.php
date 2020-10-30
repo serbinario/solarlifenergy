@@ -528,12 +528,6 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             $somaServicosOperacionais = $data['total_servico_operacional'];
             //Fim Servicos Operacionais
 
-
-            /*
-             *
-             */
-
-
             //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
             $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
             $data['preco_medio_instalado'] = $totalInvestimento;
@@ -583,9 +577,6 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
 
-
-
-            //dd($data);
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
