@@ -522,6 +522,10 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             //Fim Servicos Operacionais
 
 
+            /*
+             *
+             */
+
 
             //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
             $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
