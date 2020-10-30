@@ -448,8 +448,63 @@ section.forma-produtos .produtos-detalhe{
     font-weight: 600;
     font-size: 18px;
     background: #c8d0d9;
+}
+
+.card-solar {
+    display: flex;
+    justify-content: space-between;
 
 }
+
+.card-solar > div {
+    display: flex;
+}
+
+.card-solar div.badge-solar{
+    border-left: 2px solid #ADB2B5;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    justify-content: flex-start;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.card-solar  div.badge-solar  p {
+    text-align: center;
+}
+
+.card-solar  div.badge-solar  div {
+    text-align: center;
+    margin: 0;
+}
+
+.card-solar  div.badge-solar div span:first-child {
+    font-weight: 600;
+}
+
+.card-solar  .btn-new-proposta {
+    display: flex;
+    align-items: center;
+}
+
+.card-solar  .badge-royalties p{
+    margin-top: -9px; !important;
+}
+
+.card-solar   p{
+    margin: 0;
+}
+
+.badge-solar p:nth-child(-n+2){
+    margin: auto;
+}
+
+
+
+
 
 
 

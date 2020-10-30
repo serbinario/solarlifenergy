@@ -71,26 +71,29 @@ function atualizaValores(){
 
     var valor_proposta = (parseFloat(this.somaServicos()) - parseFloat(realDolar(valor_descontos))).toFixed(2)
 
-    document.getElementsByClassName('total_servico_operacional')[0].children[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
+    document.getElementsByClassName('total_servico_operacional')[0].innerHTML = 'R$ ' + formatMoney(this.somaServicos())
     document.getElementById('total_servico_operacional').value = this.somaServicos()
 
 
     //Detalhamento dos equipamentos
-    document.getElementsByClassName('total_equipamentos')[0].children[0].innerHTML = 'R$ ' + total_equipamentos
+    document.getElementsByClassName('total_equipamentos')[0].innerHTML = 'R$ ' + total_equipamentos
+    console.log(total_equipamentos)
 
     //Valor Proposta
-    document.getElementsByClassName('span_preco_medio_instalado')[0].children[0].innerHTML = 'R$ ' + preco_medio_instalado
+    document.getElementsByClassName('span_preco_medio_instalado')[0].innerHTML = 'R$ ' + preco_medio_instalado
 
 
-    document.getElementsByClassName('span_valor_franqueadora')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora))
+    document.getElementsByClassName('span_valor_franqueadora')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora))
 
     var totalServicos = this.somaServicosEquipe()
 
     //console.log(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
 
-    document.getElementsByClassName('equipe_tecnica')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
+    document.getElementsByClassName('equipe_tecnica')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
 
-    document.getElementsByClassName('participacao')[0].children[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos)))
+    document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos)))
+
+    document.getElementsByClassName('royalties')[0].innerHTML = 'R$ ' + document.getElementById('royalties').value + " "  + "Royalties"
 }
 
 
@@ -110,7 +113,7 @@ $("#produto8_nf, #produto9_nf, #produto10_nf, #produto11_nf" ).on('change', func
 
 window.addEventListener('load', function() {
     var valor_descontos = document.getElementById('valor_descontos').value
-    //this.atualizaValores()
+    this.atualizaValores()
 
 })
 

@@ -254,36 +254,48 @@ class PrePropostaController extends Controller
             //Corrigir esse item Deixar pelo Banco
             $percentual = 0;
 
-            switch ($return['total_equipamentos']){
-                case $return['total_equipamentos'] < 20000  ;
-                $percentual = 7;
-                break;
-                case $return['total_equipamentos'] < 40000  ;
-                $percentual = 7;
-                break;
-                case $return['total_equipamentos'] < 100000  ;
-                    $percentual = 5;
-                    break;
-                case $return['total_equipamentos'] < 160000  ;
-                    $percentual = 5;
-                    break;
-                case $return['total_equipamentos'] < 240000  ;
-                    $percentual = 4;
-                    break;
-                case $return['total_equipamentos'] < 350000  ;
-                    $percentual = 4;
-                    break;
-                case $return['total_equipamentos'] < 650000  ;
-                    $percentual = 3;
-                    break;
-                default;
-                    $percentual = 2;
+            $valorTotalEquipamentos = (float)$return['total_equipamentos'];
+            if(Auth::user()->franquia->id == 14) {
+                switch ($valorTotalEquipamentos) {
+                    case $valorTotalEquipamentos < 20000;
+                        $percentual = 7;
+                        break;
+                    case $valorTotalEquipamentos < 40000;
+                        $percentual = 7;
+                        break;
+                    case $valorTotalEquipamentos < 100000;
+                        $percentual = 5;
+                        break;
+                    case $valorTotalEquipamentos < 160000;
+                        $percentual = 5;
+                        break;
+                    case $valorTotalEquipamentos < 240000;
+                        $percentual = 4;
+                        break;
+                    case $valorTotalEquipamentos < 350000;
+                        $percentual = 4;
+                        break;
+                    case $valorTotalEquipamentos < 650000;
+                        $percentual = 3;
+                        break;
+                    default;
+                        $percentual = 2;
+                }
+            }else{
+                $percentual = 8;
             }
+
+            //dd($percentual, (float)$return['total_equipamentos'], $valorTotalEquipamentos);
 
             //Fim da correção
 
             //Prticipação
             $participacao = ($return['total_equipamentos'] / 100) * $percentual;
+
+            //Royalties =
+            $royalties = ($participacao /100 ) * 8;
+            $data['royalties'] = $royalties;
+
 
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
@@ -396,6 +408,9 @@ class PrePropostaController extends Controller
             $data['produto11_preco'] =  0;
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
+
+
+
 //            if ($return['qtd_modulos'] < 10){
 //                return back()->withInput()
 //                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
@@ -410,10 +425,17 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
 1-	O mercado está em falta com inversores de 1.5KW a 5KW, por esta razão, todas propostas emitidas com essa faixa de potência de inversores terá que ser informado ao cliente que o prazo de entrega está em 60 dias, e anexar o termo de aceite do prazo em que o mesmo aceita aguardar." :  $data['pre_proposta_obs'] ;
 
             //dd($data['qtd_paineis']);
+<<<<<<< HEAD
             //if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
             //    return back()->withInput()
             //        ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
             //}
+=======
+           // if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
+           //     return back()->withInput()
+           //         ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
+           // }
+>>>>>>> 988fb24035303fc934eac89f1e53183ebc608649
            // dd($data);
             $preProposta = PreProposta::create($data);
             //;
@@ -470,6 +492,12 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             $participacao =  $data['valor_franquia'];
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
+            $descontoFranquia = $data['valor_descontos'];
+
+            //Royalties =
+            $royalties = (($participacao - $descontoFranquia) /100 ) * 8;
+            $data['royalties'] = $royalties;
+
             $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
 
             // Recalcula o valor dos módulos
@@ -500,7 +528,7 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             $somaServicosOperacionais = $data['total_servico_operacional'];
             //Fim Servicos Operacionais
 
-            $descontoFranquia = $data['valor_descontos'];
+
 
             //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
             $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
@@ -536,6 +564,10 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
 
             $ParametrRoi = ParametroGeral::where('id', '=', '1')->first();
 
+            if ($descontoFranquia > $participacao ){
+                return back()->withInput()
+                    ->withErrors(['error_message' => "Desconto não pode ser maior que o valor da participação"]);
+            }
 
             if ($roi > $ParametrRoi->parameter_one && $ParametrRoi->active && $preProposta->monthly_usage > 700){
                 return back()->withInput()

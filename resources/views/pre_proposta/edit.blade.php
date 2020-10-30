@@ -30,35 +30,43 @@
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
-                        <div class="card-head style-primary">
-                            <header>Valor Proposta</header>
-                            <div class="col-6 span_preco_medio_instalado">
-                                <span class="badge badge-dark float-right">
-                                    R$
-                                </span>
+                        <div class="card-solar style-primary">
+                            <div>
+                                <div class="badge-solar">
+                                    <span class="badge badge-dark float-right span_preco_medio_instalado">R$ 0,00</span>
+                                    <p>Valor Proposta</p>
+                                </div>
+
+                                <div class="badge-solar">
+
+                                    <span class="badge badge-dark float-right span_valor_franqueadora">R$ </span>
+                                    <p>Valor do Kit</p>
+                                </div>
+
+                                <div class="badge-solar">
+
+                                    <span class="badge badge-dark float-right equipe_tecnica">R$ </span>
+                                    <p>Equipe Técnica</p>
+                                </div>
+
+                                <div class="badge-solar badge-royalties">
+                                    <span class="badge badge-dark float-right participacao">R$ </span>
+                                    <span class="royalties" >R$ 208,00 Royalties</span>
+                                    <p>Participação</p>
+                                </div>
+
+                                {{--<div class="badge-solar">--}}
+                                    {{--<span class="badge badge-dark float-right royalties">R$ </span>--}}
+                                    {{--<div>--}}
+                                        {{--<span>8% </span>--}}
+                                        {{--<span>Royalties</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
-                                <header>Valor do Kit</header>
-                                <div class="col-6 span_valor_franqueadora">
-                                    <span class="badge badge-dark float-right">
-                                        R$
-                                    </span>
-                                </div>
-                                <header>Equipe Técnica</header>
-                                <div class="col-6 equipe_tecnica">
-                                    <span class="badge badge-dark float-right">
-                                        R$
-                                    </span>
-                                </div>
 
-                                <header>Participação</header>
-                                <div class="col-6 participacao">
-                                    <span class="badge badge-dark float-right">
 
-                                    </span>
-
-                                </div>
                             <div class="tools">
-                                <div class="btn-group">
+                                <div class="btn-group btn-new-proposta">
                                     <a  target="_blank" href="/report/{{ $preProposta->id }}/proposta" + class="btn btn-primary" title="Proposta">
                                         <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                     </a>

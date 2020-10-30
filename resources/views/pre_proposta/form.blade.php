@@ -8,6 +8,7 @@
                     <label for="nome" class="col-sm-4 control-label text-bold">Cliente.:</label>
                     <input name="cep" type="hidden" id="cep" value="{{ old('cep', isset($preProposta->cliente->cep) ? $preProposta->cliente->cep : null) }}" >
                     <input name="id" type="hidden" id="id" value="{{ old('cep', isset($preProposta->id) ? $preProposta->id : null) }}" >
+                    <input name="royalties" type="hidden" id="royalties" value="{{ old('royalties', isset($preProposta->royalties) ? $preProposta->royalties : null) }}" >
                     <input type="hidden" id="valor_franqueadora" value="{{ old('valor_franqueadora', isset($preProposta->valor_franqueadora) ? $preProposta->valor_franqueadora : null) }}" >
 
                     <input name="total_servico_operacional" type="hidden" id="total_servico_operacional" value="{{ old('total_servico_operacional', isset($preProposta->total_servico_operacional) ? $preProposta->total_servico_operacional : null) }}" >
@@ -75,7 +76,7 @@
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="preco_kwh" class="col-sm-6 control-label text-bold">Preço do KWh R$.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "0.8000") }}" maxlength="10" placeholder="#,####">
+                    <input readonly class="form-control  input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "0.8000") }}" maxlength="10" placeholder="#,####">
 
                 </div>
             </div>
@@ -86,7 +87,7 @@
             <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
                 <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
+                    <select readonly  class="form-control input-sm" id="modulo_id" name="modulo_id">
                         @foreach ($modulos as $key => $modulo)
                             <option value="{{ $key }}" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : null) == $key ? 'selected' : '' }}>
                                 {{ $modulo }}
@@ -462,8 +463,8 @@
             <div class="card panel expanded">
                 <div class="card-head card-head-xs" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-3">
                     <header class="text-bold">Detalhamento dos equipamentos</header>
-                    <div class="col-6 total_equipamentos">
-												<span class=" badge badge-dark float-right-12">
+                    <div class="col-6 ">
+												<span class=" total_equipamentos badge badge-dark float-right-12">
 														R$
 												</span>
                     </div>
@@ -548,8 +549,8 @@
             <div class="card panel">
                 <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-2">
                     <header class="text-bold">Serviços Operacionais</header>
-                    <div class="col-6 total_servico_operacional">
-												<span class=" badge badge-dark float-right-12">
+                    <div class="col-6 ">
+												<span class="total_servico_operacional badge badge-dark float-right-12">
 														R$
 												</span>
                     </div>
