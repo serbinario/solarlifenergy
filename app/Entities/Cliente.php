@@ -103,12 +103,6 @@ class Cliente extends Model
         return $this->belongsTo('Serbinario\User','user_id','id');
     }
 
-    /*
-         * echo mask($cnpj,'##.###.###/####-##');
-        echo mask($cpf,'###.###.###-##');
-        echo mask($cep,'#####-###');
-        echo mask($data,'##/##/####');
-         */
 
     function mask($val, $mask)
     {

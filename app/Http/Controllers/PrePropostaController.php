@@ -285,7 +285,6 @@ class PrePropostaController extends Controller
                 $percentual = 8;
             }
 
-            //dd($percentual, (float)$return['total_equipamentos'], $valorTotalEquipamentos);
 
             //Fim da correção
 
