@@ -191,3 +191,4 @@ where c.id =   $P{id}]]>
 		</band>
 	</detail>
 </jasperReport>
+
