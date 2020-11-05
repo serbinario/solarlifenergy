@@ -56,6 +56,7 @@ function atualizaValores(){
     var valor_descontos = document.getElementById('valor_descontos').value
     var valor_franqueadora = document.getElementById('valor_franqueadora').value
     var valor_franquia = document.getElementById('valor_franquia').value
+    var royalties = document.getElementById('royalties').value
     //var desconto_equipamentos = document.getElementById('desconto_equipamentos').value
 
     var total_equipamentos = document.getElementById('total_equipamentos').value
@@ -77,12 +78,13 @@ function atualizaValores(){
 
     //Detalhamento dos equipamentos
     document.getElementsByClassName('total_equipamentos')[0].innerHTML = 'R$ ' + total_equipamentos
-    console.log(total_equipamentos)
+
 
     //Valor Proposta
     document.getElementsByClassName('span_preco_medio_instalado')[0].innerHTML = 'R$ ' + preco_medio_instalado
 
 
+    percentualKitParticipacao = (parseFloat(realDolar(valor_franquia)) / parseFloat(valor_franqueadora) * 100).toFixed(0)
     document.getElementsByClassName('span_valor_franqueadora')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora))
 
     var totalServicos = this.somaServicosEquipe()
@@ -91,9 +93,11 @@ function atualizaValores(){
 
     document.getElementsByClassName('equipe_tecnica')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
 
-    document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos)))
+    document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos))) + " (" + percentualKitParticipacao + "%)"
 
-    document.getElementsByClassName('royalties')[0].innerHTML = 'R$ ' + document.getElementById('royalties').value + " "  + "Royalties"
+    document.getElementsByClassName('royalties')[0].innerHTML = 'R$ ' + royalties + " "  + "Royalties"
+
+    console.log( percentualKitParticipacao )
 }
 
 

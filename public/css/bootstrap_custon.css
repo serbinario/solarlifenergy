@@ -502,7 +502,11 @@ section.forma-produtos .produtos-detalhe{
     margin: auto;
 }
 
-
+.badge-solar span.royalties{
+    margin-top: -9px;
+    display: flex;
+    justify-content: center;
+}
 
 
 
