@@ -582,14 +582,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_142" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
-	<field name="COLUMN_143" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="mae" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="mae"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -634,10 +626,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_155" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="nacionalidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -658,7 +646,7 @@ where pre_propostas.id =  $P{id}]]>
 		<band height="535" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
-				<reportElement x="10" y="0" width="766" height="534" uuid="33286f1b-ab92-4edb-b325-91ce71228a4e"/>
+				<reportElement x="10" y="-1" width="766" height="534" uuid="33286f1b-ab92-4edb-b325-91ce71228a4e"/>
 				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar.png"]]></imageExpression>
 			</image>
 		</band>
