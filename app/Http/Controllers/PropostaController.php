@@ -237,13 +237,13 @@ class PropostaController extends Controller
         echo "Inversores " .  "qtd= " . $return['qtd_inversores'] . " Valor= " .  $return['soma_inversor'] . " Total= " . $return['soma_inversor']. "<br>";
         echo "Estrutura  " .  "qtd= " . 1 . " Valor= " .  $return['soma_estrutura'] . " Total= " . $return['soma_estrutura']. "<br>";
         echo "String     " .  "qtd= " . 1 . " Valor= " .  $return['soma_string'] . " Total= " . $return['soma_string']. "<br>";
-        $total = $return['soma_string'] + $return['soma_estrutura'] + $return['soma_inversor'] + $return['soma_modulos'];
-        echo "Total  " . $total . "<br>";
+        $kit = $return['soma_string'] + $return['soma_estrutura'] + $return['soma_inversor'] + $return['soma_modulos'];
+        echo "Kit  " . $kit . "<br>";
 
         echo "Mão de Obra = " .$return['valor_mao_obra_por_modulo']. "<br>";
         echo "Mão de Obra Total=  " . $return['valor_mao_obra'] . "<br>";
 
-        $totalGeral = $total + $return['valor_mao_obra'] ;
+        $totalGeral = $kit + $return['valor_mao_obra'] ;
 
         $participacao = round((($totalGeral / 100 ) * $percentual),2);
 
@@ -258,7 +258,38 @@ class PropostaController extends Controller
 
          echo "ROI (Total do Projeto / (valor Medio * 0.8 / 12))= " . $this->roi(0.8, $totalGeral, $return['valor_kw']). "<br>";
 
-         dd($return);
+         //echo "1;0;0;1";
+
+
+
+         $filtroArray = array();
+         foreach ($return['inversores'] as $inversor){
+             array_push($filtroArray,  $inversor['potenciaInversor']);
+         }
+
+         $filtroArray = array_count_values($filtroArray);
+         isset($filtroArray['5'])? $k5 = $filtroArray['5']: $k5 = 0;
+         isset($filtroArray['12'])? $k12 = $filtroArray['12']: $k12 = 0;
+         isset($filtroArray['15'])? $k15 = $filtroArray['15']: $k15 = 0;
+         isset($filtroArray['20'])? $k20 = $filtroArray['20']: $k20 = 0;
+         isset($filtroArray['30'])? $k30 = $filtroArray['30']: $k30 = 0;
+
+        // dd($k5, $k12, $k15, $k20, $k30, $return['inversores']);
+
+        //dd($return);
+
+        echo "<br>";
+
+        echo $k5 . ";" . $k12 . ";" . $k15 . ";" . $k20 . ";" . $k30 . ";" . $return['modulo_potencia'] . ";"
+            . number_format($return['potencia_gerador'],2,",",".") . ";" . $return['qtd_modulos'] . ";"
+            . $return['valor_kw'] . ";"
+            . number_format($kit,2,",",".") . ";"
+            . number_format($return['valor_mao_obra'],2,",",".") . ";"
+            . number_format($participacao,2,",",".") ;
+
+
+
+        dd($return);
 
 
     }
