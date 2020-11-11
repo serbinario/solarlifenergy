@@ -73,6 +73,7 @@ class PrePropostaController extends Controller
                 'users.name',
                 'pre_propostas.codigo',
                 'pre_propostas.id',
+                'pre_propostas.potencia_instalada',
                 'pre_propostas.pendencia',
                 'pre_propostas.pendencia_obs',
                 \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),

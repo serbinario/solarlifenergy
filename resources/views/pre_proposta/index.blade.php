@@ -46,8 +46,8 @@
                                                     <th></th>
                                                     <th>Id</th>
                                                     <th>Cliente</th>
-                                                    <th>Código</th>
                                                     <th>Valor Proposta</th>
+                                                    <th>KWp</th>
                                                     <th>Data Validade</th>
                                                     <th>Integrador</th>
                                                     <th>Data Cadastro</th>

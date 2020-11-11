@@ -78,9 +78,9 @@ const table = $('#preProposta').DataTable({
                 }
             }
         },
-        {data: 'codigo', name: 'codigo'},
         //{data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado'},
         {data: 'preco_medio_instalado', name: 'pre_propostas.preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
+        {data: 'potencia_instalada', name: 'pre_propostas.potencia_instalada'},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'created_at', name: 'pre_propostas.created_at'},
