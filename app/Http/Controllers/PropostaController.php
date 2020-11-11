@@ -281,11 +281,15 @@ class PropostaController extends Controller
         echo "<br>";
 
         echo $k5 . ";" . $k12 . ";" . $k15 . ";" . $k20 . ";" . $k30 . ";" . $return['modulo_potencia'] . ";"
-            . number_format($return['potencia_gerador'],2,",",".") . ";" . $return['qtd_modulos'] . ";"
+            . number_format($return['potencia_gerador'],2,",",".") . ";"
+            . $return['qtd_modulos'] . ";"
+            . number_format($return['soma_estrutura'],2,",",".") . ";"
+            . number_format($return['soma_string'],2,",",".")  . ";"
             . $return['valor_kw'] . ";"
             . number_format($kit,2,",",".") . ";"
             . number_format($return['valor_mao_obra'],2,",",".") . ";"
             . number_format($participacao,2,",",".") ;
+        ;
 
 
 
