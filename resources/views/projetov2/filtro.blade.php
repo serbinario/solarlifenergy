@@ -24,7 +24,7 @@
                                 <label for="franquia_id" class="col-md-2 control-label">Franquia.: *</label>
                                 <div class="col-md-10">
                                     <select class="form-control input-sm" id="franquia_id" name="franquia_id">
-                                        <option value="" style="display: none;" {{ old('$user->roles[0]->id', null) }} disabled selected>Franquia</option>
+                                        <option value="" selected>Todas</option>
                                         @foreach ($franquias as $key => $franquia)
                                             <option value="{{ $key }}" {{ old('franquia_id', isset($user->franquia->id) ? $user->franquia->id : null) == $key ? 'selected' : '' }}>
                                                 {{ $franquia }}

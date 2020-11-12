@@ -20,10 +20,19 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="codigo" class="col-sm-4 control-label">Código:</label>
-                                <div class="col-md-8">
-                                    <input class="form-control input-sm" name="codigo" type="text" id="codigo"  placeholder="">
+                            <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
+                                <label for="franquia_id" class="col-md-2 control-label">Franquia.: *</label>
+                                <div class="col-md-10">
+                                    <select class="form-control input-sm" id="franquia_id" name="franquia_id">
+                                        <option value="" selected>Todas</option>
+                                        @foreach ($franquias as $key => $franquia)
+                                            <option value="{{ $key }}" {{ old('franquia_id', isset($user->franquia->id) ? $user->franquia->id : null) == $key ? 'selected' : '' }}>
+                                                {{ $franquia }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    {!! $errors->first('franquia_id', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                         </div>

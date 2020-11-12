@@ -59,6 +59,7 @@ const table = $('#preProposta').DataTable({
             d.data_ini = dateToEN($('input[name=data_ini]').val());
             d.data_fim = dateToEN($('input[name=data_fim]').val())  + " 23:59:59";
             d.filtro_por = $("input[name='filtro_por']:checked").val();
+            d.franquia_id = $('select[name=franquia_id] option:selected').val();
         }
     },
     columns: [
@@ -83,6 +84,7 @@ const table = $('#preProposta').DataTable({
         {data: 'potencia_instalada', name: 'pre_propostas.potencia_instalada'},
         {data: 'data_validade', name: 'pre_propostas.data_validade'},
         {data: 'name', name: 'users.name', targets: 0, visible: false},
+        {data: 'franquaia', name: 'franquaia', visible: false},
         {data: 'created_at', name: 'pre_propostas.created_at'},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
         {data: 'prioridade', name: 'prioridades.name'},

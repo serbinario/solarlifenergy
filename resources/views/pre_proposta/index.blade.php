@@ -50,6 +50,7 @@
                                                     <th>KWp</th>
                                                     <th>Data Validade</th>
                                                     <th>Integrador</th>
+                                                    <th>Franquia</th>
                                                     <th>Data Cadastro</th>
                                                     <th>Data Alteração</th>
                                                     <th>Prioridade</th>

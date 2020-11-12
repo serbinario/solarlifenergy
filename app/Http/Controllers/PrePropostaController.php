@@ -11,6 +11,7 @@ use Serbinario\Entities\BancoFinanciadora;
 use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
+use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Modulo;
 use Serbinario\Entities\ParametroGeral;
 use Serbinario\Entities\PreProposta;
@@ -48,10 +49,11 @@ class PrePropostaController extends Controller
      */
     public function index()
     {
+        $franquias = Franquia::where('is_active', '=', '1')->pluck('nome','id')->all();
         $reports = Report::where('group', '=', 'propostas');
         $prePropostas = PreProposta::with('cliente')->paginate(25);
 
-        return view('pre_proposta.index', compact('prePropostas', 'reports'));
+        return view('pre_proposta.index', compact('prePropostas', 'reports', 'franquias'));
     }
 
     /**
@@ -68,6 +70,7 @@ class PrePropostaController extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftJoin('users', 'users.id', '=', 'pre_propostas.user_id')
             ->leftJoin('projetosv2', 'projetosv2.proposta_id', '=', 'pre_propostas.id' )
+            ->leftJoin('franquias', 'franquias.id', '=', 'users.franquia_id')
             ->leftJoin('prioridades', 'prioridades.id', '=', 'pre_propostas.prioridade_id')
             ->select([
                 'users.name',
@@ -76,6 +79,7 @@ class PrePropostaController extends Controller
                 'pre_propostas.potencia_instalada',
                 'pre_propostas.pendencia',
                 'pre_propostas.pendencia_obs',
+                'franquias.nome as franquaia',
                 \DB::raw('DATE_FORMAT(pre_propostas.data_validade,"%d/%m/%Y") as data_validade'),
                 'pre_propostas.preco_medio_instalado',
                 'clientes.nome',
@@ -109,6 +113,10 @@ class PrePropostaController extends Controller
                 if ($request->has('nome')) {
                     $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
+                if ($request->has('franquia_id')) {
+                    $query->where('franquias.id', '=',  $request->get('franquia_id') );
+                }
+
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('pre_propostas.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();

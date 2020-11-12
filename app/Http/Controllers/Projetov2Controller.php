@@ -112,11 +112,9 @@ class Projetov2Controller extends Controller
                     $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
 
-
-
-                 if ($request->has('franquia_id')) {
+                if ($request->has('franquia_id')) {
                      $query->where('franquias.id', '=',  $request->get('franquia_id') );
-                 }
+                }
 
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
