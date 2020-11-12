@@ -4,6 +4,7 @@ namespace Serbinario\Http\Controllers;
 
 
 //meu teste
+use Serbinario\Entities\Franquia;
 use Serbinario\Entities\ProjetosParticipacao;
 use Serbinario\Entities\Report;
 use Serbinario\Traits\UtilEntities;
@@ -45,9 +46,10 @@ class Projetov2Controller extends Controller
      */
     public function index()
     {
+        $franquias = Franquia::where('is_active', '=', '1')->pluck('nome','id')->all();
         $reports = Report::where('group', '=', 'projetos');
         $projetov2s = Projetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
-        return view('projetov2.index', compact('projetov2s', 'reports'));
+        return view('projetov2.index', compact('projetov2s', 'reports', 'franquias'));
     }
 
     /**
@@ -109,6 +111,13 @@ class Projetov2Controller extends Controller
                 if ($request->has('nome')) {
                     $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome') . "%");
                 }
+
+
+
+                 if ($request->has('franquia_id')) {
+                     $query->where('franquias.id', '=',  $request->get('franquia_id') );
+                 }
+
                 if ($request->has('data_ini')) {
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('projetosv2.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
@@ -134,6 +143,8 @@ class Projetov2Controller extends Controller
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                     $query->where('pre_propostas.user_id', '=', $user->id);
                 }
+
+
             })
             ->addColumn('action', function ($row) {
                 return '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">

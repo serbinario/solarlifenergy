@@ -21,12 +21,23 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="cod_projeto" class="col-sm-4 control-label">Cod. Projeto:</label>
-                                <div class="col-md-8">
-                                    <input class="form-control input-sm" name="cod_projeto" type="text" id="cod_projeto"  placeholder="">
+                                <label for="franquia_id" class="col-md-2 control-label">Franquia.: *</label>
+                                <div class="col-md-10">
+                                    <select class="form-control input-sm" id="franquia_id" name="franquia_id">
+                                        <option value="" style="display: none;" {{ old('$user->roles[0]->id', null) }} disabled selected>Franquia</option>
+                                        @foreach ($franquias as $key => $franquia)
+                                            <option value="{{ $key }}" {{ old('franquia_id', isset($user->franquia->id) ? $user->franquia->id : null) == $key ? 'selected' : '' }}>
+                                                {{ $franquia }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    {!! $errors->first('franquia_id', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="integrador" class="col-sm-4 control-label">Intergrador:</label>
