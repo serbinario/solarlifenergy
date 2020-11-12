@@ -8,6 +8,7 @@ use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Contrato;
 use Serbinario\Entities\Endereco;
 use Serbinario\Entities\PreProposta;
+use Serbinario\Entities\ProjetosContasContrato;
 use Serbinario\Entities\ProjetosDocumento;
 use Serbinario\Entities\ProjetosExecurcao;
 use Serbinario\Entities\ProjetosFinalizado;
@@ -196,5 +197,21 @@ class UtilController extends Controller
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
         }
         return \Illuminate\Support\Facades\Response::json(['success' => true]);
+    }
+
+    public function deletaContratoConcercionaria(Request $request){
+        $idContrato = "";
+        try {
+
+            $idContrato = $request->get('idContrato');
+
+            $contaContato = ProjetosContasContrato::find($idContrato);
+            $contaContato->delete();
+
+
+        } catch (Exception $e) {
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
+        }
+        return \Illuminate\Support\Facades\Response::json(['success' => true, 'body' => $idContrato ]);
     }
 }

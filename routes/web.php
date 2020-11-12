@@ -30,6 +30,9 @@ Route::get('criarProjeto/{id}', 'UtilController@criarProjeto')
 Route::post('criarContrato/', 'UtilController@criarContrato')
     ->name('criarContrato.criarContrato');
 
+Route::post('deletaContratoConcercionaria/', 'UtilController@deletaContratoConcercionaria')
+    ->name('deletaContratoConcercionaria');
+
 Route::post('arquivarProposta/', 'UtilController@arquivarProposta')
     ->name('arquivarProposta.arquivarProposta');
 

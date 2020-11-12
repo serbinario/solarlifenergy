@@ -1,3 +1,45 @@
+
+function removeContaContrato(idContrato) {
+
+    if(event.target.parentElement.parentElement.parentElement.parentElement.id !== ""){
+        numeroContrato = event.target.parentElement.parentElement.parentElement.parentElement.id
+    }else{
+        numeroContrato = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
+    }
+    //Necessario para que o ajax envie o csrf-token
+    //Para isso coloquei no form <meta name="csrf-token" content="{{ csrf_token() }}">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+        }
+    });
+
+
+    data = {
+        'idContrato': idContrato,
+    }
+    jQuery.ajax({
+        type: 'POST',
+        url: '/index.php/deletaContratoConcercionaria',
+        datatype: 'json',
+        data: data,
+    }).done(function (retorno) {
+        if(retorno.success) {
+            swal("", "Conta contrato deletado com sucesso", "success");
+            var myobj = document.getElementById(numeroContrato);
+            myobj.remove();
+
+
+        } else {
+            swal("Error", "Click no botão abaixo!", "error");
+        }
+    });
+
+
+}
+
+
 $(document).ready(function () {
     var projeto_status_id = document.getElementById('projeto_status_id').value
     localStorage.setItem('projeto_status_id', projeto_status_id)
@@ -206,8 +248,8 @@ $(document).ready(function () {
     });
 
     $("body").on("click",".remove",function(){
-        console.log("wwwww");
-        $(this).parents(".copy").remove();
+        //console.log($(this).parentElement);
+       // $(this).parents(".copy").remove();
     });
 
     $("#modalContrato").on('click', function () {
@@ -220,6 +262,7 @@ $(document).ready(function () {
 
         criarContrato()
     })
+
 
 
     function criarContrato(projeto_id)

@@ -263,7 +263,7 @@
                         </div>
                         @if(isset($projetov2))
                                 @foreach( $projetov2->contratos as $contrato )
-                                    <div class="row copy">
+                                    <div class="row copy" id="{{ $contrato->num_contacontrato }}">
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label for="num_contacontrato" class="col-sm-6 control-label text-bold">C/Contrato.:</label>
@@ -309,7 +309,7 @@
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <button  class="btn btn-danger remove btn-sm"  type="button" onclick="removeElement('{{$contrato->id}}');"><i class="glyphicon glyphicon-remove"></i></button>
+                                                    <button  class="btn btn-danger remove btn-sm"  type="button" onclick="removeContaContrato('{{$contrato->id}}');"><i class="glyphicon glyphicon-remove"></i></button>
                                                 </div>
                                             </div>
                                         </div>
