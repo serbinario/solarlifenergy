@@ -21,6 +21,8 @@ Route::get('/error', 'ClienteController@index')
     ->name('cliente.cliente.index');
 */
 
+
+
 Route::post('/consultaCpfCnpf', 'UtilController@consultaCpfCnpf')
     ->name('cliente.consultaCpfCnpf');
 
@@ -71,6 +73,7 @@ Route::any('/report/lerArquivo', 'ReportController@lerArquivo')->name('lerArquiv
 
 
 //Route::any('/enableDisableSecret', 'NotificationUrl@notificationUrl')->name('notificationUrl');
+
 
 
 Route::group(
@@ -133,6 +136,37 @@ Route::group(
 
     Route::get('/grid', 'DocumentoController@grid')
         ->name('documento.grid');
+
+});
+
+
+
+Route::group(
+    [
+        'prefix' => 'category',
+    ], function () {
+
+    Route::get('/edit','CategoryController@edit')
+        ->name('category.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'CategoryController@index')
+        ->name('category.index');
+
+    Route::get('/grid', 'CategoryController@grid')
+        ->name('category.grid');
+
+    Route::get('/create', 'CategoryController@create')
+        ->name('category.create');
+
+    Route::get('/{id}/edit','CategoryController@edit')
+        ->name('category.edit');
+
+    Route::put('/update', 'CategoryController@update')
+        ->name('category.update');
+
+    Route::post('/', 'CategoryController@store')
+        ->name('category.store');
 
 });
 

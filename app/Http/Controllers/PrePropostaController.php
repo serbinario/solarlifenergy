@@ -512,7 +512,22 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
             //Calculo do valor Total dos equipamentos
-            $somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
+            $user = User::find(Auth::id());
+            if($user->hasRole('super-admin')) {
+                $data['produto2'] = $request->get('produto2');
+                $data['qtd_inversores'] = $request->get('qtd_inversores');
+                $produto2_nf = $request->get('produto2_nf');
+                $data['produto2_nf'] = $produto2_nf;
+                $data['produto2_preco'] = $produto2_nf;
+                $valorInversor = $produto2_nf;
+            }else{
+                $valorInversor = $this->convertesRealIngles($preProposta->produto2_nf);
+
+            }
+
+
+            $somaEquipamentos = $valorInversor
+            //$somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
                 + $this->convertesRealIngles($preProposta->produto3_nf)
                 + $this->convertesRealIngles($preProposta->produto4_nf)
                 + $this->convertesRealIngles($preProposta->produto5_nf)
@@ -544,11 +559,13 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
             /*
              * Valor da franquia (quantidade modulo * valor Modulo ) + inversor + Estrutura + String Box + kit Monitoramentep
              */
-            $data['valor_franqueadora'] = $this->convertesRealIngles($preProposta->produto2_nf)
+            $data['valor_franqueadora'] = $valorInversor
                 + $this->convertesRealIngles($preProposta->produto3_nf)
                 + $this->convertesRealIngles($preProposta->produto4_nf)
                 + $this->convertesRealIngles($preProposta->produto5_nf)
                 + ((int)$data['valor_modulo'] * $data['qtd_paineis']);
+
+
 
             //dd( $data['valor_franqueadora'], (int)$data['valor_modulo'], $this->convertesRealIngles($preProposta->produto2_nf),$this->convertesRealIngles($preProposta->produto3_nf), $this->convertesRealIngles($preProposta->produto4_nf),$this->convertesRealIngles($preProposta->produto5_nf));
 
