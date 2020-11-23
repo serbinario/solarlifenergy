@@ -164,7 +164,7 @@ class UtilController extends Controller
 
             $data = array();
             $data['proposta_id'] = $id;
-            $data['projeto_status_id'] = 1;
+            $data['projeto_status_id'] = 8;
             $data['projeto_documento_id'] = $projetoDocumento->id;
             $data['projeto_execurcao_id'] = $endereco->id;
             $data['endereco_id'] = $endereco->id;
