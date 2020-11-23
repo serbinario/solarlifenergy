@@ -241,6 +241,7 @@
 									<li><a href="{{ route('geral.edit') }}" class="active"><span class="title">Geral</span></a></li>
 									<li><a href="{{ route('mao_obra.index') }}" class="active"><span class="title">Mão De Obra</span></a></li>
 									<li><a href="{{ route('inversor_modulo.index') }}" class="active"><span class="title">Inversor/Modulos</span></a></li>
+									<li><a href="{{ route('modulo.index') }}" class="active"><span class="title">Modulos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 

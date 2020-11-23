@@ -140,6 +140,34 @@ Route::group(
 });
 
 
+Route::group(
+    [
+        'prefix' => 'modulo',
+    ], function () {
+
+    Route::get('/edit','ModuloController@edit')
+        ->name('modulo.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'ModuloController@index')
+        ->name('modulo.index');
+
+    Route::get('/grid', 'ModuloController@grid')
+        ->name('modulo.grid');
+
+    Route::get('/create', 'ModuloController@create')
+        ->name('modulo.create');
+
+    Route::get('/{id}/edit','ModuloController@edit')
+        ->name('modulo.edit');
+
+    Route::put('/update/{id}', 'ModuloController@update')
+        ->name('modulo.update');
+
+    Route::post('/', 'ModuloController@store')
+        ->name('modulo.store');
+
+});
 
 Route::group(
     [

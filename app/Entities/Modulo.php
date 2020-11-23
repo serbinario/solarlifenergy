@@ -15,6 +15,8 @@ class Modulo extends Model
      */
     protected $table = 'modulos';
 
+    public $timestamps = false;
+
     /**
      * The database primary key value.
      *
@@ -28,6 +30,12 @@ class Modulo extends Model
      * @var array
      */
     protected $fillable = [
+        'potencia',
+        'rendimento',
+        'area_total',
+        'area_geracao',
+        'is_active'
+
     ];
 
     /**
