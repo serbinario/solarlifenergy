@@ -265,31 +265,8 @@ class PrePropostaController extends Controller
 
             $valorTotalEquipamentos = (float)$return['total_equipamentos'];
             if(Auth::user()->franquia->id == 14) {
-                switch ($valorTotalEquipamentos) {
-                    case $valorTotalEquipamentos < 20000;
-                        $percentual = 7;
-                        break;
-                    case $valorTotalEquipamentos < 40000;
-                        $percentual = 7;
-                        break;
-                    case $valorTotalEquipamentos < 100000;
-                        $percentual = 5;
-                        break;
-                    case $valorTotalEquipamentos < 160000;
-                        $percentual = 5;
-                        break;
-                    case $valorTotalEquipamentos < 240000;
-                        $percentual = 4;
-                        break;
-                    case $valorTotalEquipamentos < 350000;
-                        $percentual = 4;
-                        break;
-                    case $valorTotalEquipamentos < 650000;
-                        $percentual = 3;
-                        break;
-                    default;
-                        $percentual = 2;
-                }
+                $percentualCabo = ParametroGeral::find(2);
+                $percentual = $percentualCabo->parameter_one;
             }else{
                 $percentual = 8;
             }
