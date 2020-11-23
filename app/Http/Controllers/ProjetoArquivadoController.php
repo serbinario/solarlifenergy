@@ -4,6 +4,7 @@ namespace Serbinario\Http\Controllers;
 
 
 //meu teste
+use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Report;
 use Serbinario\User;
 use Illuminate\Http\Request;
@@ -43,9 +44,10 @@ class ProjetoArquivadoController extends Controller
      */
     public function index()
     {
+        $franquias = Franquia::where('is_active', '=', '1')->pluck('nome','id')->all();
         $reports = Report::where('group', '=', 'projetos');
         $projetov2s = Projetov2::with('cliente','projetosstatus','preproposta','endereco','projetosdocumento','projetosexecurcao','projetosfinalizando')->paginate(25);
-        return view('projetov2/arquivadas.index', compact('projetov2s', 'reports'));
+        return view('projetov2/arquivadas.index', compact('projetov2s', 'reports', 'franquias'));
     }
 
     /**

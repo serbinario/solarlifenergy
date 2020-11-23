@@ -7,6 +7,7 @@ namespace Serbinario\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Serbinario\Entities\Franquia;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\Report;
 use Serbinario\Traits\Simulador;
@@ -37,10 +38,11 @@ class PrePropostaArquivaController extends Controller
      */
     public function index()
     {
+        $franquias = Franquia::where('is_active', '=', '1')->pluck('nome','id')->all();
         $reports = Report::where('group', '=', 'propostas');
         $prePropostas = PreProposta::with('cliente')->paginate(25);
 
-        return view('pre_proposta.arquivadas.index', compact('prePropostas', 'reports'));
+        return view('pre_proposta.arquivadas.index', compact('prePropostas', 'reports', 'franquias'));
     }
 
     /**
