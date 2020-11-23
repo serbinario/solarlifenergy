@@ -48,8 +48,9 @@ class GeralController extends Controller
         $parametroGeral = ParametroGeral::all();
 
         $parametroRoi = $parametroGeral[0];
+        $parametroPorcentagen = $parametroGeral[1];
 
-        return view('geral.edit', compact('parametroRoi'));
+        return view('geral.edit', compact('parametroRoi', 'parametroPorcentagen'));
 
 
     }
@@ -74,6 +75,12 @@ class GeralController extends Controller
             $data = $this->getData($request);
 
             $roi->update($data);
+
+
+            $partcicipacao = ParametroGeral::find(2);
+           // dd($partcicipacao);
+            $partcicipacao->update([ 'active' > $request['participacao_ativo'] , 'parameter_one' => $request['participacao']]);
+
             return redirect()->route('geral.edit')
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
@@ -86,7 +93,7 @@ class GeralController extends Controller
 
     public function getData(Request $request)
     {
-        $data = $request->only(['active', 'parameter_one']);
+        $data = $request->only(['active', 'parameter_one', 'participacao_ativo', 'participacao']);
         return $data;
     }
 
