@@ -262,6 +262,19 @@
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
+									<span class="title">Financeiro</span>
+								</a>
+								<!--start submenu -->
+								@role('super-admin|franquia')
+								<ul>
+									<li><a href="{{ route('financeiro.index') }}" class="active"><span class="title">Lançamentos</span></a></li>
+								</ul><!--end /submenu -->
+								@endrole
+
+							</li><!--end /menu-li -->
+
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
 									<span class="title">Franquia</span>
 								</a>
 								<!--start submenu -->

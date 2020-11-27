@@ -513,6 +513,33 @@ section.forma-produtos .produtos-detalhe{
 }
 
 
+div.receita-tags{
+    display: flex;
+    justify-content: space-around;
+}
+
+div.receita-tags > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#repeat span{
+    display: block;
+    padding-left: 10px;
+}
+div#header-table {
+    display: grid;
+    grid-template-columns: repeat(3, 33.3333%);
+    grid-column-gap: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+div#header-table .lancamentos{
+    display: flex;
+    align-items: center;
+
+}
 
 
 

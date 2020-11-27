@@ -736,3 +736,35 @@ Route::group(
         ->name('projetov2.arquivados.grid');
 
 });
+
+
+Route::group(
+    [
+        'prefix' => 'financeiro',
+    ], function () {
+
+    Route::get('/', 'Financeiro\ContasPagarReceberController@index')
+        ->name('financeiro.index');
+
+    Route::get('/create','Financeiro\ContasPagarReceberController@create')
+        ->name('financeiro.create');
+
+    Route::get('/grid', 'Financeiro\ContasPagarReceberController@grid')
+        ->name('financeiro.grid');
+
+    Route::get('/{produto}/edit','Financeiro\ContasPagarReceberController@edit')
+        ->name('financeiro.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'Financeiro\ContasPagarReceberController@store')
+        ->name('financeiro.store');
+
+    Route::put('produto/{id}', 'Financeiro\ContasPagarReceberController@update')
+        ->name('financeiro.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{produto}/destroy','Financeiro\ContasPagarReceberController@destroy')
+        ->name('financeiro.destroy')
+        ->where('id', '[0-9]+');
+
+});
