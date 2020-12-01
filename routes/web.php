@@ -768,3 +768,37 @@ Route::group(
         ->where('id', '[0-9]+');
 
 });
+
+Route::group(
+    [
+        'prefix' => 'alert',
+    ], function () {
+
+    Route::get('/', 'AlertController@index')
+        ->name('alert.index');
+
+    Route::get('/create','AlertController@create')
+        ->name('alert.create');
+
+    Route::get('/grid', 'AlertController@grid')
+        ->name('alert.grid');
+
+    Route::get('/{produto}/edit','AlertController@edit')
+        ->name('alert.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'AlertController@store')
+        ->name('alert.store');
+
+    Route::put('produto/{id}', 'AlertController@update')
+        ->name('alert.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{id}/destroy','AlertController@destroy')
+        ->name('alert.destroy')
+        ->where('id', '[0-9]+');
+
+    Route::get('/lastForAlerts', 'AlertController@lastForAlerts')
+        ->name('alert.grid');
+
+});

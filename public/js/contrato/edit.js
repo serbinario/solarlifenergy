@@ -14,10 +14,6 @@ $(document).ready(function () {
                 $("input#endereco").val( result.address );
                 $("input#estado").val( result.state );
             }
-
         });
     });
-
-
-
 });

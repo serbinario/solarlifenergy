@@ -541,6 +541,20 @@ div#header-table .lancamentos{
 
 }
 
+.header-nav-profile .dropdown > a{
+    min-width: 69px !important;
+}
+.header-nav-profile .dropdown > a::after {
+    content: "";
+}
+
+.dropdown-menu > li a small {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
 
 
 

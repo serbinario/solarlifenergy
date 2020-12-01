@@ -43,6 +43,7 @@
 
 	<script src="{{ asset('/assets/js/libs/utils/html5shiv.js')}}" type="text/javascript"></script>
 	<script src="{{ asset('/assets/js/libs/utils/respond.min.js')}}" type="text/javascript"></script>
+
 	<![endif]-->
 
 	@yield('css')
@@ -73,6 +74,15 @@
 			<!-- DropDown Menu superior direito -->
 			<div class="headerbar-right">
 				<ul class="header-nav header-nav-profile">
+					<li class="dropdown hidden-sm">
+						<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+							<i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+						</a>
+						<ul class="dropdown-menu animation-expand">
+
+							<li><a href="../../html/pages/login.html">Todoas as mensagens <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+						</ul><!--end .dropdown-menu -->
+					</li><!--end .dropdown -->
 					<li class="dropdown">
 						<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
 							{{--<img src="" alt="" />--}}
@@ -238,6 +248,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+									<li><a href="{{ route('alert.index') }}" class="active"><span class="title">Alertas</span></a></li>
 									<li><a href="{{ route('geral.edit') }}" class="active"><span class="title">Geral</span></a></li>
 									<li><a href="{{ route('mao_obra.index') }}" class="active"><span class="title">Mão De Obra</span></a></li>
 									<li><a href="{{ route('inversor_modulo.index') }}" class="active"><span class="title">Inversor/Modulos</span></a></li>
@@ -265,7 +276,7 @@
 									<span class="title">Financeiro</span>
 								</a>
 								<!--start submenu -->
-								@role('super-admin|franquia')
+								@role('super-admin')
 								<ul>
 									<li><a href="{{ route('financeiro.index') }}" class="active"><span class="title">Lançamentos</span></a></li>
 								</ul><!--end /submenu -->
@@ -351,6 +362,8 @@
 {{--<script src="{{ asset('/assets/js/libs/select2/select2.js')}}" type="text/javascript"></script>--}}
 
 <script src="{{ asset('/assets/js/libs/jquery-knob/jquery.knob.min.js')}}" type="text/javascript"></script>
+
+<script src="{{ asset('/js/alert/header.js')}}" type="text/javascript"></script>
 
 
 
