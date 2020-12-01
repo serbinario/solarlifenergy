@@ -11,7 +11,7 @@ $(document).ready(function () {
                 html += '</a>'
                 html += '</li>'
 
-                $(".dropdown ul").append(html);
+                $("#alert-solar ul").append(html);
             })
         }
     });

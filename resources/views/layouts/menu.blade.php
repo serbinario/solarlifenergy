@@ -73,8 +73,8 @@
 			</div>
 			<!-- DropDown Menu superior direito -->
 			<div class="headerbar-right">
-				<ul class="header-nav header-nav-profile">
-					<li class="dropdown hidden-sm">
+				<ul  class="header-nav header-nav-profile">
+					<li id="alert-solar" class="dropdown hidden-sm">
 						<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
 							<i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
 						</a>
