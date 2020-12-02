@@ -291,15 +291,15 @@ class PrePropostaController extends Controller
             //////////////
 
             //Valor da soma dos módulos
-            //$recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra'])  / $return['qtd_modulos'];
-            $recalculoModulo = ($return['soma_modulos'] + $participacao + $return['valor_mao_obra'] + $porcentagemParticipacao)  / $return['qtd_modulos'];
+            $valor_mao_obra = $return['valor_mao_obra'];
+            $valor_mao_obra < 4000 ? $valor_mao_obra =  4000.00 : $valor_mao_obra;
+
+            $recalculoModulo = ($return['soma_modulos'] + $participacao + $valor_mao_obra + $porcentagemParticipacao)  / $return['qtd_modulos'];
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
             $data['produto1_nf'] = $somaModulos;
             $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'] . " " . $return['modulo_potencia'] . "W";
 
-            //dd($return['soma_modulos'], $participacao, $return['valor_mao_obra'], $recalculoModulo,$data['produto1_preco'], $somaModulos, $data);
-            //dd($data['produto1_preco']);
 
 
             //Soma Inversor
@@ -340,7 +340,7 @@ class PrePropostaController extends Controller
             $data['valor_modulo'] = $return['valor_modulo'];
 
             //Valor da equipe técnica + produto7_nf
-            $data['equipe_tecnica'] = $return['valor_mao_obra'];
+            $data['equipe_tecnica'] = $valor_mao_obra;
 
             $data['produto2'] = $return['obs'];
 
