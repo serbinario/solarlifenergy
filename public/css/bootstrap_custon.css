@@ -570,6 +570,31 @@ div#header-table .lancamentos{
     }
 }
 
+.icon.i20d.icon-22 {
+    background-position: -399px -26px;
+}
+.icon.i20d {
+    width: 22px;
+    height: 19px;
+}
+
+.icon.i20.icon-22 {
+    background-position: -420px -26px;
+}
+.icon.i20 {
+    width: 26px;
+    height: 20px;
+}
+
+
+.icon {
+    background: url(https://zze-front.organizze.com.br/1.7.82/images/application/bg-images-b11f2df074.png) no-repeat;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    display: inline-block;
+    margin-bottom: -5px
+}
+
 
 
 

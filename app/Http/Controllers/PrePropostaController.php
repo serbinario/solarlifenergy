@@ -89,6 +89,7 @@ class PrePropostaController extends Controller
                 'clientes.celular',
                 'prioridades.name as prioridade',
                 'projetosv2.id as projeto',
+                'projetosv2.projeto_status_id as status_projeto',
                 \DB::raw('DATE_FORMAT(pre_propostas.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('DATE_FORMAT(pre_propostas.updated_at,"%d/%m/%Y") as updated_at'),
 

@@ -73,7 +73,9 @@ const table = $('#preProposta').DataTable({
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.projeto != null){
-                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>")
+                    var pago = "";
+                    oData.status_projeto == 8 || oData.status_projeto == 1 ? pago =  "<i class=\"icon i20d icon-22\"></i>": pago = "<i class=\"icon i20 icon-22\"></i>"
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>" + pago)
                 }else{
                     $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" + "Sem Projeto</span>");
                 }
