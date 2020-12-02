@@ -556,10 +556,12 @@ div#header-table .lancamentos{
 }
 
 .dropdown-menu > li a small.alert-date {
-
     position: absolute;
-    top: -12px;
+    top: -10px;
     background-color: #fff;
+    right: 14px;
+    line-height: 16px;
+    padding: 0 6px 0 6px;
 }
 
 @media (max-width: 660px) {

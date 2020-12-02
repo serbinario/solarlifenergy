@@ -163,7 +163,8 @@ class AlertController extends Controller
 
     public function lastForAlerts(Request $request){
         $franquia_id = Auth::user()->franquia->id;
-        $alerts = Alert::where('franquia_id', '=' , $franquia_id)->orderBy('created_at')->take(4)->get();
+        $date =  date("Y-m-d");
+        $alerts = Alert::where('franquia_id', '=' , $franquia_id)->where('created_at', '>=', $date )->orderBy('created_at')->take(4)->get();
         return \Illuminate\Support\Facades\Response::json($alerts);
     }
 }
