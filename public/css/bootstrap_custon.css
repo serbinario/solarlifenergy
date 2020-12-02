@@ -598,6 +598,23 @@ div#header-table .lancamentos{
     margin-left: 5px;
 }
 
+.notification-modal > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notification-modal > div span {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 14px;
+    margin-bottom: 4px;
+}
+
+.notification-modal > p {
+    text-align: justify;
+    font-size: 14px;
+    color: #555;
+}
 
 
 

@@ -81,7 +81,7 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-solar animation-expand">
 
-							<li><a href="#">Todoas as mensagens <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+							<li><a href="#">Todoas as notificações <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
 						</ul><!--end .dropdown-menu -->
 					</li><!--end .dropdown -->
 					<li class="dropdown">
@@ -322,6 +322,8 @@
 <!-- END BASE -->
 
 <!-- BEGIN JAVASCRIPT -->
+
+@include('alert.modalAlert')
 
 <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
 {{--<script src="{{ asset('/assets/js/libs/jquery/jquery-1.11.2.min.js')}}" type="text/javascript"></script>--}}
