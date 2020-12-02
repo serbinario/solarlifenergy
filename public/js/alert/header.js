@@ -3,6 +3,7 @@ $(document).ready(function () {
         url: "/index.php/alert/lastForAlerts",
         dataType: "json",
         success: function( alerts ) {
+            document.getElementById('lert-count').innerHTML = alerts.length;
             alerts.forEach(function (alert) {
                 var html = '<li>'
                 html += '<a class="alert alert-callout alert-warning" href="javascript:void(0);">'

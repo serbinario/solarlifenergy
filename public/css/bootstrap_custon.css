@@ -555,6 +555,14 @@ div#header-table .lancamentos{
     display: block;
 }
 
+@media (max-width: 660px) {
+
+    .dropdown-menu-solar {
+        left: auto;
+        right: -300% !important;
+    }
+}
+
 
 
 

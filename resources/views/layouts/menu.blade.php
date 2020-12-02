@@ -76,11 +76,12 @@
 				<ul  class="header-nav header-nav-profile">
 					<li id="alert-solar" class="dropdown hidden-sm">
 						<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
-							<i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+							<i class="fa fa-bell"></i>
+							<sup id="lert-count" class="badge style-danger"></sup>
 						</a>
-						<ul class="dropdown-menu animation-expand">
+						<ul class="dropdown-menu dropdown-menu-solar animation-expand">
 
-							<li><a href="../../html/pages/login.html">Todoas as mensagens <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+							<li><a href="#">Todoas as mensagens <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
 						</ul><!--end .dropdown-menu -->
 					</li><!--end .dropdown -->
 					<li class="dropdown">
