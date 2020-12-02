@@ -67,7 +67,15 @@ var table = $('#projetov2').DataTable({
             "defaultContent": ""
         },
         {data: "id",name: 'id' , visible: false },
-        {data: 'nome_empresa', name: 'nome_empresa'},
+        {data: 'nome_empresa', name: 'nome_empresa',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData){
+                    var pago = "";
+                    oData.status_projeto == 8 || oData.status_projeto == 1 ? pago =  "<i class=\"icon i20d icon-22\"></i>": pago = "<i class=\"icon i20 icon-22\"></i>"
+                    $(nTd).html(oData.nome_empresa  + pago)
+                }
+            }
+        },
         {data: 'preco_medio_instalado', name: 'preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'potencia_instalada', name: 'potencia_instalada'},
 

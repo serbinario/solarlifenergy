@@ -571,7 +571,7 @@ div#header-table .lancamentos{
 }
 
 .icon.i20d.icon-22 {
-    background-position: -399px -26px;
+    background-position: -380px -26px;
 }
 .icon.i20d {
     width: 22px;
@@ -592,7 +592,8 @@ div#header-table .lancamentos{
     background-position-x: 0%;
     background-position-y: 0%;
     display: inline-block;
-    margin-bottom: -5px
+    margin-bottom: -5px;
+    margin-left: 5px;
 }
 
 
