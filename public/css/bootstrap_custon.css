@@ -555,6 +555,13 @@ div#header-table .lancamentos{
     display: block;
 }
 
+.dropdown-menu > li a small.alert-date {
+
+    position: absolute;
+    top: -12px;
+    background-color: #fff;
+}
+
 @media (max-width: 660px) {
 
     .dropdown-menu-solar {

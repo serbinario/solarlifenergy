@@ -18,7 +18,7 @@
     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label for="title" class="col-md-2 control-label text-bold">Titulo</label>
         <div class="col-md-10">
-            <input class="form-control input-sm" name="title" type="text" id="title" value="{{ old('title', isset($alert->title) ? $alert->title : null) }}" minlength="1" maxlength="20">
+            <input class="form-control input-sm" name="title" type="text" id="title" value="{{ old('title', isset($alert->title) ? $alert->title : null) }}" minlength="1" maxlength="30">
         </div>
     </div>
 
