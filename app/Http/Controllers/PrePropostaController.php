@@ -415,7 +415,7 @@ Com intuito de ofertar o melhor para nossos clientes realizamos algumas mudança
            //     return back()->withInput()
            //         ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
            // }
-           // dd($data);
+            //dd($return);
             $preProposta = PreProposta::create($data);
             //;
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)

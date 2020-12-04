@@ -63,7 +63,8 @@ class Produto extends Model
      * Many to One
      */
     function marca(){
-        return $this->belongsTo('Serbinario\Entities\Vendas\Marca','marca_id','id');
+        //return $this->belongsTo('Serbinario\Entities\Vendas\Marca','marca_id','id');
+        return $this->hasOne('Serbinario\Entities\Vendas\Marca','id','marca_id');
     }
 
     function grupo(){
