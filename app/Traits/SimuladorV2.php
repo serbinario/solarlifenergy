@@ -84,7 +84,7 @@ trait SimuladorV2
 //
         //  dd($this->potenciaModulo, $this->valorModulo);
 
-        $ModuloFabricante =  Produto::with('marca')->where('id' , '=', '2')->first()->marca->marca;
+        $ModuloFabricante =  Produto::with('marca')->where('id' , '=', $this->potenciaModulo)->first()->marca->marca;
 
         //Salva a quantidade de MC4 e a soma do inversor
         foreach ($this->inversores as $inversor){
