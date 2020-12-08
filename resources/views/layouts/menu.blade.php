@@ -369,10 +369,8 @@
 <script src="{{ asset('/js/alert/header.js')}}" type="text/javascript"></script>
 
 
-
-
-
 <script src="{{ asset('/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+
 
 <script src="{{ asset('/assets/js/libs/sweetalert/sweetalert.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/assets/js/libs/jquery-mask-plugin/dist/jquery.mask.js')}}" type="text/javascript"></script>

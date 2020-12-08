@@ -55,8 +55,63 @@ var table = $('#financeiro').DataTable({
         {data: 'data_pago', name: 'data_pago', targets: 0, visible: true},
         {data: 'action', name: 'action', orderable: false, searchable: false}
 
-    ]
+    ],
+    "initComplete": function(settings, json) {
+
+        document.querySelectorAll('.delete').forEach(item => {
+            item.addEventListener('click', event => {
+                deletar(event.target.parentNode.parentNode.id)
+            })
+        })
+    }
 });
+
+function deletar(id) {
+    console.log(id)
+    swal({
+            title: "",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Exluir esse lancamento!",
+            cancelButtonText: "Excluir esse e os próximos!",
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            customClass: ".swal-back",
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+                    }
+                });
+                data = {
+                    'id': arquivar_id,
+                    'arquivar': "1"
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '/index.php/arquivarProjeto',
+                    datatype: 'json',
+                    data: data,
+                }).done(function (retorno) {
+                    if(retorno.success) {
+                        swal("", retorno.msg, "success");
+                        location.reload();
+
+                    } else {
+                        swal("Error", "Click no botão abaixo!", "error");
+                    }
+                });
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+}
 
 var mascara = function (val) {
     return $('val.cpf_cnpj').mask('00.000.000/0000-00')
@@ -78,6 +133,8 @@ formatMoney = (n, c, d, t) => {
     c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
+
+
 
 
 

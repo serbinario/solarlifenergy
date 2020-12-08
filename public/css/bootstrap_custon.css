@@ -578,11 +578,17 @@ div#header-table .lancamentos{
     }
 }
 
+.icon.i20x.icon-22x {
+    width: 21px;
+    height: 19px;
+    background-position: -579px -26px;
+}
+
 .icon.i20d.icon-22 {
     background-position: -380px -26px;
 }
 .icon.i20d {
-    width: 22px;
+    width: 21px;
     height: 19px;
 }
 
@@ -590,7 +596,7 @@ div#header-table .lancamentos{
     background-position: -420px -26px;
 }
 .icon.i20 {
-    width: 26px;
+    width: 21px;
     height: 20px;
 }
 

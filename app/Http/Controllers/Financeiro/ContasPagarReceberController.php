@@ -104,13 +104,23 @@ class ContasPagarReceberController extends Controller
             ->addColumn('action', function ($row) {
 
             if($row->status ==1 ){
-                return '<a href="#" title="Pago">
-                         <i class="icon i20 icon-22"></i> 
-                    </a>';
+                return '<div class="acao" role="group"> 
+                            <a id="'.$row->id.'" href="#"  title="Pago">
+                                <i  class="icon i20 icon-22"></i>                         
+                            </a>
+                            <a href="#"  title="Excluir">
+                                <i class="icon i20x icon-22x delete"></i>                         
+                            </a>
+                        </div>';
             }else{
-                return '<a href="#"  title="Aguardando">
-                         <i class="icon i20d icon-22"></i> 
-                    </a>';
+                return '<div  id="'.$row->id.'" class="" role="group"> 
+                            <a href="#"  title="Aguardando">
+                                <i  class="icon i20d icon-22"></i>                         
+                            </a>
+                            <a href="#"  title="Excluir">
+                                <i class="icon i20x icon-22x delete"></i>                         
+                            </a>
+                        </div>';
             }
 
 
