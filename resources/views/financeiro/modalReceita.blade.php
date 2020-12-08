@@ -4,26 +4,32 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="card-head style-primary">
-                <header>Nova Receita</header>
+                <header>Nova receita</header>
             </div>
-            <form class="form">
+            <form name="modalReceita" class="form">
                     <div class="card-body floating-label">
 
                         <div class="form-group">
-                            <input type="text" class="form-control input-sm" id="Username2">
-                            <label for="Username2">Descrição</label>
+                            <input name="description" type="text" class="form-control input-sm" id="Username2">
+                            <label for="description">Descrição</label>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text"  class="input-sm form-control" id="Firstname2">
-                                    <label  for="Firstname2">Valor</label>
+                                    <input  name="projeto_id" type="text" class="input-sm form-control" id="Lastname2">
+                                    <label for="projeto_id">Código Projeto</label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input  type="text" class="date input-sm form-control" id="Lastname2">
-                                    <label class="" for="Lastname2">Data</label>
+                                    <input name="valor" type="text"  class="money input-sm form-control" id="Firstname2">
+                                    <label  for="valor">Valor</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input  name="data_vencimento" type="text" class="date input-sm form-control" id="Lastname2">
+                                    <label class="" for="data_vencimento">Data</label>
                                 </div>
                             </div>
                         </div>
@@ -31,31 +37,27 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select id="select1" name="select1" class="form-control input-sm ">
+                                    <select id="conta" name="conta" class="form-control input-sm contas">
                                         <option value="">&nbsp;</option>
-                                        <option value="30">BB</option>
-                                        <option value="30">Bradesco</option>
                                     </select>
-                                    <label for="Firstname2">Conta</label>
+                                    <label for="conta">Conta</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select id="select1" name="select1" class="form-control input-sm ">
+                                    <select id="category-receitas" name="category" class="form-control input-sm ">
                                         <option value="">&nbsp;</option>
-                                        <option value="30">Alimentação</option>
-                                        <option value="30">Combustível</option>
                                     </select>
-                                    <label class="" for="Lastname2">Categoria</label>
+                                    <label class="" for="category">Categoria</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="repeat" class="row">
+                        <div id="repeat" class="row lancamentos-repeat">
                             <span>Repetir: é um lançamento parcelado em</span>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="number"  class="input-sm form-control number" id="Firstname2">
+                                    <input type="number" name="qtd_parcelas" class="input-sm form-control number" id="Firstname2">
                                     <label  for="Firstname2">Quantidade</label>
                                 </div>
                             </div>
@@ -70,9 +72,9 @@
                             </div>
                         </div>
 
-                        <div id="note" class="form-group">
-                            <textarea name="textarea1" id="textarea1" class="form-control input-sm" rows="2" placeholder=""></textarea>
-                            <label for="textarea1">Observação</label>
+                        <div id="note" class="form-group lancamentos-note">
+                            <textarea name="lancamento_obs" id="textarea1" class="form-control input-sm" rows="2" placeholder=""></textarea>
+                            <label for="lancamento_obs">Observação</label>
                         </div>
 
                         <div class="form-group receita-tags">
@@ -94,13 +96,10 @@
                     </div><!--end .card-body -->
                     <div class="card-actionbar">
                         <div class="card-actionbar-row">
-                            <button type="submit" class="btn btn-flat btn-primary ink-reaction">Salvar</button>
+                            <button type="submit" class="btn ink-reaction btn-floating-action btn-lg btn-primary btn-save-receita" data-toggle="dropdown" data-loading-text="<i class='fa fa-spinner fa-spin'></i>"><i class="fa fa-check"></i></button>
+
                         </div>
                     </div>
-
-
-
-
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -49,7 +49,12 @@ var table = $('#financeiro').DataTable({
     columns: [
         {data: 'id', name: 'id', targets: 0, visible: false},
         {data: 'descricao', name: 'pg.descricao', targets: 0, visible: true},
+        {data: 'conta', name: 'conta', targets: 0, visible: true},
+        {data: 'valor_parcela', name: 'detalhe.valor_parcela', "render": function (data) { return formatMoney(data) }},
+        {data: 'data_vence', name: 'data_vence', targets: 0, visible: true},
+        {data: 'data_pago', name: 'data_pago', targets: 0, visible: true},
         {data: 'action', name: 'action', orderable: false, searchable: false}
+
     ]
 });
 
@@ -68,6 +73,12 @@ var cpfMascara = function (val) {
         }
     };
 $('.mascara-cpfcnpj').mask(cpfMascara, cpfOptions);
+
+formatMoney = (n, c, d, t) => {
+    c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+}
+
 
 
 

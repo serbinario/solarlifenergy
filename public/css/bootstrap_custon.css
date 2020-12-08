@@ -528,6 +528,12 @@ div#repeat span{
     display: block;
     padding-left: 10px;
 }
+
+
+div#repeat-despesa span{
+    display: block;
+    padding-left: 10px;
+}
 div#header-table {
     display: grid;
     grid-template-columns: repeat(3, 33.3333%);
@@ -615,6 +621,36 @@ div#header-table .lancamentos{
     font-size: 14px;
     color: #555;
 }
+
+div.btn-lancamento:hover ul {
+    display : block;
+    text-align: center;
+}
+
+#formModalReceita .card-actionbar-row {
+    display: flex;
+    justify-content: center;
+}
+
+#formModalDespesa .card-actionbar-row {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

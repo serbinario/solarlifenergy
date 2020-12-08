@@ -767,6 +767,10 @@ Route::group(
         ->name('financeiro.destroy')
         ->where('id', '[0-9]+');
 
+    Route::get('/paramsdefault','Financeiro\ContasPagarReceberController@paramsDefault')
+        ->name('financeiro.paramsdefault')
+        ->where('id', '[0-9]+');
+
 });
 
 Route::group(

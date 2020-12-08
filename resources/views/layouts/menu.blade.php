@@ -378,6 +378,8 @@
 <script src="{{ asset('/assets/js/libs/jquery-mask-plugin/dist/jquery.mask.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/ajaxError.js')}}" type="text/javascript"></script>
 
+
+
 <!-- END JAVASCRIPT -->
 @yield('javascript')
 </body>

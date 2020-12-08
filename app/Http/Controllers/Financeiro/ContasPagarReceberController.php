@@ -5,7 +5,11 @@ namespace Serbinario\Http\Controllers\Financeiro;
 
 //meu teste
 
+use Serbinario\Entities\Financeiro\Category;
+use Serbinario\Entities\Financeiro\Contas;
+use Serbinario\Entities\Financeiro\ContasPagarReceber;
 use Serbinario\Entities\Financeiro\ContasPagarReceberDetalhe;
+use Serbinario\Entities\Projetov2;
 use Serbinario\Entities\ReportLayout;
 use Serbinario\User;
 use Illuminate\Http\Request;
@@ -55,9 +59,10 @@ class ContasPagarReceberController extends Controller
             ->leftJoin('fin_contas_pagar_receber_detalhe as detalhe', 'detalhe.conatas_pagar_receber_id', '=', 'pg.id')
             ->leftJoin('fin_tipo AS tipo', 'tipo.id', '=', 'pg.tipo_id')
             ->leftJoin('fin_status', 'detalhe.status_id', '=', 'fin_status.id')
+            ->leftJoin('fin_contas', 'pg.conta_id', '=', 'fin_contas.id')
             ->leftJoin('fin_category AS category', 'category.id', '=', 'pg.category_id')
             ->leftJoin('fin_fornecedor AS fornecedor', 'fornecedor.id', '=', 'pg.fonecedor_id')
-            ->join('users', 'users.id', '=', 'pg.user_id')
+            ->leftjoin('users', 'users.id', '=', 'pg.user_id')
             ->select([
                 'pg.id',
                 'category.name',
@@ -67,12 +72,14 @@ class ContasPagarReceberController extends Controller
                 'pg.qtd_parcelas',
                 'pg.data_emissao',
                 'data_primeiro_vencimento',
-                'detalhe.data_vence',
-                'detalhe.data_pago',
+                \DB::raw('DATE_FORMAT(detalhe.data_vence,"%d/%m/%Y") as data_vence'),
+                \DB::raw('DATE_FORMAT(detalhe.data_pago,"%d/%m/%Y") as data_pago'),
                 'detalhe.valor_parcela',
                 'detalhe.desconto',
                 'detalhe.juros',
+                'fin_contas.name as conta',
                 'fin_status.name',
+                'fin_status.id as status',
                 'fornecedor.name'
             ]);
         $user = User::find(Auth::id());
@@ -95,19 +102,19 @@ class ContasPagarReceberController extends Controller
             })
 
             ->addColumn('action', function ($row) {
-            return '<form id="' . $row->id   . '" method="POST" action="contrato/' . $row->id   . '/destroy" accept-charset="UTF-8">
-                            <input name="_method" value="DELETE" type="hidden">
-                            <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">                            
-                              
-                                <a href="/report/'.$row->id.'/Contrato" class="btn btn-primary" target="_blank" title="Contrato">
-                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>
-                                <a href="/report/'.$row->id.'/Declaracao" class="btn btn-primary" target="_blank" title="Declaração Ciência">
-                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>                               
-                        </form>
-                        ';
+
+            if($row->status ==1 ){
+                return '<a href="#" title="Pago">
+                         <i class="icon i20 icon-22"></i> 
+                    </a>';
+            }else{
+                return '<a href="#"  title="Aguardando">
+                         <i class="icon i20d icon-22"></i> 
+                    </a>';
+            }
+
+
+
         })->make(true);
     }
 
@@ -134,21 +141,56 @@ class ContasPagarReceberController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(ContratoFormRequest $request)
+    public function store(Request $request)
     {
         try {
+            if(empty($request->get('qtd_parcelas'))){
+                $qtdParcelas = 1;
+            }else{
+                $qtdParcelas = $request->get('qtd_parcelas');
+            }
 
-            $data = $request->getData();
-            $data['created_by'] = Auth::Id();
-            $data['franquia_id'] = Auth::user()->franquia->id;
-            $contrato = Contrato::create($data);
+            $conta = ContasPagarReceber::create([
+                'descricao' => $request->get('description'),
+                'projeto_id' => $request->get('projeto_id'),
+                'conta_id' => $request->get('conta_id'),
+                'category_id' => $request->get('category_id'),
+                'tipo_id' => $request->get('tipo_id'),
+                'data_primeiro_vencimento' => $request->get('data_vencimento'),
+                'valor_total' => $request->get('valor'),
+                'obs' => $request->get('lancamento_obs'),
+                'qtd_parcelas' => $qtdParcelas,
+            ]);
 
-            return redirect()->route('contrato.contrato.edit', $contrato->id)
-                ->with('success_message', 'Contrato criado com sucessp!');
+
+
+
+            $data_vencimento = $request->get('data_vencimento');
+
+            for($i = 1; $qtdParcelas+1 > $i; $i++ ){
+
+                $valor = $request->get('valor') / $qtdParcelas;
+
+                ContasPagarReceberDetalhe::create([
+                    'conatas_pagar_receber_id' => $conta->id,
+                    'data_vence' => $data_vencimento,
+                    'status_id' => $request->get('status_id'),
+                    'valor_parcela' => $valor,
+                    'parcela_numero' => $i,
+
+                ]);
+
+                $the_date = strtotime( $data_vencimento);
+                $data_vencimento = date("Y-m-d", strtotime('+1 month', $the_date));
+            }
+
+
+            return response()->json( [ 'success' => 'ok',  'msg' => 'ok', 'qtd_parcelas' => $data_vencimento] );
 
         } catch (Exception $e) {
-            return back()->withInput()
-                ->withErrors(['error_message' => $e->getMessage()]);
+            return response()->json( [
+                'message' => $e->getMessage(), 'erro' => $data_vencimento] );
+
         }
     }
 
@@ -220,6 +262,25 @@ class ContasPagarReceberController extends Controller
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
+    }
+
+    public function paramsDefault(){
+        $categories = Category::select('name', 'id', 'parent_id')->get()->toArray();
+        $categoriesReceita = Category::select('name', 'id')->where('parent_id', '=', '12')->get()->toArray();
+        $categoriesDespesa = Category::select('name', 'id')->where('parent_id', '=', '11')->get()->toArray();
+        $contas = Contas::select('name', 'id')->get()->toArray();
+        return response()->json( [
+            'categoryReceita' => $categoriesReceita,
+            'categoryDespesas' => $categoriesDespesa,
+            'contas' =>$contas,
+            'categories' => $categories
+        ] );
+    }
+
+    public function getData(Request $request)
+    {
+        $data = $this->only(['description', 'projeto_id', 'valor', 'data_vencimento', 'contas', 'category', 'lancamento_obs']);
+        return $data;
     }
 
 

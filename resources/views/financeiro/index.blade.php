@@ -27,21 +27,19 @@
                             <header>Lançamentos</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('franquia.franquia.create') }}" class="btn btn-primary" title="Novo Fornecedor">
-                                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                    </a>
+
                                 </div>
                             </div>
                         </div>
 
                         <div id="header-table">
                             <div class="btn-group lancamentos">
-                                <header>Lançamentos</header>
-                                <div>
-                                    <button type="button" class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown"><i class="fa fa-plus"></i></button>
+                                <header></header>
+                                <div class="btn-lancamento">
+                                    <button type="button" class="btn ink-reaction btn-floating-action btn-sm btn-info" data-toggle="dropdown"><i class="fa fa-plus"></i></button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Despesa</a></li>
-                                        <li><a href="#">Receita</a></li>
+                                        <li><a id="btn-despesa" href="#">Despesa</a></li>
+                                        <li><a id="btn-receita" href="#">Receita</a></li>
                                     </ul>
                                 </div>
                             </div><!--end .btn-group -->
@@ -53,8 +51,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
@@ -64,6 +60,10 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Descrição</th>
+                                                    <th>Conta</th>
+                                                    <th>Valor</th>
+                                                    <th>Vencimento</th>
+                                                    <th>Pagamento</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -79,7 +79,7 @@
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <button type="button" id="btn-receita" class="btn btn-primary">Gerar Receita</button>
+
                             </div>
                         </div>
 

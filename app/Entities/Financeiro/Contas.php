@@ -4,7 +4,7 @@ namespace Serbinario\Entities\Financeiro;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContasPagarReceber extends Model
+class Contas extends Model
 {
 
 
@@ -13,7 +13,7 @@ class ContasPagarReceber extends Model
      *
      * @var string
      */
-    protected $table = 'fin_contas_pagar_receber';
+    protected $table = 'fin_contas';
 
     /**
      * The database primary key value.
@@ -28,18 +28,7 @@ class ContasPagarReceber extends Model
      * @var array
      */
     protected $fillable = [
-        'fonecedor_id',
-        'projeto_id',
-        'descricao',
-        'valor_total',
-        'data_emissao',
-        'data_primeiro_vencimento',
-        'qtd_parcelas',
-        'tipo_id',
-        'conta_id',
-        'obs',
-        'user_id',
-        'category_id'
+        'name',
 
     ];
 
