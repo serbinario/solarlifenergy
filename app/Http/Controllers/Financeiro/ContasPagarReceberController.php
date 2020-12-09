@@ -77,10 +77,12 @@ class ContasPagarReceberController extends Controller
                 'detalhe.valor_parcela',
                 'detalhe.desconto',
                 'detalhe.juros',
+                'detalhe.id as detalhe_id',
                 'fin_contas.name as conta',
                 'fin_status.name',
                 'fin_status.id as status',
-                'fornecedor.name'
+                'fornecedor.name',
+                'tipo.id as tipo_id'
             ]);
         $user = User::find(Auth::id());
         if($user->hasRole('franquia')) {
@@ -105,7 +107,7 @@ class ContasPagarReceberController extends Controller
 
             if($row->status ==1 ){
                 return '<div class="acao" role="group"> 
-                            <a id="'.$row->id.'" href="#"  title="Pago">
+                            <a id="'.$row->detalhe_id.'" href="#"  title="Pago">
                                 <i  class="icon i20 icon-22"></i>                         
                             </a>
                             <a href="#"  title="Excluir">
@@ -113,7 +115,7 @@ class ContasPagarReceberController extends Controller
                             </a>
                         </div>';
             }else{
-                return '<div  id="'.$row->id.'" class="" role="group"> 
+                return '<div  id="'.$row->detalhe_id.'" class="" role="group"> 
                             <a href="#"  title="Aguardando">
                                 <i  class="icon i20d icon-22"></i>                         
                             </a>
@@ -258,33 +260,35 @@ class ContasPagarReceberController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         try {
-            $contrato = Contrato::findOrFail($id);
-            $contrato->delete();
+            $contaDetalhe = ContasPagarReceberDetalhe::findOrFail($request->get('id'));
+            $conta = ContasPagarReceber::find($contaDetalhe->conatas_pagar_receber_id);
+            $conta->delete();
+            return response()->json( [ 'success' => 'true',  'msg' => 'Lançamento excluido com sucesso', 'conta' => $conta] );
 
-            return redirect()->route('contrato.contrato.index')
-                ->with('success_message', 'Contrato was successfully deleted!');
+        } catch (Exception $e) {
 
-        } catch (Exception $exception) {
-
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+            return response()->json( [ 'success' => 'true',  'msg' => 'ok', 'conta' => $e->getMessage()] );
         }
     }
 
     public function paramsDefault(){
-        $categories = Category::select('name', 'id', 'parent_id')->get()->toArray();
-        $categoriesReceita = Category::select('name', 'id')->where('parent_id', '=', '12')->get()->toArray();
-        $categoriesDespesa = Category::select('name', 'id')->where('parent_id', '=', '11')->get()->toArray();
-        $contas = Contas::select('name', 'id')->get()->toArray();
-        return response()->json( [
-            'categoryReceita' => $categoriesReceita,
-            'categoryDespesas' => $categoriesDespesa,
-            'contas' =>$contas,
-            'categories' => $categories
-        ] );
+        try {
+            $categories = Category::select('name', 'id', 'parent_id')->get()->toArray();
+            $categoriesReceita = Category::select('name', 'id')->where('parent_id', '=', '12')->get()->toArray();
+            $categoriesDespesa = Category::select('name', 'id')->where('parent_id', '=', '11')->get()->toArray();
+            $contas = Contas::select('name', 'id')->get()->toArray();
+            return response()->json([
+                'categoryReceita' => $categoriesReceita,
+                'categoryDespesas' => $categoriesDespesa,
+                'contas' => $contas,
+                'categories' => $categories
+            ]);
+        }catch (Exception $e){
+            return response()->json( [ 'success' => 'false',  'msg' => 'Error!',] );
+        }
     }
 
     public function getData(Request $request)

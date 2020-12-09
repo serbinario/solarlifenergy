@@ -48,9 +48,39 @@ var table = $('#financeiro').DataTable({
     },
     columns: [
         {data: 'id', name: 'id', targets: 0, visible: false},
-        {data: 'descricao', name: 'pg.descricao', targets: 0, visible: true},
+
+
+        {data: 'descricao', name: 'pg.descricao',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.qtd_parcelas > 1){
+                    $(nTd).html(
+                        oData.descricao + "  -   " + oData.parcela_numero + "/"+ oData.qtd_parcelas
+                    );
+                }else{
+                    $(nTd).html(
+                        oData.descricao
+                    );
+                }
+            }
+        },
+
+
         {data: 'conta', name: 'conta', targets: 0, visible: true},
-        {data: 'valor_parcela', name: 'detalhe.valor_parcela', "render": function (data) { return formatMoney(data) }},
+
+
+        {data: 'valor_parcela', name: 'detalhe.valor_parcela',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                if(oData.tipo_id == 1){
+                    $(nTd).html(
+                     formatMoney(oData.valor_parcela)
+                );
+                }else{
+                    $(nTd).html(
+                     "-" + formatMoney(oData.valor_parcela)
+                );
+                }
+            }
+        },
         {data: 'data_vence', name: 'data_vence', targets: 0, visible: true},
         {data: 'data_pago', name: 'data_pago', targets: 0, visible: true},
         {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -58,16 +88,27 @@ var table = $('#financeiro').DataTable({
     ],
     "initComplete": function(settings, json) {
 
-        document.querySelectorAll('.delete').forEach(item => {
-            item.addEventListener('click', event => {
-                deletar(event.target.parentNode.parentNode.id)
-            })
-        })
+        addEventClick()
+
     }
 });
 
+function addEventClick() {
+    document.querySelectorAll('.delete').forEach(item => {
+        item.addEventListener('click', event => {
+        deletar(event.target.parentNode.parentNode.id)
+        })
+    })
+}
+
 function deletar(id) {
-    console.log(id)
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+        }
+    });
+
     swal({
             title: "",
             text: "",
@@ -75,40 +116,32 @@ function deletar(id) {
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Exluir esse lancamento!",
-            cancelButtonText: "Excluir esse e os próximos!",
+            cancelButtonText: "Cancelar!",
             closeOnConfirm: false,
-            closeOnCancel: true,
+            closeOnCancel: false,
             customClass: ".swal-back",
         },
         function(isConfirm) {
             if (isConfirm) {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
 
-                    }
-                });
                 data = {
-                    'id': arquivar_id,
-                    'arquivar': "1"
+                    'id': id,
                 }
 
                 jQuery.ajax({
                     type: 'POST',
-                    url: '/index.php/arquivarProjeto',
+                    url: '/index.php/financeiro/destroy',
                     datatype: 'json',
                     data: data,
                 }).done(function (retorno) {
                     if(retorno.success) {
-                        swal("", retorno.msg, "success");
-                        location.reload();
-
+                        swal('', retorno.msg, "success");
+                        table.ajax.reload( addEventClick);
+                       // location.reload();
                     } else {
                         swal("Error", "Click no botão abaixo!", "error");
                     }
                 });
-            } else {
-                swal("Cancelled", "Your imaginary file is safe :)", "error");
             }
         });
 }

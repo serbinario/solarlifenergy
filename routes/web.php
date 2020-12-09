@@ -763,9 +763,8 @@ Route::group(
         ->name('financeiro.update')
         ->where('id', '[0-9]+');
 
-    Route::delete('/{produto}/destroy','Financeiro\ContasPagarReceberController@destroy')
-        ->name('financeiro.destroy')
-        ->where('id', '[0-9]+');
+    Route::post('/destroy','Financeiro\ContasPagarReceberController@destroy')
+        ->name('financeiro.destroy');
 
     Route::get('/paramsdefault','Financeiro\ContasPagarReceberController@paramsDefault')
         ->name('financeiro.paramsdefault')

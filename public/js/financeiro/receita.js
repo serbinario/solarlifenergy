@@ -100,6 +100,7 @@ $('.btn-save-receita').click(function (event) {
         if(retorno.success) {
             swal('', "Cadastro realizado com sucesso", "success");
             btn.button('reset');
+            table.ajax.reload( addEventClick);
         } else {
             swal("Error", "Click no botão abaixo!", "error");
         }
@@ -146,7 +147,7 @@ $('.btn-save-despesa').click(function (event) {
     data = {
         'description': description,
         'projeto_id': projeto_id,
-        'tipo_id': 1,
+        'tipo_id': 2,
         'data_vencimento': dateToEN(data_vencimento),
         'valor': realDolar(valor),
         'conta_id': conta,
@@ -165,6 +166,7 @@ $('.btn-save-despesa').click(function (event) {
         if(retorno.success) {
             swal('', "Cadastro realizado com sucesso", "success");
             btn.button('reset');
+            table.ajax.reload( addEventClick);
         } else {
             swal("Error", "Click no botão abaixo!", "error");
         }
@@ -222,6 +224,3 @@ document.getElementById('btn-repeat-despesa').addEventListener('click', function
         x.style.display = "none";
     }
 })
-
-
-s
