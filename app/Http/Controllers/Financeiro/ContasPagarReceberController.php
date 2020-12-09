@@ -106,9 +106,9 @@ class ContasPagarReceberController extends Controller
             ->addColumn('action', function ($row) {
 
             if($row->status ==1 ){
-                return '<div class="acao" role="group"> 
-                            <a id="'.$row->detalhe_id.'" href="#"  title="Pago">
-                                <i  class="icon i20 icon-22"></i>                         
+                return '<div id="'.$row->detalhe_id.'" class="acao" role="group"> 
+                            <a  href="#"  title="Pago">
+                                <i  class="pago icon i20 icon-22"></i>                         
                             </a>
                             <a href="#"  title="Excluir">
                                 <i class="icon i20x icon-22x delete"></i>                         
@@ -117,7 +117,7 @@ class ContasPagarReceberController extends Controller
             }else{
                 return '<div  id="'.$row->detalhe_id.'" class="" role="group"> 
                             <a href="#"  title="Aguardando">
-                                <i  class="icon i20d icon-22"></i>                         
+                                <i  class="pago icon i20d icon-22"></i>                         
                             </a>
                             <a href="#"  title="Excluir">
                                 <i class="icon i20x icon-22x delete"></i>                         
@@ -287,7 +287,22 @@ class ContasPagarReceberController extends Controller
                 'categories' => $categories
             ]);
         }catch (Exception $e){
-            return response()->json( [ 'success' => 'false',  'msg' => 'Error!',] );
+            return response()->json( [ 'success' => 'false',  'msg' => 'Error!'] );
+        }
+    }
+
+    public function updatePago(Request $request){
+        try {
+            $date = new \DateTime();
+            $date->format('Y-m-d');
+
+            $contaDetalhe = ContasPagarReceberDetalhe::findOrFail($request->get('id'));
+            $contaDetalhe->status_id = $contaDetalhe->status_id == 1 ? 2 : 1;
+            $contaDetalhe->data_pago = $date;
+            $contaDetalhe->update();
+            return response()->json(['success' => 'true', 'msg' => 'ok']);
+        }catch (Exception $e){
+            return response()->json( [ 'success' => 'false',  'msg' => 'Error!', 'erro' => $e->getMessage()] );
         }
     }
 

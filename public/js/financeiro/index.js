@@ -96,9 +96,46 @@ var table = $('#financeiro').DataTable({
 function addEventClick() {
     document.querySelectorAll('.delete').forEach(item => {
         item.addEventListener('click', event => {
-        deletar(event.target.parentNode.parentNode.id)
+            console.log(event.target.parentNode.parentNode.id)
+            deletar(event.target.parentNode.parentNode.id)
         })
     })
+
+    document.querySelectorAll('.pago').forEach(item => {
+        item.addEventListener('click', event => {
+            //console.log(event.target.parentNode.parentNode.id)
+            updatePago(event.target.parentNode.parentNode.id)
+        })
+    })
+}
+
+function updatePago(id) {
+
+    console.log(id)
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+        }
+    });
+
+    data = {
+        'id': id,
+    }
+
+    jQuery.ajax({
+        type: 'POST',
+        url: '/index.php/financeiro/pago',
+        datatype: 'json',
+        data: data,
+    }).done(function (retorno) {
+        if(retorno.success) {
+            table.ajax.reload( addEventClick);
+            // location.reload();
+        } else {
+            swal("Error", "Click no botão abaixo!", "error");
+        }
+    });
 }
 
 function deletar(id) {
