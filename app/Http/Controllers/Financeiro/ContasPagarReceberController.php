@@ -298,7 +298,7 @@ class ContasPagarReceberController extends Controller
 
             $contaDetalhe = ContasPagarReceberDetalhe::findOrFail($request->get('id'));
             $contaDetalhe->status_id = $contaDetalhe->status_id == 1 ? 2 : 1;
-            $contaDetalhe->data_pago = $date;
+            $contaDetalhe->data_pago = $contaDetalhe->status_id == 1 ? $date : 'NULL';
             $contaDetalhe->update();
             return response()->json(['success' => 'true', 'msg' => 'ok']);
         }catch (Exception $e){
