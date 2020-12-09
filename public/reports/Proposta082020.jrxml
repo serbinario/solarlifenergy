@@ -16,6 +16,7 @@
 	<queryString>
 		<![CDATA[select * from pre_propostas 
 inner join clientes on clientes.id = pre_propostas.cliente_id
+left join banco_financiadora on pre_propostas.baco_fin_id = banco_financiadora.id
 where pre_propostas.id =  $P{id}]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
@@ -86,7 +87,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="total_servico_operacional"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="total_equipamentos" class="java.lang.Double">
+	<field name="total_equipamentos" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="total_equipamentos"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
@@ -510,7 +511,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="desconto_equipamentos"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_124" class="java.lang.Long">
+	<field name="royalties" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="royalties"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="COLUMN_125" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -582,6 +587,14 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
+	<field name="COLUMN_143" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_144" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
 	<field name="mae" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="mae"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -626,6 +639,10 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
+	<field name="COLUMN_156" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
 	<field name="nacionalidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -641,6 +658,14 @@ where pre_propostas.id =  $P{id}]]>
 	<field name="cliente_tipo_id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="cliente_tipo_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="COLUMN_161" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
+	</field>
+	<field name="COLUMN_162" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
 	</field>
 	<detail>
 		<band height="535" splitType="Stretch">
@@ -2311,7 +2336,7 @@ ou de difícil acesso]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{baco_fin_id} == 1? "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO SANTANDER" : "CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO BV")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO " + $F{COLUMN_162}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="100" y="365" width="160" height="15" uuid="670c6673-779a-4392-8f72-881420b216e1">
