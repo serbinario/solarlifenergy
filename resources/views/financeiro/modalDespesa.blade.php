@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <select id="category-despesas" name="category" class="form-control input-sm ">
+                                <select id="category-despesas"  name="category" class="form-control input-sm ">
                                     <option value="">&nbsp;</option>
                                 </select>
                                 <label class="" for="category">Categoria</label>

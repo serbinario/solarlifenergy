@@ -47,14 +47,9 @@ class Category extends Model
      */
     protected $casts = [];
 
-    public function childrenCategories()
-    {
-        return $this->hasMany('Serbinario\Entities\Financeiro\Category', 'parent_id')->with('categories');
-    }
 
-    public function categories()
-    {
-        return $this->hasMany('Serbinario\Entities\Financeiro\Category', 'parent_id');
-    }
+
+
+
 
 }

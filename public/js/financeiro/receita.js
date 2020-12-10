@@ -10,22 +10,15 @@ document.getElementById('btn-receita').addEventListener('click', function (ev) {
         url: "/index.php/financeiro/paramsdefault",
         dataType: "json",
         success: function( result ) {
-            console.log("Receitas " , result.categories)
-            var despesa = result.categories.filter((categoria) => {
-                return parseInt(categoria.parent_id) === 11;
-        })
+           // var receita = result.categories.filter((categoria) => {
+               // return parseInt(categoria.parent_id) === 12;
+           // })
 
-            var receita = result.categories.filter((categoria) => {
-                return parseInt(categoria.parent_id) === 12;
-        })
-
-            console.log(receita, despesa)
-
-            document.getElementById('category-receitas').innerHTML = ''
-            $('#category-receitas').append('<option></option>')
-            receita.forEach(function (param) {
-                $('#category-receitas').append('<option value=' + param.id + ">"+ param.name + '</option>')
-            })
+           // document.getElementById('category-receitas').innerHTML = ''
+           // $('#category-receitas').append('<option></option>')
+           // receita.forEach(function (param) {
+              //  $('#category-receitas').append('<option value=' + param.id + ">"+ param.name + '</option>')
+            //})
 
             document.querySelectorAll('.contas')[0].innerHTML = ''
             document.querySelectorAll('.contas')[1].innerHTML = ''
@@ -180,22 +173,14 @@ document.getElementById('btn-despesa').addEventListener('click', function (ev) {
         url: "/index.php/financeiro/paramsdefault",
         dataType: "json",
         success: function( result ) {
-            console.log("Despesas ", result.categories)
-            var despesa = result.categories.filter((categoria) => {
-                return parseInt(categoria.parent_id) === 11;
-        })
-
-            var receita = result.categories.filter((categoria) => {
-                return parseInt(categoria.parent_id) === 12;
-        })
-
-            console.log(receita, despesa)
-
-            document.getElementById('category-despesas').innerHTML = ''
-            $('#category-despesas').append('<option></option>')
-            despesa.forEach(function (param) {
-                $('#category-despesas').append('<option value=' + param.id + ">"+ param.name + '</option>')
-            })
+            //var despesa = result.categories.filter((categoria) => {
+               // return parseInt(categoria.parent_id) === 11;
+            //})
+            //document.getElementById('category-despesas').innerHTML = ''
+            //$('#category-despesas').append('<option></option>')
+            //despesa.forEach(function (param) {
+               // $('#category-despesas').append('<option value=' + param.id + ">"+ param.name + '</option>')
+            //)
 
             document.querySelectorAll('.contas')[0].innerHTML = ''
             document.querySelectorAll('.contas')[1].innerHTML = ''
@@ -224,3 +209,87 @@ document.getElementById('btn-repeat-despesa').addEventListener('click', function
         x.style.display = "none";
     }
 })
+
+
+/*
+Teste
+ */
+
+$.ajax({
+    url: "/index.php/financeiro/paramsdefault",
+    dataType: "json",
+    success: function( result ) {
+
+        var selectList = $('#category-despesas');
+
+        var despesas = result.categories.filter((categoria) => {
+            return parseInt(categoria.category_id) == 11;
+        })
+
+        var grupos = despesas.filter((categoria) => {
+            return parseInt(categoria.group) == 1;
+        })
+
+        grupos.map(function (item) {
+            $(document.createElement('optgroup')).attr('value', item.id) // use cat_group
+                .attr('label', item.name) // use cat_group
+                .appendTo(selectList);
+        })
+
+        $.each(despesas, function (key, value) {
+            var newElem;
+            var newOptGroup = value.parent_id; // use cat_group
+
+            //get the target optgroup
+            var targetGroup = $('#' + selectList.attr('id') + ' optgroup[value="' + value.parent_id + '"]');
+            //console.log(targetGroup)
+
+            newElem = $(document.createElement('option')).attr('value', value.parent_id) // use item_id
+                .attr('label', value.name); // use item_desc
+
+            //create the text node for the option
+            var t = $(document.createTextNode(value.name));
+            newElem.append(t); //add it to the option
+            targetGroup.append(newElem); //add the option to the optgroup
+
+        });
+
+
+        var selectListReceita = $('#category-receitas');
+
+        var receitas = result.categories.filter((categoria) => {
+            return parseInt(categoria.category_id) == 12;
+    })
+
+        var grupos = receitas.filter((categoria) => {
+            return parseInt(categoria.group) == 1;
+    })
+
+        grupos.map(function (item) {
+            $(document.createElement('optgroup')).attr('value', item.id) // use cat_group
+                .attr('label', item.name) // use cat_group
+                .appendTo(selectListReceita);
+        })
+
+        $.each(receitas, function (key, value) {
+            var newElem;
+            var newOptGroup = value.parent_id; // use cat_group
+
+            //get the target optgroup
+            var targetGroup = $('#' + selectListReceita.attr('id') + ' optgroup[value="' + value.parent_id + '"]');
+            //console.log(targetGroup)
+
+            newElem = $(document.createElement('option')).attr('value', value.parent_id) // use item_id
+                .attr('label', value.name); // use item_desc
+
+            //create the text node for the option
+            var t = $(document.createTextNode(value.name));
+            newElem.append(t); //add it to the option
+            targetGroup.append(newElem); //add the option to the optgroup
+
+        });
+    }
+});
+
+
+

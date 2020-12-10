@@ -276,7 +276,8 @@ class ContasPagarReceberController extends Controller
 
     public function paramsDefault(){
         try {
-            $categories = Category::select('name', 'id', 'parent_id')->get()->toArray();
+            $categories = Category::select('name', 'id', 'parent_id', 'category_id', 'group')->get()->toArray();
+
             $categoriesReceita = Category::select('name', 'id')->where('parent_id', '=', '12')->get()->toArray();
             $categoriesDespesa = Category::select('name', 'id')->where('parent_id', '=', '11')->get()->toArray();
             $contas = Contas::select('name', 'id')->get()->toArray();
@@ -284,7 +285,7 @@ class ContasPagarReceberController extends Controller
                 'categoryReceita' => $categoriesReceita,
                 'categoryDespesas' => $categoriesDespesa,
                 'contas' => $contas,
-                'categories' => $categories
+                'categories' => $categories,
             ]);
         }catch (Exception $e){
             return response()->json( [ 'success' => 'false',  'msg' => 'Error!'] );
@@ -298,7 +299,7 @@ class ContasPagarReceberController extends Controller
 
             $contaDetalhe = ContasPagarReceberDetalhe::findOrFail($request->get('id'));
             $contaDetalhe->status_id = $contaDetalhe->status_id == 1 ? 2 : 1;
-            $contaDetalhe->data_pago = $contaDetalhe->status_id == 1 ? $date : 'NULL';
+            $contaDetalhe->data_pago = $contaDetalhe->status_id == 1 ? $date : NULL;
             $contaDetalhe->update();
             return response()->json(['success' => 'true', 'msg' => 'ok']);
         }catch (Exception $e){

@@ -54,29 +54,25 @@ var table = $('#financeiro').DataTable({
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.qtd_parcelas > 1){
                     $(nTd).html(
-                        oData.descricao + "  -   " + oData.parcela_numero + "/"+ oData.qtd_parcelas
+                       oData.descricao + "  -   " + oData.parcela_numero + "/"+ oData.qtd_parcelas
                     );
                 }else{
                     $(nTd).html(
-                        oData.descricao
+                        '<span>' +  oData.descricao + '</span>'
                     );
                 }
             }
         },
-
-
         {data: 'conta', name: 'conta', targets: 0, visible: true},
-
-
         {data: 'valor_parcela', name: 'detalhe.valor_parcela',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.tipo_id == 1){
                     $(nTd).html(
-                     formatMoney(oData.valor_parcela)
+                        "<span class=\"text-info text-bold\">" + formatMoney(oData.valor_parcela) + "</span>"
                 );
                 }else{
                     $(nTd).html(
-                     "-" + formatMoney(oData.valor_parcela)
+                    "<span class=\"text-danger text-bold\"> " + "-" + formatMoney(oData.valor_parcela) + "</span>"
                 );
                 }
             }
