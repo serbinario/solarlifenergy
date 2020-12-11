@@ -40,6 +40,7 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a id="btn-despesa" href="#">Despesa</a></li>
                                         <li><a id="btn-receita" href="#">Receita</a></li>
+                                        <li><a id="btn-teste" href="#">Teste</a></li>
                                     </ul>
                                 </div>
                             </div><!--end .btn-group -->
@@ -93,6 +94,7 @@
 
     @include('financeiro.modalReceita')
     @include('financeiro.modalDespesa')
+    @include('financeiro.modalTeste')
 
 @endsection
 

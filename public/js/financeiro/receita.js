@@ -192,6 +192,13 @@ document.getElementById('btn-despesa').addEventListener('click', function (ev) {
     });
 })
 
+/* Teste para apagar */
+document.getElementById('btn-teste').addEventListener('click', function (ev) {
+    $('#teste').modal()
+
+
+})
+
 document.getElementById('btn-note-despesa').addEventListener('click', function (ev) {
     var x = document.getElementById("note-despesa");
     if (x.style.display === "none") {

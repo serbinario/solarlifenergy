@@ -645,9 +645,59 @@ div.btn-lancamento:hover ul {
 
 
 
+/*
+Teste
+ */
 
 
+zze-bar-popover{
+    position: absolute;
+}
 
+.zze-component_popover{
+    width: 210px;
+    top: 50px;
+    left: 19px;
+    z-index: 1070;
+    display: block;
+    position: absolute;
+    list-style: none;
+}
+
+.zze-popover-padding{
+    background: #fff;
+    -webkit-box-shadow: 0 2px 20px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 2px 20px rgba(0,0,0,.15);
+    box-shadow: 0 2px 20px rgba(0,0,0,.15);
+}
+
+
+.zze-popover-padding .arrow{
+    top: 0;
+    left: 50%;
+    margin: 3px 0 0 -10px;
+    text-shadow: 2px 0 20px rgba(0,0,0,.15);
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    font-size: 21px;
+    color: #fff;;
+}
+
+.zze-popover-padding .popover-content{
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.zze-popover-padding .popover-content ul {
+    list-style: none;
+
+}
+
+.zze-popover-padding .popover-content ul li{
+    cursor:pointer;
+}
 
 
 
