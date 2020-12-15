@@ -201,7 +201,7 @@ class ContasPagarReceberController extends Controller
 
         } catch (Exception $e) {
             return response()->json( [
-                'message' => $e->getMessage(), 'erro' => $data_vencimento] );
+                'message' => $e->getMessage(), 'erro' => $e->getMessage()] );
 
         }
     }

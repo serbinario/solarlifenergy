@@ -7,7 +7,7 @@
                 <header>Nova receita</header>
             </div>
             <form name="modalReceita" class="form">
-                    <div class="card-body floating-label">
+                    <div class="card-body">
 
                         <div class="form-group">
                             <input name="description" type="text" class="form-control input-sm" id="Username2">
@@ -43,14 +43,25 @@
                                     <label for="conta">Conta</label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <select id="category-receitas" name="category" class="form-control input-sm ">
-                                        <option value="">&nbsp;</option>
-                                    </select>
-                                    <label class="" for="category">Categoria</label>
+
+                                <div class="col-sm-6">
+                                    <div class="zze-bar-popover">
+                                        <div class="form-group receitas">
+                                            <input id="category-receitas" data-category-receitas-value="" name="category-receitas" autocomplete="false" type="search" class="form-control input-sm" id="Username2">
+                                            <label for="description">Categoria</label>
+                                            <div class="zze-component_popover bottom white">
+                                                <div class="zze-popover-padding">
+                                                    <div class="arrow"></div>
+                                                    <div class="popover-content">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
                         </div>
 
                         <div id="repeat" class="row lancamentos-repeat">

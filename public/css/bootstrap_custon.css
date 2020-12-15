@@ -656,13 +656,14 @@ zze-bar-popover{
 
 .zze-component_popover{
     width: 210px;
-    top: 50px;
-    left: 19px;
+    top: 47px;
+    left: 0;
     z-index: 1070;
-    display: block;
+    display: none;
     position: absolute;
     list-style: none;
 }
+
 
 .zze-popover-padding{
     background: #fff;
@@ -684,6 +685,7 @@ zze-bar-popover{
     color: #fff;;
 }
 
+
 .zze-popover-padding .popover-content{
     max-height: 200px;
     overflow-x: hidden;
@@ -698,6 +700,12 @@ zze-bar-popover{
 .zze-popover-padding .popover-content ul li{
     cursor:pointer;
 }
+
+.popover-content .sub-category{
+    padding-left: 10px;
+}
+
+
 
 
 

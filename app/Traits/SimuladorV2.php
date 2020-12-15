@@ -120,7 +120,7 @@ trait SimuladorV2
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
 
-        $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 106.47 : "";
+        $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 102.32 : "";
 
 
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
@@ -483,7 +483,6 @@ trait SimuladorV2
      * MÉD REDUÇÃO DO CONSUMO (%)
      */
     function getReducaoMediaConsumo($mediaMes, $mediaMesesPonta, $mediaGeracaoEnergiaFV){
-        //dd($mediaGeracaoEnergiaFV);
         $result = ($mediaGeracaoEnergiaFV * 100)/($mediaMes + ($mediaMesesPonta * 4.7) );
         return round($result, 2);
     }

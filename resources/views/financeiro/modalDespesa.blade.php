@@ -7,7 +7,7 @@
                 <header>Nova despesa</header>
             </div>
             <form name="modalDespesa" class="form">
-                <div class="card-body floating-label">
+                <div class="card-body">
 
                     <div class="form-group">
                         <input name="description" type="text" class="form-control input-sm" id="Username2">
@@ -44,11 +44,19 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="form-group">
-                                <select id="category-despesas"  name="category" class="form-control input-sm ">
-                                    <option value="">&nbsp;</option>
-                                </select>
-                                <label class="" for="category">Categoria</label>
+                            <div class="zze-bar-popover">
+                                <div class="form-group despesas">
+                                    <input id="category-despesas" data-category-value="" name="category" autocomplete="false" type="search" class="form-control input-sm" id="Username2">
+                                    <label for="description">Categoria</label>
+                                    <div class="zze-component_popover despesas bottom white">
+                                        <div class="zze-popover-padding">
+                                            <div class="arrow"></div>
+                                            <div class="popover-content">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

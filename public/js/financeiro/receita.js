@@ -59,7 +59,7 @@ $('.btn-save-receita').click(function (event) {
     var valor = $('form[name=modalReceita] input[name=valor]').val()
     var data_vencimento = $('input[name=data_vencimento]').val()
     var conta = $('form[name=modalReceita] select[name=conta] option:selected').val();
-    var category = $('form[name=modalReceita] select[name=category] option:selected').val();
+    var category = $('form[name=modalDespesa] [data-category-value]').attr("data-category-value");
     var lancamento_obs = $('form[name=modalReceita] textarea[name=lancamento_obs]').val()
     var qtd_parcelas = $('form[name=modalReceita] input[name=qtd_parcelas]').val()
 
@@ -112,6 +112,22 @@ function realDolar(valor) {
 }
 
 
+$("input[name='category-receitas']").click(function (event) {
+    document.querySelector('.zze-component_popover').style.display = 'block'
+
+})
+
+function handleCategoryReceita(event) {
+    console.log(event);
+    $("input[name='category-receitas']").val(event.target.innerText)
+    $("input[name='category-receitas']").focus()
+    var dataCategoryValue = document.querySelector("[data-category-value")
+    dataCategoryValue.setAttribute('data-category-value', event.target.dataset.value)
+    dataCategoryValue.setAttribute('value', event.target.dataset.value)
+    document.querySelector('.receitas .zze-component_popover').style.display = 'none'
+}
+
+
 /*
 Despesas
  */
@@ -125,7 +141,7 @@ $('.btn-save-despesa').click(function (event) {
     var valor = $('form[name=modalDespesa] input[name=valor]').val()
     var data_vencimento = $('form[name=modalDespesa] input[name=data_vencimento]').val()
     var conta = $('form[name=modalDespesa] select[name=conta] option:selected').val();
-    var category = $('form[name=modalDespesa] select[name=category] option:selected').val();
+    var category = $('form[name=modalDespesa] [data-category-value]').attr("data-category-value");
     var lancamento_obs = $('form[name=modalDespesa] textarea[name=lancamento_obs]').val()
     var qtd_parcelas = $('form[name=modalDespesa] input[name=qtd_parcelas]').val()
 
@@ -227,76 +243,103 @@ $.ajax({
     dataType: "json",
     success: function( result ) {
 
-        var selectList = $('#category-despesas');
-
         var despesas = result.categories.filter((categoria) => {
-            return parseInt(categoria.category_id) == 11;
+            return categoria.category_id == 11 && categoria.group != 1;
         })
 
-        var grupos = despesas.filter((categoria) => {
-            return parseInt(categoria.group) == 1;
+        var grupos = result.categories.filter((categoria) => {
+            return categoria.category_id == 11 && categoria.group == 1;
         })
 
         grupos.map(function (item) {
-            $(document.createElement('optgroup')).attr('value', item.id) // use cat_group
-                .attr('label', item.name) // use cat_group
-                .appendTo(selectList);
+            //console.log(item)
+            var element = document.createElement('li')
+                element.setAttribute('data-group', item.id)
+                element.setAttribute("onclick", "handleCategory(event)");
+
+            document.querySelector('.despesas .popover-content').appendChild(element);
+            element.innerHTML = item.name
         })
 
         $.each(despesas, function (key, value) {
-            var newElem;
             var newOptGroup = value.parent_id; // use cat_group
 
-            //get the target optgroup
-            var targetGroup = $('#' + selectList.attr('id') + ' optgroup[value="' + value.parent_id + '"]');
-            //console.log(targetGroup)
-
-            newElem = $(document.createElement('option')).attr('value', value.parent_id) // use item_id
-                .attr('label', value.name); // use item_desc
-
-            //create the text node for the option
-            var t = $(document.createTextNode(value.name));
-            newElem.append(t); //add it to the option
-            targetGroup.append(newElem); //add the option to the optgroup
-
+            var element = document.createElement('li')
+            element.setAttribute('class', "sub-category") // use cat_group
+            element.setAttribute('data-value', value.id) // use cat_group
+            element.setAttribute("onclick", "handleCategory(event)");
+            element.innerHTML = value.name
+            console.log('.despesas '+ ' [data-group=' + '"' + newOptGroup  + '"' + ' ]')
+            var grupo = document.querySelector('.despesas '+ ' [data-group=' + '"' + newOptGroup  + '"' + ' ]')
+            grupo.after(element)
         });
 
 
-        var selectListReceita = $('#category-receitas');
 
         var receitas = result.categories.filter((categoria) => {
-            return parseInt(categoria.category_id) == 12;
-    })
-
-        var grupos = receitas.filter((categoria) => {
-            return parseInt(categoria.group) == 1;
-    })
-
-        grupos.map(function (item) {
-            $(document.createElement('optgroup')).attr('value', item.id) // use cat_group
-                .attr('label', item.name) // use cat_group
-                .appendTo(selectListReceita);
+            return categoria.category_id == 12 && categoria.group != 1;
         })
 
+        var grupos = result.categories.filter((categoria) => {
+            return categoria.category_id == 12 && categoria.group == 1;
+        })
+
+        grupos.map(function (item) {
+            //console.log(item)
+            var element = document.createElement('li')
+            element.setAttribute('data-group', item.id)
+            element.setAttribute("onclick", "handleCategory(event)");
+
+
+            document.querySelector('.receitas .popover-content').appendChild(element);
+            element.innerHTML = item.name
+        })
+
+        console.log(receitas)
         $.each(receitas, function (key, value) {
-            var newElem;
             var newOptGroup = value.parent_id; // use cat_group
 
-            //get the target optgroup
-            var targetGroup = $('#' + selectListReceita.attr('id') + ' optgroup[value="' + value.parent_id + '"]');
-            //console.log(targetGroup)
 
-            newElem = $(document.createElement('option')).attr('value', value.parent_id) // use item_id
-                .attr('label', value.name); // use item_desc
+            var element = document.createElement('li')
+            element.setAttribute('class', "sub-category") // use cat_group
+            element.setAttribute('data-value', value.id) // use cat_group
+            element.setAttribute("onclick", "handleCategoryReceita(event)");
+            element.innerHTML = value.name
 
-            //create the text node for the option
-            var t = $(document.createTextNode(value.name));
-            newElem.append(t); //add it to the option
-            targetGroup.append(newElem); //add the option to the optgroup
+            //console.log(newOptGroup)
+            var grupo = document.querySelector('.receitas '+ ' [data-group=' + '"' + newOptGroup  + '"' + ' ]')
+            grupo.after(element)
 
         });
     }
 });
+
+
+/*
+*
+*/
+
+$("input[name='category']").click(function (event) {
+    console.log("wwwwwwwwww")
+    document.querySelector('.despesas .zze-component_popover').style.display = 'block'
+
+})
+
+document.querySelector('#teste').addEventListener('focusout', function () {
+
+   // document.querySelector('.zze-component_popover').style.display = 'none'
+})
+
+function handleCategory(event) {
+    console.log(event);
+    $("input[name='category']").val(event.target.innerText)
+    $("input[name='category']").focus()
+    var dataCategoryValue = document.querySelector("[data-category-value")
+    dataCategoryValue.setAttribute('data-category-value', event.target.dataset.value)
+    dataCategoryValue.setAttribute('value', event.target.dataset.value)
+    document.querySelector('.despesas .zze-component_popover').style.display = 'none'
+
+}
 
 
 
