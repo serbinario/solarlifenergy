@@ -62,24 +62,29 @@ class ContasPagarReceberController extends Controller
             ->leftJoin('fin_contas', 'pg.conta_id', '=', 'fin_contas.id')
             ->leftJoin('fin_category AS category', 'category.id', '=', 'pg.category_id')
             ->leftJoin('fin_fornecedor AS fornecedor', 'fornecedor.id', '=', 'pg.fonecedor_id')
+            ->leftJoin('projetosv2 AS projetos', 'projetos.id', '=', 'pg.projeto_id')
             ->leftjoin('users', 'users.id', '=', 'pg.user_id')
+            ->orderBy('detalhe.data_vence', 'desc')
             ->select([
                 'pg.id',
-                'category.name',
+                'category.name as category',
                 'pg.descricao',
                 'pg.valor_total',
+                'pg.projeto_id',
                 'detalhe.parcela_numero',
                 'pg.qtd_parcelas',
                 'pg.data_emissao',
                 'data_primeiro_vencimento',
-                \DB::raw('DATE_FORMAT(detalhe.data_vence,"%d/%m/%Y") as data_vence'),
-                \DB::raw('DATE_FORMAT(detalhe.data_pago,"%d/%m/%Y") as data_pago'),
+                'detalhe.data_vence as data_vence',
+                'detalhe.data_pago as data_pago',
+                //\DB::raw('DATE_FORMAT(detalhe.data_vence,"%d/%m/%Y") as data_vence'),
+                //\DB::raw('DATE_FORMAT(detalhe.data_pago,"%d/%m/%Y") as data_pago'),
                 'detalhe.valor_parcela',
                 'detalhe.desconto',
                 'detalhe.juros',
                 'detalhe.id as detalhe_id',
                 'fin_contas.name as conta',
-                'fin_status.name',
+                'fin_status.name as fin_status',
                 'fin_status.id as status',
                 'fornecedor.name',
                 'tipo.id as tipo_id'

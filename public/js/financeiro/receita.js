@@ -5,21 +5,16 @@ $(document).ready(function(){
 
 document.getElementById('btn-receita').addEventListener('click', function (ev) {
     $('#formModalReceita').modal()
+    var data_vencimento = new Date();
+    var dataFormatada = ((data_vencimento.getDate() + "/" + (data_vencimento.getMonth()+1) + "/" + data_vencimento.getFullYear()));
+    document.querySelector('#formModalReceita [name=\"data_vencimento\"]').value = dataFormatada
+
+
 
     $.ajax({
         url: "/index.php/financeiro/paramsdefault",
         dataType: "json",
         success: function( result ) {
-           // var receita = result.categories.filter((categoria) => {
-               // return parseInt(categoria.parent_id) === 12;
-           // })
-
-           // document.getElementById('category-receitas').innerHTML = ''
-           // $('#category-receitas').append('<option></option>')
-           // receita.forEach(function (param) {
-              //  $('#category-receitas').append('<option value=' + param.id + ">"+ param.name + '</option>')
-            //})
-
             document.querySelectorAll('.contas')[0].innerHTML = ''
             document.querySelectorAll('.contas')[1].innerHTML = ''
             $('.contas').append('<option></option>')
@@ -94,6 +89,7 @@ $('.btn-save-receita').click(function (event) {
             swal('', "Cadastro realizado com sucesso", "success");
             btn.button('reset');
             table.ajax.reload( addEventClick);
+            $('#formModalReceita').modal('toggle');
         } else {
             swal("Error", "Click no botão abaixo!", "error");
         }
@@ -118,7 +114,6 @@ $("input[name='category-receitas']").click(function (event) {
 })
 
 function handleCategoryReceita(event) {
-    console.log(event);
     $("input[name='category-receitas']").val(event.target.innerText)
     $("input[name='category-receitas']").focus()
     var dataCategoryValue = document.querySelector("[data-category-value")
@@ -176,6 +171,7 @@ $('.btn-save-despesa').click(function (event) {
             swal('', "Cadastro realizado com sucesso", "success");
             btn.button('reset');
             table.ajax.reload( addEventClick);
+            $('#formModalDespesa').modal('toggle');
         } else {
             swal("Error", "Click no botão abaixo!", "error");
         }
@@ -185,19 +181,14 @@ $('.btn-save-despesa').click(function (event) {
 document.getElementById('btn-despesa').addEventListener('click', function (ev) {
     $('#formModalDespesa').modal()
 
+    var data_vencimento = new Date();
+    var dataFormatada = ((data_vencimento.getDate() + "/" + (data_vencimento.getMonth()+1) + "/" + data_vencimento.getFullYear()));
+    document.querySelector('#formModalDespesa [name=\"data_vencimento\"]').value = dataFormatada
+
     $.ajax({
         url: "/index.php/financeiro/paramsdefault",
         dataType: "json",
         success: function( result ) {
-            //var despesa = result.categories.filter((categoria) => {
-               // return parseInt(categoria.parent_id) === 11;
-            //})
-            //document.getElementById('category-despesas').innerHTML = ''
-            //$('#category-despesas').append('<option></option>')
-            //despesa.forEach(function (param) {
-               // $('#category-despesas').append('<option value=' + param.id + ">"+ param.name + '</option>')
-            //)
-
             document.querySelectorAll('.contas')[0].innerHTML = ''
             document.querySelectorAll('.contas')[1].innerHTML = ''
             $('.contas').append('<option></option>')
@@ -208,12 +199,6 @@ document.getElementById('btn-despesa').addEventListener('click', function (ev) {
     });
 })
 
-/* Teste para apagar */
-document.getElementById('btn-teste').addEventListener('click', function (ev) {
-    $('#teste').modal()
-
-
-})
 
 document.getElementById('btn-note-despesa').addEventListener('click', function (ev) {
     var x = document.getElementById("note-despesa");
@@ -289,24 +274,17 @@ $.ajax({
             var element = document.createElement('li')
             element.setAttribute('data-group', item.id)
             element.setAttribute("onclick", "handleCategory(event)");
-
-
             document.querySelector('.receitas .popover-content').appendChild(element);
             element.innerHTML = item.name
         })
 
-        console.log(receitas)
         $.each(receitas, function (key, value) {
             var newOptGroup = value.parent_id; // use cat_group
-
-
             var element = document.createElement('li')
             element.setAttribute('class', "sub-category") // use cat_group
             element.setAttribute('data-value', value.id) // use cat_group
             element.setAttribute("onclick", "handleCategoryReceita(event)");
             element.innerHTML = value.name
-
-            //console.log(newOptGroup)
             var grupo = document.querySelector('.receitas '+ ' [data-group=' + '"' + newOptGroup  + '"' + ' ]')
             grupo.after(element)
 
@@ -314,24 +292,12 @@ $.ajax({
     }
 });
 
-
-/*
-*
-*/
-
 $("input[name='category']").click(function (event) {
-    console.log("wwwwwwwwww")
     document.querySelector('.despesas .zze-component_popover').style.display = 'block'
 
 })
 
-document.querySelector('#teste').addEventListener('focusout', function () {
-
-   // document.querySelector('.zze-component_popover').style.display = 'none'
-})
-
 function handleCategory(event) {
-    console.log(event);
     $("input[name='category']").val(event.target.innerText)
     $("input[name='category']").focus()
     var dataCategoryValue = document.querySelector("[data-category-value")

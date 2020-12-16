@@ -40,12 +40,14 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a id="btn-despesa" href="#">Despesa</a></li>
                                         <li><a id="btn-receita" href="#">Receita</a></li>
-                                        <li><a id="btn-teste" href="#">Teste</a></li>
                                     </ul>
                                 </div>
                             </div><!--end .btn-group -->
                             <div id="data-table">
-                                <span>Data</span>
+                                <div class="arrow"></div>
+                                <span>Novembro 2020</span>
+                                <div class="arrow"></div>
+
                             </div>
                             <div id="data-dtable">
                                 <span>Data</span>
@@ -61,6 +63,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Descrição</th>
+                                                    <th>Projeto</th>
                                                     <th>Conta</th>
                                                     <th>Valor</th>
                                                     <th>Vencimento</th>

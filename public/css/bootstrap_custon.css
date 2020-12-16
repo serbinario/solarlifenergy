@@ -645,10 +645,26 @@ div.btn-lancamento:hover ul {
 
 
 
-/*
-Teste
- */
-
+div.arrow {
+    width: 5vmin;
+    height: 5vmin;
+    box-sizing: border-box;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    transform: rotate(45deg);
+}
+div.arrow::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-width: 0.8vmin 0.8vmin 0 0;
+    border-style: solid;
+    border-color: #4f2121;
+    transition: 0.2s ease;
+    display: block;
+    transform-origin: 100% 0;
+}
 
 zze-bar-popover{
     position: absolute;
@@ -697,12 +713,32 @@ zze-bar-popover{
 
 }
 
-.zze-popover-padding .popover-content ul li{
+.zze-popover-padding .popover-content li{
     cursor:pointer;
 }
 
 .popover-content .sub-category{
     padding-left: 10px;
+}
+
+.zze-date-month {
+    display: block;
+    width: 32px;
+    text-align: left;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: -11px;
+}
+
+.zze-date-number {
+    display: block;
+    width: 32px;
+    text-align: left;
+    font-size: 18px;
+    color: #aaa;
+    cursor: text;
+    margin-bottom: -14px;
+    margin-top: -11px;
 }
 
 

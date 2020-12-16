@@ -10,6 +10,10 @@ function format ( d ) {
         '<td>Obs:</td>'+
         '<td>'+d.obs+'</td>'+
         '</tr>'+
+        '<tr>'+
+        '<td>Juŕidico:</td>'+
+        '<td>'+d.obs_juridica+'</td>'+
+        '</tr>'+
         '</table>';
 }
 
@@ -92,9 +96,14 @@ var table = $('#projetov2').DataTable({
         {data: 'atualizado', name: 'atualizado', visible: false},
         {data: 'pendencia', name: 'pendencia', visible: true,
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                if(oData.pendencia != null){
-                    $(nTd).html("    <span class=\"badge badge-danger\">"+ "Pendente</span>")
-                }
+                var juridico = ""
+                var pendencia = ""
+                oData.pendencia != null ? pendencia = "<span class=\"badge badge-danger\">"+ "Pendente</span>": pendencia = ""
+
+                    oData.pendencia_juridica != null ?  juridico = "<span class=\"badge badge-warning\">"+ "Jurídico</span>": juridico = ""
+
+
+                $(nTd).html(pendencia + " "+ juridico)
             }
 
         },

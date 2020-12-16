@@ -345,15 +345,17 @@
 <script src="{{ asset('/assets/js/libs/toastr/toastr.js')}}" type="text/javascript"></script>
 
 <!-- Datatables -->
-{{--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>--}}
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="text/javascript"></script>
 {{--<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js" type="text/javascript"></script>--}}
 {{--<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js" type="text/javascript"></script>--}}
 {{--<script src="{{ asset('/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.js')}}" type="text/javascript"></script>--}}
 
 <!-- Teste -->
-<script src="{{ asset('/assets/js/libs/DataTables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
+{{--<script src="{{ asset('/assets/js/libs/DataTables/jquery.dataTables.min.js')}}" type="text/javascript"></script>--}}
 <script src="{{ asset('/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js')}}" type="text/javascript"></script>
+
+<script src='https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js'></script>
 <!-- FIM Datatables -->
 
 <script src="{{ asset('/assets/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}" type="text/javascript"></script>

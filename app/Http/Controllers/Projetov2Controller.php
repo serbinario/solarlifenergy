@@ -74,6 +74,8 @@ class Projetov2Controller extends Controller
                 'projetosv2.id',
                 'projetosv2.pendencia',
                 'projetosv2.obs',
+                'projetosv2.obs_juridica',
+                'projetosv2.pendencia_juridica',
                 'projetosv2.projeto_status_id as status_projeto',
                 \DB::raw('DATE_FORMAT(projetosv2.updated_at,"%d/%m/%Y") as atualizado'),
                 'users.name as integrador',

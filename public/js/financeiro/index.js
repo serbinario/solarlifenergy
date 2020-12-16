@@ -4,6 +4,8 @@ var valor_debito;
 var numero_cobranca;
 var id_debito; //id do debito
 
+var meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
+
 function template(d){
     console.log(d);
     //Retirar os "&quot" da array aditivos
@@ -28,19 +30,21 @@ function template(d){
 }
 
 var table = $('#financeiro').DataTable({
-    "dom": 'lCfrtip',
-    "order": [],
-    "colVis": {
-        "buttonText": "Colunas",
-        "overlayFade": 0,
-        "align": "right"
-    },
     "searching": false,
     "bLengthChange": false,
     processing: true,
     serverSide: true,
-    bFilter: true,
-    order: [[ 1, "asc" ]],
+    bFilter: false,
+    rowGroup: {
+        startRender: null,
+        endRender: function ( rows, group ) {
+            console.log(rows)
+            var data = new Date(group);
+            return '<span class=\"zze-date-number\">' + (data.getDate()+1) + '</span>' +
+                '<span class=\"zze-date-month\">' + meses[(data.getMonth())] + '</span>'
+        },
+        dataSrc: 'data_vence'
+    },
     ajax: {
         url: "/index.php/financeiro/grid",
         data: function (d) {
@@ -63,6 +67,7 @@ var table = $('#financeiro').DataTable({
                 }
             }
         },
+        {data: 'projeto_id', name: 'pg.projeto_id', targets: 0, visible: true},
         {data: 'conta', name: 'conta', targets: 0, visible: true},
         {data: 'valor_parcela', name: 'detalhe.valor_parcela',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -77,8 +82,22 @@ var table = $('#financeiro').DataTable({
                 }
             }
         },
-        {data: 'data_vence', name: 'data_vence', targets: 0, visible: true},
-        {data: 'data_pago', name: 'data_pago', targets: 0, visible: true},
+        {data: 'data_vence', name: 'data_vence', targets: 0, visible: false, "render": function (data) {
+                var data = new Date(data);
+                var dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
+                return dataFormatada
+            }
+         },
+        {data: 'data_pago', name: 'data_pago', targets: 0, visible: true, "render": function (data) {
+
+                if(data === null){
+                    return null
+                }
+                var data = new Date(data);
+                var dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
+                return dataFormatada
+            }
+        },
         {data: 'action', name: 'action', orderable: false, searchable: false}
 
     ],

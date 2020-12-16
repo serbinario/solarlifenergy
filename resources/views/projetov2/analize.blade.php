@@ -483,7 +483,27 @@
 <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
     <label for="obs" class="col-md-1 control-label  text-bold">Obs.:</label>
     <div class="col-md-11">
-        <textarea class="form-control input-sm" name="obs" cols="50" rows="10" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($projetov2->obs) ? $projetov2->obs : null) }}</textarea>
+        <textarea class="form-control input-sm" name="obs" cols="10" rows="5" id="obs" placeholder="Enter obs here...">{{ old('obs', isset($projetov2->obs) ? $projetov2->obs : null) }}</textarea>
+        {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('pendencia_juridica') ? 'has-error' : '' }}">
+    <label for="obs" class="col-md-1 control-label  text-bold">Jurídico?.:</label>
+
+    <div class="checkbox checkbox-styled">
+        <div class="col-md-4">
+            <label for="pendencia_juridica">
+                <input id="pendencia_juridica" class="" name="pendencia_juridica" type="checkbox" value="1" {{ old('pendencia_juridica', isset($projetov2->pendencia_juridica) ? $projetov2->pendencia_juridica : null) == '1' ? 'checked' : '' }}>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('obs_juridica') ? 'has-error' : '' }}">
+    <label for="obs" class="col-md-1 control-label  text-bold">Obs.:</label>
+    <div class="col-md-11">
+        <textarea class="form-control input-sm" name="obs_juridica" cols="10" rows="5" id="obs_juridica" placeholder="Enter obs here...">{{ old('obs_juridica', isset($projetov2->obs_juridica) ? $projetov2->obs_juridica : null) }}</textarea>
         {!! $errors->first('obs', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
