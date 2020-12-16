@@ -19,8 +19,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="" accept-charset="UTF-8">
-                    <input name="_method" value="DELETE" type="hidden">
+
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
@@ -43,10 +42,14 @@
                                     </ul>
                                 </div>
                             </div><!--end .btn-group -->
-                            <div id="data-table">
-                                <div class="arrow"></div>
-                                <span>Novembro 2020</span>
-                                <div class="arrow"></div>
+                            <div class="zze-title-header">
+                                    <button href="" class="zze-period-prev">
+                                        <span class="icon-arrow back"></span>
+                                    </button>
+                                    <span class="zze-period-text">Novembro 2020</span>
+                                    <button href="" class="zze-period-prev">
+                                        <span class="icon-arrow next"></span>
+                                    </button>
 
                             </div>
                             <div id="data-dtable">
@@ -90,7 +93,7 @@
 
                     </div><!--end .card -->
 
-                </form>
+
             </div><!--end .col -->
         </div><!--end .row -->
         <!-- END HORIZONTAL FORM -->

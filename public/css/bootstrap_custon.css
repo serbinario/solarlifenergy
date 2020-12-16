@@ -643,32 +643,72 @@ div.btn-lancamento:hover ul {
     justify-content: center;
 }
 
+.zze-title-header{
+    position: relative;
+    display: flex;
+}
 
+.zze-title-header .zze-period-prev{
+    position: relative;
+    top: 0%;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    background: 0 0;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: none;
+}
+.zze-title-header .zze-period-prev:hover{
+    background-color: #eaeaea;
+}
 
-div.arrow {
-    width: 5vmin;
-    height: 5vmin;
+.zze-title-header .zze-period-prev ~ span {
+    margin: auto;
+}
+
+.zze-title-header .zze-period-prev span.icon-arrow {
+    cursor:pointer;
+    display: inline-block;
+    width: 9px;
+    height: 9px;
     box-sizing: border-box;
     position: relative;
-    left: 0px;
-    top: 0px;
+    left: 2px;
+    top: 0px;;
+}
+.zze-title-header .zze-period-prev span.icon-arrow.back {
+
+    transform: rotate(225deg);
+}
+.zze-title-header .zze-period-prev span.icon-arrow.next {
+
     transform: rotate(45deg);
 }
-div.arrow::before {
+
+.zze-title-header .zze-period-prev span.icon-arrow::before {
+    display: block;
     content: "";
     width: 100%;
     height: 100%;
-    border-width: 0.8vmin 0.8vmin 0 0;
+    border-width: 2.8px 2.8px 0 0;
     border-style: solid;
     border-color: #4f2121;
-    transition: 0.2s ease;
-    display: block;
     transform-origin: 100% 0;
 }
 
-zze-bar-popover{
-    position: absolute;
+.zze-period-text{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 17px;
+    color: #999;
 }
+
+
+
 
 .zze-component_popover{
     width: 210px;
@@ -679,7 +719,6 @@ zze-bar-popover{
     position: absolute;
     list-style: none;
 }
-
 
 .zze-popover-padding{
     background: #fff;
