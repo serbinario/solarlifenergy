@@ -699,6 +699,22 @@ div.btn-lancamento:hover ul {
     transform-origin: 100% 0;
 }
 
+.zze-component_popover .zze-popover-options li a {
+    position: relative;
+    display: block;
+    padding: 0px 18px;
+    text-transform: none;
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 0;
+    -webkit-transition: all .15s ease-out 0s;
+    -moz-transition: all .15s ease-out 0s;
+    -o-transition: all .15s ease-out 0s;
+    transition: all .15s ease-out 0s;
+    text-align: center;
+    text-decoration: none;
+}
+
 .zze-period-text{
     display: inline-block;
     position: relative;
