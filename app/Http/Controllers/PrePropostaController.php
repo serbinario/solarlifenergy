@@ -405,7 +405,7 @@ class PrePropostaController extends Controller
             $data['roi'] = $roi;
 
 
-            $data['qtd_paineis'] < 30 ? $data['pre_proposta_obs'] = $data['pre_proposta_obs'];
+            
             //dd($data['qtd_paineis']);
            // if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
            //     return back()->withInput()
