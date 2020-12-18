@@ -358,6 +358,9 @@
 <script src='https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js'></script>
 <!-- FIM Datatables -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" type="text/javascript"></script>
+
+
 <script src="{{ asset('/assets/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}" type="text/javascript"></script>
 
 <script src="{{ asset('/assets/js/libs/bootstrap-multiselect/bootstrap-multiselect.js')}}" type="text/javascript"></script>

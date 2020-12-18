@@ -731,7 +731,7 @@ div.btn-lancamento:hover ul {
     top: 47px;
     left: 0;
     z-index: 1070;
-    display: none;
+    display: block;
     position: absolute;
     list-style: none;
 }

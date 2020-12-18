@@ -42,27 +42,24 @@
                                 </div>
                             </div><!--end .btn-group -->
                             <div class="zze-title-header">
-                                    <button href="" class="zze-period-prev">
+                                    <button  onclick="setNavPeriods('prev')" href="#" class="zze-period-prev">
                                         <span class="icon-arrow back"></span>
                                     </button>
-                                    <span class="zze-period-text">Novembro 2020
-
-                                        <div class="zze-component_popover bottom white" >
-                                           <div class="zze-popover-padding">
-                                              <div class="arrow"></div>
-                                              <div class="popover-content" style="max-height:450px;overflow-x:hidden;overflow-y:hidden;">
-                                                 <ul ng-show="!periods.showCustomDate" class="zze-popover-options zze-options-center zze-ng-animate-show-fade-in ng-scope">
-                                                    <li ng-if="periods.getSetting('showSetToday')" class="ng-scope"><a ng-click="periods.setToday()" data-dismiss="popover" href="" class="ng-binding">Hoje</a></li>
-                                                    <li ng-if="periods.getSetting('showSetWeek')" class="ng-scope"><a ng-click="periods.setWeek()" data-dismiss="popover" href="" class="ng-binding">Esta semana</a></li>
-                                                    <li ng-if="periods.getSetting('showSetMonth')" class="ng-scope"><a ng-click="periods.setMonth()" data-dismiss="popover" href="" class="ng-binding">Este mês</a></li>
-                                                    <li ng-if="periods.getSetting('showSetCustom')" class="ng-scope"><a ng-click="periods.toggleCustomDates(true)" href="" class="ng-binding">Escolher período</a></li>
-                                                 </ul>
-                                              </div>
-                                           </div>
+                                    <span class="zze-period-text">Novembro 2020</span>
+                                    <div class="zze-component_popover bottom white" >
+                                        <div class="zze-popover-padding">
+                                            <div class="arrow"></div>
+                                            <div class="popover-content" style="max-height:450px;overflow-x:hidden;overflow-y:hidden;">
+                                                <ul ng-show="!periods.showCustomDate" class="zze-popover-options zze-options-center zze-ng-animate-show-fade-in ng-scope">
+                                                    <li ><a onclick="setIntervaloData('now')"  href="#" class="ng-binding">Hoje</a></li>
+                                                    <li ><a  onclick="setIntervaloData('week')"  href="#" class="ng-binding">Esta semana</a></li>
+                                                    <li ><a  onclick="setIntervaloData('month')" href="#" class="ng-binding">Este mês</a></li>
+                                                    <li ><a  onclick="setIntervaloData('teste')" href="#" class="ng-binding">Escolher período</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-
-                                    </span>
-                                    <button href="" class="zze-period-prev">
+                                    </div>
+                                    <button href=""  onclick="setNavPeriods('next')" class="zze-period-prev">
                                         <span class="icon-arrow next"></span>
                                     </button>
 

@@ -6,8 +6,121 @@ var id_debito; //id do debito
 
 var meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
 
+var dateNow = new Date()
+var dataPrev = new Date();
+var dataNext;
+var dataFilter1;
+var dataFilter = new Date();
+var dataTitle;
+var periodo;
+
+$(document).ready(function(){
+    $('.lancamentos-note').hide()
+    $('.lancamentos-repeat').hide()
+});
+
+function setNavPeriods(event) {
+    console.log("< " + event + " periodo "+  periodo)
+    if(periodo == 'now' && event == 'prev'){
+        var date = removeDays(dataFilter, 1)
+        this.dataFilter =  date
+        updateTitle(getTitleDay(this.dataFilter))
+    }
+
+    if(periodo == 'now' && event == 'next'){
+        var date = addDays(dataFilter, 1)
+        this.dataFilter =  date
+        updateTitle(getTitleDay(this.dataFilter))
+    }
+
+
+
+
+    if(periodo == 'month' && event == 'prev'){
+        var date = removeMonth(this.dataFilter, 1)
+        this.dataFilter =  date
+        updateTitle(getTitleMonth(this.dataFilter))
+    }
+    if(periodo == 'week' && event == 'prev'){
+        var date = removeWeek(this.dataFilter)
+        this.dataFilter =  removeDays(this.dataFilter, 7)
+        updateTitle(getTitleWeek(this.dataFilter))
+    }
+    console.log(this.dataFilter)
+    //table.ajax.reload( addEventClick);
+}
+
+function setIntervaloData(periodo) {
+    console.log(periodo)
+    if(periodo == 'now'){
+        dataTitle = getTitleDay(this.dataFilter)
+        this.periodo = 'now'
+    }
+    if(periodo == 'week'){
+        dataTitle = getTitleWeek(this.dataFilter)
+        this.periodo = 'week'
+    }
+    if(periodo == 'month'){
+        dataTitle = getTitleMonth(this.dataFilter)
+        this.periodo = 'month'
+    }
+
+    updateTitle(dataTitle)
+    //table.ajax.reload( addEventClick);
+}
+function getTitleDay(date) {
+    return ((date.getDate() + " " + meses[(date.getMonth())] + " " + date.getFullYear()))
+}
+
+function getTitleMonth(date) {
+    return (( meses[(date.getMonth())] + " " + date.getFullYear()))
+}
+
+function getTitleWeek(date) {
+    var startOfWeek = moment(date).startOf('week').toDate();
+    var endOfWeek   = moment(date).endOf('week').toDate();
+    return startOfWeek.getDate() + " "+ meses[startOfWeek.getMonth()] + " à "+ endOfWeek.getDate() + " "+ meses[endOfWeek.getMonth()]
+}
+
+function removeDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() - days);
+    return result;
+}
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function removeWeek(date) {
+    var startOfWeek = moment(date).subtract(7,'d').startOf('week').toDate();
+    var endOfWeek   = moment(date).subtract(7,'d').endOf('week').toDate();
+    return data = {
+        'startOfWeek': startOfWeek,
+        'endOfWeek': endOfWeek
+    } ;
+}
+
+function addMonth(date, month) {
+    date.setMonth(date.getMonth() - 1);
+    return date;
+}
+function removeMonth(date, month) {
+    date.setMonth(date.getMonth() - 1);
+    return date;
+}
+
+
+
+function updateTitle(title) {
+    document.querySelector('.zze-period-text').innerHTML = title
+}
+
+
 function template(d){
-    console.log(d);
+    //console.log(d);
     //Retirar os "&quot" da array aditivos
     //var aditivos = JSON.parse(d.aditivos.replace(/&quot;/g,'"'))
 
@@ -29,6 +142,7 @@ function template(d){
     return  html;
 }
 
+
 var table = $('#financeiro').DataTable({
     "searching": false,
     "bLengthChange": false,
@@ -38,7 +152,7 @@ var table = $('#financeiro').DataTable({
     rowGroup: {
         startRender: null,
         endRender: function ( rows, group ) {
-            console.log(rows)
+            //console.log(rows)
             var data = new Date(group);
             return '<span class=\"zze-date-number\">' + (data.getDate()+1) + '</span>' +
                 '<span class=\"zze-date-month\">' + meses[(data.getMonth())] + '</span>'
@@ -48,6 +162,7 @@ var table = $('#financeiro').DataTable({
     ajax: {
         url: "/index.php/financeiro/grid",
         data: function (d) {
+            d.dataFilter =  new Date(dataFilter)
         }
     },
     columns: [
@@ -111,7 +226,6 @@ var table = $('#financeiro').DataTable({
 function addEventClick() {
     document.querySelectorAll('.delete').forEach(item => {
         item.addEventListener('click', event => {
-            console.log(event.target.parentNode.parentNode.id)
             deletar(event.target.parentNode.parentNode.id)
         })
     })
@@ -126,7 +240,7 @@ function addEventClick() {
 
 function updatePago(id) {
 
-    console.log(id)
+    //console.log(id)
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
@@ -218,6 +332,9 @@ formatMoney = (n, c, d, t) => {
     c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 }
+
+
+
 
 
 
