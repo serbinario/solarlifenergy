@@ -25,7 +25,6 @@
                             <header>Lançamentos</header>
                             <div class="tools">
                                 <div class="btn-group">
-
                                 </div>
                             </div>
                         </div>
@@ -65,7 +64,7 @@
 
                             </div>
                             <div id="data-dtable">
-                                <span>Data</span>
+                                <span></span>
                             </div>
                         </div>
 

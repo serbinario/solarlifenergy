@@ -106,6 +106,24 @@ class ContasPagarReceberController extends Controller
                 if($user->hasRole('franquia')) {
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
+
+                if ($request->has('dataFilter') && $request->get('periodo') == 'month' ) {
+                    $dataPrev = $request->get('dataPrev');
+                    $month = date("m",strtotime($dataPrev));
+                   $query->whereMonth('detalhe.data_vence',  $month) ;
+                }
+
+                if ($request->has('dataFilter') && $request->get('periodo') == 'week' ) {
+                    $dataPrev = $request->get('dataPrev');
+                    $dataNext = $request->get('dataNext');
+                    $query->whereBetween('detalhe.data_vence', [$dataPrev, $dataNext]);
+                }
+                if ($request->has('dataFilter') && $request->get('periodo') == 'now' ) {
+                    $dataFilter = $request->get('dataFilter');
+
+                    $query->where('detalhe.data_vence', '=', $dataFilter);
+                }
+
             })
 
             ->addColumn('action', function ($row) {

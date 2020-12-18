@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 	<title>SCE - SISTEMA DE CONSULTORIA ENERGÉTICA</title>
 
