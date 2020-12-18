@@ -201,7 +201,7 @@ var table = $('#financeiro').DataTable({
         endRender: function ( rows, group ) {
             //console.log(rows)
             var data = new Date(group);
-            return '<span class=\"zze-date-number\">' + (data.getDate()+1) + '</span>' +
+            return '<span class=\"zze-date-number\">' + ((moment(group + "T12:00:00Z").format('DD'))) + '</span>' +
                 '<span class=\"zze-date-month\">' + meses[(data.getMonth())] + '</span>'
         },
         dataSrc: 'data_vence'
