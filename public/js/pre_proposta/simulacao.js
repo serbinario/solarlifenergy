@@ -83,8 +83,8 @@ function atualizaValores(){
     //Valor Proposta
     document.getElementsByClassName('span_preco_medio_instalado')[0].innerHTML = 'R$ ' + preco_medio_instalado
 
-
-    percentualKitParticipacao = (parseFloat(realDolar(valor_franquia)) / parseFloat(valor_franqueadora) * 100).toFixed(0)
+    //console.log( ((parseFloat(realDolar(valor_franquia)) / parseFloat(valor_franqueadora)) * 100).toFixed(1) )
+    percentualKitParticipacao = (parseFloat(realDolar(valor_franquia)) / parseFloat(valor_franqueadora) * 100).toFixed(1)
     document.getElementsByClassName('span_valor_franqueadora')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(valor_franqueadora))
 
     var totalServicos = this.somaServicosEquipe()
@@ -93,11 +93,12 @@ function atualizaValores(){
 
     document.getElementsByClassName('equipe_tecnica')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
 
+
     document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos))) + " (" + percentualKitParticipacao + "%)"
 
     document.getElementsByClassName('royalties')[0].innerHTML = 'R$ ' + royalties + " "  + "Royalties"
 
-    console.log( percentualKitParticipacao )
+    //console.log("Percentual " + percentualKitParticipacao )
 }
 
 

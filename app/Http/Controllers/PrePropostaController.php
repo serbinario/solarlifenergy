@@ -443,7 +443,7 @@ class PrePropostaController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta->total_equipamentos);
+        //dd($preProposta);
         return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
