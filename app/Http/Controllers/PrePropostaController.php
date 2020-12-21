@@ -222,14 +222,15 @@ class PrePropostaController extends Controller
 
             $data = $this->getData($request);
             //Retorna o ultimo registro
-            $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->first();
+            $month = date("Y");
+            $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->whereYear('created_at',  $month)->first();
             if($last == NULL){
-
-                $data['codigo'] = date("y") . "00001";
+                $data['codigo'] = date("y") . "0001";
             }else{
                 $codigo = $last->codigo +1;
-                $data['codigo'] = $codigo;
+                $data['codigo'] =  $codigo;
             }
+
 
             $data['cliente_id'] = $request->get('cliente_id');
 
