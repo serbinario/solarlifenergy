@@ -45,6 +45,7 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>Id</th>
+                                                    <th>Proposta N</th>
                                                     <th>Cliente</th>
                                                     <th>Valor Proposta</th>
                                                     <th>KWp</th>

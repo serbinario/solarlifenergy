@@ -70,6 +70,7 @@ const table = $('#preProposta').DataTable({
             "defaultContent": ""
         },
         {data: 'id', name: 'id',  targets: 0, visible: false},
+        {data: 'codigo', name: 'codigo',  targets: 0, visible: false},
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 if(oData.projeto != null){

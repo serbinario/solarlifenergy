@@ -43,9 +43,9 @@
         @if(isset($preProposta->cliente->nome))
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="codigo" class="col-sm-4 control-label text-bold">Codigo.:</label>
-                    <div class="col-md-8">
-                        <input class="form-control input-sm" name="codigo" type="number" id="codigo" readonly value="{{ old('codigo', isset($preProposta->codigo) ? $preProposta->codigo : null) }}" >
+                    <label for="codigo" class="col-sm-6 control-label text-bold">Proposta N.:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-sm" name="codigo" type="text" id="codigo" readonly value="{{ old('codigo', isset($preProposta->codigo) ? $preProposta->codigo : null) }}" >
                     </div>
                 </div>
             </div>
