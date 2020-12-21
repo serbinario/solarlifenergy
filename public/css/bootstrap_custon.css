@@ -646,6 +646,7 @@ div.btn-lancamento:hover ul {
 .zze-title-header{
     position: relative;
     display: flex;
+    justify-content: space-between;
 }
 
 .zze-title-header .zze-period-prev{
@@ -741,7 +742,7 @@ div.btn-lancamento:hover ul {
     left: 50%;
     transform: translateX(-50%);
 }
-#header-table .zze-title-header:hover .zze-component_popover{
+#header-table .period-block:hover .zze-component_popover{
     display: block;
 }
 

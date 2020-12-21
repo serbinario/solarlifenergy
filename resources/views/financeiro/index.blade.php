@@ -41,9 +41,10 @@
                                 </div>
                             </div><!--end .btn-group -->
                             <div class="zze-title-header">
-                                    <button  onclick="setNavPeriods('prev')" href="#" class="zze-period-prev">
-                                        <span class="icon-arrow back"></span>
-                                    </button>
+                                <button  onclick="setNavPeriods('prev')" href="#" class="zze-period-prev">
+                                    <span class="icon-arrow back"></span>
+                                </button>
+                                <div class="period-block">
                                     <span class="zze-period-text">Novembro 2020</span>
                                     <div class="zze-component_popover bottom white" >
                                         <div class="zze-popover-padding">
@@ -56,8 +57,27 @@
                                                     <li ><a  onclick="setIntervaloData('teste')" href="#" class="ng-binding">Escolher período</a></li>
                                                 </ul>
                                             </div>
+                                            <div class="zze-popover-form">
+                                                <div class="input-row">
+                                                    <div class="group-field zze-datepicker">
+                                                        <span>de</span>
+                                                        <input ng-model="periods.data.startDate" zze-datepicker="" type="text" class="ng-valid hasDatepicker ng-not-empty ng-valid-date ng-touched ng-dirty ng-valid-parse" maxlength="10" id="dp1608560221492" style="">
+                                                        <img class="ui-datepicker-trigger" src="https://zze-front-cloudfront.organizze.com.br/1.7.83/images/application/icon-calendar-zze-5ffe1b5340.png" alt="..." title="...">
+                                                    </div>
+                                                </div>
+                                                <div class="input-row">
+                                                    <div class="group-field zze-datepicker">
+                                                        <span>à</span>
+                                                        <input ng-model="periods.data.endDate" zze-datepicker="" type="text" class="ng-pristine ng-untouched ng-valid hasDatepicker ng-not-empty ng-valid-date" maxlength="10" id="dp1608560221493">
+                                                        <img class="ui-datepicker-trigger" src="https://zze-front-cloudfront.organizze.com.br/1.7.83/images/application/icon-calendar-zze-5ffe1b5340.png" alt="..." title="...">
+                                                    </div>
+                                                </div>
+                                                <button ng-click="periods.setCustom()" class="button button-blue button-block">Ok</button>
+                                                <a ng-click="periods.toggleCustomDates(false)" class="zze-button-cancel ng-binding" href="">cancelar</a>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
                                     <button href=""  onclick="setNavPeriods('next')" class="zze-period-prev">
                                         <span class="icon-arrow next"></span>
                                     </button>
