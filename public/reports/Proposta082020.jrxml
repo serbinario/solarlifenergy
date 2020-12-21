@@ -810,6 +810,24 @@ where pre_propostas.id =  $P{id}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{celular} != null ?  "TELEFONE: " + $F{celular} : "TELEFONE: "]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="520" y="85" width="220" height="15" forecolor="#009C63" uuid="2098db3c-eb99-4512-9d84-14dd51aff074">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#009C63"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PROPOSTA N: " +$F{codigo}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -993,7 +1011,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_jan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jan}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="523" y="119" width="90" height="15" forecolor="#009C63" backcolor="#FFFFFF" uuid="ad33bd2d-8464-4784-891c-a24bb599b3ba">
@@ -1007,7 +1025,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_fev}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{feb}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="523" y="139" width="90" height="15" forecolor="#009C63" backcolor="#FFFFFF" uuid="1ba2974c-101a-4c95-9479-f3cc2e4c2dbc">
@@ -1021,7 +1039,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_mar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{mar}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="523" y="159" width="90" height="15" forecolor="#009C63" backcolor="#FFFFFF" uuid="3a5de93a-eaba-4140-bdbd-26f6c32f4b4c">
@@ -1034,7 +1052,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_abr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{may}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="523" y="177" width="90" height="15" forecolor="#009C63" backcolor="#FFFFFF" uuid="dab12a90-5ff3-4e93-87f5-abdb58a9fbdc">
@@ -1047,7 +1065,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_mai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{may}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="523" y="196" width="90" height="15" forecolor="#009C63" backcolor="#FFFFFF" uuid="9907cbbd-4f99-40b3-a302-a89acf78170f">
@@ -1060,7 +1078,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_jun}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jun}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="216" width="107" height="15" forecolor="#009C63" uuid="c8c22097-20e9-424b-9eba-ac20403565c3">
@@ -1087,7 +1105,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_jul}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jul}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="235" width="107" height="15" forecolor="#009C63" uuid="627cda0c-3428-4364-af69-23cf995fc043">
@@ -1114,7 +1132,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_ago}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{aug}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="253" width="107" height="15" forecolor="#009C63" uuid="bb4a0557-ccca-411d-9f23-097eb28c5c7c">
@@ -1141,7 +1159,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_set}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sep}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="273" width="107" height="15" forecolor="#009C63" uuid="d1907718-223b-4ef8-961e-4ad0888d455e">
@@ -1168,7 +1186,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_out}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{oct}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="293" width="107" height="15" forecolor="#009C63" uuid="de661563-c6a7-48ad-920f-c65487e20386">
@@ -1195,7 +1213,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_nov}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nov}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="518" y="312" width="107" height="15" forecolor="#009C63" uuid="4c97eba8-aa28-4321-b06f-35bbdb53acac">
@@ -1222,7 +1240,7 @@ where pre_propostas.id =  $P{id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{gera_fv_dez}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dec}]]></textFieldExpression>
 			</textField>
 			<break>
 				<reportElement x="0" y="520" width="99" height="1" uuid="6256adf7-8055-441b-a420-4d45c8c65aaf"/>
