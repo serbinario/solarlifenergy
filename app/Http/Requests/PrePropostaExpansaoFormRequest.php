@@ -5,7 +5,7 @@ namespace Serbinario\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class PrePropostaFormRequest extends FormRequest
+class PrePropostaExpansaoFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,7 @@ class PrePropostaFormRequest extends FormRequest
     {
         return  [
             'cliente_id' => 'required',
-            'preco_kwh' => 'required',
             'modulo_id' => 'required',
-            'cidade_id' => 'required',
             'cidade_id' => 'required',
             'estado_id' => 'required',
 

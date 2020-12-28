@@ -74,7 +74,7 @@
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="qtd_paineis" class="col-sm-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
+                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="" maxlength="10" >
 
                 </div>
             </div>
@@ -208,9 +208,9 @@
         </div>
         <div class="col-md-3">
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
-                <label for="qtd_paineis" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
+                <label for="qtd_paineis1" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
+                    <input class="form-control input-sm " name="qtd_paineis1" type="text" id="qtd_paineis1" value="{{ old('qtd_paineis1', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
 
                 </div>
             </div>
@@ -220,11 +220,9 @@
                 <label for="modulo_id" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
                     <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
-                        @foreach ($modulos as $key => $modulo)
-                            <option value="{{ $key }}" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : null) == $key ? 'selected' : '' }}>
-                                {{ $modulo }}
-                            </option>
-                        @endforeach
+                        <option value="">modulo</option>
+                        <option value="1">330</option>
+                        <option value="1">440</option>
                     </select>
                 </div>
             </div>

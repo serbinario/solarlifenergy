@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('pre_proposta.pre_proposta.update', $preProposta->id) }}" accept-charset="UTF-8" id="edit_pre_proposta_form" name="edit_pre_proposta_form" class="form-horizontal">
+                <form method="POST" action="{{ route('proposta.expansao.update', $preProposta->id) }}" accept-charset="UTF-8" id="edit_pre_proposta_form" name="edit_pre_proposta_form" class="form-horizontal">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
@@ -76,7 +76,7 @@
                             </div>
                         </div>
 
-                        @include ('pre_proposta.form', ['preProposta' => $preProposta, ])
+                        @include ('pre_proposta_expansao.form', ['preProposta' => $preProposta, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">

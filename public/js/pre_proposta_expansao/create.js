@@ -10,6 +10,7 @@ $(document).ready(function () {
         var estado_id = $('select[name=estado_id] option:selected').val()
         var cidade_id = $('select[name=cidade_id] option:selected').val()
         var modulo_id = $('select[name=modulo_id] option:selected').val()
+        var qtd_paineis = document.getElementById('qtd_paineis').value
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
@@ -20,7 +21,8 @@ $(document).ready(function () {
             'monthly_usage': monthly_usage,
             'estado_id': estado_id,
             'cidade_id': cidade_id,
-            'modulo_id': modulo_id
+            'modulo_id': modulo_id,
+            'qtd_paineis': qtd_paineis
         }
 
         jQuery.ajax({

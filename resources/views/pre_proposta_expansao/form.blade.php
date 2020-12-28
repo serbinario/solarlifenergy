@@ -1,5 +1,6 @@
 <div class="card-body">
-
+    <div class="group-title">
+        <span class="sc-fEVUGC title">Projeto</span>
 
     <div class="row">
         <div class="col-sm-6">
@@ -52,9 +53,6 @@
         @endif
     </div>
 
-
-
-
     <div class="row">
 
             <div class="col-sm-4">
@@ -74,9 +72,9 @@
 
         <div class="col-sm-3">
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
-                <label for="preco_kwh" class="col-sm-6 control-label text-bold">Preço do KWh R$.:*</label>
+                <label for="qtd_paineis" class="col-sm-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input readonly class="form-control  input-sm 7 kwh " name="preco_kwh" type="text" id="preco_kwh" value="{{ old('preco_kwh', isset($preProposta->preco_kwh) ? $preProposta->preco_kwh : "0.8000") }}" maxlength="10" placeholder="#,####">
+                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="" maxlength="10" >
 
                 </div>
             </div>
@@ -99,6 +97,8 @@
         </div>
 
     </div>
+
+
 
      <div class="row">
         <div class="col-sm-3">
@@ -164,6 +164,8 @@
          @else
 
 
+
+
              <div class="col-sm-3">
                  <div class="form-group">
                      <label for="" class="col-sm-4 control-label text-bold">Intergrador.:</label>
@@ -189,275 +191,56 @@
              </div>
          @endrole
     </div>
+    </div>
+
+    <div class="row group-title">
+        <span class="sc-fEVUGC title">Projeto do cliente</span>
+        <div class="col-md-5">
+            <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
+                <label for="monthly_usage" class="col-md-2 control-label text-bold">Inversor.:*</label>
+                <div class="col-md-6">
+                    <select   class="form-control input-sm" id="prioridade_id" name="prioridade_id">
+                        <option value="" disabled selected>Inversor</option>
+                        <option value="3" >3K</option>
+                        <option value="5" >5K</option>
+                        <option value="12" >12K</option>
+                        <option value="15" >15K</option>
+                        <option value="20" >20K</option>
+                        <option value="30" >30K</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+                <label for="qtd_paineis1" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
+                <div class="col-md-4">
+                    <input class="form-control input-sm " name="qtd_paineis1" type="text" id="qtd_paineis1" value="{{ old('qtd_paineis1', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
+                <label for="modulo_id" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
+                <div class="col-md-4">
+                    <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
+                        <option value="">modulo</option>
+                        <option value="1">330</option>
+                        <option value="1">440</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!--Acordion -->
 <div class="row">
     <div class="col-md-12">
         <div class="panel-group" id="accordion2">
-            <div class="card panel">
-                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-1">
-                    <header class="text-bold">Histórico de consumo</header>
-                    <div class="tools">
-                        <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
-                    </div>
-                </div>
-                <div id="accordion2-1" class="collapse">
-                    <div class="card-body">
-                        <!-- tab -->
-                            <div class="card-head">
-                    <ul class="nav nav-tabs pull-left" data-toggle="tabs">
-                        <li class="active"><a href="#fora-da-ponta">Fora da ponta</a></li>
-                        <li><a href="#second2">Na ponta</a></li>
-                    </ul>
 
-                </div>
-                <div class="card-body tab-content">
-                    <div class="tab-pane active" id="fora-da-ponta">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('jan') ? 'has-error' : '' }}">
-                                    <label for="jan" class="col-sm-4 control-label text-bold">Jan.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="jan" type="text" id="jan" value="{{ old('minimum_area', isset($preProposta->jan) ? $preProposta->jan : null) }}" maxlength="10" placeholder="">
-                                        {!! $errors->first('jan', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('feb') ? 'has-error' : '' }}">
-                                    <label for="feb" class="col-sm-4 control-label text-bold">Fev.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="feb" type="text" id="feb" value="{{ old('feb', isset($preProposta->feb) ? $preProposta->feb : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('feb', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('mar') ? 'has-error' : '' }}">
-                                    <label for="mar" class="col-sm-4 control-label text-bold">Mar.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="mar" type="text" id="mar" value="{{ old('mar', isset($preProposta->mar) ? $preProposta->mar : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('mar', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('apr') ? 'has-error' : '' }}">
-                                    <label for="apr" class="col-sm-4 control-label text-bold">Abr.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="apr" type="text" id="apr" value="{{ old('apr', isset($preProposta->apr) ? $preProposta->apr : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('apr', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('may') ? 'has-error' : '' }}">
-                                    <label for="may" class="col-sm-4 control-label text-bold">Mai.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  fora-da-ponta numberWithoutDot" name="may" type="text" id="may" value="{{ old('may', isset($preProposta->may) ? $preProposta->may : null) }}" maxlength="10" placeholder="">
-                                        {!! $errors->first('may', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('jun') ? 'has-error' : '' }}">
-                                    <label for="jun" class="col-sm-4 control-label text-bold">Jun.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="jun" type="text" id="jun" value="{{ old('jun', isset($preProposta->jun) ? $preProposta->jun : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('jun', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('jul') ? 'has-error' : '' }}">
-                                    <label for="jul" class="col-sm-4 control-label text-bold">Jul.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="jul" type="text" id="jul" value="{{ old('jul', isset($preProposta->jul) ? $preProposta->jul : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('jul', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('aug') ? 'has-error' : '' }}">
-                                    <label for="aug" class="col-sm-4 control-label  text-bold">Ago.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  fora-da-ponta numberWithoutDot" name="aug" type="text" id="aug" value="{{ old('aug', isset($preProposta->aug) ? $preProposta->aug : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('aug', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('sep') ? 'has-error' : '' }}">
-                                    <label for="sep" class="col-sm-4 control-label text-bold">Set.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  fora-da-ponta numberWithoutDot" name="sep" type="text" id="sep" value="{{ old('sep', isset($preProposta->sep) ? $preProposta->sep : null) }}" maxlength="10" placeholder="">
-                                        {!! $errors->first('sep', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('oct') ? 'has-error' : '' }}">
-                                    <label for="oct" class="col-sm-4 control-label text-bold">Out.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="oct" type="text" id="oct" value="{{ old('oct', isset($preProposta->oct) ? $preProposta->oct : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('oct', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('nov') ? 'has-error' : '' }}">
-                                    <label for="nov" class="col-sm-4 control-label text-bold">Nov.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm fora-da-ponta numberWithoutDot" name="nov" type="text" id="nov" value="{{ old('nov', isset($preProposta->nov) ? $preProposta->nov : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('nov', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('dec') ? 'has-error' : '' }}">
-                                    <label for="dec" class="col-sm-4 control-label text-bold">Dez.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  fora-da-ponta numberWithoutDot" name="dec" type="text" id="dec" value="{{ old('dec', isset($preProposta->dec) ? $preProposta->dec : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('dec', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <input class="btn btn-sm btn-primary"  id="calcular_media" type="button" value="Calcular Média">
-                        <input class="btn btn-sm btn-primary"  id="copiar_media" type="button" value="Copiar Média de Consumo para Meses">
-                    </div>
-                    <div class="tab-pane" id="second2">
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_jan') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_jan" class="col-sm-4 control-label text-bold">Jan.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_jan" type="text" id="na_ponta_jan" value="{{ old('minimum_area', isset($preProposta->na_ponta_jan) ? $preProposta->na_ponta_jan : null) }}" maxlength="10" placeholder="">
-                                        {!! $errors->first('na_ponta_jan', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_feb') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_feb" class="col-sm-4 control-label text-bold">Fev.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_feb" type="text" id="na_ponta_feb" value="{{ old('na_ponta_feb', isset($preProposta->na_ponta_feb) ? $preProposta->na_ponta_feb : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_feb', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_mar') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_mar" class="col-sm-4 control-label text-bold">Mar.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_mar" type="text" id="na_ponta_mar" value="{{ old('na_ponta_mar', isset($preProposta->na_ponta_mar) ? $preProposta->na_ponta_mar : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_mar', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_apr') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_apr" class="col-sm-4 control-label text-bold">Abr.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_apr" type="text" id="na_ponta_apr" value="{{ old('na_ponta_apr', isset($preProposta->na_ponta_apr) ? $preProposta->na_ponta_apr : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_apr', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_may') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_may" class="col-sm-4 control-label text-bold">Mai.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_may" type="text" id="na_ponta_may" value="{{ old('na_ponta_may', isset($preProposta->na_ponta_may) ? $preProposta->na_ponta_may : null) }}" maxlength="10" placeholder="">
-                                        {!! $errors->first('na_ponta_may', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_jun') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_jun" class="col-sm-4 control-label text-bold">Jun.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_jun" type="text" id="na_ponta_jun" value="{{ old('na_ponta_jun', isset($preProposta->na_ponta_jun) ? $preProposta->na_ponta_jun : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_jun', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_jul') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_jul" class="col-sm-4 control-label text-bold">Jul.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_jul" type="text" id="na_ponta_jul" value="{{ old('na_ponta_jul', isset($preProposta->na_ponta_jul) ? $preProposta->na_ponta_jul : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_jul', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_aug') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_aug" class="col-sm-4 control-label text-bold">Ago.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_aug" type="text" id="na_ponta_aug" value="{{ old('na_ponta_aug', isset($preProposta->na_ponta_aug) ? $preProposta->na_ponta_aug : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_aug', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_sep') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_sep" class="col-sm-4 control-label text-bold">Set.::</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_sep" type="text" id="na_ponta_sep" value="{{ old('na_ponta_sep', isset($preProposta->na_ponta_sep) ? $preProposta->na_ponta_sep : null) }}" maxlength="10" placeholder=".">
-                                        {!! $errors->first('na_ponta_sep', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_oct') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_oct" class="col-sm-4 control-label text-bold">Out.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_oct" type="text" id="na_ponta_oct" value="{{ old('na_ponta_oct', isset($preProposta->na_ponta_oct) ? $preProposta->na_ponta_oct : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_oct', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_nov') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_nov" class="col-sm-4 control-label text-bold">Nov.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_nov" type="text" id="na_ponta_nov" value="{{ old('na_ponta_nov', isset($preProposta->na_ponta_nov) ? $preProposta->na_ponta_nov : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_nov', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group"{{ $errors->has('na_ponta_dec') ? 'has-error' : '' }}">
-                                    <label for="na_ponta_dec" class="col-sm-4 control-label text-bold">Dez.:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control input-sm  numberWithoutDot" name="na_ponta_dec" type="text" id="na_ponta_dec" value="{{ old('na_ponta_dec', isset($preProposta->na_ponta_dec) ? $preProposta->na_ponta_dec : null) }}" placeholder="" step="any">
-                                        {!! $errors->first('na_ponta_dec', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                        <!-- end tab -->
-
-                    </div>
-                </div>
-            </div><!--end .panel -->
 
     @if(isset($preProposta->id))
             <div class="card panel expanded">
@@ -484,25 +267,43 @@
                             <tbody>
 
                                 <tr>
-                                    <td><input {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="produto1" type="text" id="produto1" value="{{ old('produto1', isset($preProposta->produto1) ? $preProposta->produto1 : "MÓDULO FV DAH") }}" min="0" max="10" placeholder="Nome do módulo"></td>
+                                    <td>
+                                        <select   class="form-control input-sm" id="produto1" name="produto1">
+                                            <option value="1">MODULO FV SUNERGY 330</option>
+                                            <option value="2">MODULO FV SUNERGY 440</option>
+                                        </select>
+                                    </td>
                                     <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
-
+                                    <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
                                 </tr>
                                 <tr>
-                                    <td><input {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm input-table-solar" name="produto2" type="text" id="produto2" value="{{ old('produto2', isset($preProposta->produto2) ? $preProposta->produto2 : "INVERSOR KSTAR") }}" min="0" max="10" placeholder="Nome do inversor"></td>
+                                    <td>
+                                        <select   class="form-control input-sm" id="produto1" name="produto1">
+                                            <option value="1">INVERSOR KSTAR 3k</option>
+                                            <option value="1">INVERSOR KSTAR 5k</option>
+                                            <option value="1">INVERSOR KSTAR 12k</option>
+                                            <option value="1">INVERSOR KSTAR 15k</option>
+                                            <option value="1">INVERSOR KSTAR 20k</option>
+                                            <option value="1">INVERSOR KSTAR 30k</option>
+                                        </select>
+                                    </td>
                                     <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
-                                    </tr>
+                                    <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
+                                </tr>
                                 </tr>
                                 <tr>
                                     <td><input class="form-control input-sm input-table-solar" name="produto3" type="text" id="produto3" value="{{ old('produto3', isset($preProposta->produto3) ? $preProposta->produto3 : "ESTRUTURA") }}" min="0" max="10" placeholder="Estrutura"></td>
+                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->qtd_estrutura) ? $preProposta->qtd_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
                                     <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->qtd_estrutura) ? $preProposta->qtd_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
                                     </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto4" type="text" id="produto4" value="{{ old('produto4', isset($preProposta->produto4) ? $preProposta->produto4 : "STRING BOX") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->qtd_string_box) ? $preProposta->qtd_string_box : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
+                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->qtd_string_box) ? $preProposta->qtd_string_box : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
                                   </tr>
                                 <tr>
                                     <td><input class="form-control input-sm input-table-solar" name="produto5" type="text" id="produto5" value="{{ old('produto5', isset($preProposta->produto5) ? $preProposta->produto5 : "KIT MONITORAMENTO WIFI") }}" min="0" max="10" placeholder="Nome do inversor"></td>
+                                    <td><input readonly readonly class="form-control input-sm input-table-solar" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->qtd_kit_monitoramento) ? $preProposta->qtd_kit_monitoramento : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
                                     <td><input readonly readonly class="form-control input-sm input-table-solar" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->qtd_kit_monitoramento) ? $preProposta->qtd_kit_monitoramento : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
                                    </tr>
                                {{-- <tr>
@@ -510,28 +311,28 @@
                                     <td><input  class="form-control input-sm money" name="desconto_equipamentos" type="text" id="desconto_equipamentos" value="{{ old('desconto_equipamentos', isset($preProposta->desconto_equipamentos) ? $preProposta->desconto_equipamentos : null) }}" min="0" max="10" placeholder="Desconto"></td>
                                 </tr>--}}
                                 <tr>
-                                    <td><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm input-table-solar" value="TOTAL"></td>
+                                    <td colspan="2"><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm input-table-solar" value="TOTAL"></td>
                                     <td><input readonly class="form-control input-sm money input-table-solar" name="total_equipamentos" type="text" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
 
                                 <tr>
-                                    <td  style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                    <td  colspan="2" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
                                     <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
 
                                 </tr>
 
                                 <tr>
-                                    <td  style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
+                                    <td colspan="2" style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
                                     <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm money input-table-solar" name="equipe_tecnica" type="text" id="equipe_tecnica" value="{{ old('equipe_tecnica', isset($preProposta->equipe_tecnica) ? $preProposta->equipe_tecnica : null) }}" min="0" max="10" placeholder="Desconto"></td>
                                 </tr>
 
                                 <tr>
-                                    <td style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO MÓDULO</td>
+                                    <td colspan="2" style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO MÓDULO</td>
                                     <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
                                 <tr>
-                                    <td style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO INVERSOR</td>
+                                    <td colspan="2" style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO INVERSOR</td>
                                     <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : null) }}" min="0" max="10" placeholder="Preço Inversor"></td>
                                 </tr>
 

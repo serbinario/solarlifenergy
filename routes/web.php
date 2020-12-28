@@ -502,7 +502,7 @@ Route::group(
         ->name('proposta.expansao.edit')
         ->where('id', '[0-9]+');
 
-    Route::post('/', 'PrePropostaController@store')
+    Route::post('/', 'PrePropostaExpansaoController@store')
         ->name('proposta.expansao.store');
 
     Route::put('pre_proposta/{preProposta}', 'PrePropostaExpansaoController@update')

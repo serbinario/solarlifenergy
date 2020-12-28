@@ -123,7 +123,7 @@ class UtilController extends Controller
         $ip = request()->ip();
 
         $validator = \Validator::make($request->all(), [
-            'monthly_usage' => 'required',
+            //'monthly_usage' => 'required',
             'estado_id' => 'required',
             'cidade_id' => 'required',
             'modulo_id' => 'required'

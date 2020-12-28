@@ -95,6 +95,7 @@ class PrePropostaController extends Controller
 
             ]);
 
+        $rows->whereNull('expansao');
         $rows->whereNull('pre_propostas.arquivado');
         //Se o usuario logado nao tiver role de franquia, so podera ver os cadastros dele
         $user = User::find(Auth::id());

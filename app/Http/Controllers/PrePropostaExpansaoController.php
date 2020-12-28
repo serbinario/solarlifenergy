@@ -18,8 +18,10 @@ use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\Prioridade;
 use Serbinario\Entities\Report;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\PrePropostaExpansaoFormRequest;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
 use Serbinario\Traits\Simulador;
+use Serbinario\Traits\SimuladorExpansao;
 use Serbinario\Traits\SimuladorV2;
 use Serbinario\Traits\UtilEntities;
 use Serbinario\User;
@@ -28,7 +30,7 @@ use Exception;
 
 class PrePropostaExpansaoController extends Controller
 {
-    use SimuladorV2;
+    use SimuladorExpansao;
 
     private $token;
     /**
@@ -164,11 +166,11 @@ class PrePropostaExpansaoController extends Controller
 
 
             ->addColumn('action', function ($row) {
-            return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+            return '<form id="' . $row->id   . '" method="POST" action="proposta-expansao/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">                          
-                                <a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                                <a href="proposta-expansao/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
                                 <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Proposta">
@@ -217,11 +219,12 @@ class PrePropostaExpansaoController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(PrePropostaFormRequest $request)
+    public function store(PrePropostaExpansaoFormRequest $request)
     {
         try {
 
             $data = $this->getData($request);
+           // dd($request->all());
             //Retorna o ultimo registro
             $month = date("Y");
             $last = \DB::table('pre_propostas')->orderBy('id', 'DESC')->whereYear('created_at',  $month)->first();
@@ -247,7 +250,7 @@ class PrePropostaExpansaoController extends Controller
 
             $return = $this->simularGeracao($request);
 
-           //dd($return);
+
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -296,6 +299,8 @@ class PrePropostaExpansaoController extends Controller
             //Valor da soma dos módulos
             $valor_mao_obra = $return['valor_mao_obra'];
             $valor_mao_obra < 4000 ? $valor_mao_obra =  4000.00 : $valor_mao_obra;
+
+
 
             $recalculoModulo = ($return['soma_modulos'] + $participacao + $valor_mao_obra + $porcentagemParticipacao)  / $return['qtd_modulos'];
             $data['produto1_preco'] =  round($recalculoModulo,2);
@@ -396,15 +401,19 @@ class PrePropostaExpansaoController extends Controller
             $data['produto11_preco'] =  0;
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
-
+            $data['expansao'] = 1;
 
 
 //            if ($return['qtd_modulos'] < 10){
 //                return back()->withInput()
 //                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
 //            }
-            $roi = $this->roi(0, $somaEquipamentos, $request['monthly_usage'] );
-            $data['roi'] = $roi;
+
+
+            //dd($return);
+
+            //$roi = $this->roi(0, $somaEquipamentos, $request['monthly_usage'] );
+            //$data['roi'] = $roi;
 
 
 
@@ -446,7 +455,7 @@ class PrePropostaExpansaoController extends Controller
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
         //dd($preProposta);
-        return view('pre_proposta.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
+        return view('pre_proposta_expansao.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
     /**
@@ -551,8 +560,8 @@ class PrePropostaExpansaoController extends Controller
             //dd($data);
 
 
-            $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
-            $data['roi'] = $roi;
+            //$roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
+            //$data['roi'] = $roi;
 
             $ParametrRoi = ParametroGeral::where('id', '=', '1')->first();
 
@@ -561,15 +570,15 @@ class PrePropostaExpansaoController extends Controller
                     ->withErrors(['error_message' => "Desconto não pode ser maior que o valor da participação"]);
             }
 
-            if ($roi > $ParametrRoi->parameter_one && $ParametrRoi->active && $preProposta->monthly_usage > 700){
-                return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-            }
+            //if ($roi > $ParametrRoi->parameter_one && $ParametrRoi->active && $preProposta->monthly_usage > 700){
+               // return back()->withInput()
+                   // ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+           // }
 
-            if ($roi > 3.9 && $ParametrRoi->active && $preProposta->monthly_usage < 700){
-                return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-            }
+           // if ($roi > 3.9 && $ParametrRoi->active && $preProposta->monthly_usage < 700){
+              //  return back()->withInput()
+                 //   ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+            //}
 
             $preProposta->update($data);
 

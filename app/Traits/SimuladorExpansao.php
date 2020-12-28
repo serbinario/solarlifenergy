@@ -23,7 +23,7 @@ use Serbinario\Entities\Vendas\MaoObraModulos;
 use Serbinario\Entities\Vendas\Produto;
 use Serbinario\Entities\Vendas\StringboxPotencia;
 
-trait SimuladorV2
+trait SimuladorExpansao
 {
     private $valorModulo = 0;
     private $somaModulos = 0;
@@ -41,6 +41,7 @@ trait SimuladorV2
     private $valorFranqueadora = 0;
     private $inversores = 0;
     private $mc4 = 0;
+    private $mediaForaPonta = 0;
 
     function simularGeracao($request){
 
@@ -60,12 +61,13 @@ trait SimuladorV2
         $this->irradiacao_anual =  $this->getMediaAnualIrradiacao($cidade);
 
         //dd($request->all());
-        $mediaForaPonta = $request->get('monthly_usage');
+        $this->mediaForaPonta = $request->get('monthly_usage');
 
         if($request['qtd_paineis'] > 0){
             $this->qtdModulos = (int)$request['qtd_paineis'];
             $valor_medio_kw = 100;
-            $mediaForaPonta = 100;
+            $this->mediaForaPonta  = 100;
+            $precoKwh = 0.800;
         }else{
             $this->qtdModulos = $this->getQtdModulos(
                 $valor_medio_kw,
@@ -77,10 +79,6 @@ trait SimuladorV2
                 $modulo->area_geracao
             );
         }
-
-
-        //dd($modulo->id);
-
 
         $this->inversores = $this->calculaQtdInversores($modulo->id);
         $this->qtdInversores = count($this->inversores );
@@ -116,7 +114,7 @@ trait SimuladorV2
 
         $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaString +  $this->valorMaoObra;
 
-        //dd($modulo->potencia);
+
         $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$modulo->potencia);
         //dd($potenciaGerador, $this->qtdModulos);
         $area = $this->getArea($this->qtdModulos, '2.1', '1.15');
@@ -124,17 +122,17 @@ trait SimuladorV2
         $co2 = $this->getCo2($potenciaGerador);
 
         $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $modulo->area_total, $modulo->rendimento);
+       // //dd($request->all());
 
+       // dd($modulo->potencia, $this->mediaForaPonta , '0',array_sum($geracaoEnergiaFV)/12, $this->qtdModulos, $request['qtd_paineis']);
 
-
-        $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
+        $reducaoMediaConsumo = $this->getReducaoMediaConsumo($this->mediaForaPonta , '0',array_sum($geracaoEnergiaFV)/12 );
 
 
         $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 102.32 : "";
 
 
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
-
         return
             [
                 'success' => true,
@@ -259,14 +257,11 @@ trait SimuladorV2
         }
 
 
-
         //CABO 4MM BRASFIO 1KV - COBRE / PRETO - id = 42
         if($this->qtdModulos > 400 ){
             $metros = $this->qtdModulos * 1.4;
         }else{
-            //dd($this->qtdModulos, CaboModulo::where('max_modulos', '>=', $this->qtdModulos)->first());
             $metros = CaboModulo::where('max_modulos', '>=', $this->qtdModulos)->first()->metros;
-
         }
         $caboValor = Produto::select('preco_franquia')->where('id' , '=', '42')->first()->preco_franquia;
         $caboTotal = (int)$metros * $this->convertesRealIngles($caboValor);
@@ -496,7 +491,6 @@ trait SimuladorV2
      * MÉD REDUÇÃO DO CONSUMO (%)
      */
     function getReducaoMediaConsumo($mediaMes, $mediaMesesPonta, $mediaGeracaoEnergiaFV){
-
         $result = ($mediaGeracaoEnergiaFV * 100)/($mediaMes + ($mediaMesesPonta * 4.7) );
         return round($result, 2);
     }
