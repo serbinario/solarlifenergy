@@ -482,6 +482,47 @@ Route::group(
 
 Route::group(
     [
+        'prefix' => 'proposta-expansao',
+    ], function () {
+
+    Route::get('/', 'PrePropostaExpansaoController@index')
+        ->name('proposta.expansao.index');
+
+    Route::get('/create','PrePropostaExpansaoController@create')
+        ->name('proposta.expansao.create');
+
+    Route::get('/grid', 'PrePropostaExpansaoController@grid')
+        ->name('expansao.grid');
+
+    Route::get('/show/{preProposta}','PrePropostaExpansaoController@show')
+        ->name('proposta.expansao.show')
+        ->where('id', '[0-9]+');
+
+    Route::get('/{preProposta}/edit','PrePropostaExpansaoController@edit')
+        ->name('proposta.expansao.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'PrePropostaController@store')
+        ->name('proposta.expansao.store');
+
+    Route::put('pre_proposta/{preProposta}', 'PrePropostaExpansaoController@update')
+        ->name('proposta.expansao.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{preProposta}/destroy','PrePropostaExpansaoController@destroy')
+        ->name('proposta.expansao.destroy')
+        ->where('id', '[0-9]+');
+
+    Route::get('/arquivadas/index', 'PrePropostaArquivaController@index')
+        ->name('proposta.expansao.arquivadas.index');
+
+    Route::get('/arquivadas/grid', 'PrePropostaArquivaController@grid')
+        ->name('proposta.expansao.arquivadas.grid');
+
+});
+
+Route::group(
+    [
         'prefix' => 'proposta',
     ], function () {
 
