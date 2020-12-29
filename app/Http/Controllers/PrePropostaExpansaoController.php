@@ -15,6 +15,7 @@ use Serbinario\Entities\Franquia;
 use Serbinario\Entities\Modulo;
 use Serbinario\Entities\ParametroGeral;
 use Serbinario\Entities\PreProposta;
+use Serbinario\Entities\PrePropostaExpansao;
 use Serbinario\Entities\Prioridade;
 use Serbinario\Entities\Report;
 use Serbinario\Http\Controllers\Controller;
@@ -235,7 +236,6 @@ class PrePropostaExpansaoController extends Controller
                 $data['codigo'] =  $codigo;
             }
 
-
             $data['cliente_id'] = $request->get('cliente_id');
 
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
@@ -250,7 +250,7 @@ class PrePropostaExpansaoController extends Controller
 
             $return = $this->simularGeracao($request);
 
-
+            $data['modulo_id'] = $request->get('modulo_id');
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -276,8 +276,6 @@ class PrePropostaExpansaoController extends Controller
             }else{
                 $percentual = 8;
             }
-
-
             //Fim da correção
 
             //Prticipação
@@ -287,28 +285,22 @@ class PrePropostaExpansaoController extends Controller
             $royalties = ($participacao /100 ) * 8;
             $data['royalties'] = $royalties;
 
-
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
 
             $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
 
             //dd($porcentagemParticipacao);
             $data['produto1_preco'] = $return['valor_modulo'];
-            //////////////
 
             //Valor da soma dos módulos
             $valor_mao_obra = $return['valor_mao_obra'];
             $valor_mao_obra < 4000 ? $valor_mao_obra =  4000.00 : $valor_mao_obra;
-
-
 
             $recalculoModulo = ($return['soma_modulos'] + $participacao + $valor_mao_obra + $porcentagemParticipacao)  / $return['qtd_modulos'];
             $data['produto1_preco'] =  round($recalculoModulo,2);
             $somaModulos = round($recalculoModulo * $data['qtd_paineis'],2);
             $data['produto1_nf'] = $somaModulos;
             $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'] . " " . $return['modulo_potencia'] . "W";
-
-
 
             //Soma Inversor
             $data['qtd_inversores'] = count($return['inversores']);
@@ -351,7 +343,6 @@ class PrePropostaExpansaoController extends Controller
             $data['equipe_tecnica'] = $valor_mao_obra;
 
             $data['produto2'] = $return['obs'];
-
 
             $data['co2'] = $return['co2'];
             $data['gera_fv_jan'] = $return['geracao_fv']['0'];
@@ -402,29 +393,15 @@ class PrePropostaExpansaoController extends Controller
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
             $data['expansao'] = 1;
+            $expansaoId = PrePropostaExpansao::create([
+                'inversor' => $request->get('expansao_inversor'),
+                'potencia_modulo' => $request->get('potencia_modulo'),
+                'qtd_modulos' => $request->get('expansao_qtd_paineis'),
+            ]);
 
-
-//            if ($return['qtd_modulos'] < 10){
-//                return back()->withInput()
-//                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
-//            }
-
-
-            //dd($return);
-
-            //$roi = $this->roi(0, $somaEquipamentos, $request['monthly_usage'] );
-            //$data['roi'] = $roi;
-
-
-
-            //dd($data['qtd_paineis']);
-           // if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
-           //     return back()->withInput()
-           //         ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
-           // }
-            //dd($return);
+            $data['expansao_id'] = $expansaoId->id;
             $preProposta = PreProposta::create($data);
-            //;
+
             return redirect()->route('proposta.expansao.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
@@ -443,7 +420,7 @@ class PrePropostaExpansaoController extends Controller
      */
     public function edit($id){
         $prioridades = Prioridade::pluck('name','id')->all();
-        $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
+        $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2', 'modulo', 'clienteExpansao')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
@@ -454,7 +431,7 @@ class PrePropostaExpansaoController extends Controller
         };
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
-        //dd($preProposta);
+        //dd($preProposta->clienteExpansao->qtd_modulos);
         return view('pre_proposta_expansao.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
@@ -510,7 +487,6 @@ class PrePropostaExpansaoController extends Controller
 
             }
 
-
             $somaEquipamentos = $valorInversor
             //$somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
                 + $this->convertesRealIngles($preProposta->produto3_nf)
@@ -552,17 +528,6 @@ class PrePropostaExpansaoController extends Controller
 
 
 
-            //dd( $data['valor_franqueadora'], (int)$data['valor_modulo'], $this->convertesRealIngles($preProposta->produto2_nf),$this->convertesRealIngles($preProposta->produto3_nf), $this->convertesRealIngles($preProposta->produto4_nf),$this->convertesRealIngles($preProposta->produto5_nf));
-
-            //$data['valor_franqueadora'] = $data['total_equipamentos'] - $data['equipe_tecnica'] - $data['valor_franquia'];
-
-            //dd($data['valor_modulo']);
-            //dd($data);
-
-
-            //$roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
-            //$data['roi'] = $roi;
-
             $ParametrRoi = ParametroGeral::where('id', '=', '1')->first();
 
             if ($descontoFranquia > $participacao ){
@@ -570,15 +535,7 @@ class PrePropostaExpansaoController extends Controller
                     ->withErrors(['error_message' => "Desconto não pode ser maior que o valor da participação"]);
             }
 
-            //if ($roi > $ParametrRoi->parameter_one && $ParametrRoi->active && $preProposta->monthly_usage > 700){
-               // return back()->withInput()
-                   // ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-           // }
-
-           // if ($roi > 3.9 && $ParametrRoi->active && $preProposta->monthly_usage < 700){
-              //  return back()->withInput()
-                 //   ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
-            //}
+           // dd($data);
 
             $preProposta->update($data);
 
@@ -628,7 +585,6 @@ class PrePropostaExpansaoController extends Controller
             'codigo',
             'user_id',
             'baco_fin_id',
-            'modulo_id',
             'prioridade_id',
             'data_validade',
             'power',

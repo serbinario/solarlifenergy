@@ -14,7 +14,7 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="id" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[select * from pre_propostas 
+		<![CDATA[select *,  banco_financiadora.nome AS banco   from pre_propostas 
 inner join clientes on clientes.id = pre_propostas.cliente_id
 left join banco_financiadora on pre_propostas.baco_fin_id = banco_financiadora.id
 where pre_propostas.id =  $P{id}]]>
@@ -515,7 +515,15 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="royalties"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_125" class="java.lang.Long">
+	<field name="expansao" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="expansao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="expansao_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="expansao_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="COLUMN_127" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -587,11 +595,11 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_143" class="java.sql.Timestamp">
+	<field name="COLUMN_145" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_144" class="java.sql.Timestamp">
+	<field name="COLUMN_146" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -639,7 +647,7 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_156" class="java.lang.Integer">
+	<field name="COLUMN_158" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
@@ -659,12 +667,16 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="cliente_tipo_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_161" class="java.lang.Long">
+	<field name="COLUMN_163" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
 	</field>
-	<field name="COLUMN_162" class="java.lang.String">
+	<field name="COLUMN_164" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
+	</field>
+	<field name="banco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="banco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
 	</field>
 	<detail>
@@ -1606,7 +1618,7 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO " + $F{COLUMN_162}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["CONDIÇÕES DE DESEMBOLSO PARA FINANCIAMENTO " + $F{banco}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="100" y="365" width="160" height="15" forecolor="#009C63" uuid="670c6673-779a-4392-8f72-881420b216e1">

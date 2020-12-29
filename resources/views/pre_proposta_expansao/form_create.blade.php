@@ -193,14 +193,14 @@
             <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-md-2 control-label text-bold">Inversor.:*</label>
                 <div class="col-md-6">
-                    <select   class="form-control input-sm" id="prioridade_id" name="prioridade_id">
+                    <select   class="form-control input-sm" id="expansao_invesor" name="expansao_inversor">
                         <option value="" disabled selected>Inversor</option>
-                        <option value="3" >3K</option>
-                        <option value="5" >5K</option>
-                        <option value="12" >12K</option>
-                        <option value="15" >15K</option>
-                        <option value="20" >20K</option>
-                        <option value="30" >30K</option>
+                        <option value="3k" >3K</option>
+                        <option value="5k" >5K</option>
+                        <option value="12k" >12K</option>
+                        <option value="15k" >15K</option>
+                        <option value="20k" >20K</option>
+                        <option value="30k" >30K</option>
 
                     </select>
                 </div>
@@ -210,19 +210,18 @@
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="qtd_paineis1" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis1" type="text" id="qtd_paineis1" value="{{ old('qtd_paineis1', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
+                    <input class="form-control input-sm " name="expansao_qtd_paineis" type="text" id="expansao_qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->expansao->qtd_paineis) ? $preProposta->expansao->qtd_paineis : "") }}" maxlength="10" >
 
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
-                <label for="modulo_id" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
+            <div class="form-group {{ $errors->has('potencia_modulo') ? 'has-error' : '' }}">
+                <label for="potencia_modulo" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
-                        <option value="">modulo</option>
-                        <option value="1">330</option>
-                        <option value="1">440</option>
+                    <select   class="form-control input-sm" id="potencia_modulo" name="potencia_modulo">
+                        <option value="330">330</option>
+                        <option value="440">440</option>
                     </select>
                 </div>
             </div>

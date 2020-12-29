@@ -128,7 +128,8 @@ class PreProposta extends Model
         'imposto_sobre_participacao',
         'roi',
         'royalties',
-        'expansao'
+        'expansao',
+        'expansao_id'
 
     ];
 
@@ -171,6 +172,11 @@ class PreProposta extends Model
     public function modulo()
     {
         return $this->belongsTo('Serbinario\Entities\Modulo','modulo_id','id');
+    }
+
+    public function clienteExpansao()
+    {
+        return $this->belongsTo('Serbinario\Entities\PrePropostaExpansao','expansao_id','id');
     }
 
     /**

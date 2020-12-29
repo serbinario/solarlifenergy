@@ -26,8 +26,6 @@ class PrePropostaFormRequest extends FormRequest
     {
         return  [
             'cliente_id' => 'required',
-            'preco_kwh' => 'required',
-            'modulo_id' => 'required',
             'cidade_id' => 'required',
             'cidade_id' => 'required',
             'estado_id' => 'required',

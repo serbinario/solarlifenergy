@@ -71,10 +71,10 @@
 
 
         <div class="col-sm-3">
-            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('qtd_paineis') ? 'has-error' : '' }}">
                 <label for="qtd_paineis" class="col-sm-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="" maxlength="10" >
+                    <input readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('monthly_usage', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" maxlength="10" placeholder="">
 
                 </div>
             </div>
@@ -85,13 +85,8 @@
             <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
                 <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <select readonly  class="form-control input-sm" id="modulo_id" name="modulo_id">
-                        @foreach ($modulos as $key => $modulo)
-                            <option value="{{ $key }}" {{ old('modulo_id', isset($preProposta->modulo_id) ? $preProposta->modulo_id : null) == $key ? 'selected' : '' }}>
-                                {{ $modulo }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input readonly class="form-control input-sm"  type="text" value="{{ old('monthly_usage', isset($preProposta->modulo->potencia) ? $preProposta->modulo->potencia : null) }}" maxlength="10" placeholder="">
+
                 </div>
             </div>
         </div>
@@ -199,37 +194,24 @@
             <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-md-2 control-label text-bold">Inversor.:*</label>
                 <div class="col-md-6">
-                    <select   class="form-control input-sm" id="prioridade_id" name="prioridade_id">
-                        <option value="" disabled selected>Inversor</option>
-                        <option value="3" >3K</option>
-                        <option value="5" >5K</option>
-                        <option value="12" >12K</option>
-                        <option value="15" >15K</option>
-                        <option value="20" >20K</option>
-                        <option value="30" >30K</option>
-
-                    </select>
+                    <input readonly class="form-control input-sm " name="inversor" type="text" id="inversor" value="{{ old('inversor', isset($preProposta->clienteExpansao->inversor) ? $preProposta->clienteExpansao->inversor : "") }}" maxlength="10" >
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
-                <label for="qtd_paineis1" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
+            <div class="form-group {{ $errors->has('qtd_modulos') ? 'has-error' : '' }}">
+                <label for="qtd_modulos" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis1" type="text" id="qtd_paineis1" value="{{ old('qtd_paineis1', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : "") }}" maxlength="10" >
+                    <input readonly class="form-control input-sm " name="qtd_modulos" type="text" id="qtd_modulos" value="{{ old('qtd_modulos', isset($preProposta->clienteExpansao->qtd_modulos) ? $preProposta->clienteExpansao->qtd_modulos : "") }}" maxlength="10" >
 
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
-                <label for="modulo_id" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
+            <div class="form-group {{ $errors->has('modulo_id1') ? 'has-error' : '' }}">
+                <label for="modulo_id1" class="col-md-6 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
-                    <select   class="form-control input-sm" id="modulo_id" name="modulo_id">
-                        <option value="">modulo</option>
-                        <option value="1">330</option>
-                        <option value="1">440</option>
-                    </select>
+                    <input readonly class="form-control input-sm " name="potencia_modulo" type="text" id="potencia_modulo" value="{{ old('potencia_modulo', isset($preProposta->clienteExpansao->potencia_modulo) ? $preProposta->clienteExpansao->potencia_modulo : "") }}" maxlength="10" >
                 </div>
             </div>
         </div>
@@ -576,22 +558,15 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="form-group"{{ $errors->has('panel_potencia') ? 'has-error' : '' }}">
-                <label for="reducao_media_consumo" class="col-sm-6 control-label text-bold">Redução Consumo %.:</label>
-                <div class="col-md-4">
-                    <input class="form-control input-sm money" name="reducao_media_consumo" type="text" value="{{ old('economia_anula', isset($preProposta->reducao_media_consumo) ? $preProposta->reducao_media_consumo : null) }}">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
             <div class="form-group"{{ $errors->has('minima_area') ? 'has-error' : '' }}">
-                <label for="minima_area" class="col-sm-6 control-label text-bold">Área ( m²).::</label>
-                <div class="col-md-4">
-                    <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
-                    {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
-                </div>
+            <label for="minima_area" class="col-sm-6 control-label text-bold">Área ( m²).::</label>
+            <div class="col-md-4">
+                <input class="form-control input-sm" name="minima_area" type="text" id="minima_area" value="{{ old('minimum_area', isset($preProposta->minima_area) ? $preProposta->minima_area : null) }}" maxlength="10" placeholder="">
+                {!! $errors->first('minima_area', '<p class="help-block">:message</p>') !!}
+            </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
@@ -613,14 +588,7 @@
             </div>
         </div>
 
-            <div class="col-sm-4">
-                <div class="form-group"{{ $errors->has('roi') ? 'has-error' : '' }}">
-                    <label for="roi" class="col-sm-6 control-label text-bold">Payback.:</label>
-                    <div class="col-md-4">
-                        <input class="form-control input-sm"  type="text" value="{{ old('roi', isset($preProposta->roi) ? $preProposta->roi : null) }}" maxlength="12" placeholder="Enter power here...">
-                    </div>
-                </div>
-            </div>
+
 
     </div>
 
