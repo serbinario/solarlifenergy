@@ -88,14 +88,12 @@ $(document).ready(function () {
         $('input[name="dec"]').val(retorno.months.dec)
         $('input[name="real_power"]').val(retorno.real_power)
         $('input[name="panel_power"]').val(retorno.panel_power)
-
     }
 
     $("#novo_projeto").on('click', function () {
         var projeto_id =  $('input[name="id"]').val()
         criarProjeto(projeto_id)
     })
-
 
     function criarProjeto(projeto_id)
     {
@@ -122,53 +120,54 @@ $(document).ready(function () {
             }
         });
     }
+    $("#moduloId").change(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+        var dados = {
+            'product_id': $(this).val()
+        }
 
-    document.getElementById("copiar_media").addEventListener("click", CopiaMedia);
-    
-    function CopiaMedia() {
-        const monthly_usage = document.getElementById('monthly_usage').value
-        document.querySelectorAll('.fora-da-ponta').forEach(function(el) {
-            el.value = monthly_usage;
-        })
-    }
+        jQuery.ajax({
+            type: 'get',
+            data: dados,
+            url: '/index.php/produto/all'
+        }).done(function (retorno) {
+           var qtd_paineis = document.getElementById('qtd_paineis').value
+            console.log(parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor)))
+            var valor_total_painel =  parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor))
+            document.getElementById('produto1_nf').value = valor_total_painel.toLocaleString('pt-BR',{ minimumFractionDigits: 2  });
 
+        });
 
-    document.getElementById("calcular_media").addEventListener("click", CalculaMedia);
+    });
 
-    function CalculaMedia(){
+    $("#inversorId").change(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-        var jan = document.getElementById("jan").value;
-        var feb = document.getElementById("feb").value;
-        var mar = document.getElementById("mar").value;
-        var apr = document.getElementById("apr").value;
-        var may = document.getElementById("may").value;
-        var jun = document.getElementById("jun").value;
-        var jul = document.getElementById("jul").value;
-        var aug = document.getElementById("aug").value;
-        var sep = document.getElementById("sep").value;
-        var oct = document.getElementById("oct").value;
-        var nov = document.getElementById("nov").value;
-        var dec = document.getElementById("dec").value;
-        var media =
-            parseInt(jan)
-            + parseInt(feb)
-            + parseInt(mar)
-            + parseInt(apr)
-            + parseInt(may)
-            + parseInt(jun)
-            + parseInt(jul)
-            + parseInt(aug)
-            + parseInt(sep)
-            + parseInt(oct)
-            + parseInt(nov)
-            + parseInt(dec)
+        var dados = {
+            'product_id': $(this).val()
+        }
 
-        document.getElementById("monthly_usage").value = parseInt(media /12)
+        jQuery.ajax({
+            type: 'get',
+            data: dados,
+            url: '/index.php/produto/all'
+        }).done(function (retorno) {
+            var qtd_paineis = document.getElementById('qtd_inversores').value
+            console.log(parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor)))
+            var valor_total_inversor =  parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor))
+            document.getElementById('produto2_nf').value = valor_total_inversor.toLocaleString('pt-BR',{ minimumFractionDigits: 2  });
 
-    }
+        });
 
-
-
-
+    });
 });
+

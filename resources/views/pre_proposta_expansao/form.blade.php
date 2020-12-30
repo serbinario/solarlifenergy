@@ -250,43 +250,43 @@
 
                                 <tr>
                                     <td>
-                                        <select   class="form-control input-sm" id="produto1" name="produto1">
-                                            <option value="1">MODULO FV SUNERGY 330</option>
-                                            <option value="2">MODULO FV SUNERGY 440</option>
+                                        <select   class="form-control input-sm" id="moduloId" name="moduloId">
+                                            <option value="2">MODULO FV SUNERGY 330</option>
+                                            <option value="1">MODULO FV SUNERGY 440</option>
                                         </select>
                                     </td>
                                     <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
-                                    <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
+                                    <td><input  readonly class="form-control input-sm" name="produto1_nf" type="text" id="produto1_nf" value="{{ old('produto1_nf', isset($preProposta->produto1_nf) ? $preProposta->produto1_nf : null) }}" min="0" max="10" placeholder=""></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select   class="form-control input-sm" id="produto1" name="produto1">
-                                            <option value="1">INVERSOR KSTAR 3k</option>
-                                            <option value="1">INVERSOR KSTAR 5k</option>
-                                            <option value="1">INVERSOR KSTAR 12k</option>
-                                            <option value="1">INVERSOR KSTAR 15k</option>
-                                            <option value="1">INVERSOR KSTAR 20k</option>
-                                            <option value="1">INVERSOR KSTAR 30k</option>
+                                        <select   class="form-control input-sm" id="inversorId" name="inversorId">
+                                            <option value="5">INVERSOR KSTAR 3k</option>
+                                            <option value="7">INVERSOR KSTAR 5k</option>
+                                            <option value="8">INVERSOR KSTAR 12k</option>
+                                            <option value="9">INVERSOR KSTAR 15k</option>
+                                            <option value="10">INVERSOR KSTAR 20k</option>
+                                            <option value="11">INVERSOR KSTAR 30k</option>
                                         </select>
                                     </td>
                                     <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
-                                    <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
+                                    <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : '1') }}" min="0" max="10" placeholder=""></td>
                                 </tr>
                                 </tr>
                                 <tr>
                                     <td><input class="form-control input-sm input-table-solar" name="produto3" type="text" id="produto3" value="{{ old('produto3', isset($preProposta->produto3) ? $preProposta->produto3 : "ESTRUTURA") }}" min="0" max="10" placeholder="Estrutura"></td>
                                     <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->qtd_estrutura) ? $preProposta->qtd_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
-                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->qtd_estrutura) ? $preProposta->qtd_estrutura : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
+                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_estrutura" type="text" id="qtd_estrutura" value="{{ old('qtd_estrutura', isset($preProposta->produto3_nf) ? $preProposta->produto2_nf : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
                                     </tr>
                                 <tr>
                                     <td><input class="form-control input-sm" name="produto4" type="text" id="produto4" value="{{ old('produto4', isset($preProposta->produto4) ? $preProposta->produto4 : "STRING BOX") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->qtd_string_box) ? $preProposta->qtd_string_box : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
-                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->qtd_string_box) ? $preProposta->qtd_string_box : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
+                                    <td><input  readonly class="form-control input-sm input-table-solar" name="qtd_string_box" type="text" id="qtd_string_box" value="{{ old('qtd_mqtd_string_boxud_pde', isset($preProposta->produto4_nf) ? $preProposta->produto4_nf : '1') }}" min="0" max="10" placeholder="Quantidade de string box"></td>
                                   </tr>
                                 <tr>
                                     <td><input class="form-control input-sm input-table-solar" name="produto5" type="text" id="produto5" value="{{ old('produto5', isset($preProposta->produto5) ? $preProposta->produto5 : "KIT MONITORAMENTO WIFI") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input readonly readonly class="form-control input-sm input-table-solar" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->qtd_kit_monitoramento) ? $preProposta->qtd_kit_monitoramento : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
-                                    <td><input readonly readonly class="form-control input-sm input-table-solar" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->qtd_kit_monitoramento) ? $preProposta->qtd_kit_monitoramento : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
+                                    <td><input readonly readonly class="form-control input-sm input-table-solar" name="qtd_kit_monitoramento" type="text" id="qtd_kit_monitoramento" value="{{ old('qtd_kit_monitoramento', isset($preProposta->produto5_nf) ? $preProposta->produto5_nf : '1') }}" min="0" max="10" placeholder="Quantidade de kit inversores"></td>
                                    </tr>
                                {{-- <tr>
                                     <td colspan="3"><input readonly style="text-align:right; padding-right: 20px;" class="form-control input-sm" value="DESCONTOS"></td>

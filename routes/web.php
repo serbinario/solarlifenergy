@@ -167,6 +167,7 @@ Route::group(
     Route::post('/', 'ModuloController@store')
         ->name('modulo.store');
 
+
 });
 
 Route::group(
@@ -480,6 +481,8 @@ Route::group(
 
 });
 
+
+
 Route::group(
     [
         'prefix' => 'proposta-expansao',
@@ -775,6 +778,10 @@ Route::group(
 
     Route::get('/arquivadas/grid', 'ProjetoArquivadoController@grid')
         ->name('projetov2.arquivados.grid');
+
+    Route::get('/all', 'ProdutoController@find')
+        ->name('modulo.find');
+
 
 });
 

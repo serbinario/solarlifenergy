@@ -200,8 +200,4 @@ class ModuloController extends Controller
                 ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
-
-
-
-
 }

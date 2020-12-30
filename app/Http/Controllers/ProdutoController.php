@@ -212,7 +212,9 @@ class ProdutoController extends Controller
         }
     }
 
-
-
+    public function find(Request $request){
+        $modulo = Produto::find($request->get('product_id'));
+        return \Illuminate\Support\Facades\Response::json(['success' => true, 'valor' => $modulo->preco_franquia]);
+    }
 
 }
