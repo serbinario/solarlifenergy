@@ -18,6 +18,7 @@ use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\PrePropostaExpansao;
 use Serbinario\Entities\Prioridade;
 use Serbinario\Entities\Report;
+use Serbinario\Entities\Vendas\Produto;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\PrePropostaExpansaoFormRequest;
 use Serbinario\Http\Requests\PrePropostaFormRequest;
@@ -400,6 +401,12 @@ class PrePropostaExpansaoController extends Controller
             ]);
 
             $data['expansao_id'] = $expansaoId->id;
+
+            $data['produto1_id'] = $request['moduloId'];
+
+
+
+
             $preProposta = PreProposta::create($data);
 
             return redirect()->route('proposta.expansao.edit', $preProposta->id)
@@ -423,16 +430,20 @@ class PrePropostaExpansaoController extends Controller
         $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2', 'modulo', 'clienteExpansao')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::pluck('potencia','id')->all();
+        $produtosInversores = Produto::where('grupo_id', '=', 2)->pluck('produto','id')->all();
+        $produtosModulos = Produto::where('grupo_id', '=', 1)->pluck('produto','id')->all();
+
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
         if($preProposta->cidade_id){
             $cidades = Cidade::where('estado_id', '=', $preProposta->cidade->estado_id)->pluck('nome','id');
         }else{
             $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
         };
+
         $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         $Clientes = Cliente::pluck('nome','id')->all();
         //dd($preProposta->clienteExpansao->qtd_modulos);
-        return view('pre_proposta_expansao.edit', compact('users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
+        return view('pre_proposta_expansao.edit', compact('produtosModulos','produtosInversores', 'users','preProposta','Clientes', 'estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
     /**
@@ -535,7 +546,15 @@ class PrePropostaExpansaoController extends Controller
                     ->withErrors(['error_message' => "Desconto não pode ser maior que o valor da participação"]);
             }
 
-           // dd($data);
+            $data['produto1_id'] = $request['moduloId'];
+            $produto = Produto::find( $request['moduloId']);
+            $data['produto1'] = $produto->produto;
+            $data['produto1_preco'] = $this->convertesRealIngles($produto->preco_franquia);
+            $data['produto1_nf'] = $this->convertesRealIngles($produto->preco_franquia) * (int)$data['qtd_paineis'];
+            //dd($this->convertesRealIngles($produto->preco_franquia) , (int)$data['qtd_paineis']);
+
+
+           //dd($data);
 
             $preProposta->update($data);
 
@@ -636,7 +655,10 @@ class PrePropostaExpansaoController extends Controller
             'pre_proposta_obs',
             'pendencia_obs',
             'pendencia',
-            'valor_mao_obra'
+            'valor_mao_obra',
+            'produto1_id',
+        'produto2_id',
+            'tipo_instalacao'
             ]);
 
         return $data;

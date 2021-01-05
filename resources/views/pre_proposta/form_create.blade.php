@@ -56,7 +56,7 @@
 
     <div class="row">
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                     <label for="monthly_usage" class="col-sm-6 control-label text-bold">Média consumo Kwh.:*</label>
                     <div class="col-md-6">
@@ -82,7 +82,7 @@
         </div>
 
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
                 <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
@@ -92,6 +92,17 @@
                                 {{ $modulo }}
                             </option>
                         @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group {{ $errors->has('tipo_instalacao') ? 'has-error' : '' }}">
+                <label for="tipo_instalacao" class="col-sm-8 control-label text-bold">Tipo de Instalação.:*</label>
+                <div class="col-md-4">
+                    <select   class="form-control input-sm" id="tipo_instalacao" name="tipo_instalacao">
+                        <option value="0">Telhado</option>
+                        <option value="1">Solo</option>
                     </select>
                 </div>
             </div>

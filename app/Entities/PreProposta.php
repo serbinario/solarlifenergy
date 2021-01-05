@@ -129,7 +129,10 @@ class PreProposta extends Model
         'roi',
         'royalties',
         'expansao',
-        'expansao_id'
+        'expansao_id',
+        'produto1_id',
+        'produto2_id',
+        'tipo_instalacao'
 
     ];
 

@@ -101,5 +101,5 @@
     <script src="{{ asset('/js/pre_proposta_expansao/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/util.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/pre_proposta/simulacao.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/pre_proposta_expansao/simulacao.js')}}" type="text/javascript"></script>
 @stop

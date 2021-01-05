@@ -32,7 +32,7 @@ class ProjetosExecurcao extends Model
         'parecer_relacionamento',
         'parecer_relacionamento_image',
         'obra_fechada',
-        'obs_execurcao'
+        'obs_execurcao',
     ];
 
     protected $guarded = [];

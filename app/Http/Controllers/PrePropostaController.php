@@ -311,9 +311,21 @@ class PrePropostaController extends Controller
             $data['produto2_nf'] = $somaInversor;
             $data['produto2_preco'] = $somaInversor;
 
+
             //Soma Estrutura
+
+            $tipo_instalacao = $request->get('tipo_instalacao');
+            $data['tipo_instalacao'] = $tipo_instalacao;
+
+            $valorEstruturaSolo = 0;
+            if($tipo_instalacao == 1){
+                $valorEstruturaSolo = ($return['qtd_modulos'] /4) * 240 ;
+            }
+
+            //dd($valorEstruturaSolo);
+
             $data['qtd_estrutura'] = 1;
-            $somaEstrutura = $return['soma_estrutura'];
+            $somaEstrutura = $return['soma_estrutura'] + $valorEstruturaSolo;
             $data['produto3_nf'] =  $somaEstrutura;
             $data['produto3_preco'] =  $somaEstrutura;
             $data['produto3'] = 'ESTRUTURA';
@@ -399,6 +411,9 @@ class PrePropostaController extends Controller
 
 
 
+
+            //dd($data);
+
 //            if ($return['qtd_modulos'] < 10){
 //                return back()->withInput()
 //                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
@@ -413,7 +428,6 @@ class PrePropostaController extends Controller
            //     return back()->withInput()
            //         ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
            // }
-            //dd($return);
             $preProposta = PreProposta::create($data);
             //;
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
@@ -459,7 +473,6 @@ class PrePropostaController extends Controller
      */
     public function update($id, PrePropostaFormRequest $request)
     {
-
         try {
 
             $data = $this->getData($request);
@@ -672,6 +685,7 @@ class PrePropostaController extends Controller
             'pendencia_obs',
             'pendencia',
             'valor_mao_obra'
+
             ]);
 
         return $data;

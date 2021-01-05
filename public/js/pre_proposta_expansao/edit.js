@@ -136,10 +136,14 @@ $(document).ready(function () {
             data: dados,
             url: '/index.php/produto/all'
         }).done(function (retorno) {
-           var qtd_paineis = document.getElementById('qtd_paineis').value
-            console.log(parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor)))
-            var valor_total_painel =  parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor))
+            var qtd_paineis = document.getElementById('qtd_paineis').value
+            var valor_franquia = document.getElementById('valor_franquia').value
+            var equipe_tecnica = document.getElementById('equipe_tecnica').value
+            var royalties = document.getElementById('royalties').value
+            //console.log(parseFloat(realDolar(valor_franquia)) +  parseFloat(realDolar(equipe_tecnica)) + (parseFloat(realDolar(qtd_paineis)) * parseFloat(realDolar(retorno.valor))) + parseFloat(royalties) )
+            var valor_total_painel =  parseFloat(realDolar(valor_franquia)) +  parseFloat(realDolar(equipe_tecnica)) + (parseFloat(realDolar(qtd_paineis)) * parseFloat(realDolar(retorno.valor))) + parseFloat(royalties)
             document.getElementById('produto1_nf').value = valor_total_painel.toLocaleString('pt-BR',{ minimumFractionDigits: 2  });
+            document.getElementById('valor_modulo').value = retorno.valor
 
         });
 
@@ -165,6 +169,8 @@ $(document).ready(function () {
             console.log(parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor)))
             var valor_total_inversor =  parseInt(qtd_paineis) * parseFloat(realDolar(retorno.valor))
             document.getElementById('produto2_nf').value = valor_total_inversor.toLocaleString('pt-BR',{ minimumFractionDigits: 2  });
+            document.getElementById('produto2_nf').value = retorno.valor
+
 
         });
 
