@@ -67,12 +67,12 @@ trait SimuladorExpansao
 
 
         if($request['qtd_paineis'] > 0){
-            $this->qtdModulos = (int)$request['qtd_paineis'] + (int)$request['expansao_qtd_paineis'];
+            $this->qtdModulos = (int)$request['qtd_paineis'];
             $valor_medio_kw = 100;
             $this->mediaForaPonta  = 100;
             $precoKwh = 0.800;
         }else{
-            $qtd_modulos = $this->getQtdModulos(
+            $this->qtdModulos = $this->getQtdModulos(
                 $valor_medio_kw,
                 0,
                 '4.6',
@@ -81,10 +81,11 @@ trait SimuladorExpansao
                 (float)$modulo->rendimento -0.01,
                 $modulo->area_geracao
             );
-            $this->qtdModulos = $qtd_modulos + (int)$request['expansao_qtd_paineis'];
-        }
 
-        $this->inversores = $this->calculaQtdInversores($modulo->id);
+        }
+        $qtdModuloExpansaoCalculado = $this->qtdModulos + (int)$request['expansao_qtd_paineis'];
+
+        $this->inversores = $this->calculaQtdInversores($modulo->id, $qtdModuloExpansaoCalculado);
         $this->qtdInversores = count($this->inversores );
 
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
@@ -296,13 +297,13 @@ trait SimuladorExpansao
         return $this->qtdModulos *  $this->convertesRealIngles($valorModulo);
     }
 
-    private function calculaQtdInversores($id){
+    private function calculaQtdInversores($id, $qtdModulos){
         $inversores = array();
 
 
         //Regra para módulo 330
-        if($this->qtdModulos >= 21 && $this->qtdModulos <= 30 && $id = 1){
-            $resultado = $this->qtdModulos - 20;
+        if($qtdModulos >= 21 && $qtdModulos <= 30 && $id = 1){
+            $resultado = $qtdModulos - 20;
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 20)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
@@ -314,9 +315,9 @@ trait SimuladorExpansao
             return $inversores;
         }
 
-        if($this->qtdModulos > 126 && $id == 1){
+        if($qtdModulos > 126 && $id == 1){
             $i = 0;
-            for($i = $this->qtdModulos; $i >= 126; $i -=126 ){
+            for($i = $qtdModulos; $i >= 126; $i -=126 ){
                 if($i >126){
                     $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 126)->first();
                     //dd($basePrecoInversores);
@@ -330,14 +331,14 @@ trait SimuladorExpansao
         }elseif($id == 1){
 
 
-            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->first();
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $qtdModulos)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
         }
 
-        if($this->qtdModulos > 108 && $id == 2){
+        if($qtdModulos > 108 && $id == 2){
             $i = 0;
-            for($i = $this->qtdModulos; $i >= 108; $i -=108 ){
+            for($i = $qtdModulos; $i >= 108; $i -=108 ){
                 if($i >108){
                     $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 108)->first();
                     //dd($basePrecoInversores);
@@ -351,7 +352,7 @@ trait SimuladorExpansao
         }elseif($id == 2){
 
 
-            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->first();
+            $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $qtdModulos)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
         }
