@@ -310,8 +310,19 @@ class PrePropostaExpansaoController extends Controller
             $data['produto2_preco'] = $somaInversor;
 
             //Soma Estrutura
+
+            $tipo_instalacao = $request->get('tipo_instalacao');
+            $data['tipo_instalacao'] = $tipo_instalacao;
+
+            $valorEstruturaSolo = 0;
+            if($tipo_instalacao == 1){
+                $valorEstruturaSolo = ($return['qtd_modulos'] /4) * 240 ;
+            }
+
+            //dd($valorEstruturaSolo);
+
             $data['qtd_estrutura'] = 1;
-            $somaEstrutura = $return['soma_estrutura'];
+            $somaEstrutura = $return['soma_estrutura'] + $valorEstruturaSolo;
             $data['produto3_nf'] =  $somaEstrutura;
             $data['produto3_preco'] =  $somaEstrutura;
             $data['produto3'] = 'ESTRUTURA';
@@ -402,10 +413,9 @@ class PrePropostaExpansaoController extends Controller
 
             $data['expansao_id'] = $expansaoId->id;
 
-            $data['produto1_id'] = $request['moduloId'];
+            $data['produto1_id'] = $return['modulo_id'];
 
-
-
+            //dd($return);
 
             $preProposta = PreProposta::create($data);
 
@@ -475,12 +485,13 @@ class PrePropostaExpansaoController extends Controller
             $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
 
             // Recalcula o valor dos módulos
-            $recalculoModulo = (($data['valor_modulo'] *  $data['qtd_paineis'] ) + $data['valor_franquia'] + $data['equipe_tecnica'] + $porcentagemParticipacao) / $data['qtd_paineis'];
-            $somaModulos = round($recalculoModulo,2) * $data['qtd_paineis'];
-            $data['produto1_preco'] =  round($recalculoModulo,2);
+            $recalculoModulo = (($data['valor_modulo'] *  $data['qtd_paineis'] ) + $data['valor_franquia'] + $data['equipe_tecnica'] + $porcentagemParticipacao);
+            $somaModulos = round($recalculoModulo,2) ;
+            $data['produto1_preco'] =  $somaModulos;
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
 
+           // dd($somaModulos,$data['qtd_paineis'], $data['valor_modulo'] , $data['valor_franquia'], $data['equipe_tecnica']);
 
             //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
@@ -547,10 +558,10 @@ class PrePropostaExpansaoController extends Controller
             }
 
             $data['produto1_id'] = $request['moduloId'];
-            $produto = Produto::find( $request['moduloId']);
-            $data['produto1'] = $produto->produto;
-            $data['produto1_preco'] = $this->convertesRealIngles($produto->preco_franquia);
-            $data['produto1_nf'] = $this->convertesRealIngles($produto->preco_franquia) * (int)$data['qtd_paineis'];
+           // $produto = Produto::find( $request['moduloId']);
+           // $data['produto1'] = $produto->produto;
+            //$data['produto1_preco'] = $this->convertesRealIngles($produto->preco_franquia);
+           // $data['produto1_nf'] = $this->convertesRealIngles($produto->preco_franquia) * (int)$data['qtd_paineis'];
             //dd($this->convertesRealIngles($produto->preco_franquia) , (int)$data['qtd_paineis']);
 
 

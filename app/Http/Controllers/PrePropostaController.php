@@ -498,6 +498,7 @@ class PrePropostaController extends Controller
             // FIM Recalcula o valor dos módulos
 
 
+
             //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
             //Calculo do valor Total dos equipamentos

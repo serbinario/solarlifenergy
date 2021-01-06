@@ -125,13 +125,9 @@ trait SimuladorV2
 
         $geracaoEnergiaFV = $this->getGeracaoEnergiaFV($cidade, $this->qtdModulos, $modulo->area_total, $modulo->rendimento);
 
-
-
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
-
         $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 102.32 : "";
-
 
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
 
@@ -292,6 +288,7 @@ trait SimuladorV2
 
 
         //Regra para módulo 330
+
         if($this->qtdModulos >= 21 && $this->qtdModulos <= 30 && $id == 1){
             $resultado = $this->qtdModulos - 20;
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 20)->first();
@@ -342,8 +339,9 @@ trait SimuladorV2
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
 
         }elseif($id == 2){
-            if($this->qtdModulos <= 20){
-                $resultado = $this->qtdModulos - 11;
+            if($this->qtdModulos <= 20 && $this->qtdModulos >= 18){
+
+                $resultado = $this->qtdModulos - 18;
                 $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', 18)->first();
                 $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                 $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];

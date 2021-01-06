@@ -42,6 +42,7 @@ trait SimuladorExpansao
     private $inversores = 0;
     private $mc4 = 0;
     private $mediaForaPonta = 0;
+    private $moduloId = "";
 
     function simularGeracao($request){
 
@@ -86,9 +87,11 @@ trait SimuladorExpansao
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
         if($this->potenciaModulo == 1){
             $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
+            $this->moduloId = Produto::where('id' , '=', '2')->first()->id;
             $ModuloFabricante =  Produto::with('marca')->where('id' , '=', 2)->first()->marca->marca;
         }else{
             $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '1')->first()->preco_franquia;
+            $this->moduloId = Produto::where('id' , '=', '1')->first()->id;
             $ModuloFabricante =  Produto::with('marca')->where('id' , '=', 1)->first()->marca->marca;
         }
 
@@ -138,6 +141,7 @@ trait SimuladorExpansao
                 'success' => true,
                 'valor_modulo' => $this->valorModulo,
                 'modulo_potencia' => $modulo->potencia,
+                'modulo_id' => $this->moduloId,
                 'qtd_modulos' => $this->qtdModulos,
                 'modulo_marca' => $ModuloFabricante,
                 'potencia_gerador' => $potenciaGerador,

@@ -55,7 +55,7 @@
 
     <div class="row">
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
                     <label for="monthly_usage" class="col-sm-6 control-label text-bold">Média consumo Kwh.:*</label>
                     <div class="col-md-6">
@@ -81,12 +81,25 @@
         </div>
 
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group {{ $errors->has('modulo_id') ? 'has-error' : '' }}">
                 <label for="modulo_id" class="col-sm-8 control-label text-bold">Painel Potência.:*</label>
                 <div class="col-md-4">
                     <input readonly class="form-control input-sm"  type="text" value="{{ old('monthly_usage', isset($preProposta->modulo->potencia) ? $preProposta->modulo->potencia : null) }}" maxlength="10" placeholder="">
 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group {{ $errors->has('solo') ? 'has-error' : '' }}">
+                <label for="solo" class="col-sm-8 control-label text-bold">Tipo de Instalação.:*</label>
+                <div class="col-md-4">
+                    @if($preProposta->tipo_instalacao == 1)
+                        <input class="form-control input-sm" name="" type="text" id="" readonly value="Solo" >
+                    @else
+                        <input class="form-control input-sm" name="" type="text" id="" readonly value="Telhado" >
+                    @endif
                 </div>
             </div>
         </div>
