@@ -202,24 +202,21 @@
     <div class="row group-title">
         <span class="sc-fEVUGC title">Projeto do cliente</span>
         <div class="col-md-5">
-            <div class="form-group {{ $errors->has('monthly_usage') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('expansao_inversor_id') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-md-2 control-label text-bold">Inversor.:*</label>
                 <div class="col-md-6">
-                    <select   class="form-control input-sm" id="expansao_invesor" name="expansao_inversor">
-                        <option value="" disabled selected>Inversor</option>
-                        <option value="3k" >3K</option>
-                        <option value="5k" >5K</option>
-                        <option value="12k" >12K</option>
-                        <option value="15k" >15K</option>
-                        <option value="20k" >20K</option>
-                        <option value="30k" >30K</option>
-
+                    <select   class="form-control input-sm" id="" name="expansao_inversor_id">
+                        @foreach ($produtos as $key => $produto)
+                            <option value="{{ $key }}" {{ old('expansao_inversor_id', isset($produto->id) ? $produto->id : null) == $key ? 'selected' : '' }}>
+                                {{ $produto }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('expansao_qtd_paineis') ? 'has-error' : '' }}">
                 <label for="qtd_paineis1" class="col-md-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
                     <input class="form-control input-sm " name="expansao_qtd_paineis" type="text" id="expansao_qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->expansao->qtd_paineis) ? $preProposta->expansao->qtd_paineis : "") }}" maxlength="10" >

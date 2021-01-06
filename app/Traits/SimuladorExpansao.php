@@ -64,13 +64,15 @@ trait SimuladorExpansao
         //dd($request->all());
         $this->mediaForaPonta = $request->get('monthly_usage');
 
+
+
         if($request['qtd_paineis'] > 0){
-            $this->qtdModulos = (int)$request['qtd_paineis'];
+            $this->qtdModulos = (int)$request['qtd_paineis'] + (int)$request['expansao_qtd_paineis'];
             $valor_medio_kw = 100;
             $this->mediaForaPonta  = 100;
             $precoKwh = 0.800;
         }else{
-            $this->qtdModulos = $this->getQtdModulos(
+            $qtd_modulos = $this->getQtdModulos(
                 $valor_medio_kw,
                 0,
                 '4.6',
@@ -79,6 +81,7 @@ trait SimuladorExpansao
                 (float)$modulo->rendimento -0.01,
                 $modulo->area_geracao
             );
+            $this->qtdModulos = $qtd_modulos + (int)$request['expansao_qtd_paineis'];
         }
 
         $this->inversores = $this->calculaQtdInversores($modulo->id);
@@ -131,11 +134,16 @@ trait SimuladorExpansao
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($this->mediaForaPonta , '0',array_sum($geracaoEnergiaFV)/12 );
 
-
         $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 102.32 : "";
 
-
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
+
+
+        $inversor = Produto::find($request->get('expansao_inversor_id'));
+        $inversorValor = $inversor->preco_franquia;
+        $inversorModelo =  $inversor->produto;
+        $inversorValorDesconto = ($this->convertesRealIngles($inversorValor) /100) * 50;
+
         return
             [
                 'success' => true,
@@ -173,7 +181,9 @@ trait SimuladorExpansao
                 'geracao_fv' => $geracaoEnergiaFV,
                 'valor_franqueadora' =>  $this->valorFranqueadora,
                 'irradiacao_anual' => $this->irradiacao_anual,
-                'obs' => $obs
+                'obs' => $obs,
+                'inversorDesconto' => $inversorValorDesconto,
+                'inversor_modelo' => $inversorModelo
 
             ];
     }

@@ -132,7 +132,8 @@ class PreProposta extends Model
         'expansao_id',
         'produto1_id',
         'produto2_id',
-        'tipo_instalacao'
+        'tipo_instalacao',
+        'inversor_desconto'
 
     ];
 

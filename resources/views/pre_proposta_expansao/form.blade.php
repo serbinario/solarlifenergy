@@ -322,6 +322,11 @@
                                     <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="valor_modulo" type="text" id="valor_modulo" value="{{ old('valor_modulo', isset($preProposta->valor_modulo) ? $preProposta->valor_modulo : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
+                                <tr>
+                                    <td colspan="2" style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">DESCONTO INVERSOR</td>
+                                    <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="inversor_desconto" type="text" id="inversor_desconto" value="{{ old('inversor_desconto', isset($preProposta->inversor_desconto) ? $preProposta->inversor_desconto : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
+                                </tr>
+
 
 
 

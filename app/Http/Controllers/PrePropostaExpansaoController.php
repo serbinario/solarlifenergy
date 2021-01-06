@@ -198,6 +198,7 @@ class PrePropostaExpansaoController extends Controller
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::where('is_active', '=', 1)->pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
+        $produtos = Produto::where('grupo_id', '=', 2)->pluck('produto', 'id');
 
         $cidades = Cidade::where('estado_id', '=', '1')->pluck('nome','id');
 
@@ -207,11 +208,11 @@ class PrePropostaExpansaoController extends Controller
         if($user->hasRole('super-admin')) {
             $users = User::orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         }else{
-            $users = User::where('franquia_id' , '=', $franquia_id)->orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
+            $users = User::where( 'franquia_id' , '=', $franquia_id)->orderBy('name')->orderBy('name','asc')->pluck('name','id')->all();
         }
 
 
-        return view('pre_proposta_expansao.create', compact('Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
+        return view('pre_proposta_expansao.create', compact('produtos','Clientes', 'users','estados', 'cidades', 'bfs', 'modulos', 'prioridades'));
     }
 
     /**
@@ -250,6 +251,8 @@ class PrePropostaExpansaoController extends Controller
              */
 
             $return = $this->simularGeracao($request);
+
+            //dd($return);
 
             $data['modulo_id'] = $request->get('modulo_id');
 
@@ -343,7 +346,11 @@ class PrePropostaExpansaoController extends Controller
 
             $data['valor_franquia'] = $participacao;
 
-            $somaEquipamentos = $somaModulos + $somaInversor + $somaEstrutura + $somaString;
+            $inversorDesconto = $return['inversorDesconto'];
+
+            $data['inversor_desconto'] = $inversorDesconto;
+
+            $somaEquipamentos = $somaModulos + $somaInversor + $somaEstrutura + $somaString - $inversorDesconto;
             $data['total_equipamentos'] = $somaEquipamentos;
 
             $data['preco_medio_instalado'] = $somaEquipamentos;
@@ -406,7 +413,7 @@ class PrePropostaExpansaoController extends Controller
 
             $data['expansao'] = 1;
             $expansaoId = PrePropostaExpansao::create([
-                'inversor' => $request->get('expansao_inversor'),
+                'inversor' => $return['inversor_modelo'],
                 'potencia_modulo' => $request->get('potencia_modulo'),
                 'qtd_modulos' => $request->get('expansao_qtd_paineis'),
             ]);
@@ -415,7 +422,6 @@ class PrePropostaExpansaoController extends Controller
 
             $data['produto1_id'] = $return['modulo_id'];
 
-            //dd($return);
 
             $preProposta = PreProposta::create($data);
 
@@ -491,9 +497,6 @@ class PrePropostaExpansaoController extends Controller
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
 
-           // dd($somaModulos,$data['qtd_paineis'], $data['valor_modulo'] , $data['valor_franquia'], $data['equipe_tecnica']);
-
-            //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
 
             //Calculo do valor Total dos equipamentos
             $user = User::find(Auth::id());
@@ -516,6 +519,8 @@ class PrePropostaExpansaoController extends Controller
                 + $this->convertesRealIngles($preProposta->produto5_nf)
                 + $somaModulos;
             $data['total_equipamentos'] = $somaEquipamentos;
+
+
             //FIM Calculo do valor Total dos equipamentos
 
             //Servicos Operacionais
@@ -527,13 +532,11 @@ class PrePropostaExpansaoController extends Controller
             $somaServicosOperacionais = $data['total_servico_operacional'];
             //Fim Servicos Operacionais
 
-            //dd($somaEquipamentos, (float)$somaServicosOperacionais, (float)$descontoFranquia);
-            $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia ;
+            $inversor_desconto = $data['inversor_desconto'];
+            $totalInvestimento = $somaEquipamentos + (float)$somaServicosOperacionais - (float)$descontoFranquia - $inversor_desconto ;
             $data['preco_medio_instalado'] = $totalInvestimento;
 
 
-            //[RF002-RN002]
-            //$data['valor_franqueadora'] =  (int)$preProposta->produto2_nf + (int)$preProposta->produto3_nf + (int)$preProposta->produto4_nf + (int)$preProposta->produto5_nf;
 
             $valor_franquia = $data['valor_franquia'];
             $equipe_tecnica = $data['equipe_tecnica'];
@@ -669,7 +672,8 @@ class PrePropostaExpansaoController extends Controller
             'valor_mao_obra',
             'produto1_id',
         'produto2_id',
-            'tipo_instalacao'
+            'tipo_instalacao',
+            'inversor_desconto'
             ]);
 
         return $data;

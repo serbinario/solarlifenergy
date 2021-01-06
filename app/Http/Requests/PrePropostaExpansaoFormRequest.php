@@ -29,6 +29,9 @@ class PrePropostaExpansaoFormRequest extends FormRequest
             'modulo_id' => 'required',
             'cidade_id' => 'required',
             'estado_id' => 'required',
+            'potencia_modulo'  => 'required',
+            'expansao_qtd_paineis'  => 'required',
+            'expansao_inversor_id'  => 'required',
 
         ];
     }
