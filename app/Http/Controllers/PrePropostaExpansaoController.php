@@ -335,7 +335,7 @@ class PrePropostaExpansaoController extends Controller
             $somaString = $return['soma_string'];
             $data['produto4_nf'] = $somaString;
             $data['produto4_preco'] = $somaString;
-            $data['produto4'] = 'STRING BOX';
+            $data['produto4'] = 'ELÉTRICA';
 
             //Kit Monitoramento
             $data['qtd_kit_monitoramento'] = 1 ;

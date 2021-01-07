@@ -1,7 +1,7 @@
 <div class="card-body">
 
 <div class="group-title">
-    <span class="sc-fEVUGC title">Projeto</span>
+    <span class="sc-fEVUGC title">Novo Projeto</span>
     <div class="row">
         <div class="col-sm-6">
             @if(isset($preProposta->cliente->nome))
@@ -200,7 +200,7 @@
     </div>
 </div>
     <div class="row group-title">
-        <span class="sc-fEVUGC title">Projeto do cliente</span>
+        <span class="sc-fEVUGC title">Projeto Atual</span>
         <div class="col-md-5">
             <div class="form-group {{ $errors->has('expansao_inversor_id') ? 'has-error' : '' }}">
                 <label for="monthly_usage" class="col-md-2 control-label text-bold">Inversor.:*</label>
