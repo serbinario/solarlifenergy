@@ -497,10 +497,6 @@ class PrePropostaController extends Controller
             $data['produto1_nf'] = $somaModulos;
             // FIM Recalcula o valor dos módulos
 
-
-
-            //dd($data['valor_modulo'] ,  $data['qtd_paineis'] , $data['valor_franquia'], $data['equipe_tecnica'], $porcentagemParticipacao, $data['qtd_paineis'] );
-
             //Calculo do valor Total dos equipamentos
             $user = User::find(Auth::id());
             if($user->hasRole('super-admin')) {
@@ -514,7 +510,6 @@ class PrePropostaController extends Controller
                 $valorInversor = $this->convertesRealIngles($preProposta->produto2_nf);
 
             }
-
 
             $somaEquipamentos = $valorInversor
             //$somaEquipamentos = $this->convertesRealIngles($preProposta->produto2_nf)
@@ -540,8 +535,6 @@ class PrePropostaController extends Controller
 
 
             //[RF002-RN002]
-            //$data['valor_franqueadora'] =  (int)$preProposta->produto2_nf + (int)$preProposta->produto3_nf + (int)$preProposta->produto4_nf + (int)$preProposta->produto5_nf;
-
             $valor_franquia = $data['valor_franquia'];
             $equipe_tecnica = $data['equipe_tecnica'];
             $valor_modulo   = $data['valor_modulo'];
@@ -554,15 +547,6 @@ class PrePropostaController extends Controller
                 + $this->convertesRealIngles($preProposta->produto4_nf)
                 + $this->convertesRealIngles($preProposta->produto5_nf)
                 + ((int)$data['valor_modulo'] * $data['qtd_paineis']);
-
-
-
-            //dd( $data['valor_franqueadora'], (int)$data['valor_modulo'], $this->convertesRealIngles($preProposta->produto2_nf),$this->convertesRealIngles($preProposta->produto3_nf), $this->convertesRealIngles($preProposta->produto4_nf),$this->convertesRealIngles($preProposta->produto5_nf));
-
-            //$data['valor_franqueadora'] = $data['total_equipamentos'] - $data['equipe_tecnica'] - $data['valor_franquia'];
-
-            //dd($data['valor_modulo']);
-            //dd($data);
 
 
             $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
@@ -580,9 +564,9 @@ class PrePropostaController extends Controller
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
 
-            if ($roi > 3.9 && $ParametrRoi->active && $preProposta->monthly_usage < 700){
+            if ($roi > 4.6 && $ParametrRoi->active && $preProposta->monthly_usage < 700){
                 return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 4.5 anos"]);
             }
 
             $preProposta->update($data);
