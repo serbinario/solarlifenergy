@@ -175,7 +175,7 @@ class PrePropostaExpansaoController extends Controller
                                 <a href="proposta-expansao/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
-                                <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Proposta">
+                                <a href="/report/'.$row->id.'/propostaExpansao" class="btn btn-primary" target="_blank" title="Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>  
                                 <a href="#" class="btn btn-primary arquivar"  title="Arquivar">
