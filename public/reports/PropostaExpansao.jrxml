@@ -1257,6 +1257,30 @@ where pre_propostas.id =  $P{id}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{monthly_usage}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="57" y="140" width="220" height="15" uuid="06c22ba6-1422-4636-94ab-75bde27e840b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="159" width="220" height="15" uuid="637ac67e-dc45-45c7-a046-5637349c3342">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="287" y="159" width="103" height="15" uuid="746f65d6-1865-4b11-b5c0-8368dc92f46b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="139" width="103" height="15" uuid="d947267d-8865-4e1f-998b-294ea71f966f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
 		</band>
 		<band height="535">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -2111,14 +2135,7 @@ where pre_propostas.id =  $P{id}]]>
 			</break>
 			<image>
 				<reportElement x="14" y="0" width="760" height="535" uuid="f5cb884c-f3a3-48c7-87f6-3147e0f85d32"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/images/proposta122020/06.png"]]></imageExpression>
-			</image>
-		</band>
-		<band height="535">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<image>
-				<reportElement x="14" y="0" width="760" height="535" uuid="d17f1133-b998-4cf6-9c69-5fbf30acebd2"/>
-				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/images/proposta122020/07.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/images/proposta122020/06_expansao.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="535">
