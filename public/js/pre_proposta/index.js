@@ -73,12 +73,16 @@ const table = $('#preProposta').DataTable({
         {data: 'codigo', name: 'codigo',  targets: 0, visible: false},
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                propostaVencida = ""
+                if( monthDifference(oData.created_at) >= 1){
+                    propostaVencida = "    <span class=\"badge badge-danger\">" + "Vencida</span>"
+                }
                 if(oData.projeto != null){
                     var pago = "";
                     oData.status_projeto == 8 || oData.status_projeto == 1 ? pago =  "<i class=\"icon i20d icon-22\"></i>": pago = "<i class=\"icon i20 icon-22\"></i>"
-                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>" + pago)
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-primary\">"+ "Projeto Gerado</span>" + pago + propostaVencida)
                 }else{
-                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" + "Sem Projeto</span>");
+                    $(nTd).html(oData.nome_empresa  + "    <span class=\"badge badge-warning\">" + "Sem Projeto</span>" + propostaVencida);
                 }
             }
         },
@@ -88,7 +92,7 @@ const table = $('#preProposta').DataTable({
         {data: 'data_validade', name: 'pre_propostas.data_validade', visible: false},
         {data: 'name', name: 'users.name', targets: 0, visible: false},
         {data: 'franquaia', name: 'franquaia', visible: false},
-        {data: 'created_at', name: 'pre_propostas.created_at'},
+        {data: 'created_at', name: 'pre_propostas.created_at', "render": function (data) { return  moment(new Date(data)).format("DD/MM/YYYY") }},
         {data: 'updated_at', name: 'pre_propostas.updated_at',  targets: 0, visible: false},
         {data: 'prioridade', name: 'prioridades.name'},
         {data: 'pendencia', name: 'pendencia', visible: true,
@@ -102,6 +106,11 @@ const table = $('#preProposta').DataTable({
         {data: 'action', name: 'action', orderable: false, searchable: false, width: '90px'}
     ]
 });
+
+function monthDifference(startDate) {
+     return month =  moment(new Date()).diff(new Date(startDate), 'months', true);
+
+}
 
 // Add event listener for opening and closing details
 var detailRows = [];

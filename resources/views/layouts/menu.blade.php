@@ -191,7 +191,7 @@
 							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
 
 							@endrole
-							
+
 							@if(Auth::user()->franquia->id == 14)
 								<li><a href="{{ route('proposta.expansao.index') }}" class="active"><span class="title">Propostas Expansão</span></a></li>
 							@endif

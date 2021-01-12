@@ -23,6 +23,14 @@
         </div>
     @endif
 
+    @if($preProposta->created_at->diff(new DateTime())->m >= 1)
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+            <div>Prezados, proposta não autorizada por está vencida.</div>
+    </div>
+    @endif
+
+
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
