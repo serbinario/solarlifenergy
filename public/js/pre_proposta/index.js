@@ -74,7 +74,7 @@ const table = $('#preProposta').DataTable({
         {data: 'nome_empresa', name: 'nome_empresa',
             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 propostaVencida = ""
-                if( monthDifference(oData.created_at) >= 1){
+                if( monthDifference(oData.created_at) >= 1 && oData.projeto == null){
                     propostaVencida = "    <span class=\"badge badge-danger\">" + "Vencida</span>"
                 }
                 if(oData.projeto != null){
