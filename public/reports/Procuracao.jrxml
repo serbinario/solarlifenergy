@@ -226,7 +226,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cpf_cnpj}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="80" width="130" height="20" uuid="d7be3b92-3aaf-4a8e-b960-91acef6ba482">
