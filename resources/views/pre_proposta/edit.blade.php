@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    @if($preProposta->created_at->diff(new DateTime())->m >= 1)
+    @if($preProposta->created_at->diff(new DateTime())->m >= 1 && !$preProposta->estar_finalizado == 1)
     <div class="alert alert-danger">
         <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
             <div>Prezados, proposta não autorizada por está vencida.</div>

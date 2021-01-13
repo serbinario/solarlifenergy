@@ -833,17 +833,20 @@
             </div>
 
     </div>
-
-    <div class="form-group">
-        <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Fechada?.:</label>
-        <div class="col-md-10">
-            <div class="checkbox checkbox-styled">
-                <label for="estar_finalizado">
-                    <input id="estar_finalizado" class="" name="estar_finalizado" type="checkbox" value="1" {{ old('estar_finalizado', isset($preProposta->estar_finalizado) ? $preProposta->estar_finalizado : null) == '1' ? 'checked' : '' }}>
-                </label>
+    @if($preProposta->created_at->diff(new DateTime())->m < 1)
+        <div class="form-group">
+            <label for="estar_finalizado" class="col-md-2 control-label text-bold">Proposta Fechada?.:</label>
+            <div class="col-md-10">
+                <div class="checkbox checkbox-styled">
+                    <label for="estar_finalizado">
+                        <input id="estar_finalizado" class="" name="estar_finalizado" type="checkbox" value="1" {{ old('estar_finalizado', isset($preProposta->estar_finalizado) ? $preProposta->estar_finalizado : null) == '1' ? 'checked' : '' }}>
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
+
 
 
 
