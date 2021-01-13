@@ -64,25 +64,17 @@ trait SimuladorExpansao
         //dd($request->all());
         $this->mediaForaPonta = $request->get('monthly_usage');
 
+        $this->qtdModulos = $this->getQtdModulos(
+            $valor_medio_kw,
+            0,
+            '4.6',
+            $this->irradiacao_anual/1000,
+            '30',
+            (float)$modulo->rendimento -0.01,
+            $modulo->area_geracao
+        );
 
 
-        if($request['qtd_paineis'] > 0){
-            $this->qtdModulos = (int)$request['qtd_paineis'];
-            $valor_medio_kw = 100;
-            $this->mediaForaPonta  = 100;
-            $precoKwh = 0.800;
-        }else{
-            $this->qtdModulos = $this->getQtdModulos(
-                $valor_medio_kw,
-                0,
-                '4.6',
-                $this->irradiacao_anual/1000,
-                '30',
-                (float)$modulo->rendimento -0.01,
-                $modulo->area_geracao
-            );
-
-        }
         $qtdModuloExpansaoCalculado = $this->qtdModulos + (int)$request['expansao_qtd_paineis'];
 
         $this->inversores = $this->calculaQtdInversores($modulo->id, $qtdModuloExpansaoCalculado);

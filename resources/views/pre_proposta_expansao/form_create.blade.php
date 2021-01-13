@@ -74,7 +74,7 @@
             <div class="form-group {{ $errors->has('preco_kwh') ? 'has-error' : '' }}">
                 <label for="qtd_paineis" class="col-sm-6 control-label text-bold">Qtd Paineis.:*</label>
                 <div class="col-md-4">
-                    <input class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="" maxlength="10" >
+                    <input readonly class="form-control input-sm " name="qtd_paineis" type="text" id="qtd_paineis" value="" maxlength="10" >
 
                 </div>
             </div>
