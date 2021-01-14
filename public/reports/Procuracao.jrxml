@@ -150,8 +150,8 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textFieldExpression><![CDATA[$F{c_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="477" width="457" height="30" uuid="357c8772-be4a-403e-8875-562898cec5ea"/>
-				<textElement>
+				<reportElement x="0" y="477" width="557" height="30" uuid="357c8772-be4a-403e-8875-562898cec5ea"/>
+				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{p_cidade} + " - " + $F{p_estado} + "________ de" +  "_____________________ de" + " 2021 "]]></textFieldExpression>
@@ -483,7 +483,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement textAlignment="Justified">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["PODERES: Pelo presente, nomeio e constituo meu Procurador (a) o Outorgado acima, ao qual dou plenos poderes para me representar, inclusive os das cláusulas “AD JUDICIA” e “AD NEGOTIA”, para o Foro em geral, representar-me junto a Concessionária de Energia Celpe, enfim, praticar todos os atos legais necessários ao fiel cumprimento do presente mandato. Cessando os efeitos deste a partir do dia " + new SimpleDateFormat("dd/MM/yyyy").format($F{data_validade})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["PODERES: Pelo presente, nomeio e constituo meu Procurador (a) o Outorgado acima, ao qual dou plenos poderes para me representar, inclusive os das cláusulas “AD JUDICIA” e “AD NEGOTIA”, para o Foro em geral, representar-me junto a Concessionária de Energia, enfim, praticar todos os atos legais necessários ao fiel cumprimento do presente mandato. Cessando os efeitos deste a partir do dia " + new SimpleDateFormat("dd/MM/yyyy").format($F{data_validade})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="513" y="230" width="30" height="20" uuid="dff3e769-dee3-4dbe-aadc-16d70b647349">
