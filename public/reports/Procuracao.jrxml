@@ -26,13 +26,13 @@ c.bairro as  c_bairro,
 c.estado as  c_estado,
 p.id,
 p.outorgante, 
-p.rg, 
-p.orgao_expeditor, 
-p.cpf, 
-p.endereco, 
-p.bairro, 
-p.cidade,
-p.estado,
+p.rg as p_rg, 
+p.orgao_expeditor as p_orgao_expeditor, 
+p.cpf as p_cpf,
+p.endereco as p_endereco, 
+p.bairro as p_bairro, 
+p.cidade as p_cidade,
+p.estado as p_estado,
 p.data_validade
  FROM procuracoes AS p
 INNER JOIN clientes AS c ON c.id = p.cliente_id
@@ -82,32 +82,32 @@ WHERE p.id =  $P{id_procuracao}]]>
 		<property name="com.jaspersoft.studio.field.label" value="outorgante"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="rg" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+	<field name="p_rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="orgao_expeditor" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="orgao_expeditor"/>
+	<field name="p_orgao_expeditor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_orgao_expeditor"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="cpf" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+	<field name="p_cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_cpf"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="endereco" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+	<field name="p_endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_endereco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="bairro" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
+	<field name="p_bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_bairro"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="cidade" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+	<field name="p_cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_cidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="estado" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+	<field name="p_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_estado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
 	<field name="data_validade" class="java.sql.Date">
@@ -154,7 +154,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade} + " - " + $F{estado} + "________ de" +  "_____________________ de" + " 2021 "]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_cidade} + " - " + $F{p_estado} + "________ de" +  "_____________________ de" + " 2021 "]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="178" y="540" width="200" height="1" uuid="3bf2831d-c23d-43d3-b8af-fdd593b7659c">
@@ -191,7 +191,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textFieldExpression><![CDATA[$F{c_rg}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="354" y="40" width="110" height="20" uuid="98089ab8-f25c-44e9-820b-8dfac11f5337">
+				<reportElement x="354" y="40" width="203" height="20" uuid="98089ab8-f25c-44e9-820b-8dfac11f5337">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -358,7 +358,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_endereco}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="124" y="190" width="110" height="20" uuid="5a8d7944-1475-454c-b410-7a2229df0f4e">
@@ -369,7 +369,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_cpf}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="230" width="130" height="20" uuid="c383873e-f19a-423c-9814-524087c19675">
@@ -389,7 +389,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_rg}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="210" width="130" height="20" uuid="e79051b1-e18a-432a-8537-d598316527b9">
@@ -411,7 +411,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_cidade}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="354" y="170" width="110" height="20" uuid="ebce9e4b-9f77-43fb-960e-07f7ab08e0a6">
@@ -422,7 +422,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{orgao_expeditor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_orgao_expeditor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="124" y="230" width="110" height="20" uuid="e43467e7-22aa-46bc-881e-78fa86ae813e">
@@ -433,7 +433,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_bairro}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="460" y="230" width="64" height="20" uuid="63c74c30-743f-4fe0-b697-1f55550540a5">
@@ -494,7 +494,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{c_estado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{p_estado}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
