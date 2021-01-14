@@ -15,14 +15,15 @@
 	<parameter name="id_procuracao" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
-c.nome, 
-c.rg, 
-c.orgao_emissor_rg, 
-c.cpf_cnpj, 
-c.endereco, 
-c.cidade, 
-c.bairro,
-c.estado,
+c.nome as  c_nome, 
+c.rg as  c_rg,
+c.orgao_emissor_rg as c_orgao_emissor_rg, 
+c.cpf_cnpj as c_cpf_cnpj, 
+c.cpf as c_cpf, 
+c.endereco as  c_endereco,
+c.cidade as  c_cidade,
+c.bairro as  c_bairro,
+c.estado as  c_estado,
 p.id,
 p.outorgante, 
 p.rg, 
@@ -37,39 +38,43 @@ p.data_validade
 INNER JOIN clientes AS c ON c.id = p.cliente_id
 WHERE p.id =  $P{id_procuracao}]]>
 	</queryString>
-	<field name="nome" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+	<field name="c_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_nome"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="rg" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+	<field name="c_rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="orgao_emissor_rg" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="orgao_emissor_rg"/>
+	<field name="c_orgao_emissor_rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_orgao_emissor_rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="cpf_cnpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="cpf_cnpj"/>
+	<field name="c_cpf_cnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_cpf_cnpj"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="endereco" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+	<field name="c_cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_cpf"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="cidade" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+	<field name="c_endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_endereco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="bairro" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
+	<field name="c_cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_cidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="estado" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+	<field name="c_bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_bairro"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="id" class="java.lang.Integer">
+	<field name="c_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="c_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
@@ -77,7 +82,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 		<property name="com.jaspersoft.studio.field.label" value="outorgante"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="COLUMN_11" class="java.lang.String">
+	<field name="rg" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
@@ -89,19 +94,19 @@ WHERE p.id =  $P{id_procuracao}]]>
 		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="COLUMN_14" class="java.lang.String">
+	<field name="endereco" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="COLUMN_15" class="java.lang.String">
+	<field name="bairro" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="COLUMN_16" class="java.lang.String">
+	<field name="cidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
-	<field name="COLUMN_17" class="java.lang.String">
+	<field name="estado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="estado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="procuracoes"/>
 	</field>
@@ -142,15 +147,15 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_nome}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="207" y="477" width="350" height="30" uuid="aa3b352a-4fde-4d09-90d3-c8f2e89dab0c"/>
+			<textField>
+				<reportElement x="100" y="477" width="457" height="30" uuid="357c8772-be4a-403e-8875-562898cec5ea"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Cabo de Santo Agostinho - PE,        de                  de 2021]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{cidade} + " - " + $F{estado} + "________ de" +  "_____________________ de" + " 2021 "]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="178" y="540" width="200" height="1" uuid="3bf2831d-c23d-43d3-b8af-fdd593b7659c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -183,7 +188,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_rg}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="354" y="40" width="110" height="20" uuid="98089ab8-f25c-44e9-820b-8dfac11f5337">
@@ -194,7 +199,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{orgao_emissor_rg}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_orgao_emissor_rg}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="230" y="40" width="130" height="20" uuid="b1df3c1c-ad13-4422-b12d-a20028733a27">
@@ -226,7 +231,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_cpf}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="80" width="130" height="20" uuid="d7be3b92-3aaf-4a8e-b960-91acef6ba482">
@@ -247,7 +252,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_endereco}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="124" y="100" width="110" height="20" uuid="cbbac4d8-6e86-4c01-a755-77f51ee7d76f">
@@ -258,7 +263,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_bairro}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="300" y="100" width="150" height="20" uuid="5284bc3a-61a4-4739-9709-13b7e546045a">
@@ -269,7 +274,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_cidade}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="235" y="100" width="65" height="20" uuid="38c7bb50-eac4-45b2-96fa-5894abd3dd96">
@@ -311,7 +316,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{c_estado}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="235" y="230" width="65" height="20" uuid="66127060-c9d9-41ee-9d73-f1f5ea6e515b">
@@ -353,7 +358,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_14}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="124" y="190" width="110" height="20" uuid="5a8d7944-1475-454c-b410-7a2229df0f4e">
@@ -384,7 +389,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_11}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="210" width="130" height="20" uuid="e79051b1-e18a-432a-8537-d598316527b9">
@@ -406,7 +411,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_16}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="354" y="170" width="110" height="20" uuid="ebce9e4b-9f77-43fb-960e-07f7ab08e0a6">
@@ -420,17 +425,6 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textFieldExpression><![CDATA[$F{orgao_expeditor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="527" y="230" width="30" height="20" uuid="8b5b51cf-8ca2-47b2-9705-116beea21c95">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_17}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="124" y="230" width="110" height="20" uuid="e43467e7-22aa-46bc-881e-78fa86ae813e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -439,7 +433,7 @@ WHERE p.id =  $P{id_procuracao}]]>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CENTRO"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="460" y="230" width="64" height="20" uuid="63c74c30-743f-4fe0-b697-1f55550540a5">
@@ -490,6 +484,17 @@ WHERE p.id =  $P{id_procuracao}]]>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["PODERES: Pelo presente, nomeio e constituo meu Procurador (a) o Outorgado acima, ao qual dou plenos poderes para me representar, inclusive os das cláusulas “AD JUDICIA” e “AD NEGOTIA”, para o Foro em geral, representar-me junto a Concessionária de Energia Celpe, enfim, praticar todos os atos legais necessários ao fiel cumprimento do presente mandato. Cessando os efeitos deste a partir do dia " + new SimpleDateFormat("dd/MM/yyyy").format($F{data_validade})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="513" y="230" width="30" height="20" uuid="dff3e769-dee3-4dbe-aadc-16d70b647349">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_estado}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
