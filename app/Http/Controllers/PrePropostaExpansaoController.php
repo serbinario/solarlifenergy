@@ -196,7 +196,7 @@ class PrePropostaExpansaoController extends Controller
         $prioridades = Prioridade::pluck('name','id')->all();
         $Clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id')->all();
         $estados = Estado::pluck('nome','id')->all();
-        $modulos = Modulo::where('is_active', '=', 1)->pluck('potencia','id')->all();
+        $modulos = Modulo::pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
         $produtos = Produto::where('grupo_id', '=', 2)->pluck('produto', 'id');
 

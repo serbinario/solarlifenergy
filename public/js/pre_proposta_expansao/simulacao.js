@@ -60,8 +60,8 @@ function atualizaValores(){
     //var desconto_equipamentos = document.getElementById('desconto_equipamentos').value
 
     var total_equipamentos = document.getElementById('total_equipamentos').value
-   /* var produto12_nf = document.getElementById('produto12_nf').value
-    var equipe_tecnica = document.getElementById('equipe_tecnica').value*/
+    /* var produto12_nf = document.getElementById('produto12_nf').value
+     var equipe_tecnica = document.getElementById('equipe_tecnica').value*/
 
 
     //var produto7_nf = document.getElementById('produto7_nf').value
@@ -94,9 +94,13 @@ function atualizaValores(){
     document.getElementsByClassName('equipe_tecnica')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(totalServicos) +  parseFloat(realDolar(equipe_tecnica)))
 
 
-    document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos))) + " (" + percentualKitParticipacao + "%)"
+    var participacaoValor = (formatMoney(parseFloat(realDolar(valor_franquia)) - parseFloat(realDolar(valor_descontos))))
+    var participacaoMenosRoyalties = (parseFloat(realDolar(valor_franquia)) -  parseFloat(realDolar(valor_descontos)) - royalties).toFixed(2)
+    document.getElementsByClassName('participacao')[0].innerHTML = 'R$ ' + participacaoValor   + " (" + percentualKitParticipacao + "%)"
 
     document.getElementsByClassName('royalties')[0].innerHTML = 'R$ ' + royalties + " "  + "Royalties"
+
+    document.querySelector('.badge-solar.badge-royalties').children[3].innerText = 'R$ ' +  formatMoney(participacaoMenosRoyalties)
 
     //console.log("Percentual " + percentualKitParticipacao )
 }

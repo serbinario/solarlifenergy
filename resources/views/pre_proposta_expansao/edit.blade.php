@@ -51,8 +51,9 @@
 
                                 <div class="badge-solar badge-royalties">
                                     <span class="badge badge-dark float-right participacao">R$ </span>
+                                    <span class="royalties" style="margin-top: -3px;"></span>
                                     <p>Participação</p>
-                                    <span class="royalties" >R$ 208,00 Royalties</span>
+                                    <span class="badge badge-dark float-right " style="font-size: 12px;background-color: #010900;">R$</span>
 
                                 </div>
 

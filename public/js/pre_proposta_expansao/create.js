@@ -52,8 +52,10 @@ $(document).ready(function () {
     }
 
 
-    $('#monthly_usage').change(function (e) {
-        console.log("wwwwwwwww")
+    $('#modulo_id').change(function (e) {
+        console.log(e.target.value)
+        e.target.value == 1? potencia = '330': potencia = 440;
+        $('#potencia_modulo option[value=' + potencia + ']').attr('selected','selected');
     })
 
 });
