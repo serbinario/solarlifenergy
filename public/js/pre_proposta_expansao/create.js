@@ -53,9 +53,14 @@ $(document).ready(function () {
 
 
     $('#modulo_id').change(function (e) {
-        console.log(e.target.value)
         e.target.value == 1? potencia = '330': potencia = 440;
         $('#potencia_modulo option[value=' + potencia + ']').attr('selected','selected');
+    })
+
+    $('#potencia_modulo').change(function (e) {
+        console.log(e.target.value)
+        e.target.value == 330? potencia = 1: potencia = 2;
+        $('#modulo_id option[value=' + potencia + ']').attr('selected','selected');
     })
 
 });

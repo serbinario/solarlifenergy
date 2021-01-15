@@ -69,7 +69,7 @@
 
                             <div class="tools">
                                 <div class="btn-group btn-new-proposta">
-                                    <a  target="_blank" href="/report/{{ $preProposta->id }}/proposta" + class="btn btn-primary" title="Proposta">
+                                    <a  target="_blank" href="/report/{{ $preProposta->id }}/propostaExpansao" + class="btn btn-primary" title="Proposta">
                                         <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                     </a>
 
