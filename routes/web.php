@@ -745,6 +745,36 @@ Route::group(
 
 });
 
+
+Route::group(
+    [
+        'prefix' => 'projetos-adicionais',
+    ], function () {
+
+    Route::get('/', 'ProjetosAdicionaisController@index')
+        ->name('projetos.adicionais.index');
+
+
+    Route::get('/grid', 'ProjetosAdicionaisController@grid')
+        ->name('projetos.adicionais.grid');
+
+
+    Route::get('/{projetov2}/edit','ProjetosAdicionaisController@edit')
+        ->name('projetos.adicionais.edit')
+        ->where('id', '[0-9]+');
+
+    Route::put('projetov2/{projetov2}', 'ProjetosAdicionaisController@update')
+        ->name('projetos.adicionais.update')
+        ->where('id', '[0-9]+');
+
+    Route::get('/arquivadas/index', 'ProjetosAdicionaisController@index')
+        ->name('projetos.adicionais.index');
+
+    Route::get('/arquivadas/grid', 'ProjetosAdicionaisController@grid')
+        ->name('projetos.adicionais.grid');
+
+});
+
 Route::group(
     [
         'prefix' => 'produto',

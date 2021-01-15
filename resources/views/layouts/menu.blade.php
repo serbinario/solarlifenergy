@@ -199,6 +199,11 @@
 								<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
 								<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
 
+								@if(Auth::user()->franquia->id == 14)
+									<li><a href="{{ route('projetos.adicionais.index') }}" class="active"><span class="title">Projetos Adiconais</span></a></li>
+								@endif
+
+
 							@role('super-admin')
 								<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
 							@endrole
