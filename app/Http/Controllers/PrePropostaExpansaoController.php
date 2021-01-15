@@ -238,6 +238,21 @@ class PrePropostaExpansaoController extends Controller
                 $data['codigo'] =  $codigo;
             }
 
+            $monthly_usage = $request->get('monthly_usage');
+            $data['jan'] = $monthly_usage;
+            $data['feb'] = $monthly_usage;
+            $data['mar'] = $monthly_usage;
+            $data['apr'] = $monthly_usage;
+            $data['may'] = $monthly_usage;
+            $data['jun'] = $monthly_usage;
+            $data['jul'] = $monthly_usage;
+            $data['aug'] = $monthly_usage;
+            $data['sep'] = $monthly_usage;
+            $data['oct'] = $monthly_usage;
+            $data['nov'] = $monthly_usage;
+            $data['dec'] = $monthly_usage;
+
+
             $data['cliente_id'] = $request->get('cliente_id');
 
             //Coloquei essa opçao pois quando um usuario nao e adm o formulario não manda o id do user pois esta
