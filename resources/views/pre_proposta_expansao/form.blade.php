@@ -277,7 +277,7 @@
                                 <tr>
                                     <td><input {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm input-table-solar" name="produto2" type="text" id="produto2" value="{{ old('produto2', isset($preProposta->produto2) ? $preProposta->produto2 : "INVERSOR KSTAR") }}" min="0" max="10" placeholder="Nome do inversor"></td>
                                     <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="qtd_inversores" type="text" id="qtd_inversores" value="{{ old('qtd_inversores', isset($preProposta->qtd_inversores) ? $preProposta->qtd_inversores : '1') }}" min="0" max="10" placeholder="Quantidade de Inversores"></td>
-                                    <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : null) }}" min="0" max="10" placeholder="Preço Inversor"></td>
+                                    <td  style="text-align:right;" ><input class="form-control input-sm money input-table-solar" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : null) }}" min="0" max="10" placeholder="Preço Inversor"></td>
 
                                 </tr>
                                 </tr>
@@ -306,11 +306,17 @@
                                     <td><input readonly class="form-control input-sm money input-table-solar" name="total_equipamentos" type="text" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
 
-                                <tr>
-                                    <td  colspan="2" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
-                                    <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
+                                @can('view participacao')
+                                    <tr>
+                                        <td  colspan="2" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                        <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>                                    </tr>
+                                @else
+                                    <tr>
+                                        <td  style="display: none;" colspan="2" style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                        <td style="display: none" ><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>                                    </tr>
+                                @endcan
 
-                                </tr>
+
 
                                 <tr>
                                     <td colspan="2" style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
@@ -323,8 +329,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2" style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">DESCONTO INVERSOR</td>
-                                    <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="inversor_desconto" type="text" id="inversor_desconto" value="{{ old('inversor_desconto', isset($preProposta->inversor_desconto) ? $preProposta->inversor_desconto : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
+                                    <td colspan="2" style="text-align:right;  padding-right: 20px;">DESCONTO INVERSOR</td>
+                                    <td  style="text-align:right;" ><input class="form-control input-sm money input-table-solar" name="inversor_desconto" type="text" id="inversor_desconto" value="{{ old('inversor_desconto', isset($preProposta->inversor_desconto) ? $preProposta->inversor_desconto : null) }}" min="0" max="10" placeholder="Preço Módulo"></td>
                                 </tr>
 
 

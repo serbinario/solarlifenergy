@@ -49,13 +49,14 @@
                                     <p>Equipe Técnica</p>
                                 </div>
 
-                                <div class="badge-solar badge-royalties">
-                                    <span class="badge badge-dark float-right participacao">R$ </span>
-                                    <span class="royalties" style="margin-top: -3px;"></span>
-                                    <p>Participação</p>
-                                    <span class="badge badge-dark float-right " style="font-size: 12px;background-color: #010900;">R$</span>
-
-                                </div>
+                                @can('view participacao')
+                                    <div class="badge-solar badge-royalties">
+                                        <span class="badge badge-dark float-right participacao"></span>
+                                        <span class="royalties" style="margin-top: -3px;"></span>
+                                        <p>Participação</p>
+                                        <span class="badge badge-dark float-right " style="font-size: 12px;background-color: #010900;">R$ 9.391,54</span>
+                                    </div>
+                                @endcan
 
                                 {{--<div class="badge-solar">--}}
                                     {{--<span class="badge badge-dark float-right royalties">R$ </span>--}}
