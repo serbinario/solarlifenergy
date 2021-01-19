@@ -14,6 +14,7 @@ use Serbinario\Entities\Router;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\UserFormRequest;
 use Serbinario\User;
+use Spatie\Permission\Models\Permission;
 use Yajra\DataTables\DataTables;
 use Exception;
 
@@ -85,9 +86,13 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $permissions = Permission::all();
+
+        $userPermissions =  [];
+
         $franquias = Franquia::pluck('nome','id')->all();
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
-        return view('users.create', compact('roles', 'franquias'));
+        return view('users.create', compact('roles', 'franquias', 'permissions', 'userPermissions'));
     }
 
     /**
@@ -103,11 +108,23 @@ class UsersController extends Controller
             //$this->affirm($request);
             $data = $this->getData($request);
 
+           // dd($data);
 
             $data['password'] = \Hash::make($data['password']);
 
 
             $user = User::create($data);
+
+            $permissions = $request['permissions'];
+            //dd($permissions);
+            if (isset($permissions)) {
+
+                foreach ($permissions as $permission) {
+                    $permissionName = Permission::where('id', '=', $permission)->firstOrFail()->name;
+                    //dd($permissionName);
+                   $user->givePermissionTo($permissionName);
+                }
+            }
 
             //Retora o id do ROLE
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
@@ -147,13 +164,17 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+
+        $permissions = Permission::all();
         $franquias = Franquia::pluck('nome','id')->all();
-        $user = User::with('roles', 'franquia')->findOrFail($id);
-        //dd($user);
+        $user = User::with('roles', 'franquia', 'permissions')->findOrFail($id);
+
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();
 
-        //dd($user->roles[0]->id);
-        return view('users.edit', compact('user', 'roles', 'franquias'));
+        $userPermissions =  $user->permissions->pluck('id')->toArray();
+        //dd($userPermissions);
+        //dd($user->permissions->pluck('id')->toArray() );
+        return view('users.edit', compact('user', 'roles', 'franquias', 'permissions', 'userPermissions'));
 
     }
 
@@ -182,9 +203,15 @@ class UsersController extends Controller
                 $data['password'] = \Hash::make($data['password']);
             }
 
+            $permissions = $request['permissions'];
+            if (isset($permissions)) {
+                $user->syncPermissions($permissions);
+            }else{
+                $user->permissions()->detach();
+            }
+
             $user->update($data);
-            //dd($user);
-            //Retora o id do ROLE
+
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
             $user->syncRoles($role_r);
 
@@ -227,7 +254,7 @@ class UsersController extends Controller
      */
       protected function getData(Request $request)
         {
-        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id']);
+        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id', 'permissions']);
 
         return $data;
     }

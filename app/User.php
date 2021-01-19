@@ -2,9 +2,11 @@
 
 namespace Serbinario;
 
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Serbinario\Entities\Parametro;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -37,4 +39,6 @@ class User extends Authenticatable
     {
         return $this->hasOne('Serbinario\Entities\Franquia','id','franquia_id');
     }
+
+
 }
