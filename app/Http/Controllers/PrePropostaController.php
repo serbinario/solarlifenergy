@@ -274,8 +274,10 @@ class PrePropostaController extends Controller
                 $percentual = 8;
             }
 
+            if(Auth::user()->id == 53) {
 
-            //Fim da correção
+                $percentual = 8;
+            }
 
             //Prticipação
             $participacao = ($return['total_equipamentos'] / 100) * $percentual;

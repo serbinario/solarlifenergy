@@ -493,7 +493,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
                                 <tr>
                                     <td><input {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm" name="produto1" type="text" id="produto1" value="{{ old('produto1', isset($preProposta->produto1) ? $preProposta->produto1 : "MÓDULO FV DAH") }}" min="0" max="10" placeholder="Nome do módulo"></td>
                                     <td><input  readonly class="form-control input-sm" name="qtd_paineis" type="text" id="qtd_paineis" value="{{ old('qtd_paineis', isset($preProposta->qtd_paineis) ? $preProposta->qtd_paineis : null) }}" min="0" max="10" placeholder="Quantidade de módulos"></td>
@@ -525,12 +524,17 @@
                                     <td><input readonly class="form-control input-sm money input-table-solar" name="total_equipamentos" type="text" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
 
-                                <tr>
-                                    <td  style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
-                                    <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
-
-                                </tr>
-
+                                @can('view participacao')
+                                    <tr>
+                                        <td  style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                        <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td  style="display: none; text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
+                                        <td  style="display: none;" ><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
+                                    </tr>
+                                @endcan
                                 <tr>
                                     <td  style="text-align:right; padding-right: 20px;">EQUIPE TÉCNICA</td>
                                     <td><input  {{ Auth::user()->hasRole('super-admin')? null : 'readonly' }} class="form-control input-sm money input-table-solar" name="equipe_tecnica" type="text" id="equipe_tecnica" value="{{ old('equipe_tecnica', isset($preProposta->equipe_tecnica) ? $preProposta->equipe_tecnica : null) }}" min="0" max="10" placeholder="Desconto"></td>
@@ -545,19 +549,12 @@
                                     <td style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }} padding-right: 20px;">PREÇO DO INVERSOR</td>
                                     <td  style="text-align:right; {{ Auth::user()->hasRole('super-admin')? null : "display: none;" }}" ><input class="form-control input-sm money input-table-solar" name="produto2_nf" type="text" id="produto2_nf" value="{{ old('produto2_nf', isset($preProposta->produto2_nf) ? $preProposta->produto2_nf : null) }}" min="0" max="10" placeholder="Preço Inversor"></td>
                                 </tr>
-
-
-
-
                             </tbody>
                         </table>
 
                         <div style="text-align: center; display: none" >
                             <spa  > Obs: O Valor da PARTICIPAÇÃO será descontado 8% </spa>
                         </div>
-
-
-
                     </div>
                 </div>
             </div><!--end .panel -->
@@ -586,20 +583,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{--<tr>--}}
-                                {{--<td>HOMOLOGAÇÃO PROJETO</td>--}}
-                                {{--<td><input class="form-control input-sm" name="qtd_homologacao_projeto" type="text" id="qtd_homologacao_projeto" value="{{ old('qtd_homologacao_projeto', isset($preProposta->qtd_homologacao_projeto) ? $preProposta->qtd_homologacao_projeto : "1") }}" min="0" max="10" placeholder="HOMOLOGAÇÃO PROJETO"></td>--}}
-                                {{--<td><input class="form-control input-sm money" name="produto12_preco" type="text" id="produto12_preco" value="{{ old('produto12_preco', isset($preProposta->produto12_preco) ? $preProposta->produto12_preco : "0") }}" min="0" max="10" placeholder="R$"></td>--}}
-                                {{--<td><input class="form-control input-sm money" name="produto12_nf" type="text" id="produto12_nf" value="{{ old('produto12_nf', isset($preProposta->produto12_nf) ? $preProposta->produto12_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>--}}
-
-                            {{--</tr>--}}
-                            {{--<tr>--}}
-                                {{--<td>HOMOLOGAÇÃO CONCESSIONÁRIA</td>--}}
-                                {{--<td><input class="form-control input-sm" name="qtd_homologacao" type="text" id="qtd_homologacao" value="{{ old('qtd_homologacao', isset($preProposta->qtd_homologacao) ? $preProposta->qtd_homologacao : "1") }}" min="0" max="10" placeholder="HOMOLOGAÇÃO CELPE"></td>--}}
-                                {{--<td><input class="form-control input-sm money" name="produto6_preco" type="text" id="produto6_preco" value="{{ old('produto6_preco', isset($preProposta->produto6_preco) ? $preProposta->produto6_preco : "0") }}" min="0" max="10" placeholder="R$"></td>--}}
-                                {{--<td><input class="form-control input-sm money" name="produto6_nf" type="text" id="produto6_nf" value="{{ old('produto6_nf', isset($preProposta->produto6_nf) ? $preProposta->produto6_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>--}}
-
-                            {{--</tr>--}}
                             <tr style="display: none">
                                 <td>MÃO-DE-OBRA DE INSTALAÇÃO (EQUIPE TÉCNICA)</td>
                                 <td><input class="form-control input-sm money" name="produto7_nf" type="text" id="produto7_nf" value="{{ old('produto7_nf', isset($preProposta->produto7_nf) ? $preProposta->produto7_nf : "0") }}" min="0" max="10" placeholder="Valor da NF-E"></td>
@@ -625,9 +608,6 @@
                             </tr>
                             </tbody>
                         </table>
-
-
-
                     </div>
                 </div>
             </div><!--end .panel -->
