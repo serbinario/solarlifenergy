@@ -93,6 +93,10 @@
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
 
+                                @if(!isset($preProposta->projetov2()->first()->id) && $preProposta->estar_finalizado == 1 && $preProposta->created_at->diff(new DateTime())->m >= 1 && Auth::user()->hasRole('super-admin'))
+                                    <input class="btn btn-primary" id="novo_projeto" type="button" value="Criar Projeto">
+                                @endif
+
                                 @if(!isset($preProposta->projetov2()->first()->id) && $preProposta->estar_finalizado == 1 && !$preProposta->created_at->diff(new DateTime())->m >= 1)
                                      <input class="btn btn-primary" id="novo_projeto" type="button" value="Criar Projeto">
                                 @endif
