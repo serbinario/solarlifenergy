@@ -535,10 +535,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="tipo_instalacao"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
 	</field>
-	<field name="COLUMN_130" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -607,18 +603,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="obs"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_148" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
-	<field name="COLUMN_149" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
-	<field name="mae" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="mae"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="pai" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="pai"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -659,10 +643,6 @@ where pre_propostas.id =  $P{id}]]>
 		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="COLUMN_161" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
 	<field name="nacionalidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
@@ -678,14 +658,6 @@ where pre_propostas.id =  $P{id}]]>
 	<field name="cliente_tipo_id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="cliente_tipo_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
-	</field>
-	<field name="COLUMN_166" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
-	</field>
-	<field name="COLUMN_167" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nome"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="banco_financiadora"/>
 	</field>
 	<field name="banco" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="banco"/>
