@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Declaracao_ciencia" pageWidth="595" pageHeight="842" columnWidth="425" leftMargin="85" rightMargin="85" topMargin="35" bottomMargin="87" uuid="49829770-2da1-4532-bd0c-76a57134e614">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Declaracao_ciencia" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="35" bottomMargin="87" uuid="49829770-2da1-4532-bd0c-76a57134e614">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
@@ -111,25 +111,25 @@ where c.id =   $P{id}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="83" splitType="Stretch">
+		<band height="93" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
 				<reportElement x="0" y="10" width="80" height="71" uuid="24e076ed-ce0c-4f8b-ab6b-4c47683c699d"/>
-				<imageExpression><![CDATA["http://191.252.221.19/reports/logo_solar_life.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar_life.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="95" y="55" width="305" height="15" uuid="85ca5cab-cca8-4024-968a-8c405f39d54b"/>
 				<textElement>
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+				<text><![CDATA[Cabo de Santo Agostinho - PE, 54517-510]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="95" y="40" width="335" height="15" uuid="b9b13616-fb12-497e-ba32-01568aa92487"/>
+				<reportElement x="95" y="40" width="405" height="15" uuid="b9b13616-fb12-497e-ba32-01568aa92487"/>
 				<textElement>
 					<font size="11"/>
 				</textElement>
-				<text><![CDATA[Rua Dr. José Bezerra Filho, 61B – Centro/ Cabo – PE]]></text>
+				<text><![CDATA[Av. Alm. Paulo Moreira, 252 - Garapu]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="95" y="25" width="335" height="15" uuid="cd8fd107-dd00-4072-a48f-7c77ceeebd79"/>
@@ -148,6 +148,13 @@ where c.id =   $P{id}]]>
 				</textElement>
 				<text><![CDATA[Solar Life Energy]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="95" y="70" width="305" height="15" uuid="b8a8b600-19cf-4f3f-bc2d-1d6b3368264c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tel: 81-3524-1290 / 81-98281-5540 (WhatsApp)]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<detail>
@@ -161,7 +168,7 @@ where c.id =   $P{id}]]>
 				<text><![CDATA[DECLARAÇÃO DE CIÊNCIA E CONCORDÂNCIA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="143" width="425" height="237" uuid="af5e7c43-db85-4a03-9fad-e91c3e16e930"/>
+				<reportElement x="0" y="143" width="483" height="237" uuid="af5e7c43-db85-4a03-9fad-e91c3e16e930"/>
 				<textElement textAlignment="Justified" markup="styled">
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
@@ -191,4 +198,3 @@ where c.id =   $P{id}]]>
 		</band>
 	</detail>
 </jasperReport>
-
