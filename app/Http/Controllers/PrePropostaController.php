@@ -12,6 +12,7 @@ use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Estado;
 use Serbinario\Entities\Franquia;
+use Serbinario\Entities\logistica\PropostaProduto;
 use Serbinario\Entities\Modulo;
 use Serbinario\Entities\ParametroGeral;
 use Serbinario\Entities\PreProposta;
@@ -230,6 +231,8 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
+            //dd($return);
+
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -396,10 +399,15 @@ class PrePropostaController extends Controller
             $preProposta = PreProposta::create($data);
 
             $produtoArray = $return['produtos'];
+
+
             foreach ($produtoArray as $produto) {
-                $produto_id_array[$produto['id']] = ['quantidade' => $produto['quantidade'], 'valor_unitario' => $produto['valor_unitario']];
+                PropostaProduto::create(['proposta_id' => $preProposta->id ,'produto_id' => $produto['id'],'quantidade' => $produto['quantidade'], 'valor_unitario' => $produto['valor_unitario']]);
+                echo $produto['id'] .  " - " .$produto['quantidade'] . "<br>";
             }
-            $preProposta->produtos()->sync($produto_id_array, false);
+
+            //dd($produtoArray);
+
 
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
