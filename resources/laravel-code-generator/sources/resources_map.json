@@ -92,5 +92,15 @@
         "model-name": "Progetov2",
         "resource-file": "progetov2.json",
         "table-name": "progetosv2"
+    },
+    {
+        "model-name": "VisitasTecnicas",
+        "resource-file": "visitas_tecnicas.json",
+        "table-name": "visitas_tecnicas"
+    },
+    {
+        "model-name": "VisitaTecnica",
+        "resource-file": "visita_tecnica.json",
+        "table-name": "visita_tecnica"
     }
 ]

@@ -1,10 +1,10 @@
 <?php
 
-namespace Serbinario\Entities\Vendas;
+namespace Serbinario\Entities\logistica;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PropostaProduto extends Model
+class StatusEntrega extends Model
 {
     
 
@@ -13,14 +13,14 @@ class PropostaProduto extends Model
      *
      * @var string
      */
-    protected $table = 'proposta_produto';
+    protected $table = 'status_entrega';
 
     /**
     * The database primary key value.
     *
     * @var string
     */
-    //protected $primaryKey = 'id';
+    protected $primaryKey = 'id';
 
     /**
      * Attributes that should be mass-assignable.
@@ -28,9 +28,8 @@ class PropostaProduto extends Model
      * @var array
      */
     protected $fillable = [
-                'quantidade',
-        'valor_unitario'
-              ];
+        'descricao',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

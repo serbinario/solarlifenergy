@@ -226,6 +226,24 @@
 							@endrole
 
 
+							@role('super-admin')
+
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Logística</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">Entregas</span></a></li>
+									<li><a href="{{ route('visita_tecnica.index') }}" class="active"><span class="title">Visitas técnicas</span></a></li>
+
+								</ul><!--end /submenu -->
+
+							</li><!--end /menu-li -->
+
+							@endrole
+
+
 							@role('super-admin|revenda')
 
 							<li class="gui-folder">
@@ -258,6 +276,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+
 									<li><a href="{{ route('alert.index') }}" class="active"><span class="title">Alertas</span></a></li>
 									<li><a href="{{ route('geral.edit') }}" class="active"><span class="title">Geral</span></a></li>
 									<li><a href="{{ route('mao_obra.index') }}" class="active"><span class="title">Mão de Obra</span></a></li>

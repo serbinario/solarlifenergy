@@ -73,7 +73,7 @@ class Produto extends Model
 
     public function produtos()
     {
-        return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produto');
+        return $this->belongsToMany('Serbinario\Entities\Vendas\Pedido', 'pedido_produtos');
     }
 
 

@@ -265,6 +265,33 @@ $(document).ready(function () {
 
 
 
+    $("#solicitacaoEntrega").on('click', function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+            }
+        });
+        var projeto_id =  document.getElementById("id").value;
+        data = {
+            'projeto_id': projeto_id,
+        }
+
+        jQuery.ajax({
+            type: 'POST',
+            url: '/index.php/solicitacaoEntrega',
+            datatype: 'json',
+            data: data,
+        }).done(function (retorno) {
+            if(retorno.success) {
+                swal("", "Contrato Cadastrado com sucesso", "success");
+
+            } else {
+                swal("Error", "Click no botão abaixo!", "error");
+            }
+        });
+    })
+
     function criarContrato(projeto_id)
     {
 

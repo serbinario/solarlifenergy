@@ -68,6 +68,11 @@ Route::any('/report/{id}/propostaExpansao', 'ReportController@reportPdfPropostaE
 Route::get('/report/reportPdf', 'ReportController@reportPdf')->name('reportPdf');
 Route::any('/report/ProjetosParecerAcesso', 'ReportController@reportPdfParecerAcesso')->name('reportPdfParecerAcesso');
 
+Route::any('/report/{id}/solicitacaoEntrega', 'ReportController@reportPdfSolicitacaoEntrega')->name('reportPdfSolicitacaoEntrega');
+
+
+
+
 Route::any('/report/reportProjetos', 'ReportController@reportProjeto')->name('reportProjeto');
 
 Route::any('/report/lerArquivo', 'ReportController@lerArquivo')->name('lerArquivo');
@@ -429,6 +434,41 @@ Route::group(
 });
 
 Route::group(
+    [
+        'prefix' => 'solicitacaoEntrega',
+    ], function () {
+
+    Route::get('/', 'SolicitacaoEntregaController@index')
+        ->name('solicitacaoEntrega.index');
+
+    Route::get('/create','SolicitacaoEntregaController@create')
+        ->name('solicitacaoEntrega.create');
+
+    Route::get('/show/{user}','SolicitacaoEntregaController@show')
+        ->name('solicitacaoEntrega.show')
+        ->where('id', '[0-9]+');
+
+    Route::get('/grid', 'SolicitacaoEntregaController@grid')
+        ->name('solicitacaoEntrega.grid');
+
+    Route::get('/{user}/edit','SolicitacaoEntregaController@edit')
+        ->name('users.user.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'SolicitacaoEntregaController@store')
+        ->name('solicitacaoEntrega.store');
+
+    Route::put('entrega/{user}', 'SolicitacaoEntregaController@update')
+        ->name('solicitacaoEntrega.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{user}/destroy','SolicitacaoEntregaController@destroy')
+        ->name('users.user.destroy')
+        ->where('id', '[0-9]+');
+
+});
+
+Route::group(
 [
     'prefix' => 'clienteweb',
 ], function () {
@@ -479,6 +519,13 @@ Route::group(
 
     Route::get('/arquivadas/grid', 'PrePropostaArquivaController@grid')
         ->name('pre_proposta.arquivadas.grid');
+
+    Route::get('/listProducts', 'PrePropostaController@listProductsIndex')
+        ->name('listProducts');
+
+    Route::get('/listProducts/grid', 'PrePropostaController@listProducts')
+        ->name('listProductsGrid');
+
 
 });
 
@@ -560,6 +607,37 @@ Route::group(
 
     Route::get('/arquivadas/grid', 'PrePropostaArquivaController@grid')
         ->name('pre_proposta.arquivadas.grid');
+
+});
+
+Route::group(
+[
+    'prefix' => 'visitaTecnica',
+], function () {
+
+    Route::get('/', 'Logistica\VisitaTecnicaController@index')
+        ->name('visita_tecnica.index');
+
+    Route::get('/create','VisitaTecnicaController@create')
+        ->name('visita_tecnica.create');
+
+    Route::get('/grid', 'Logistica\VisitaTecnicaController@grid')
+        ->name('visita_tecnica.grid');
+
+    Route::get('/{proposta}/edit','Logistica\VisitaTecnicaController@edit')
+        ->name('visita_tecnica.edit')
+        ->where('id', '[0-9]+');
+
+    Route::post('/', 'Logistica\VisitaTecnicaController@store')
+        ->name('visita_tecnica.store');
+
+    Route::put('pre_proposta/{preProposta}', 'Logistica\VisitaTecnicaController@update')
+        ->name('visita_tecnica.update')
+        ->where('id', '[0-9]+');
+
+    Route::delete('/{preProposta}/destroy','Logistica\VisitaTecnicaController@destroy')
+        ->name('visita_tecnica.destroy')
+        ->where('id', '[0-9]+');
 
 });
 

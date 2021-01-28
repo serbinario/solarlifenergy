@@ -163,6 +163,19 @@ class ReportController extends Controller
         }
     }
 
+    public function reportPdfSolicitacaoEntrega($id)
+    {
+        try
+        {
+            $file = $this->gerarPdfV2([ 'idProjeto' => $id], 'RomaneioEntregaMaterial');
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+    }
+
     public function reportProjeto(Request $request){
 
         try

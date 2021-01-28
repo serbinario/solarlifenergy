@@ -142,26 +142,9 @@ class PrePropostaController extends Controller
                     }else{
                         $query->whereNotNull('projetosv2.id');
                     }
-
                 }
-
-//                if ($request->has('integrador')) {
-//                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
-//                }
-//                //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
-//                $user = User::find(Auth::id());
-//                if($user->hasRole('franquia')) {
-//                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-//                }
-//                if($user->hasRole('integrador')) {
-//                    $query->where('clientes.user_id', '=', $user->id);
-//                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-//                }
-
                 $query->whereNull('pre_propostas.arquivado');
-
             })
-
 
             ->addColumn('action', function ($row) {
             return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
@@ -247,7 +230,6 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-           //dd($return);
 
             $data['pre_proposta_obs'] = $return['obs'];
 
@@ -411,27 +393,15 @@ class PrePropostaController extends Controller
             $data['produto11'] = 'REFORÇO ESTRUTURAL';
 
 
-
-
-
-            //dd($data);
-
-//            if ($return['qtd_modulos'] < 10){
-//                return back()->withInput()
-//                    ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 850KW"]);
-//            }
-            $roi = $this->roi(0, $somaEquipamentos, $request['monthly_usage'] );
-            $data['roi'] = $roi;
-
-
-
-            //dd($data['qtd_paineis']);
-           // if($data['qtd_paineis'] < 20 && Auth::user()->franquia->id == 14){
-           //     return back()->withInput()
-           //         ->withErrors(['error_message' => "Projeto não pode ser criado, quantidade de módulos é menor que 20, valor mínimo é 1200KW"]);
-           // }
             $preProposta = PreProposta::create($data);
-            //;
+
+            $produtoArray = $return['produtos'];
+            foreach ($produtoArray as $produto) {
+                $produto_id_array[$produto['id']] = ['quantidade' => $produto['quantidade'], 'valor_unitario' => $produto['valor_unitario']];
+            }
+            $preProposta->produtos()->sync($produto_id_array, false);
+
+
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
 
@@ -450,7 +420,7 @@ class PrePropostaController extends Controller
      */
     public function edit($id){
         $prioridades = Prioridade::pluck('name','id')->all();
-        $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2')->findOrFail($id);
+        $preProposta = PreProposta::with('user','cliente', 'cidade', 'bancoFinanciadora', 'projetov2', 'produtos')->findOrFail($id);
         $estados = Estado::pluck('nome','id')->all();
         $modulos = Modulo::pluck('potencia','id')->all();
         $bfs = BancoFinanciadora::pluck('nome','id')->all();
@@ -567,7 +537,7 @@ class PrePropostaController extends Controller
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
             }
 
-            if ($roi > 3.8 && $preProposta->monthly_usage < 1300){
+            if ($roi > 4.5 && $preProposta->monthly_usage < 1300){
                 return back()->withInput()
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 4.5 anos"]);
             }
@@ -605,6 +575,51 @@ class PrePropostaController extends Controller
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
+    }
+
+    public function listProducts(Request $request)
+    {
+        $this->token = csrf_token();
+        #Criando a consulta
+        $rows = \DB::table('projetosv2 as p')
+            ->join('pre_propostas as pre', 'pre.id', '=', 'p.proposta_id')
+            ->join('proposta_produtos as pp', 'pre.id', '=', 'pp.proposta_id')
+            ->join('produtos as prod', 'prod.id', '=', 'pp.produto_id' )
+            ->join('clientes as cl', 'cl.id', '=', 'pre.cliente_id')
+            ->groupBy('pre.codigo')
+            ->select([
+                'pre.id',
+                'cl.nome',
+                'pre.preco_medio_instalado',
+                'pre.codigo',
+
+            ]);
+
+
+        #Editando a grid
+        return Datatables::of($rows)
+            ->filter(function ($query) use ($request) {
+
+
+            })
+
+            ->addColumn('action', function ($row) {
+                return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+                            <input name="_method" value="DELETE" type="hidden">
+                            <input name="_token" value="'.$this->token .'" type="hidden">
+                            <div class="btn-group btn-group-xs pull-right" role="group">   
+                                <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Proposta">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>  
+                                                      
+                        </form>
+                        ';
+            })->make(true);
+    }
+
+    public function listProductsIndex()
+    {
+        return view('logistica.entrega.index');
     }
 
 

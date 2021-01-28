@@ -196,6 +196,12 @@ class PreProposta extends Model
         return $this->belongsTo('Serbinario\Entities\Cidade','cidade_id','id');
     }
 
+    public function produtos()
+    {
+        return $this->belongsToMany('Serbinario\Entities\Vendas\Produto', 'proposta_produtos', 'proposta_id')
+            ->withPivot('quantidade', 'valor_unitario');
+    }
+
     public function getValorDescontosAttribute($value)
     {
         return $this->converteInglesReal($value);

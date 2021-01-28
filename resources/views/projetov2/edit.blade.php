@@ -41,6 +41,10 @@
                         @include ('projetov2.form', ['projetov2' => $projetov2 ])
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
+
+                                @if(!isset($projetov2->solicitacaoEntrega) && $projetov2->projeto_status_id !=1 &&  $projetov2->projeto_status_id !=8 && isset($projetov2->PreProposta->produtos[0]) && Auth::user()->franquia->id == 14)
+                                    <input class="btn btn-primary" id="solicitacaoEntrega" type="button" value="Criar Solicitação de Entrega">
+                                @endif
                                 @if(!isset($projetov2->contrato->id))
                                     <input class="btn btn-primary" id="modalContrato" type="button" value="Criar Contrato">
                                 @endif
@@ -48,6 +52,7 @@
                                 <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
+
                     </div><!--end .card -->
                 </form>
             </div><!--end .col -->

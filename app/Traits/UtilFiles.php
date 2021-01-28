@@ -25,9 +25,10 @@ trait UtilFiles
         // Verifica se informou o arquivo e se é válido
         if ($request->hasFile($field)){
             $file = $request->file($field);
-
+            //dd($file);
             try {
                 $extension = $file->getClientOriginalExtension();
+                //dd($extension);
 
                 if($nameFile){
                     $nameFile = "{$nameFile}";

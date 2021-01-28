@@ -82,6 +82,11 @@ class Projetov2 extends Model
         return $this->hasOne('Serbinario\Entities\Contrato','projeto_id','id');
     }
 
+    public function solicitacaoEntrega()
+    {
+        return $this->hasOne('Serbinario\Entities\SolicitacaoEntrega','projeto_id','id');
+    }
+
     /**
      * Get the projeto for this model.
      */

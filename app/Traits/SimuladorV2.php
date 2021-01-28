@@ -41,6 +41,8 @@ trait SimuladorV2
     private $valorFranqueadora = 0;
     private $inversores = 0;
     private $mc4 = 0;
+    private $arrayProducts = [] ;
+    private $moduloFabricante = null;
 
     function simularGeracao($request){
 
@@ -87,12 +89,15 @@ trait SimuladorV2
 
         //MÓDULO FOTOVOLTAICO POLICRITALINO SOLAR 330W - DAH = id = 2
         if($this->potenciaModulo == 1){
-            $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '2')->first()->preco_franquia;
-            $ModuloFabricante =  Produto::with('marca')->where('id' , '=', 2)->first()->marca->marca;
+            $modulo = Produto::where('id' , '=', '2')->first();
+            $this->valorModulo =  $modulo->preco_franquia;
+            $this->moduloFabricante =  $modulo->marca->marca;
         }else{
-            $this->valorModulo =  Produto::select('preco_franquia')->where('id' , '=', '1')->first()->preco_franquia;
-            $ModuloFabricante =  Produto::with('marca')->where('id' , '=', 1)->first()->marca->marca;
+            $modulo = Produto::where('id' , '=', '1')->first();
+            $this->valorModulo =  $modulo->preco_franquia;
+            $this->moduloFabricante =  $modulo->marca->marca;
         }
+        $this->products($modulo->id, $modulo->produto, $this->qtdModulos, $this->convertesRealIngles($modulo->preco_franquia));
 
 
         //Salva a quantidade de MC4 e a soma do inversor
@@ -131,13 +136,17 @@ trait SimuladorV2
 
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
 
+        $this->calculaKit();
+
+        //dd($this->inversores);
+
         return
             [
                 'success' => true,
                 'valor_modulo' => $this->valorModulo,
                 'modulo_potencia' => $modulo->potencia,
                 'qtd_modulos' => $this->qtdModulos,
-                'modulo_marca' => $ModuloFabricante,
+                'modulo_marca' => $this->moduloFabricante,
                 'potencia_gerador' => $potenciaGerador,
                 'area_minima' => $area,
                 'co2' => $co2,
@@ -162,6 +171,8 @@ trait SimuladorV2
                 'valor_mao_obra_por_modulo' => $this->valorMaoObraPorModulo,
                 'total_investimento' => round($this->totalInvestimento, 2),
 
+                'produtos' => $this->arrayProducts,
+
                 'inversores' => $this->inversores,
                 'reducao_media_consumo' => $reducaoMediaConsumo,
                 'geracao_fv' => $geracaoEnergiaFV,
@@ -181,55 +192,82 @@ trait SimuladorV2
     private function calculaEsttutura(){
         // PERFIL RETANGULAR ALUMINIO 3M - id = 15
         $perfilQtd = (($this->qtdModulos * 2) /3)* 1.1;
-        $perfilValor = Produto::select('preco_franquia')->where('id' , '=', '15')->first()->preco_franquia;
-        $PerfilTotal = $perfilQtd * $this->convertesRealIngles($perfilValor);
-        //dd($perfilQtd, $perfilValor, $PerfilTotal);
+        $perfil = Produto::where('id' , '=', '15')->first();
+        $PerfilTotal = $perfilQtd * $this->convertesRealIngles($perfil->preco_franquia);
 
-        //ANCORAGEM L GALVANIZADA
-        //$ancoragemQtd = (($this->qtdModulos * 2) /1.3)* 1.1;
-        //$ancoragemValor = Produto::select('preco_franquia')->where('id' , '=', '12')->first()->preco_franquia;
-        //$ancoragemTotal = $ancoragemQtd * $this->convertesRealIngles($ancoragemValor);
-        //dd($ancoragemQtd, $ancoragemValor, $ancoragemTotal);
+        $this->products($perfil->id, $perfil->produto, $perfilQtd, $this->convertesRealIngles($perfil->preco_franquia));
+
 
         //PARAFUSO ESTRUTURAL 250MM METAL id = 38
         $parafusoQtd = (($this->qtdModulos * 2) /1.3)* 1.1;
-        $parafusoValor = Produto::select('preco_franquia')->where('id' , '=', '38')->first()->preco_franquia;
-        $parafusoTotal = $parafusoQtd * $this->convertesRealIngles($parafusoValor);
+        $parafuso = Produto::where('id' , '=', '38')->first();
+        $parafusoTotal = $parafusoQtd * $this->convertesRealIngles($parafuso->preco_franquia);
+
+        $this->products($parafuso->id, $parafuso->produto, $parafusoQtd, $this->convertesRealIngles($parafuso->preco_franquia));
+
         //dd($parafusoQtd, $parafusoValor, $parafusoTotal);
 
         //CHAPAS INTERMERDIARIA QUADRADA ALUMINIO id = 39
         $chapaInterQtd = ($this->qtdModulos * 2) -2;
-        $chapaInterValor = Produto::select('preco_franquia')->where('id' , '=', '39')->first()->preco_franquia;
-        $chapaInterTotal = $chapaInterQtd * $this->convertesRealIngles($chapaInterValor);
+        $chapaInter = Produto::where('id' , '=', '39')->first();
+        $chapaInterTotal = $chapaInterQtd * $this->convertesRealIngles($chapaInter->preco_franquia);
+
+        $this->products($chapaInter->id, $chapaInter->produto, $chapaInterQtd, $this->convertesRealIngles($chapaInter->preco_franquia));
+
         //dd($chapaInterQtd, $chapaInterValor, $chapaInterTotal);
 
         //FIXADOR ALUMINIO ( L ) id 40
         $fixadorAluQtd = ($this->qtdModulos /8) * 4;
-        $fixadorAluValor = Produto::select('preco_franquia')->where('id' , '=', '40')->first()->preco_franquia;
-        $fixadorAluTotal = $fixadorAluQtd * $this->convertesRealIngles($fixadorAluValor);
+        $fixadorAlu = Produto::where('id' , '=', '40')->first();
+        $fixadorAluTotal = $fixadorAluQtd * $this->convertesRealIngles($fixadorAlu->preco_franquia);
+
+        $this->products($fixadorAlu->id, $fixadorAlu->produto, $fixadorAluQtd, $this->convertesRealIngles($fixadorAlu->preco_franquia));
+
         //dd($fixadorAluQtd, $fixadorAluValor, $fixadorAluTotal);
 
         //PARAFUSO AUTOBROCANTE 12 x 4'' CT - id = 13
         $parafusAuto12x4Qtd = (int)($this->qtdModulos/20);
-        $parafusAuto12x4Valor = Produto::select('preco_franquia')->where('id' , '=', '13')->first()->preco_franquia;
-        $parafusAuto12x4Total = $parafusAuto12x4Qtd * $this->convertesRealIngles($parafusAuto12x4Valor);
+        $parafusAuto12x4 = Produto::where('id' , '=', '13')->first();
+        $parafusAuto12x4Total = $parafusAuto12x4Qtd * $this->convertesRealIngles($parafusAuto12x4->preco_franquia);
+
+        $this->products($parafusAuto12x4->id, $parafusAuto12x4->produto,  $parafusAuto12x4Qtd, $this->convertesRealIngles($parafusAuto12x4->preco_franquia));
+
         //dd($parafusAuto12x4Qtd, $parafusAuto12x4Valor, $parafusAuto12x4Total);
 
         //PARAFUSO AUTOBROCANTE 12x 2.1/2'' CT id = 14
         $parafusAuto12x2Qtd = (int)($this->qtdModulos/20);
-        $parafusAuto12x2Valor = Produto::select('preco_franquia')->where('id' , '=', '14')->first()->preco_franquia;
-        $parafusAuto12x2Total = $parafusAuto12x2Qtd * $this->convertesRealIngles($parafusAuto12x2Valor);
+        $parafusAuto12x2 = Produto::where('id' , '=', '14')->first();
+        $parafusAuto12x2Total = $parafusAuto12x2Qtd * $this->convertesRealIngles($parafusAuto12x2->preco_franquia);
+
+        $this->products($parafusAuto12x2->id, $parafusAuto12x2->produto, $parafusAuto12x2Qtd, $this->convertesRealIngles($parafusAuto12x2->preco_franquia));
         //dd($parafusAuto12x2Qtd, $parafusAuto12x2Valor, $parafusAuto12x2Total);
 
         //SELANTE PU 300G - id = 18
         $selanteQtd = ($this->qtdModulos/10);
-        $selanteValor = Produto::select('preco_franquia')->where('id' , '=', '18')->first()->preco_franquia;
-        $selanteTotal = $selanteQtd * $this->convertesRealIngles($selanteValor);
+        $selante = Produto::where('id' , '=', '18')->first();
+        $selanteTotal = $selanteQtd * $this->convertesRealIngles($selante->preco_franquia);
+
+        $this->products($selante->id, $selante->produto, $selanteQtd, $this->convertesRealIngles($selante->preco_franquia));
+
+        //dd($this->arrayProducts);
+
         //dd($selanteQtd, $selanteValor, $selanteTotal);
 
         //dd($PerfilTotal , $ancoragemTotal , $parafusoTotal , $chapaInterTotal , $fixadorAluTotal , $parafusAuto12x4Total , $parafusAuto12x2Total , $selanteTotal);
         return  round($PerfilTotal + $parafusoTotal + $chapaInterTotal + $fixadorAluTotal + $parafusAuto12x4Total + $parafusAuto12x2Total + $selanteTotal, 2);
 
+
+    }
+
+    private function products($id, $produtoNome ,  $qtd, $valorUnitario){
+        $array = [ 'id' => $id, 'produto' => $produtoNome , 'quantidade' => $qtd, 'valor_unitario' => $valorUnitario  ];
+         array_push($this->arrayProducts, $array);
+        return $this->arrayProducts;
+    }
+
+    private function calculaKit(){
+        $kit = Produto::where('id' , '=', '46')->first();
+        $this->products($kit->id, $kit->produto, 1, $this->convertesRealIngles($kit->preco_revenda));
 
     }
 
@@ -246,14 +284,13 @@ trait SimuladorV2
         $stringTotal = 0;
         foreach ($this->inversores as $inversor){
 
-            $stringValor = StringboxPotencia::with('produto')->where('potencia' , '=',  $inversor['potenciaInversor']  )->first()->produto->preco_revenda;
-
-            $stringTotal += $this->convertesRealIngles($stringValor) * $inversor['stringbox'];
-
+            //$stringValor = StringboxPotencia::with('produto')->where('potencia' , '=',  $inversor['potenciaInversor']  )->first()->produto->preco_revenda;
+            $string = StringboxPotencia::with('produto')->where('potencia' , '=',  $inversor['potenciaInversor']  )->first();
+            $stringTotal += $this->convertesRealIngles($string->produto->preco_revenda) * $inversor['stringbox'];
             $stringQtd += $inversor['stringbox'];
-
         }
 
+        $this->products($string->produto->id, $string->produto->produto, $stringQtd, $this->convertesRealIngles($string->produto->preco_revenda));
 
 
         //CABO 4MM BRASFIO 1KV - COBRE / PRETO - id = 42
@@ -264,14 +301,20 @@ trait SimuladorV2
             $metros = CaboModulo::where('max_modulos', '>=', $this->qtdModulos)->first()->metros;
 
         }
-        $caboValor = Produto::select('preco_franquia')->where('id' , '=', '42')->first()->preco_franquia;
-        $caboTotal = (int)$metros * $this->convertesRealIngles($caboValor);
+        $cabo = Produto::where('id' , '=', '42')->first();
+        $caboTotal = (int)$metros * $this->convertesRealIngles($cabo->preco_franquia);
         //dd($metros, $caboValor, $caboTotal);
+
+        $this->products($cabo->id, $cabo->produto, $metros, $this->convertesRealIngles($cabo->preco_revenda));
 
         //CONECTOR MC4 id = 41
         $conectorQtd = $this->mc4;
-        $conectorValor = Produto::select('preco_franquia')->where('id' , '=', '41')->first()->preco_franquia;
-        $conectorTotal = $conectorQtd * $this->convertesRealIngles($conectorValor);
+        $conector = Produto::where('id' , '=', '41')->first();
+        $conectorTotal = $conectorQtd * $this->convertesRealIngles($conector->preco_franquia);
+
+        $this->products($conector->id, $conector->produto, $conectorQtd, $this->convertesRealIngles($conector->preco_revenda));
+
+        //dd($this->arrayProducts);
 
             //dd($stringTotal , $caboTotal , $conectorTotal);
         return $stringTotal + $caboTotal + $conectorTotal;
@@ -299,6 +342,9 @@ trait SimuladorV2
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
 
+
+            $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
+
             return $inversores;
         }
 
@@ -310,11 +356,15 @@ trait SimuladorV2
                     //dd($basePrecoInversores);
                     $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                     $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+                    $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
                 }
             }
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $i)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
 
         }elseif($id == 1){
 
@@ -322,6 +372,8 @@ trait SimuladorV2
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
         }
 
         if($this->qtdModulos > 108 && $id == 2){
@@ -332,11 +384,15 @@ trait SimuladorV2
                     //dd($basePrecoInversores);
                     $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                     $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+                    $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
                 }
             }
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $i)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
 
         }elseif($id == 2){
             if($this->qtdModulos <= 27 && $this->qtdModulos >= 18){
@@ -346,9 +402,13 @@ trait SimuladorV2
                 $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                 $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
 
+                $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
+
                 $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $resultado)->where('active', '=', 1)->first();
                 $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
                 $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+                $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
 
                 return $inversores;
 
@@ -356,7 +416,11 @@ trait SimuladorV2
             $basePrecoInversores = InversorModulo::with('produto')->where('modulo_id', '=', $id)->where('max_modulos', '>=', $this->qtdModulos)->where('active', '=', 1)->first();
             $precoInversor = $this->convertesRealIngles($basePrecoInversores->produto->preco_franquia);
             $inversores[] = [ 'valor' => $precoInversor, 'id' => $basePrecoInversores->produto->id, 'potenciaInversor' => $basePrecoInversores->potencia_inversor, 'mc4' => $basePrecoInversores->mc4, 'stringbox' => $basePrecoInversores->stringbox   ];
+
+            $this->products($basePrecoInversores->produto->id, $basePrecoInversores->produto->produto, 1, $this->convertesRealIngles($basePrecoInversores->produto->preco_revenda));
         }
+
+
 
         return $inversores;
     }
