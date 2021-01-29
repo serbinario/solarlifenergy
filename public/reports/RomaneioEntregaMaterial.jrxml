@@ -4,8 +4,8 @@
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="884"/>
-	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="102"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="671"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="319"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
@@ -91,7 +91,7 @@ INNER JOIN `projetosv2` AS pro ON pro.id = se.`projeto_id`
 INNER JOIN `pre_propostas` AS pre ON pre.id = pro.proposta_id
 INNER JOIN proposta_produtos  AS pp ON pp.proposta_id = pre.id
 INNER JOIN produtos  AS prod ON prod.id = pp.produto_id
-WHERE pro.id=$P{idProjeto} ]]>
+WHERE se.id=$P{idProjeto} ]]>
 		</queryString>
 		<field name="quantidade" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.label" value="quantidade"/>
@@ -133,7 +133,7 @@ INNER JOIN projetos_prioridades AS prio ON prio.id = p.`projeto_prioridade_id`
 INNER JOIN enderecos AS e ON  e.id = p.`endereco_id`
 INNER JOIN users AS u ON u.id = pre.`user_id`
 INNER JOIN solicitacao_entrega AS se  ON se.projeto_id = p.id
-WHERE se.id =  9]]>
+WHERE se.id = $P{idProjeto} ]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
@@ -399,7 +399,7 @@ WHERE se.id =  9]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<componentElement>
-				<reportElement x="0" y="10" width="555" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
+				<reportElement x="0" y="11" width="555" height="55" uuid="6551d262-029f-420a-b37f-7f6fdc575736">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
@@ -407,9 +407,9 @@ WHERE se.id =  9]]>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="contratos" uuid="b3dcdfa2-fa50-43f4-af71-2d69792dad3b">
+					<datasetRun subDataset="contratos" uuid="42e3c016-042d-44a1-82e1-6b5085162b05">
 						<datasetParameter name="idProjeto">
-							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							<datasetParameterExpression><![CDATA[$P{idProjeto}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
