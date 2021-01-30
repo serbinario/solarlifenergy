@@ -121,8 +121,12 @@ trait SimuladorV2
 
         $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaString +  $this->valorMaoObra;
 
-        //dd($modulo->potencia);
-        $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, (int)$modulo->potencia);
+        if($this->potenciaModulo == 1){
+            $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, 330);
+        }else{
+            $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, 440);
+        }
+
         //dd($potenciaGerador, $this->qtdModulos);
         $area = $this->getArea($this->qtdModulos, '2.1', '1.15');
 
