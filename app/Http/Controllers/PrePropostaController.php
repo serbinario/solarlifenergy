@@ -231,7 +231,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-            //dd($return);
+            dd($return);
 
 
             $data['pre_proposta_obs'] = $return['obs'];

@@ -136,7 +136,7 @@ trait SimuladorV2
 
         $reducaoMediaConsumo = $this->getReducaoMediaConsumo($mediaForaPonta, '0',array_sum($geracaoEnergiaFV)/12 );
 
-        $reducaoMediaConsumo > 107.8 ? $reducaoMediaConsumo = 102.32 : "";
+        $reducaoMediaConsumo = 102.32 ;
 
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
 
