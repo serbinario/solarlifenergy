@@ -18,7 +18,7 @@
         <div class="alert alert-danger">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times&times;</a>
             @foreach($errors->all() as $error)
-                <div>{{ $error_message }}</div>
+                <div>{{ $error }}</div>
             @endforeach
         </div>
     @endif
@@ -31,15 +31,9 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar account</header>
+                            <header>Editar Visita Técnica</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('visita_tecnica.index') }}" class="btn btn-primary" title="Show All Visita Tecnica">
-                                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="{{ route('visita_tecnica.create') }}" class="btn btn-primary" title="Create New Visita Tecnica">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +43,7 @@
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
                                 <a href="{{ route('visita_tecnica.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
                         </div>
                     </div><!--end .card -->

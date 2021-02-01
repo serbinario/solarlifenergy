@@ -140,7 +140,7 @@
     <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
         <label for="distancia_circuito_placas" class="col-md-2 control-label">Quais reforços necessários?</label>
         <div class="col-md-10">
-            <input class="form-control" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
+            <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
             {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -148,7 +148,7 @@
     <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
         <label for="distancia_circuito_placas" class="col-md-2 control-label">Altura</label>
         <div class="col-md-10">
-            <input class="form-control" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
+            <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
             {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -162,7 +162,7 @@
 <div class="form-group {{ $errors->has('qtd_materiais_reforco') ? 'has-error' : '' }}">
     <label for="qtd_materiais_reforco" class="col-md-2 control-label">Qtd Materiais Reforco</label>
     <div class="col-md-10">
-        <textarea class="form-control" name="qtd_materiais_reforco" cols="50" rows="2" id="qtd_materiais_reforco" >{{ old('qtd_materiais_reforco', isset($visitaTecnica->qtd_materiais_reforco) ? $visitaTecnica->qtd_materiais_reforco : null) }}</textarea>
+        <textarea class="form-control input-sm" name="qtd_materiais_reforco" cols="50" rows="2" id="qtd_materiais_reforco" >{{ old('qtd_materiais_reforco', isset($visitaTecnica->qtd_materiais_reforco) ? $visitaTecnica->qtd_materiais_reforco : null) }}</textarea>
         {!! $errors->first('qtd_materiais_reforco', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -170,7 +170,7 @@
 <div class="form-group {{ $errors->has('riscos_acidentes') ? 'has-error' : '' }}">
     <label for="riscos_acidentes" class="col-md-2 control-label">Riscos Acidentes</label>
     <div class="col-md-10">
-        <textarea class="form-control" name="riscos_acidentes" cols="50" rows="2" id="riscos_acidentes" >{{ old('riscos_acidentes', isset($visitaTecnica->riscos_acidentes) ? $visitaTecnica->riscos_acidentes : null) }}</textarea>
+        <textarea class="form-control input-sm" name="riscos_acidentes" cols="50" rows="2" id="riscos_acidentes" >{{ old('riscos_acidentes', isset($visitaTecnica->riscos_acidentes) ? $visitaTecnica->riscos_acidentes : null) }}</textarea>
         {!! $errors->first('riscos_acidentes', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -178,7 +178,7 @@
 <div class="form-group {{ $errors->has('material_especifico') ? 'has-error' : '' }}">
     <label for="material_especifico" class="col-md-2 control-label">Material Especifico</label>
     <div class="col-md-10">
-        <textarea class="form-control" name="material_especifico" cols="50" rows="2" id="material_especifico" >{{ old('material_especifico', isset($visitaTecnica->material_especifico) ? $visitaTecnica->material_especifico : null) }}</textarea>
+        <textarea class="form-control input-sm" name="material_especifico" cols="50" rows="2" id="material_especifico" >{{ old('material_especifico', isset($visitaTecnica->material_especifico) ? $visitaTecnica->material_especifico : null) }}</textarea>
         {!! $errors->first('material_especifico', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -186,7 +186,7 @@
 <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
     <label for="distancia_circuito_placas" class="col-md-2 control-label">Distancia Circuito Placas</label>
     <div class="col-md-10">
-        <input class="form-control" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
+        <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
         {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -194,7 +194,7 @@
 <div class="form-group {{ $errors->has('distancia_circuito_inversor_quadro_geral') ? 'has-error' : '' }}">
     <label for="distancia_circuito_inversor_quadro_geral" class="col-md-2 control-label">Distancia Circuito Inversor Quadro Geral</label>
     <div class="col-md-10">
-        <input class="form-control" name="distancia_circuito_inversor_quadro_geral" type="text" id="distancia_circuito_inversor_quadro_geral" value="{{ old('distancia_circuito_inversor_quadro_geral', isset($visitaTecnica->distancia_circuito_inversor_quadro_geral) ? $visitaTecnica->distancia_circuito_inversor_quadro_geral : null) }}" maxlength="255" >
+        <input class="form-control input-sm" name="distancia_circuito_inversor_quadro_geral" type="text" id="distancia_circuito_inversor_quadro_geral" value="{{ old('distancia_circuito_inversor_quadro_geral', isset($visitaTecnica->distancia_circuito_inversor_quadro_geral) ? $visitaTecnica->distancia_circuito_inversor_quadro_geral : null) }}" maxlength="255" >
         {!! $errors->first('distancia_circuito_inversor_quadro_geral', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -211,7 +211,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_metalico_1">
-                            <input id="pe_metalico_1" class="" name="pe_metalico" type="checkbox" value="1" {{ old('pe_metalico', isset($visitaTecnica->pe_metalico) ? $visitaTecnica->pe_metalico : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_metalico_1" class="input-sm" name="pe_metalico" type="checkbox" value="1" {{ old('pe_metalico', isset($visitaTecnica->pe_metalico) ? $visitaTecnica->pe_metalico : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -224,7 +224,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_barro_1">
-                            <input id="pe_barro_1" class="" name="pe_barro" type="checkbox" value="1" {{ old('pe_barro', isset($visitaTecnica->pe_barro) ? $visitaTecnica->pe_barro : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_barro_1" class="input-sm" name="pe_barro" type="checkbox" value="1" {{ old('pe_barro', isset($visitaTecnica->pe_barro) ? $visitaTecnica->pe_barro : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -237,7 +237,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_fibrocim_alta_1">
-                            <input id="pe_fibrocim_alta_1" class="" name="pe_fibrocim_alta" type="checkbox" value="1" {{ old('pe_fibrocim_alta', isset($visitaTecnica->pe_fibrocim_alta) ? $visitaTecnica->pe_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_fibrocim_alta_1" class="input-sm" name="pe_fibrocim_alta" type="checkbox" value="1" {{ old('pe_fibrocim_alta', isset($visitaTecnica->pe_fibrocim_alta) ? $visitaTecnica->pe_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -253,7 +253,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_dijuntor_geral_1">
-                            <input id="pe_dijuntor_geral_1" class="" name="pe_dijuntor_geral" type="checkbox" value="1" {{ old('pe_dijuntor_geral', isset($visitaTecnica->pe_dijuntor_geral) ? $visitaTecnica->pe_dijuntor_geral : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_dijuntor_geral_1" class="input-sm" name="pe_dijuntor_geral" type="checkbox" value="1" {{ old('pe_dijuntor_geral', isset($visitaTecnica->pe_dijuntor_geral) ? $visitaTecnica->pe_dijuntor_geral : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -266,7 +266,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_tampa_medidor_1">
-                            <input id="pe_tampa_medidor_1" class="" name="pe_tampa_medidor" type="checkbox" value="1" {{ old('pe_tampa_medidor', isset($visitaTecnica->pe_tampa_medidor) ? $visitaTecnica->pe_tampa_medidor : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_tampa_medidor_1" class="input-sm" name="pe_tampa_medidor" type="checkbox" value="1" {{ old('pe_tampa_medidor', isset($visitaTecnica->pe_tampa_medidor) ? $visitaTecnica->pe_tampa_medidor : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -279,7 +279,7 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="pe_caixa_medidor_1">
-                            <input id="pe_caixa_medidor_1" class="" name="pe_caixa_medidor" type="checkbox" value="1" {{ old('pe_caixa_medidor', isset($visitaTecnica->pe_caixa_medidor) ? $visitaTecnica->pe_caixa_medidor : null) == '1' ? 'checked' : '' }}>
+                            <input id="pe_caixa_medidor_1" class="input-sm" name="pe_caixa_medidor" type="checkbox" value="1" {{ old('pe_caixa_medidor', isset($visitaTecnica->pe_caixa_medidor) ? $visitaTecnica->pe_caixa_medidor : null) == '1' ? 'checked' : '' }}>
                              Sim
                         </label>
                     </div>
@@ -294,7 +294,7 @@
                 <label for="nome" class="col-sm-6 control-label">Caixa Disjuntor PDE?:</label>
                 <div class="col-md-6">
                     <div class="col-md-10">
-                        <input class="form-control" name="pe_caixa_disjuntor_1" type="text" id="pe_caixa_disjuntor_1" value="{{ old('pe_caixa_disjuntor_1', isset($visitaTecnica->pe_caixa_disjuntor_1) ? $visitaTecnica->pe_caixa_disjuntor_1 : null) }}" maxlength="255">
+                        <input class="form-control input-sm" name="pe_caixa_disjuntor_1" type="text" id="pe_caixa_disjuntor_1" value="{{ old('pe_caixa_disjuntor_1', isset($visitaTecnica->pe_caixa_disjuntor_1) ? $visitaTecnica->pe_caixa_disjuntor_1 : null) }}" maxlength="255">
                     </div>
                 </div>
             </div>
@@ -307,7 +307,7 @@
     <label for="pe_bitola_cabo_medidor_disjuntor_geral" class="col-md-2 control-label">Bitola Cabo Medidor Disjuntor Geral</label>
     <div class="col-md-10">
             <div class="col-md-10">
-                <input class="form-control" name="pe_bitola_cabo_medidor_disjuntor_geral" type="text" id="pe_bitola_cabo_medidor_disjuntor_geral" value="{{ old('pe_bitola_cabo_medidor_disjuntor_geral', isset($visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral) ? $visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral : null) }}" maxlength="255">
+                <input class="form-control input-sm" name="pe_bitola_cabo_medidor_disjuntor_geral" type="text" id="pe_bitola_cabo_medidor_disjuntor_geral" value="{{ old('pe_bitola_cabo_medidor_disjuntor_geral', isset($visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral) ? $visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral : null) }}" maxlength="255">
             </div>
 
     </div>
@@ -317,7 +317,7 @@
     <label for="pe_bitola_rede_publica" class="col-md-2 control-label">Bitola Rede Pública</label>
     <div class="col-md-10">
         <div class="col-md-10">
-            <input class="form-control" name="pe_bitola_rede_publica" type="text" id="pe_bitola_rede_publica" value="{{ old('pe_bitola_rede_publica', isset($visitaTecnica->pe_bitola_rede_publica) ? $visitaTecnica->pe_bitola_rede_publica : null) }}" maxlength="255">
+            <input class="form-control input-sm" name="pe_bitola_rede_publica" type="text" id="pe_bitola_rede_publica" value="{{ old('pe_bitola_rede_publica', isset($visitaTecnica->pe_bitola_rede_publica) ? $visitaTecnica->pe_bitola_rede_publica : null) }}" maxlength="255">
         </div>
 
         {!! $errors->first('pe_bitola_rede_publica', '<p class="help-block">:message</p>') !!}

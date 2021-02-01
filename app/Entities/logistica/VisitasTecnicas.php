@@ -54,6 +54,7 @@ class VisitasTecnicas extends Model
         'pe_caixa_disjuntor',
         'pe_bitola_cabo_medidor_disjuntor_geral',
         'pe_bitola_rede_publica',
+        'obs'
     ];
 
     /**

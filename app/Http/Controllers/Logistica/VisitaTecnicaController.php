@@ -7,6 +7,7 @@ use Serbinario\Entities\logistica\VisitasTecnicas;
 use Serbinario\Entities\Modulo;
 use Serbinario\Http\Requests\ModuloFormRequest;
 use Serbinario\Http\Controllers\Controller;
+use Serbinario\Http\Requests\VisitaTecnicaFormRequest;
 use Yajra\DataTables\DataTables;
 use Serbinario\User;
 use Exception;
@@ -109,7 +110,7 @@ class VisitaTecnicaController extends Controller
             $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
             $user->syncRoles($role_r);
 
-            return redirect()->route('users.user.edit', $user->id)
+            return redirect()->route('visita_tecnica.edit', $user->id)
                 ->with('success_message', 'Cadastro atualizado com sucesso!');
 
 
@@ -144,8 +145,7 @@ class VisitaTecnicaController extends Controller
     public function edit($id)
     {
         $visitaTecnica = VisitasTecnicas::findOrFail($id);
-
-
+        //dd($visitaTecnica);
         return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica'));
 
     }
@@ -160,16 +160,16 @@ class VisitaTecnicaController extends Controller
      * Exemplos
      * https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
      */
-    public function update($id, ModuloFormRequest $request)
+    public function update($id, VisitaTecnicaFormRequest $request)
     {
         try {
 
             $data = $request->getData();
-            $modulo = Modulo::findOrFail($id);
+            $visitaTecnica = VisitasTecnicas::findOrFail($id);
             //dd($data);
-            $modulo->update($data);
-            return redirect()->route('modulo.edit', $modulo->id)
-                ->with('success_message', 'Módulo atualizado com sucesso!');
+            $visitaTecnica->update($data);
+            return redirect()->route('visita_tecnica.edit', $visitaTecnica->id)
+                ->with('success_message', 'Visita técnica atualizada com sucesso!');
 
         } catch (Exception $e) {
             return back()->withInput()

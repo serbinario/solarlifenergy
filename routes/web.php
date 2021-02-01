@@ -624,7 +624,7 @@ Route::group(
     Route::get('/grid', 'Logistica\VisitaTecnicaController@grid')
         ->name('visita_tecnica.grid');
 
-    Route::get('/{proposta}/edit','Logistica\VisitaTecnicaController@edit')
+    Route::get('/{id}/edit','Logistica\VisitaTecnicaController@edit')
         ->name('visita_tecnica.edit')
         ->where('id', '[0-9]+');
 
