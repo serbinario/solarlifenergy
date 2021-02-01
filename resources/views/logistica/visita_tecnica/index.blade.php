@@ -24,7 +24,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista de Fornecedores</header>
+                            <header>Lista de Visitas Técnicas</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="{{ route('visita_tecnica.create') }}" class="btn btn-primary" title="Novo Fornecedor">
