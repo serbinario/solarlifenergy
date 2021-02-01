@@ -123,8 +123,10 @@ trait SimuladorV2
 
         if($this->potenciaModulo == 1){
             $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, 330);
+            $modulo->potencia = 330;
         }else{
             $potenciaGerador = $this->getGeradorKwp($this->qtdModulos, 440);
+            $modulo->potencia = 440;
         }
 
         //dd($potenciaGerador, $this->qtdModulos);
