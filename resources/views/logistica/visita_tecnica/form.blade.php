@@ -20,6 +20,93 @@
         </div>
     </div>
 
+    <div class="col-lg-12">
+        <h4 class="text-bold">Endereço de Instalção</h4>
+        <hr class="ruler-lg"/>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="cep" class="col-md-4 control-label text-bold">Cep.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="cep" type="text" id="cep" value="{{ old('cep', isset($visitaTecnica->projeto->Endereco->cep) ? $visitaTecnica->projeto->Endereco->cep : null) }}" maxlength="10" placeholder="Enter cep here...">
+                    {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="coordenadas" class="col-md-4 control-label text-bold">Coordenadas.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($visitaTecnica->projeto->Endereco->coordenadas) ? $visitaTecnica->projeto->Endereco->coordenadas : null) }}" placeholder="">
+                    {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="logradouro" class="col-md-4 control-label text-bold">End. de Instalação.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="logradouro" type="text" id="logradouro" value="{{ old('logradouro', isset($visitaTecnica->projeto->Endereco->logradouro) ? $visitaTecnica->projeto->Endereco->logradouro : null) }}" maxlength="200" placeholder="Endereço">
+                    {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="bairro" class="col-sm-4 control-label text-bold">Bairro.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($visitaTecnica->projeto->Endereco->bairro) ? $visitaTecnica->projeto->Endereco->bairro : null) }}" maxlength="100" placeholder="Bairro">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
+                <label for="numero" class="col-sm-4 control-label text-bold">Numero.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="numero" type="text" id="numero" value="{{ old('numero', isset($visitaTecnica->projeto->Endereco->numero) ? $visitaTecnica->projeto->Endereco->numero : null) }}" maxlength="10" placeholder="Enter numero here...">
+                    {!! $errors->first('numero', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group {{ $errors->has('complemento') ? 'has-error' : '' }}">
+                <label for="complemento" class="col-sm-4 control-label text-bold">Complemento.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="complemento" type="text" id="complemento" value="{{ old('complemento', isset($visitaTecnica->projeto->Endereco->complemento) ? $visitaTecnica->projeto->Endereco->complemento : null) }}" maxlength="200" placeholder="Enter complemento here...">
+                    {!! $errors->first('complemento', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="uf" class="col-sm-4 control-label text-bold">Estado.:</label>
+                <div class="col-md-8">
+                    <input readonly class="form-control input-sm" name="uf" type="text" id="estado" value="{{ old('uf', isset($visitaTecnica->projeto->Endereco->uf) ? $visitaTecnica->projeto->Endereco->uf : null) }}" maxlength="2" placeholder="Enter estado here...">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="cidade" class="col-sm-4 control-label text-bold">Cidade.:</label>
+                <div class="col-md-8">
+                    <input  readonly class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($visitaTecnica->projeto->Endereco->cidade) ? $visitaTecnica->projeto->Endereco->cidade : null) }}" placeholder="Cidade">
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

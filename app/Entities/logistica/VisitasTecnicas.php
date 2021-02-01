@@ -75,7 +75,7 @@ class VisitasTecnicas extends Model
 
     public function projeto()
     {
-        return $this->belongsTo('Serbinario\Entities\PreProposta','projeto_id','id');
+        return $this->belongsTo('Serbinario\Entities\Projetov2','projeto_id','id');
     }
 
 }
