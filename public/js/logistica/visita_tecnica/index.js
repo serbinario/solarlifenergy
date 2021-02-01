@@ -31,6 +31,8 @@ $(document).ready(function () {
             {data: 'id', name: 'id', targets: 0, visible: false},
             {data: 'codigo', name: 'pre_propostas.codigo', targets: 0, visible: true},
             {data: 'nome', name: 'clientes.nome', targets: 0, visible: true},
+            {data: 'name', name: 'users.name', targets: 0, visible: true},
+            {data: 'status', name: 'status', targets: 0, visible: true},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
         ]
     });

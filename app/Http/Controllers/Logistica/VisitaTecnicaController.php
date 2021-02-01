@@ -53,8 +53,12 @@ class VisitaTecnicaController extends Controller
             ->leftJoin('projetosv2', 'projetosv2.id', '=', 'vt.projeto_id')
             ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+            ->leftjoin('users', 'users.id', '=', 'vt.tecnico_id')
+            ->leftjoin('status_visita as sv', 'sv.id', '=', 'vt.status_visita_id')
             ->select([
                 'vt.id',
+                'sv.descricao as status',
+                'users.name',
                 'pre_propostas.codigo',
                 'clientes.nome'
 

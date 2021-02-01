@@ -44,6 +44,8 @@
                                                     <th>Id</th>
                                                     <th>N Proposta</th>
                                                     <th>Nome</th>
+                                                    <th>Técnico</th>
+                                                    <th>Status</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -58,9 +60,7 @@
 
 
                         <div class="card-actionbar">
-                            <div class="card-actionbar-row">
-                                <a href="{{ route('visita_tecnica.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Fornecedor</a>
-                            </div>
+
                         </div>
                     </div><!--end .card -->
 
