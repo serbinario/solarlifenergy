@@ -145,10 +145,10 @@ class VisitaTecnicaController extends Controller
      */
     public function edit($id)
     {
-        $visitaTecnica = VisitasTecnicas::findOrFail($id);
+        $visitaTecnica = VisitasTecnicas::with('projeto')->findOrFail($id);
         $status = StatusVisita::pluck('descricao','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
-        //dd($visitaTecnica);
+       // dd($visitaTecnica->projeto->cliente);
         return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica', 'status', 'users'));
 
     }

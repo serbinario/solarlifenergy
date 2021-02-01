@@ -73,4 +73,9 @@ class VisitasTecnicas extends Model
      */
     protected $casts = [];
 
+    public function projeto()
+    {
+        return $this->belongsTo('Serbinario\Entities\PreProposta','projeto_id','id');
+    }
+
 }
