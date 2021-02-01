@@ -31,7 +31,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Visita Técnica - {{ $visitaTecnica->projeto->Preproposta->cliente->nome  }}</header>
+                            <header>Editar Visita Técnica - {{ $visitaTecnica->projeto->Preproposta->cliente->nome  }} {{ "  " . $visitaTecnica->projeto->Preproposta->codigo  }}</header>
                             <div class="tools">
                                 <div class="btn-group">
                                 </div>

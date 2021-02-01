@@ -35,8 +35,8 @@ class VisitaTecnicaController extends Controller
      */
     public function index()
     {
-
-        return view('logistica.visita_tecnica.index');
+        $status = StatusVisita::pluck('descricao','id')->all();
+        return view('logistica.visita_tecnica.index', compact('status'));
     }
 
     /**

@@ -34,6 +34,8 @@
                             </div>
                         </div>
 
+                        @include('logistica.visita_tecnica.filtro')
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
