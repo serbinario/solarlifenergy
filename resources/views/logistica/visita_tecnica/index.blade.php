@@ -42,7 +42,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nome</th>
+                                                    <th>N Proposta</th>
                                                     <th>Nome</th>
                                                     <th>Acao</th>
                                                 </tr>

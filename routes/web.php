@@ -452,7 +452,7 @@ Route::group(
         ->name('solicitacaoEntrega.grid');
 
     Route::get('/{user}/edit','SolicitacaoEntregaController@edit')
-        ->name('users.user.edit')
+        ->name('solicitacaoEntrega.edit')
         ->where('id', '[0-9]+');
 
     Route::post('/', 'SolicitacaoEntregaController@store')
@@ -463,7 +463,7 @@ Route::group(
         ->where('id', '[0-9]+');
 
     Route::delete('/{user}/destroy','SolicitacaoEntregaController@destroy')
-        ->name('users.user.destroy')
+        ->name('solicitacaoEntrega.destroy')
         ->where('id', '[0-9]+');
 
 });

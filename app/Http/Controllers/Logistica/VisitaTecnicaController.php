@@ -3,6 +3,7 @@
 namespace Serbinario\Http\Controllers\Logistica;
 
 use Illuminate\Http\Request;
+use Serbinario\Entities\logistica\StatusVisita;
 use Serbinario\Entities\logistica\VisitasTecnicas;
 use Serbinario\Entities\Modulo;
 use Serbinario\Http\Requests\ModuloFormRequest;
@@ -99,11 +100,7 @@ class VisitaTecnicaController extends Controller
         try {
             //$this->affirm($request);
             $data = $this->getData($request);
-
-
             $data['password'] = \Hash::make($data['password']);
-
-
             $user = User::create($data);
 
             //Retora o id do ROLE
@@ -145,8 +142,10 @@ class VisitaTecnicaController extends Controller
     public function edit($id)
     {
         $visitaTecnica = VisitasTecnicas::findOrFail($id);
+        $status = StatusVisita::pluck('descricao','id')->all();
+        $users = User::orderBy('name')->pluck('name','id')->all();
         //dd($visitaTecnica);
-        return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica'));
+        return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica', 'status', 'users'));
 
     }
 
