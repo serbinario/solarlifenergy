@@ -139,21 +139,6 @@ class VisitaTecnicaController extends Controller
                 ->withErrors(['error_message' => $e->getMessage()]);
         }
     }
-
-    /**
-     * Display the specified profile.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $profile = Profile::with('pool')->findOrFail($id);
-
-        return view('profile.show', compact('profile'));
-    }
-
     /**
      * Show the form for editing the specified profile.
      *

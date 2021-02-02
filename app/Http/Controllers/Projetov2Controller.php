@@ -5,6 +5,7 @@ namespace Serbinario\Http\Controllers;
 
 //meu teste
 use Serbinario\Entities\Franquia;
+use Serbinario\Entities\logistica\VisitasTecnicas;
 use Serbinario\Entities\ProjetosParticipacao;
 use Serbinario\Entities\Report;
 use Serbinario\Traits\UtilEntities;
@@ -202,7 +203,9 @@ class Projetov2Controller extends Controller
 
             $data = $request->getData();
 
-            Projetov2::create($data);
+            $projeto = Projetov2::create($data);
+
+
 
             return redirect()->route('projetov2.projetov2.index')
                 ->with('success_message', 'Projetov2 was successfully added!');

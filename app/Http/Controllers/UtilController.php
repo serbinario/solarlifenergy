@@ -7,6 +7,7 @@ use Serbinario\Entities\Cidade;
 use Serbinario\Entities\Cliente;
 use Serbinario\Entities\Contrato;
 use Serbinario\Entities\Endereco;
+use Serbinario\Entities\logistica\VisitasTecnicas;
 use Serbinario\Entities\PreProposta;
 use Serbinario\Entities\ProjetosContasContrato;
 use Serbinario\Entities\ProjetosDocumento;
@@ -172,7 +173,9 @@ class UtilController extends Controller
             $data['projeto_finalizado_id'] = $projetosFinalizado->id;
             $data['projeto_prioridade_id'] = 1;
 
-            Projetov2::create($data);
+            $projeto = Projetov2::create($data);
+
+            VisitasTecnicas::create([ 'projeto_id' => $projeto->id] );
 
         } catch (Exception $e) {
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
