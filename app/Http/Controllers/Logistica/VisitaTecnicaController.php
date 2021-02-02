@@ -70,6 +70,21 @@ class VisitaTecnicaController extends Controller
         #Editando a grid
         return Datatables::of($rows)
 
+            ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome_empresa')) {
+                    $query->where('clientes.nome_empresa', 'like', "%" . $request->get('nome_empresa') . "%");
+                }
+
+                if ($request->has('status_visita_id')) {
+                    $query->where('vt.status_visita_id', '=', $request->get('status_visita_id'));
+                }
+
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
+            })
+
             ->addColumn('action', function ($row) {
                 return '<form id="' . $row->id   . '" method="POST" action="logistica/visitaTecnica/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">

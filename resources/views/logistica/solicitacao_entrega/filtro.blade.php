@@ -20,13 +20,22 @@
                             </div>
                         </div>
 
-
+                        
 
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="integrador" class="col-sm-4 control-label">Intergrador:</label>
-                                <div class="col-md-8">
-                                    <input class="form-control input-sm" name="integrador" type="text" id="integrador"  placeholder="Integrador">
+                                <label for="franquia_id" class="col-md-2 control-label">Status.: *</label>
+                                <div class="col-md-10">
+                                    <select   class="form-control input-sm" id="status_visita_id" name="status_visita_id">
+                                        <option value="" style="display: none;" {{ old('status_visita_id', isset($visitaTecnica->status_visita_id) ? $visitaTecnica->status_visita_id : '') == '' ? 'selected' : '' }} disabled selected>Status</option>
+                                        @foreach ($status as $key => $statu)
+                                            <option value="{{ $key }}" {{ old('status_visita_id', isset($visitaTecnica->status_visita_id) ? $visitaTecnica->status_visita_id : null) == $key ? 'selected' : '' }}>
+                                                {{ $statu }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    {!! $errors->first('franquia_id', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                         </div>

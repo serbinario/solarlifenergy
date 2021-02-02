@@ -24,7 +24,9 @@ $(document).ready(function () {
         ajax: {
             url: "/index.php/visitaTecnica/grid",
             data: function (d) {
-
+                d.nome = document.getElementById("nome").value;
+                d.status_visita_id = $('select[name=status_visita_id] option:selected').val();
+                d.integrador = document.getElementById("integrador").value;
             }
         },
         columns: [

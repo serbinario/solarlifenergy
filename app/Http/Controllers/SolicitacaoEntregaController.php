@@ -35,7 +35,8 @@ class SolicitacaoEntregaController extends Controller
      */
     public function index(Request $request)
     {
-        return view('logistica.solicitacao_entrega.index');
+        $status = StatusEntrega::pluck('descricao','id')->all();
+        return view('logistica.solicitacao_entrega.index', compact('status'));
     }
 
 
@@ -68,8 +69,18 @@ class SolicitacaoEntregaController extends Controller
         #Editando a grid
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
+                # Filtranto por disciplina
+                if ($request->has('nome')) {
+                    $query->where('cli.nome', 'like', "%" . $request->get('nome') . "%");
+                }
 
+                if ($request->has('status_visita_id')) {
+                    $query->where('se.status_entrega_id', '=', $request->get('status_visita_id'));
+                }
 
+                if ($request->has('integrador')) {
+                    $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
+                }
             })
 
             ->addColumn('action', function ($row) {
