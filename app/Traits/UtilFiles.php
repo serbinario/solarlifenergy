@@ -25,13 +25,15 @@ trait UtilFiles
         // Verifica se informou o arquivo e se é válido
         if ($request->hasFile($field)){
             $file = $request->file($field);
-            //dd($file);
+            dd($file);
             try {
                 $extension = $file->getClientOriginalExtension();
                 //dd($extension);
 
                 if($nameFile){
-                    $nameFile = "{$nameFile}";
+                    //$nameFile = "{$nameFile}";
+                    $nameParts = explode(".", "{$nameFile}");
+                    $nameFile = $nameParts[0] . "." . $extension;
                 }else{
                     $name = uniqid(date('HisYmd'));
                     $nameFile = "{$name}.{$extension}";

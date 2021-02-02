@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('visita_tecnica.update', $visitaTecnica->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal">
+                <form method="POST" action="{{ route('visita_tecnica.update', $visitaTecnica->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">

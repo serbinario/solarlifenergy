@@ -434,20 +434,22 @@
     </div>
 </div>
 
+
+
     <div class="row">
         <div class="form-group">
-            <label for="file" class="col-sm-2 control-label text-bold">Comprovante.:</label>
+            <label for="foto_estrutura_image" class="col-sm-2 control-label text-bold">Fotos Estrutura.:</label>
             <div class="col-md-4">
                 <div class="checkbo">
-                    <label for="file">
-                        <input class="form-control input-sm" name="file" type="file" value="{{ old('file', isset($visitaTecnica->file) ? $solicitacaoEntrega->file : "") }}">
+                    <label for="foto_estrutura">
+                        <input class="form-control input-sm" name="foto_estrutura_image" type="file" value="{{ old('file', isset($visitaTecnica->foto_estrutura_image) ? $visitaTecnica->foto_estrutura_image : "") }}">
                     </label>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    @if($visitaTecnica->file)
-                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->file}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @if($visitaTecnica->foto_estrutura_image)
+                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->foto_estrutura_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                     @endif
                 </div>
             </div>
@@ -456,18 +458,18 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="file" class="col-sm-2 control-label text-bold">Fotos Estrutura.:</label>
+            <label for="medicao_area_image" class="col-sm-2 control-label text-bold">Medição de Área.:</label>
             <div class="col-md-4">
                 <div class="checkbo">
-                    <label for="file">
-                        <input class="form-control input-sm" name="file" type="file" value="{{ old('file', isset($visitaTecnica->file) ? $visitaTecnica->file : "") }}">
+                    <label for="medicao_area">
+                        <input class="form-control input-sm" name="medicao_area_image" type="file" value="{{ old('medicao_area_image', isset($visitaTecnica->medicao_area_image) ? $visitaTecnica->medicao_area_image : "") }}">
                     </label>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    @if($visitaTecnica->file)
-                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->file}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @if($visitaTecnica->medicao_area_image)
+                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->medicao_area_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                     @endif
                 </div>
             </div>
@@ -476,18 +478,18 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="file" class="col-sm-2 control-label text-bold">Medição de Área.:</label>
+            <label for="localizacao_image" class="col-sm-2 control-label text-bold">Localização.:</label>
             <div class="col-md-4">
                 <div class="checkbo">
-                    <label for="file">
-                        <input class="form-control input-sm" name="file" type="file" value="{{ old('file', isset($visitaTecnica->file) ? $visitaTecnica->file : "") }}">
+                    <label for="localizacao">
+                        <input class="form-control input-sm" name="localizacao_image" type="file" value="{{ old('localizacao_image', isset($visitaTecnica->localizacao_image) ? $visitaTecnica->localizacao_image : "") }}">
                     </label>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    @if($visitaTecnica->file)
-                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->file}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @if($visitaTecnica->localizacao_image)
+                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->localizacao_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                     @endif
                 </div>
             </div>
@@ -496,18 +498,18 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="file" class="col-sm-2 control-label text-bold">Localização.:</label>
+            <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Disjuntor Geral.:</label>
             <div class="col-md-4">
                 <div class="checkbo">
-                    <label for="file">
-                        <input class="form-control input-sm" name="file" type="file" value="{{ old('file', isset($visitaTecnica->file) ? $visitaTecnica->file : "") }}">
+                    <label for="disjuntor_geral">
+                        <input class="form-control input-sm" name="disjuntor_geral_image" type="file" value="{{ old('disjuntor_geral_image', isset($visitaTecnica->disjuntor_geral_image) ? $visitaTecnica->disjuntor_geral_image : "") }}">
                     </label>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    @if($visitaTecnica->file)
-                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->file}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @if($visitaTecnica->disjuntor_geral_image)
+                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->disjuntor_geral_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                     @endif
                 </div>
             </div>

@@ -56,7 +56,11 @@ class VisitasTecnicas extends Model
         'pe_bitola_rede_publica',
         'obs',
         'tecnico_id',
-        'status_visita_id'
+        'status_visita_id',
+        'foto_estrutura_image',
+        'medicao_area_image',
+        'localizacao_image',
+        'disjuntor_geral_image'
     ];
 
     /**

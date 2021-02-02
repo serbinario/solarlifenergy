@@ -26,9 +26,10 @@ class VisitaTecnicaFormRequest extends FormRequest
     {
 
         return  [
-            //'projeto_status_id' => 'required',
-            //'users_id' => 'required',
-           // 'grupo_id' => 'required',
+            'foto_estrutura_image' =>'mimes:jpeg,bmp,png',
+            'medicao_area_image' =>'mimes:jpeg,bmp,png',
+            'localizacao_image' =>'mimes:jpeg,bmp,png',
+            'disjuntor_geral_image' =>'mimes:jpeg,bmp,png'
         ];
     }
 

@@ -6,7 +6,7 @@
 <!-- BEGIN HORIZONTAL FORM -->
     <div class="row">
         <div class="col-lg-12">
-            <form method="POST" action="{{ route('visita_tecnica.visita_tecnica.store') }}" accept-charset="UTF-8" id="create_visita_tecnica_form" name="create_visita_tecnica_form" class="form-horizontal">
+            <form method="POST" action="{{ route('visita_tecnica.visita_tecnica.store') }}" accept-charset="UTF-8" id="create_visita_tecnica_form" name="create_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-head style-primary">
                         <header>Create an account</header>

@@ -4,11 +4,13 @@ namespace Serbinario\Http\Controllers\Logistica;
 
 use Illuminate\Http\Request;
 use Serbinario\Entities\logistica\StatusVisita;
+use Serbinario\Entities\logistica\VisitaDocumentos;
 use Serbinario\Entities\logistica\VisitasTecnicas;
 use Serbinario\Entities\Modulo;
 use Serbinario\Http\Requests\ModuloFormRequest;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\VisitaTecnicaFormRequest;
+use Serbinario\Traits\UtilFiles;
 use Yajra\DataTables\DataTables;
 use Serbinario\User;
 use Exception;
@@ -16,6 +18,7 @@ use Exception;
 
 class VisitaTecnicaController extends Controller
 {
+    use UtilFiles;
     private $token;
 
     /**
@@ -148,7 +151,7 @@ class VisitaTecnicaController extends Controller
         $visitaTecnica = VisitasTecnicas::with('projeto')->findOrFail($id);
         $status = StatusVisita::pluck('descricao','id')->all();
         $users = User::orderBy('name')->pluck('name','id')->all();
-        //dd($visitaTecnica->projeto->Endereco);
+        //dd($visitaTecnica);
         return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica', 'status', 'users'));
 
     }
@@ -169,7 +172,12 @@ class VisitaTecnicaController extends Controller
 
             $data = $request->getData();
             $visitaTecnica = VisitasTecnicas::findOrFail($id);
-            //dd($data);
+
+            $data['foto_estrutura_image'] = $this->ImageStore($request, 'foto_estrutura_image', $visitaTecnica->foto_estrutura_image);
+            $data['medicao_area_image'] = $this->ImageStore($request, 'medicao_area_image', $visitaTecnica->medicao_area_image);
+            $data['localizacao_image'] = $this->ImageStore($request, 'localizacao_image', $visitaTecnica->localizacao_image);
+            $data['disjuntor_geral_image'] = $this->ImageStore($request, 'disjuntor_geral_image', $visitaTecnica->disjuntor_geral_image);
+
             $visitaTecnica->update($data);
             return redirect()->route('visita_tecnica.edit', $visitaTecnica->id)
                 ->with('success_message', 'Visita técnica atualizada com sucesso!');
