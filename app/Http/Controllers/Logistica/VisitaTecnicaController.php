@@ -92,7 +92,10 @@ class VisitaTecnicaController extends Controller
                             <div class="btn-group btn-group-xs pull-right" role="group">                              
                                 <a href="visitaTecnica/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>                          
+                                </a>    
+                                <a href="/report/'.$row->id.'/visitaTecnica" class="btn btn-primary" target="_blank" title="Proposta">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                </a>                        
                                
                             </div>
                         </form>

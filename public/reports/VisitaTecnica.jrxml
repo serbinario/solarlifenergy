@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Declaracao_ciencia" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="35" bottomMargin="30" uuid="49829770-2da1-4532-bd0c-76a57134e614">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="812"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="174"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+users.name AS responsavel,
+clientes.nome AS cliente,
+pre_propostas.codigo AS NumeroProposta,
+ende.logradouro,
+ende.cep,
+ende.numero,
+ende.complemento,
+ende.bairro,
+ende.uf,
+ende.cidade,
+        ie_fibrocimento,
+        ie_metalico,
+        ie_barro,
+        ie_fibrocim_alta,
+        ie_laje,
+        ie_outros,
+        ie_area_suficiente,
+        ie_estrutura_estar_apta,
+        ie_reforcos_necessarios,
+        ie_ha_vazamentos,
+        ie_altura,
+        qtd_materiais_reforco,
+        riscos_acidentes,
+        material_especifico,
+        distancia_circuito_placas,
+        distancia_circuito_inversor_quadro_geral,
+        pe_metalico,
+        pe_barro,
+        pe_fibrocim_alta,
+        pe_dijuntor_geral,
+        pe_tampa_medidor,
+        pe_caixa_medidor,
+        pe_caixa_disjuntor,
+        pe_bitola_cabo_medidor_disjuntor_geral,
+        pe_bitola_rede_publica,
+        vt.obs,
+        tecnico_id,
+        status_visita_id,
+        data_previsao,
+        data_visita 
+FROM visita_tecnica AS vt
+LEFT JOIN projetosv2 ON projetosv2.id = vt.projeto_id
+LEFT JOIN enderecos AS ende ON ende.id = projetosv2.endereco_id
+LEFT JOIN pre_propostas ON pre_propostas.id = projetosv2.proposta_id
+LEFT JOIN clientes ON clientes.id = pre_propostas.cliente_id
+LEFT JOIN users ON  users.id = vt.tecnico_id
+WHERE vt.id =   $P{id}]]>
+	</queryString>
+	<field name="responsavel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="responsavel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="NumeroProposta" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="NumeroProposta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pre_propostas"/>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="logradouro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="complemento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="complemento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="uf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="uf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="enderecos"/>
+	</field>
+	<field name="ie_fibrocimento" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_fibrocimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_metalico" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_metalico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_barro" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_barro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_fibrocim_alta" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_fibrocim_alta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_laje" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_laje"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_outros" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_outros"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_area_suficiente" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_area_suficiente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_estrutura_estar_apta" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_estrutura_estar_apta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_reforcos_necessarios" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_reforcos_necessarios"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_ha_vazamentos" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_ha_vazamentos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="ie_altura" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ie_altura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="qtd_materiais_reforco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="qtd_materiais_reforco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="riscos_acidentes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="riscos_acidentes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="material_especifico" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="material_especifico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="distancia_circuito_placas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="distancia_circuito_placas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="distancia_circuito_inversor_quadro_geral" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="distancia_circuito_inversor_quadro_geral"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_metalico" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_metalico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_barro" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_barro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_fibrocim_alta" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_fibrocim_alta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_dijuntor_geral" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_dijuntor_geral"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_tampa_medidor" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_tampa_medidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_caixa_medidor" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_caixa_medidor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_caixa_disjuntor" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_caixa_disjuntor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_bitola_cabo_medidor_disjuntor_geral" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_bitola_cabo_medidor_disjuntor_geral"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="pe_bitola_rede_publica" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="pe_bitola_rede_publica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="obs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="obs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="tecnico_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="tecnico_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="status_visita_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="status_visita_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="data_previsao" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_previsao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<field name="data_visita" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_visita"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visita_tecnica"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="-3" width="60" height="30" uuid="24e076ed-ce0c-4f8b-ab6b-4c47683c699d"/>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/logo_solar_life.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="6" width="483" height="25" uuid="259372ec-8ed1-453e-bd55-a85baad141c2">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solar Life Energy]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="740" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="10" width="483" height="15" uuid="a1ae23ba-d631-444d-a952-854c86505ae9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANÁLISE PRELIMINAR DE OBRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="35" width="100" height="15" uuid="e3afecfb-1009-4296-b6a7-b0e1842e49d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="100" height="15" uuid="d29cb826-1a1b-42bd-9953-322371004c28">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<text><![CDATA[ENDEREÇO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="100" height="15" uuid="d26d5269-6599-4e2a-b339-8fc0149a90f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<text><![CDATA[RESPONSÁVEL:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="40" y="83" width="440" height="657" uuid="5dea877a-7a8c-4df7-bada-1f934bbe6643"/>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/apr3.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="90" y="35" width="390" height="15" uuid="020e48d5-6dde-4bb1-b6a3-3d932bed0292">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="50" width="390" height="15" uuid="d26fd8d7-c114-42bd-adfc-e9809f0ebe60">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{logradouro} + " N: " + $F{numero}+ " Bairro: " + $F{bairro} + " Cidade: "+ $F{cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="65" width="390" height="15" uuid="6d6924c0-d198-425f-90f0-78bc9add2d0d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{responsavel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
