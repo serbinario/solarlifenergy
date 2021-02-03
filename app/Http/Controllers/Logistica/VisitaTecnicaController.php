@@ -177,7 +177,8 @@ class VisitaTecnicaController extends Controller
             $data['medicao_area_image'] = $this->ImageStore($request, 'medicao_area_image', $visitaTecnica->medicao_area_image);
             $data['localizacao_image'] = $this->ImageStore($request, 'localizacao_image', $visitaTecnica->localizacao_image);
             $data['disjuntor_geral_image'] = $this->ImageStore($request, 'disjuntor_geral_image', $visitaTecnica->disjuntor_geral_image);
-
+            $data['comprovante_image'] = $this->ImageStore($request, 'comprovante_image', $visitaTecnica->comprovante_image);
+                        
             $visitaTecnica->update($data);
             return redirect()->route('visita_tecnica.edit', $visitaTecnica->id)
                 ->with('success_message', 'Visita técnica atualizada com sucesso!');

@@ -69,7 +69,9 @@ class VisitaTecnicaFormRequest extends FormRequest
             'pe_bitola_rede_publica',
             'obs',
             'tecnico_id',
-            'status_visita_id'
+            'status_visita_id',
+            'data_previsao',
+            'data_visita'
         ]);
 
         return $data;

@@ -60,7 +60,10 @@ class VisitasTecnicas extends Model
         'foto_estrutura_image',
         'medicao_area_image',
         'localizacao_image',
-        'disjuntor_geral_image'
+        'disjuntor_geral_image',
+        'comprovante_image',
+        'data_previsao',
+        'data_visita'
     ];
 
     /**
@@ -80,6 +83,26 @@ class VisitasTecnicas extends Model
     public function projeto()
     {
         return $this->belongsTo('Serbinario\Entities\Projetov2','projeto_id','id');
+    }
+
+    public function getDataPrevisaoAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    public function setDataPrevisaoAttribute($value)
+    {
+        $this->attributes['data_previsao'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    public function getDataVisitaAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    public function setDataVisitaAttribute($value)
+    {
+        $this->attributes['data_visita'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
 }

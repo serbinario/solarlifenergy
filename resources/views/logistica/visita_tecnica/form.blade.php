@@ -1,11 +1,10 @@
 <div class="card-body">
 
-
     <div class="row">
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="tecnico_id" class="col-md-4 text-bold control-label">Responsável</label>
-                <div class="col-md-4">
+                <label for="nome" class="col-sm-6 control-label">Responsável:</label>
+                <div class="col-md-6">
                     <select   class="form-control input-sm" id="tecnico_id" name="tecnico_id">
                         <option value="" style="display: none;" {{ old('tecnico_id', isset($visitaTecnica->tecnico_id) ? $visitaTecnica->tecnico_id : '') == '' ? 'selected' : '' }} disabled selected>Responsável</option>
                         @foreach ($users as $key => $user)
@@ -14,14 +13,34 @@
                             </option>
                         @endforeach
                     </select>
-                    {!! $errors->first('meio_captacao_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="data_previsao" class="col-md-4 control-label text-bold">Data Prevista.:</label>
+                <div class="col-md-8">
+                    <input  class="form-control input-sm date" name="data_previsao" type="text" id="data_previsao" value="{{ old('data_previsao', isset($visitaTecnica->data_previsao) ? $visitaTecnica->data_previsao : null) }}" maxlength="10" >
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="data_visita" class="col-md-4 control-label text-bold">Data Visita.:</label>
+                <div class="col-md-8">
+                    <input  class="form-control input-sm date" name="data_visita" type="text" id="data_visita" value="{{ old('data_visita', isset($visitaTecnica->data_visita) ? $visitaTecnica->data_visita : null) }}" maxlength="10">
+                    {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
     </div>
 
+
+
+
     <div class="col-lg-12">
-        <h4 class="text-bold">Endereço de Instalção</h4>
+        <h4 class="text-bold">Endereço de Instalação</h4>
         <hr class="ruler-lg"/>
     </div>
 
@@ -510,6 +529,26 @@
                 <div class="form-group">
                     @if($visitaTecnica->disjuntor_geral_image)
                         <a target="_blank" href="{{ url("/storage/{$visitaTecnica->disjuntor_geral_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Comprovante.:</label>
+            <div class="col-md-4">
+                <div class="checkbo">
+                    <label for="comprovante_image">
+                        <input class="form-control input-sm" name="comprovante_image" type="file" value="{{ old('comprovante_image', isset($visitaTecnica->comprovante_image) ? $visitaTecnica->comprovante_image : "") }}">
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @if($visitaTecnica->comprovante_image)
+                        <a target="_blank" href="{{ url("/storage/{$visitaTecnica->comprovante_image}") }}" class="btn btn-info btn-sm" role="button">Link Arquivo</a>
                     @endif
                 </div>
             </div>
