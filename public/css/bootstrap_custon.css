@@ -837,11 +837,36 @@ div .group-title .title {
     color: rgb(28, 47, 84) !important;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    padding: 10px;
+/* max-width  */
+@media screen and (max-width: 800px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        padding: 10px;
+    }
 }
+
+/* max-width  */
+@media screen and (min-width: 800px)  and (max-width: 1024px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 10px
+    }
+}
+
+/* max-width  */
+@media screen and (min-width: 1024px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px
+    }
+}
+
+
+
+
 .grid-item {
     padding: 20px;
     text-align: center;
