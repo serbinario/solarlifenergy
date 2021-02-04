@@ -42,7 +42,8 @@ class Franquia extends Model
         'complemento',
         'is_active',
         'base_preco_revenda_id',
-        'franqueadora'
+        'franqueadora',
+        'regular'
     ];
 
     /**
