@@ -49,7 +49,8 @@ class Projetov2 extends Model
         'pendencia',
         'arquivado',
         'pendencia_juridica',
-        'obs_juridica'
+        'obs_juridica',
+        'data_pagamento_projeto'
     ];
 
     /**
@@ -95,24 +96,24 @@ class Projetov2 extends Model
         return $this->hasMany('Serbinario\Entities\ProjetosImage','projetov2_id','id');
     }
 
-    /**
-     * Set the data_vencimento.
-     *
-     * @param  string  $value
-     * @return void
-     */
+
+
     public function setDataPrevistaAttribute($value)
     {
         $this->attributes['data_prevista'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
-    /**
-     * Get data_vencimento in array format
-     *
-     * @param  string  $value
-     * @return array
-     */
     public function getDataPrevistaAttribute($value)
+    {
+        return  $value == "" ? "" : date('d/m/Y', strtotime($value));
+    }
+
+    public function setDataPagamentoProjetoAttribute($value)
+    {
+        $this->attributes['data_pagamento_projeto'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
+    }
+
+    public function getDataPagamentoProjetoAttribute($value)
     {
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
     }

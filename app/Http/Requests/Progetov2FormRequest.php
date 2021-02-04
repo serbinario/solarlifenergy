@@ -70,7 +70,8 @@ class Progetov2FormRequest extends FormRequest
             'data_prevista',
             'participacao_obs',
             'pendencia_juridica',
-            'obs_juridica'
+            'obs_juridica',
+            'data_pagamento_projeto'
         ]);
 
         return $data;

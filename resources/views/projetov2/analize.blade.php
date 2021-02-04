@@ -443,12 +443,21 @@
                                 <div class="form-group {{ $errors->has('titularidade_projeto_cpf') ? 'has-error' : '' }}">
                                         <label for="titularidade_projeto" class="col-md-4  text-bold control-label text-bold">Data Paga.:</label>
                                         <div class="col-md-6">
-                                            <input class="form-control input-sm date" name="data_pagamento" type="text" id="titularidade_projeto"  value="{{ old('data_pagamento', isset($projetov2->participacao->data_pagamento) ? $projetov2->participacao->data_pagamento : null) }}" >
+                                            <input class="form-control input-sm date" name="data_pagamento" type="text"  value="{{ old('data_pagamento', isset($projetov2->participacao->data_pagamento) ? $projetov2->participacao->data_pagamento : null) }}" >
                                         </div>
 
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group {{ $errors->has('data_pagamento_projeto') ? 'has-error' : '' }}">
+                                <label for="data_pagamento_projeto" class="col-md-3 text-bold control-label">Data Liberação Cliente/Banco.:</label>
+                                <div class="col-md-3">
+                                    <input class="form-control input-sm date" name="data_pagamento_projeto" type="text"  value="{{ old('data_pagamento_projeto', isset($projetov2->data_pagamento_projeto) ? $projetov2->data_pagamento_projeto : null) }}" >
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
                                 <label for="participacao_obs" class="col-md-1 control-label  text-bold">Obs.:</label>
