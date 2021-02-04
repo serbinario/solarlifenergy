@@ -536,7 +536,7 @@ class PrePropostaController extends Controller
                 return back()->withInput()
                     ->withErrors(['error_message' => "Desconto não pode ser maior que o valor da participação"]);
             }
-            dd($roi );
+           // dd($roi );
 
             if ($roi > 3.6 && $preProposta->monthly_usage > 1300){
                 return back()->withInput()
