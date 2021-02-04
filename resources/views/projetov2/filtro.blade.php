@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="franquia_id" class="col-md-2 control-label">Franquia.: *</label>
+                                <label for="franquia_id" class="col-md-2 control-label">Franquia.:</label>
                                 <div class="col-md-10">
                                     <select class="form-control input-sm" id="franquia_id" name="franquia_id">
                                         <option value="" selected>Todas</option>
@@ -31,13 +31,9 @@
                                             </option>
                                         @endforeach
                                     </select>
-
-                                    {!! $errors->first('franquia_id', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="integrador" class="col-sm-4 control-label">Intergrador:</label>

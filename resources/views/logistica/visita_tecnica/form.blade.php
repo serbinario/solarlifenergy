@@ -139,7 +139,7 @@
             <div class="form-group">
                 <label for="nome" class="col-sm-6 control-label">Fibrocimento?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_fibrocimento_1">
                             <input id="ie_fibrocimento_1" class="" name="ie_fibrocimento" type="checkbox" value="1" {{ old('ie_fibrocimento', isset($visitaTecnica->ie_fibrocimento) ? $visitaTecnica->ie_fibrocimento : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -152,7 +152,7 @@
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                 <label for="franquia_id" class="col-md-6 control-label">Metálico?</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_metalico_1">
                             <input id="ie_metalico_1" class="" name="ie_metalico" type="checkbox" value="1" {{ old('ie_metalico', isset($visitaTecnica->ie_metalico) ? $visitaTecnica->ie_metalico : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -165,7 +165,7 @@
             <div class="form-group">
                 <label for="integrador" class="col-sm-6 control-label">Barro?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_barro_1">
                             <input id="ie_barro_1" class="" name="ie_barro" type="checkbox" value="1" {{ old('ie_barro', isset($visitaTecnica->ie_barro) ? $visitaTecnica->ie_barro : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -181,7 +181,7 @@
             <div class="form-group">
                 <label for="nome" class="col-sm-6 control-label">Fibrocim Alta?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_fibrocim_alta_1">
                             <input id="ie_fibrocim_alta_1" class="" name="ie_fibrocim_alta" type="checkbox" value="1" {{ old('ie_fibrocim_alta', isset($visitaTecnica->ie_fibrocim_alta) ? $visitaTecnica->ie_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -194,7 +194,7 @@
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                 <label for="franquia_id" class="col-md-6 control-label">Laje?</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_laje_1">
                             <input id="ie_laje_1" class="" name="ie_laje" type="checkbox" value="1" {{ old('ie_laje', isset($visitaTecnica->ie_laje) ? $visitaTecnica->ie_laje : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -207,7 +207,7 @@
             <div class="form-group">
                 <label for="integrador" class="col-sm-6 control-label">Outros?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_outros_1">
                             <input id="ie_outros_1" class="" name="ie_outros" type="checkbox" value="1" {{ old('ie_outros', isset($visitaTecnica->ie_outros) ? $visitaTecnica->ie_outros : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -229,7 +229,7 @@
             <div class="form-group">
                 <label for="nome" class="col-sm-6 control-label">Área é sufuciente?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_area_suficiente_1">
                             <input id="ie_area_suficiente_1" class="" name="ie_area_suficiente" type="checkbox" value="1" {{ old('ie_area_suficiente', isset($visitaTecnica->ie_area_suficiente) ? $visitaTecnica->ie_area_suficiente : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -242,7 +242,7 @@
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                 <label for="franquia_id" class="col-md-6 control-label">Estrutura estar ápta?</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_estrutura_estar_apta_1">
                             <input id="ie_estrutura_estar_apta_1" class="" name="ie_estrutura_estar_apta" type="checkbox" value="1" {{ old('ie_estrutura_estar_apta', isset($visitaTecnica->ie_estrutura_estar_apta) ? $visitaTecnica->ie_estrutura_estar_apta : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -255,7 +255,7 @@
             <div class="form-group">
                 <label for="integrador" class="col-sm-6 control-label">Há Vazamentos?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="ie_ha_vazamentos_1">
                             <input id="ie_ha_vazamentos_1" class="" name="ie_ha_vazamentos" type="checkbox" value="1" {{ old('ie_ha_vazamentos', isset($visitaTecnica->ie_ha_vazamentos) ? $visitaTecnica->ie_ha_vazamentos : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -338,7 +338,7 @@
             <div class="form-group">
                 <label for="nome" class="col-sm-6 control-label">Metálico?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_metalico_1">
                             <input id="pe_metalico_1" class="input-sm" name="pe_metalico" type="checkbox" value="1" {{ old('pe_metalico', isset($visitaTecnica->pe_metalico) ? $visitaTecnica->pe_metalico : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -351,7 +351,7 @@
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                 <label for="franquia_id" class="col-md-6 control-label">Barro?</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_barro_1">
                             <input id="pe_barro_1" class="input-sm" name="pe_barro" type="checkbox" value="1" {{ old('pe_barro', isset($visitaTecnica->pe_barro) ? $visitaTecnica->pe_barro : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -364,7 +364,7 @@
             <div class="form-group">
                 <label for="integrador" class="col-sm-6 control-label">Fibrocim Alta?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_fibrocim_alta_1">
                             <input id="pe_fibrocim_alta_1" class="input-sm" name="pe_fibrocim_alta" type="checkbox" value="1" {{ old('pe_fibrocim_alta', isset($visitaTecnica->pe_fibrocim_alta) ? $visitaTecnica->pe_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -380,7 +380,7 @@
             <div class="form-group">
                 <label for="nome" class="col-sm-6 control-label">Disjuntor Geral?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_dijuntor_geral_1">
                             <input id="pe_dijuntor_geral_1" class="input-sm" name="pe_dijuntor_geral" type="checkbox" value="1" {{ old('pe_dijuntor_geral', isset($visitaTecnica->pe_dijuntor_geral) ? $visitaTecnica->pe_dijuntor_geral : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -393,7 +393,7 @@
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                 <label for="franquia_id" class="col-md-6 control-label">Tampa Medidor PDE?</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_tampa_medidor_1">
                             <input id="pe_tampa_medidor_1" class="input-sm" name="pe_tampa_medidor" type="checkbox" value="1" {{ old('pe_tampa_medidor', isset($visitaTecnica->pe_tampa_medidor) ? $visitaTecnica->pe_tampa_medidor : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -406,7 +406,7 @@
             <div class="form-group">
                 <label for="integrador" class="col-sm-6 control-label">Caixa Medidor PDE?:</label>
                 <div class="col-md-6">
-                    <div class="checkbox">
+                    <div class="checkbox checkbox-styled">
                         <label for="pe_caixa_medidor_1">
                             <input id="pe_caixa_medidor_1" class="input-sm" name="pe_caixa_medidor" type="checkbox" value="1" {{ old('pe_caixa_medidor', isset($visitaTecnica->pe_caixa_medidor) ? $visitaTecnica->pe_caixa_medidor : null) == '1' ? 'checked' : '' }}>
                              Sim
@@ -459,7 +459,7 @@
         <div class="form-group">
             <label for="foto_estrutura_image" class="col-sm-2 control-label text-bold">Fotos Estrutura.:</label>
             <div class="col-md-4">
-                <div class="checkbo">
+                <div class="">
                     <label for="foto_estrutura">
                         <input class="form-control input-sm" name="foto_estrutura_image" type="file" value="{{ old('file', isset($visitaTecnica->foto_estrutura_image) ? $visitaTecnica->foto_estrutura_image : "") }}">
                     </label>
@@ -479,7 +479,7 @@
         <div class="form-group">
             <label for="medicao_area_image" class="col-sm-2 control-label text-bold">Medição de Área.:</label>
             <div class="col-md-4">
-                <div class="checkbo">
+                <div class="">
                     <label for="medicao_area">
                         <input class="form-control input-sm" name="medicao_area_image" type="file" value="{{ old('medicao_area_image', isset($visitaTecnica->medicao_area_image) ? $visitaTecnica->medicao_area_image : "") }}">
                     </label>
@@ -499,7 +499,7 @@
         <div class="form-group">
             <label for="localizacao_image" class="col-sm-2 control-label text-bold">Localização.:</label>
             <div class="col-md-4">
-                <div class="checkbo">
+                <div class="">
                     <label for="localizacao">
                         <input class="form-control input-sm" name="localizacao_image" type="file" value="{{ old('localizacao_image', isset($visitaTecnica->localizacao_image) ? $visitaTecnica->localizacao_image : "") }}">
                     </label>
@@ -519,7 +519,7 @@
         <div class="form-group">
             <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Disjuntor Geral.:</label>
             <div class="col-md-4">
-                <div class="checkbo">
+                <div class="">
                     <label for="disjuntor_geral">
                         <input class="form-control input-sm" name="disjuntor_geral_image" type="file" value="{{ old('disjuntor_geral_image', isset($visitaTecnica->disjuntor_geral_image) ? $visitaTecnica->disjuntor_geral_image : "") }}">
                     </label>
@@ -539,7 +539,7 @@
         <div class="form-group">
             <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Comprovante.:</label>
             <div class="col-md-4">
-                <div class="checkbo">
+                <div class="">
                     <label for="comprovante_image">
                         <input class="form-control input-sm" name="comprovante_image" type="file" value="{{ old('comprovante_image', isset($visitaTecnica->comprovante_image) ? $visitaTecnica->comprovante_image : "") }}">
                     </label>
