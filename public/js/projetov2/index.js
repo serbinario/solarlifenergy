@@ -57,7 +57,7 @@ var table = $('#projetov2').DataTable({
             d.cod_projeto = $('input[name=cod_projeto]').val();
             d.integrador = $('input[name=integrador]').val();
             d.projeto_status = $('select[name=projeto_status] option:selected').val();
-            d.filtro_por = $("input[name='filtro_por']:checked").val();
+            d.filtro_por = $('select[name=filtro_por] option:selected').val();
             d.franquia_id = $('select[name=franquia_id] option:selected').val();
 
 

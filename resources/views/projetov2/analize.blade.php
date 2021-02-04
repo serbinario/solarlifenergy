@@ -441,7 +441,7 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group {{ $errors->has('titularidade_projeto_cpf') ? 'has-error' : '' }}">
-                                        <label for="titularidade_projeto" class="col-md-4  text-bold control-label text-bold">Data Paga.:</label>
+                                        <label for="titularidade_projeto" class="col-md-4 left text-bold control-label text-bold">Data Paga.:</label>
                                         <div class="col-md-6">
                                             <input class="form-control input-sm date" name="data_pagamento" type="text"  value="{{ old('data_pagamento', isset($projetov2->participacao->data_pagamento) ? $projetov2->participacao->data_pagamento : null) }}" >
                                         </div>

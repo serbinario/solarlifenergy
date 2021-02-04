@@ -113,8 +113,8 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="data_ini" class="col-sm-4 control-label">Data Ini.:</label>
-                                <div class="col-md-8">
+                                <label for="data_ini" class="col-sm-5 control-label">Data Ini.:</label>
+                                <div class="col-md-7">
                                     <input class="form-control input-sm date" name="data_ini" type="text" id="data_ini" value="{{ old('data_ini',  null) }}" placeholder="Início">
 
                                 </div>
@@ -122,23 +122,24 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="data_fim" class="col-sm-4 control-label">Data Fim.:</label>
-                                <div class="col-md-8">
+                                <label for="data_fim" class="col-sm-5 control-label">Data Fim.:</label>
+                                <div class="col-md-7">
                                     <input class="form-control input-sm date" name="data_fim" type="text" id="data_fim" value="{{ old('data_fim',  null) }}" placeholder="Fim">
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Filtrar data por:</label>
-                                <div class="col-sm-9">
-                                    <label class="radio-inline radio-styled">
-                                        <input type="radio" name="filtro_por" checked value="created_at"><span>Cadastro</span>
-                                    </label>
-                                    <label class="radio-inline radio-styled">
-                                        <input type="radio" name="filtro_por" value="updated_at"><span>Atualização</span>
-                                    </label>
-                                </div><!--end .col -->
+
+                                <label for="cidade" class="col-md-2 control-label">Data</label>
+                                <div class="col-md-6">
+                                    <select id="filtro_por" name="filtro_por" class="form-control input-sm">
+                                        <option value="">Todos</option>
+                                        <option value="created_at">Cadastro</option>
+                                        <option value="updated_at">Atualização</option>
+                                        <option value="data_pagamento_projeto">Pagamento(Cliente/Banco)</option>
+                                    </select>
+                                </div>
                             </div><!--end .form-group -->
                         </div>
                     </div>
