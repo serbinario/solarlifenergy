@@ -217,8 +217,8 @@
 
     <div class="grid-container">
         <div class="grid-item">
-            <label for="nome" class="col-sm-6 ">Área é sufuciente?:</label>
-            <div class="col-md-6">
+            <label for="nome" class=" ">Área é sufuciente?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_area_suficiente_1">
                         <input id="ie_area_suficiente_1" class="" name="ie_area_suficiente" type="checkbox" value="1" {{ old('ie_area_suficiente', isset($visitaTecnica->ie_area_suficiente) ? $visitaTecnica->ie_area_suficiente : null) == '1' ? 'checked' : '' }}>
@@ -228,8 +228,8 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="franquia_id" class="col-md-6 ">Estrutura estar ápta?</label>
-            <div class="col-md-6">
+            <label for="franquia_id" class=" ">Estrutura estar ápta?</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_estrutura_estar_apta_1">
                         <input id="ie_estrutura_estar_apta_1" class="" name="ie_estrutura_estar_apta" type="checkbox" value="1" {{ old('ie_estrutura_estar_apta', isset($visitaTecnica->ie_estrutura_estar_apta) ? $visitaTecnica->ie_estrutura_estar_apta : null) == '1' ? 'checked' : '' }}>
@@ -239,8 +239,8 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="integrador" class="col-sm-6 ">Há Vazamentos?:</label>
-            <div class="col-md-6">
+            <label for="integrador" class=" ">Há Vazamentos?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_ha_vazamentos_1">
                         <input id="ie_ha_vazamentos_1" class="" name="ie_ha_vazamentos" type="checkbox" value="1" {{ old('ie_ha_vazamentos', isset($visitaTecnica->ie_ha_vazamentos) ? $visitaTecnica->ie_ha_vazamentos : null) == '1' ? 'checked' : '' }}>
@@ -321,8 +321,8 @@
 
     <div class="grid-container">
         <div class="grid-item">
-            <label for="nome" class="col-sm-6 ">Metálico?:</label>
-            <div class="col-md-6">
+            <label for="nome" class="">Metálico?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_metalico_1">
                         <input id="pe_metalico_1" class="input-sm" name="pe_metalico" type="checkbox" value="1" {{ old('pe_metalico', isset($visitaTecnica->pe_metalico) ? $visitaTecnica->pe_metalico : null) == '1' ? 'checked' : '' }}>
@@ -332,8 +332,8 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="franquia_id" class="col-md-6 ">Barro?</label>
-            <div class="col-md-6">
+            <label for="franquia_id" class="">Barro?</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_barro_1">
                         <input id="pe_barro_1" class="input-sm" name="pe_barro" type="checkbox" value="1" {{ old('pe_barro', isset($visitaTecnica->pe_barro) ? $visitaTecnica->pe_barro : null) == '1' ? 'checked' : '' }}>
@@ -343,8 +343,8 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="integrador" class="col-sm-6 ">Fibrocim Alta?:</label>
-            <div class="col-sm-6">
+            <label for="integrador" class=" ">Fibrocim Alta?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_fibrocim_alta_1">
                         <input id="pe_fibrocim_alta_1" class="input-sm" name="pe_fibrocim_alta" type="checkbox" value="1" {{ old('pe_fibrocim_alta', isset($visitaTecnica->pe_fibrocim_alta) ? $visitaTecnica->pe_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
@@ -355,8 +355,8 @@
         </div>
 
         <div class="grid-item">
-            <label for="nome" class="col-sm-6 ">Disjuntor Geral?:</label>
-            <div class="col-md-6">
+            <label for="nome" class=" ">Disjuntor Geral?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_dijuntor_geral_1">
                         <input id="pe_dijuntor_geral_1" class="input-sm" name="pe_dijuntor_geral" type="checkbox" value="1" {{ old('pe_dijuntor_geral', isset($visitaTecnica->pe_dijuntor_geral) ? $visitaTecnica->pe_dijuntor_geral : null) == '1' ? 'checked' : '' }}>
@@ -367,8 +367,8 @@
         </div>
 
         <div class="grid-item">
-            <label for="franquia_id" class="col-md-6 ">Tampa Medidor PDE?</label>
-            <div class="col-md-6">
+            <label for="franquia_id" class="">Tampa Medidor PDE?</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_tampa_medidor_1">
                         <input id="pe_tampa_medidor_1" class="input-sm" name="pe_tampa_medidor" type="checkbox" value="1" {{ old('pe_tampa_medidor', isset($visitaTecnica->pe_tampa_medidor) ? $visitaTecnica->pe_tampa_medidor : null) == '1' ? 'checked' : '' }}>
@@ -379,8 +379,8 @@
         </div>
 
         <div class="grid-item">
-            <label for="integrador" class="col-sm-6 ">Caixa Medidor PDE?:</label>
-            <div class="col-md-6">
+            <label for="integrador" class=" ">Caixa Medidor PDE?:</label>
+            <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="pe_caixa_medidor_1">
                         <input id="pe_caixa_medidor_1" class="input-sm" name="pe_caixa_medidor" type="checkbox" value="1" {{ old('pe_caixa_medidor', isset($visitaTecnica->pe_caixa_medidor) ? $visitaTecnica->pe_caixa_medidor : null) == '1' ? 'checked' : '' }}>
@@ -395,7 +395,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
                 <label for="nome" class="col-sm-6 ">Caixa Disjuntor PDE?:</label>
-                <div class="col-md-6">
+                <div class="">
                     <div class="col-md-10">
                         <input class="form-control input-sm" name="pe_caixa_disjuntor_1" type="text" id="pe_caixa_disjuntor_1" value="{{ old('pe_caixa_disjuntor_1', isset($visitaTecnica->pe_caixa_disjuntor_1) ? $visitaTecnica->pe_caixa_disjuntor_1 : null) }}" maxlength="255">
                     </div>
