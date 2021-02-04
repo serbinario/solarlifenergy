@@ -134,79 +134,89 @@
         <hr class="ruler-lg"/>
     </div>
 
-
-    <div class="grid-container">
-        <div class="grid-item">
-            <label for="nome" class="control-label text-bold">Fibrocimento?:</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_fibrocimento_1" class="text-bold"">
-                        <input id="ie_fibrocimento_1" class="" name="ie_fibrocimento" type="checkbox" value="1" {{ old('ie_fibrocimento', isset($visitaTecnica->ie_fibrocimento) ? $visitaTecnica->ie_fibrocimento : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="nome" class="col-sm-6 control-label">Fibrocimento?:</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_fibrocimento_1">
+                            <input id="ie_fibrocimento_1" class="" name="ie_fibrocimento" type="checkbox" value="1" {{ old('ie_fibrocimento', isset($visitaTecnica->ie_fibrocimento) ? $visitaTecnica->ie_fibrocimento : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="grid-item">
-            <label for="franquia_id" class="control-label">Metálico?</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_metalico_1">
-                        <input id="ie_metalico_1" class="" name="ie_metalico" type="checkbox" value="1" {{ old('ie_metalico', isset($visitaTecnica->ie_metalico) ? $visitaTecnica->ie_metalico : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
+                <label for="franquia_id" class="col-md-6 control-label">Metálico?</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_metalico_1">
+                            <input id="ie_metalico_1" class="" name="ie_metalico" type="checkbox" value="1" {{ old('ie_metalico', isset($visitaTecnica->ie_metalico) ? $visitaTecnica->ie_metalico : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="grid-item">
-            <label for="integrador" class="control-label">Barro?:</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_barro_1">
-                        <input id="ie_barro_1" class="" name="ie_barro" type="checkbox" value="1" {{ old('ie_barro', isset($visitaTecnica->ie_barro) ? $visitaTecnica->ie_barro : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="grid-item">
-            <label for="nome" class="control-label">Fibrocim Alta?:</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_fibrocim_alta_1">
-                        <input id="ie_fibrocim_alta_1" class="" name="ie_fibrocim_alta" type="checkbox" value="1" {{ old('ie_fibrocim_alta', isset($visitaTecnica->ie_fibrocim_alta) ? $visitaTecnica->ie_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="grid-item">
-            <label for="franquia_id" class=" control-label">Laje?</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_laje_1">
-                        <input id="ie_laje_1" class="" name="ie_laje" type="checkbox" value="1" {{ old('ie_laje', isset($visitaTecnica->ie_laje) ? $visitaTecnica->ie_laje : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="grid-item">
-            <label for="integrador" class="control-label">Outros?:</label>
-            <div class="">
-                <div class="checkbox checkbox-styled">
-                    <label for="ie_outros_1">
-                        <input id="ie_outros_1" class="" name="ie_outros" type="checkbox" value="1" {{ old('ie_outros', isset($visitaTecnica->ie_outros) ? $visitaTecnica->ie_outros : null) == '1' ? 'checked' : '' }}>
-                        Sim
-                    </label>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="integrador" class="col-sm-6 control-label">Barro?:</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_barro_1">
+                            <input id="ie_barro_1" class="" name="ie_barro" type="checkbox" value="1" {{ old('ie_barro', isset($visitaTecnica->ie_barro) ? $visitaTecnica->ie_barro : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="nome" class="col-sm-6 control-label">Fibrocim Alta?:</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_fibrocim_alta_1">
+                            <input id="ie_fibrocim_alta_1" class="" name="ie_fibrocim_alta" type="checkbox" value="1" {{ old('ie_fibrocim_alta', isset($visitaTecnica->ie_fibrocim_alta) ? $visitaTecnica->ie_fibrocim_alta : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
+                <label for="franquia_id" class="col-md-6 control-label">Laje?</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_laje_1">
+                            <input id="ie_laje_1" class="" name="ie_laje" type="checkbox" value="1" {{ old('ie_laje', isset($visitaTecnica->ie_laje) ? $visitaTecnica->ie_laje : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="integrador" class="col-sm-6 control-label">Outros?:</label>
+                <div class="col-md-6">
+                    <div class="checkbox checkbox-styled">
+                        <label for="ie_outros_1">
+                            <input id="ie_outros_1" class="" name="ie_outros" type="checkbox" value="1" {{ old('ie_outros', isset($visitaTecnica->ie_outros) ? $visitaTecnica->ie_outros : null) == '1' ? 'checked' : '' }}>
+                             Sim
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="col-lg-12">
         <h4 class="text-bold">Quantide de Painéis a ser instalado</h4>
@@ -322,8 +332,6 @@
         <h4 class="text-bold">Inspeção do padrão de entrada</h4>
         <hr class="ruler-lg"/>
     </div>
-
-
 
     <div class="row">
         <div class="col-sm-6 col-md-4">
