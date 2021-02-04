@@ -877,17 +877,11 @@ div .group-title .title {
 
 .grid-item {
     padding: 20px;
-    text-align: center;
+    text-align: left;
     display: flex;
     align-items: baseline;
-
-
     display: grid;
     grid-template-columns: 2fr 1fr;
-}
-
-.grid-container label{
-    font-weight: bold !important;
 }
 
 
