@@ -110,17 +110,17 @@
         </div>
     </div>
     @role('super-admin')
-<div class="form-group">
-    <label for="is_active" class="col-md-2 control-label text-bold">Ativo?.:</label>
-    <div class="col-md-10">
-        <div class="checkbox checkbox-styled">
-            <label for="is_active_1">
-            	<input id="is_active_1" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', isset($franquia->is_active) ? $franquia->is_active : null) == '1' ? 'checked' : '' }}>
-                Sim
-            </label>
+    <div class="form-group">
+        <label for="is_active" class="col-md-2 control-label text-bold">Ativo?.:</label>
+        <div class="col-md-10">
+            <div class="checkbox checkbox-styled">
+                <label for="is_active_1">
+                    <input id="is_active_1" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', isset($franquia->is_active) ? $franquia->is_active : null) == '1' ? 'checked' : '' }}>
+                    Sim
+                </label>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="form-group">
         <label for="regular" class="col-md-2 control-label text-bold">Estar Regular?.:</label>

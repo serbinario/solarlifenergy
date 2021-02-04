@@ -60,24 +60,15 @@ class Projetov2 extends Model
      */
     protected $dates = [];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [];
 
-    /**
-     * Get the projeto for this model.
-     */
     public function contratos()
     {
         return $this->hasMany('Serbinario\Entities\ProjetosContasContrato','projetov2_id','id');
     }
 
-    /**
-     * Get the projeto for this model.
-     */
+
     public function contrato()
     {
         return $this->hasOne('Serbinario\Entities\Contrato','projeto_id','id');
@@ -88,9 +79,7 @@ class Projetov2 extends Model
         return $this->hasOne('Serbinario\Entities\SolicitacaoEntrega','projeto_id','id');
     }
 
-    /**
-     * Get the projeto for this model.
-     */
+
     public function imagens()
     {
         return $this->hasMany('Serbinario\Entities\ProjetosImage','projetov2_id','id');
@@ -113,46 +102,35 @@ class Projetov2 extends Model
         $this->attributes['data_pagamento_projeto'] =  !empty($value) ? substr($value,6,4)."-".substr($value,3,2)."-".substr($value,0,2) : null;
     }
 
+
     public function getDataPagamentoProjetoAttribute($value)
     {
         return  $value == "" ? "" : date('d/m/Y', strtotime($value));
     }
 
-    /**
-     * Get the cliente for this model.
-     */
+
     public function cliente()
     {
         return $this->belongsTo('Serbinario\Entities\Cliente','cliente_id');
     }
 
-    /**
-     * Get the ProjetosStatus for this model.
-     */
+
     public function ProjetosStatus()
     {
         return $this->belongsTo('Serbinario\Entities\ProjetoStatus','projeto_status_id','id');
     }
 
-    /**
-     * Get the PreProposta for this model.
-     */
     public function PreProposta()
     {
         return $this->belongsTo('Serbinario\Entities\PreProposta','proposta_id','id');
     }
 
-    /**
-     * Get the Endereco for this model.
-     */
     public function Endereco()
     {
         return $this->belongsTo('Serbinario\Entities\Endereco','endereco_id','id');
     }
 
-    /**
-     * Get the ProjetosDocumento for this model.
-     */
+
     public function ProjetosDocumento()
     {
         return $this->belongsTo('Serbinario\Entities\ProjetosDocumento','projeto_documento_id','id');
