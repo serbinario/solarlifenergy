@@ -838,7 +838,7 @@ div .group-title .title {
 }
 
 /* max-width  */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
     .grid-container {
         display: grid;
         grid-template-columns: auto;
@@ -847,7 +847,7 @@ div .group-title .title {
 }
 
 /* max-width  */
-@media screen and (min-width: 800px)  and (max-width: 1024px) {
+@media screen and (min-width: 768px)  and (max-width: 1024px) {
     .grid-container {
         display: grid;
         grid-template-columns: auto auto;
