@@ -865,7 +865,15 @@ div .group-title .title {
 }
 
 
+.vista-tecnica{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
 
+.vista-tecnica label{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
 
 .grid-item {
     padding: 20px;
@@ -873,8 +881,7 @@ div .group-title .title {
     display: flex;
     align-items: baseline;
 
-    font-size: 1.5rem;
-    font-weight: bold;
+
     display: grid;
     grid-template-columns: 2fr 1fr;
 }

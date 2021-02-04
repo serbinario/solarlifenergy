@@ -1,9 +1,9 @@
-<div class="card-body">
+<div class="card-body vista-tecnica">
 
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="nome" class="col-sm-6 control-label">Responsável:</label>
+                <label for="nome" class="col-sm-6 ">Responsável:</label>
                 <div class="col-md-6">
                     <select   class="form-control input-sm" id="tecnico_id" name="tecnico_id">
                         <option value="" style="display: none;" {{ old('tecnico_id', isset($visitaTecnica->tecnico_id) ? $visitaTecnica->tecnico_id : '') == '' ? 'selected' : '' }} disabled selected>Responsável</option>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="data_previsao" class="col-md-4 control-label text-bold">Data Prevista.:</label>
+                <label for="data_previsao" class="col-md-4">Data Prevista.:</label>
                 <div class="col-md-8">
                     <input  class="form-control input-sm date" name="data_previsao" type="text" id="data_previsao" value="{{ old('data_previsao', isset($visitaTecnica->data_previsao) ? $visitaTecnica->data_previsao : null) }}" maxlength="10" >
 
@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="data_visita" class="col-md-4 control-label text-bold">Data Visita.:</label>
+                <label for="data_visita" class="col-md-4">Data Visita.:</label>
                 <div class="col-md-8">
                     <input  class="form-control input-sm date" name="data_visita" type="text" id="data_visita" value="{{ old('data_visita', isset($visitaTecnica->data_visita) ? $visitaTecnica->data_visita : null) }}" maxlength="10">
                     {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="cep" class="col-md-4 control-label text-bold">Cep.:</label>
+                <label for="cep" class="col-md-4">Cep.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="cep" type="text" id="cep" value="{{ old('cep', isset($visitaTecnica->projeto->Endereco->cep) ? $visitaTecnica->projeto->Endereco->cep : null) }}" maxlength="10" placeholder="Enter cep here...">
                     {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
@@ -57,7 +57,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="coordenadas" class="col-md-4 control-label text-bold">Coordenadas.:</label>
+                <label for="coordenadas" class="col-md-4 ">Coordenadas.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="coordenadas" type="text" id="coordenadas"  value="{{ old('coordenadas', isset($visitaTecnica->projeto->Endereco->coordenadas) ? $visitaTecnica->projeto->Endereco->coordenadas : null) }}" placeholder="">
                     {!! $errors->first('coordenadas', '<p class="help-block">:message</p>') !!}
@@ -69,7 +69,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="logradouro" class="col-md-4 control-label text-bold">End. de Instalação.:</label>
+                <label for="logradouro" class="col-md-4 ">End. de Instalação.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="logradouro" type="text" id="logradouro" value="{{ old('logradouro', isset($visitaTecnica->projeto->Endereco->logradouro) ? $visitaTecnica->projeto->Endereco->logradouro : null) }}" maxlength="200" placeholder="Endereço">
                     {!! $errors->first('end_intalacao', '<p class="help-block">:message</p>') !!}
@@ -78,7 +78,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="bairro" class="col-sm-4 control-label text-bold">Bairro.:</label>
+                <label for="bairro" class="col-sm-4 ">Bairro.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="bairro" type="text" id="bairro" value="{{ old('bairro', isset($visitaTecnica->projeto->Endereco->bairro) ? $visitaTecnica->projeto->Endereco->bairro : null) }}" maxlength="100" placeholder="Bairro">
                 </div>
@@ -89,7 +89,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
-                <label for="numero" class="col-sm-4 control-label text-bold">Numero.:</label>
+                <label for="numero" class="col-sm-4 ">Numero.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="numero" type="text" id="numero" value="{{ old('numero', isset($visitaTecnica->projeto->Endereco->numero) ? $visitaTecnica->projeto->Endereco->numero : null) }}" maxlength="10" placeholder="Enter numero here...">
                     {!! $errors->first('numero', '<p class="help-block">:message</p>') !!}
@@ -98,7 +98,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group {{ $errors->has('complemento') ? 'has-error' : '' }}">
-                <label for="complemento" class="col-sm-4 control-label text-bold">Complemento.:</label>
+                <label for="complemento" class="col-sm-4 ">Complemento.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="complemento" type="text" id="complemento" value="{{ old('complemento', isset($visitaTecnica->projeto->Endereco->complemento) ? $visitaTecnica->projeto->Endereco->complemento : null) }}" maxlength="200" placeholder="Enter complemento here...">
                     {!! $errors->first('complemento', '<p class="help-block">:message</p>') !!}
@@ -111,7 +111,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="uf" class="col-sm-4 control-label text-bold">Estado.:</label>
+                <label for="uf" class="col-sm-4 ">Estado.:</label>
                 <div class="col-md-8">
                     <input readonly class="form-control input-sm" name="uf" type="text" id="estado" value="{{ old('uf', isset($visitaTecnica->projeto->Endereco->uf) ? $visitaTecnica->projeto->Endereco->uf : null) }}" maxlength="2" placeholder="Enter estado here...">
                 </div>
@@ -119,7 +119,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="cidade" class="col-sm-4 control-label text-bold">Cidade.:</label>
+                <label for="cidade" class="col-sm-4 ">Cidade.:</label>
                 <div class="col-md-8">
                     <input  readonly class="form-control input-sm" name="cidade" type="text" id="cidade" value="{{ old('cidade', isset($visitaTecnica->projeto->Endereco->cidade) ? $visitaTecnica->projeto->Endereco->cidade : null) }}" placeholder="Cidade">
                 </div>
@@ -137,7 +137,7 @@
 
     <div class="grid-container">
         <div class="grid-item">
-            <label for="nome" class="control-label text-bold">Fibrocimento?:</label>
+            <label for="nome" class="">Fibrocimento?:</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_fibrocimento_1" class="text-bold"">
@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="franquia_id" class="control-label">Metálico?</label>
+            <label for="franquia_id" class="">Metálico?</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_metalico_1">
@@ -159,7 +159,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="integrador" class="control-label">Barro?:</label>
+            <label for="integrador" class="">Barro?:</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_barro_1">
@@ -170,7 +170,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="nome" class="control-label">Fibrocim Alta?:</label>
+            <label for="nome" class="">Fibrocim Alta?:</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_fibrocim_alta_1">
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="franquia_id" class=" control-label">Laje?</label>
+            <label for="franquia_id" class=" ">Laje?</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_laje_1">
@@ -192,7 +192,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <label for="integrador" class="control-label">Outros?:</label>
+            <label for="integrador" class="">Outros?:</label>
             <div class="">
                 <div class="checkbox checkbox-styled">
                     <label for="ie_outros_1">
@@ -217,7 +217,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="nome" class="col-sm-6 control-label">Área é sufuciente?:</label>
+                <label for="nome" class="col-sm-6 ">Área é sufuciente?:</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="ie_area_suficiente_1">
@@ -230,7 +230,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
-                <label for="franquia_id" class="col-md-6 control-label">Estrutura estar ápta?</label>
+                <label for="franquia_id" class="col-md-6 ">Estrutura estar ápta?</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="ie_estrutura_estar_apta_1">
@@ -243,7 +243,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="integrador" class="col-sm-6 control-label">Há Vazamentos?:</label>
+                <label for="integrador" class="col-sm-6 ">Há Vazamentos?:</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="ie_ha_vazamentos_1">
@@ -257,7 +257,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
-        <label for="distancia_circuito_placas" class="col-md-2 control-label">Quais reforços necessários?</label>
+        <label for="distancia_circuito_placas" class="col-md-2 ">Quais reforços necessários?</label>
         <div class="col-md-10">
             <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
             {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
@@ -265,7 +265,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
-        <label for="distancia_circuito_placas" class="col-md-2 control-label">Altura</label>
+        <label for="distancia_circuito_placas" class="col-md-2 ">Altura</label>
         <div class="col-md-10">
             <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
             {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
@@ -279,7 +279,7 @@
 
 
 <div class="form-group {{ $errors->has('qtd_materiais_reforco') ? 'has-error' : '' }}">
-    <label for="qtd_materiais_reforco" class="col-md-2 control-label">Qtd Materiais Reforco</label>
+    <label for="qtd_materiais_reforco" class="col-md-2 ">Qtd Materiais Reforco</label>
     <div class="col-md-10">
         <textarea class="form-control input-sm" name="qtd_materiais_reforco" cols="50" rows="2" id="qtd_materiais_reforco" >{{ old('qtd_materiais_reforco', isset($visitaTecnica->qtd_materiais_reforco) ? $visitaTecnica->qtd_materiais_reforco : null) }}</textarea>
         {!! $errors->first('qtd_materiais_reforco', '<p class="help-block">:message</p>') !!}
@@ -287,7 +287,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('riscos_acidentes') ? 'has-error' : '' }}">
-    <label for="riscos_acidentes" class="col-md-2 control-label">Riscos Acidentes</label>
+    <label for="riscos_acidentes" class="col-md-2 ">Riscos Acidentes</label>
     <div class="col-md-10">
         <textarea class="form-control input-sm" name="riscos_acidentes" cols="50" rows="2" id="riscos_acidentes" >{{ old('riscos_acidentes', isset($visitaTecnica->riscos_acidentes) ? $visitaTecnica->riscos_acidentes : null) }}</textarea>
         {!! $errors->first('riscos_acidentes', '<p class="help-block">:message</p>') !!}
@@ -295,7 +295,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('material_especifico') ? 'has-error' : '' }}">
-    <label for="material_especifico" class="col-md-2 control-label">Material Especifico</label>
+    <label for="material_especifico" class="col-md-2 ">Material Especifico</label>
     <div class="col-md-10">
         <textarea class="form-control input-sm" name="material_especifico" cols="50" rows="2" id="material_especifico" >{{ old('material_especifico', isset($visitaTecnica->material_especifico) ? $visitaTecnica->material_especifico : null) }}</textarea>
         {!! $errors->first('material_especifico', '<p class="help-block">:message</p>') !!}
@@ -303,7 +303,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('distancia_circuito_placas') ? 'has-error' : '' }}">
-    <label for="distancia_circuito_placas" class="col-md-2 control-label">Distancia Circuito Placas</label>
+    <label for="distancia_circuito_placas" class="col-md-2 ">Distancia Circuito Placas</label>
     <div class="col-md-10">
         <input class="form-control input-sm" name="distancia_circuito_placas" type="text" id="distancia_circuito_placas" value="{{ old('distancia_circuito_placas', isset($visitaTecnica->distancia_circuito_placas) ? $visitaTecnica->distancia_circuito_placas : null) }}" maxlength="255">
         {!! $errors->first('distancia_circuito_placas', '<p class="help-block">:message</p>') !!}
@@ -311,7 +311,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('distancia_circuito_inversor_quadro_geral') ? 'has-error' : '' }}">
-    <label for="distancia_circuito_inversor_quadro_geral" class="col-md-2 control-label">Distancia Circuito Inversor Quadro Geral</label>
+    <label for="distancia_circuito_inversor_quadro_geral" class="col-md-2 ">Distancia Circuito Inversor Quadro Geral</label>
     <div class="col-md-10">
         <input class="form-control input-sm" name="distancia_circuito_inversor_quadro_geral" type="text" id="distancia_circuito_inversor_quadro_geral" value="{{ old('distancia_circuito_inversor_quadro_geral', isset($visitaTecnica->distancia_circuito_inversor_quadro_geral) ? $visitaTecnica->distancia_circuito_inversor_quadro_geral : null) }}" maxlength="255" >
         {!! $errors->first('distancia_circuito_inversor_quadro_geral', '<p class="help-block">:message</p>') !!}
@@ -328,7 +328,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="nome" class="col-sm-6 control-label">Metálico?:</label>
+                <label for="nome" class="col-sm-6 ">Metálico?:</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_metalico_1">
@@ -341,7 +341,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
-                <label for="franquia_id" class="col-md-6 control-label">Barro?</label>
+                <label for="franquia_id" class="col-md-6 ">Barro?</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_barro_1">
@@ -354,7 +354,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="integrador" class="col-sm-6 control-label">Fibrocim Alta?:</label>
+                <label for="integrador" class="col-sm-6 ">Fibrocim Alta?:</label>
                 <div class="col-sm-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_fibrocim_alta_1">
@@ -370,7 +370,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="nome" class="col-sm-6 control-label">Disjuntor Geral?:</label>
+                <label for="nome" class="col-sm-6 ">Disjuntor Geral?:</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_dijuntor_geral_1">
@@ -383,7 +383,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
-                <label for="franquia_id" class="col-md-6 control-label">Tampa Medidor PDE?</label>
+                <label for="franquia_id" class="col-md-6 ">Tampa Medidor PDE?</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_tampa_medidor_1">
@@ -396,7 +396,7 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="integrador" class="col-sm-6 control-label">Caixa Medidor PDE?:</label>
+                <label for="integrador" class="col-sm-6 ">Caixa Medidor PDE?:</label>
                 <div class="col-md-6">
                     <div class="checkbox checkbox-styled">
                         <label for="pe_caixa_medidor_1">
@@ -412,7 +412,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="nome" class="col-sm-6 control-label">Caixa Disjuntor PDE?:</label>
+                <label for="nome" class="col-sm-6 ">Caixa Disjuntor PDE?:</label>
                 <div class="col-md-6">
                     <div class="col-md-10">
                         <input class="form-control input-sm" name="pe_caixa_disjuntor_1" type="text" id="pe_caixa_disjuntor_1" value="{{ old('pe_caixa_disjuntor_1', isset($visitaTecnica->pe_caixa_disjuntor_1) ? $visitaTecnica->pe_caixa_disjuntor_1 : null) }}" maxlength="255">
@@ -425,7 +425,7 @@
 
 
 <div class="form-group {{ $errors->has('pe_bitola_cabo_medidor_disjuntor_geral') ? 'has-error' : '' }}">
-    <label for="pe_bitola_cabo_medidor_disjuntor_geral" class="col-md-2 control-label">Bitola Cabo Medidor Disjuntor Geral</label>
+    <label for="pe_bitola_cabo_medidor_disjuntor_geral" class="col-md-2 ">Bitola Cabo Medidor Disjuntor Geral</label>
     <div class="col-md-10">
             <div class="col-md-10">
                 <input class="form-control input-sm" name="pe_bitola_cabo_medidor_disjuntor_geral" type="text" id="pe_bitola_cabo_medidor_disjuntor_geral" value="{{ old('pe_bitola_cabo_medidor_disjuntor_geral', isset($visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral) ? $visitaTecnica->pe_bitola_cabo_medidor_disjuntor_geral : null) }}" maxlength="255">
@@ -435,7 +435,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('pe_bitola_rede_publica') ? 'has-error' : '' }}">
-    <label for="pe_bitola_rede_publica" class="col-md-2 control-label">Bitola Rede Pública</label>
+    <label for="pe_bitola_rede_publica" class="col-md-2 ">Bitola Rede Pública</label>
     <div class="col-md-10">
         <div class="col-md-10">
             <input class="form-control input-sm" name="pe_bitola_rede_publica" type="text" id="pe_bitola_rede_publica" value="{{ old('pe_bitola_rede_publica', isset($visitaTecnica->pe_bitola_rede_publica) ? $visitaTecnica->pe_bitola_rede_publica : null) }}" maxlength="255">
@@ -449,7 +449,7 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="foto_estrutura_image" class="col-sm-2 control-label text-bold">Fotos Estrutura.:</label>
+            <label for="foto_estrutura_image" class="col-sm-2 ">Fotos Estrutura.:</label>
             <div class="col-md-4">
                 <div class="">
                     <label for="foto_estrutura">
@@ -469,7 +469,7 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="medicao_area_image" class="col-sm-2 control-label text-bold">Medição de Área.:</label>
+            <label for="medicao_area_image" class="col-sm-2 ">Medição de Área.:</label>
             <div class="col-md-4">
                 <div class="">
                     <label for="medicao_area">
@@ -489,7 +489,7 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="localizacao_image" class="col-sm-2 control-label text-bold">Localização.:</label>
+            <label for="localizacao_image" class="col-sm-2 ">Localização.:</label>
             <div class="col-md-4">
                 <div class="">
                     <label for="localizacao">
@@ -509,7 +509,7 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Disjuntor Geral.:</label>
+            <label for="disjuntor_geral_image" class="col-sm-2 ">Disjuntor Geral.:</label>
             <div class="col-md-4">
                 <div class="">
                     <label for="disjuntor_geral">
@@ -529,7 +529,7 @@
 
     <div class="row">
         <div class="form-group">
-            <label for="disjuntor_geral_image" class="col-sm-2 control-label text-bold">Comprovante.:</label>
+            <label for="disjuntor_geral_image" class="col-sm-2 ">Comprovante.:</label>
             <div class="col-md-4">
                 <div class="">
                     <label for="comprovante_image">
@@ -550,7 +550,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="form-group">
-                <label for="status_visita_id" class="col-md-4 text-bold control-label">Status</label>
+                <label for="status_visita_id" class="col-md-4 ">Status</label>
                 <div class="col-md-4">
                     <select   class="form-control input-sm" id="status_visita_id" name="status_visita_id">
                         <option value="" style="display: none;" {{ old('status_visita_id', isset($visitaTecnica->status_visita_id) ? $visitaTecnica->status_visita_id : '') == '' ? 'selected' : '' }} disabled selected>Status</option>
@@ -568,7 +568,7 @@
     </div>
 
     <div class="form-group {{ $errors->has('obs') ? 'has-error' : '' }}">
-        <label for="obs" class="col-md-2 control-label">Obs.:</label>
+        <label for="obs" class="col-md-2 ">Obs.:</label>
         <div class="col-md-10">
             <textarea class="form-control" name="obs" cols="50" rows="2" id="obs" >{{ old('obs', isset($visitaTecnica->obs) ? $visitaTecnica->obs : null) }}</textarea>
             {!! $errors->first('material_especifico', '<p class="help-block">:message</p>') !!}
