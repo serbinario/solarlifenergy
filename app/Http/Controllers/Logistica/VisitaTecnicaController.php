@@ -63,8 +63,9 @@ class VisitaTecnicaController extends Controller
                 'sv.descricao as status',
                 'users.name',
                 'pre_propostas.codigo',
-                'clientes.nome'
-
+                'clientes.nome',
+                'clientes.nome_empresa',
+                \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as data_cadastro'),
             ]);
 
         #Editando a grid

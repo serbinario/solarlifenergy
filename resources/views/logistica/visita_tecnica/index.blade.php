@@ -47,6 +47,7 @@
                                                     <th>N Proposta</th>
                                                     <th>Nome</th>
                                                     <th>Técnico</th>
+                                                    <th>Data Cadastro</th>
                                                     <th>Status</th>
                                                     <th>Acao</th>
                                                 </tr>
