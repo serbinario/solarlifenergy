@@ -53,6 +53,7 @@
                                                     <th>Prioridade</th>
                                                     <th>Integrador</th>
                                                     <th>Franquia</th>
+                                                    <th>Royalties</th>
                                                     <th>Situação</th>
                                                     <th>Participação</th>
                                                     <th>Atualizado</th>

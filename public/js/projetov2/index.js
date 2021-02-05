@@ -92,6 +92,7 @@ var table = $('#projetov2').DataTable({
         {data: 'prioridade_nome', name: 'prioridade_nome', visible: false},
         {data: 'integrador', name: 'integrador'},
         {data: 'franquaia', name: 'franquaia', visible: false},
+        {data: 'royalties', name: 'pre_propostas.royalties', visible: false},
         {data: 'status_nome', name: 'status_nome'},
         {data: 'valor_franquia', name: 'pre_propostas.valor_franquia', "render": function (data) { return formatMoney(data) }},
         {data: 'atualizado', name: 'atualizado', visible: false},
