@@ -60,6 +60,8 @@ class VisitaTecnicaController extends Controller
             ->leftjoin('status_visita as sv', 'sv.id', '=', 'vt.status_visita_id')
             ->select([
                 'vt.id',
+                \DB::raw('DATE_FORMAT(vt.data_previsao,"%d/%m/%Y") as data_previsao'),
+                \DB::raw('DATE_FORMAT(vt.data_visita,"%d/%m/%Y") as data_visita'),
                 'sv.descricao as status',
                 'users.name',
                 'pre_propostas.codigo',

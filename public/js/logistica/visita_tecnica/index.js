@@ -35,7 +35,8 @@ $(document).ready(function () {
             {data: 'nome_empresa', name: 'clientes.nome_empresa', targets: 0, visible: true},
             {data: 'name', name: 'users.name', targets: 0, visible: true},
             {data: 'data_cadastro', name: 'data_cadastro', targets: 0, visible: true},
-
+            {data: 'data_previsao', name: 'vt.data_previsao', targets: 0, visible: false},
+            {data: 'data_visita', name: 'vt.data_visita', targets: 0, visible: false},
             {data: 'status', name: 'status', targets: 0, visible: true},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}
         ]

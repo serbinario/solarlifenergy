@@ -48,6 +48,8 @@
                                                     <th>Nome</th>
                                                     <th>Técnico</th>
                                                     <th>Data Cadastro</th>
+                                                    <th>Data Previsõa</th>
+                                                    <th>Data Visita</th>
                                                     <th>Status</th>
                                                     <th>Acao</th>
                                                 </tr>
