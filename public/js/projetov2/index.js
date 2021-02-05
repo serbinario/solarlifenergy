@@ -46,7 +46,7 @@ var table = $('#projetov2').DataTable({
     processing: true,
     serverSide: true,
     bFilter: true,
-    order: [[ 0, "asc" ]],
+    order: [[ 1, "desc" ]],
     ajax: {
         url: "/index.php/projetov2/grid",
         data: function (d) {
@@ -80,6 +80,7 @@ var table = $('#projetov2').DataTable({
                 }
             }
         },
+        {data: 'codigo', name: 'pre_propostas.codig'},
         {data: 'preco_medio_instalado', name: 'preco_medio_instalado', "render": function (data) { return formatMoney(data) }},
         {data: 'potencia_instalada', name: 'potencia_instalada'},
 

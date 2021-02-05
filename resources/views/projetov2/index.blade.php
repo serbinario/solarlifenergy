@@ -43,6 +43,7 @@
                                                     <th></th>
                                                     <th>Id</th>
                                                     <th>Razão Social</th>
+                                                    <th>N Proposta</th>
                                                     <th>Valor</th>
                                                     <th>Kwp</th>
                                                     <th>Data Financi.</th>
