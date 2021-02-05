@@ -11,6 +11,7 @@
 		<![CDATA[SELECT 
 users.name AS responsavel,
 clientes.nome AS cliente,
+clientes.nome_empresa as nome_empresa,
 pre_propostas.codigo AS NumeroProposta,
 ende.logradouro,
 ende.cep,
@@ -63,6 +64,10 @@ WHERE vt.id =   $P{id}]]>
 	</field>
 	<field name="cliente" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="nome_empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_empresa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
 	<field name="NumeroProposta" class="java.lang.Integer">
@@ -281,7 +286,7 @@ WHERE vt.id =   $P{id}]]>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_empresa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="90" y="50" width="390" height="15" uuid="d26fd8d7-c114-42bd-adfc-e9809f0ebe60">
