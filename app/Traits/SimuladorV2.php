@@ -140,6 +140,7 @@ trait SimuladorV2
 
         $reducaoMediaConsumo = 102.32 ;
 
+
         $roi = $this->roi($precoKwh, $this->totalInvestimento, $valor_medio_kw);
 
         $this->calculaKit();

@@ -206,9 +206,6 @@ class Projetov2Controller extends Controller
             $data = $request->getData();
 
             $projeto = Projetov2::create($data);
-
-
-
             return redirect()->route('projetov2.projetov2.index')
                 ->with('success_message', 'Projetov2 was successfully added!');
 
