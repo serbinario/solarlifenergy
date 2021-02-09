@@ -231,7 +231,7 @@ class PrePropostaController extends Controller
 
             $return = $this->simularGeracao($request);
 
-            //dd($return);
+
             $data['pre_proposta_obs'] = $return['obs'];
 
             $data['qtd_paineis'] = $return['qtd_modulos'];
@@ -269,9 +269,7 @@ class PrePropostaController extends Controller
             $royalties = ($participacao /100 ) * 8;
             $data['royalties'] = $royalties;
 
-
             $porcentagemParticipacao = round(($participacao / 100 ) * 8,2);
-
             $data['imposto_sobre_participacao'] = $porcentagemParticipacao;
 
             //dd($porcentagemParticipacao);
@@ -288,17 +286,13 @@ class PrePropostaController extends Controller
             $data['produto1_nf'] = $somaModulos;
             $data['produto1'] = 'MODULO FV ' . $return['modulo_marca'] . " " . $return['modulo_potencia'] . "W";
 
-
-
             //Soma Inversor
             $data['qtd_inversores'] = count($return['inversores']);
             $somaInversor = $return['soma_inversor'];
             $data['produto2_nf'] = $somaInversor;
             $data['produto2_preco'] = $somaInversor;
 
-
             //Soma Estrutura
-
             $tipo_instalacao = $request->get('tipo_instalacao');
             $data['tipo_instalacao'] = $tipo_instalacao;
 
@@ -306,8 +300,6 @@ class PrePropostaController extends Controller
             if($tipo_instalacao == 1){
                 $valorEstruturaSolo = ($return['qtd_modulos'] /4) * 240 ;
             }
-
-            //dd($valorEstruturaSolo);
 
             $data['qtd_estrutura'] = 1;
             $somaEstrutura = $return['soma_estrutura'] + $valorEstruturaSolo;
@@ -398,15 +390,10 @@ class PrePropostaController extends Controller
 
             $produtoArray = $return['produtos'];
 
-
             foreach ($produtoArray as $produto) {
                 PropostaProduto::create(['proposta_id' => $preProposta->id ,'produto_id' => $produto['id'],'quantidade' => $produto['quantidade'], 'valor_unitario' => $produto['valor_unitario']]);
                 echo $produto['id'] .  " - " .$produto['quantidade'] . "<br>";
             }
-
-            //dd($produtoArray);
-
-
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
                 ->with('success_message', 'Cadastro realizado com sucesso');
@@ -530,6 +517,8 @@ class PrePropostaController extends Controller
             $roi = $this->roi(0, $totalInvestimento, $preProposta->monthly_usage );
             $data['roi'] = $roi;
 
+
+
             $ParametrRoi = ParametroGeral::where('id', '=', '1')->first();
 
             if ($descontoFranquia > $participacao ){
@@ -549,11 +538,11 @@ class PrePropostaController extends Controller
                     ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 4.5 anos"]);
             }
 
-            if ($roi > 5.1 && $preProposta->monthly_usage < 700){
+            //dd($roi);
+            if ($roi > 5.8 && $preProposta->monthly_usage < 700){
                 return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 4.5 anos"]);
+                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 70 meses ou 5.8 anos"]);
             }
-
             $preProposta->update($data);
 
             return redirect()->route('pre_proposta.pre_proposta.edit', $preProposta->id)
