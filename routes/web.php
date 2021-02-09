@@ -173,8 +173,62 @@ Route::group(
 
     Route::post('/', 'ModuloController@store')
         ->name('modulo.store');
+});
 
+Route::group(
+    [
+        'prefix' => 'osCorretiva',
+    ], function () {
 
+    Route::get('/edit','Execucao\OsCorretivaController@edit')
+        ->name('osCorretiva.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'Execucao\OsCorretivaController@index')
+        ->name('osCorretiva.index');
+
+    Route::get('/grid', 'Execucao\OsCorretivaController@grid')
+        ->name('osCorretiva.grid');
+
+    Route::get('/create', 'Execucao\OsCorretivaController@create')
+        ->name('osCorretiva.create');
+
+    Route::get('/{id}/edit','Execucao\OsCorretivaController@edit')
+        ->name('osCorretiva.edit');
+
+    Route::put('/update/{id}', 'Execucao\OsCorretivaController@update')
+        ->name('osCorretiva.update');
+
+    Route::post('/', 'Execucao\OsCorretivaController@store')
+        ->name('osCorretiva.store');
+});
+
+Route::group(
+    [
+        'prefix' => 'osPreventiva',
+    ], function () {
+
+    Route::get('/edit','Execucao\OsPreventivaController@edit')
+        ->name('osPreventiva.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'Execucao\OsPreventivaController@index')
+        ->name('osPreventiva.index');
+
+    Route::get('/grid', 'Execucao\OsPreventivaController@grid')
+        ->name('osPreventiva.grid');
+
+    Route::get('/create', 'Execucao\OsPreventivaController@create')
+        ->name('osPreventiva.create');
+
+    Route::get('/{id}/edit','Execucao\OsPreventivaController@edit')
+        ->name('osPreventiva.edit');
+
+    Route::put('/update/{id}', 'Execucao\OsPreventivaController@update')
+        ->name('osPreventiva.update');
+
+    Route::post('/', 'Execucao\OsPreventivaController@store')
+        ->name('osPreventiva.store');
 });
 
 Route::group(
@@ -631,6 +685,11 @@ Route::group(
 
     Route::post('/', 'Logistica\VisitaTecnicaController@store')
         ->name('visita_tecnica.store');
+
+    Route::post('/visitaPorProjeto', 'Logistica\VisitaTecnicaController@visitaPorProjeto')
+        ->name('visita_tecnica.store');
+
+
 
     Route::put('pre_proposta/{preProposta}', 'Logistica\VisitaTecnicaController@update')
         ->name('visita_tecnica.update')
