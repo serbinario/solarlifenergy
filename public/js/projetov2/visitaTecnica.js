@@ -18,6 +18,9 @@ function criarVisitaTecnica(projeto_id){
         }).done(function (retorno) {
             if(retorno.success) {
                 swal("", retorno.msg, "success");
+                console.log(retorno.data);
+                let html = format(retorno.data)
+                $(".listaVistaPorProjeto").append(html);
 
             } else {
 
@@ -61,7 +64,7 @@ function listarVisitaTecnica(projeto_id){
 function format ( d ) {
     return '<tr class="vt-tr">'+
         '<td>'+d.codigo+'</td>'+
-        '<td>'+d.data_cadastro+'</td>'+
+        '<td>'+d.created_at+'</td>'+
         '<td>'+d.data_visita+'</td>'+
         '<td>'+d.status+'</td>'+
         '</tr>'

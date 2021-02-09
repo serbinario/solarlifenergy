@@ -149,7 +149,8 @@ class VisitaTecnicaController extends Controller
             $dateNow = date("Y-m-d");
             //dd($dateNow);
             $visitaTecnica = VisitasTecnicas::create([ 'projeto_id' => $request->get('projeto_id'), 'codigo' => $codigo, 'created_at' => $dateNow] );
-            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => "Codigo gerado " . $visitaTecnica->codigo ]);
+           // dd($visitaTecnica->toArray());
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => "Codigo gerado " .$visitaTecnica['codigo'] , 'data' => $visitaTecnica->toArray() ]);
 
 
         } catch (Exception $e) {
@@ -176,7 +177,7 @@ class VisitaTecnicaController extends Controller
                     'users.name',
                     'vt.codigo',
                     'clientes.nome_empresa',
-                    \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as data_cadastro'),
+                    \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as created_at'),
                 ])->get();
 
 
