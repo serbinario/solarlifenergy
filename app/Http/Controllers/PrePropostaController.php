@@ -538,9 +538,9 @@ class PrePropostaController extends Controller
             }
            // dd($roi );
 
-            if ($roi > 3.6 && $preProposta->monthly_usage > 1300){
+            if ($roi > 4.2 && $preProposta->monthly_usage > 1300){
                 return back()->withInput()
-                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 42 meses ou 3.6 anos"]);
+                    ->withErrors(['error_message' => "Projeto não pode ser editado, o Retorno sobre o Investimento (ROI) é maior que 48 meses ou 4.2 anos"]);
             }
 
 
