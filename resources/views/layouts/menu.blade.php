@@ -188,25 +188,47 @@
 						<ul>
 							@role('super-admin|franquia|integrador')
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
-							<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
 
 							@endrole
 
-							@if(Auth::user()->franquia->id == 14)
-								<li><a href="{{ route('proposta.expansao.index') }}" class="active"><span class="title">Propostas Expansão</span></a></li>
-							@endif
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Propostas</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									@if(Auth::user()->franquia->id == 14)
+										<li><a href="{{ route('proposta.expansao.index') }}" class="active"><span class="title">Propostas Expansão</span></a></li>
+									@endif
 
-								<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
-								<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+									<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
 
-								@if(Auth::user()->franquia->id == 14)
-									<li><a href="{{ route('projetos.adicionais.index') }}" class="active"><span class="title">Projetos Adiconais</span></a></li>
-								@endif
+								</ul><!--end /submenu -->
+
+							</li><!--end /menu-li -->
+
+							<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Projetos</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+
+									@if(Auth::user()->franquia->id == 14)
+										<li><a href="{{ route('projetos.adicionais.index') }}" class="active"><span class="title">Projetos Adiconais</span></a></li>
+									@endif
+									@role('super-admin')
+									<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
+									@endrole
+
+								</ul><!--end /submenu -->
+							</li><!--end /menu-li -->
 
 
-							@role('super-admin')
-								<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
-							@endrole
+
+
+
 
 							@role('super-admin|franquia')
 
@@ -240,6 +262,20 @@
 								</ul><!--end /submenu -->
 
 							</li><!--end /menu-li -->
+
+							{{--<li class="gui-folder">
+								<a href="javascript:void(0);">
+									<span class="title">Execução</span>
+								</a>
+								<!--start submenu -->
+								<ul>
+									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">OS - Instalação</span></a></li>
+									<li><a href="{{ route('osCorretiva.index') }}" class="active"><span class="title">OS - Corretiva</span></a></li>
+									<li><a href="{{ route('osPreventiva.index') }}" class="active"><span class="title">OS - Preventiva</span></a></li>
+
+								</ul><!--end /submenu -->
+
+							</li><!--end /menu-li -->--}}
 
 							@endrole
 

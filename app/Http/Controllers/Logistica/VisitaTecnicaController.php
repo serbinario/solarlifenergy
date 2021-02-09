@@ -111,8 +111,20 @@ class VisitaTecnicaController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        try {
+            //dd($request->all());
+
+            //$projeto = Projetov2::create($data);
+
+           // VisitasTecnicas::create([ 'projeto_id' => $projeto->id] );
+            return \Illuminate\Support\Facades\Response::json(['success' => true]);
+
+        } catch (Exception $e) {
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
+        }
+
 
     }
 
@@ -123,20 +135,51 @@ class VisitaTecnicaController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function store(UserFormRequest $request)
+    public function store(Request $request)
     {
         try {
-            //$this->affirm($request);
-            $data = $this->getData($request);
-            $data['password'] = \Hash::make($data['password']);
-            $user = User::create($data);
 
-            //Retora o id do ROLE
-            $role_r =  \Spatie\Permission\Models\Role::where('id', '=', $data['role'])->first();
-            $user->syncRoles($role_r);
+            $month = date("Y");
+            $last = \DB::table('visita_tecnica')->orderBy('id', 'DESC')->whereYear('created_at',  $month)->first();
+            if($last == NULL){
+                $codigo = date("y") . "0001";
+            }else{
+                $codigo = $last->codigo +1;
+            }
+            $visitaTecnica = VisitasTecnicas::create([ 'projeto_id' => $request->get('projeto_id'), 'codigo' => $codigo] );
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => "Codigo gerado " . $visitaTecnica->codigo ]);
 
-            return redirect()->route('visita_tecnica.edit', $user->id)
-                ->with('success_message', 'Cadastro atualizado com sucesso!');
+
+        } catch (Exception $e) {
+            return \Illuminate\Support\Facades\Response::json(['success' => false ]);
+        }
+    }
+
+    public function visitaPorProjeto(Request $request)
+    {
+        try {
+
+            $rows = \DB::table('visita_tecnica as vt')
+                ->leftJoin('projetosv2', 'projetosv2.id', '=', 'vt.projeto_id')
+                ->leftJoin('pre_propostas', 'pre_propostas.id', '=', 'projetosv2.proposta_id')
+                ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
+                ->leftjoin('users', 'users.id', '=', 'vt.tecnico_id')
+                ->leftjoin('status_visita as sv', 'sv.id', '=', 'vt.status_visita_id')
+                ->where('projeto_id', '=', $request->get('projeto_id'))
+                ->select([
+                    'vt.id',
+                    \DB::raw('DATE_FORMAT(vt.data_previsao,"%d/%m/%Y") as data_previsao'),
+                    \DB::raw('DATE_FORMAT(vt.data_visita,"%d/%m/%Y") as data_visita'),
+                    'sv.descricao as status',
+                    'users.name',
+                    'vt.codigo',
+                    'clientes.nome_empresa',
+                    \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as data_cadastro'),
+                ])->get();
+
+
+
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'data' => $rows->toArray() ]);
 
 
         } catch (Exception $e) {

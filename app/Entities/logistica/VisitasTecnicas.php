@@ -29,6 +29,7 @@ class VisitasTecnicas extends Model
      */
     protected $fillable = [
         'projeto_id',
+        'codigo',
         'ie_fibrocimento',
         'ie_metalico',
         'ie_barro',
