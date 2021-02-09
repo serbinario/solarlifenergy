@@ -62,8 +62,10 @@ function format ( d ) {
     return '<tr class="vt-tr">'+
         '<td>'+d.codigo+'</td>'+
         '<td>'+d.data_cadastro+'</td>'+
-        '<td>'+d.nome_empresa+'</td>'+
+        '<td>'+d.data_visita+'</td>'+
         '<td>'+d.status+'</td>'+
         '</tr>'
 }
+
+
 

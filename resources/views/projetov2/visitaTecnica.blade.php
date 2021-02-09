@@ -6,7 +6,7 @@
                 <tr>
                     <th>Código</th>
                     <th>Data Cadatro</th>
-                    <th>Cliente</th>
+                    <th>Data Visita</th>
                     <th>Status</th>
                 </tr>
             </table>
