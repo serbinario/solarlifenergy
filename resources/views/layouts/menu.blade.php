@@ -189,6 +189,7 @@
 							@role('super-admin|franquia|integrador')
 							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
 
+
 							@endrole
 
 							<li class="gui-folder">
@@ -197,6 +198,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+									<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
 									@if(Auth::user()->franquia->id == 14)
 										<li><a href="{{ route('proposta.expansao.index') }}" class="active"><span class="title">Propostas Expansão</span></a></li>
 									@endif
