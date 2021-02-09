@@ -146,7 +146,9 @@ class VisitaTecnicaController extends Controller
             }else{
                 $codigo = $last->codigo +1;
             }
-            $visitaTecnica = VisitasTecnicas::create([ 'projeto_id' => $request->get('projeto_id'), 'codigo' => $codigo] );
+            $dateNow = date("Y-m-d");
+            //dd($dateNow);
+            $visitaTecnica = VisitasTecnicas::create([ 'projeto_id' => $request->get('projeto_id'), 'codigo' => $codigo, 'created_at' => $dateNow] );
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => "Codigo gerado " . $visitaTecnica->codigo ]);
 
 
