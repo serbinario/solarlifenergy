@@ -16,9 +16,9 @@
 
         <div class="card-actionbar">
             <div class="card-actionbar-row">
-                <a type="button" onclick="criarOrdemServico({{ $projetov2->id }})" class="btn btn-primary">Criar os instalação</a>
-                <a type="button" onclick="criarOsCorretiva({{ $projetov2->id }})" class="btn btn-primary">Criar os Corretiva</a>
-                <a type="button" onclick="criarOsPreventiva({{ $projetov2->id }})" class="btn btn-primary">Criar os Preventiva</a>
+                <a type="button" onclick="criarOrdemServico({{ $projetov2->id }})" class="btn btn-primary">Criar o.s. instalação</a>
+                <a type="button" onclick="criarOsCorretiva({{ $projetov2->id }})" class="btn btn-primary">Criar o.s. Corretiva</a>
+                <a type="button" onclick="criarOsPreventiva({{ $projetov2->id }})" class="btn btn-primary">Criar o.s. Preventiva</a>
             </div>
         </div>
     </div> <!-- Fim do col-md-12 -->
