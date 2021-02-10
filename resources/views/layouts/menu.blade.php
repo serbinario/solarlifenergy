@@ -271,9 +271,9 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">OS - Instalação</span></a></li>
-									<li><a href="{{ route('osCorretiva.index') }}" class="active"><span class="title">OS - Corretiva</span></a></li>
-									<li><a href="{{ route('osPreventiva.index') }}" class="active"><span class="title">OS - Preventiva</span></a></li>
+									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">O.S. - Instalação</span></a></li>
+									<li><a href="{{ route('osCorretiva.index') }}" class="active"><span class="title">O.S. - Corretiva</span></a></li>
+									<li><a href="{{ route('osPreventiva.index') }}" class="active"><span class="title">O.S. - Preventiva</span></a></li>
 
 								</ul><!--end /submenu -->
 
