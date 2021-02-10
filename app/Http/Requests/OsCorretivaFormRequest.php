@@ -5,7 +5,7 @@ namespace Serbinario\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class UserFormRequest extends FormRequest
+class OsCorretivaFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,8 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|min:1|max:200',
-            'email' => 'required|min:1|max:200',
-            'franquia_id' => 'required',
-            'role' => 'required'
+            'data_visita' => 'required|min:1|max:200',
+
 
         ];
 
@@ -43,7 +41,12 @@ class UserFormRequest extends FormRequest
      */
     public function getData()
     {
-        $data = $this->only(['name', 'email', 'password', 'role', 'franquia_id', 'is_active']);
+        $data = $this->only([
+            'tecnico_id',
+            'data_visita',
+            'obs',
+            'status_visita_id'
+        ]);
         return $data;
     }
 

@@ -24,7 +24,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Lista Solicitações de Entrega</header>
+                            <header>Lista OS. Corretivas</header>
                             <div class="tools">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-primary" title="Novo Produto">
@@ -34,20 +34,22 @@
                             </div>
                         </div>
 
-                        @include('logistica.solicitacao_entrega.filtro')
+                        @include('execucao.os_corretiva.filtro')
 
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="solicitacao_entrega" class="table order-column hover">
+                                        <table id="os_corretiva" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Proposta N</th>
+                                                    <th>Código</th>
                                                     <th>Cliente</th>
+                                                    <th>Proposta N</th>
+                                                    <th>Data Visita</th>
+                                                    <th>Técnico</th>
                                                     <th>Valor Projeto</th>
-                                                    <th>Status</th>
                                                     <th>Acao</th>
                                                 </tr>
                                             </thead>
@@ -65,5 +67,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/logistica/solicitacao_entrega/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/execucao/os_corretiva/index.js')}}" type="text/javascript"></script>
 @stop

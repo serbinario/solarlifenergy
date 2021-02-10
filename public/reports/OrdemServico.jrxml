@@ -153,7 +153,7 @@ WHERE os.id =  $P{idProjeto}]]>
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<image>
 				<reportElement x="0" y="0" width="555" height="759" uuid="9906e5b3-70a2-4eab-bafd-27e755e3b7a9"/>
-				<imageExpression><![CDATA["OrdemServico.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://sce.solarlifenergy.com.br/reports/OrdemServico.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="233" y="94" width="300" height="15" uuid="2332d923-f59c-47e0-b972-3919d1600ab2">
@@ -191,6 +191,15 @@ WHERE os.id =  $P{idProjeto}]]>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="200" width="523" height="19" uuid="b3c0c2ac-fd7f-4af9-b584-6623b6af5e1d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{logradouro} + " N:"+ $F{numero} + " Bairro: " + $F{cidade} + " - " + $F{uf}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

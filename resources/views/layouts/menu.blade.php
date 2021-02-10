@@ -265,7 +265,7 @@
 
 							</li><!--end /menu-li -->
 
-							{{--<li class="gui-folder">
+							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Execução</span>
 								</a>
@@ -277,7 +277,7 @@
 
 								</ul><!--end /submenu -->
 
-							</li><!--end /menu-li -->--}}
+							</li><!--end /menu-li
 
 							@endrole
 

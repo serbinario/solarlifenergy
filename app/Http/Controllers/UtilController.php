@@ -175,8 +175,6 @@ class UtilController extends Controller
 
             $projeto = Projetov2::create($data);
 
-            VisitasTecnicas::create([ 'projeto_id' => $projeto->id] );
-
         } catch (Exception $e) {
             return \Illuminate\Support\Facades\Response::json(['success' => true, 'message' => $e]);
         }

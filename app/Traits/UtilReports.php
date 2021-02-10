@@ -29,6 +29,8 @@ trait UtilReports
                 'password' => "'" . env('DB_PASSWORD') . "'"
             ]
         ];
+
+       // dd($options);
         // coloca na variavel o caminho do novo relatório que será gerado
         //$output = public_path() . '/reports/' . time() . '_Clientes';// instancia um novo objeto JasperPHP
         $output = public_path() . '/reports/' .  'Clientes';// instancia um novo objeto JasperPHP

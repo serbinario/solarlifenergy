@@ -177,12 +177,25 @@ class ReportController extends Controller
     }
 
     public function reportProjeto(Request $request){
-
         try
         {
             $parameters = $request->all();
             $nome_arquivo = "Relatorio_projetos";
             $file = $this->gerarPdfV2($parameters, $nome_arquivo);
+            //dd($file);
+            return response($file, 200)
+                ->header('Content-Type', 'application/pdf')
+                ->header('Content-Disposition', 'inline; filename="cliente.pdf"');
+        } catch (Exception $e) {
+            dd("sssssss");
+        }
+    }
+
+    public function reportOs($id){
+        try
+        {
+            $nome_arquivo = "OrdemServico";
+            $file = $this->gerarPdfV2(['idProjeto' => $id], $nome_arquivo);
             //dd($file);
             return response($file, 200)
                 ->header('Content-Type', 'application/pdf')

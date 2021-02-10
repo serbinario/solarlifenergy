@@ -40,7 +40,6 @@
                 <div class="tab-pane" id="tab4">
                     <br/><br/>
                     @include('projetov2.finalizado')
-
                 </div><!--end #tab4 -->
             </div><!--end .tab-content -->
 

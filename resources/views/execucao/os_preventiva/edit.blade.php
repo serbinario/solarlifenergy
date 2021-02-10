@@ -26,7 +26,7 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('osCorretiva.update', $ordemServico->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('osPreventiva.update', $ordemServico->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
@@ -34,18 +34,18 @@
                             <header>Editar OS. Corretiva</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('osCorretiva.index') }}" class="btn btn-primary" title="Show All Visita Tecnica">
+                                    <a href="{{ route('osPreventiva.index') }}" class="btn btn-primary" title="Show All Visita Tecnica">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('execucao.os_corretiva.form', ['ordemServico' => $ordemServico, ])
+                        @include ('execucao.os_preventiva.form', ['ordemServico' => $ordemServico, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('osCorretiva.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <a href="{{ route('osPreventiva.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Salvar">
                             </div>
                         </div>

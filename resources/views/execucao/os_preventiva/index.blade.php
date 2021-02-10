@@ -40,14 +40,14 @@
                             <div class="col-lg-12">
                                 <div class="panel-body panel-body-with-table">
                                     <div class="table-responsive">
-                                        <table id="os_corretiva" class="table order-column hover">
+                                        <table id="os_preventiva" class="table order-column hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Proposta N</th>
+                                                    <th>Código</th>
                                                     <th>Cliente</th>
+                                                    <th>Proposta N</th>
                                                     <th>Data Visita</th>
-
                                                     <th>Técnico</th>
                                                     <th>Valor Projeto</th>
                                                     <th>Acao</th>
@@ -67,5 +67,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/execucao/os_corretiva/index.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/execucao/os_preventiva/index.js')}}" type="text/javascript"></script>
 @stop

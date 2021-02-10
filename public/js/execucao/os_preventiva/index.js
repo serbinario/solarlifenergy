@@ -5,9 +5,7 @@ $(document).ready(function () {
     var numero_cobranca;
     var id_debito; //id do debito
 
-    console.log("wwwwwwwww")
-
-    var table = $('#os_corretiva').DataTable({
+    var table = $('#os_preventiva').DataTable({
         "dom": 'lCfrtip',
         "order": [],
         "colVis": {
@@ -22,7 +20,7 @@ $(document).ready(function () {
         bFilter: true,
         order: [[0, "desc"]],
         ajax: {
-            url: "/index.php/osCorretiva/grid",
+            url: "/index.php/osPreventiva/grid",
             data: function (d) {
                 /*d.nome = document.getElementById("nome").value;
                 d.status_visita_id = $('select[name=status_visita_id] option:selected').val();
@@ -31,10 +29,10 @@ $(document).ready(function () {
         },
         columns: [
             {data: 'id', name: 'os.id', targets: 0, visible: false},
-            {data: 'codigo', name: 'pre_propostas.codigo', targets: 0, visible: true},
+            {data: 'osCodigo', name: 'os.codigo', targets: 0, visible: true},
             {data: 'nome_empresa', name: 'clientes.nome_empresa', targets: 0, visible: true},
+            {data: 'codigo', name: 'pre_propostas.codigo', targets: 0, visible: true},
             {data: 'data_visita', name: 'data_visita', targets: 0, visible: true},
-
             {data: 'name', name: 'users.name', targets: 0, visible: true},
             {data: 'status', name: 'status', targets: 0, visible: true},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '60px'}

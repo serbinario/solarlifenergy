@@ -66,5 +66,6 @@
 @section('javascript')
     <script src="{{ asset('/js/projetov2/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/projetov2/visitaTecnica.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/projetov2/ordemServico.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

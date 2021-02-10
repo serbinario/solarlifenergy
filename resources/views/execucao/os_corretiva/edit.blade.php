@@ -26,26 +26,26 @@
     <!-- BEGIN HORIZONTAL FORM -->
         <div class="row">
             <div class="col-lg-12">
-                <form method="POST" action="{{ route('solicitacaoEntrega.update', $solicitacaoEntrega->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('osCorretiva.update', $ordemServico->id) }}" accept-charset="UTF-8" id="edit_visita_tecnica_form" name="edit_visita_tecnica_form" class="form-horizontal" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PUT">
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-head style-primary">
-                            <header>Editar Solicitação de Entrega</header>
+                            <header>Editar OS. Corretiva</header>
                             <div class="tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('solicitacaoEntrega.index') }}" class="btn btn-primary" title="Show All Visita Tecnica">
+                                    <a href="{{ route('osCorretiva.index') }}" class="btn btn-primary" title="Show All Visita Tecnica">
                                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        @include ('logistica.solicitacao_entrega.form', ['solicitacaoEntrega' => $solicitacaoEntrega, ])
+                        @include ('execucao.os_corretiva.form', ['ordemServico' => $ordemServico, ])
 
                         <div class="card-actionbar">
                             <div class="card-actionbar-row">
-                                <a href="{{ route('solicitacaoEntrega.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
+                                <a href="{{ route('osCorretiva.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input class="btn btn-primary" type="submit" value="Salvar">
                             </div>
                         </div>
@@ -59,6 +59,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('/js/logistica/solicitacao_entrega/edit.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/execucao/os_corretiva/edit.js')}}" type="text/javascript"></script>
     <script src="{{ asset('/js/mascaras.js')}}" type="text/javascript"></script>
 @stop

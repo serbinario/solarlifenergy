@@ -413,6 +413,18 @@
                 </div>
             </div><!--end .panel -->
 
+            <div class="card panel">
+                <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" onclick="listarVisitaTecnica({{ $projetov2->id }})" data-target="#ordemServico">
+                    <header class="text-bold">Ordem Serviço</header>
+                </div>
+                <div id="ordemServico" class="collapse">
+                    <div class="card-body">
+                        @include('projetov2.ordemServico')
+
+                    </div>
+                </div>
+            </div><!--end .panel -->
+
             @role('super-admin')
             <div class="card panel">
                 <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#accordion2" data-target="#tab_6">
