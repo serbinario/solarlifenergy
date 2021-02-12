@@ -178,7 +178,7 @@
 
 
 					<!-- BEGIN PAGES -->
-					<li class="gui-folder">
+					<li class="gui-folder expanded">
 						<a>
 							<div class="gui-icon"><i class="md md-computer"></i></div>
 							<span class="title">Controle</span>
@@ -187,23 +187,21 @@
 
 						<ul>
 							@role('super-admin|franquia|integrador')
-							<li><a href="{{ route('cliente.cliente.index') }}" class="active"><span class="title">Clientes</span></a></li>
-
-
+							<li><a data-title="cliente" onclick="pop(this)"  href="{{ route('cliente.cliente.index') }}" ><span class="title">Clientes</span></a></li>
 							@endrole
 
 							<li class="gui-folder">
-								<a href="javascript:void(0);">
+								<a>
 									<span class="title">Propostas</span>
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('pre_proposta.pre_proposta.index') }}" class="active"><span class="title">Propostas</span></a></li>
+									<li><a data-title="proposta" onclick="pop(this)" href="{{ route('pre_proposta.pre_proposta.index') }}" ><span  class="title title_sub">Propostas</span></a></li>
 									@if(Auth::user()->franquia->id == 14)
-										<li><a href="{{ route('proposta.expansao.index') }}" class="active"><span class="title">Propostas Expansão</span></a></li>
+										<li> <a data-title="propostaExpansao" onclick="pop(this)" href="{{ route('proposta.expansao.index') }}" ><span class="title title_sub">Propostas Expansão</span></a></li>
 									@endif
 
-									<li><a href="{{ route('pre_proposta.arquivadas.index') }}" class="active"><span class="title">Propostas Arquivadas</span></a></li>
+									<li><a  data-title="propostaArquivada" onclick="pop(this)"  href="{{ route('pre_proposta.arquivadas.index') }}" ><span class="title title_sub">Propostas Arquivadas</span></a></li>
 
 								</ul><!--end /submenu -->
 
@@ -215,13 +213,13 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('projetov2.projetov2.index') }}" class="active"><span class="title">Projetos</span></a></li>
+									<li><a data-title="projetov2" onclick="pop(this)" href="{{ route('projetov2.projetov2.index') }}" ><span class="title">Projetos</span></a></li>
 
 									@if(Auth::user()->franquia->id == 14)
-										<li><a href="{{ route('projetos.adicionais.index') }}" class="active"><span class="title">Projetos Adiconais</span></a></li>
+										<li><a data-title="projetoAdicional" onclick="pop(this)"  href="{{ route('projetos.adicionais.index') }}" ><span class="title">Projetos Adiconais</span></a></li>
 									@endif
 									@role('super-admin')
-									<li><a href="{{ route('projetov2.arquivados.index') }}" class="active"><span class="title">Projetos Arquivados</span></a></li>
+									<li><a data-title="projetoArquivado" onclick="pop(this)"  href="{{ route('projetov2.arquivados.index') }}" ><span class="title">Projetos Arquivados</span></a></li>
 									@endrole
 
 								</ul><!--end /submenu -->
@@ -240,8 +238,8 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('procuracao.procuracao.index') }}" class="active"><span class="title">Procurações</span></a></li>
-									<li><a href="{{ route('contrato.contrato.index') }}" class="active"><span class="title">Contratos</span></a></li>
+									<li><a <a data-title="produracao" onclick="pop(this)"  href="{{ route('procuracao.procuracao.index') }}" ><span class="title">Procurações</span></a></li>
+									<li><a <a data-title="contratos" onclick="pop(this)"  href="{{ route('contrato.contrato.index') }}" ><span class="title">Contratos</span></a></li>
 
 								</ul><!--end /submenu -->
 
@@ -258,9 +256,9 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">Entregas</span></a></li>
-									<li><a href="{{ route('visita_tecnica.index') }}" class="active"><span class="title">Visitas técnicas</span></a></li>
-									<li><a href="{{ route('visita_tecnica.arquivadasIndex') }}" class="active"><span class="title">Visitas Arquivadas</span></a></li>
+									<li><a data-title="solicitacaoEntregas" onclick="pop(this)"  href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">Entregas</span></a></li>
+									<li><a data-title="visita_tecnica" onclick="pop(this)" href="{{ route('visita_tecnica.index') }}" ><span class="title">Visitas técnicas</span></a></li>
+									<li><a data-title="arquivadasIndex" onclick="pop(this)" href="{{ route('visita_tecnica.arquivadasIndex') }}" ><span class="title">Visitas Arquivadas</span></a></li>
 
 
 
@@ -274,9 +272,9 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">O.S. - Instalação</span></a></li>
-									<li><a href="{{ route('osCorretiva.index') }}" class="active"><span class="title">O.S. - Corretiva</span></a></li>
-									<li><a href="{{ route('osPreventiva.index') }}" class="active"><span class="title">O.S. - Preventiva</span></a></li>
+									<li><a data-title="solicitacaoEntrega" onclick="pop(this)" href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">O.S. - Instalação</span></a></li>
+									<li><a  data-title="osCorretiva" onclick="pop(this)" href="{{ route('osCorretiva.index') }}" ><span class="title">O.S. - Corretiva</span></a></li>
+									<li><a data-title="osPreventiva" onclick="pop(this)" href="{{ route('osPreventiva.index') }}" ><span class="title">O.S. - Preventiva</span></a></li>
 
 								</ul><!--end /submenu -->
 
@@ -293,8 +291,8 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('orcamento.index') }}" class="active"><span class="title">Orçamentos/Perso...</span></a></li>
-									<li><a href="{{ route('pedido.index') }}" class="active"><span class="title">Pedidos</span></a></li>
+									<li><a  data-title="orcamento" onclick="pop(this)"  href="{{ route('orcamento.index') }}" ><span class="title">Orçamentos/Perso...</span></a></li>
+									<li><a  data-title="pedido" onclick="pop(this)"  href="{{ route('pedido.index') }}" ><span class="title">Pedidos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
@@ -308,7 +306,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('produto.index') }}" class="active"><span class="title">Produtos</span></a></li>
+									<li><a data-title="produto" onclick="pop(this)"  href="{{ route('produto.index') }}" ><span class="title">Produtos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 							<li class="gui-folder">
@@ -318,11 +316,11 @@
 								<!--start submenu -->
 								<ul>
 
-									<li><a href="{{ route('alert.index') }}" class="active"><span class="title">Alertas</span></a></li>
-									<li><a href="{{ route('geral.edit') }}" class="active"><span class="title">Geral</span></a></li>
-									<li><a href="{{ route('mao_obra.index') }}" class="active"><span class="title">Mão de Obra</span></a></li>
-									<li><a href="{{ route('inversor_modulo.index') }}" class="active"><span class="title">Inversor/Modulos</span></a></li>
-									<li><a href="{{ route('modulo.index') }}" class="active"><span class="title">Modulos</span></a></li>
+									<li><a data-title="alert" onclick="pop(this)" href="{{ route('alert.index') }}" ><span class="title">Alertas</span></a></li>
+									<li><a data-title="geral" onclick="pop(this)" href="{{ route('geral.edit') }}" ><span class="title">Geral</span></a></li>
+									<li><a data-title="mao_obra" onclick="pop(this)" href="{{ route('mao_obra.index') }}" ><span class="title">Mão de Obra</span></a></li>
+									<li><a data-title="inversor_modulo" onclick="pop(this)" href="{{ route('inversor_modulo.index') }}" ><span class="title">Inversor/Modulos</span></a></li>
+									<li><a data-title="modulo" onclick="pop(this)" href="{{ route('modulo.index') }}" ><span class="title">Modulos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
@@ -332,11 +330,11 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('users.user.index') }}" class="active"><span class="title">Usuarios</span></a></li>
+									<li><a data-title="users" onclick="pop(this)" href="{{ route('users.user.index') }}" ><span class="title">Usuarios</span></a></li>
 									@if(Auth::user()->franquia->franqueadora == 1)
-										<li><a href="{{ route('franquia.franquia.index') }}" class="active"><span class="title">Franquias</span></a></li>
+										<li><a data-title="franquia" onclick="pop(this)" href="{{ route('franquia.franquia.index') }}" ><span class="title">Franquias</span></a></li>
 									@endif
-									<li><a href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" class="active"><span class="title">Parâmetros</span></a></li>
+									<li><a data-title="parametro" onclick="pop(this)" href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" ><span class="title">Parâmetros</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 							@endrole
@@ -348,7 +346,7 @@
 								<!--start submenu -->
 								@role('super-admin')
 								<ul>
-									<li><a href="{{ route('financeiro.index') }}" class="active"><span class="title">Lançamentos</span></a></li>
+									<li><a href="{{ route('financeiro.index') }}" ><span class="title">Lançamentos</span></a></li>
 								</ul><!--end /submenu -->
 								@endrole
 
@@ -361,13 +359,13 @@
 								<!--start submenu -->
 								@role('super-admin|franquia')
 								<ul>
-									<li><a href="{{ '/franquia/' . Auth::user()->franquia->id . '/edit' }}" class="active"><span class="title">Dados Cadastrais</span></a></li>
+									<li><a data-title="franquia2" onclick="pop(this)" href="{{ '/franquia/' . Auth::user()->franquia->id . '/edit' }}" ><span class="title">Dados Cadastrais</span></a></li>
 								</ul><!--end /submenu -->
 								@endrole
 
 								@role('super-admin|advocacia|franquia')
 								<ul>
-									<li><a href="{{ route('documento.index') }}" class="active"><span class="title">Documentos</span></a></li>
+									<li><a data-title="documento" onclick="pop(this)" href="{{ route('documento.index') }}" ><span class="title">Documentos</span></a></li>
 								</ul><!--end /submenu -->
 								@endrole
 							</li><!--end /menu-li -->
@@ -449,10 +447,13 @@
 <script src="{{ asset('/assets/js/libs/sweetalert/sweetalert.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/assets/js/libs/jquery-mask-plugin/dist/jquery.mask.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/ajaxError.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/menu.js')}}" type="text/javascript"></script>
 
 
 
 <!-- END JAVASCRIPT -->
 @yield('javascript')
+
+
 </body>
 </html>

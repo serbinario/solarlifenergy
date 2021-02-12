@@ -1,6 +1,8 @@
 (function (namespace, $) {
 	"use strict";
 
+    
+
 	var AppNavigation = function () {
 		// Create reference to this instance
 		var o = this;
@@ -47,7 +49,7 @@
 		$(window).on('resize', function (e) {
 			o._handleScreenSize(e);
 		});
-		
+
 		// Menu events
 		$('[data-toggle="menubar"]').on('click', function (e) {
 			o._handleMenuToggleClick(e);

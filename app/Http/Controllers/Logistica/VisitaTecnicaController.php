@@ -79,7 +79,6 @@ class VisitaTecnicaController extends Controller
                 \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as data_cadastro'),
             ]);
 
-        #Editando a grid
         return Datatables::of($rows)
 
             ->filter(function ($query) use ($request) {
@@ -98,7 +97,6 @@ class VisitaTecnicaController extends Controller
             })
 
             ->addColumn('action', function ($row) {
-
                 $acao = '<form id="' . $row->id   . '" method="POST" action="logistica/visitaTecnica/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
@@ -114,9 +112,6 @@ class VisitaTecnicaController extends Controller
                                 </a>';
                 }
 
-
-
-
                 $acao .= '<a href="#" class="btn btn-primary arquivar" onclick="arquivarVisitaTecnica(' . $row->id . ')"  title="Arquivar">
                                     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
                                 </a>';
@@ -126,13 +121,9 @@ class VisitaTecnicaController extends Controller
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>';
                 }
-
-
                 $acao .= '</div>
                         </form>';
                 return $acao;
-
-
             })->make(true);
     }
 
