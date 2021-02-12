@@ -54,10 +54,8 @@ class UsersController extends Controller
         #Criando a consulta
         $rows = \DB::table('users')
             ->leftJoin('franquias', 'franquias.id', '=', 'users.franquia_id')
-            ->leftJoin('secretarias', 'secretaria.id', '=', 'users.secretaria_id')
             ->select([
                 'users.id',
-                'secretarias.description as secretaria',
                 'users.email',
                 'users.name',
                 'franquias.nome',

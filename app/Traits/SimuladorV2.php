@@ -22,6 +22,7 @@ use Serbinario\Entities\Vendas\InversorModulo;
 use Serbinario\Entities\Vendas\MaoObraModulos;
 use Serbinario\Entities\Vendas\Produto;
 use Serbinario\Entities\Vendas\StringboxPotencia;
+use Serbinario\User;
 
 trait SimuladorV2
 {
@@ -79,11 +80,6 @@ trait SimuladorV2
                 $modulo->area_geracao
             );
         }
-
-
-
-
-
         $this->inversores = $this->calculaQtdInversores($modulo->id);
         $this->qtdInversores = count($this->inversores );
 
@@ -97,6 +93,12 @@ trait SimuladorV2
             $this->valorModulo =  $modulo->preco_franquia;
             $this->moduloFabricante =  $modulo->marca->marca;
         }
+
+        $user = User::find(Auth::id());
+        if($user->franquia->id == 22){
+            $this->valorModulo =  ($this->convertesRealIngles($this->valorModulo) + 50);
+        }
+
         $this->products($modulo->id, $modulo->produto, $this->qtdModulos, $this->convertesRealIngles($modulo->preco_franquia));
 
 

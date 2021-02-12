@@ -44,7 +44,6 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Email</th>
-                                            <th>Secretaria</th>
                                             <th>Franquia</th>
                                             <th>Status</th>
                                             <th>Acao</th>

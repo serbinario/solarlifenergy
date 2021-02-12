@@ -41,7 +41,6 @@ $(document).ready(function () {
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
-            {data: 'secretaria', name: 'secretaria.secretaria'},
             {data: 'nome', name: 'franquias.nome', visible: false},
             {data: 'is_active', name: 'is_active', visible: true,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
