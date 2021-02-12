@@ -96,7 +96,7 @@ trait SimuladorV2
 
         $user = User::find(Auth::id());
         if($user->franquia->id == 22){
-            $this->valorModulo =  ($this->convertesRealIngles($this->valorModulo) + 50);
+            $this->valorModulo =  ($this->convertesRealIngles($this->valorModulo) + 25);
         }
 
         $this->products($modulo->id, $modulo->produto, $this->qtdModulos, $this->convertesRealIngles($modulo->preco_franquia));
