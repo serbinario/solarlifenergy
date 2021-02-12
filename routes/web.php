@@ -44,6 +44,9 @@ Route::post('simular/', 'UtilController@simular')
 Route::post('arquivarProjeto/', 'UtilController@arquivarProjeto')
     ->name('arquivarProjeto.arquivarProjeto');
 
+Route::post('arquivarVisitaTecnica/', 'UtilController@arquivarVisitaTecnica')
+    ->name('arquivarVisitaTecnica.arquivarVisitaTecnica');
+
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 
@@ -673,6 +676,9 @@ Route::group(
 
     Route::get('/', 'Logistica\VisitaTecnicaController@index')
         ->name('visita_tecnica.index');
+
+    Route::get('/arquivadas', 'Logistica\VisitaTecnicaController@arquivadasIndex')
+        ->name('visita_tecnica.arquivadasIndex');
 
     Route::get('/create','VisitaTecnicaController@create')
         ->name('visita_tecnica.create');

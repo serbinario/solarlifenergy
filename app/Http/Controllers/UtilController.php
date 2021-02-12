@@ -79,9 +79,23 @@ class UtilController extends Controller
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
-	   //dd($request->id);
-
     }
+
+    public function arquivarVisitaTecnica(Request $request){
+
+        try {
+            $visita  = VisitasTecnicas::where('id', '=', $request->id)->first();
+
+            $visita->update( [ 'arquivado' => $request->arquivar]);
+            return \Illuminate\Support\Facades\Response::json(['success' => true, 'msg' => 'Visita Técnica arquivado com sucesso']);
+
+        } catch (Exception $exception) {;
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
+        }
+    }
+
+
 
     public function arquivarProjeto(Request $request){
 

@@ -260,6 +260,9 @@
 								<ul>
 									<li><a href="{{ route('solicitacaoEntrega.index') }}" class="active"><span class="title">Entregas</span></a></li>
 									<li><a href="{{ route('visita_tecnica.index') }}" class="active"><span class="title">Visitas técnicas</span></a></li>
+									<li><a href="{{ route('visita_tecnica.arquivadasIndex') }}" class="active"><span class="title">Visitas Arquivadas</span></a></li>
+
+
 
 								</ul><!--end /submenu -->
 

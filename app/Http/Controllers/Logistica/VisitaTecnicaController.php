@@ -20,6 +20,7 @@ class VisitaTecnicaController extends Controller
 {
     use UtilFiles;
     private $token;
+    private $arquivado;
 
     /**
      * Create a new controller instance.
@@ -42,6 +43,12 @@ class VisitaTecnicaController extends Controller
         return view('logistica.visita_tecnica.index', compact('status'));
     }
 
+    public function arquivadasIndex()
+    {
+        $status = StatusVisita::pluck('descricao','id')->all();
+        return view('logistica.visita_tecnica.arquivadas.index', compact('status'));
+    }
+
     /**
      * Display a listing of the fornecedors.
      *
@@ -50,6 +57,7 @@ class VisitaTecnicaController extends Controller
      */
     public function grid(Request $request)
     {
+        $this->arquivado = $request->get('arquivado');
         $this->token = csrf_token();
         #Criando a consulta
         $rows = \DB::table('visita_tecnica as vt')
@@ -58,6 +66,7 @@ class VisitaTecnicaController extends Controller
             ->leftJoin('clientes', 'clientes.id', '=', 'pre_propostas.cliente_id')
             ->leftjoin('users', 'users.id', '=', 'vt.tecnico_id')
             ->leftjoin('status_visita as sv', 'sv.id', '=', 'vt.status_visita_id')
+            ->where('vt.arquivado', '=', $request->get('arquivado') )
             ->select([
                 'vt.id',
                 \DB::raw('DATE_FORMAT(vt.data_previsao,"%d/%m/%Y") as data_previsao'),
@@ -89,20 +98,41 @@ class VisitaTecnicaController extends Controller
             })
 
             ->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="logistica/visitaTecnica/' . $row->id   . '/destroy" accept-charset="UTF-8">
+
+                $acao = '<form id="' . $row->id   . '" method="POST" action="logistica/visitaTecnica/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">                              
-                                <a href="visitaTecnica/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                            <div class="btn-group btn-group-xs pull-right" role="group">';
+
+                if($this->arquivado != 1){
+                    $acao .= '<a href="visitaTecnica/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>    
-                                <a href="/report/'.$row->id.'/visitaTecnica" class="btn btn-primary" target="_blank" title="Proposta">
+                                </a>';
+
+                    $acao .= '<a href="/report/'.$row->id.'/visitaTecnica" class="btn btn-primary" target="_blank" title="Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>                        
-                               
-                            </div>
-                        </form>
-                        ';
+                                </a>';
+                }
+
+
+
+
+                $acao .= '<a href="#" class="btn btn-primary arquivar" onclick="arquivarVisitaTecnica(' . $row->id . ')"  title="Arquivar">
+                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                </a>';
+
+                if($this->arquivado != 1){
+                    $acao .= '<button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>';
+                }
+
+
+                $acao .= '</div>
+                        </form>';
+                return $acao;
+
+
             })->make(true);
     }
 

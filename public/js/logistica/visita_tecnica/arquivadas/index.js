@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var table = $('#visita_tecnica').DataTable({
+    var table = $('#visita_tecnica_arquivadas').DataTable({
         "dom": 'lCfrtip',
         "order": [],
         "colVis": {
@@ -17,7 +17,7 @@ $(document).ready(function () {
         ajax: {
             url: "/index.php/visitaTecnica/grid",
             data: function (d) {
-                d.arquivado = 0;
+                d.arquivado = 1;
                 d.nome = document.getElementById("nome").value;
                 d.status_visita_id = $('select[name=status_visita_id] option:selected').val();
                 d.integrador = document.getElementById("integrador").value;
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
 function arquivarVisitaTecnica(arquivar_id){
     swal({
-            title: "Arquivar Visita Técnica?",
+            title: "Desarquivar Visita Técnica?",
             text: "",
             type: "warning",
             showCancelButton: true,
@@ -91,7 +91,7 @@ function arquivarVisitaTecnica(arquivar_id){
                 });
                 data = {
                     'id': arquivar_id,
-                    'arquivar': "1"
+                    'arquivar': "0"
                 }
 
                 jQuery.ajax({
@@ -102,7 +102,7 @@ function arquivarVisitaTecnica(arquivar_id){
                 }).done(function (retorno) {
                     if(retorno.success) {
                         swal("", retorno.msg, "success");
-                        $('#visita_tecnica').DataTable().ajax.reload();
+                        $('#visita_tecnica_arquivadas').DataTable().ajax.reload();
 
                     } else {
                         swal("Error", "Click no botão abaixo!", "error");

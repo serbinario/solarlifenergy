@@ -64,7 +64,8 @@ class VisitasTecnicas extends Model
         'disjuntor_geral_image',
         'comprovante_image',
         'data_previsao',
-        'data_visita'
+        'data_visita',
+        'arquivado'
     ];
 
     /**
