@@ -223,7 +223,7 @@ class VisitaTecnicaController extends Controller
     {
         $visitaTecnica = VisitasTecnicas::with('projeto')->findOrFail($id);
         $status = StatusVisita::pluck('descricao','id')->all();
-        $users = User::orderBy('name')->pluck('name','id')->all();
+        $users = User::where('is_tecnico', '=','1')->orderBy('name')->pluck('name','id')->all();
         //dd($visitaTecnica);
         return view('logistica.visita_tecnica.edit', compact( 'visitaTecnica', 'status', 'users'));
 
