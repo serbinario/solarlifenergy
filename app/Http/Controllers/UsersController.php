@@ -253,7 +253,7 @@ class UsersController extends Controller
      */
       protected function getData(Request $request)
         {
-        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id', 'permissions']);
+        $data = $request->only(['name', 'email', 'password', 'role', 'franquia_id', 'permissions', 'is_tecnico']);
 
         return $data;
     }

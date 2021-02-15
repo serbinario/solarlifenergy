@@ -43,7 +43,7 @@ class UserFormRequest extends FormRequest
      */
     public function getData()
     {
-        $data = $this->only(['name', 'email', 'password', 'role', 'franquia_id', 'is_active']);
+        $data = $this->only(['name', 'email', 'password', 'role', 'franquia_id', 'is_active', 'is_tecnico']);
         return $data;
     }
 

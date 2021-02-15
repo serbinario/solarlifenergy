@@ -68,30 +68,37 @@
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
-                    <label for="is_active" class="col-md-2 control-label text-bold">Ativo?.:</label>
+                <div class="form-group {{ $errors->has('is_tecnico') ? 'has-error' : '' }}">
+                    <label for="is_tecnico" class="col-md-2 control-label text-bold">Técnico?.:</label>
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            <label for="is_active_1">
-                                <input id="is_active" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', isset($user->is_active) ? $user->is_active : null) == '1' ? 'checked' : '' }}>
+                        <div class="checkbox checkbox-styled">
+                            <label for="is_tecnico">
+                                <input id="is_tecnico" class="" name="is_tecnico" type="checkbox" value="1" {{ old('is_tecnico', isset($user->is_tecnico) ? $user->is_tecnico : null) == '1' ? 'checked' : '' }}>
                                 Sim
                             </label>
                         </div>
 
-                        {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+
+                <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
+                    <label for="is_active" class="col-md-2 control-label text-bold">Ativo?.:</label>
+                    <div class="col-md-10">
+                        <div class="checkbox checkbox-styled">
+                            <label for="is_active">
+                                <input id="is_active" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', isset($user->is_active) ? $user->is_active : null) == '1' ? 'checked' : '' }}>
+                                Sim
+                            </label>
+                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="tab-pane" id="second1">
-
                 <div class='form-group'>
-
-
                     @foreach ($permissions as $permission)
                         <input id="permissions" class="" name="permissions[]" type="checkbox" value="{{ $permission->id  }}"  {{ in_array($permission->id, $userPermissions) ? 'checked' : '' }}>
                         {{ Form::label($permission->name, ucfirst($permission->name)) }}<br>
-
                     @endforeach
                 </div>
 

@@ -248,7 +248,7 @@
 							@endrole
 
 
-							@role('super-admin')
+
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -256,9 +256,15 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+									@can('read.log.entrega')
 									<li><a data-title="solicitacaoEntregas" onclick="pop(this)"  href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">Entregas</span></a></li>
+									@endcan
+									@can('read.vist.tecnica')
 									<li><a data-title="visita_tecnica" onclick="pop(this)" href="{{ route('visita_tecnica.index') }}" ><span class="title">Visitas técnicas</span></a></li>
+									@endcan
+									@can('read.vist.tecnica')
 									<li><a data-title="arquivadasIndex" onclick="pop(this)" href="{{ route('visita_tecnica.arquivadasIndex') }}" ><span class="title">Visitas Arquivadas</span></a></li>
+									@endcan
 
 
 
@@ -272,15 +278,21 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a data-title="solicitacaoEntrega" onclick="pop(this)" href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">O.S. - Instalação</span></a></li>
+									@can('read.os.instalacao')
+									<li><a data-title="osInstalacao" onclick="pop(this)" href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">O.S. - Instalação</span></a></li>
+									@endcan
+									@can('read.os.corretiva')
 									<li><a  data-title="osCorretiva" onclick="pop(this)" href="{{ route('osCorretiva.index') }}" ><span class="title">O.S. - Corretiva</span></a></li>
+									@endcan
+									@can('read.os.preventiva')
 									<li><a data-title="osPreventiva" onclick="pop(this)" href="{{ route('osPreventiva.index') }}" ><span class="title">O.S. - Preventiva</span></a></li>
+									@endcan
 
 								</ul><!--end /submenu -->
 
 							</li><!--end /menu-li
 
-							@endrole
+
 
 
 							@role('super-admin|revenda')
@@ -330,7 +342,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a href="{{ route('roles.role.index') }}" class="active"><span class="title">Grupos</span></a></li>
+									<li><a href="{{ route('roles.role.index') }}"><span class="title">Grupos</span></a></li>
 									<li><a data-title="users" onclick="pop(this)" href="{{ route('users.user.index') }}" ><span class="title">Usuarios</span></a></li>
 									@if(Auth::user()->franquia->franqueadora == 1)
 										<li><a data-title="franquia" onclick="pop(this)" href="{{ route('franquia.franquia.index') }}" ><span class="title">Franquias</span></a></li>
