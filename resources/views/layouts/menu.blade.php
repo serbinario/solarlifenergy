@@ -330,6 +330,7 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+									<li><a href="{{ route('roles.role.index') }}" class="active"><span class="title">Grupos</span></a></li>
 									<li><a data-title="users" onclick="pop(this)" href="{{ route('users.user.index') }}" ><span class="title">Usuarios</span></a></li>
 									@if(Auth::user()->franquia->franqueadora == 1)
 										<li><a data-title="franquia" onclick="pop(this)" href="{{ route('franquia.franquia.index') }}" ><span class="title">Franquias</span></a></li>
