@@ -75,7 +75,7 @@ class DocumentoController extends Controller
 
             ]);
         $user = User::find(Auth::id());
-        if($user->hasRole('franquia')) {
+        if($user->hasRole('ADM')) {
             $rows->where('franquias.id', '=', Auth::user()->franquia->id);
         }
 
