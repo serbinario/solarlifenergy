@@ -83,11 +83,11 @@ class PrePropostaArquivaController extends Controller
 
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
-        if($user->hasRole('franquia')) {
+        if($user->hasRole('ADM')) {
 
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
-        if($user->hasRole('integrador')) {
+        if($user->hasRole('VENDEDOR')) {
             $rows->where('pre_propostas.user_id', '=', $user->id);
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
@@ -122,18 +122,18 @@ class PrePropostaArquivaController extends Controller
 
                 }
 
-                if ($request->has('integrador')) {
+               /* if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
                 }
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
-                if($user->hasRole('admin')) {
+                if($user->hasRole('ADM')) {
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
                 }
-                if($user->hasRole('integrador')) {
+                if($user->hasRole('VENDEDOR')) {
                     $query->where('clientes.user_id', '=', $user->id);
                     $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
-                }
+                }*/
 
                 $query->whereNotNull('pre_propostas.arquivado');
 
