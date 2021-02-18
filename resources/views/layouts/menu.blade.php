@@ -345,13 +345,13 @@
 								</a>
 								<!--start submenu -->
 								<ul>
-									@can('read.role')
-									<li><a data-title="grupos" onclick="pop(this)" href="{{ route('roles.role.index') }}"><span class="title">Grupos</span></a></li>
-									@endcan
 
-									@can('read.user')
+									<li><a data-title="grupos" onclick="pop(this)" href="{{ route('roles.role.index') }}"><span class="title">Grupos</span></a></li>
+									
+
+
 									<li><a data-title="users" onclick="pop(this)" href="{{ route('users.user.index') }}" ><span class="title">Usuarios</span></a></li>
-									@endcan
+
 
 									@if(Auth::user()->franquia->id == 14)
 										<li><a data-title="franquia" onclick="pop(this)" href="{{ route('franquia.franquia.index') }}" ><span class="title">Franquias</span></a></li>
