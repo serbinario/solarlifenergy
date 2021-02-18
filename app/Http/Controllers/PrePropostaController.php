@@ -100,11 +100,11 @@ class PrePropostaController extends Controller
         $rows->whereNull('pre_propostas.arquivado');
         //Se o usuario logado nao tiver role de franquia, so podera ver os cadastros dele
         $user = User::find(Auth::id());
-        if($user->hasRole('franquia')) {
+        if($user->hasRole('ADM')) {
 
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
-        if($user->hasRole('integrador')) {
+        if($user->hasRole('VENDEDOR')) {
             $rows->where('pre_propostas.user_id', '=', $user->id);
             $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
         }
