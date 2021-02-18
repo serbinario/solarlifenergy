@@ -70,9 +70,11 @@
 
 
                         <div class="card-actionbar">
-                            <div class="card-actionbar-row">
-                                <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Proposta</a>
-                            </div>
+                            @can('create.proposta')
+                                <div class="card-actionbar-row">
+                                    <a href="{{ route('pre_proposta.pre_proposta.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Nova Proposta</a>
+                                </div>
+                            @endcan
                         </div>
 
                         @include('pre_proposta.relatorio')

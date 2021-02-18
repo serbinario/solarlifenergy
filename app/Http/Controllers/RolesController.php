@@ -58,23 +58,20 @@ class RolesController extends Controller
             ]);
 
         $user = User::find(Auth::id());
-        if($user->franquia->id != 1){
+        if($user->franquia->id != 14){
             $rows->where('franquia_id', '=', $user->franquia->id);
         }
 
         #Editando a grid
         return Datatables::of($rows)
             ->addColumn('action', function ($row) {
-
-
                 $acao = '<div class="btn-group btn-group-xs pull-right" role="group">';
-
                 $user =  Auth::user();
-                //if($user->hasPermissionTo('update.roles')) {
+                if($user->hasPermissionTo('update.role')) {
                     $acao .= '<a href="roles/' . $row->id . '/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                       </a>';
-               // }
+                }
                 $acao .= '               </div>';
                 return $acao;
         })->make(true);
@@ -144,23 +141,28 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
+
+
         $userLogado = User::find(Auth::id());
-        if($userLogado->franquia->id === 1){
+        $permission = Permission::get();
+        if($userLogado->franquia->id === 14){
             $role = Role::find($id);
+            $permissionGroup = $permission->groupBy(function ($member) {
+                return $member->model;
+            })->all();
+
         }else{
             $role = Role::where('franquia_id', Auth::user()->franquia->id)->find($id);
+            $permissionGroup = $permission->where('is_adm', '=', 0)->groupBy(function ($member) {
+                return $member->model;
+            })->all();
         }
-
-        $permission = Permission::get();
-        $permissionGroup = $permission->groupBy(function ($member) {
-            return $member->model;
-        })->all();
-
 
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
         //dd($permission);
+        //dd($permissionGroup, $permission, $rolePermissions, $role );
         return view('roles.edit', compact('user', 'role', 'permission', 'rolePermissions', 'permissionGroup'));
 
     }

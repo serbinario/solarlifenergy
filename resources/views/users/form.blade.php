@@ -36,21 +36,7 @@
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
-                    <label for="role" class="col-md-2 control-label">Permissão.: *</label>
-                    <div class="col-md-10">
-                        <select class="form-control input-sm" id="role" name="role">
-                            <option value="" style="display: none;" {{ old('$user->roles[0]->id', null) }} disabled selected>Selecione uma Permissão</option>
-                            @foreach ($roles as $key => $role)
-                                <option value="{{ $key }}" {{ old('role', isset($user->roles[0]->id) ? $user->roles[0]->id : null) == $key ? 'selected' : '' }}>
-                                    {{ $role }}
-                                </option>
-                            @endforeach
-                        </select>
 
-                        {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
 
                 <div class="form-group {{ $errors->has('franquia_id') ? 'has-error' : '' }}">
                     <label for="franquia_id" class="col-md-2 control-label">Franquia.: *</label>
@@ -65,6 +51,22 @@
                         </select>
 
                         {!! $errors->first('franquia_id', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+
+                <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                    <label for="role" class="col-md-2 control-label">Grupo.: *</label>
+                    <div class="col-md-10">
+                        <select class="form-control input-sm" id="role_id" name="role">
+                            <option value="" style="display: none;" {{ old('$user->roles[0]->id', null) }} disabled selected>Selecione uma Permissão</option>
+                            @foreach ($roles as $key => $role)
+                                <option value="{{ $key }}" {{ old('role', isset($user->roles[0]->id) ? $user->roles[0]->id : null) == $key ? 'selected' : '' }}>
+                                    {{ $role }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
 

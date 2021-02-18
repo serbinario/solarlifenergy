@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -64,14 +64,27 @@ class LoginController extends Controller
             return redirect()->route('orcamento.index');
         }
 
+        //dd($user->getAllPermissions());
+        if (count($user->getAllPermissions()) == 0) {
+            auth()->logout();
+           return back()->with('error_message', 'O ADM da franquia falta definir grupos de permissões');
+        }
+
+        if ($user->hasPermissionTo('read.cliente')) {
+            return redirect()->route('cliente.cliente.index');
+        }
+
+        if ($user->hasPermissionTo('read.cliente')) {
+            return redirect()->route('cliente.cliente.index');
+        }
+
+        if ($user->hasPermissionTo('read.os.instalacao')) {
+            return redirect()->route('visita_tecnica.index');
+        }
+
         if ( $user->hasRole('advocacia') ) {// do your magic here
             return redirect()->route('documento.index');
         }
         return redirect()->intended($this->redirectPath());
     }
-
-
-
-
-
 }

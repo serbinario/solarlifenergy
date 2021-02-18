@@ -50,6 +50,9 @@ Route::post('arquivarVisitaTecnica/', 'UtilController@arquivarVisitaTecnica')
 Route::get('/consultaCidades/{id}', 'UtilController@getCidades')
     ->name('getEstado');
 
+Route::get('/consultaGrupos/{id}', 'UtilController@consultaGruposPorFranquia')
+    ->name('getEstado');
+
 Route::post('/getclientes/', 'UtilController@getClientes')
     ->name('getclientes');
 

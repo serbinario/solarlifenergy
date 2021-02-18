@@ -33,7 +33,7 @@ $(document).ready(function () {
             "overlayFade": 0,
             "align": "right"
         },
-        "searching": false,
+        "searching": true,
         "bLengthChange": false,
         processing: true,
         serverSide: true,
@@ -48,7 +48,7 @@ $(document).ready(function () {
         columns: [
             {data: 'id', name: 'id', visible: false,},
             {data: 'name', name: 'name'},
-            {data: 'nome', name: 'franquia,nome'},
+            {data: 'nome', name: 'franquias.nome'},
             {data: 'is_active', name: 'is_active', visible: true, width: '60px',
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                     if(oData.is_active == 1){

@@ -31,9 +31,6 @@ $(document).ready(function () {
                     var cep = $('input[name="cep"]').val()
                     var kwh = $('input[name="monthly_usage"]').val()
 
-
-                    //console.log(kwh)
-                    //console.log(cep)
                     if(cep == ""){
                         swal("Cep do cliente está faltando", "Click no botão abaixo!", "error");
                     }
@@ -52,7 +49,6 @@ $(document).ready(function () {
                         'kwh': kwh
                     }
 
-                    console.log(kwh)
                     jQuery.ajax({
                         type: 'POST',
                         data: dados,

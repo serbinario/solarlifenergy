@@ -176,9 +176,11 @@
 
 
                         <div class="card-actionbar">
+                            @can('create.cliente')
                             <div class="card-actionbar-row">
                                 <a href="{{ route('cliente.cliente.create') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Novo Cliente</a>
                             </div>
+                            @endcan
                         </div>
 
                             @include('cliente.relatorio')

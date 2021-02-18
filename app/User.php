@@ -39,6 +39,4 @@ class User extends Authenticatable
     {
         return $this->hasOne('Serbinario\Entities\Franquia','id','franquia_id');
     }
-
-
 }

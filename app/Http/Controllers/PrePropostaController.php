@@ -148,21 +148,34 @@ class PrePropostaController extends Controller
             })
 
             ->addColumn('action', function ($row) {
-            return '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
+
+                    $acao = '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">                          
-                                <a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                            <div class="btn-group btn-group-xs pull-right" role="group">';
+
+                        $user =  Auth::user();
+                        if($user->hasPermissionTo('update.proposta')) {
+                            $acao .= '<a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>
-                                <a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Proposta">
+                                </a>';
+                        }
+
+                        $acao .= '<a href="/report/'.$row->id.'/proposta" class="btn btn-primary" target="_blank" title="Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>  
-                                <a href="#" class="btn btn-primary arquivar"  title="Arquivar">
-                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                </a>                            
-                        </form>
-                        ';
+                                </a>';
+
+
+                        $acao .= '<a href="#" class="btn btn-primary arquivar"  title="Arquivar">
+                                        <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                    </a>';
+
+
+                    $acao .= '</div>
+                        </form>';
+                    return $acao;
+
+
         })->make(true);
     }
 

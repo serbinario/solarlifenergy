@@ -63,5 +63,5 @@
 
 @section('javascript')
     <script src="{{ asset('/js/users/edit.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('/js/users.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/users/util.js')}}" type="text/javascript"></script>
 @stop

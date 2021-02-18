@@ -186,27 +186,31 @@
 						<!--start submenu -->
 
 						<ul>
-							@role('super-admin|franquia|integrador')
+							@can('read.cliente')
 							<li><a data-title="cliente" onclick="pop(this)"  href="{{ route('cliente.cliente.index') }}" ><span class="title">Clientes</span></a></li>
-							@endrole
+							@endcan
 
+							@can('read.proposta')
 							<li class="gui-folder">
 								<a>
 									<span class="title">Propostas</span>
 								</a>
 								<!--start submenu -->
 								<ul>
-									<li><a data-title="proposta" onclick="pop(this)" href="{{ route('pre_proposta.pre_proposta.index') }}" ><span  class="title title_sub">Propostas</span></a></li>
-									@if(Auth::user()->franquia->id == 14)
-										<li> <a data-title="propostaExpansao" onclick="pop(this)" href="{{ route('proposta.expansao.index') }}" ><span class="title title_sub">Propostas Expansão</span></a></li>
-									@endif
 
-									<li><a  data-title="propostaArquivada" onclick="pop(this)"  href="{{ route('pre_proposta.arquivadas.index') }}" ><span class="title title_sub">Propostas Arquivadas</span></a></li>
+									<li><a data-title="proposta" onclick="pop(this)" href="{{ route('pre_proposta.pre_proposta.index') }}" ><span  class="title title_sub">Propostas</span></a></li>
+										<li><a  data-title="propostaArquivada" onclick="pop(this)"  href="{{ route('pre_proposta.arquivadas.index') }}" ><span class="title title_sub">Propostas Arquivadas</span></a></li>
+
+										@if(Auth::user()->franquia->id == 14)
+											<li> <a data-title="propostaExpansao" onclick="pop(this)" href="{{ route('proposta.expansao.index') }}" ><span class="title title_sub">Propostas Expansão</span></a></li>
+										@endif
 
 								</ul><!--end /submenu -->
 
 							</li><!--end /menu-li -->
+							@endcan
 
+							@can('read.projeto')
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Projetos</span>
@@ -224,10 +228,7 @@
 
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
-
-
-
-
+							@endcan
 
 
 							@role('super-admin|franquia')
@@ -290,7 +291,7 @@
 
 								</ul><!--end /submenu -->
 
-							</li><!--end /menu-li
+							</li>
 
 
 
@@ -308,9 +309,9 @@
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
-							@endrole
 
-							@role('super-admin')
+
+
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -336,21 +337,31 @@
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
 
+							@endrole
+
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Cadastro</span>
 								</a>
 								<!--start submenu -->
 								<ul>
+									@can('read.role')
 									<li><a data-title="grupos" onclick="pop(this)" href="{{ route('roles.role.index') }}"><span class="title">Grupos</span></a></li>
+									@endcan
+
+									@can('read.user')
 									<li><a data-title="users" onclick="pop(this)" href="{{ route('users.user.index') }}" ><span class="title">Usuarios</span></a></li>
-									@if(Auth::user()->franquia->franqueadora == 1)
+									@endcan
+
+									@if(Auth::user()->franquia->id == 14)
 										<li><a data-title="franquia" onclick="pop(this)" href="{{ route('franquia.franquia.index') }}" ><span class="title">Franquias</span></a></li>
 									@endif
+									@can('update.paramteros')
 									<li><a data-title="parametro" onclick="pop(this)" href="{{ '/parametro/' . Auth::user()->franquia->parametro->id . '/edit' }}" ><span class="title">Parâmetros</span></a></li>
+									@endcan
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
-							@endrole
+
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -370,17 +381,18 @@
 									<span class="title">Franquia</span>
 								</a>
 								<!--start submenu -->
-								@role('super-admin|franquia')
+								@can('update.franquia.dados.cadastrais')
 								<ul>
 									<li><a data-title="franquia2" onclick="pop(this)" href="{{ '/franquia/' . Auth::user()->franquia->id . '/edit' }}" ><span class="title">Dados Cadastrais</span></a></li>
 								</ul><!--end /submenu -->
-								@endrole
+								@endcan
 
-								@role('super-admin|advocacia|franquia')
+								@can('update.franquia.documentos')
 								<ul>
 									<li><a data-title="documento" onclick="pop(this)" href="{{ route('documento.index') }}" ><span class="title">Documentos</span></a></li>
 								</ul><!--end /submenu -->
-								@endrole
+								@endcan
+
 							</li><!--end /menu-li -->
 
 

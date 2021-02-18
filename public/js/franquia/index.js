@@ -35,7 +35,7 @@ var table = $('#franquia').DataTable({
         "overlayFade": 0,
         "align": "right"
     },
-    "searching": false,
+    "searching": true,
     "bLengthChange": false,
     processing: true,
     serverSide: true,

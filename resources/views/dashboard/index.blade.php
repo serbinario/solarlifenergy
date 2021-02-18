@@ -25,7 +25,7 @@
 
 @section('content')
     <!-- BEGIN SITE ACTIVITY -->
-    <div class="col-md-4">
+   {{-- <div class="col-md-4">
         <div class="card ">
             <div class="row">
                 <div class="col-md-12">
@@ -99,7 +99,7 @@
             </div><!--end .card-body -->
         </div><!--end .card -->
     </div><!--end .col -->
-    <!-- END NEW REGISTRATIONS -->
+    <!-- END NEW REGISTRATIONS -->--}}
 @endsection
 
 @section('javascript')

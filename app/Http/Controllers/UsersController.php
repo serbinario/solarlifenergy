@@ -166,6 +166,8 @@ class UsersController extends Controller
 
         $permissions = Permission::all();
         $franquias = Franquia::pluck('nome','id')->all();
+
+       // dd($franquias);
         $user = User::with('roles', 'franquia', 'permissions')->findOrFail($id);
 
         $roles = \Spatie\Permission\Models\Role::pluck('name','id')->all();

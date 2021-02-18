@@ -102,6 +102,10 @@ class Franquia extends Model
         return $this->hasOne('Serbinario\Entities\BasePrecoRevenda','id','base_preco_revenda_id');
     }
 
+    public function getNameFranquiaAttribute() {
+        return $this->nome;
+    }
+
 
 
 }

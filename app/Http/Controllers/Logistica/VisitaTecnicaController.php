@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Serbinario\Entities\logistica\StatusVisita;
 use Serbinario\Entities\logistica\VisitaDocumentos;
 use Serbinario\Entities\logistica\VisitasTecnicas;
-use Serbinario\Entities\Modulo;
-use Serbinario\Http\Requests\ModuloFormRequest;
+use Illuminate\Support\Facades\Auth;
 use Serbinario\Http\Controllers\Controller;
 use Serbinario\Http\Requests\VisitaTecnicaFormRequest;
 use Serbinario\Traits\UtilFiles;
@@ -102,24 +101,27 @@ class VisitaTecnicaController extends Controller
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">';
 
-                if($this->arquivado != 1){
-                    $acao .= '<a href="visitaTecnica/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                $user =  Auth::user();
+                if($user->hasPermissionTo('update.vist.tecnica')) {
+                    if ($this->arquivado != 1) {
+                        $acao .= '<a href="visitaTecnica/' . $row->id . '/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>';
 
-                    $acao .= '<a href="/report/'.$row->id.'/visitaTecnica" class="btn btn-primary" target="_blank" title="Proposta">
+                        $acao .= '<a href="/report/' . $row->id . '/visitaTecnica" class="btn btn-primary" target="_blank" title="Solicitação de entrega">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>';
-                }
+                    }
 
-                $acao .= '<a href="#" class="btn btn-primary arquivar" onclick="arquivarVisitaTecnica(' . $row->id . ')"  title="Arquivar">
+                    $acao .= '<a href="#" class="btn btn-primary arquivar" onclick="arquivarVisitaTecnica(' . $row->id . ')"  title="Arquivar">
                                     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
                                 </a>';
 
-                if($this->arquivado != 1){
-                    $acao .= '<button type="submit" class="btn btn-danger delete" id="' . $row->id   . '" title="Delete">
+                    if ($this->arquivado != 1) {
+                        $acao .= '<button type="submit" class="btn btn-danger delete" id="' . $row->id . '" title="Delete">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>';
+                    }
                 }
                 $acao .= '</div>
                         </form>';

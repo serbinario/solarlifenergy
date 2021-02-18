@@ -133,6 +133,13 @@ class UtilController extends Controller
         return \Illuminate\Support\Facades\Response::json(['success' => false,  'cidades' => $cidades]);
     }
 
+    public function consultaGruposPorFranquia($id){
+
+        $roles = \Spatie\Permission\Models\Role::where('franquia_id', '=', $id)->pluck('name','id')->all();
+
+        return \Illuminate\Support\Facades\Response::json(['success' => true,  'roles' => $roles]);
+    }
+
     public function simulador(Request $request){
 
         $ip = request()->ip();

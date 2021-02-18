@@ -57,7 +57,7 @@
                                     <p>Equipe Técnica</p>
                                 </div>
 
-                                @can('view participacao')
+                                @can('read.participacao')
                                     <div class="badge-solar badge-royalties">
                                         <span class="badge badge-dark float-right participacao"></span>
                                         <span class="royalties" style="margin-top: -3px;"></span>
@@ -97,9 +97,11 @@
                                     <input class="btn btn-primary" id="novo_projeto" type="button" value="Criar Projeto">
                                 @endif
 
+                                @can('create.projeto')
                                 @if(!isset($preProposta->projetov2()->first()->id) && $preProposta->estar_finalizado == 1 && !$preProposta->created_at->diff(new DateTime())->m >= 1)
                                      <input class="btn btn-primary" id="novo_projeto" type="button" value="Criar Projeto">
                                 @endif
+                                @endcan
                                 <a href="{{ route('pre_proposta.pre_proposta.index') }}" type="button" class="btn btn-flat btn-primary ink-reaction">Voltar</a>
                                 <input id="submit" class="btn btn-primary" type="submit" value="Atualizar">
                             </div>
