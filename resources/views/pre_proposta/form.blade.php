@@ -520,7 +520,7 @@
                                     <td><input readonly class="form-control input-sm money input-table-solar" name="total_equipamentos" type="text" id="total_equipamentos" value="{{ old('total_equipamentos', isset($preProposta->total_equipamentos) ? $preProposta->total_equipamentos : null) }}" min="0" max="10" placeholder="Valor da NF-E"></td>
                                 </tr>
 
-                                @can('view participacao')
+                                @can('read.participacao')
                                     <tr>
                                         <td  style="text-align:right; padding-right: 20px;">PARTICIPAÇÃO</td>
                                         <td><input  class="form-control input-sm money input-table-solar" name="valor_franquia" type="text" id="valor_franquia" value="{{ old('valor_franquia', isset($preProposta->valor_franquia) ? $preProposta->valor_franquia : null) }}" min="0" max="10" placeholder="Desconto"></td>
