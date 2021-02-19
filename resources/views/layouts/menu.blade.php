@@ -242,7 +242,7 @@
 									@can('read.procuracao')
 									<li><a <a data-title="produracao" onclick="pop(this)"  href="{{ route('procuracao.procuracao.index') }}" ><span class="title">Procurações</span></a></li>
 									@endcan
-									@can('read.procuracao')
+									@can('read.contrato')
 									<li><a <a data-title="contratos" onclick="pop(this)"  href="{{ route('contrato.contrato.index') }}" ><span class="title">Contratos</span></a></li>
 									@endcan
 
