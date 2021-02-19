@@ -200,7 +200,7 @@ class PropostaController extends Controller
     {
         $return = $this->simularGeracao($request);
 
-        //dd($return;
+        //dd($return);
 
         $percentual = 0;
         switch ($return['total_equipamentos']){

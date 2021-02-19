@@ -231,7 +231,7 @@
 							@endcan
 
 
-							@role('super-admin|franquia')
+
 
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
@@ -239,14 +239,18 @@
 								</a>
 								<!--start submenu -->
 								<ul>
+									@can('read.procuracao')
 									<li><a <a data-title="produracao" onclick="pop(this)"  href="{{ route('procuracao.procuracao.index') }}" ><span class="title">Procurações</span></a></li>
+									@endcan
+									@can('read.procuracao')
 									<li><a <a data-title="contratos" onclick="pop(this)"  href="{{ route('contrato.contrato.index') }}" ><span class="title">Contratos</span></a></li>
+									@endcan
 
 								</ul><!--end /submenu -->
 
 							</li><!--end /menu-li -->
 
-							@endrole
+
 
 
 
@@ -308,11 +312,9 @@
 									<li><a  data-title="pedido" onclick="pop(this)"  href="{{ route('pedido.index') }}" ><span class="title">Pedidos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
+							@endrole
 
-
-
-
-
+							@can('read.estoque')
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Estoque</span>
@@ -322,6 +324,9 @@
 									<li><a data-title="produto" onclick="pop(this)"  href="{{ route('produto.index') }}" ><span class="title">Produtos</span></a></li>
 								</ul><!--end /submenu -->
 							</li><!--end /menu-li -->
+							@endcan
+
+							@role('super-admin|revenda')
 							<li class="gui-folder">
 								<a href="javascript:void(0);">
 									<span class="title">Parâmetros Sistema</span>

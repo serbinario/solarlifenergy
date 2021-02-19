@@ -119,6 +119,7 @@ trait SimuladorV2
         $this->somaEstrutura = $this->calculaEsttutura();
         $this->somaString = $this->calculaString();
 
+
         $this->valorMaoObra = $this->calculaMaoObra($modulo->id);
 
         $this->totalInvestimento = $this->somaModulos + $this->somaInversor + $this->somaEstrutura + $this->somaString +  $this->valorMaoObra;
@@ -298,6 +299,7 @@ trait SimuladorV2
             $stringTotal += $this->convertesRealIngles($string->produto->preco_revenda) * $inversor['stringbox'];
             $stringQtd += $inversor['stringbox'];
         }
+
 
         $this->products($string->produto->id, $string->produto->produto, $stringQtd, $this->convertesRealIngles($string->produto->preco_revenda));
 
