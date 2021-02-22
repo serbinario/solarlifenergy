@@ -28,6 +28,9 @@ function template(d){
 }
 
 var table = $('#cliente').DataTable({
+    "language": {
+        "infoFiltered": ""
+    },
     "stateSave": false,
     "dom": 'lCfrtip',
     "order": [],

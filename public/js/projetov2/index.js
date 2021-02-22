@@ -18,6 +18,9 @@ function format ( d ) {
 }
 
 var table = $('#projetov2').DataTable({
+    "language": {
+        "infoFiltered": ""
+    },
     "stateSave": true,
     "autoWidth": true,
     "dom": 'lCfrtip',

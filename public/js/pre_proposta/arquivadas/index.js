@@ -21,6 +21,9 @@ mascara = (val) => $('val.cpf_cnpj').mask('00.000.000/0000-00')
 
 
 const table = $('#prePropostaArquivadas').DataTable({
+    "language": {
+        "infoFiltered": ""
+    },
     "stateSave": true,
     "dom": 'lCfrtip',
     "order": [],
