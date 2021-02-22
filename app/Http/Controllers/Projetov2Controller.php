@@ -100,11 +100,11 @@ class Projetov2Controller extends Controller
         //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if($user->hasRole('franquia')) {
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
         }
         //[RF003-RN004]
         if($user->hasRole('integrador')) {
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
             $rows->where('pre_propostas.user_id', '=', $user->id);
         }
 
@@ -150,7 +150,7 @@ class Projetov2Controller extends Controller
 
 
             })
-            ->addColumn('action', function ($row) {
+            ->addColumn('action', function ($row) use ($user) {
 
 
                 $acao = '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
@@ -158,13 +158,10 @@ class Projetov2Controller extends Controller
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">';
 
-                $user =  Auth::user();
-
                     $acao .= '<a href="/report/'.$row->id.'/FichaElaboracaoProjeto" class="btn btn-primary" target="_blank" title="Ficha de Elaboração de Projeto">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                                 </a>';
 
-                $user =  Auth::user();
                 if($user->hasPermissionTo('update.projeto')) {
                     $acao .= '<a href="projetov2/' . $row->id . '/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

@@ -30,7 +30,7 @@ const table = $('#preProposta').DataTable({
         "align": "right"
     },
     "searching": false,
-    "bLengthChange": true,
+    "bLengthChange": false,
     "drawCallback": function( settings ) {
         var inputs = document.getElementsByClassName('arquivar')
         for(input of inputs) {

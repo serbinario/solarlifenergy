@@ -101,13 +101,14 @@ class PrePropostaController extends Controller
         //Se o usuario logado nao tiver role de franquia, so podera ver os cadastros dele
         $user = User::find(Auth::id());
         if($user->hasRole('ADM')) {
-
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
         }
         if($user->hasRole('VENDEDOR')) {
             $rows->where('pre_propostas.user_id', '=', $user->id);
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
         }
+
+       // dd("qq");
 
         #Editando a grid
         return Datatables::of($rows)
@@ -147,14 +148,13 @@ class PrePropostaController extends Controller
                 $query->whereNull('pre_propostas.arquivado');
             })
 
-            ->addColumn('action', function ($row) {
+            ->addColumn('action', function ($row) use ($user) {
 
                     $acao = '<form id="' . $row->id   . '" method="POST" action="preProposta/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">';
 
-                        $user =  Auth::user();
                         if($user->hasPermissionTo('update.proposta')) {
                             $acao .= '<a href="preProposta/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

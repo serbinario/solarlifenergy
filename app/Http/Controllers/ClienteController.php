@@ -74,19 +74,6 @@ class ClienteController extends Controller
                 \DB::raw('DATE_FORMAT(clientes.created_at,"%d/%m/%Y") as created_at'),
                 \DB::raw('COUNT(pre_propostas.id) as propostas')
             ]);
-
-        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
-        $user = User::find(Auth::id());
-        if($user->hasRole('franquia')) {
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
-        }
-        if($user->hasRole('integrador')) {
-            $rows->where('clientes.user_id', '=', $user->id);
-            $rows->where('users.franquia_id', '=', Auth::user()->franquia->id);
-        }
-
-
-
         #Editando a grid
         return Datatables::of($rows)
             ->filter(function ($query) use ($request) {
@@ -107,10 +94,6 @@ class ClienteController extends Controller
                     $tableName = $request->get('filtro_por');
                     $query->whereBetween('clientes.' . $tableName, [$request->get('data_ini'), $request->get('data_fim')])->get();
                 }
-
-
-
-
                 if ($request->has('is_propostas')) {
                     $is_propostas = $request->get('is_propostas');
                     if($is_propostas == 2) {
@@ -129,11 +112,11 @@ class ClienteController extends Controller
                 //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
                 $user = User::find(Auth::id());
                 if($user->hasRole('ADM')) {
-                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                    $query->where('users.franquia_id', '=', $user->franquia->id);
                 }
                 if($user->hasRole('VENDEDOR')) {
                     $query->where('clientes.user_id', '=', $user->id);
-                    $query->where('users.franquia_id', '=', Auth::user()->franquia->id);
+                    $query->where('users.franquia_id', '=', $user->franquia->id);
                 }
 
             })
