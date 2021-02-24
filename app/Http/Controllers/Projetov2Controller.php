@@ -152,7 +152,6 @@ class Projetov2Controller extends Controller
             })
             ->addColumn('action', function ($row) use ($user) {
 
-
                 $acao = '<form id="' . $row->id   . '" method="POST" action="projetov2/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
@@ -175,7 +174,6 @@ class Projetov2Controller extends Controller
                 $acao .= '</div>
                         </form>';
                 return $acao;
-
 
         })->make(true);
     }

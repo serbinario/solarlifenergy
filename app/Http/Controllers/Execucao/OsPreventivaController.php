@@ -3,6 +3,7 @@
 namespace Serbinario\Http\Controllers\Execucao;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Serbinario\Entities\Execucao\OrdemServico;
 use Serbinario\Entities\logistica\StatusVisita;
 use Serbinario\Entities\logistica\VisitaDocumentos;
@@ -74,6 +75,17 @@ class OsPreventivaController extends Controller
                 'os.ordem_tipo_id',
             ]);
 
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if($user->hasRole('ADM')) {
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
+        }
+        //[RF003-RN004]
+        if($user->hasRole('VENDEDOR')) {
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+        }
+
         #Editando a grid
         return Datatables::of($rows)
 
@@ -92,21 +104,28 @@ class OsPreventivaController extends Controller
                 }
             })
 
-            ->addColumn('action', function ($row) {
-                return '<form id="' . $row->id   . '" method="POST" action="execucao/os_corretiva/' . $row->id   . '/destroy" accept-charset="UTF-8">
+            ->addColumn('action', function ($row) use ($user) {
+
+                if($user->hasRole('super-admin')) {
+                    $acao =  '<form id="' . $row->id   . '" method="POST" action="execucao/os_corretiva/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
-                            <div class="btn-group btn-group-xs pull-right" role="group">                              
-                                <a href="osCorretiva/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
+                            <div class="btn-group btn-group-xs pull-right" role="group">';
+
+                    $acao .= '<a href="osCorretiva/'.$row->id.'/edit" class="btn btn-primary" title="Edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>    
-                                <a href="/report/'.$row->id.'/os" class="btn btn-primary" target="_blank" title="Proposta">
+                                </a> ';
+
+                    $acao .= '<a href="/report/'.$row->id.'/os" class="btn btn-primary" target="_blank" title="Proposta">
                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                </a>                        
-                               
-                            </div>
-                        </form>
-                        ';
+                                </a>';
+
+                    $acao .= '</div>
+                        </form>';
+                    return $acao;
+                }
+
+
             })->make(true);
     }
 

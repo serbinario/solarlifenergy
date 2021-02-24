@@ -77,6 +77,16 @@ class VisitaTecnicaController extends Controller
                 'clientes.nome_empresa',
                 \DB::raw('DATE_FORMAT(vt.created_at,"%d/%m/%Y") as data_cadastro'),
             ]);
+        //Se o usuario logado nao tiver role de admin, so podera ver os cadastros dele
+        $user = User::find(Auth::id());
+        if($user->hasRole('ADM')) {
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
+        }
+        //[RF003-RN004]
+        if($user->hasRole('VENDEDOR')) {
+            $rows->where('users.franquia_id', '=', $user->franquia->id);
+            $rows->where('pre_propostas.user_id', '=', $user->id);
+        }
 
         return Datatables::of($rows)
 
@@ -93,15 +103,16 @@ class VisitaTecnicaController extends Controller
                 if ($request->has('integrador')) {
                     $query->where('users.name', 'like', "%" . $request->get('integrador') . "%");
                 }
+
+
             })
 
-            ->addColumn('action', function ($row) {
+            ->addColumn('action', function ($row)  use ($user) {
                 $acao = '<form id="' . $row->id   . '" method="POST" action="logistica/visitaTecnica/' . $row->id   . '/destroy" accept-charset="UTF-8">
                             <input name="_method" value="DELETE" type="hidden">
                             <input name="_token" value="'.$this->token .'" type="hidden">
                             <div class="btn-group btn-group-xs pull-right" role="group">';
 
-                $user =  Auth::user();
                 if($user->hasPermissionTo('update.vist.tecnica')) {
                     if ($this->arquivado != 1) {
                         $acao .= '<a href="visitaTecnica/' . $row->id . '/edit" class="btn btn-primary" title="Edit">
