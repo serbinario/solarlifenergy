@@ -60,6 +60,36 @@ function criarOsPreventiva(projeto_id){
     });
 }
 
+function criarOsInstalacao(projeto_id){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.getElementsByName("_token")[0].value
+
+        }
+    });
+    data = {
+        'projeto_id': projeto_id,
+        'tipo': 3
+    }
+
+    jQuery.ajax({
+        type: 'POST',
+        url: '/index.php/osInstalacao',
+        datatype: 'json',
+        data: data,
+    }).done(function (retorno) {
+        if(retorno.success) {
+            swal("", retorno.msg, "success");
+            retorno.data.tipo = "Instalacao"
+            let html = format(retorno.data)
+            $(".listaOrdemServico").append(html);
+
+        } else {
+
+        }
+    });
+}
+
 
 function criarosCorretiva(projeto_id){
     $.ajaxSetup({

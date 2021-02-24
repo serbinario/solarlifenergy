@@ -284,7 +284,7 @@
 								<!--start submenu -->
 								<ul>
 									@can('read.os.instalacao')
-									<li><a data-title="osInstalacao" onclick="pop(this)" href="{{ route('solicitacaoEntrega.index') }}" ><span class="title">O.S. - Instalação</span></a></li>
+									<li><a data-title="osInstalacao" onclick="pop(this)" href="{{ route('osInstalacao.index') }}" ><span class="title">O.S. - Instalação</span></a></li>
 									@endcan
 									@can('read.os.corretiva')
 									<li><a  data-title="osCorretiva" onclick="pop(this)" href="{{ route('osCorretiva.index') }}" ><span class="title">O.S. - Corretiva</span></a></li>

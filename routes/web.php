@@ -240,6 +240,34 @@ Route::group(
 
 Route::group(
     [
+        'prefix' => 'osInstalacao',
+    ], function () {
+
+    Route::get('/edit','Execucao\OsInstalacaoController@edit')
+        ->name('osInstalacao.edit')
+        ->where('id', '[0-9]+');
+
+    Route::get('/', 'Execucao\OsInstalacaoController@index')
+        ->name('osInstalacao.index');
+
+    Route::get('/grid', 'Execucao\OsInstalacaoController@grid')
+        ->name('osInstalacao.grid');
+
+    Route::get('/create', 'Execucao\OsInstalacaoController@create')
+        ->name('osInstalacao.create');
+
+    Route::get('/{id}/edit','Execucao\OsInstalacaoController@edit')
+        ->name('osInstalacao.edit');
+
+    Route::put('/update/{id}', 'Execucao\OsInstalacaoController@update')
+        ->name('osInstalacao.update');
+
+    Route::post('/', 'Execucao\OsInstalacaoController@store')
+        ->name('osInstalacao.store');
+});
+
+Route::group(
+    [
         'prefix' => 'category',
     ], function () {
 
