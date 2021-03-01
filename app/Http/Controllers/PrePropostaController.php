@@ -293,7 +293,7 @@ class PrePropostaController extends Controller
             $valor_mao_obra = $return['valor_mao_obra'];
             $valor_mao_obra < 4000 ? $valor_mao_obra =  4000.00 : $valor_mao_obra;
 
-            dd($valor_mao_obra);
+            //dd($valor_mao_obra);
 
             //Acrecimo da mão de obra
             $valor_mao_obra = $valor_mao_obra + (($valor_mao_obra * 14.88) / 100);
